@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(demo LANGUAGES CXX)
+project(example LANGUAGES CXX)
 
-set(BINARY_NAME "demo")
+set(BINARY_NAME "example")
 
 cmake_policy(SET CMP0063 NEW)
 
