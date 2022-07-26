@@ -11,29 +11,18 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+The visual component library for Flutter.
+## What is AdmiralUI? `AdmiralUI` - is a ready-made set of user interface elements.
 
-## Features
+## Benefits of using a library:
+- Allows you to follow to a single visual style and interface solutions
+- Speeds up prototyping
+- Saves time for designers and developers
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+## Why AdmiralUI?
+- 💎 **Lots of ready made components** - 30+ based components from buttons and text fields to timepicker and calendar..
+- 🛠 **Customizability** - components have many custom properties.
+- 🎨 **Themization** - support for different color palettes, the ability to create your own and instantly switch between them.
+- 🏗 **Support** - releases come out every two weeks.
+- 📱 **iOS library** - availible library for [iOS](https://github.com/admiral-team/admiralui-ios)
+- 📱 **Andrioid library** - availible library for [Android](https://github.com/admiral-team/admiralui-android)
