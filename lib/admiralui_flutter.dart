@@ -1,4 +1,4 @@
-library admiralui;
+library admiralui_flutter;
 
 /// A Calculator.
 class Calculator {
