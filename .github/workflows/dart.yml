@@ -19,6 +19,8 @@ jobs:
           channel: 'stable'
           architecture: x64
       - run: flutter --version
+      - name: Analyze Flutter env
+        run: flutter doctor -v
       - name: Install dependencies
         run: flutter pub get
       - name: Test App
