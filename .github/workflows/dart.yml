@@ -17,6 +17,7 @@ jobs:
         with:
           flutter-version: '3.0.5'
           channel: 'stable'
+          architecture: x64
       - run: flutter --version
       - name: Install dependencies
         run: flutter pub get
