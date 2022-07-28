@@ -32,4 +32,4 @@ jobs:
       - name: Build iOS App
         run: cd example && flutter build ios --release --no-codesign
       - name: Build Android App & Apk
-        run: flutter build apk && flutter build appbundle
+        run: cd example && flutter build apk && flutter build appbundle
