@@ -1,3 +1,5 @@
+import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:admiralui/admiralui.dart';
 
@@ -96,12 +98,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: PrimaryButtonWidget(
+                  title: 'Primary Button',
+                  buttonStyle: null,
+                  direction: IconDirection.right,
+                  icon: Icon(
+                    Icons.headphones,
+                    color: Colors.white,
+                  ),
+                  isEnable: null),
             ),
           ],
         ),
