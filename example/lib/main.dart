@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:admiralui/admiralui.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter = Calculator().addOne(_counter);
+      _counter = _counter++;
     });
   }
 
@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Admiralcons.admiral_ic_doc_attention_solid),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
