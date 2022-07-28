@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
       - name: Test App
         run: flutter test
-      - name: Build iOS App
-        run: cd example && flutter build ios --release --no-codesign
       - name: Build Web App
         run: flutter build web
+      - name: Build iOS App
+        run: cd example && flutter build ios --release --no-codesign
