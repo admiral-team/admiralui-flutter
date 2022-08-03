@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
 
-class PrimaryButtoScheme {
-  final double fontSize = 16;
-  final String fontFamily = '.SF UI Display';
-  final FontWeight fontWeight = FontWeight.w500;
-  final Color textColor = const Color(0xFFFFFFFF);
-  final Color buttonColor = const Color(0x3A83F1);
+class AppTheme {
+  static AppTheme light = AppTheme();
+}
 
-  // const FontWrapper({
-  //   required this.fontSize,
-  //   required this.fontFamily,
-  //   required this.fontWeight,
-  // });
+class PrimaryButtonScheme {
+  double opacity = 0.6;
+  double fontSize = 16;
+  String fontFamily = '.SF UI Display';
+  FontWeight fontWeight = FontWeight.w500;
+  Color normalTextColor = const Color(0xFFFFFFFF);
+  Color buttonNormalColor = const Color(0xFF3A83F1);
+  late Color buttonDisableColor = const Color(0xFF3A83F1).withOpacity(opacity);
+  late Color buttonHighLightColor =
+      const Color(0xFF3A83F1).withOpacity(opacity);
 
-  TextStyle toTextStyle(double opacity) {
+  PrimaryButtonScheme({AppTheme? theme = null}) {
+    var _theme = theme ?? AppTheme.light;
+  }
+
+  TextStyle toNormalTextStyle() {
     return TextStyle(
-      color: textColor.withOpacity(opacity),
+      color: normalTextColor,
+      fontSize: fontSize,
+      fontFamily: fontFamily,
+      fontWeight: fontWeight,
+    );
+  }
+
+  TextStyle toDisableTextStyle() {
+    return TextStyle(
+      color: normalTextColor.withOpacity(opacity),
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontWeight: fontWeight,

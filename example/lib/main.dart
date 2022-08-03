@@ -104,15 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const Padding(
               padding: EdgeInsets.all(8),
-              child: PrimaryButtonWidget(
-                  title: 'Primary Button',
-                  buttonStyle: null,
-                  direction: IconDirection.right,
-                  icon: Icon(
-                    Icons.headphones,
-                    color: Colors.white,
-                  ),
-                  isEnable: null),
+              child: PrimaryButton(
+                title: 'Primary Button',
+                direction: IconDirection.left,
+                icon: Icon(
+                  Icons.headphones,
+                  color: Colors.white,
+                ),
+                onPressed: null,
+                scheme: null,
+              ),
             ),
           ],
         ),

@@ -1,37 +1,41 @@
-// import 'package:bank_lite/theme/app_theme_provider.dart';
 import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button_scheme.dart';
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryButtonWidget extends StatefulWidget {
+class PrimaryButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String title;
-  final bool? isEnable;
-  final ButtonStyle? buttonStyle;
+  final bool isEnable;
   final Widget? icon;
   final IconDirection? direction;
+  final PrimaryButtonScheme? scheme;
 
-  const PrimaryButtonWidget(
+  const PrimaryButton(
       {Key? key,
       this.onPressed,
-      required this.title,
-      required this.isEnable,
-      required this.buttonStyle,
-      required this.icon,
-      required this.direction})
+      this.title = '',
+      this.isEnable = true,
+      this.icon,
+      this.direction,
+      this.scheme})
       : super(key: key);
 
   @override
-  State<PrimaryButtonWidget> createState() => _PrimaryButtonWidgetState();
+  State<PrimaryButton> createState() => _PrimaryButtonState();
 }
 
-class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
-  double _opacity = 1.0;
-  var scheme = PrimaryButtoScheme();
+class _PrimaryButtonState extends State<PrimaryButton> {
+  bool _isPressed = false;
+
   @override
   Widget build(BuildContext context) {
-    // var theme = AppThemeProvider.of(context);
-    // var fonts = theme.fonts;
+    var scheme = widget.scheme ?? PrimaryButtonScheme();
+    var background = widget.isEnable
+        ? (_isPressed ? scheme.buttonHighLightColor : scheme.buttonNormalColor)
+        : scheme.buttonDisableColor;
+    var texStyle = widget.isEnable
+        ? scheme.toNormalTextStyle()
+        : scheme.toDisableTextStyle();
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -43,62 +47,40 @@ class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
           height: 50,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: scheme.buttonColor.withOpacity(_opacity),
+            color: background,
             borderRadius: BorderRadius.circular(8.0),
           ),
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-          child: contentButton()),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                child: (widget.icon != null &&
+                        widget.direction == IconDirection.left)
+                    ? widget.icon
+                    : null,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text(
+                  widget.title,
+                  style: texStyle,
+                ),
+              ),
+              SizedBox(
+                child: (widget.icon != null &&
+                        widget.direction == IconDirection.right)
+                    ? widget.icon
+                    : null,
+              ),
+            ],
+          )),
     );
-  }
-
-  Widget contentButton() {
-    if (widget.icon != null && widget.direction == IconDirection.left) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            child: widget.icon,
-            width: 28,
-            height: 28,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              widget.title,
-              style: scheme.toTextStyle(_opacity),
-            ),
-          ),
-        ],
-      );
-    } else if (widget.icon != null && widget.direction == IconDirection.right) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              widget.title,
-              style: scheme.toTextStyle(_opacity),
-            ),
-          ),
-          SizedBox(
-            child: widget.icon,
-            width: 28,
-            height: 28,
-          )
-        ],
-      );
-    } else {
-      return Text(
-        widget.title,
-        style: scheme.toTextStyle(_opacity),
-      );
-    }
   }
 
   setHighlighted(bool highlighted) {
     setState(() {
-      _opacity = highlighted ? 0.8 : 1.0;
+      _isPressed = highlighted;
     });
   }
 }

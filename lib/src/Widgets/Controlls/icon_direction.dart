@@ -1,3 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum IconDirection { left, right }
+enum IconDirection {
+  left,
+  right,
+}
