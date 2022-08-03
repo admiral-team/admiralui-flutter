@@ -39,6 +39,9 @@ We welcome any help, and you can help us with the development of this project. D
         </a><br/>
         <a href="https://github.com/admiral-team/admiralui-ios/commits?author=ton252" title="Code">👑</a>
     </td>
+    <td align="center">
+        <a href="https://github.com/timbaton"><img src="https://avatars.githubusercontent.com/u/20974161?v=4" width="80px;" alt="" style="max-width: 100%;"><br><sub><b>Timur Badretdinov </b></sub></a><br><a href="https://github.com/admiral-team/admiralui-android/commits?author=timbaton" title="Code"><g-emoji class="g-emoji" alias="computer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png">💻</g-emoji></a>
+    </td>
     <td align="center"
         <a href="https://github.com/KirBorisov96">\
         <img src="https://avatars.githubusercontent.com/u/100690555?s=400&u=4d8a4e4b4837e94735b1c42905691cf624501559&v=4" width="80px;" alt="" /><br/>
@@ -55,6 +58,9 @@ We welcome any help, and you can help us with the development of this project. D
         <img src="https://avatars.githubusercontent.com/u/8963238?v=4" width="80px;" alt="" /><br />
         <sub><b>Andrey Dyatkov</b></sub></a><br />
         <a href="https://github.com/admiral-team/admiralui-ios/commits?author=Andyatkov" title="Code">💻</a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Evgeniy-93"><img src="https://avatars.githubusercontent.com/u/101252323?v=4" width="80px;" alt="" style="max-width: 100%;"><br><sub><b>Evgeny Krutsky</b></sub></a><br><a href="https://github.com/admiral-team/admiralui-android/commits?author=Evgeniy-93" title="Code"><g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png">🛠</g-emoji></a>
     </td>
   </tr>
 </table>
