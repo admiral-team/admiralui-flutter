@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_bu
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:admiralui/admiralui.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/button_size_type.dart';
 
 void main() {
   runApp(const MyApp());
@@ -106,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.all(8),
               child: PrimaryButton(
                 title: 'Primary Button',
+                sizeType: ButtonSizeType.medium,
                 direction: IconDirection.left,
                 icon: Icon(
                   Icons.headphones,
