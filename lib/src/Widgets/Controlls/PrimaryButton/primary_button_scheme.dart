@@ -8,27 +8,27 @@ class PrimaryButtonScheme {
   double fontSize;
   String fontFamily;
   FontWeight fontWeight;
-  Color normalTextColor;
-  Color disableTextColor;
-  Color buttonNormalColor;
-  Color buttonDisableColor;
-  Color buttonHighLightColor;
+  Color textColorNormal;
+  Color textColorDisabled;
+  Color buttonColorNormal;
+  Color buttonColorDisabled;
+  Color buttonColorHighLight;
 
   PrimaryButtonScheme({AppTheme? theme})
       : fontSize = 16,
         fontFamily = '.SF UI Display',
         fontWeight = FontWeight.w500,
-        normalTextColor = const Color(0xFFFFFFFF),
-        disableTextColor = const Color(0xFFFFFFFF).withOpacity(0.6),
-        buttonNormalColor = const Color(0xFF3A83F1),
-        buttonDisableColor = const Color(0xFF3A83F1).withOpacity(0.6),
-        buttonHighLightColor = const Color(0xFF3A83F1).withOpacity(0.6);
+        textColorNormal = const Color(0xFFFFFFFF),
+        textColorDisabled = const Color(0xFFFFFFFF).withOpacity(0.6),
+        buttonColorNormal = const Color(0xFF3A83F1),
+        buttonColorDisabled = const Color(0xFF3A83F1).withOpacity(0.6),
+        buttonColorHighLight = const Color(0xFF3A83F1).withOpacity(0.6);
   // TODO: when theme will done
   // var _theme = theme ?? AppTheme.light;
 
   TextStyle normalTextStyle() {
     return TextStyle(
-      color: normalTextColor,
+      color: textColorNormal,
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontWeight: fontWeight,
@@ -37,7 +37,7 @@ class PrimaryButtonScheme {
 
   TextStyle disableTextStyle() {
     return TextStyle(
-      color: disableTextColor,
+      color: textColorDisabled,
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontWeight: fontWeight,

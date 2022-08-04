@@ -55,8 +55,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
   @override
   Widget build(BuildContext context) {
     var background = widget.isEnable
-        ? (_isPressed ? scheme.buttonHighLightColor : scheme.buttonNormalColor)
-        : scheme.buttonDisableColor;
+        ? (_isPressed ? scheme.buttonColorHighLight : scheme.buttonColorNormal)
+        : scheme.buttonColorDisabled;
     var texStyle =
         widget.isEnable ? scheme.normalTextStyle() : scheme.disableTextStyle();
 
