@@ -44,16 +44,21 @@ class PrimaryButton extends StatefulWidget {
 
 class _PrimaryButtonState extends State<PrimaryButton> {
   bool _isPressed = false;
+  late PrimaryButtonScheme scheme;
+
+  @override
+  void initState() {
+    super.initState();
+    scheme = widget.scheme ?? PrimaryButtonScheme();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var scheme = widget.scheme ?? PrimaryButtonScheme();
     var background = widget.isEnable
         ? (_isPressed ? scheme.buttonHighLightColor : scheme.buttonNormalColor)
         : scheme.buttonDisableColor;
-    var texStyle = widget.isEnable
-        ? scheme.toNormalTextStyle()
-        : scheme.toDisableTextStyle();
+    var texStyle =
+        widget.isEnable ? scheme.normalTextStyle() : scheme.disableTextStyle();
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
