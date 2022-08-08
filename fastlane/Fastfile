@@ -1,0 +1,66 @@
+fastlane_require 'dotenv'
+require_relative 'version'
+require_relative 'utils'
+
+before_all do
+  Dotenv.overload('.env', '.env.secret')
+end
+
+lane :deploy_appcenter_dev do |options|
+  skip_archive = options[:skip_archive] || false
+  skip_git_comment = options[:skip_git_comment] || false
+  issue_name = options[:issue_name]
+  build_number = generate_random_build_number()
+  previous_build_number = current_app_build_number
+  branch_name = issue_name
+
+  if issue_name.nil? || issue_name == ""
+    issue_name = extract_issue_name(branch_name: branch_name)
+  else
+    issue_name = extract_issue_name(branch_name: issue_name)
+  end
+
+  if !skip_archive
+    increment_app_build(build_number: build_number)
+    
+    build_app(
+      workspace: ENV['PROJECT_WORKSPACE_PATH'],
+      configuration: "Release",
+      scheme: "ExampleiOS",
+      silent: true,
+      clean: true,
+      output_directory: "Release/AdmiralUI-Example/Dev",
+      export_method: "enterprise",
+      output_name: "admiralui-example.ipa",
+    )
+
+    increment_app_build(build_number: previous_build_number)
+  end
+
+  appcenter_upload(
+    api_token: ENV['APPCENTER_API_TOKEN'],
+    owner_name: ENV['APPCENTER_OWNER_NAME'],
+    owner_type: ENV['APPCENTER_OWNER_TYPE'],
+    app_name: ENV['APPCENTER_APP_NAME_DEV'],
+    file: "Release/AdmiralUI-Example/Dev/admiralui-example.ipa",
+    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
+    destination_type: "group",
+    release_notes: "",
+    notify_testers: true
+  )
+end
+
+lane :increment_app_build do |options|
+  build_number = options[:build_number]
+  increment_build_number(
+    build_number: build_number,
+    xcodeproj: ENV['EXAMPLE_PROJECT_PATH']
+  )
+end
+
+lane :unlock_secrets_keychain do |options|
+  unlock_keychain(
+    path: "login.keychain",
+    password: options[:password]
+  )
+end

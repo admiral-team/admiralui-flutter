@@ -11,6 +11,11 @@ jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: [self-hosted, main]
+    env:
+      API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+      PUll_NUMBER: ${{ github.event.number }}
+      RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
@@ -30,6 +35,9 @@ jobs:
       - name: Build Web App
         run: cd example && flutter build web
       - name: Build iOS App
-        run: cd example && flutter build ios --release --no-codesign
+        run: |
+          cd example && flutter build ios --release --no-codesign
+          bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
+          bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }}
       - name: Build Android App & Apk
         run: cd example && flutter build apk && flutter build appbundle
