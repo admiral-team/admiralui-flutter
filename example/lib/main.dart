@@ -1,4 +1,6 @@
 import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/SecondaryButton/secondary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/GhostButton/ghost_button.dart';
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:admiralui/admiralui.dart';
@@ -113,6 +115,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icons.headphones,
                   color: Colors.white,
                 ),
+                onPressed: null,
+                scheme: null,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: SecondaryButton(
+                title: 'Secondary Button',
+                sizeType: ButtonSizeType.medium,
+                onPressed: null,
+                scheme: null,
+                isEnable: true,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: GhostButton(
+                title: 'Ghost Button',
+                sizeType: ButtonSizeType.medium,
                 onPressed: null,
                 scheme: null,
               ),
