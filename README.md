@@ -43,7 +43,7 @@ We welcome any help, and you can help us with the development of this project. D
         <a href="https://github.com/timbaton"><img src="https://avatars.githubusercontent.com/u/20974161?v=4" width="80px;" alt="" style="max-width: 100%;"><br><sub><b>Timur Badretdinov </b></sub></a><br><a href="https://github.com/admiral-team/admiralui-android/commits?author=timbaton" title="Code"><g-emoji class="g-emoji" alias="computer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png">💻</g-emoji></a>
     </td>
     <td align="center"
-        <a href="https://github.com/KirBorisov96">\
+        <a href="https://github.com/KirBorisov96">
         <img src="https://avatars.githubusercontent.com/u/100690555?s=400&u=4d8a4e4b4837e94735b1c42905691cf624501559&v=4" width="80px;" alt="" /><br/>
         <sub><b>Borisov Kirill</b></sub></a><br />
         <a href="https://github.com/admiral-team/admiralui-ios/commits?author=KirBorisov96" title="Code">💻</a>
