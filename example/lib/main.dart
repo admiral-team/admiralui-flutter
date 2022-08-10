@@ -1,5 +1,8 @@
+import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
-import 'package:admiralui/admiralui.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/button_size_type.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter = Calculator().addOne(_counter);
+      _counter = _counter++;
     });
   }
 
@@ -96,12 +99,23 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: PrimaryButton(
+                title: 'Primary Button',
+                sizeType: ButtonSizeType.medium,
+                direction: IconDirection.left,
+                icon: Icon(
+                  Icons.headphones,
+                  color: Colors.white,
+                ),
+                onPressed: null,
+                scheme: null,
+              ),
             ),
           ],
         ),
@@ -109,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Admiralcons.admiral_ic_doc_attention_solid),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
