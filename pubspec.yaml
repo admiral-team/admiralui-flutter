@@ -37,3 +37,5 @@ flutter:
     - family: SFProText
       fonts:
         - asset: lib/fonts/SFProText-Medium.ttf
+        - asset: lib/fonts/SFProText-Regular.ttf
+        - asset: lib/fonts/SFProText-Bold.ttf
