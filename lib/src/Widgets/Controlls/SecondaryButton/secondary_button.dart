@@ -1,10 +1,11 @@
-import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button_scheme.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/SecondaryButton/secondary_button_scheme.dart'
+    show SecondaryButtonScheme;
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 import '../button_size_type.dart';
 import '../controll_parameter.dart';
 
-/// An PrimaryButton-style button.
+/// An SecondaryButton-style button.
 ///
 /// Takes in a text or an icon that fades out and in on touch. May optionally have a
 /// background.
@@ -14,17 +15,17 @@ import '../controll_parameter.dart';
 ///  Medium - an additional button of a smaller size, the button does not change its size depending on the width of the screen;
 ///  Small - changes its width depending on the content inside it, often used with the keyboard.
 ///
-class PrimaryButton extends StatefulWidget {
+class SecondaryButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String title;
   final bool isEnable;
   final ButtonSizeType sizeType;
   final Widget? icon;
   final IconDirection? direction;
-  final PrimaryButtonScheme? scheme;
+  final SecondaryButtonScheme? scheme;
 
-  /// Creates an PrimaryButton.
-  const PrimaryButton(
+  /// Creates an SecondaryButton.
+  const SecondaryButton(
       {Key? key,
       this.onPressed,
       this.title = '',
@@ -36,17 +37,17 @@ class PrimaryButton extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<PrimaryButton> createState() => _PrimaryButtonState();
+  State<SecondaryButton> createState() => _SecondaryButtonState();
 }
 
-class _PrimaryButtonState extends State<PrimaryButton> {
+class _SecondaryButtonState extends State<SecondaryButton> {
   bool _isPressed = false;
-  late PrimaryButtonScheme scheme;
+  late SecondaryButtonScheme scheme;
 
   @override
   void initState() {
     super.initState();
-    scheme = widget.scheme ?? PrimaryButtonScheme();
+    scheme = widget.scheme ?? SecondaryButtonScheme();
   }
 
   @override
@@ -59,10 +60,6 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
 
-    var textColorNormal = scheme.textColor.paramter(ControlState.normal);
-    var textColorDisabled = scheme.textColor.paramter(ControlState.disabled);
-    var textColor = widget.isEnable ? textColorNormal : textColorDisabled;
-
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
       onTapUp: (_) => setHighlighted(false),
@@ -73,8 +70,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           height: widget.sizeType.height,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: background,
             borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(width: 2, color: background),
           ),
           padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
           child: Row(
@@ -91,7 +88,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
                 child: Text(
                   widget.title,
                   style: TextStyle(
-                    color: textColor,
+                    color: background,
                     fontSize: scheme.fontSize,
                     fontFamily: scheme.fontFamily,
                     fontWeight: scheme.fontWeight,
