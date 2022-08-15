@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:admiralui_flutter/src/Widgets/Views/Cell/base_cell_scheme.dart';
+import 'package:flutter/material.dart';
 
 /// BaseCellWidget - a view that displays leading, trailing and image views
 ///

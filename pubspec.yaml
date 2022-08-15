@@ -16,6 +16,7 @@ dev_dependencies:
     sdk: flutter
   recase: ^4.0.0
   xml: ^5.2.0
+  lint: ^1.0.0
 
 flutter:
   fonts:
