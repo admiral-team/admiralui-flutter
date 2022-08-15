@@ -14,6 +14,8 @@ dependencies:
   golden_toolkit: ^0.13.0
 
 dev_dependencies:
+  build_runner:
+  flutter_gen_runner:
   flutter_test:
     sdk: flutter
   recase: ^4.0.0
@@ -25,3 +27,8 @@ flutter:
     - family: AdmiralIcons
       fonts:
         - asset: lib/fonts/AdmiralIcons.ttf
+    - family: Roboto
+      fonts:
+        - asset: lib/fonts/Roboto-Regular.ttf
+        - asset: lib/fonts/Roboto-Medium.ttf
+        - asset: lib/fonts/Roboto-Bold.ttf

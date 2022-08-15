@@ -6,3 +6,4 @@
 library admiralui_flutter;
 
 export 'src/admiral_icons_flutter.dart';
+export 'theme/app_theme_provider.dart';
