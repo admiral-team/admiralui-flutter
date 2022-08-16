@@ -5,8 +5,8 @@ class PrimaryButtonScheme {
   double fontSize;
   String fontFamily;
   FontWeight fontWeight;
-  ControlParameter textColor = ControlParameter();
-  ControlParameter buttonColor = ControlParameter();
+  ControlParameter<Color> textColor = ControlParameter<Color>();
+  ControlParameter<Color> buttonColor = ControlParameter<Color>();
 
   PrimaryButtonScheme()
       : fontSize = 16,

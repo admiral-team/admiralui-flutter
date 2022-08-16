@@ -1,4 +1,4 @@
-import 'package:admiralui_flutter/theme/color_palette.dart';
+import 'package:admiralui_flutter/theme/colors_palette.dart';
 import 'package:admiralui_flutter/theme/font_palette.dart';
 
 class AppTheme {
@@ -11,14 +11,14 @@ class AppTheme {
   });
 
   static const defaultTheme = darkTheme;
+
+  static const AppTheme lightTheme = AppTheme(
+    colors: lightPalette,
+    fonts: defaultFontPalette,
+  );
+
+  static const AppTheme darkTheme = AppTheme(
+    colors: darkPalette,
+    fonts: defaultFontPalette,
+  );
 }
-
-const lightTheme = AppTheme(
-  colors: lightPalette,
-  fonts: defaultFontPalette,
-);
-
-const darkTheme = AppTheme(
-  colors: darkPalette,
-  fonts: defaultFontPalette,
-);

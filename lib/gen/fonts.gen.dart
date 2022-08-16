@@ -10,6 +10,12 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: Roboto
-  static const String roboto = 'Roboto';
+  /// Font family: AdmiralIcons
+  static const String admiralIcons = 'AdmiralIcons';
+
+  /// Font family: sfProDisplay
+  static const String sfprodisplay = 'sfProDisplay';
+
+  /// Font family: sfProText
+  static const String sfprotext = 'sfProText';
 }

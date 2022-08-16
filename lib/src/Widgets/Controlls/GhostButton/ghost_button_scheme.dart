@@ -5,7 +5,7 @@ class GhostButtonScheme {
   double fontSize;
   String fontFamily;
   FontWeight fontWeight;
-  ControlParameter buttonColor = ControlParameter();
+  ControlParameter<Color> buttonColor = ControlParameter<Color>();
 
   GhostButtonScheme()
       : fontSize = 16,

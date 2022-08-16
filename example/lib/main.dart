@@ -49,9 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = AppThemeProvider.of(context);
-    var colors = theme.colors;
-    var fonts = theme.fonts;
+    final theme = AppThemeProvider.getTheme(context);
+    final colors = theme.colors;
+    final fonts = theme.fonts;
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),

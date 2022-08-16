@@ -6,7 +6,7 @@ enum ControlState {
 }
 
 class ControlParameter<T> {
-  Map<String, T> _parameters = {};
+  final Map<String, T> _parameters = {};
 
   void set(T parameter, ControlState forState) {
     _parameters[forState.name] = parameter;
@@ -14,5 +14,15 @@ class ControlParameter<T> {
 
   T? paramter(ControlState forState) {
     return _parameters[forState.name];
+  }
+
+  T unsafeParameter(ControlState forState) {
+    final result = _parameters[forState.name];
+    if (result != null) {
+      return result;
+    } else {
+      throw "Parameter with the name '${forState.name}' is undeclared in the "
+          'ControlState.';
+    }
   }
 }

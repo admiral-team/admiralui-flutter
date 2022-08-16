@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/src/Widgets/Controlls/SecondaryButton/secondar
     show SecondaryButtonScheme;
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
+
 import '../button_size_type.dart';
 import '../controll_parameter.dart';
 
@@ -52,11 +53,13 @@ class _SecondaryButtonState extends State<SecondaryButton> {
 
   @override
   Widget build(BuildContext context) {
-    var backgroundNormal = scheme.buttonColor.paramter(ControlState.normal);
-    var backgroundHighlighted =
-        scheme.buttonColor.paramter(ControlState.highlighted);
-    var backgroundDisabled = scheme.buttonColor.paramter(ControlState.disabled);
-    var background = widget.isEnable
+    final Color backgroundNormal =
+        scheme.buttonColor.unsafeParameter(ControlState.normal);
+    final Color backgroundHighlighted =
+        scheme.buttonColor.unsafeParameter(ControlState.highlighted);
+    final Color backgroundDisabled =
+        scheme.buttonColor.unsafeParameter(ControlState.disabled);
+    final Color background = widget.isEnable
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
 

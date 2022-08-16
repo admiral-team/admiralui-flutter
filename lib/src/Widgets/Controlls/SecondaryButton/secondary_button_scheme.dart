@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../controll_parameter.dart';
 
 class AppTheme {
@@ -6,11 +7,6 @@ class AppTheme {
 }
 
 class SecondaryButtonScheme {
-  double fontSize;
-  String fontFamily;
-  FontWeight fontWeight;
-  ControlParameter buttonColor = ControlParameter();
-
   SecondaryButtonScheme()
       : fontSize = 16,
         fontFamily = '.SF UI Display',
@@ -20,4 +16,9 @@ class SecondaryButtonScheme {
     buttonColor.set(
         const Color(0xFF3A83F1).withOpacity(0.6), ControlState.disabled);
   }
+
+  double fontSize;
+  String fontFamily;
+  FontWeight fontWeight;
+  ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

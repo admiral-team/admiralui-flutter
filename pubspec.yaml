@@ -27,8 +27,12 @@ flutter:
     - family: AdmiralIcons
       fonts:
         - asset: lib/fonts/AdmiralIcons.ttf
-    - family: Roboto
+    - family: sfProDisplay
       fonts:
-        - asset: lib/fonts/Roboto-Regular.ttf
-        - asset: lib/fonts/Roboto-Medium.ttf
-        - asset: lib/fonts/Roboto-Bold.ttf
+        - asset: lib/fonts/SFProDisplay-Regular.otf
+        - asset: lib/fonts/SFProDisplay-Medium.otf
+        - asset: lib/fonts/SFProDisplay-Bold.otf
+        - asset: lib/fonts/SFProDisplay-Semibold.otf
+    - family: sfProText
+      fonts:
+        - asset: lib/fonts/SFProText-Medium.otf
