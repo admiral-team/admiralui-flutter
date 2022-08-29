@@ -1,4 +1,4 @@
-import 'package:admiralui_flutter/src/Widgets/Views/Cell/base_cell_scheme.dart';
+import 'package:admiralui_flutter/src/widgets/views/cell/base_cell_scheme.dart';
 import 'package:flutter/material.dart';
 
 /// BaseCellWidget - a view that displays leading, trailing and image views
@@ -12,6 +12,17 @@ import 'package:flutter/material.dart';
 /// bool isEnabled - The flag that controls enabled/disabled state of BaseCellWidget.
 ///
 class BaseCellWidget extends StatefulWidget {
+  const BaseCellWidget({
+    Key? key,
+    this.onPressed,
+    this.leadingCell,
+    this.centerCell,
+    this.trailingCell,
+    this.borderRadius = 0.0,
+    this.isEnabled = true,
+    this.scheme,
+  }) : super(key: key);
+
   final VoidCallback? onPressed;
   final Widget? leadingCell;
   final Widget? trailingCell;
@@ -20,17 +31,6 @@ class BaseCellWidget extends StatefulWidget {
   final bool isEnabled;
   final BaseCellScheme? scheme;
 
-  const BaseCellWidget(
-      {Key? key,
-      this.onPressed,
-      this.leadingCell,
-      this.centerCell,
-      this.trailingCell,
-      this.borderRadius = 0.0,
-      this.isEnabled = true,
-      this.scheme})
-      : super(key: key);
-
   @override
   State<BaseCellWidget> createState() => _BaseCellWidgetState();
 }
@@ -38,6 +38,7 @@ class BaseCellWidget extends StatefulWidget {
 class _BaseCellWidgetState extends State<BaseCellWidget> {
   late BaseCellScheme scheme;
   bool _isPressed = false;
+
   @override
   void initState() {
     super.initState();
@@ -46,9 +47,9 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var color = (widget.isEnabled
-        ? (_isPressed ? scheme.selectedColor : scheme.deafultColor)
-        : scheme.disabledColor);
+    final Color color = widget.isEnabled
+        ? (_isPressed ? scheme.selectedColor : scheme.defaultColor)
+        : scheme.disabledColor;
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
       onTapUp: (_) => setHighlighted(false),
@@ -66,13 +67,15 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           color: color,
           borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
-        child: Row(children: [
-          widget.leadingCell ?? Container(),
-          const SizedBox(width: 8.0),
-          widget.centerCell ?? Container(),
-          const Spacer(),
-          widget.trailingCell ?? Container()
-        ]),
+        child: Row(
+          children: [
+            widget.leadingCell ?? Container(),
+            const SizedBox(width: 8.0),
+            widget.centerCell ?? Container(),
+            const Spacer(),
+            widget.trailingCell ?? Container()
+          ],
+        ),
       ),
     );
   }
