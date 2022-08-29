@@ -1,6 +1,6 @@
-import 'package:admiralui_flutter/src/Widgets/Controlls/PrimaryButton/primary_button.dart';
-import 'package:admiralui_flutter/src/Widgets/Controlls/SecondaryButton/secondary_button.dart';
-import 'package:admiralui_flutter/src/Widgets/Controlls/GhostButton/ghost_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/primary_button/primary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/secondary_button/secondary_button.dart';
+import 'package:admiralui_flutter/src/Widgets/Controlls/ghost_button/ghost_button.dart';
 import 'package:admiralui_flutter/src/Widgets/Controlls/icon_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
