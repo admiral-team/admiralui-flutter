@@ -8,17 +8,17 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  admiralui: ^0.0.1
   flutter:
     sdk: flutter
-  admiralui: ^0.0.1
   golden_toolkit: ^0.13.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lint: ^1.0.0
   recase: ^4.0.0
   xml: ^5.2.0
-  lint: ^1.0.0
 
 flutter:
   fonts:

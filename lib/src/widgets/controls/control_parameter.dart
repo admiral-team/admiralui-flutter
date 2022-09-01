@@ -6,7 +6,7 @@ enum ControlState {
 }
 
 class ControlParameter<T> {
-  final Map<String, T> _parameters = {};
+  final Map<String, T> _parameters = <String, T>{};
 
   void set(T parameter, ControlState forState) {
     _parameters[forState.name] = parameter;
@@ -17,7 +17,7 @@ class ControlParameter<T> {
   }
 
   T unsafeParameter(ControlState forState) {
-    final result = _parameters[forState.name];
+    final T? result = _parameters[forState.name];
     if (result != null) {
       return result;
     } else {
