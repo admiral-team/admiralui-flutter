@@ -5,12 +5,12 @@ class AppTheme {
 }
 
 class BaseCellScheme {
-  Color selectedColor;
-  Color deafultColor;
-  Color disabledColor;
-
-  BaseCellScheme({AppTheme? theme})
+  BaseCellScheme()
       : selectedColor = const Color(0x0febf3fe),
-        deafultColor = const Color(0xFFFFFFFF),
+        defaultColor = const Color(0xFFFFFFFF),
         disabledColor = const Color(0xFFFFFFFF).withOpacity(0.5);
+
+  Color selectedColor;
+  Color defaultColor;
+  Color disabledColor;
 }

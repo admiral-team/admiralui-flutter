@@ -1,0 +1,4 @@
+enum IconDirection {
+  left,
+  right,
+}

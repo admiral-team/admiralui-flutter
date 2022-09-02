@@ -1,8 +1,9 @@
-/// Flutter package for [Eva Icons](https://akveo.github.io/eva-icons/). Eva Icons is a pack of more than 480 beautifully crafted Open Source icons for common actions and items.
-///
-/// This package brings [Eva Icons](https://akveo.github.io/eva-icons/) pack available as Flutter Icons. It has beautiful outlined and rounded Icons.
-///
-/// Blog Post: [Beautiful Outlined and Rounded Icons in Flutter with Eva Icons](https://medium.com/@piyushmaurya23/beautiful-outlined-and-rounded-icons-in-flutter-with-eva-icons-e9bf86a7c4e9)
 library admiralui_flutter;
 
-export 'src/admiral_icons_flutter.dart';
+export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
+
+export 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
+export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button.dart';
+export 'package:admiralui_flutter/src/widgets/controls/icon_direction.dart';
+export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button.dart';
+export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';

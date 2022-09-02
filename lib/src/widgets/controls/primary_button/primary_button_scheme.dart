@@ -1,13 +1,7 @@
+import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
 import 'package:flutter/material.dart';
-import '../controll_parameter.dart';
 
 class PrimaryButtonScheme {
-  double fontSize;
-  String fontFamily;
-  FontWeight fontWeight;
-  ControlParameter textColor = ControlParameter();
-  ControlParameter buttonColor = ControlParameter();
-
   PrimaryButtonScheme()
       : fontSize = 16,
         fontFamily = '.SF UI Display',
@@ -21,6 +15,13 @@ class PrimaryButtonScheme {
     buttonColor.set(
         const Color(0xFF3A83F1).withOpacity(0.6), ControlState.disabled);
   }
-  // TODO: when theme will done
-  // var _theme = theme ?? AppTheme.light;
+
+  double fontSize;
+  String fontFamily;
+  FontWeight fontWeight;
+  ControlParameter<Color> textColor = ControlParameter<Color>();
+  ControlParameter<Color> buttonColor = ControlParameter<Color>();
+
+// TODO: when theme will done
+// var _theme = theme ?? AppTheme.light;
 }
