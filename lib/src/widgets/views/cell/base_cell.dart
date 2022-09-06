@@ -52,9 +52,9 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
         : scheme.disabledColor;
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
-      onTapUp: (_) => setHighlighted(false),
-      onTapDown: (_) => setHighlighted(true),
-      onTapCancel: () => setHighlighted(false),
+      onTapUp: (_) => setHighlighted(highlighted: false),
+      onTapDown: (_) => setHighlighted(highlighted: true),
+      onTapCancel: () => setHighlighted(highlighted: false),
       child: Container(
         padding: const EdgeInsets.only(
           left: 2.0,
@@ -68,7 +68,7 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         child: Row(
-          children: [
+          children: <Widget>[
             widget.leadingCell ?? Container(),
             const SizedBox(width: 8.0),
             widget.centerCell ?? Container(),
@@ -80,7 +80,7 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
     );
   }
 
-  setHighlighted(bool highlighted) {
+  void setHighlighted({required bool highlighted}) {
     setState(() {
       _isPressed = highlighted;
     });

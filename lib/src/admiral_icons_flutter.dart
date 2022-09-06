@@ -1,8 +1,8 @@
+import 'package:admiralui_flutter/src/icon_data.dart';
 import 'package:flutter/widgets.dart';
 
-import 'icon_data.dart';
-
-class Admiralcons {
+// ignore_for_file: constant_identifier_names
+class AdmiralIcons {
   static const IconData admiral_ic_acuring_future_solid =
       AdmiralIconData(0xe800);
   static const IconData admiral_ic_calendar_outline = AdmiralIconData(0xe801);

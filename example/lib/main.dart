@@ -62,8 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   Icons.headphones,
                   color: Colors.white,
                 ),
-                onPressed: null,
-                scheme: null,
               ),
             ),
             const Padding(
@@ -71,9 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
               child: SecondaryButton(
                 title: 'Secondary Button',
                 sizeType: ButtonSizeType.medium,
-                onPressed: null,
-                scheme: null,
-                isEnable: true,
               ),
             ),
             const Padding(
@@ -81,8 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
               child: GhostButton(
                 title: 'Ghost Button',
                 sizeType: ButtonSizeType.medium,
-                onPressed: null,
-                scheme: null,
               ),
             ),
           ],
@@ -91,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Admiralcons.admiral_ic_doc_attention_solid),
+        child: const Icon(AdmiralIcons.admiral_ic_doc_attention_solid),
       ),
     );
   }
