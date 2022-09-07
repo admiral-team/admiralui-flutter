@@ -10,12 +10,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return AppThemeProviderWrapper(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(
+          title: 'Flutter Demo Home Page',
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -30,29 +34,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  void _changeTheme() {
     setState(() {
-      _counter = _counter++;
+      final AppThemeProviderWrapperState wrapper =
+          AppThemeProviderWrapper.of(context);
+      wrapper.updateTheme();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    final ColorPalette colors = theme.colors;
+    final FontPalette fonts = theme.fonts;
+
     return Scaffold(
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: fonts.title1.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            const Padding(
+          children: const <Widget>[
+            Padding(
               padding: EdgeInsets.all(8),
               child: PrimaryButton(
                 title: 'Primary Button',
@@ -64,14 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8),
               child: SecondaryButton(
                 title: 'Secondary Button',
                 sizeType: ButtonSizeType.medium,
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8),
               child: GhostButton(
                 title: 'Ghost Button',
@@ -82,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _changeTheme,
+        tooltip: 'Theme',
         child: const Icon(AdmiralIcons.admiral_ic_doc_attention_solid),
       ),
     );
