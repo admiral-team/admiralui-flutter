@@ -88,6 +88,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 sizeType: ButtonSizeType.medium,
               ),
             ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: TwoTitlePrimaryButton(
+                leftTitle: '08.06.20 — 14.08.20',
+                rightTitle: 'Выбрать',
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: TwoTitleGhostButton(
+                leftTitle: '08.06.20 — 14.08.20',
+                rightTitle: 'Выбрать',
+              ),
+            ),
           ],
         ),
       ),

@@ -5,7 +5,11 @@ class AColor {
 
   final int value;
 
-  Color color({double opacity = 1.0}) {
+  Color color() {
+    return Color(value);
+  }
+
+  Color colorWithOpacity({double opacity = 0.6}) {
     return Color(value).withOpacity(opacity);
   }
 }
