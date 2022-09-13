@@ -1,10 +1,6 @@
 import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme {
-  static AppTheme light = AppTheme();
-}
-
 class SecondaryButtonScheme {
   SecondaryButtonScheme()
       : fontSize = 16,
