@@ -1,7 +1,4 @@
-import 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
-import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
-import 'package:admiralui_flutter/src/widgets/controls/icon_direction.dart';
-import 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 /// A PrimaryButton-style button.
@@ -48,13 +45,10 @@ class _PrimaryButtonState extends State<PrimaryButton> {
   late PrimaryButtonScheme scheme;
 
   @override
-  void initState() {
-    super.initState();
-    scheme = widget.scheme ?? PrimaryButtonScheme();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    scheme = widget.scheme ?? PrimaryButtonScheme(theme: theme);
+
     final Color backgroundNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);
     final Color backgroundHighlighted =
@@ -105,9 +99,9 @@ class _PrimaryButtonState extends State<PrimaryButton> {
                 widget.title,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: scheme.fontSize,
-                  fontFamily: scheme.fontFamily,
-                  fontWeight: scheme.fontWeight,
+                  fontSize: scheme.font.fontSize,
+                  fontFamily: scheme.font.fontFamily,
+                  fontWeight: scheme.font.fontWeight,
                 ),
               ),
             ),

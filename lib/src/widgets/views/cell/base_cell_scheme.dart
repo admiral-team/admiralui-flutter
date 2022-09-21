@@ -1,16 +1,17 @@
+import 'package:admiralui_flutter/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme {
-  static AppTheme light = AppTheme();
-}
-
 class BaseCellScheme {
-  BaseCellScheme()
-      : selectedColor = const Color(0x0febf3fe),
-        defaultColor = const Color(0xFFFFFFFF),
-        disabledColor = const Color(0xFFFFFFFF).withOpacity(0.5);
+  BaseCellScheme({
+    required this.theme,
+  }) {
+    selectedColor = theme.colors.textPrimary.colorWithOpacity(opacity: 0.1);
+    defaultColor = theme.colors.backgroundBasic.color();
+    disabledColor = theme.colors.backgroundBasic.colorWithOpacity();
+  }
 
-  Color selectedColor;
-  Color defaultColor;
-  Color disabledColor;
+  AppTheme theme;
+  late Color selectedColor;
+  late Color defaultColor;
+  late Color disabledColor;
 }

@@ -1,11 +1,12 @@
-import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 class GhostButtonScheme {
-  GhostButtonScheme()
-      : fontSize = 16,
-        fontFamily = '.SF UI Display',
-        fontWeight = FontWeight.w500 {
+  GhostButtonScheme({
+    required this.theme,
+  }) {
+    font = theme.fonts.body1;
+
     buttonColor.set(
       const Color(0xFF3A83F1),
       ControlState.normal,
@@ -20,8 +21,7 @@ class GhostButtonScheme {
     );
   }
 
-  double fontSize;
-  String fontFamily;
-  FontWeight fontWeight;
+  AppTheme theme;
+  late AFont font;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

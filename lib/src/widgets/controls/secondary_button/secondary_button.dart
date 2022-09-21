@@ -1,7 +1,4 @@
-import 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
-import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
-import 'package:admiralui_flutter/src/widgets/controls/icon_direction.dart';
-import 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button_scheme.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 /// A SecondaryButton-style button.
@@ -48,13 +45,10 @@ class _SecondaryButtonState extends State<SecondaryButton> {
   late SecondaryButtonScheme scheme;
 
   @override
-  void initState() {
-    super.initState();
-    scheme = widget.scheme ?? SecondaryButtonScheme();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    scheme = widget.scheme ?? SecondaryButtonScheme(theme: theme);
+
     final Color backgroundNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);
     final Color backgroundHighlighted =
@@ -102,9 +96,9 @@ class _SecondaryButtonState extends State<SecondaryButton> {
                 widget.title,
                 style: TextStyle(
                   color: background,
-                  fontSize: scheme.fontSize,
-                  fontFamily: scheme.fontFamily,
-                  fontWeight: scheme.fontWeight,
+                  fontSize: scheme.font.fontSize,
+                  fontFamily: scheme.font.fontFamily,
+                  fontWeight: scheme.font.fontWeight,
                 ),
               ),
             ),
