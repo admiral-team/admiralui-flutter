@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 sizeType: ButtonSizeType.medium,
                 direction: IconDirection.left,
                 icon: Icon(
-                  Icons.headphones,
+                  AdmiralIcons.admiral_ic_add_comment_solid,
                   color: Colors.white,
                 ),
               ),

@@ -97,10 +97,12 @@ class _PrimaryButtonState extends State<PrimaryButton> {
                   ? widget.icon
                   : null,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
+            const Padding(
+              padding: EdgeInsets.symmetric(
                 horizontal: 12,
               ),
+            ),
+            Flexible(
               child: Text(
                 widget.title,
                 style: TextStyle(

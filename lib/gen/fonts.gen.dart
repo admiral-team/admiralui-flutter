@@ -14,8 +14,8 @@ class FontFamily {
   static const String admiralIcons = 'AdmiralIcons';
 
   /// Font family: sfProDisplay
-  static const String sfprodisplay = 'sfProDisplay';
+  static const String sfprodisplay = 'SFProDisplay';
 
   /// Font family: sfProText
-  static const String sfprotext = 'sfProText';
+  static const String sfprotext = 'SFProText';
 }

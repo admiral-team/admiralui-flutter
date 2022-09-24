@@ -83,9 +83,11 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: LayoutGrid.oneAndHalfModule,
+              padding: EdgeInsets.only(
+                left: LayoutGrid.oneAndHalfModule,
               ),
+            ),
+            Expanded(
               child: Text(
                 widget.leftTitle ?? '',
                 style: TextStyle(
@@ -94,6 +96,7 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
                   fontFamily: scheme.font.fontFamily,
                   fontWeight: scheme.font.fontWeight,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Padding(

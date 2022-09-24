@@ -94,9 +94,11 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: LayoutGrid.oneAndHalfModule,
+              padding: EdgeInsets.only(
+                left: LayoutGrid.oneAndHalfModule,
               ),
+            ),
+            Expanded(
               child: Text(
                 widget.leftTitle ?? '',
                 style: TextStyle(
@@ -105,6 +107,7 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
                   fontFamily: scheme.font.fontFamily,
                   fontWeight: scheme.font.fontWeight,
                 ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             Padding(
