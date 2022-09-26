@@ -16,9 +16,10 @@ export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_titl
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/icon_background.dart';
+export 'package:admiralui_flutter/src/widgets/switcher/switcher.dart';
+export 'package:admiralui_flutter/src/widgets/switcher/switcher_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
-export 'package:admiralui_flutter/src/widgets/views/cell/base_cell.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell_scheme.dart';
 export 'package:admiralui_flutter/theme/admiral_font.dart';
