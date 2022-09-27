@@ -19,3 +19,4 @@ export 'package:admiralui_flutter/theme/app_theme.dart';
 export 'package:admiralui_flutter/theme/app_theme_provider.dart';
 export 'package:admiralui_flutter/theme/colors_palette.dart';
 export 'package:admiralui_flutter/theme/font_palette.dart';
+export 'package:flutter/src/widgets/icon.dart';
