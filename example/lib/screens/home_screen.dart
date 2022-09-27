@@ -177,12 +177,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: ColoredBox(
+      body: Container(
         color: colors.backgroundBasic.color(),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: LayoutGrid.doubleModule,
-          ),
+        padding: EdgeInsets.symmetric(
+          horizontal: LayoutGrid.doubleModule,
+        ),
+        child: Material(
+          color: colors.backgroundBasic.color(),
           child: ListView.separated(
             addAutomaticKeepAlives: false,
             addRepaintBoundaries: false,
