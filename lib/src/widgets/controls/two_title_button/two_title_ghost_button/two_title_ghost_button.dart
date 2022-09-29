@@ -24,7 +24,6 @@ class TwoTitleGhostButton extends StatefulWidget {
     this.rightTitle,
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
-    this.direction,
     this.scheme,
   }) : super(key: key);
 
@@ -33,7 +32,6 @@ class TwoTitleGhostButton extends StatefulWidget {
   final String? rightTitle;
   final bool isEnable;
   final ButtonSizeType sizeType;
-  final IconDirection? direction;
   final TwoTitleGhostButtonScheme? scheme;
 
   @override

@@ -24,7 +24,7 @@ class PrimaryButton extends StatefulWidget {
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
     this.icon,
-    this.direction,
+    this.iconPosition,
     this.scheme,
   }) : super(key: key);
 
@@ -33,7 +33,7 @@ class PrimaryButton extends StatefulWidget {
   final bool isEnable;
   final ButtonSizeType sizeType;
   final Widget? icon;
-  final IconDirection? direction;
+  final IconPosition? iconPosition;
   final PrimaryButtonScheme? scheme;
 
   @override
@@ -87,7 +87,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           children: <Widget>[
             SizedBox(
               child: (widget.icon != null &&
-                      widget.direction == IconDirection.left)
+                      (widget.iconPosition == IconPosition.left ||
+                          widget.iconPosition == null))
                   ? widget.icon
                   : null,
             ),
@@ -109,7 +110,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             ),
             SizedBox(
               child: (widget.icon != null &&
-                      widget.direction == IconDirection.right)
+                      widget.iconPosition == IconPosition.right)
                   ? widget.icon
                   : null,
             ),

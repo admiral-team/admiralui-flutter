@@ -24,7 +24,7 @@ class GhostButton extends StatefulWidget {
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
     this.icon,
-    this.direction,
+    this.iconPosition,
     this.scheme,
   }) : super(key: key);
 
@@ -33,7 +33,7 @@ class GhostButton extends StatefulWidget {
   final bool isEnable;
   final ButtonSizeType sizeType;
   final Widget? icon;
-  final IconDirection? direction;
+  final IconPosition? iconPosition;
   final GhostButtonScheme? scheme;
 
   @override
@@ -80,7 +80,8 @@ class _GhostButtonState extends State<GhostButton> {
           children: <Widget>[
             SizedBox(
               child: (widget.icon != null &&
-                      widget.direction == IconDirection.left)
+                      (widget.iconPosition == IconPosition.left ||
+                          widget.iconPosition == null))
                   ? widget.icon
                   : null,
             ),
@@ -100,7 +101,7 @@ class _GhostButtonState extends State<GhostButton> {
             ),
             SizedBox(
               child: (widget.icon != null &&
-                      widget.direction == IconDirection.right)
+                      widget.iconPosition == IconPosition.right)
                   ? widget.icon
                   : null,
             ),

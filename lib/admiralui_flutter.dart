@@ -6,7 +6,7 @@ export 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
 export 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button_scheme.dart';
-export 'package:admiralui_flutter/src/widgets/controls/icon_direction.dart';
+export 'package:admiralui_flutter/src/widgets/controls/icon_position.dart';
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';
