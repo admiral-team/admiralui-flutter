@@ -11,36 +11,6 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   setUpAll(() async {
     await loadAppFonts();
     await _load(_loadFontFile());
-
-    final Future<ByteData> fontBold =
-        rootBundle.load('lib/fonts/SFProDisplay-Bold.ttf');
-    final Future<ByteData> fontMedium =
-        rootBundle.load('lib/fonts/SFProDisplay-Medium.ttf');
-    final Future<ByteData> fontRegular =
-        rootBundle.load('lib/fonts/SFProDisplay-Regular.ttf');
-    final Future<ByteData> fontSemibold =
-        rootBundle.load('lib/fonts/SFProDisplay-Semibold.ttf');
-
-    final FontLoader fontLoader = FontLoader('SFProDisplay')
-      ..addFont(fontBold)
-      ..addFont(fontRegular)
-      ..addFont(fontSemibold)
-      ..addFont(fontMedium);
-    await fontLoader.load();
-
-    final Future<ByteData> fontIcons =
-        rootBundle.load('lib/fonts/AdmiralIcons.ttf');
-    final FontLoader fontLoaderIcons = FontLoader('AdmiralIcons')
-      ..addFont(fontIcons);
-    await fontLoaderIcons.load();
-
-    final Future<ByteData> fluentRegularIcon = rootBundle
-        .load('packages/admiralui_flutter/lib/fonts/AdmiralIcons.ttf');
-
-    final FontLoader fluentRegularLoader = FontLoader('AdmiralIcons')
-      ..addFont(fluentRegularIcon);
-
-    await fluentRegularLoader.load();
   });
 
   await testMain();

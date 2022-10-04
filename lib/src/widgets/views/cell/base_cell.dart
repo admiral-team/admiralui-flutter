@@ -1,3 +1,4 @@
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/src/widgets/views/cell/base_cell_scheme.dart';
 import 'package:admiralui_flutter/theme/app_theme.dart';
 import 'package:admiralui_flutter/theme/app_theme_provider.dart';
@@ -66,17 +67,15 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           widget.onPressed?.call();
         },
         child: Container(
-          padding: const EdgeInsets.only(
-            left: 2.0,
-            right: 2.0,
-            bottom: 14.0,
-            top: 14.0,
+          padding: EdgeInsets.only(
+            bottom: LayoutGrid.tripleModule,
+            top: LayoutGrid.tripleModule,
           ),
           width: double.infinity,
           child: Row(
             children: <Widget>[
               widget.leadingCell ?? Container(),
-              const SizedBox(width: 8.0),
+              SizedBox(width: LayoutGrid.quadrupleModule),
               widget.centerCell ?? Container(),
               const Spacer(),
               widget.trailingCell ?? Container()
