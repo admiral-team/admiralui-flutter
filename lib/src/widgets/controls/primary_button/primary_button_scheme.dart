@@ -1,40 +1,37 @@
-import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButtonScheme {
-  PrimaryButtonScheme()
-      : fontSize = 16,
-        fontFamily = '.SF UI Display',
-        fontWeight = FontWeight.w500 {
+  PrimaryButtonScheme({
+    required this.theme,
+  }) {
+    font = theme.fonts.body1;
+
     textColor.set(
-      const Color(0xFFFFFFFF),
+      theme.colors.textStaticWhite.color(),
       ControlState.normal,
     );
     textColor.set(
-      const Color(0xFFFFFFFF).withOpacity(0.6),
+      theme.colors.textStaticWhite.colorWithOpacity(),
       ControlState.disabled,
     );
 
     buttonColor.set(
-      const Color(0xFF3A83F1),
+      theme.colors.elementAccent.color(),
       ControlState.normal,
     );
     buttonColor.set(
-      const Color(0xFF316FCC),
+      theme.colors.elementAccentPressed.color(),
       ControlState.highlighted,
     );
     buttonColor.set(
-      const Color(0xFF3A83F1).withOpacity(0.6),
+      theme.colors.elementAccent.colorWithOpacity(),
       ControlState.disabled,
     );
   }
 
-  double fontSize;
-  String fontFamily;
-  FontWeight fontWeight;
+  AppTheme theme;
+  late AFont font;
   ControlParameter<Color> textColor = ControlParameter<Color>();
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
-
-// TODO: when theme will done
-// var _theme = theme ?? AppTheme.light;
 }

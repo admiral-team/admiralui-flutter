@@ -1,27 +1,27 @@
-import 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 class SecondaryButtonScheme {
-  SecondaryButtonScheme()
-      : fontSize = 16,
-        fontFamily = '.SF UI Display',
-        fontWeight = FontWeight.w500 {
+  SecondaryButtonScheme({
+    required this.theme,
+  }) {
+    font = theme.fonts.body1;
+
     buttonColor.set(
-      const Color(0xFF3A83F1),
+      theme.colors.textAccent.color(),
       ControlState.normal,
     );
     buttonColor.set(
-      const Color(0xFF316FCC),
+      theme.colors.textAccentPressed.color(),
       ControlState.highlighted,
     );
     buttonColor.set(
-      const Color(0xFF3A83F1).withOpacity(0.6),
+      theme.colors.textAccent.colorWithOpacity(),
       ControlState.disabled,
     );
   }
 
-  double fontSize;
-  String fontFamily;
-  FontWeight fontWeight;
+  AppTheme theme;
+  late AFont font;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }
