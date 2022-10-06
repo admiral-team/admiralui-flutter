@@ -20,14 +20,14 @@ class TextView extends StatelessWidget {
   /// The [data] parameter must not be null.
   const TextView(
     this.data, {
-    Key? key,
+    super.key,
     this.isEnabled = true,
     this.font,
     this.textColorNormal,
     this.textColorDisabled,
     this.textAlign,
     this.maxLines,
-  }) : super(key: key);
+  });
 
   /// The text to display.
   ///
