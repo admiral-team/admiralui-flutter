@@ -1,8 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-import 'home_screen.dart';
-import 'in_progress.dart';
+import '../navigation/bottom_navigation.dart';
+import '../navigation/tab_item.dart';
+import '../navigation/tab_navigator_home.dart';
+import '../navigation/tab_navigator_process.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -12,24 +14,30 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> {
-  int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = <Widget>[
-    const HomeScreen(
-      title: 'Дизайн-система\n«Адмирал»',
-    ),
-    const InProgress(),
-    const InProgress(),
-  ];
+  TabItem _currentTab = TabItem.main;
+  final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys =
+      <TabItem, GlobalKey<NavigatorState>>{
+    TabItem.main: GlobalKey<NavigatorState>(),
+    TabItem.info: GlobalKey<NavigatorState>(),
+    TabItem.settings: GlobalKey<NavigatorState>(),
+  };
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void _selectTab(TabItem tabItem) {
+    if (tabItem == _currentTab) {
+      _navigatorKeys[tabItem]!
+          .currentState!
+          .popUntil((Route<dynamic> route) => route.isFirst);
+    } else {
+      setState(() => _currentTab = tabItem);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    void _changeTheme() {
+    final AppTheme theme = AppThemeProvider.of(context);
+    final ColorPalette colors = theme.colors;
+
+    void changeTheme() {
       setState(() {
         final AppThemeProviderWrapperState wrapper =
             AppThemeProviderWrapper.of(context);
@@ -37,51 +45,54 @@ class _RootScreenState extends State<RootScreen> {
       });
     }
 
-    final AppTheme theme = AppThemeProvider.of(context);
-    final ColorPalette colors = theme.colors;
-    final FontPalette fonts = theme.fonts;
+    return WillPopScope(
+      onWillPop: () async {
+        final bool isFirstRouteInCurrentTab =
+            !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          if (_currentTab != TabItem.main) {
+            _selectTab(TabItem.main);
+            return false;
+          }
+        }
+        // let system handle back button if we're on the first route
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            _buildOffstageNavigator(TabItem.main, true),
+            _buildOffstageNavigator(TabItem.info, false),
+            _buildOffstageNavigator(TabItem.settings, false),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigation(
+          currentTab: _currentTab,
+          onSelectTab: _selectTab,
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: colors.backgroundExtraSurface.color(),
+          onPressed: changeTheme,
+          tooltip: 'Theme',
+          child: Icon(
+            AdmiralIcons.admiral_ic_menu_outline,
+            color: colors.elementExtra.color(),
+          ),
+        ),
+      ),
+    );
+  }
 
-    return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(
-          _selectedIndex,
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(AdmiralIcons.admiral_ic_star_solid),
-            label: 'Главная',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AdmiralIcons.admiral_ic_mobile_solid),
-            label: 'Инфо',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AdmiralIcons.admiral_ic_settings_solid),
-            label: 'Настройки',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: colors.elementAccent.color(),
-        unselectedItemColor: colors.elementContrast.color(),
-        selectedLabelStyle:
-            fonts.caption2.toTextStyle(colors.textAccent.color()),
-        unselectedLabelStyle:
-            fonts.caption2.toTextStyle(colors.textContrast.color()),
-        onTap: _onItemTapped,
-        backgroundColor: colors.backgroundAccentDark.color(),
-        elevation: 0,
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: colors.backgroundExtraSurface.color(),
-        onPressed: _changeTheme,
-        tooltip: 'Theme',
-        child: Icon(
-          AdmiralIcons.admiral_ic_menu_outline,
-          color: colors.elementExtra.color(),
-        ),
-      ),
+  Widget _buildOffstageNavigator(TabItem tabItem, bool isFinished) {
+    return Offstage(
+      offstage: _currentTab != tabItem,
+      child: isFinished
+          ? TabNavigatorHome(
+              navigatorKey: _navigatorKeys[tabItem],
+            )
+          : TabNavigatorProcess(
+              navigatorKey: _navigatorKeys[tabItem],
+            ),
     );
   }
 }
