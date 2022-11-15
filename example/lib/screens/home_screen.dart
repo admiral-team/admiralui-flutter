@@ -2,10 +2,17 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../navigation/tab_navigator_home.dart';
+
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title});
+  const HomeScreen({
+    super.key,
+    required this.title,
+    required this.onPush,
+  });
 
   final String title;
+  final Function(TabNavigatorRoutes route) onPush;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -15,24 +22,25 @@ class ListCellModel {
   ListCellModel({
     required this.title,
     required this.description,
-    this.onPressed,
+    required this.onPressed,
   });
 
   final String title;
   final String description;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<ListCellModel> _items = <ListCellModel>[
-    ListCellModel(
-      title: 'Buttons',
-      description: 'Кнопки',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<ListCellModel> items = <ListCellModel>[
+      ListCellModel(
+        title: 'Buttons',
+        description: 'Кнопки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+    ];
+
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
@@ -61,13 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
             ),
-            itemCount: _items.length,
+            itemCount: items.length,
             itemBuilder: (BuildContext ctx, int index) {
               return _buildView(
                 ctx,
                 index,
                 colors,
                 fonts,
+                items,
               );
             },
             separatorBuilder: (
@@ -89,8 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
     int index,
     ColorPalette colors,
     FontPalette fonts,
+    List<ListCellModel> items,
   ) {
-    final ListCellModel? item = index == _items.length ? null : _items[index];
+    final ListCellModel? item = index == items.length ? null : items[index];
 
     if (item is ListCellModel) {
       return BaseCellWidget(
