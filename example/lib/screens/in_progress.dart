@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class InProgress extends StatelessWidget {
-  const InProgress({Key? key, this.appBarHidden = false}) : super(key: key);
+  const InProgress({super.key, this.appBarHidden = false});
+
   final bool appBarHidden;
 
   @override

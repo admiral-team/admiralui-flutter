@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 ///
 class BaseCellWidget extends StatefulWidget {
   const BaseCellWidget({
-    Key? key,
+    super.key,
     this.onPressed,
     this.leadingCell,
     this.centerCell,
@@ -24,7 +24,7 @@ class BaseCellWidget extends StatefulWidget {
     this.borderRadius = 0.0,
     this.isEnabled = true,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final Widget? leadingCell;

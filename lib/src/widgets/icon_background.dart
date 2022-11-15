@@ -11,13 +11,13 @@ import 'package:flutter/material.dart';
 class IconBackground extends StatelessWidget {
   const IconBackground(
     this.icon, {
-    Key? key,
+    super.key,
     this.size,
     this.isEnabled = true,
     this.iconColorEnabled,
     this.iconColorDisabled,
     this.iconBackgroundColor,
-  }) : super(key: key);
+  });
 
   /// The icon to display. The available icons are described in [AdmiralIcons].
   ///

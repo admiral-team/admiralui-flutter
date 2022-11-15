@@ -1,9 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 class AdmiralIconData extends IconData {
-  const AdmiralIconData(int codePoint)
+  const AdmiralIconData(super.codePoint)
       : super(
-          codePoint,
           fontFamily: 'AdmiralIcons',
           fontPackage: 'admiralui_flutter',
         );

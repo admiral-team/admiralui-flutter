@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 class PrimaryButton extends StatefulWidget {
   /// Creates a PrimaryButton.
   const PrimaryButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.title = '',
     this.isEnable = true,
@@ -26,7 +26,7 @@ class PrimaryButton extends StatefulWidget {
     this.icon,
     this.iconPosition,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final String title;

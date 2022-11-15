@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 class GhostButton extends StatefulWidget {
   /// Creates an GhostButton.
   const GhostButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.title = '',
     this.isEnable = true,
@@ -26,7 +26,7 @@ class GhostButton extends StatefulWidget {
     this.icon,
     this.iconPosition,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final String title;

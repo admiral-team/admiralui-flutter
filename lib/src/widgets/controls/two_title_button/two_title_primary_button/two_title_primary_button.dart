@@ -18,14 +18,14 @@ import 'package:flutter/material.dart';
 class TwoTitlePrimaryButton extends StatefulWidget {
   /// Creates an PrimaryButton.
   const TwoTitlePrimaryButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.leftTitle,
     this.rightTitle,
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final String? leftTitle;

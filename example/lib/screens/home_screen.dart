@@ -3,7 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key, required this.title}) : super(key: key);
+  const HomeScreen({super.key, required this.title});
 
   final String title;
 

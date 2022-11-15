@@ -3,11 +3,11 @@ import 'package:flutter/widgets.dart';
 
 class AppThemeProvider extends InheritedWidget {
   const AppThemeProvider({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.data,
     required this.theme,
-  }) : super(key: key, child: child);
+  });
 
   final AppTheme theme;
   final AppThemeProviderWrapperState data;
@@ -27,9 +27,9 @@ class AppThemeProvider extends InheritedWidget {
 
 class AppThemeProviderWrapper extends StatefulWidget {
   const AppThemeProviderWrapper({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 

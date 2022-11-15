@@ -18,14 +18,14 @@ import 'package:flutter/material.dart';
 class TwoTitleGhostButton extends StatefulWidget {
   /// Creates an GhostButton.
   const TwoTitleGhostButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.leftTitle,
     this.rightTitle,
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onPressed;
   final String? leftTitle;
