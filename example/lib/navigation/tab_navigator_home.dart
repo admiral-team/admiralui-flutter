@@ -1,3 +1,5 @@
+import 'package:example/screens/feedback_screen.dart';
+import 'package:example/screens/textfields_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
@@ -5,7 +7,9 @@ import '../screens/home_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
-  buttons('/buttons');
+  buttons('/buttons'),
+  textfields('/textfields'),
+  feedback('/textfields/feedback');
 
   const TabNavigatorRoutes(this.value);
 
@@ -37,8 +41,12 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => 
           const ButtonsScreen(),
+      TabNavigatorRoutes.textfields.value: (BuildContext context) =>
+          TextfieldsScreen(title: 'TextFields', onPush: (TabNavigatorRoutes route) => _push(context, route)),
+      TabNavigatorRoutes.feedback.value: (BuildContext context) =>
+          const FeedbackScreen(title: 'Feedback')
     };
   }
 

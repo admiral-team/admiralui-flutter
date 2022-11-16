@@ -68,8 +68,8 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
         },
         child: Container(
           padding: EdgeInsets.only(
-            bottom: LayoutGrid.tripleModule,
-            top: LayoutGrid.tripleModule,
+            bottom: LayoutGrid.module,
+            top: LayoutGrid.module,
           ),
           width: double.infinity,
           child: Row(

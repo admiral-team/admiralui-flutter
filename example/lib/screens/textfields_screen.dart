@@ -1,57 +1,80 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../navigation/tab_navigator_home.dart';
 import 'list_cell_model.dart';
+import '../navigation/tab_navigator_home.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+class TextfieldsScreen extends StatelessWidget {
+  const TextfieldsScreen({
     super.key,
     required this.title,
     required this.onPush,
+    this.appBarHidden = false,
   });
 
   final String title;
   final Function(TabNavigatorRoutes route) onPush;
+  final bool appBarHidden;
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Buttons',
-        description: 'Кнопки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        title: 'Standart',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
       ),
       ListCellModel(
-        title: 'TextFields',
-        description: 'Текстовые блоки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.textfields),
+        title: 'Double',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+      ),
+      ListCellModel(
+        title: 'Slide',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+      ),
+      ListCellModel(
+        title: 'Number',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+      ),
+      ListCellModel(
+        title: 'Feedback',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+      ),
+      ListCellModel(
+        title: 'Pincode',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.textfields),
       ),
     ];
-
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: LayoutGrid.module * 10,
-        backgroundColor: colors.backgroundBasic.color(),
-        title: Text(
-          widget.title,
-          style: fonts.largeTitle1.toTextStyle(
-            colors.textPrimary.color(),
-          ),
+      extendBodyBehindAppBar: true,
+      appBar: appBarHidden
+          ? null
+          : AppBar(
+              leading: CupertinoButton(
+                child: const Icon(Icons.arrow_back_ios),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              bottomOpacity: 0.0,
+              elevation: 0.0,
+              backgroundColor: colors.backgroundBasic.color(),
+              title: Text(
+                title,
+                style: fonts.largeTitle1.toTextStyle(
+                colors.textPrimary.color(),
+              ),
         ),
-      ),
-      body: ColoredBox(
+            ),
+       body: ColoredBox(
         color: colors.backgroundBasic.color(),
         child: Container(
           padding: EdgeInsets.symmetric(
@@ -98,14 +121,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (item is ListCellModel) {
       return BaseCellWidget(
-        leadingCell: Container(
-          width: LayoutGrid.module * 6,
-          height: LayoutGrid.module * 6,
-          decoration: BoxDecoration(
-            color: colors.textPrimary.color(),
-            shape: BoxShape.circle,
-          ),
-        ),
         centerCell: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -114,12 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
               item.title,
               style: fonts.body1.toTextStyle(
                 colors.textPrimary.color(),
-              ),
-            ),
-            Text(
-              item.description,
-              style: fonts.subhead3.toTextStyle(
-                colors.textSecondary.color(),
               ),
             ),
           ],
@@ -134,4 +143,5 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Container();
   }
+
 }
