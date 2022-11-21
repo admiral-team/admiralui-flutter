@@ -27,9 +27,10 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
   double _newRating = 0;
 
   Widget buildStar(
-    BuildContext context, 
-    FeedbackInputControl widget, 
-    int index,) {
+    BuildContext context,
+    FeedbackInputControl widget,
+    int index,
+  ) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? FeedbackInputControlScheme(theme: theme);
 
@@ -50,23 +51,24 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          if (this.widget.onRatingChanged != null) widget.onRatingChanged(index + 1.0);
+          widget.onRatingChanged(index + 1.0);
           _newRating = index + 1.0;
         });
       },
-      onHorizontalDragUpdate: (dragDetails) {
+      onHorizontalDragUpdate: (DragUpdateDetails dragDetails) {
         setState(() {
-          RenderObject? obj = context.findRenderObject();
+          RenderObject? obj;
+          obj = context.findRenderObject();
           if (obj == null) {
             return;
           }
-          var isBox = obj is RenderBox;
-          if (isBox == false) {
+          if (obj is RenderBox == false) {
             return;
           }
-          RenderBox box = obj as RenderBox;
-          final _pos = box.globalToLocal(dragDetails.globalPosition);
-          final i = _pos.dx / (LayoutGrid.halfModule * 6);
+          RenderBox box;
+          box = obj as RenderBox;
+          final Offset pos = box.globalToLocal(dragDetails.globalPosition);
+          final double i = pos.dx / (LayoutGrid.halfModule * 6);
 
           _newRating = i;
           if (_newRating > widget.starCount) {
@@ -75,7 +77,7 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
           if (_newRating < 0) {
             _newRating = 0.0;
           }
-          if (this.widget.onRatingChanged != null) widget.onRatingChanged(_newRating);
+          widget.onRatingChanged(_newRating);
         });
       },
       child: icon,
@@ -85,7 +87,8 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
   @override
   Widget build(BuildContext context) {
     return Row(
-        children: List.generate(
-            widget.starCount, (index) => buildStar(context, widget, index)));
+        children: List.generate(widget.starCount,
+            (int index) => buildStar(context, widget, index)
+            ));
   }
 }
