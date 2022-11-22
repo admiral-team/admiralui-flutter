@@ -59,6 +59,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     final Color background = widget.isEnable
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
+
     final Color textColorNormal =
         scheme.textColor.unsafeParameter(ControlState.normal);
     final Color textColorDisabled =
@@ -101,14 +102,10 @@ class _PrimaryButtonState extends State<PrimaryButton> {
               ),
             ),
             Flexible(
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
             SizedBox(

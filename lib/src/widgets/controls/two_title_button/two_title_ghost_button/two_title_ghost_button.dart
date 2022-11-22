@@ -86,29 +86,21 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
               ),
             ),
             Expanded(
-              child: Text(
+              child: TextView(
                 widget.leftTitle ?? '',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
                 overflow: TextOverflow.ellipsis,
+                textColorNormal: textColor,
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: LayoutGrid.halfModule * 3,
               ),
-              child: Text(
+              child: TextView(
                 widget.rightTitle ?? '',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
           ],

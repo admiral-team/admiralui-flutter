@@ -50,15 +50,15 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? SecondaryButtonScheme(theme: theme);
 
-    final Color backgroundNormal =
+    final Color colorNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);
-    final Color backgroundHighlighted =
+    final Color colorHighlighted =
         scheme.buttonColor.unsafeParameter(ControlState.highlighted);
-    final Color backgroundDisabled =
+    final Color colorDisabled =
         scheme.buttonColor.unsafeParameter(ControlState.disabled);
-    final Color background = widget.isEnable
-        ? (_isPressed ? backgroundHighlighted : backgroundNormal)
-        : backgroundDisabled;
+    final Color color = widget.isEnable
+        ? (_isPressed ? colorHighlighted : colorNormal)
+        : colorDisabled;
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -75,7 +75,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
           ),
           border: Border.all(
             width: 2,
-            color: background,
+            color: color,
           ),
         ),
         padding: EdgeInsets.symmetric(
@@ -98,14 +98,10 @@ class _SecondaryButtonState extends State<SecondaryButton> {
               ),
             ),
             Flexible(
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: TextStyle(
-                  color: background,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: color,
               ),
             ),
             SizedBox(
