@@ -30,15 +30,11 @@ class ButtonsScreen extends StatelessWidget {
               backgroundColor: colors.backgroundBasic.color(),
             ),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         color: colors.backgroundBasic.color(),
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
         ),
-        child: const GhostButton(
-          title: 'Hello button',
-        ),
+        child: const TagControlWidget(title: "Text"),
       ),
     );
   }
