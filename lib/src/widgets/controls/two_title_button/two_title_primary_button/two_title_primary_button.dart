@@ -85,7 +85,7 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
           ),
         ),
         padding: EdgeInsets.symmetric(
-          vertical: LayoutGrid.module * 1.5,
+          vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
@@ -93,7 +93,7 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                left: LayoutGrid.module * 1.5,
+                left: LayoutGrid.halfModule * 3,
               ),
             ),
             Expanded(
@@ -110,7 +110,7 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: LayoutGrid.module * 1.5,
+                horizontal: LayoutGrid.halfModule * 3,
               ),
               child: Text(
                 widget.rightTitle ?? '',
