@@ -7,11 +7,9 @@ class FeedbackScreen extends StatelessWidget {
   const FeedbackScreen({
     super.key,
     required this.title,
-    this.appBarHidden = false,
   });
 
   final String title;
-  final bool appBarHidden;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +19,7 @@ class FeedbackScreen extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: appBarHidden
-          ? null
-          : AppBar(
+      appBar: AppBar(
               leading: CupertinoButton(
                 child: const Icon(Icons.arrow_back_ios),
                 onPressed: () => Navigator.of(context).pop(),

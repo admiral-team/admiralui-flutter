@@ -10,12 +10,10 @@ class TextfieldsScreen extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPush,
-    this.appBarHidden = false,
   });
 
   final String title;
   final Function(TabNavigatorRoutes route) onPush;
-  final bool appBarHidden;
 
   @override
   Widget build(BuildContext context) {
@@ -57,91 +55,69 @@ class TextfieldsScreen extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: appBarHidden
-          ? null
-          : AppBar(
-              leading: CupertinoButton(
-                child: const Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              bottomOpacity: 0.0,
-              elevation: 0.0,
-              backgroundColor: colors.backgroundBasic.color(),
-              title: Text(
-                title,
-                style: fonts.largeTitle1.toTextStyle(
-                colors.textPrimary.color(),
-              ),
+      appBar: AppBar(
+        leading: CupertinoButton(
+          child: const Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-            ),
-       body: ColoredBox(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
+        title: Text(
+          title,
+          style: fonts.largeTitle1.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: LayoutGrid.doubleModule,
+        ),
         color: colors.backgroundBasic.color(),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: LayoutGrid.doubleModule,
+        child: ListView.separated(
+          addAutomaticKeepAlives: false,
+          addRepaintBoundaries: false,
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
           ),
-          child: ListView.separated(
-            addAutomaticKeepAlives: false,
-            addRepaintBoundaries: false,
-            physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
-            ),
-            itemCount: items.length,
-            itemBuilder: (BuildContext ctx, int index) {
-              return _buildView(
-                ctx,
-                index,
-                colors,
-                fonts,
-                items,
+          itemCount: items.length,
+          itemBuilder: (BuildContext ctx, int index) {
+            final ListCellModel? item =
+                index == items.length ? null : items[index];
+            if (item is ListCellModel) {
+              return BaseCellWidget(
+                centerCell: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      item.title,
+                      style: fonts.body1.toTextStyle(
+                        colors.textPrimary.color(),
+                      ),
+                    ),
+                  ],
+                ),
+                trailingCell: Icon(
+                  AdmiralIcons.admiral_ic_chevron_right_outline,
+                  color: colors.elementSecondary.color(),
+                ),
+                onPressed: item.onPressed,
               );
-            },
-            separatorBuilder: (
-              BuildContext ctx,
-              int index,
-            ) {
-              return SizedBox(
-                height: LayoutGrid.doubleModule,
-              );
-            },
-          ),
+            }
+            return Container();
+          },
+          separatorBuilder: (
+            BuildContext ctx,
+            int index,
+          ) {
+            return SizedBox(
+              height: LayoutGrid.doubleModule,
+            );
+          },
         ),
       ),
     );
   }
-
-  Widget _buildView(
-    BuildContext ctx,
-    int index,
-    ColorPalette colors,
-    FontPalette fonts,
-    List<ListCellModel> items,
-  ) {
-    final ListCellModel? item = index == items.length ? null : items[index];
-
-    if (item is ListCellModel) {
-      return BaseCellWidget(
-        centerCell: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              item.title,
-              style: fonts.body1.toTextStyle(
-                colors.textPrimary.color(),
-              ),
-            ),
-          ],
-        ),
-        trailingCell: Icon(
-          AdmiralIcons.admiral_ic_chevron_right_outline,
-          color: colors.elementSecondary.color(),
-        ),
-        onPressed: item.onPressed,
-      );
-    }
-
-    return Container();
-  }
-
 }

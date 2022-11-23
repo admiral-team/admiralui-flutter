@@ -44,7 +44,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.buttons.value: (BuildContext context) => 
           const ButtonsScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
-          TextfieldsScreen(title: 'TextFields', onPush: (TabNavigatorRoutes route) => _push(context, route)),
+          TextfieldsScreen(
+            title: 'TextFields',
+             onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback')
     };

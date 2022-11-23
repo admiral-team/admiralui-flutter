@@ -26,69 +26,55 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
   late FeedbackInputControlScheme scheme;
   double _newRating = 0;
 
-  Widget buildStar(
-    BuildContext context,
-    FeedbackInputControl widget,
-    int index,
-  ) {
+  @override
+  Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? FeedbackInputControlScheme(theme: theme);
 
-    Icon icon;
-    if (index >= _newRating) {
-      icon = Icon(
-        AdmiralIcons.admiral_ic_star_solid,
-        color: scheme.defaultColor.unsafeParameter(ControlState.normal),
-        size: LayoutGrid.halfModule * 6,
-      );
-    } else {
-      icon = Icon(
-        AdmiralIcons.admiral_ic_star_solid,
-        color: scheme.selectedColor.unsafeParameter(ControlState.normal),
-        size: LayoutGrid.halfModule * 6,
-      );
-    }
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          widget.onRatingChanged(index + 1.0);
-          _newRating = index + 1.0;
-        });
-      },
-      onHorizontalDragUpdate: (DragUpdateDetails dragDetails) {
-        setState(() {
-          RenderObject? obj;
-          obj = context.findRenderObject();
-          if (obj == null) {
-            return;
-          }
-          if (obj is RenderBox == false) {
-            return;
-          }
-          RenderBox box;
-          box = obj as RenderBox;
-          final Offset pos = box.globalToLocal(dragDetails.globalPosition);
-          final double i = pos.dx / (LayoutGrid.halfModule * 6);
-
-          _newRating = i;
-          if (_newRating > widget.starCount) {
-            _newRating = widget.starCount.toDouble();
-          }
-          if (_newRating < 0) {
-            _newRating = 0.0;
-          }
-          widget.onRatingChanged(_newRating);
-        });
-      },
-      child: icon,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Row(
-        children: List<Widget>.generate(widget.starCount,
-            (int index) => buildStar(context, widget, index),
-            ),);
+      children: List<Widget>.generate(
+        widget.starCount,
+        (int index) => GestureDetector(
+          onTap: () {
+            setState(() {
+              widget.onRatingChanged(index + 1.0);
+              _newRating = index + 1.0;
+            });
+          },
+          onHorizontalDragUpdate: (DragUpdateDetails dragDetails) {
+            setState(() {
+              RenderObject? obj;
+              obj = context.findRenderObject();
+              if (obj == null) {
+                return;
+              }
+              if (obj is RenderBox == false) {
+                return;
+              }
+              RenderBox box;
+              box = obj as RenderBox;
+              final Offset pos = box.globalToLocal(dragDetails.globalPosition);
+              final double i = pos.dx / (LayoutGrid.halfModule * 6);
+
+              _newRating = i;
+              if (_newRating > widget.starCount) {
+                _newRating = widget.starCount.toDouble();
+              }
+              if (_newRating < 0) {
+                _newRating = 0.0;
+              }
+              widget.onRatingChanged(_newRating);
+            });
+          },
+          child: Icon(
+             AdmiralIcons.admiral_ic_star_solid,
+            color: index >= _newRating ? 
+            scheme.defaultColor.unsafeParameter(ControlState.normal)
+            : scheme.selectedColor.unsafeParameter(ControlState.normal),
+            size: LayoutGrid.halfModule * 6,
+          ),
+        ),
+      ),
+    );
   }
 }
