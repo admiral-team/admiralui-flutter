@@ -87,8 +87,8 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
   @override
   Widget build(BuildContext context) {
     return Row(
-        children: List.generate(widget.starCount,
-            (int index) => buildStar(context, widget, index)
-            ));
+        children: List<Widget>.generate(widget.starCount,
+            (int index) => buildStar(context, widget, index),
+            ),);
   }
 }
