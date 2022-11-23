@@ -42,6 +42,21 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.normal,
     );
+    tintColor.set(
+      theme.colors.elementAccent.color(), 
+      ControlState.normal,
+      TagStyle.normal,
+    );
+    tintColor.set(
+      theme.colors.elementAccent.colorWithOpacity(), 
+      ControlState.selected,
+      TagStyle.normal,
+    );
+    tintColor.set(
+      theme.colors.elementAccent.colorWithOpacity(), 
+      ControlState.highlighted,
+      TagStyle.normal,
+    );
 
     // Additional
     backgroundColor.set(
@@ -56,6 +71,21 @@ class TagControlScheme {
     );
     backgroundColor.set(
       theme.colors.elementPrimary.colorWithOpacity(), 
+      ControlState.highlighted,
+      TagStyle.additional,
+    );
+    tintColor.set(
+      theme.colors.elementSecondary.color(), 
+      ControlState.normal,
+      TagStyle.additional,
+    );
+    tintColor.set(
+      theme.colors.elementSecondary.colorWithOpacity(), 
+      ControlState.selected,
+      TagStyle.additional,
+    );
+    tintColor.set(
+      theme.colors.elementSecondary.colorWithOpacity(), 
       ControlState.highlighted,
       TagStyle.additional,
     );
@@ -76,6 +106,21 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.success,
     );
+    tintColor.set(
+      theme.colors.elementSuccess.color(), 
+      ControlState.normal,
+      TagStyle.success,
+    );
+    tintColor.set(
+      theme.colors.elementSuccessPressed.color(), 
+      ControlState.selected,
+      TagStyle.success,
+    );
+    tintColor.set(
+      theme.colors.elementSuccessPressed.color(), 
+      ControlState.highlighted,
+      TagStyle.success,
+    );
 
     // Error
     backgroundColor.set(
@@ -90,6 +135,21 @@ class TagControlScheme {
     );
     backgroundColor.set(
       theme.colors.backgroundErrorPressed.colorWithOpacity(), 
+      ControlState.highlighted,
+      TagStyle.error,
+    );
+    tintColor.set(
+      theme.colors.elementError.color(), 
+      ControlState.normal,
+      TagStyle.error,
+    );
+    tintColor.set(
+      theme.colors.elementErrorPressed.color(), 
+      ControlState.selected,
+      TagStyle.error,
+    );
+    tintColor.set(
+      theme.colors.elementErrorPressed.color(), 
       ControlState.highlighted,
       TagStyle.error,
     );
@@ -110,6 +170,21 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.attention,
     );
+    tintColor.set(
+      theme.colors.elementAttention.color(), 
+      ControlState.normal,
+      TagStyle.attention,
+    );
+    tintColor.set(
+      theme.colors.elementAttentionPressed.color(), 
+      ControlState.selected,
+      TagStyle.attention,
+    );
+    tintColor.set(
+      theme.colors.elementAttentionPressed.color(), 
+      ControlState.highlighted,
+      TagStyle.attention,
+    );
 
     textColor.set(
       theme.colors.textPrimary.color(),
@@ -124,5 +199,6 @@ class TagControlScheme {
   AppTheme theme;
   late AFont font;
   ControlParameter<Color> textColor = ControlParameter<Color>();
+  TagParameters<Color> tintColor = TagParameters<Color>();
   TagParameters<Color> backgroundColor = TagParameters<Color>();
 }

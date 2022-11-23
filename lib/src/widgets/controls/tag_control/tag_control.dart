@@ -10,20 +10,27 @@ class TagControlWidget extends StatefulWidget {
   const TagControlWidget({
     super.key,
     this.onPressed,
-    this.leadingView,
-    this.title = '',
-    this.trailingView,
+    this.leadingText,
+    this.leadingImage,
+    this.title,
+    this.trailingText,
+    this.trailingImage,
+    this.trailingButtonImage,
+    this.onTrailingButtonPressed,
     this.style = TagStyle.normal,
     this.isEnabled = true,
     this.scheme,
   });
 
   final VoidCallback? onPressed;
-  final Widget? leadingView;
-  final Widget? trailingView;
+  final String? leadingText;
+  final IconData? leadingImage;
+  final String? trailingText;
+  final IconData? trailingImage;
+  final IconData? trailingButtonImage;
+  final VoidCallback? onTrailingButtonPressed;
   final TagStyle style;
-  final String title;
-  final double borderRadius = 16.0;
+  final String? title;
   final bool isEnabled;
   final TagControlScheme? scheme;
 
@@ -46,51 +53,127 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     scheme = widget.scheme ?? TagControlScheme(theme: theme);
 
     final Color backgroundColor = scheme.backgroundColor.unsafeParameter(
-      widget.isEnabled ? 
-      (_isPressed ? ControlState.normal : ControlState.highlighted) 
-      : ControlState.disabled, 
+      widget.isEnabled
+          ? (_isPressed ? ControlState.normal : ControlState.highlighted)
+          : ControlState.disabled,
       widget.style,
     );
     final Color textColor = scheme.textColor.unsafeParameter(
       widget.isEnabled ? ControlState.normal : ControlState.disabled,
     );
+    final Color tintColor = scheme.tintColor.unsafeParameter(
+      widget.isEnabled ? ControlState.normal : ControlState.disabled,
+      widget.style,
+    );
+
+    List<Widget> childrensWidgets;
+    childrensWidgets = <Widget>[];
+
+    if (widget.leadingImage != null) {
+      childrensWidgets.add(
+        Icon(
+          widget.leadingImage,
+          color: tintColor,
+          size: LayoutGrid.halfModule * 5,
+        ),
+      );
+    }
+    if (widget.leadingText != null) {
+      if (childrensWidgets.isNotEmpty) {
+        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+      }
+      childrensWidgets.add(
+        Text(
+          widget.leadingText ?? '',
+          style: TextStyle(
+            color: textColor,
+            fontSize: scheme.font.fontSize,
+            fontFamily: scheme.font.fontFamily,
+            fontWeight: scheme.font.fontWeight,
+          ),
+        ),
+      );
+    }
+    if (widget.title != null) {
+      if (childrensWidgets.isNotEmpty) {
+        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+      }
+      childrensWidgets.add(
+        Text(
+          widget.title ?? '',
+          style: TextStyle(
+            color: textColor,
+            fontSize: scheme.font.fontSize,
+            fontFamily: scheme.font.fontFamily,
+            fontWeight: scheme.font.fontWeight,
+          ),
+        ),
+      );
+    }
+    if (widget.trailingImage != null) {
+      if (childrensWidgets.isNotEmpty) {
+        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+      }
+      childrensWidgets.add(
+        Icon(
+          widget.trailingImage,
+          color: tintColor,
+          size: LayoutGrid.halfModule * 5,
+        ),
+      );
+    }
+    if (widget.trailingText != null) {
+      if (childrensWidgets.isNotEmpty) {
+        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+      }
+      childrensWidgets.add(
+        Text(
+          widget.trailingText ?? '',
+          style: TextStyle(
+            color: textColor,
+            fontSize: scheme.font.fontSize,
+            fontFamily: scheme.font.fontFamily,
+            fontWeight: scheme.font.fontWeight,
+          ),
+        ),
+      );
+    }
+    if (widget.trailingButtonImage != null) {
+      if (childrensWidgets.isNotEmpty) {
+        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+      }
+      childrensWidgets.add(InkWell(
+        onTap: widget.onTrailingButtonPressed,
+        child: Icon(
+          widget.trailingButtonImage,
+          color: tintColor,
+          size: LayoutGrid.halfModule * 5,
+        ),
+      ),);
+    }
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
       onTapUp: (_) => setHighlighted(highlighted: false),
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
-      child: Container(
-        height: LayoutGrid.halfModule * 9,
-        alignment: Alignment.center,
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 6.0,
-          horizontal: 16.0,
-        ),
-        child: Row(
-            children: <Widget>[
-              // widget.leadingView ?? Container(),
-              // SizedBox(width: LayoutGrid.module),
-              Flexible(
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                    color: textColor,
-                    fontSize: scheme.font.fontSize,
-                    fontFamily: scheme.font.fontFamily,
-                    fontWeight: scheme.font.fontWeight,
-                  ),
-                ),
-              ),
-              // SizedBox(width: LayoutGrid.module),
-              // widget.trailingView ?? Container()
-            ],
+        child: Container(
+          height: LayoutGrid.halfModule * 9,
+          padding: const EdgeInsets.symmetric(
+            vertical: 6.0,
+            horizontal: 16.0,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: childrensWidgets,
           ),
         ),
-      );
+      ),
+    );
   }
 
   void setHighlighted({required bool highlighted}) {
