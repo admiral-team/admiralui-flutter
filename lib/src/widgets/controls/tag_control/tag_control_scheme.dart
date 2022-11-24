@@ -1,7 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_style.dart';
-import 'package:flutter/material.dart';
 import 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_parameters.dart';
+import 'package:flutter/material.dart';
 
 class TagControlScheme {
   TagControlScheme({

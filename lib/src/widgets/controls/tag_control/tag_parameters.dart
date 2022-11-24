@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_style.dart';
 
 class TagParameters<T> {
   final Map<String, T> _parameters = <String, T>{};
@@ -21,6 +20,7 @@ class TagParameters<T> {
     if (result != null) {
       return result;
     } else {
+      // ignore: lines_longer_than_80_chars
       throw "Parameter with the name '${key(forState, style)}' is undeclared in the "
           'ControlState.';
     }

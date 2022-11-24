@@ -35,10 +35,10 @@ class TagsScreen extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const Text(
                   'Default',
                   textAlign: TextAlign.left,
@@ -50,7 +50,7 @@ class TagsScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   const TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Text',
@@ -78,7 +78,7 @@ class TagsScreen extends StatelessWidget {
             // Additional
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const Text(
                   'Additional',
                   textAlign: TextAlign.left,
@@ -94,7 +94,7 @@ class TagsScreen extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   const TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
@@ -111,7 +111,7 @@ class TagsScreen extends StatelessWidget {
             // Success
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const Text(
                   'Success',
                   textAlign: TextAlign.left,
@@ -127,7 +127,7 @@ class TagsScreen extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   const TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
@@ -144,7 +144,7 @@ class TagsScreen extends StatelessWidget {
             // Error
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const Text(
                   'Error',
                   textAlign: TextAlign.left,
@@ -161,7 +161,7 @@ class TagsScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
-                children: [
+                children: <Widget>[
                   const TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
@@ -178,7 +178,7 @@ class TagsScreen extends StatelessWidget {
             // Attention
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 const Text(
                   'Attention',
                   textAlign: TextAlign.left,
@@ -195,7 +195,7 @@ class TagsScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
-                children: [
+                children: <Widget>[
                   const TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
