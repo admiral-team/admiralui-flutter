@@ -39,6 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
         description: 'Кнопки',
         onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
       ),
+      ListCellModel(
+        title: 'Badges',
+        description: 'Количественные зачения',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.badges),
+      ),
     ];
 
     final AppTheme theme = AppThemeProvider.of(context);

@@ -1,3 +1,6 @@
+import 'package:example/screens/badges_screen.dart';
+import 'package:example/screens/normal_badges_screen.dart';
+import 'package:example/screens/small_badges_sreen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
@@ -5,7 +8,10 @@ import '../screens/home_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
-  buttons('/buttons');
+  buttons('/buttons'),
+  badges('/badges'),
+  normalBadges('/normalBadges'),
+  smallBadges('/smallBadges');
 
   const TabNavigatorRoutes(this.value);
 
@@ -39,6 +45,14 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
+      TabNavigatorRoutes.badges.value: (BuildContext context) =>
+          BadgesScreen(
+            title: 'Badges', 
+            onPush: (TabNavigatorRoutes route) => _push(context, route),),
+      TabNavigatorRoutes.smallBadges.value: (BuildContext context) =>
+          const SmallBadgesScreen(title: 'Small Badges'),
+      TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
+          const NormalBadgesScreen(title: 'Normal Badges'),
     };
   }
 
