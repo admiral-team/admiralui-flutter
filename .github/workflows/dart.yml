@@ -47,7 +47,8 @@ jobs:
           cd build/ios/fastlane
           bundle install
           bundle update
-          bundle exec fastlane xcversion(version: "13.1")
+          sudo xcode-select --switch /Applications/Xcode.app
+          sudo xcode-select --install
       - name: Build Flutter iOS 
         run: |
           cd example/lib
