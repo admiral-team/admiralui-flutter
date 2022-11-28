@@ -44,7 +44,7 @@ lane :deploy_appcenter_dev do |options|
   end
 
   appcenter_upload(
-    api_token: ENV['API_TOKEN'],
+    api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV'],
     owner_name: ENV['APPCENTER_OWNER_NAME'],
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
     app_name: ENV['APPCENTER_APP_NAME_DEV'],
