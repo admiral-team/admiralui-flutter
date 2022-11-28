@@ -48,7 +48,6 @@ jobs:
           bundle install
           bundle update
           sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-          sudo -S <<< "$CI_PASSWORD" xcode-select --install
       - name: Build Flutter iOS 
         run: |
           cd example/lib
