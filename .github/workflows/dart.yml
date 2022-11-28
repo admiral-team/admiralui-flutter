@@ -32,16 +32,16 @@ jobs:
       - run: flutter --version
       - name: Analyze Flutter env
         run: flutter doctor -v
-      # - name: Check Lint issues
-      #   run: flutter analyze --fatal-infos
+      - name: Check Lint issues
+        run: flutter analyze --fatal-infos
       - name: Install dependencies
         run: flutter pub get
       - name: Test App
         run: flutter test
       - name: Build Web App
         run: cd example && flutter build web
-      # - name: Build Android App & Apk
-      #   run: cd example && flutter build apk && flutter build appbundle
+      - name: Build Android App & Apk
+        run: cd example && flutter build apk && flutter build appbundle
       - name: Install & Update fastlane dependencies
         run: |
           cd build/ios/fastlane
