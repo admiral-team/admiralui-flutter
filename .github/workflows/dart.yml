@@ -47,8 +47,8 @@ jobs:
           cd build/ios/fastlane
           bundle install
           bundle update
-          sudo xcode-select --switch /Applications/Xcode.app
-          sudo xcode-select --install
+          sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
+          sudo -S <<< "$CI_PASSWORD" xcode-select --install
       - name: Build Flutter iOS 
         run: |
           cd example/lib
