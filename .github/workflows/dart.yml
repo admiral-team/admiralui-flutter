@@ -42,15 +42,16 @@ jobs:
         run: cd example && flutter build web
       # - name: Build Android App & Apk
       #   run: cd example && flutter build apk && flutter build appbundle
-      - name: Build Flutter iOS 
-        run: |
-          cd example/lib
-          flutter build ios
       - name: Install & Update fastlane dependencies
         run: |
           cd build/ios/fastlane
           bundle install
           bundle update
+          bundle exec fastlane xcversion(version: "13.1")
+      - name: Build Flutter iOS 
+        run: |
+          cd example/lib
+          flutter build ios
       - name: Deploy iOS Appcenter Development
         if: ${{ github.event_name == 'pull_request' }}
         run: |
