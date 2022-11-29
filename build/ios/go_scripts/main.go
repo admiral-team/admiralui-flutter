@@ -6,11 +6,11 @@ import (
 	"log"
 	"main/auth"
 	"main/issues"
-	"main/pullRequests"
 	"main/release"
 	"main/telegram"
 	"os"
 	"strconv"
+
 	"github.com/joho/godotenv"
 )
 
@@ -32,7 +32,6 @@ func main() {
 		formatedBuildInfoTelegram := buildInfo.formatted_build_info_telegram()
 		telegram.SendTextToTelegramChat(telegramChatId, formatedBuildInfoTelegram, os.Args[5])
 		issues.CreateComment(ctx, os.Getenv("OWNER"), os.Getenv("REPO"), buildInfo.PullNumber, formatedBuildInfo, *client)
-		pullRequests.LinkPullRequest(ctx, os.Getenv("OWNER"), os.Getenv("REPO"), buildInfo.PullNumber, strconv.Itoa(buildInfo.Issue), *client)
 	case "getIssues":
 		client := auth.GithubClient(os.Args[3], ctx)
 		issues.GetIssues(ctx, os.Getenv("OWNER"), os.Getenv("REPO"), *client)
