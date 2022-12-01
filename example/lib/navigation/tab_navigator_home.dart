@@ -16,9 +16,11 @@ import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
+import '../screens/checkbox_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
+  checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   switcher('/switcher'),
@@ -29,7 +31,6 @@ enum TabNavigatorRoutes {
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
-  tags('/tags'),
   links('/links'),
   badges('/badges'),
   normalBadges('/normalBadges'),
@@ -69,8 +70,6 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
-          const ButtonsScreen(),
       TabNavigatorRoutes.radioButtons.value: (BuildContext context) =>
           const RadioButtonScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
@@ -96,6 +95,8 @@ class TabNavigatorHome extends StatelessWidget {
           ButtonsSecondaryScreen(),
       TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
           ButtonsGhostScreen(),
+      TabNavigatorRoutes.checkbox.value: (BuildContext context) =>
+          const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
       TabNavigatorRoutes.switcher.value: (BuildContext context) =>

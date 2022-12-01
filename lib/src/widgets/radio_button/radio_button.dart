@@ -82,7 +82,7 @@ class _RadioTitle extends StatelessWidget {
           ),
           value: title,
         ),
-        SizedBox(
+        const SizedBox(
           width: LayoutGrid.module,
         ),
         TextView(

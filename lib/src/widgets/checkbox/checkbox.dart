@@ -7,10 +7,8 @@ class CustomCheckBox extends StatelessWidget {
   const CustomCheckBox({
     required this.fillColor,
     required this.value,
-    required this.onChanged,
   });
 
-  final void Function() onChanged;
   final bool value;
   final Color fillColor;
 
@@ -28,7 +26,7 @@ class CustomCheckBox extends StatelessWidget {
         color: value ? fillColor : Colors.transparent,
         borderRadius: BorderRadius.circular(LayoutGrid.halfModule),
         border: Border.all(
-          color: fillColor,
+          color: value ? Colors.transparent : fillColor,
           width: LayoutGrid.module / 4,
         ),
       ),
