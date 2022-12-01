@@ -32,6 +32,7 @@ class RadioGroup extends StatefulWidget {
     this.verticalPadding = 12,
     this.scheme,
     this.isEnabled = true,
+    this.style = RadioButtonStyle.normal,
   });
 
   final List<String> items;
@@ -40,6 +41,7 @@ class RadioGroup extends StatefulWidget {
   final double verticalPadding;
   final RadioButtonScheme? scheme;
   final bool isEnabled;
+  final RadioButtonStyle style;
 
   @override
   State<StatefulWidget> createState() => _RadioGroupState();
@@ -71,6 +73,7 @@ class _RadioGroupState extends State<RadioGroup> {
               onChanged: _mergeFunction,
               scheme: scheme,
               isEnabled: widget.isEnabled,
+              style: widget.style,
             ),
           )
       ],
@@ -78,10 +81,12 @@ class _RadioGroupState extends State<RadioGroup> {
   }
 
   void _mergeFunction(String? text) {
-    widget.onChanged?.call(text);
+    if (widget.isEnabled) {
+      widget.onChanged?.call(text);
 
-    setState(() {
-      _groupValue = text;
-    });
+      setState(() {
+        _groupValue = text;
+      });
+    }
   }
 }

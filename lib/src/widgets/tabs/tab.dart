@@ -62,10 +62,18 @@ class AdmiralTab extends StatelessWidget {
 
   final int curPosition;
 
-  Widget _buildLabelText() {
+  Widget _buildLabelText(
+    FontPalette fonts,
+    ColorPalette colors,
+    int curPosition,
+    int selected,
+  ) {
     return child ??
         TextView(
           text!,
+          style: curPosition == selected
+              ? fonts.subhead2.toTextStyle(colors.textPrimary.color())
+              : fonts.subhead3.toTextStyle(colors.textPrimary.color()),
           softWrap: false,
           overflow: TextOverflow.fade,
           textAlign: TextAlign.center,
@@ -76,6 +84,7 @@ class AdmiralTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
+    final FontPalette fonts = theme.fonts;
 
     final double calculatedHeight;
     final Widget label;
@@ -84,12 +93,19 @@ class AdmiralTab extends StatelessWidget {
       label = Row(
         children: <Widget>[
           Expanded(
-            child: _buildLabelText(),
+            child: _buildLabelText(
+              fonts,
+              colors,
+              curPosition,
+              selected,
+            ),
           ),
           Container(
             height: LayoutGrid.doubleModule,
             width: 1,
-            color: selected != curPosition && curPosition != (selected - 1)
+            color: selected != curPosition &&
+                    curPosition != (selected - 1) &&
+                    curPosition != (selected + 1)
                 ? colors.elementAdditional.color()
                 : Colors.transparent,
           ),
@@ -109,7 +125,12 @@ class AdmiralTab extends StatelessWidget {
             ),
             child: icon,
           ),
-          _buildLabelText(),
+          _buildLabelText(
+            fonts,
+            colors,
+            curPosition,
+            selected,
+          ),
         ],
       );
     }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
+import '../screens/radio_button_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/tags_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   buttons('/buttons'),
+  radioButtons('/radioButtons'),
   tags('/tags');
 
   const TabNavigatorRoutes(this.value);
@@ -41,6 +43,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
+      TabNavigatorRoutes.radioButtons.value: (BuildContext context) =>
+          const RadioButtonScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
     };

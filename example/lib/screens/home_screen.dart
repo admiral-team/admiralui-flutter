@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Radiobutton',
         description: 'Радио кнопка',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.radioButtons),
       ),
       ListCellModel(
         title: 'Checkbox',
