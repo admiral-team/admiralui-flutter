@@ -36,7 +36,9 @@ class ButtonsScreen extends StatelessWidget {
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
         ),
-        child: const TagControlWidget(title: 'Text'),
+        child: const GhostButton(
+          title: 'Hello button',
+        ),
       ),
     );
   }

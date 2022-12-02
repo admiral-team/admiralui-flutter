@@ -41,7 +41,7 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
+      TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
     };
   }
