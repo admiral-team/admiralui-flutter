@@ -179,9 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
         child: Material(
           color: colors.backgroundBasic.color(),
           child: ListView.separated(
@@ -201,9 +198,9 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             separatorBuilder: (
-                BuildContext ctx,
-                int index,
-                ) {
+              BuildContext ctx,
+              int index,
+            ) {
               return Container();
             },
           ),
@@ -213,12 +210,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildView(
-      BuildContext ctx,
-      int index,
-      ColorPalette colors,
-      FontPalette fonts,
-      List<ListCellModel> items,
-      ) {
+    BuildContext ctx,
+    int index,
+    ColorPalette colors,
+    FontPalette fonts,
+    List<ListCellModel> items,
+  ) {
     final ListCellModel? item = index == items.length ? null : items[index];
 
     if (item is ListCellModel) {

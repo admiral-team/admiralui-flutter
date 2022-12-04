@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../screens/buttons_screen.dart';
+import '../screens/buttons/buttons_ghost_screen.dart';
+import '../screens/buttons/buttons_primary_screen.dart';
+import '../screens/buttons/buttons_secondary_screen.dart';
+import '../screens/buttons/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
@@ -14,10 +17,13 @@ enum TabNavigatorRoutes {
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   buttons('/buttons'),
+  buttonsPrimary('/buttons/primary'),
+  buttonsSecondary('/buttons/secondary'),
+  buttonsGhost('/buttons/ghost'),
   badges('/badges'),
-  tags('/tags'),
   normalBadges('/normalBadges'),
-  smallBadges('/smallBadges');
+  smallBadges('/smallBadges'),
+  tags('/tags');
 
   const TabNavigatorRoutes(this.value);
 
@@ -49,12 +55,13 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) => 
-          const ButtonsScreen(),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
           TextfieldsScreen(
-            title: 'TextFields',
-             onPush: (TabNavigatorRoutes route) => _push(context, route)),
+              title: 'TextFields',
+              onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
@@ -65,8 +72,17 @@ class TabNavigatorHome extends StatelessWidget {
           const SmallBadgesScreen(title: 'Small Badges'),
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.buttonsPrimary.value: (BuildContext context) =>
+          ButtonsPrimaryScreen(),
+      TabNavigatorRoutes.buttonsSecondary.value: (BuildContext context) =>
+          ButtonsSecondaryScreen(),
+      TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
+          ButtonsGhostScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
-          const TagsScreen()
+          const TagsScreen(),
     };
   }
 

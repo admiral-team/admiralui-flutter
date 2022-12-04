@@ -21,7 +21,7 @@ class CustomCheckBox extends StatelessWidget {
     const int checkAnimation = 650;
 
     return AnimatedContainer(
-      margin: EdgeInsets.all(LayoutGrid.module / 4),
+      margin: const EdgeInsets.all(LayoutGrid.module / 4),
       duration: const Duration(milliseconds: checkAnimation),
       curve: Curves.fastLinearToSlowEaseIn,
       decoration: BoxDecoration(

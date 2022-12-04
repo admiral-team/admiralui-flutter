@@ -62,7 +62,7 @@ class _CheckBoxState extends State<CheckBoxTitle> {
                 value: _isChecked,
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 right: LayoutGrid.module,
               ),

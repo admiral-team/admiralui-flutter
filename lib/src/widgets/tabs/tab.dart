@@ -104,7 +104,7 @@ class AdmiralTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               bottom: LayoutGrid.module,
             ),
             child: icon,
