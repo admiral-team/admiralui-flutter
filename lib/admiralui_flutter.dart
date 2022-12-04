@@ -2,6 +2,8 @@ library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
+export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_group.dart';
+export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
 export 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button.dart';
