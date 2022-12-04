@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 /// A SecondaryButton-style button.
@@ -69,15 +70,17 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         height: widget.sizeType.height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.module,
+          ),
           border: Border.all(
             width: 2,
             color: background,
           ),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 16.0,
+        padding: EdgeInsets.symmetric(
+          vertical: LayoutGrid.halfModule * 3,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,9 +92,9 @@ class _SecondaryButtonState extends State<SecondaryButton> {
                   ? widget.icon
                   : null,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 12,
+                horizontal: LayoutGrid.halfModule * 3,
               ),
             ),
             Flexible(

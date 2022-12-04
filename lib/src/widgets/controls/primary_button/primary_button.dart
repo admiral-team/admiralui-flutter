@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 /// A PrimaryButton-style button.
@@ -76,11 +77,13 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: background,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.module,
+          ),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 16.0,
+        padding: EdgeInsets.symmetric(
+          vertical: LayoutGrid.halfModule * 3,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
