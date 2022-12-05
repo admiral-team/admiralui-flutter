@@ -85,7 +85,7 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
           ),
         ),
         padding: EdgeInsets.symmetric(
-          vertical: LayoutGrid.oneAndHalfModule,
+          vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
@@ -93,33 +93,25 @@ class _TwoTitlePrimaryButtonState extends State<TwoTitlePrimaryButton> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(
-                left: LayoutGrid.oneAndHalfModule,
+                left: LayoutGrid.halfModule * 3,
               ),
             ),
             Expanded(
-              child: Text(
+              child: TextView(
                 widget.leftTitle ?? '',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
                 overflow: TextOverflow.ellipsis,
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: LayoutGrid.oneAndHalfModule,
+                horizontal: LayoutGrid.halfModule * 3,
               ),
-              child: Text(
+              child: TextView(
                 widget.rightTitle ?? '',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
           ],

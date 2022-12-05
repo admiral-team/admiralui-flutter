@@ -3,7 +3,6 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/tab_navigator_home.dart';
-import 'list_cell_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -19,19 +18,146 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+class ListCellModel {
+  ListCellModel({
+    required this.title,
+    required this.description,
+    required this.onPressed,
+  });
+
+  final String title;
+  final String description;
+  final VoidCallback onPressed;
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
+      ListCellModel(
+        title: 'Themes',
+        description: 'Цветовая схема и шрифтовые стили',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Icons',
+        description: 'Набор иконок',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
       ListCellModel(
         title: 'Buttons',
         description: 'Кнопки',
         onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
       ),
       ListCellModel(
-        title: 'TextFields',
-        description: 'Текстовые блоки',
+        title: 'Text fields',
+        description: 'Поля ввода',
         onPressed: () => widget.onPush.call(TabNavigatorRoutes.textfields),
+      ),
+      ListCellModel(
+        title: 'Cells',
+        description: 'Ячейки и списки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Text Blocks',
+        description: 'Текстовые блоки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Tabs',
+        description: 'Вкладки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Informers & Notifications ',
+        description: 'Информеры',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Tags & Chips',
+        description: 'Теги и чипсы',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.tags),
+      ),
+      ListCellModel(
+        title: 'Badges',
+        description: 'Количественные зачения',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Radiobutton',
+        description: 'Радио кнопка',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Checkbox',
+        description: 'Селектор',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Switcher',
+        description: 'Переключатель',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Links',
+        description: 'Ссылки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Spinner',
+        description: 'Демонстрация процесса загрузки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Page Controls',
+        description: 'Прогресс просмотра страниц',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Shimmers',
+        description: 'Демонстрация процесса загрузки',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Calendar',
+        description: 'Календарь',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Time Picker',
+        description: 'Выбор времени',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Alerts',
+        description: 'Информирующие сообщения',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Tool bar',
+        description: 'Меню',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Bottom-sheet',
+        description: 'Информационная панель',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Currency',
+        description: 'Таблица курсов валют',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Chat',
+        description: 'Элементы чата',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+      ),
+      ListCellModel(
+        title: 'Map Elements',
+        description: 'Элементы для карт',
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
       ),
     ];
 
@@ -51,12 +177,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: ColoredBox(
+      body: Container(
         color: colors.backgroundBasic.color(),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: LayoutGrid.doubleModule,
-          ),
+        padding: EdgeInsets.symmetric(
+          horizontal: LayoutGrid.doubleModule,
+        ),
+        child: Material(
+          color: colors.backgroundBasic.color(),
           child: ListView.separated(
             addAutomaticKeepAlives: false,
             addRepaintBoundaries: false,
@@ -74,12 +201,10 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             separatorBuilder: (
-              BuildContext ctx,
-              int index,
-            ) {
-              return SizedBox(
-                height: LayoutGrid.doubleModule,
-              );
+                BuildContext ctx,
+                int index,
+                ) {
+              return Container();
             },
           ),
         ),
@@ -88,12 +213,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildView(
-    BuildContext ctx,
-    int index,
-    ColorPalette colors,
-    FontPalette fonts,
-    List<ListCellModel> items,
-  ) {
+      BuildContext ctx,
+      int index,
+      ColorPalette colors,
+      FontPalette fonts,
+      List<ListCellModel> items,
+      ) {
     final ListCellModel? item = index == items.length ? null : items[index];
 
     if (item is ListCellModel) {

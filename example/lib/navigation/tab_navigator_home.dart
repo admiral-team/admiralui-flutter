@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/tags_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
-  buttons('/buttons'),
   textfields('/textfields'),
-  feedback('/textfields/feedback');
+  feedback('/textfields/feedback'),
+  buttons('/buttons'),
+  tags('/tags');
 
   const TabNavigatorRoutes(this.value);
 
@@ -48,7 +50,9 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'TextFields',
              onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
-          const FeedbackScreen(title: 'Feedback')
+          const FeedbackScreen(title: 'Feedback'),
+      TabNavigatorRoutes.tags.value: (BuildContext context) =>
+          const TagsScreen(),
     };
   }
 
