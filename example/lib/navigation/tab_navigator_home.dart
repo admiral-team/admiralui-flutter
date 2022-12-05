@@ -1,10 +1,10 @@
-import 'package:example/screens/badges_screen.dart';
-import 'package:example/screens/normal_badges_screen.dart';
-import 'package:example/screens/small_badges_sreen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/badges_screen.dart';
+import '../screens/normal_badges_screen.dart';
+import '../screens/small_badges_sreen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
