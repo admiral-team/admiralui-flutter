@@ -50,15 +50,15 @@ class _GhostButtonState extends State<GhostButton> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? GhostButtonScheme(theme: theme);
 
-    final Color backgroundNormal =
+    final Color textColorNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);
-    final Color backgroundHighlighted =
+    final Color textColorHighlighted =
         scheme.buttonColor.unsafeParameter(ControlState.highlighted);
-    final Color backgroundDisabled =
+    final Color textColorDisaled =
         scheme.buttonColor.unsafeParameter(ControlState.disabled);
-    final Color background = widget.isEnable
-        ? (_isPressed ? backgroundHighlighted : backgroundNormal)
-        : backgroundDisabled;
+    final Color textColor = widget.isEnable
+        ? (_isPressed ? textColorHighlighted : textColorNormal)
+        : textColorDisaled;
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -92,14 +92,10 @@ class _GhostButtonState extends State<GhostButton> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 12,
               ),
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: TextStyle(
-                  color: background,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
             SizedBox(
