@@ -25,8 +25,11 @@ class TextView extends StatelessWidget {
     this.font,
     this.textColorNormal,
     this.textColorDisabled,
+    this.style,
     this.textAlign,
     this.maxLines,
+    this.overflow,
+    this.softWrap,
   });
 
   /// The text to display.
@@ -37,6 +40,10 @@ class TextView extends StatelessWidget {
   final AFont? font;
   final Color? textColorNormal;
   final Color? textColorDisabled;
+
+  /// If non-null, the style to use for this text, even if there are
+  /// [textColorNormal], [textColorDisabled] and [font] set
+  final TextStyle? style;
 
   /// How the text should be aligned horizontally.
   final TextAlign? textAlign;
@@ -55,6 +62,18 @@ class TextView extends StatelessWidget {
   /// widget directly to entirely override the [DefaultTextStyle].
   final int? maxLines;
 
+  /// How visual overflow should be handled.
+  ///
+  /// If this is null [TextStyle.overflow] will be used, otherwise the value
+  /// from the nearest [DefaultTextStyle] ancestor will be used.
+  final TextOverflow? overflow;
+
+  /// Whether the text should break at soft line breaks.
+  ///
+  /// If false, the glyphs in the text will be positioned as if there was
+  /// unlimited horizontal space.
+  final bool? softWrap;
+
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
@@ -67,9 +86,13 @@ class TextView extends StatelessWidget {
 
     return Text(
       data,
-      style: font?.toTextStyle(textColor) ?? fonts.body1.toTextStyle(textColor),
+      style: style ??
+          font?.toTextStyle(textColor) ??
+          fonts.body1.toTextStyle(textColor),
       textAlign: textAlign,
       maxLines: maxLines,
+      overflow: overflow,
+      softWrap: softWrap,
     );
   }
 }

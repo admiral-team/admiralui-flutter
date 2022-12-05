@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 /// A PrimaryButton-style button.
@@ -58,6 +59,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     final Color background = widget.isEnable
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
+
     final Color textColorNormal =
         scheme.textColor.unsafeParameter(ControlState.normal);
     final Color textColorDisabled =
@@ -76,11 +78,13 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: background,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.module,
+          ),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 16.0,
+        padding: EdgeInsets.symmetric(
+          vertical: LayoutGrid.halfModule * 3,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,14 +102,10 @@ class _PrimaryButtonState extends State<PrimaryButton> {
               ),
             ),
             Flexible(
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: textColor,
               ),
             ),
             SizedBox(

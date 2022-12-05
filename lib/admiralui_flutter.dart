@@ -2,6 +2,8 @@ library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
+export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_group.dart';
+export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
 export 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button.dart';
@@ -11,6 +13,8 @@ export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_bu
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_control.dart';
+export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_style.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_ghost_button/two_title_ghost_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_ghost_button/two_title_ghost_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button.dart';
