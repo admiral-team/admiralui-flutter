@@ -1,10 +1,10 @@
-import 'package:example/screens/feedback_screen.dart';
-import 'package:example/screens/textfields_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/feedback_screen.dart';
+import '../screens/textfields_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
