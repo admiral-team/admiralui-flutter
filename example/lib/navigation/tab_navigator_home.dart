@@ -6,10 +6,16 @@ import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/informers_screen.dart';
+import '../screens/big_informers_screen.dart';
+import '../screens/small_informers_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   buttons('/buttons'),
+  informers('/informers'),
+  smallInformers('/smallInformers'),
+  bigInformers('/bigInformers'),
   badges('/badges'),
   tags('/tags'),
   normalBadges('/normalBadges'),
@@ -56,7 +62,16 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
-          const TagsScreen()
+          const TagsScreen(),
+      TabNavigatorRoutes.informers.value: (BuildContext context) =>
+          InformersScreen(
+            title: 'Informers',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.bigInformers.value: (BuildContext context) =>
+          const BigInformersScreen(title: 'Big Informers'),
+      TabNavigatorRoutes.smallInformers.value: (BuildContext context) =>
+          const SmallInformersScreen(title: 'Small Informers'),
     };
   }
 
