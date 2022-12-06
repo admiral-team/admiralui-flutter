@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../screens/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/informers_screen.dart';
+import '../screens/big_informers_screen.dart';
+import '../screens/small_informers_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   buttons('/buttons'),
+  informers('/informers'),
+  smallInformers('/smallInformers'),
+  bigInformers('/bigInformers'),
   tags('/tags');
 
   const TabNavigatorRoutes(this.value);
@@ -43,6 +49,15 @@ class TabNavigatorHome extends StatelessWidget {
           const ButtonsScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.informers.value: (BuildContext context) =>
+          InformersScreen(
+            title: 'Informers',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.bigInformers.value: (BuildContext context) =>
+          const BigInformersScreen(title: 'Big Informers'),
+      TabNavigatorRoutes.smallInformers.value: (BuildContext context) =>
+          const SmallInformersScreen(title: 'Small Informers'),
     };
   }
 
