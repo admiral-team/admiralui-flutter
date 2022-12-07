@@ -1,3 +1,4 @@
+import 'package:example/screens/tags_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
@@ -10,6 +11,7 @@ enum TabNavigatorRoutes {
   home('/'),
   buttons('/buttons'),
   badges('/badges'),
+  tags('/tags'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges');
 
@@ -45,14 +47,16 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
-      TabNavigatorRoutes.badges.value: (BuildContext context) =>
-          BadgesScreen(
-            title: 'Badges', 
-            onPush: (TabNavigatorRoutes route) => _push(context, route),),
+      TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
+            title: 'Badges',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.smallBadges.value: (BuildContext context) =>
           const SmallBadgesScreen(title: 'Small Badges'),
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
+      TabNavigatorRoutes.tags.value: (BuildContext context) =>
+          const TagsScreen()
     };
   }
 

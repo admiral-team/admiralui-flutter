@@ -27,6 +27,7 @@ export 'package:admiralui_flutter/src/widgets/switcher/switcher_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';
+export 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell_scheme.dart';

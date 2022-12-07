@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';
 import 'package:flutter/material.dart';
 
 class BadgeWidget extends StatefulWidget {
@@ -29,10 +28,10 @@ class _BadgeWidgetState extends State<BadgeWidget> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? BadgeScheme(theme: theme);
 
-    final Color backgroundColor =
-        scheme.backgroundColor.unsafeParameter(
-          widget.isEnable ? ControlState.normal : ControlState.disabled, 
-          widget.style,);
+    final Color backgroundColor = scheme.backgroundColor.unsafeParameter(
+      widget.isEnable ? ControlState.normal : ControlState.disabled,
+      widget.style,
+    );
     final Color textColor = scheme.textColor.unsafeParameter(
       widget.isEnable ? ControlState.normal : ControlState.disabled,
     );
@@ -52,20 +51,12 @@ class _BadgeWidgetState extends State<BadgeWidget> {
         borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
       ),
       child: SizedBox(
-          width: LayoutGrid.halfModule * 3, height: LayoutGrid.halfModule * 3,),
+        width: LayoutGrid.halfModule * 3,
+        height: LayoutGrid.halfModule * 3,
+      ),
     );
 
     if (widget.title != null) {
-      childWidget = Text(
-        widget.title ?? '',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: textColor,
-          fontSize: scheme.font.fontSize,
-          fontFamily: scheme.font.fontFamily,
-          fontWeight: scheme.font.fontWeight,
-        ),
-      );
       padding = EdgeInsets.symmetric(
         vertical: LayoutGrid.halfModule,
         horizontal: LayoutGrid.halfModule,
@@ -74,22 +65,33 @@ class _BadgeWidgetState extends State<BadgeWidget> {
         minHeight: LayoutGrid.halfModule * 5,
         minWidth: LayoutGrid.halfModule * 5,
       );
+
+      childWidget = DecoratedBox(
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          border: Border.all(
+            color: Colors.white,
+            width: LayoutGrid.halfModule / 2,
+          ),
+          borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
+        ),
+        child: Container(
+          constraints: constraints,
+          padding: padding,
+          child: Text(
+            widget.title ?? '',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: textColor,
+              fontSize: scheme.font.fontSize,
+              fontFamily: scheme.font.fontFamily,
+              fontWeight: scheme.font.fontWeight,
+            ),
+          ),
+        ),
+      );
     }
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        border: Border.all(
-          color: Colors.white,
-          width: LayoutGrid.halfModule / 2,
-        ),
-        borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
-      ),
-      child: Container(
-        constraints: constraints,
-        padding: padding,
-        child: childWidget,
-      ),
-    );
+    return childWidget;
   }
 }

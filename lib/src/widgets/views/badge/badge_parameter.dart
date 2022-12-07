@@ -20,9 +20,8 @@ class BadgeParameters<T> {
     if (result != null) {
       return result;
     } else {
-      // ignore: lines_longer_than_80_chars
-      throw "Parameter with the name '${key(forState, style)}' is undeclared in the "
-          'ControlState.';
+      throw "Parameter with the name '${key(forState, style)}' "
+          'is undeclared in the ControlState.';
     }
   }
 }
