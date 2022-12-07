@@ -1,7 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/material.dart';
 import 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/undeline_tabs_scheme.dart';
+import 'package:flutter/material.dart';
 
 class UnderlineTabs extends StatefulWidget {
   const UnderlineTabs({
@@ -43,6 +43,10 @@ class _UnderlineTabsState extends State<UnderlineTabs>
     final Color textColor =
         widget.isEnable ? textColorNormal : textColordDisabled;
 
+    final AFont textFont = widget.isEnable
+        ? scheme.labelFont.unsafeParameter(ControlState.normal)
+        : scheme.labelFont.unsafeParameter(ControlState.disabled);
+
     return DefaultTabController(
       length: widget.items.length,
       child: SizedBox(
@@ -63,21 +67,23 @@ class _UnderlineTabsState extends State<UnderlineTabs>
                 },
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(
-                      color: borderColor, width: LayoutGrid.halfModule / 2),
+                    color: borderColor,
+                    width: LayoutGrid.halfModule / 2,
+                  ),
                 ),
                 padding: EdgeInsets.zero,
                 labelPadding: EdgeInsets.zero,
-                labelStyle: scheme.labelFont.toTextStyle(
-                  textColor,
-                ),
-                unselectedLabelStyle: scheme.unselectedLabelFont.toTextStyle(
-                  textColor,
-                ),
-                labelColor: textColor,
-                unselectedLabelColor: textColor,
                 tabs: <Widget>[
                   for (int i = 0; i < widget.items.length; i++) ...<Widget>[
-                    Text(widget.items[i]),
+                    Text(
+                      widget.items[i],
+                      style: TextStyle(
+                        fontSize: textFont.fontSize,
+                        color: textColor,
+                        fontFamily: textFont.fontFamily,
+                        fontWeight: textFont.fontWeight,
+                      ),
+                    ),
                   ],
                 ],
               ),

@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class UnderlineTabsScheme {
@@ -7,8 +6,6 @@ class UnderlineTabsScheme {
     required this.theme,
   }) {
     backgroundColor = theme.colors.backgroundBasic.color();
-
-    labelFont = theme.fonts.subhead2;
     unselectedLabelFont = theme.fonts.subhead3;
 
     borderColor.set(
@@ -17,7 +14,7 @@ class UnderlineTabsScheme {
     );
 
     borderColor.set(
-      theme.colors.elementAccent.color().withOpacity(0.6),
+      theme.colors.elementAccent.colorWithOpacity(),
       ControlState.disabled,
     );
 
@@ -28,16 +25,35 @@ class UnderlineTabsScheme {
 
     labelColor.set(
       theme.colors.textSecondary.color(),
+      ControlState.selected,
+    );
+
+    labelColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+    );
+
+    labelFont.set(
+      theme.fonts.body2,
+      ControlState.normal,
+    );
+
+    labelFont.set(
+      theme.fonts.body1,
+      ControlState.selected,
+    );
+
+    labelFont.set(
+      theme.fonts.body1,
       ControlState.disabled,
     );
   }
 
   AppTheme theme;
   late Color backgroundColor;
-
-  late AFont labelFont;
   late AFont unselectedLabelFont;
 
+  ControlParameter<AFont> labelFont = ControlParameter<AFont>();
   ControlParameter<Color> borderColor = ControlParameter<Color>();
   ControlParameter<Color> labelColor = ControlParameter<Color>();
 }
