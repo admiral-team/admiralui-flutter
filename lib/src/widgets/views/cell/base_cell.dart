@@ -67,15 +67,17 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           widget.onPressed?.call();
         },
         child: Container(
-          padding: EdgeInsets.only(
-            bottom: LayoutGrid.tripleModule,
-            top: LayoutGrid.tripleModule,
+          constraints: BoxConstraints(
+            minHeight: LayoutGrid.module * 9,
           ),
           width: double.infinity,
           child: Row(
             children: <Widget>[
               widget.leadingCell ?? Container(),
-              SizedBox(width: LayoutGrid.quadrupleModule),
+              if (widget.leadingCell == null)
+                Container()
+              else
+                SizedBox(width: LayoutGrid.quadrupleModule),
               widget.centerCell ?? Container(),
               const Spacer(),
               widget.trailingCell ?? Container()

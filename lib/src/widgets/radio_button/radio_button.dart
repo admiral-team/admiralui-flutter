@@ -65,7 +65,7 @@ class _RadioTitle extends StatelessWidget {
           ),
           value: title,
         ),
-        Text(
+        TextView(
           title,
           style: scheme.textStyle,
           textAlign: TextAlign.right,
