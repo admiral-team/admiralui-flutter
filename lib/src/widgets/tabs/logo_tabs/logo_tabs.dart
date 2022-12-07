@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/src/widgets/tabs/logo_tabs/logo_tabs_scheme.dart';
@@ -7,14 +5,16 @@ import 'package:admiralui_flutter/src/widgets/tabs/tab.dart';
 import 'package:flutter/material.dart';
 
 class LogoTabs extends StatefulWidget {
-  const LogoTabs({
-    super.key,
-    required this.images,
+  const LogoTabs(
+    this.images, {
+    this.isEnabled = true,
     this.onSelected,
     this.scheme,
+    super.key,
   });
 
   final List<Widget> images;
+  final bool isEnabled;
   final void Function(int index)? onSelected;
   final LogoTabsScheme? scheme;
 
@@ -31,6 +31,14 @@ class _LogoTabsState extends State<LogoTabs>
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? LogoTabsScheme(theme: theme);
+
+    final Color borderColorNormal =
+        scheme.borderColor.unsafeParameter(ControlState.normal);
+    final Color borderColorDisabled =
+        scheme.borderColor.unsafeParameter(ControlState.disabled);
+    // ignore: lines_longer_than_80_chars
+    final Color borderColor =
+        widget.isEnabled ? borderColorNormal : borderColorDisabled;
 
     return DefaultTabController(
       length: widget.images.length,
@@ -54,7 +62,7 @@ class _LogoTabsState extends State<LogoTabs>
           },
           indicator: BoxDecoration(
             border: Border.all(
-              color: scheme.borderColor,
+              color: borderColor,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(

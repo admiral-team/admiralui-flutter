@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 /// A SecondaryButton-style button.
@@ -49,15 +50,15 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? SecondaryButtonScheme(theme: theme);
 
-    final Color backgroundNormal =
+    final Color colorNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);
-    final Color backgroundHighlighted =
+    final Color colorHighlighted =
         scheme.buttonColor.unsafeParameter(ControlState.highlighted);
-    final Color backgroundDisabled =
+    final Color colorDisabled =
         scheme.buttonColor.unsafeParameter(ControlState.disabled);
-    final Color background = widget.isEnable
-        ? (_isPressed ? backgroundHighlighted : backgroundNormal)
-        : backgroundDisabled;
+    final Color color = widget.isEnable
+        ? (_isPressed ? colorHighlighted : colorNormal)
+        : colorDisabled;
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -69,15 +70,17 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         height: widget.sizeType.height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.module,
+          ),
           border: Border.all(
             width: 2,
-            color: background,
+            color: color,
           ),
         ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 16.0,
+        padding: EdgeInsets.symmetric(
+          vertical: LayoutGrid.halfModule * 3,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,20 +92,16 @@ class _SecondaryButtonState extends State<SecondaryButton> {
                   ? widget.icon
                   : null,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 12,
+                horizontal: LayoutGrid.halfModule * 3,
               ),
             ),
             Flexible(
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: TextStyle(
-                  color: background,
-                  fontSize: scheme.font.fontSize,
-                  fontFamily: scheme.font.fontFamily,
-                  fontWeight: scheme.font.fontWeight,
-                ),
+                font: scheme.font,
+                textColorNormal: color,
               ),
             ),
             SizedBox(

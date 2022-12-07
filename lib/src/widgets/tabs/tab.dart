@@ -64,7 +64,7 @@ class AdmiralTab extends StatelessWidget {
 
   Widget _buildLabelText() {
     return child ??
-        Text(
+        TextView(
           text!,
           softWrap: false,
           overflow: TextOverflow.fade,
