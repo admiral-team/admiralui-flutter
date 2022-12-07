@@ -1,4 +1,3 @@
-import 'package:example/screens/tags_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
@@ -6,6 +5,7 @@ import '../screens/home_screen.dart';
 import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
+import '../screens/tags_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
