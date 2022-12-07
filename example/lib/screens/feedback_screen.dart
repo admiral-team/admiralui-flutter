@@ -20,20 +20,20 @@ class FeedbackScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-              leading: CupertinoButton(
-                child: const Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              bottomOpacity: 0.0,
-              elevation: 0.0,
-              backgroundColor: colors.backgroundBasic.color(),
-              title: Text(
-                title,
-                style: fonts.largeTitle1.toTextStyle(
-                colors.textPrimary.color(),
-              ),
+        leading: CupertinoButton(
+          child: const Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-            ),
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
+        title: Text(
+          title,
+          style: fonts.largeTitle1.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -46,6 +46,5 @@ class FeedbackScreen extends StatelessWidget {
     );
   }
 
-  void _ChangeInputControl(double value) {
-  }
+  void _ChangeInputControl(double value) {}
 }

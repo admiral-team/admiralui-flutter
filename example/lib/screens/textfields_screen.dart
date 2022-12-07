@@ -112,9 +112,7 @@ class TextfieldsScreen extends StatelessWidget {
             BuildContext ctx,
             int index,
           ) {
-            return SizedBox(
-              height: LayoutGrid.doubleModule,
-            );
+            return Container();
           },
         ),
       ),

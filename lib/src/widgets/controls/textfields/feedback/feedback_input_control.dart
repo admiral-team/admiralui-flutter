@@ -10,11 +10,13 @@ class FeedbackInputControl extends StatefulWidget {
     required this.onRatingChanged,
     this.starCount = 5,
     this.rating = 0.0,
+    this.isEnabled = true,
     this.scheme,
   });
 
   final int starCount;
   final double rating;
+  final bool isEnabled;
   final RatingChangeCallback onRatingChanged;
   final FeedbackInputControlScheme? scheme;
 
@@ -67,10 +69,12 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
             });
           },
           child: Icon(
-             AdmiralIcons.admiral_ic_star_solid,
-            color: index >= _newRating ? 
-            scheme.defaultColor.unsafeParameter(ControlState.normal)
-            : scheme.selectedColor.unsafeParameter(ControlState.normal),
+            AdmiralIcons.admiral_ic_star_solid,
+            color: index >= _newRating
+                ? scheme.defaultColor.unsafeParameter(widget.isEnabled 
+                ? ControlState.normal : ControlState.disabled,)
+                : scheme.selectedColor.unsafeParameter(widget.isEnabled 
+                ? ControlState.normal : ControlState.disabled,),
             size: LayoutGrid.halfModule * 6,
           ),
         ),
