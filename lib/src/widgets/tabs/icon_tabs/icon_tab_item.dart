@@ -5,14 +5,16 @@ import 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tabs.dart';
 import 'package:flutter/material.dart';
 
 class IconTabItemWidget extends StatefulWidget {
-  const IconTabItemWidget({
-    super.key,
-    required this.item,
-    required this.isSelected,
+  const IconTabItemWidget(
+    this.item, {
+    this.isEnabled = true,
+    this.isSelected = false,
     this.scheme,
+    super.key,
   });
 
   final IconTabItem item;
+  final bool isEnabled;
   final bool isSelected;
   final IconTabItemScheme? scheme;
 
@@ -32,32 +34,48 @@ class _IconTabItemState extends State<IconTabItemWidget> {
         scheme.circleColor.unsafeParameter(ControlState.normal);
     final Color circleColorHighlighted =
         scheme.circleColor.unsafeParameter(ControlState.highlighted);
-    final Color circleColor =
-        widget.isSelected ? circleColorHighlighted : circleColordNormal;
+    final Color circleColorDisabled =
+        scheme.circleColor.unsafeParameter(ControlState.highlighted);
+    // ignore: lines_longer_than_80_chars
+    final Color circleColor = widget.isEnabled
+        ? (widget.isSelected ? circleColorHighlighted : circleColordNormal)
+        : circleColorDisabled;
 
     final Color titleColorNormal =
         scheme.titleColor.unsafeParameter(ControlState.normal);
     final Color titleColorHighlighted =
         scheme.titleColor.unsafeParameter(ControlState.highlighted);
-    final Color titleColor =
-        widget.isSelected ? titleColorHighlighted : titleColorNormal;
+    final Color titleColorDisabled =
+        scheme.titleColor.unsafeParameter(ControlState.disabled);
+    // ignore: lines_longer_than_80_chars
+    final Color titleColor = widget.isEnabled
+        ? (widget.isSelected ? titleColorHighlighted : titleColorNormal)
+        : titleColorDisabled;
 
     final AFont titleFontNormal =
         scheme.titleFont.unsafeParameter(ControlState.normal);
     final AFont titleFontHighlighted =
         scheme.titleFont.unsafeParameter(ControlState.highlighted);
-    final AFont titleFont =
-        widget.isSelected ? titleFontHighlighted : titleFontNormal;
+    final AFont titleFontDisabled =
+        scheme.titleFont.unsafeParameter(ControlState.disabled);
+    // ignore: lines_longer_than_80_chars
+    final AFont titleFont = widget.isEnabled
+        ? (widget.isSelected ? titleFontHighlighted : titleFontNormal)
+        : titleFontDisabled;
 
     final Color iconColorNormal =
         scheme.iconColor.unsafeParameter(ControlState.normal);
     final Color iconColorHighlighted =
         scheme.iconColor.unsafeParameter(ControlState.highlighted);
-    final Color iconColor =
-        widget.isSelected ? iconColorNormal : iconColorHighlighted;
+    final Color iconColorDisabled =
+        scheme.iconColor.unsafeParameter(ControlState.disabled);
+    // ignore: lines_longer_than_80_chars
+    final Color iconColor = widget.isEnabled
+        ? (widget.isSelected ? iconColorNormal : iconColorHighlighted)
+        : iconColorDisabled;
 
     return Column(
-      children: [
+      children: <Widget>[
         Container(
           width: LayoutGrid.halfModule * 11,
           height: LayoutGrid.halfModule * 11,

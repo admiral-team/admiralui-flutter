@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class IconTabs extends StatefulWidget {
   const IconTabs(
     this.items, {
+    this.isEnabled = true,
     super.key,
   });
 
   final List<IconTabItem> items;
+  final bool isEnabled;
 
   @override
   State<StatefulWidget> createState() => _IconTabsState();
@@ -40,14 +42,14 @@ class _IconTabsState extends State<IconTabs>
                     currentPos = index;
                   });
                 },
-                // indicatorColor: Colors.blue,
                 indicatorColor: Colors.transparent,
                 padding: EdgeInsets.zero,
                 labelPadding: EdgeInsets.zero,
                 tabs: <Widget>[
                   for (int i = 0; i < widget.items.length; i++) ...<Widget>[
                     IconTabItemWidget(
-                      item: widget.items[i],
+                      widget.items[i],
+                      isEnabled: widget.isEnabled,
                       isSelected: currentPos == i,
                     ),
                   ],
