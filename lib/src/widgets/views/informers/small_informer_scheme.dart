@@ -64,5 +64,5 @@ class SmallInformerScheme {
   late AFont font;
   late Color enabledTextColor;
   late Color disabledTextColor;
-  BadgeParameters<Color> backgroundColor = BadgeParameters<Color>();
+  InformerParameters<Color> backgroundColor = InformerParameters<Color>();
 }

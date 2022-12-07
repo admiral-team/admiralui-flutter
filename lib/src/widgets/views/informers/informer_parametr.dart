@@ -2,7 +2,7 @@
 
 import 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 
-class BadgeParameters<T> {
+class InformerParameters<T> {
   final Map<String, T> _parameters = <String, T>{};
 
   void set(T parameter, bool isEnabled, InformerStyle style) {

@@ -92,6 +92,7 @@ class SmallInformersScreen extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: LayoutGrid.doubleModule),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -103,7 +104,6 @@ class SmallInformersScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
