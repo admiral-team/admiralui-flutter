@@ -6,9 +6,6 @@ class LayoutGrid {
   /// Half layout module
   static double halfModule = module / 2;
 
-  /// One and a half layout module
-  static double oneAndHalfModule = module * 1.5;
-
   /// Double layout module
   static double doubleModule = module * 2.0;
 
