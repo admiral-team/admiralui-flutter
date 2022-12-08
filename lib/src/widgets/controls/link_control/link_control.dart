@@ -1,6 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class LinkControl extends StatefulWidget {
   /// Creates a LinkControl.
@@ -10,8 +11,8 @@ class LinkControl extends StatefulWidget {
     this.title = '',
     this.isEnable = true,
     this.style = LinkStyle.normal,
-    this.leadingImage,
-    this.trailingImage,
+    this.icon,
+    this.iconPosition,
     this.scheme,
   });
 
@@ -19,8 +20,8 @@ class LinkControl extends StatefulWidget {
   final String title;
   final bool isEnable;
   final LinkStyle style;
-  final IconData? leadingImage;
-  final IconData? trailingImage;
+  final IconData? icon;
+  final IconPosition? iconPosition;
   final LinkControlScheme? scheme;
 
   @override
@@ -49,12 +50,12 @@ class _LinkControlState extends State<LinkControl> {
     List<Widget> childrensWidgets;
     childrensWidgets = <Widget>[];
 
-    if (widget.leadingImage != null) {
+    if (widget.icon != null && widget.iconPosition == IconPosition.left) {
       childrensWidgets.add(
         Container(
           padding: EdgeInsets.only(right: LayoutGrid.module),
           child: Icon(
-            widget.leadingImage,
+            widget.icon,
             color: linkColor,
             size: widget.style == LinkStyle.normal
                 ? LayoutGrid.halfModule * 5
@@ -72,12 +73,14 @@ class _LinkControlState extends State<LinkControl> {
       ),
     );
 
-    if (widget.trailingImage != null) {
+    if (widget.icon != null &&
+        (widget.iconPosition == IconPosition.right ||
+            widget.iconPosition == null)) {
       childrensWidgets.add(
         Container(
           padding: EdgeInsets.only(left: LayoutGrid.module),
           child: Icon(
-            widget.trailingImage,
+            widget.icon,
             color: linkColor,
             size: widget.style == LinkStyle.normal
                 ? LayoutGrid.halfModule * 5

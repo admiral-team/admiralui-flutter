@@ -51,13 +51,15 @@ class LinksScreen extends StatelessWidget {
               children: <Widget>[
                 LinkControl(
                   title: 'Link',
-                  leadingImage: AdmiralIcons.admiral_ic_arrow_left_outline,
+                  icon: AdmiralIcons.admiral_ic_arrow_left_outline,
+                  iconPosition: IconPosition.left,
                   style: LinkStyle.medium,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
-                  trailingImage: AdmiralIcons.admiral_ic_arrow_right_outline,
+                  icon: AdmiralIcons.admiral_ic_arrow_right_outline,
+                  iconPosition: IconPosition.right,
                   style: LinkStyle.medium,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
@@ -72,7 +74,7 @@ class LinksScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const Text(
-                  '18 Links',
+                  '24 Links',
                   textAlign: TextAlign.left,
                 ),
               ],
@@ -83,13 +85,15 @@ class LinksScreen extends StatelessWidget {
               children: <Widget>[
                 LinkControl(
                   title: 'Link',
-                  leadingImage: AdmiralIcons.admiral_ic_arrow_left_outline,
+                  icon: AdmiralIcons.admiral_ic_arrow_left_outline,
+                  iconPosition: IconPosition.left,
                   style: LinkStyle.normal,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
-                  trailingImage: AdmiralIcons.admiral_ic_arrow_right_outline,
+                  icon: AdmiralIcons.admiral_ic_arrow_right_outline,
+                  iconPosition: IconPosition.right,
                   style: LinkStyle.normal,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
