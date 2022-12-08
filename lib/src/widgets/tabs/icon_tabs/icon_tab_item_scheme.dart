@@ -10,8 +10,12 @@ class IconTabItemScheme {
       ControlState.normal,
     );
     circleColor.set(
-      theme.colors.backgroundAccent.color(),
+      theme.colors.backgroundAccent.colorWithOpacity(),
       ControlState.highlighted,
+    );
+    circleColor.set(
+      theme.colors.backgroundAccent.colorWithOpacity(),
+      ControlState.selected,
     );
     circleColor.set(
       theme.colors.backgroundAccent.colorWithOpacity(),
@@ -28,6 +32,10 @@ class IconTabItemScheme {
     );
     titleFont.set(
       theme.fonts.subhead2,
+      ControlState.selected,
+    );
+    titleFont.set(
+      theme.fonts.subhead2,
       ControlState.disabled,
     );
 
@@ -36,8 +44,12 @@ class IconTabItemScheme {
       ControlState.normal,
     );
     titleColor.set(
-      theme.colors.textAccent.color(),
+      theme.colors.textAccent.colorWithOpacity(),
       ControlState.highlighted,
+    );
+    titleColor.set(
+      theme.colors.textAccent.colorWithOpacity(),
+      ControlState.selected,
     );
     titleColor.set(
       theme.colors.textAccent.colorWithOpacity(),
@@ -45,8 +57,12 @@ class IconTabItemScheme {
     );
 
     iconColor.set(
-      theme.colors.backgroundAccent.color(),
+      theme.colors.backgroundAccent.colorWithOpacity(),
       ControlState.highlighted,
+    );
+    iconColor.set(
+      theme.colors.backgroundAccent.colorWithOpacity(),
+      ControlState.selected,
     );
     iconColor.set(
       theme.colors.textStaticWhite.color(),

@@ -30,15 +30,14 @@ class _IconTabItemState extends State<IconTabItemWidget> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? IconTabItemScheme(theme: theme);
 
-    final Color circleColordNormal =
+    final Color circleColorNormal =
         scheme.circleColor.unsafeParameter(ControlState.normal);
     final Color circleColorHighlighted =
         scheme.circleColor.unsafeParameter(ControlState.highlighted);
     final Color circleColorDisabled =
         scheme.circleColor.unsafeParameter(ControlState.highlighted);
-    // ignore: lines_longer_than_80_chars
     final Color circleColor = widget.isEnabled
-        ? (widget.isSelected ? circleColorHighlighted : circleColordNormal)
+        ? (widget.isSelected ? circleColorHighlighted : circleColorNormal)
         : circleColorDisabled;
 
     final Color titleColorNormal =
@@ -47,7 +46,6 @@ class _IconTabItemState extends State<IconTabItemWidget> {
         scheme.titleColor.unsafeParameter(ControlState.highlighted);
     final Color titleColorDisabled =
         scheme.titleColor.unsafeParameter(ControlState.disabled);
-    // ignore: lines_longer_than_80_chars
     final Color titleColor = widget.isEnabled
         ? (widget.isSelected ? titleColorHighlighted : titleColorNormal)
         : titleColorDisabled;
@@ -58,7 +56,6 @@ class _IconTabItemState extends State<IconTabItemWidget> {
         scheme.titleFont.unsafeParameter(ControlState.highlighted);
     final AFont titleFontDisabled =
         scheme.titleFont.unsafeParameter(ControlState.disabled);
-    // ignore: lines_longer_than_80_chars
     final AFont titleFont = widget.isEnabled
         ? (widget.isSelected ? titleFontHighlighted : titleFontNormal)
         : titleFontDisabled;
@@ -69,12 +66,12 @@ class _IconTabItemState extends State<IconTabItemWidget> {
         scheme.iconColor.unsafeParameter(ControlState.highlighted);
     final Color iconColorDisabled =
         scheme.iconColor.unsafeParameter(ControlState.disabled);
-    // ignore: lines_longer_than_80_chars
     final Color iconColor = widget.isEnabled
         ? (widget.isSelected ? iconColorNormal : iconColorHighlighted)
         : iconColorDisabled;
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           width: LayoutGrid.halfModule * 11,
@@ -83,15 +80,10 @@ class _IconTabItemState extends State<IconTabItemWidget> {
             shape: BoxShape.circle,
             color: circleColor,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                widget.item.iconData,
-                color: iconColor,
-              ),
-            ],
-          ),
+        ),
+        Icon(
+          widget.item.iconData,
+          color: iconColor,
         ),
         SizedBox(height: LayoutGrid.module),
         Text(
