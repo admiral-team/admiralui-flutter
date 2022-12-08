@@ -4,15 +4,19 @@ import 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/undeline_tabs_
 import 'package:flutter/material.dart';
 
 class UnderlineTabs extends StatefulWidget {
-  const UnderlineTabs({
-    super.key,
-    required this.items,
+  const UnderlineTabs(
+    this.items, {
     this.isEnable = true,
+    this.onTap,
+    this.tabBarViews,
     this.scheme,
+    super.key,
   });
 
   final List<String> items;
   final bool isEnable;
+  final ValueChanged<String>? onTap;
+  final List<Widget>? tabBarViews;
   final UnderlineTabsScheme? scheme;
 
   @override
@@ -49,47 +53,55 @@ class _UnderlineTabsState extends State<UnderlineTabs>
 
     return DefaultTabController(
       length: widget.items.length,
-      child: SizedBox(
-        child: Column(
-          children: <Widget>[
-            DecoratedBox(
-              decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0),
-                ),
-                color: scheme.backgroundColor,
+      child: Column(
+        children: <Widget>[
+          DecoratedBox(
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0),
               ),
-              child: TabBar(
-                onTap: (int index) {
-                  setState(() {
-                    currentPos = index;
-                  });
-                },
-                indicator: UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                    color: borderColor,
-                    width: LayoutGrid.halfModule / 2,
-                  ),
+              color: scheme.backgroundColor,
+            ),
+            child: TabBar(
+              onTap: (int index) {
+                setState(() {
+                  currentPos = index;
+                  widget.onTap?.call(widget.items[index]);
+                });
+              },
+              indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(
+                  color: borderColor,
+                  width: LayoutGrid.halfModule / 2,
                 ),
-                padding: EdgeInsets.zero,
-                labelPadding: EdgeInsets.zero,
-                tabs: <Widget>[
-                  for (int i = 0; i < widget.items.length; i++) ...<Widget>[
-                    Text(
-                      widget.items[i],
-                      style: TextStyle(
-                        fontSize: textFont.fontSize,
-                        color: textColor,
-                        fontFamily: textFont.fontFamily,
-                        fontWeight: textFont.fontWeight,
-                      ),
+              ),
+              padding: EdgeInsets.zero,
+              labelPadding: EdgeInsets.zero,
+              tabs: <Widget>[
+                for (int i = 0; i < widget.items.length; i++) ...<Widget>[
+                  Text(
+                    widget.items[i],
+                    style: TextStyle(
+                      fontSize: textFont.fontSize,
+                      color: textColor,
+                      fontFamily: textFont.fontFamily,
+                      fontWeight: textFont.fontWeight,
                     ),
-                  ],
+                  ),
                 ],
+              ],
+            ),
+          ),
+          if (widget.tabBarViews?.length == widget.items.length)
+            Expanded(
+              child: SizedBox(
+                child: TabBarView(
+                  physics: const BouncingScrollPhysics(),
+                  children: widget.tabBarViews ?? <Widget>[],
+                ),
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }
