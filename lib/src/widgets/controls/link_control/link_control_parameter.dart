@@ -1,7 +1,4 @@
-enum LinkStyle {
-  normal,
-  medium
-}
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 
 class LinkControlParameter<T> {
   final Map<String, T> _parameters = <String, T>{};

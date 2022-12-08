@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/controls/link_control/link_control_parameter.dart';
 import 'package:flutter/material.dart';
 
 class LinkControlScheme {
@@ -19,8 +18,8 @@ class LinkControlScheme {
       ControlState.disabled,
     );
 
-    linkFont.set(theme.fonts.body2, LinkStyle.normal);
-    linkFont.set(theme.fonts.subhead3, LinkStyle.medium);
+    linkFont.set(theme.fonts.body2, LinkStyle.medium);
+    linkFont.set(theme.fonts.subhead3, LinkStyle.normal);
   }
 
   AppTheme theme;

@@ -1,3 +1,4 @@
+import 'package:example/screens/links_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
@@ -7,7 +8,8 @@ import '../screens/tags_screen.dart';
 enum TabNavigatorRoutes {
   home('/'),
   buttons('/buttons'),
-  tags('/tags');
+  tags('/tags'),
+  links('/links');
 
   const TabNavigatorRoutes(this.value);
 
@@ -43,6 +45,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ButtonsScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.links.value: (BuildContext context) =>
+          const LinksScreen(),
     };
   }
 
