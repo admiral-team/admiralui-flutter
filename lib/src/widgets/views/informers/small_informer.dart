@@ -59,7 +59,10 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
               vertical: LayoutGrid.module,
               horizontal: LayoutGrid.halfModule * 3,
             ),
-            child: Text(
+            child: Center(
+        widthFactor: 1.0,
+        child:
+            Text(
               widget.title ?? '',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -69,6 +72,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
                 fontWeight: scheme.font.fontWeight,
               ),
             ),
+          ),
           ),
         ),
         SizedBox(
