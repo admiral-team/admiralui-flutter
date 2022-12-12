@@ -39,57 +39,48 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         widget.isEnable ? scheme.enabledTextColor : scheme.disabledTextColor;
 
     final List<Widget> childrens = <Widget>[];
+    final List<Widget> mainWidgetChildren = <Widget>[];
+    final Positioned positionedWidget;
 
-    final Column mainWidget = Column(
-      children: <Widget>[
-        SizedBox(
-          height: LayoutGrid.doubleModule,
+    final DecoratedBox mainWidget = DecoratedBox(
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(LayoutGrid.halfModule),
+      ),
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: LayoutGrid.halfModule * 10,
+          minWidth: LayoutGrid.halfModule * 10,
         ),
-        DecoratedBox(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(LayoutGrid.halfModule),
-          ),
-          child: Container(
-            constraints: BoxConstraints(
-              minHeight: LayoutGrid.halfModule * 10,
-              minWidth: LayoutGrid.halfModule * 10,
-            ),
-            padding: EdgeInsets.symmetric(
-              vertical: LayoutGrid.module,
-              horizontal: LayoutGrid.halfModule * 3,
-            ),
-            child: Center(
-        widthFactor: 1.0,
-        child:
-            Text(
-              widget.title ?? '',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: textColor,
-                fontSize: scheme.font.fontSize,
-                fontFamily: scheme.font.fontFamily,
-                fontWeight: scheme.font.fontWeight,
-              ),
+        padding: EdgeInsets.symmetric(
+          vertical: LayoutGrid.module,
+          horizontal: LayoutGrid.halfModule * 3,
+        ),
+        child: Center(
+          widthFactor: 1.0,
+          child: Text(
+            widget.title ?? '',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: textColor,
+              fontSize: scheme.font.fontSize,
+              fontFamily: scheme.font.fontFamily,
+              fontWeight: scheme.font.fontWeight,
             ),
           ),
-          ),
         ),
-        SizedBox(
-          height: LayoutGrid.doubleModule,
-        ),
-      ],
+      ),
     );
 
     switch (widget.arrowDirectionStyle) {
       case InformerDirectionStyle.topLeft:
-        childrens.add(
+        mainWidgetChildren.add(
           SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
-        childrens.add(mainWidget);
-        childrens.add(
+        mainWidgetChildren.add(mainWidget);
+        positionedWidget = 
           Positioned(
             left: 0,
             top: -LayoutGrid.halfModule * 3,
@@ -98,18 +89,17 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
               color: backgroundColor,
               size: LayoutGrid.doubleModule * 3,
             ),
-          ),
-        );
+          );
         break;
 
       case InformerDirectionStyle.topRight:
-        childrens.add(
+        mainWidgetChildren.add(
           SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
-        childrens.add(mainWidget);
-        childrens.add(
+        mainWidgetChildren.add(mainWidget);
+        positionedWidget = 
           Positioned(
             right: 0,
             top: -LayoutGrid.halfModule * 3,
@@ -118,12 +108,11 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
               color: backgroundColor,
               size: LayoutGrid.doubleModule * 3,
             ),
-          ),
-        );
+          );
         break;
 
       case InformerDirectionStyle.bottomLeft:
-        childrens.add(
+        positionedWidget = 
           Positioned(
             left: 0,
             bottom: -LayoutGrid.halfModule * 3,
@@ -132,10 +121,9 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
               color: backgroundColor,
               size: LayoutGrid.doubleModule * 3,
             ),
-          ),
-        );
-        childrens.add(mainWidget);
-        childrens.add(
+          );
+        mainWidgetChildren.add(mainWidget);
+        mainWidgetChildren.add(
           SizedBox(
             height: LayoutGrid.doubleModule,
           ),
@@ -143,7 +131,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         break;
 
       case InformerDirectionStyle.bottomRight:
-        childrens.add(
+        positionedWidget = 
           Positioned(
             right: 0,
             bottom: -LayoutGrid.halfModule * 3,
@@ -152,16 +140,21 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
               color: backgroundColor,
               size: LayoutGrid.doubleModule * 3,
             ),
-          ),
-        );
-        childrens.add(mainWidget);
-        childrens.add(
+          );
+        mainWidgetChildren.add(mainWidget);
+        mainWidgetChildren.add(
           SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
         break;
     }
+
+    final Column columnWidget = Column(
+      children: mainWidgetChildren,
+    );
+    childrens.add(columnWidget);
+    childrens.add(positionedWidget);
 
     return Stack(
       children: childrens,

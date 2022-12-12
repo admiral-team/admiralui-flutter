@@ -33,99 +33,62 @@ class SmallInformersScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.all(
-          LayoutGrid.doubleModule,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Default',
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SmallInformerWidget(
-                  title: 'Text Informer',
-                  style: InformerStyle.normal,
-                  arrowDirectionStyle: InformerDirectionStyle.topRight,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Success',
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SmallInformerWidget(
-                  title: 'Text Informer',
-                  style: InformerStyle.success,
-                  arrowDirectionStyle: InformerDirectionStyle.topRight,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Attention',
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SmallInformerWidget(
-                  title: 'Text Informer',
-                  style: InformerStyle.attention,
-                  arrowDirectionStyle: InformerDirectionStyle.topRight,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Error',
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SmallInformerWidget(
-                  title: 'Text Informer',
-                  style: InformerStyle.error,
-                  arrowDirectionStyle: InformerDirectionStyle.topRight,
-                ),
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-          ],
+      body: SizedBox.expand(
+        child: Container(
+          color: colors.backgroundBasic.color(),
+          padding: EdgeInsets.all(
+            LayoutGrid.doubleModule,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              const Text(
+                'Default',
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              SmallInformerWidget(
+                title: 'Text Informer',
+                style: InformerStyle.normal,
+                arrowDirectionStyle: InformerDirectionStyle.topRight,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              const Text(
+                'Success',
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              SmallInformerWidget(
+                title: 'Text Informer',
+                style: InformerStyle.success,
+                arrowDirectionStyle: InformerDirectionStyle.topRight,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              const Text(
+                'Attention',
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              SmallInformerWidget(
+                title: 'Text Informer',
+                style: InformerStyle.attention,
+                arrowDirectionStyle: InformerDirectionStyle.topRight,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              const Text(
+                'Error',
+                textAlign: TextAlign.left,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              SmallInformerWidget(
+                title: 'Text Informer',
+                style: InformerStyle.error,
+                arrowDirectionStyle: InformerDirectionStyle.topRight,
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+            ],
+          ),
         ),
       ),
     );
