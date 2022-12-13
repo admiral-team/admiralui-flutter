@@ -8,11 +8,15 @@ import '../screens/small_badges_sreen.dart';
 import '../screens/tags_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/tabs_screen.dart';
+import '../screens/undeline_tabs.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  tabs('/tabs'),
+  underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   badges('/badges'),
   tags('/tags'),
@@ -49,12 +53,12 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) => 
+      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
           TextfieldsScreen(
-            title: 'TextFields',
-             onPush: (TabNavigatorRoutes route) => _push(context, route)),
+              title: 'TextFields',
+              onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
@@ -66,7 +70,16 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
-          const TagsScreen()
+          const TagsScreen(),
+      TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
+            title: 'Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.underlineTabs.value: (BuildContext context) =>
+          UnderlineTabsScreen(
+            title: 'Underline Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
     };
   }
 

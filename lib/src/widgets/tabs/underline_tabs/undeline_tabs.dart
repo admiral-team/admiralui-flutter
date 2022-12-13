@@ -7,16 +7,16 @@ class UnderlineTabs extends StatefulWidget {
   const UnderlineTabs(
     this.items, {
     this.isEnable = true,
+    this.selectedIndex,
     this.onTap,
-    this.tabBarViews,
     this.scheme,
     super.key,
   });
 
   final List<String> items;
   final bool isEnable;
-  final ValueChanged<String>? onTap;
-  final List<Widget>? tabBarViews;
+  final int? selectedIndex;
+  final ValueChanged<int>? onTap;
   final UnderlineTabsScheme? scheme;
 
   @override
@@ -53,6 +53,7 @@ class _UnderlineTabsState extends State<UnderlineTabs>
 
     return DefaultTabController(
       length: widget.items.length,
+      initialIndex: widget.selectedIndex ?? 0,
       child: Column(
         children: <Widget>[
           DecoratedBox(
@@ -66,7 +67,7 @@ class _UnderlineTabsState extends State<UnderlineTabs>
               onTap: (int index) {
                 setState(() {
                   currentPos = index;
-                  widget.onTap?.call(widget.items[index]);
+                  widget.onTap?.call(index);
                 });
               },
               indicator: UnderlineTabIndicator(
@@ -92,15 +93,6 @@ class _UnderlineTabsState extends State<UnderlineTabs>
               ],
             ),
           ),
-          if (widget.tabBarViews?.length == widget.items.length)
-            Expanded(
-              child: SizedBox(
-                child: TabBarView(
-                  physics: const BouncingScrollPhysics(),
-                  children: widget.tabBarViews ?? <Widget>[],
-                ),
-              ),
-            ),
         ],
       ),
     );
