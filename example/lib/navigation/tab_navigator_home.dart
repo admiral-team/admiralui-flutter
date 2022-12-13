@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../screens/buttons_screen.dart';
+import '../screens/buttons/buttons_ghost_screen.dart';
+import '../screens/buttons/buttons_primary_screen.dart';
+import '../screens/buttons/buttons_secondary_screen.dart';
+import '../screens/buttons/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
@@ -21,11 +24,15 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
+  buttonsPrimary('/buttons/primary'),
+  buttonsSecondary('/buttons/secondary'),
+  buttonsGhost('/buttons/ghost'),
   tags('/tags'),
   links('/links'),
   badges('/badges'),
   normalBadges('/normalBadges'),
-  smallBadges('/smallBadges');
+  smallBadges('/smallBadges'),
+  tags('/tags');
 
   const TabNavigatorRoutes(this.value);
 
@@ -57,6 +64,9 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
@@ -73,6 +83,15 @@ class TabNavigatorHome extends StatelessWidget {
           const SmallBadgesScreen(title: 'Small Badges'),
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.buttonsPrimary.value: (BuildContext context) =>
+          ButtonsPrimaryScreen(),
+      TabNavigatorRoutes.buttonsSecondary.value: (BuildContext context) =>
+          ButtonsSecondaryScreen(),
+      TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
+          ButtonsGhostScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
       TabNavigatorRoutes.switcher.value: (BuildContext context) =>

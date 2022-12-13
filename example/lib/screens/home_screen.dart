@@ -179,9 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
         child: Material(
           color: colors.backgroundBasic.color(),
           child: ListView.separated(

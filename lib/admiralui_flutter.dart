@@ -25,6 +25,8 @@ export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_titl
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_ghost_button/two_title_ghost_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_secondary_button/two_title_secondary_button.dart';
+export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_secondary_button/two_title_secondary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/icon_background.dart';
 export 'package:admiralui_flutter/src/widgets/radio_button/radio_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/radio_button/radio_group.dart';
