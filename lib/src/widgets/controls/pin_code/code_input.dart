@@ -1,7 +1,27 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:admiralui_flutter/src/widgets/controls/pin_code/pin_code_item.dart';
 import 'package:flutter/material.dart';
 
+
+//  CodeInputControl - A control of the entered user characters. Used for 
+//  secure password entry.
+//  You can create a PrimaryButton by specifying the following parameters 
+//  in the initializer:
+//  - text - Binding<String> Observable property for control count input text
+//  - itemsCount - value of Int. The property is responsible for the possible 
+//  number of input characters
+//  - status - this parameter is responsible for the display style 
+//  CodeInputControl. Can be in three states: normal, success, error. Default 
+//  state is a normal.
+//  ## Example to create :
+//  # Code
+//  CodeInputWidget(
+//                 text: .constant("1234"),
+//                 itemsCount: 5,
+//                 status: .normal
+//  )
+//
 class CodeInputWidget extends StatefulWidget {
   const CodeInputWidget({
     super.key,
@@ -43,7 +63,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget> {
             status: widget.status,
             isActive: i < currentIndex,
           ),
-          SizedBox(
+          const SizedBox(
             width: LayoutGrid.halfModule * 5,
           ),
         ],

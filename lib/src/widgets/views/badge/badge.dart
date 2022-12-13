@@ -37,7 +37,7 @@ class _BadgeWidgetState extends State<BadgeWidget> {
     );
 
     EdgeInsets padding = EdgeInsets.zero;
-    BoxConstraints constraints = BoxConstraints(
+    BoxConstraints constraints = const BoxConstraints(
       minHeight: LayoutGrid.halfModule * 3,
       minWidth: LayoutGrid.halfModule * 3,
     );
@@ -50,18 +50,18 @@ class _BadgeWidgetState extends State<BadgeWidget> {
         ),
         borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
       ),
-      child: SizedBox(
+      child: const SizedBox(
         width: LayoutGrid.halfModule * 3,
         height: LayoutGrid.halfModule * 3,
       ),
     );
 
     if (widget.title != null) {
-      padding = EdgeInsets.symmetric(
+      padding = const EdgeInsets.symmetric(
         vertical: LayoutGrid.halfModule,
         horizontal: LayoutGrid.halfModule,
       );
-      constraints = BoxConstraints(
+      constraints = const BoxConstraints(
         minHeight: LayoutGrid.halfModule * 5,
         minWidth: LayoutGrid.halfModule * 5,
       );

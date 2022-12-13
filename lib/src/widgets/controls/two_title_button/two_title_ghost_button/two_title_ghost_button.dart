@@ -73,14 +73,14 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(LayoutGrid.module),
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 left: LayoutGrid.halfModule * 3,
               ),
@@ -94,7 +94,7 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: LayoutGrid.halfModule * 3,
               ),
               child: TextView(

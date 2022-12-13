@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ButtonsScreen extends StatelessWidget {
-  const ButtonsScreen({
+class PinCodeScreen extends StatelessWidget {
+  const PinCodeScreen({
     super.key,
     this.appBarHidden = false,
   });
@@ -17,7 +17,6 @@ class ButtonsScreen extends StatelessWidget {
     final ColorPalette colors = theme.colors;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: appBarHidden
           ? null
           : AppBar(
@@ -29,16 +28,16 @@ class ButtonsScreen extends StatelessWidget {
               elevation: 0.0,
               backgroundColor: colors.backgroundBasic.color(),
             ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.all(
-          LayoutGrid.doubleModule,
-        ),
-        child: const GhostButton(
-          title: 'Hello button',
-        ),
+      body: SizedBox.expand(
+        child: Container(
+            color: colors.backgroundBasic.color(),
+            padding: EdgeInsets.all(
+              LayoutGrid.doubleModule,
+            ),
+            child: CodeInputWidget(
+              text: '123',
+              itemCount: 4,
+            )),
       ),
     );
   }

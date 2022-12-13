@@ -33,3 +33,10 @@ jobs:
         run: cd example && flutter build web
       - name: Build Android App & Apk
         run: cd example && flutter build apk && flutter build appbundle
+      - name: Upload Web Version
+        if: ${{ github.event_name == 'push' && github.event.pull_request.head.ref = 'develop' }}
+        run: cd example/build/web
+        && git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
+        && git add .
+        && git commit -m '${{ github.event.pull_request.title }}'
+        && git push origin master

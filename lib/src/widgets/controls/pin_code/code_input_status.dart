@@ -1,3 +1,4 @@
+// Code input status.
 enum CodeInputStatus {
     /// The default style
     normal,

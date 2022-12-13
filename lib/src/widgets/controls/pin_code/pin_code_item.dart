@@ -42,7 +42,7 @@ class _PinCodeItemWidgetState extends State<PinCodeItemWidget> {
           color: backgroundColor,
           borderRadius: BorderRadius.circular((LayoutGrid.halfModule / 2) * 3),
         ),
-        child: SizedBox(
+        child: const SizedBox(
           width: LayoutGrid.halfModule * 3, 
           height: LayoutGrid.halfModule * 3,),
     );

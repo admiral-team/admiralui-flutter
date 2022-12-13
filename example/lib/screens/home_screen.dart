@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Text fields',
         description: 'Поля ввода',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.textfields),
       ),
       ListCellModel(
         title: 'Cells',
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Tabs',
         description: 'Вкладки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.tabs),
       ),
       ListCellModel(
         title: 'Informers & Notifications ',
@@ -87,22 +87,22 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Radiobutton',
         description: 'Радио кнопка',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.radioButtons),
       ),
       ListCellModel(
         title: 'Checkbox',
         description: 'Селектор',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.checkbox),
       ),
       ListCellModel(
         title: 'Switcher',
         description: 'Переключатель',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.switcher),
       ),
       ListCellModel(
         title: 'Links',
         description: 'Ссылки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.links),
       ),
       ListCellModel(
         title: 'Spinner',
@@ -179,9 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
         child: Material(
           color: colors.backgroundBasic.color(),
           child: ListView.separated(
@@ -201,9 +198,9 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             separatorBuilder: (
-                BuildContext ctx,
-                int index,
-                ) {
+              BuildContext ctx,
+              int index,
+            ) {
               return Container();
             },
           ),
@@ -213,12 +210,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildView(
-      BuildContext ctx,
-      int index,
-      ColorPalette colors,
-      FontPalette fonts,
-      List<ListCellModel> items,
-      ) {
+    BuildContext ctx,
+    int index,
+    ColorPalette colors,
+    FontPalette fonts,
+    List<ListCellModel> items,
+  ) {
     final ListCellModel? item = index == items.length ? null : items[index];
 
     if (item is ListCellModel) {

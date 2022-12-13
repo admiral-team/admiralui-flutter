@@ -80,7 +80,11 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     }
     if (widget.leadingText != null) {
       if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+        childrensWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
       }
       childrensWidgets.add(
         Text(
@@ -96,7 +100,11 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     }
     if (widget.title != null) {
       if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+        childrensWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
       }
       childrensWidgets.add(
         Text(
@@ -112,7 +120,11 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     }
     if (widget.trailingImage != null) {
       if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+        childrensWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
       }
       childrensWidgets.add(
         Icon(
@@ -124,7 +136,11 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     }
     if (widget.trailingText != null) {
       if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+        childrensWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
       }
       childrensWidgets.add(
         Text(
@@ -140,16 +156,22 @@ class _TagControlWidgetState extends State<TagControlWidget> {
     }
     if (widget.trailingButtonImage != null) {
       if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(SizedBox(width: LayoutGrid.module));
+        childrensWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
       }
-      childrensWidgets.add(InkWell(
-        onTap: widget.onTrailingButtonPressed,
-        child: Icon(
-          widget.trailingButtonImage,
-          color: tintColor,
-          size: LayoutGrid.halfModule * 5,
+      childrensWidgets.add(
+        InkWell(
+          onTap: widget.onTrailingButtonPressed,
+          child: Icon(
+            widget.trailingButtonImage,
+            color: tintColor,
+            size: LayoutGrid.halfModule * 5,
+          ),
         ),
-      ),);
+      );
     }
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -159,7 +181,9 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.doubleModule,
+          ),
         ),
         child: Container(
           height: LayoutGrid.halfModule * 9,

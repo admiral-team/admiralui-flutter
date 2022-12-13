@@ -1,6 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
+//  PinCodeItemScheme - the visual scheme of PinCodeItem.
+//  You can create a by specifying the following parameters in init:
+//  - PinCodeItemScheme() - Initialize default PinCodeItemScheme with 
+//  default themezation.
 class PinCodeItemScheme {
   PinCodeItemScheme({
     required this.theme,
