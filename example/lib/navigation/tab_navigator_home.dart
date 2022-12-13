@@ -8,18 +8,27 @@ import '../screens/home_screen.dart';
 import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
+import '../screens/switcher_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/tabs_screen.dart';
+import '../screens/undeline_tabs.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  switcher('/switcher'),
+  tabs('/tabs'),
+  underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
+  tags('/tags'),
+  links('/links'),
   badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges'),
@@ -58,6 +67,8 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
+          const ButtonsScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
           TextfieldsScreen(
               title: 'TextFields',
@@ -83,6 +94,19 @@ class TabNavigatorHome extends StatelessWidget {
           ButtonsGhostScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.switcher.value: (BuildContext context) =>
+          const SwitcherScreen(),
+      TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
+            title: 'Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.underlineTabs.value: (BuildContext context) =>
+          UnderlineTabsScreen(
+            title: 'Underline Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.links.value: (BuildContext context) =>
+          const LinksScreen(),
     };
   }
 

@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Tabs',
         description: 'Вкладки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.tabs),
       ),
       ListCellModel(
         title: 'Informers & Notifications ',
@@ -97,12 +97,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Switcher',
         description: 'Переключатель',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.switcher),
       ),
       ListCellModel(
         title: 'Links',
         description: 'Ссылки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.links),
       ),
       ListCellModel(
         title: 'Spinner',
