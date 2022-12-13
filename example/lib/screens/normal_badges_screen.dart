@@ -33,34 +33,35 @@ class NormalBadgesScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.all(
-          LayoutGrid.doubleModule,
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    const BadgeWidget(title: '5', style: BadgeStyle.additional),
-                    SizedBox(width: LayoutGrid.module),
-                    const BadgeWidget(title: '5', style: BadgeStyle.natural),
-                    SizedBox(width: LayoutGrid.module),
-                    const BadgeWidget(title: '5', style: BadgeStyle.normal),
-                    SizedBox(width: LayoutGrid.module),
-                    const BadgeWidget(title: '5', style: BadgeStyle.success),
-                    SizedBox(width: LayoutGrid.module),
-                    const BadgeWidget(title: '5', style: BadgeStyle.error),
-                    SizedBox(width: LayoutGrid.module),
-                    const BadgeWidget(title: '5', style: BadgeStyle.attention),
-                  ],
-                ),
+      body: SizedBox.expand(
+        child: Container(
+          color: colors.backgroundBasic.color(),
+          padding: EdgeInsets.all(
+            LayoutGrid.doubleModule,
+          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <
+              Widget>[
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  const BadgeWidget(title: '5', style: BadgeStyle.additional),
+                  SizedBox(width: LayoutGrid.module),
+                  const BadgeWidget(title: '5', style: BadgeStyle.natural),
+                  SizedBox(width: LayoutGrid.module),
+                  const BadgeWidget(title: '5', style: BadgeStyle.normal),
+                  SizedBox(width: LayoutGrid.module),
+                  const BadgeWidget(title: '5', style: BadgeStyle.success),
+                  SizedBox(width: LayoutGrid.module),
+                  const BadgeWidget(title: '5', style: BadgeStyle.error),
+                  SizedBox(width: LayoutGrid.module),
+                  const BadgeWidget(title: '5', style: BadgeStyle.attention),
+                ],
               ),
-            ]),
+            ),
+          ]),
+        ),
       ),
     );
   }

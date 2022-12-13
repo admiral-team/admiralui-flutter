@@ -11,6 +11,9 @@ import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
 import '../screens/switcher_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/informers_screen.dart';
+import '../screens/big_informers_screen.dart';
+import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
@@ -28,6 +31,9 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
+  informers('/informers'),
+  smallInformers('/smallInformers'),
+  bigInformers('/bigInformers'),
   radioButtons('/radioButtons'),
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
@@ -101,6 +107,15 @@ class TabNavigatorHome extends StatelessWidget {
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.informers.value: (BuildContext context) =>
+          InformersScreen(
+            title: 'Informers',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.bigInformers.value: (BuildContext context) =>
+          const BigInformersScreen(title: 'Big Informers'),
+      TabNavigatorRoutes.smallInformers.value: (BuildContext context) =>
+          const SmallInformersScreen(title: 'Small Informers'),
       TabNavigatorRoutes.switcher.value: (BuildContext context) =>
           const SwitcherScreen(),
       TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
