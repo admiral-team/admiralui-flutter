@@ -88,7 +88,7 @@ class _IconTabItemState extends State<IconTabItemWidget> {
             color: iconColor,
           ),
         ),
-        SizedBox(height: LayoutGrid.module),
+        const SizedBox(height: LayoutGrid.module),
         TextView(
           widget.item.name,
           isEnabled: widget.isEnabled,
