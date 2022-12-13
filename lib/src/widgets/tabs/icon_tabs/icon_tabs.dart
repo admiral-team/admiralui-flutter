@@ -1,7 +1,15 @@
 import 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tab_item.dart';
 import 'package:flutter/material.dart';
 
+/// A IconTabs.
+// A horizontal control that consists of multiple segments,
+// each segment functioning as image with text.
+// The component is used to switch between tabs. It is presented in
+// two versions without additional indentation.
+// The width of the component depends on the content.
+
 class IconTabs extends StatefulWidget {
+  /// Creates a IconTabs.
   const IconTabs(
     this.items, {
     this.isEnabled = true,

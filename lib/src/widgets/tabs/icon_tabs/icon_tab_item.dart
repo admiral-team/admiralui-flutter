@@ -1,10 +1,13 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tab_item_scheme.dart';
-import 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tabs.dart';
 import 'package:flutter/material.dart';
 
+/// A IconTabItemWidget.
+// The tab view that contains text and circle view with icon in the center.
+// The width of the component depends on the content.
+
 class IconTabItemWidget extends StatefulWidget {
+  /// Creates a IconTabItemWidget.
   const IconTabItemWidget(
     this.item, {
     this.isEnabled = true,
@@ -32,42 +35,42 @@ class _IconTabItemState extends State<IconTabItemWidget> {
 
     final Color circleColorNormal =
         scheme.circleColor.unsafeParameter(ControlState.normal);
-    final Color circleColorHighlighted =
-        scheme.circleColor.unsafeParameter(ControlState.highlighted);
+    final Color circleColorSelected =
+        scheme.circleColor.unsafeParameter(ControlState.selected);
     final Color circleColorDisabled =
-        scheme.circleColor.unsafeParameter(ControlState.highlighted);
+        scheme.circleColor.unsafeParameter(ControlState.disabled);
     final Color circleColor = widget.isEnabled
-        ? (widget.isSelected ? circleColorHighlighted : circleColorNormal)
+        ? (widget.isSelected ? circleColorSelected : circleColorNormal)
         : circleColorDisabled;
 
     final Color titleColorNormal =
         scheme.titleColor.unsafeParameter(ControlState.normal);
-    final Color titleColorHighlighted =
-        scheme.titleColor.unsafeParameter(ControlState.highlighted);
+    final Color titleColorSelected =
+        scheme.titleColor.unsafeParameter(ControlState.selected);
     final Color titleColorDisabled =
         scheme.titleColor.unsafeParameter(ControlState.disabled);
     final Color titleColor = widget.isEnabled
-        ? (widget.isSelected ? titleColorHighlighted : titleColorNormal)
+        ? (widget.isSelected ? titleColorSelected : titleColorNormal)
         : titleColorDisabled;
 
     final AFont titleFontNormal =
         scheme.titleFont.unsafeParameter(ControlState.normal);
-    final AFont titleFontHighlighted =
-        scheme.titleFont.unsafeParameter(ControlState.highlighted);
+    final AFont titleFontSelected =
+        scheme.titleFont.unsafeParameter(ControlState.selected);
     final AFont titleFontDisabled =
         scheme.titleFont.unsafeParameter(ControlState.disabled);
     final AFont titleFont = widget.isEnabled
-        ? (widget.isSelected ? titleFontHighlighted : titleFontNormal)
+        ? (widget.isSelected ? titleFontSelected : titleFontNormal)
         : titleFontDisabled;
 
     final Color iconColorNormal =
         scheme.iconColor.unsafeParameter(ControlState.normal);
-    final Color iconColorHighlighted =
-        scheme.iconColor.unsafeParameter(ControlState.highlighted);
+    final Color iconColorSelected =
+        scheme.iconColor.unsafeParameter(ControlState.selected);
     final Color iconColorDisabled =
         scheme.iconColor.unsafeParameter(ControlState.disabled);
     final Color iconColor = widget.isEnabled
-        ? (widget.isSelected ? iconColorNormal : iconColorHighlighted)
+        ? (widget.isSelected ? iconColorNormal : iconColorSelected)
         : iconColorDisabled;
 
     return Column(
@@ -80,10 +83,10 @@ class _IconTabItemState extends State<IconTabItemWidget> {
             shape: BoxShape.circle,
             color: circleColor,
           ),
-        ),
-        Icon(
-          widget.item.iconData,
-          color: iconColor,
+          child: Icon(
+            widget.item.iconData,
+            color: iconColor,
+          ),
         ),
         SizedBox(height: LayoutGrid.module),
         TextView(
