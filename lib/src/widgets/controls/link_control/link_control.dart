@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 // The component is presented in two style (LinkStyle):
 // normal (24px) and medium (16px), and two states: Default and Disabled.
 // The width of the component depends on the content.
-
 class LinkControl extends StatefulWidget {
   /// Creates a LinkControl.
   const LinkControl({
@@ -55,13 +54,15 @@ class _LinkControlState extends State<LinkControl> {
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
 
-    List<Widget> childrensWidgets;
-    childrensWidgets = <Widget>[];
+    List<Widget> childrenWidgets;
+    childrenWidgets = <Widget>[];
 
     if (widget.leadingImage != null) {
-      childrensWidgets.add(
+      childrenWidgets.add(
         Container(
-          padding: EdgeInsets.only(right: LayoutGrid.module),
+          padding: const EdgeInsets.only(
+            right: LayoutGrid.module,
+          ),
           child: Icon(
             widget.leadingImage,
             color: linkColor,
@@ -73,7 +74,7 @@ class _LinkControlState extends State<LinkControl> {
       );
     }
 
-    childrensWidgets.add(
+    childrenWidgets.add(
       TextView(
         widget.title,
         font: scheme.linkFont.parameter(widget.style),
@@ -82,9 +83,9 @@ class _LinkControlState extends State<LinkControl> {
     );
 
     if (widget.trailingImage != null) {
-      childrensWidgets.add(
+      childrenWidgets.add(
         Container(
-          padding: EdgeInsets.only(left: LayoutGrid.module),
+          padding: const EdgeInsets.only(left: LayoutGrid.module),
           child: Icon(
             widget.trailingImage,
             color: linkColor,
@@ -103,7 +104,7 @@ class _LinkControlState extends State<LinkControl> {
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: childrensWidgets,
+        children: childrenWidgets,
       ),
     );
   }

@@ -24,7 +24,7 @@ class GhostButton extends StatefulWidget {
     this.title = '',
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
-    this.icon,
+    this.iconData,
     this.iconPosition,
     this.scheme,
   });
@@ -33,7 +33,7 @@ class GhostButton extends StatefulWidget {
   final String title;
   final bool isEnable;
   final ButtonSizeType sizeType;
-  final Widget? icon;
+  final IconData? iconData;
   final IconPosition? iconPosition;
   final GhostButtonScheme? scheme;
 
@@ -54,11 +54,11 @@ class _GhostButtonState extends State<GhostButton> {
         scheme.buttonColor.unsafeParameter(ControlState.normal);
     final Color textColorHighlighted =
         scheme.buttonColor.unsafeParameter(ControlState.highlighted);
-    final Color textColorDisaled =
+    final Color textColorDisabled =
         scheme.buttonColor.unsafeParameter(ControlState.disabled);
     final Color textColor = widget.isEnable
         ? (_isPressed ? textColorHighlighted : textColorNormal)
-        : textColorDisaled;
+        : textColorDisabled;
 
     return GestureDetector(
       onTap: () => widget.onPressed?.call(),
@@ -66,26 +66,26 @@ class _GhostButtonState extends State<GhostButton> {
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Container(
-        width: widget.sizeType.width,
-        height: widget.sizeType.height,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            LayoutGrid.module,
-          ),
+        constraints: BoxConstraints(
+          minWidth: widget.sizeType.width,
+          minHeight: widget.sizeType.height,
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              child: (widget.icon != null &&
+              child: (widget.iconData != null &&
                       (widget.iconPosition == IconPosition.left ||
                           widget.iconPosition == null))
-                  ? widget.icon
+                  ? Icon(
+                      widget.iconData,
+                      color: textColor,
+                    )
                   : null,
             ),
             Padding(
@@ -99,9 +99,12 @@ class _GhostButtonState extends State<GhostButton> {
               ),
             ),
             SizedBox(
-              child: (widget.icon != null &&
+              child: (widget.iconData != null &&
                       widget.iconPosition == IconPosition.right)
-                  ? widget.icon
+                  ? Icon(
+                      widget.iconData,
+                      color: textColor,
+                    )
                   : null,
             ),
           ],

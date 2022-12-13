@@ -7,10 +7,8 @@ class CustomCheckBox extends StatelessWidget {
   const CustomCheckBox({
     required this.fillColor,
     required this.value,
-    required this.onChanged,
   });
 
-  final void Function() onChanged;
   final bool value;
   final Color fillColor;
 
@@ -21,14 +19,14 @@ class CustomCheckBox extends StatelessWidget {
     const int checkAnimation = 650;
 
     return AnimatedContainer(
-      margin: EdgeInsets.all(LayoutGrid.module / 4),
+      margin: const EdgeInsets.all(LayoutGrid.module / 4),
       duration: const Duration(milliseconds: checkAnimation),
       curve: Curves.fastLinearToSlowEaseIn,
       decoration: BoxDecoration(
         color: value ? fillColor : Colors.transparent,
         borderRadius: BorderRadius.circular(LayoutGrid.halfModule),
         border: Border.all(
-          color: fillColor,
+          color: value ? Colors.transparent : fillColor,
           width: LayoutGrid.module / 4,
         ),
       ),

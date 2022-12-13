@@ -87,17 +87,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Radiobutton',
         description: 'Радио кнопка',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.radioButtons),
       ),
       ListCellModel(
         title: 'Checkbox',
         description: 'Селектор',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.checkbox),
       ),
       ListCellModel(
         title: 'Switcher',
         description: 'Переключатель',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.switcher),
       ),
       ListCellModel(
         title: 'Links',
@@ -179,9 +179,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Container(
         color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
         child: Material(
           color: colors.backgroundBasic.color(),
           child: ListView.separated(

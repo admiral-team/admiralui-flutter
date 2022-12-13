@@ -18,10 +18,10 @@ class AppThemeProvider extends InheritedWidget {
   }
 
   static AppTheme of(BuildContext context) {
-    return context
-            .dependOnInheritedWidgetOfExactType<AppThemeProvider>()
-            ?.theme ??
-        lightTheme;
+    final AppTheme? theme2 =
+        context.dependOnInheritedWidgetOfExactType<AppThemeProvider>()?.theme;
+    final AppTheme appTheme = theme2 ?? lightTheme;
+    return appTheme;
   }
 }
 
