@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Tabs',
         description: 'Вкладки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.tabs),
       ),
       ListCellModel(
         title: 'Informers & Notifications ',
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Links',
         description: 'Ссылки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.links),
       ),
       ListCellModel(
         title: 'Spinner',
@@ -201,9 +201,9 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             separatorBuilder: (
-                BuildContext ctx,
-                int index,
-                ) {
+              BuildContext ctx,
+              int index,
+            ) {
               return Container();
             },
           ),
@@ -213,12 +213,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildView(
-      BuildContext ctx,
-      int index,
-      ColorPalette colors,
-      FontPalette fonts,
-      List<ListCellModel> items,
-      ) {
+    BuildContext ctx,
+    int index,
+    ColorPalette colors,
+    FontPalette fonts,
+    List<ListCellModel> items,
+  ) {
     final ListCellModel? item = index == items.length ? null : items[index];
 
     if (item is ListCellModel) {
