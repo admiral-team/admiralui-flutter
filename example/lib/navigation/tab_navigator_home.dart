@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
 
-import '../screens/buttons_screen.dart';
+import '../screens/radio_button_screen.dart';
+import '../screens/buttons/buttons_ghost_screen.dart';
+import '../screens/buttons/buttons_primary_screen.dart';
+import '../screens/buttons/buttons_secondary_screen.dart';
+import '../screens/buttons/buttons_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/badges_screen.dart';
+import '../screens/normal_badges_screen.dart';
+import '../screens/small_badges_sreen.dart';
+import '../screens/switcher_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/links_screen.dart';
+import '../screens/feedback_screen.dart';
+import '../screens/textfields_screen.dart';
+import '../screens/tabs_screen.dart';
+import '../screens/undeline_tabs.dart';
+import '../screens/checkbox_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
+  checkbox('/checkbox'),
+  textfields('/textfields'),
+  feedback('/textfields/feedback'),
+  switcher('/switcher'),
+  tabs('/tabs'),
+  underlineTabs('/underlineTabs'),
   buttons('/buttons'),
+  radioButtons('/radioButtons'),
+  buttonsPrimary('/buttons/primary'),
+  buttonsSecondary('/buttons/secondary'),
+  buttonsGhost('/buttons/ghost'),
+  links('/links'),
+  badges('/badges'),
+  normalBadges('/normalBadges'),
+  smallBadges('/smallBadges'),
   tags('/tags');
 
   const TabNavigatorRoutes(this.value);
@@ -39,10 +67,51 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
-          const ButtonsScreen(),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.radioButtons.value: (BuildContext context) =>
+          const RadioButtonScreen(),
+      TabNavigatorRoutes.textfields.value: (BuildContext context) =>
+          TextfieldsScreen(
+              title: 'TextFields',
+              onPush: (TabNavigatorRoutes route) => _push(context, route)),
+      TabNavigatorRoutes.feedback.value: (BuildContext context) =>
+          const FeedbackScreen(title: 'Feedback'),
+      TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
+            title: 'Badges',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.smallBadges.value: (BuildContext context) =>
+          const SmallBadgesScreen(title: 'Small Badges'),
+      TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
+          const NormalBadgesScreen(title: 'Normal Badges'),
+      TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.buttonsPrimary.value: (BuildContext context) =>
+          ButtonsPrimaryScreen(),
+      TabNavigatorRoutes.buttonsSecondary.value: (BuildContext context) =>
+          ButtonsSecondaryScreen(),
+      TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
+          ButtonsGhostScreen(),
+      TabNavigatorRoutes.checkbox.value: (BuildContext context) =>
+          const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.switcher.value: (BuildContext context) =>
+          const SwitcherScreen(),
+      TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
+            title: 'Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.underlineTabs.value: (BuildContext context) =>
+          UnderlineTabsScreen(
+            title: 'Underline Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.links.value: (BuildContext context) =>
+          const LinksScreen(),
     };
   }
 

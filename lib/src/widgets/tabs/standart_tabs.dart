@@ -56,6 +56,14 @@ class _StandardTabsState extends State<StandardTabs>
               color: colors.backgroundBasic.color(),
             ),
             child: TabBar(
+              splashFactory: NoSplash.splashFactory,
+              overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) {
+                  return states.contains(MaterialState.focused)
+                      ? null
+                      : Colors.transparent;
+                },
+              ),
               onTap: (int index) {
                 setState(() {
                   currentPos = index;
