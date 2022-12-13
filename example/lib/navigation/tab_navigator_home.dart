@@ -5,6 +5,7 @@ import '../screens/home_screen.dart';
 import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
+import '../screens/switcher_screen.dart';
 import '../screens/tags_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
@@ -16,6 +17,7 @@ enum TabNavigatorRoutes {
   home('/'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
@@ -73,6 +75,8 @@ class TabNavigatorHome extends StatelessWidget {
           const NormalBadgesScreen(title: 'Normal Badges'),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.switcher.value: (BuildContext context) =>
+          const SwitcherScreen(),
       TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
             title: 'Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),

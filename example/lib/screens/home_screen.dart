@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Switcher',
         description: 'Переключатель',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.switcher),
       ),
       ListCellModel(
         title: 'Links',
