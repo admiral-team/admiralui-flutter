@@ -16,6 +16,7 @@ import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
+import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
 
 enum TabNavigatorRoutes {
@@ -32,6 +33,7 @@ enum TabNavigatorRoutes {
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
   links('/links'),
+  iconTabs('/iconTabs'),
   badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges'),
@@ -108,6 +110,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.underlineTabs.value: (BuildContext context) =>
           UnderlineTabsScreen(
             title: 'Underline Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.iconTabs.value: (BuildContext context) =>
+          IconTabsScreen(
+            title: 'Icon Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
