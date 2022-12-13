@@ -63,6 +63,11 @@ lane :deploy_appcenter_dev do |options|
   build_info.external_version = current_lib_external_version
   build_info.issue = issue_name
   build_info.pull_request_number = pull_request_number
+
+  if !skip_git_comment && !issue_name.nil?
+    comment_body = formatted_build_info_json(build_info: build_info)
+    system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CREATE_RELEASE_TOKEN']} #{telegram_chat_id} #{telegram_token}")
+  end
 end
 
 # Supporting Methods
