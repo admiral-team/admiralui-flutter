@@ -15,6 +15,8 @@ export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondar
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_control.dart';
 export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_style.dart';
+export 'package:admiralui_flutter/src/widgets/controls/textfields/feedback/feedback_input_control.dart';
+export 'package:admiralui_flutter/src/widgets/controls/textfields/feedback/feedback_input_control_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_ghost_button/two_title_ghost_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_ghost_button/two_title_ghost_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/two_title_button/two_title_primary_button/two_title_primary_button.dart';
