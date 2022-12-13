@@ -18,6 +18,7 @@ class SmallInformersScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: CupertinoButton(
           child: const Icon(Icons.arrow_back_ios),
@@ -25,70 +26,90 @@ class SmallInformersScreen extends StatelessWidget {
         ),
         bottomOpacity: 0.0,
         elevation: 0.0,
+        centerTitle: true,
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
       ),
-      body: SizedBox.expand(
-        child: Container(
-          color: colors.backgroundBasic.color(),
-          padding: EdgeInsets.all(
-            LayoutGrid.doubleModule,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              const Text(
-                'Default',
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              SmallInformerWidget(
+      body: Container(
+        padding: EdgeInsets.all(
+          LayoutGrid.doubleModule,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            TextView(
+              'Default',
+              font: fonts.body1,
+              textColorNormal: colors.textSecondary.color(),
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            Container(
+              child: SmallInformerWidget(
                 title: 'Text Informer',
                 style: InformerStyle.normal,
                 arrowDirectionStyle: InformerDirectionStyle.topRight,
               ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              const Text(
-                'Success',
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              SmallInformerWidget(
-                title: 'Text Informer',
-                style: InformerStyle.success,
-                arrowDirectionStyle: InformerDirectionStyle.topRight,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              const Text(
-                'Attention',
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              SmallInformerWidget(
-                title: 'Text Informer',
-                style: InformerStyle.attention,
-                arrowDirectionStyle: InformerDirectionStyle.topRight,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              const Text(
-                'Error',
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-              SmallInformerWidget(
-                title: 'Text Informer',
-                style: InformerStyle.error,
-                arrowDirectionStyle: InformerDirectionStyle.topRight,
-              ),
-              SizedBox(height: LayoutGrid.doubleModule),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            TextView(
+              'Success',
+              font: fonts.body1,
+              textColorNormal: colors.textSecondary.color(),
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            SmallInformerWidget(
+              title: 'Text Informer',
+              style: InformerStyle.success,
+              arrowDirectionStyle: InformerDirectionStyle.topRight,
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            TextView(
+              'Attention',
+              font: fonts.body1,
+              textColorNormal: colors.textSecondary.color(),
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            SmallInformerWidget(
+              title: 'Text Informer',
+              style: InformerStyle.attention,
+              arrowDirectionStyle: InformerDirectionStyle.topRight,
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            TextView(
+              'Error',
+              font: fonts.body1,
+              textColorNormal: colors.textSecondary.color(),
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            SmallInformerWidget(
+              title: 'Text Informer',
+              style: InformerStyle.error,
+              arrowDirectionStyle: InformerDirectionStyle.topRight,
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+          ],
         ),
       ),
     );

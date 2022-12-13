@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BigInformersScreen extends StatelessWidget {
-  const BigInformersScreen({
+class SmallBadgesScreen extends StatelessWidget {
+  const SmallBadgesScreen({
     super.key,
     required this.title,
   });
@@ -39,17 +39,28 @@ class BigInformersScreen extends StatelessWidget {
           LayoutGrid.doubleModule,
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[],
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    const BadgeWidget(style: BadgeStyle.additional),
+                    SizedBox(width: LayoutGrid.module),
+                    const BadgeWidget(style: BadgeStyle.natural),
+                    SizedBox(width: LayoutGrid.module),
+                    const BadgeWidget(style: BadgeStyle.normal),
+                    SizedBox(width: LayoutGrid.module),
+                    const BadgeWidget(style: BadgeStyle.success),
+                    SizedBox(width: LayoutGrid.module),
+                    const BadgeWidget(style: BadgeStyle.error),
+                    SizedBox(width: LayoutGrid.module),
+                    const BadgeWidget(style: BadgeStyle.attention),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ]),
       ),
     );
   }

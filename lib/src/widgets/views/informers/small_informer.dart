@@ -1,8 +1,11 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
 import 'package:flutter/material.dart';
 
+// SmallInformer - The component is in four status 
+// colors with different pop-up positions. Multiline (up to six lines), 
+// changes its width depending on the 
+// content, the maximum width of the component is 288 px.
 class SmallInformerWidget extends StatefulWidget {
   const SmallInformerWidget({
     super.key,
@@ -38,7 +41,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
     final Color textColor =
         widget.isEnable ? scheme.enabledTextColor : scheme.disabledTextColor;
 
-    final List<Widget> childrens = <Widget>[];
+    final List<Widget> children = <Widget>[];
     final List<Widget> mainWidgetChildren = <Widget>[];
     final Positioned positionedWidget;
 
@@ -80,16 +83,15 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
           ),
         );
         mainWidgetChildren.add(mainWidget);
-        positionedWidget = 
-          Positioned(
-            left: 0,
-            top: -LayoutGrid.halfModule * 3,
-            child: Icon(
-              AdmiralIcons.admiral_ic_sort_up_solid,
-              color: backgroundColor,
-              size: LayoutGrid.doubleModule * 3,
-            ),
-          );
+        positionedWidget = Positioned(
+          left: 0,
+          top: -LayoutGrid.halfModule * 3,
+          child: Icon(
+            AdmiralIcons.admiral_ic_sort_up_solid,
+            color: backgroundColor,
+            size: LayoutGrid.doubleModule * 3,
+          ),
+        );
         break;
 
       case InformerDirectionStyle.topRight:
@@ -99,29 +101,27 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
           ),
         );
         mainWidgetChildren.add(mainWidget);
-        positionedWidget = 
-          Positioned(
-            right: 0,
-            top: -LayoutGrid.halfModule * 3,
-            child: Icon(
-              AdmiralIcons.admiral_ic_sort_up_solid,
-              color: backgroundColor,
-              size: LayoutGrid.doubleModule * 3,
-            ),
-          );
+        positionedWidget = Positioned(
+          right: 0,
+          top: -LayoutGrid.halfModule * 3,
+          child: Icon(
+            AdmiralIcons.admiral_ic_sort_up_solid,
+            color: backgroundColor,
+            size: LayoutGrid.doubleModule * 3,
+          ),
+        );
         break;
 
       case InformerDirectionStyle.bottomLeft:
-        positionedWidget = 
-          Positioned(
-            left: 0,
-            bottom: -LayoutGrid.halfModule * 3,
-            child: Icon(
-              AdmiralIcons.admiral_ic_sort_down_solid,
-              color: backgroundColor,
-              size: LayoutGrid.doubleModule * 3,
-            ),
-          );
+        positionedWidget = Positioned(
+          left: 0,
+          bottom: -LayoutGrid.halfModule * 3,
+          child: Icon(
+            AdmiralIcons.admiral_ic_sort_down_solid,
+            color: backgroundColor,
+            size: LayoutGrid.doubleModule * 3,
+          ),
+        );
         mainWidgetChildren.add(mainWidget);
         mainWidgetChildren.add(
           SizedBox(
@@ -131,16 +131,15 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         break;
 
       case InformerDirectionStyle.bottomRight:
-        positionedWidget = 
-          Positioned(
-            right: 0,
-            bottom: -LayoutGrid.halfModule * 3,
-            child: Icon(
-              AdmiralIcons.admiral_ic_sort_down_solid,
-              color: backgroundColor,
-              size: LayoutGrid.doubleModule * 3,
-            ),
-          );
+        positionedWidget = Positioned(
+          right: 0,
+          bottom: -LayoutGrid.halfModule * 3,
+          child: Icon(
+            AdmiralIcons.admiral_ic_sort_down_solid,
+            color: backgroundColor,
+            size: LayoutGrid.doubleModule * 3,
+          ),
+        );
         mainWidgetChildren.add(mainWidget);
         mainWidgetChildren.add(
           SizedBox(
@@ -153,11 +152,11 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
     final Column columnWidget = Column(
       children: mainWidgetChildren,
     );
-    childrens.add(columnWidget);
-    childrens.add(positionedWidget);
+    children.add(columnWidget);
+    children.add(positionedWidget);
 
     return Stack(
-      children: childrens,
+      children: children,
     );
   }
 }

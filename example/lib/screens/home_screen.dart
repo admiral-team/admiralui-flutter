@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Badges',
         description: 'Количественные зачения',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.badges),
       ),
       ListCellModel(
         title: 'Radiobutton',
