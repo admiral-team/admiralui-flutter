@@ -6,6 +6,7 @@ import '../screens/badges_screen.dart';
 import '../screens/normal_badges_screen.dart';
 import '../screens/small_badges_sreen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
 
@@ -14,8 +15,9 @@ enum TabNavigatorRoutes {
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   buttons('/buttons'),
-  badges('/badges'),
   tags('/tags'),
+  links('/links'),
+  badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges');
 
@@ -49,12 +51,12 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.buttons.value: (BuildContext context) => 
+      TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
           TextfieldsScreen(
-            title: 'TextFields',
-             onPush: (TabNavigatorRoutes route) => _push(context, route)),
+              title: 'TextFields',
+              onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
@@ -66,7 +68,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.normalBadges.value: (BuildContext context) =>
           const NormalBadgesScreen(title: 'Normal Badges'),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
-          const TagsScreen()
+          const TagsScreen(),
+      TabNavigatorRoutes.links.value: (BuildContext context) =>
+          const LinksScreen(),
     };
   }
 
