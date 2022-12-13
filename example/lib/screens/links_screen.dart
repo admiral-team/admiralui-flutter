@@ -74,7 +74,7 @@ class LinksScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const Text(
-                  '24 Links',
+                  '16 Links',
                   textAlign: TextAlign.left,
                 ),
               ],
