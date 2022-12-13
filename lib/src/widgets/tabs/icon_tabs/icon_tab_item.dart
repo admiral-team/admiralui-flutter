@@ -86,14 +86,12 @@ class _IconTabItemState extends State<IconTabItemWidget> {
           color: iconColor,
         ),
         SizedBox(height: LayoutGrid.module),
-        Text(
+        TextView(
           widget.item.name,
-          style: TextStyle(
-            fontSize: titleFont.fontSize,
-            color: titleColor,
-            fontFamily: titleFont.fontFamily,
-            fontWeight: titleFont.fontWeight,
-          ),
+          isEnabled: widget.isEnabled,
+          font: titleFont,
+          textColorNormal: titleColor,
+          textColorDisabled: titleColorDisabled,
         ),
       ],
     );
