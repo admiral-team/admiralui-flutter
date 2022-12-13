@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
 import '../screens/buttons/buttons_primary_screen.dart';
 import '../screens/buttons/buttons_secondary_screen.dart';
@@ -24,6 +25,7 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
+  radioButtons('/radioButtons'),
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
@@ -69,6 +71,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) =>
           const ButtonsScreen(),
+      TabNavigatorRoutes.radioButtons.value: (BuildContext context) =>
+          const RadioButtonScreen(),
       TabNavigatorRoutes.textfields.value: (BuildContext context) =>
           TextfieldsScreen(
               title: 'TextFields',
