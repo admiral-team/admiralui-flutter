@@ -5,15 +5,15 @@ class IconTabs extends StatefulWidget {
   const IconTabs(
     this.items, {
     this.isEnabled = true,
+    this.selectedIndex,
     this.onTap,
-    this.tabBarViews,
     super.key,
   });
 
   final List<IconTabItem> items;
   final bool isEnabled;
-  final ValueChanged<IconTabItem>? onTap;
-  final List<Widget>? tabBarViews;
+  final int? selectedIndex;
+  final ValueChanged<int>? onTap;
 
   @override
   State<StatefulWidget> createState() => _IconTabsState();
@@ -33,6 +33,7 @@ class _IconTabsState extends State<IconTabs>
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: widget.items.length,
+      initialIndex: widget.selectedIndex ?? 0,
       child: SizedBox(
         child: Column(
           children: <Widget>[
@@ -44,7 +45,7 @@ class _IconTabsState extends State<IconTabs>
                 onTap: (int index) {
                   setState(() {
                     currentPos = index;
-                    widget.onTap?.call(widget.items[index]);
+                    widget.onTap?.call(index);
                   });
                 },
                 indicatorColor: Colors.transparent,
@@ -61,15 +62,6 @@ class _IconTabsState extends State<IconTabs>
                 ],
               ),
             ),
-            if (widget.tabBarViews?.length == widget.items.length)
-              Expanded(
-                child: SizedBox(
-                  child: TabBarView(
-                    physics: const BouncingScrollPhysics(),
-                    children: widget.tabBarViews ?? <Widget>[],
-                  ),
-                ),
-              ),
           ],
         ),
       ),
