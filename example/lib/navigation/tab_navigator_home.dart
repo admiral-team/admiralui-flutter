@@ -9,11 +9,15 @@ import '../screens/tags_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/tabs_screen.dart';
+import '../screens/undeline_tabs.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  tabs('/tabs'),
+  underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   tags('/tags'),
   links('/links'),
@@ -69,6 +73,15 @@ class TabNavigatorHome extends StatelessWidget {
           const NormalBadgesScreen(title: 'Normal Badges'),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
+            title: 'Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.underlineTabs.value: (BuildContext context) =>
+          UnderlineTabsScreen(
+            title: 'Underline Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
     };
