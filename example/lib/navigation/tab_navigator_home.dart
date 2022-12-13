@@ -1,9 +1,9 @@
-import 'package:example/screens/links_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/tags_screen.dart';
+import '../screens/links_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),

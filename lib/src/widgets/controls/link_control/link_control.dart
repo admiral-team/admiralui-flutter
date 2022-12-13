@@ -2,6 +2,15 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// A LinkControl.
+///
+// LinkControl is used for navigation, can be applied separately or inside
+// the text, with or without an icon, usually complements other components.
+//
+// The component is presented in two style (LinkStyle):
+// normal (24px) and medium (16px), and two states: Default and Disabled.
+// The width of the component depends on the content.
+
 class LinkControl extends StatefulWidget {
   /// Creates a LinkControl.
   const LinkControl({
