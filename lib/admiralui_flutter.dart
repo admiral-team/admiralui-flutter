@@ -34,6 +34,9 @@ export 'package:admiralui_flutter/src/widgets/radio_button/radio_button_style.da
 export 'package:admiralui_flutter/src/widgets/radio_button/radio_group.dart';
 export 'package:admiralui_flutter/src/widgets/switcher/switcher.dart';
 export 'package:admiralui_flutter/src/widgets/switcher/switcher_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tab_item.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tab_item_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/icon_tabs/icon_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';

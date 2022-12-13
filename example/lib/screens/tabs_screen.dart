@@ -46,7 +46,7 @@ class TabsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Icon Tabs',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.textfields),
+        onPressed: () => onPush.call(TabNavigatorRoutes.iconTabs),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
