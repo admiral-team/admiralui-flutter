@@ -51,11 +51,11 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         borderRadius: BorderRadius.circular(LayoutGrid.halfModule),
       ),
       child: Container(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           minHeight: LayoutGrid.halfModule * 10,
           minWidth: LayoutGrid.halfModule * 10,
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.module,
           horizontal: LayoutGrid.halfModule * 3,
         ),
@@ -78,7 +78,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
     switch (widget.arrowDirectionStyle) {
       case InformerDirectionStyle.topLeft:
         mainWidgetChildren.add(
-          SizedBox(
+          const SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
@@ -96,7 +96,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
 
       case InformerDirectionStyle.topRight:
         mainWidgetChildren.add(
-          SizedBox(
+          const SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
@@ -124,7 +124,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         );
         mainWidgetChildren.add(mainWidget);
         mainWidgetChildren.add(
-          SizedBox(
+          const SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
@@ -142,7 +142,7 @@ class _BadgeWidgetState extends State<SmallInformerWidget> {
         );
         mainWidgetChildren.add(mainWidget);
         mainWidgetChildren.add(
-          SizedBox(
+          const SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
