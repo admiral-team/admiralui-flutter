@@ -1,7 +1,9 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/currency/currency_header_scheme.dart';
 import 'package:flutter/material.dart';
+
+/// A CurrencyView.
+/// The view for display currency
 
 class CurrencyHeader extends StatefulWidget {
   const CurrencyHeader({
@@ -32,29 +34,33 @@ class _CurrencyHeaderState extends State<CurrencyHeader> {
 
     return Row(
       children: <Widget>[
-        _textLabel(text: widget.currencyText, scheme: scheme),
+        TextView(
+          widget.currencyText,
+          font: scheme.textFont,
+          textColorNormal: scheme.textColor.color(),
+          textAlign: TextAlign.right,
+        ),
         const Spacer(),
-        _textLabel(text: widget.buyText, scheme: scheme),
-        SizedBox(width: LayoutGrid.halfModule * 18,),
-        _textLabel(text: widget.sellText, scheme: scheme),
+        TextView(
+          widget.buyText,
+          font: scheme.textFont,
+          textColorNormal: scheme.textColor.color(),
+          textAlign: TextAlign.right,
+        ),
+        const SizedBox(
+          width: LayoutGrid.halfModule * 18,
+        ),
+        TextView(
+          widget.sellText,
+          font: scheme.textFont,
+          textColorNormal: scheme.textColor.color(),
+          textAlign: TextAlign.right,
+        ),
         if (widget.isTextSpacingEnabled)
-            SizedBox(width: LayoutGrid.halfModule * 18,),
+          const SizedBox(
+            width: LayoutGrid.tripleModule,
+          ),
       ],
-    );
-  }
-
-  Widget _textLabel({
-    required String text,
-    required CurrencyHeaderScheme scheme,
-  }) {
-    return Text(
-      widget.currencyText,
-      style: TextStyle(
-        fontSize: scheme.textFont.fontSize,
-        color: scheme.textColor.color(),
-        fontFamily: scheme.textFont.fontFamily,
-        fontWeight: scheme.textFont.fontWeight,
-      ),
     );
   }
 }

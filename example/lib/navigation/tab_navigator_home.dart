@@ -1,5 +1,10 @@
+import 'package:example/screens/currency_default_screen.dart';
+import 'package:example/screens/currency_flags_screen.dart';
+import 'package:example/screens/currency_icon_flags_screen.dart';
+import 'package:example/screens/currency_icon_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
 import '../screens/buttons/buttons_primary_screen.dart';
@@ -43,6 +48,11 @@ enum TabNavigatorRoutes {
   badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges'),
+  currency('/currency'),
+  currencyDefault('/currency/default'),
+  currencyIcon('/currency/icon'),
+  currencyFlags('/currency/flags'),
+  currencyIconFlags('/currency/iconflags'),
   tags('/tags');
 
   const TabNavigatorRoutes(this.value);
@@ -130,6 +140,31 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.iconTabs.value: (BuildContext context) =>
           IconTabsScreen(
             title: 'Icon Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currency.value: (BuildContext context) =>
+          CurrencyScreen(
+            title: 'Currency',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyDefault.value: (BuildContext context) =>
+          CurrencyDefaultScreen(
+            title: 'Default',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyIcon.value: (BuildContext context) =>
+          CurrencyIconScreen(
+            title: 'Icon',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyFlags.value: (BuildContext context) =>
+          CurrencyFlagsScreen(
+            title: 'Flags',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyIconFlags.value: (BuildContext context) =>
+          CurrencyIconsFlagsScreen(
+            title: 'Icon & Flags',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
