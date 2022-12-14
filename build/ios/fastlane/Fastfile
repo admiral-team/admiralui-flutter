@@ -1,0 +1,147 @@
+fastlane_require 'dotenv'
+require_relative 'build_info'
+require_relative 'version'
+require_relative 'utils'
+
+before_all do
+  Dotenv.overload('.env', '.env.secret')
+end
+
+# Deploy Methods
+
+lane :deploy_appcenter_dev do |options|
+  skip_archive = options[:skip_archive] || false
+  skip_git_comment = options[:skip_git_comment] || false
+  issue_name = options[:issue_name]
+  telegram_token = options[:telegram_token]
+  telegram_chat_id = options[:telegram_chat_id]
+  pull_request_number = options[:pull_request_number]
+  build_number = generate_random_build_number()
+  previous_build_number = current_app_build_number
+  branch_name = issue_name
+
+  if issue_name.nil? || issue_name == ""
+    issue_name = extract_issue_name(branch_name: branch_name)
+  else
+    issue_name = extract_issue_name(branch_name: issue_name)
+  end
+
+  if !skip_archive
+    increment_app_build(build_number: build_number)
+    
+    build_app(
+      workspace: ENV['PROJECT_WORKSPACE_PATH'],
+      configuration: "Release",
+      scheme: "Runner",
+      silent: true,
+      clean: true,
+      output_directory: "Release/AdmiralUI-Example/Dev",
+      export_method: "enterprise",
+      output_name: "admiralui-flutter-example.ipa",
+    )
+
+    increment_app_build(build_number: previous_build_number)
+  end
+
+  appcenter_upload(
+    api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV'],
+    owner_name: ENV['APPCENTER_OWNER_NAME'],
+    owner_type: ENV['APPCENTER_OWNER_TYPE'],
+    app_name: ENV['APPCENTER_APP_NAME_DEV'],
+    file: "Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
+    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
+    destination_type: "group",
+    release_notes: "",
+    notify_testers: true
+  )
+
+  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+  build_info = BuildInfo.from_hash(build_info_hash)
+  build_info.branch_name = branch_name
+  build_info.build_url = appcenter_build_dev_url(build_id: build_info.build_id)
+  build_info.internal_version = current_lib_internal_version
+  build_info.external_version = current_lib_external_version
+  build_info.issue = issue_name
+  build_info.pull_request_number = pull_request_number
+
+  if !skip_git_comment && !issue_name.nil?
+    comment_body = formatted_build_info_json(build_info: build_info)
+    system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CREATE_RELEASE_TOKEN']} #{telegram_chat_id} #{telegram_token}")
+  end
+end
+
+# Supporting Methods
+
+lane :increment_app_version do |options|
+  version_number = options[:version_number]
+  increment_version_number(
+    version_number: version_number,
+    xcodeproj: ENV['LIBRARY_PROJECT_PATH']
+  )
+end
+
+lane :increment_app_build do |options|
+  build_number = options[:build_number]
+  increment_build_number(
+    build_number: build_number,
+    xcodeproj: ENV['LIBRARY_PROJECT_PATH']
+  )
+end
+
+lane :set_version do |options|
+  internal = options[:internal_version]
+  external = options[:external_version]
+  update_app_version = options[:update_app_version]
+
+  set_version(
+    external_version: external,
+    internal_version: internal
+  )
+
+  if update_app_version
+    increment_app_version(version_number: current_lib_external_version)
+  end
+end
+
+lane :finish_release_version do |options|
+  external = options[:external_version]
+  last_version = options[:version_number]
+  internal = current_lib_internal_version
+  set_version(
+    external_version: external,
+    internal_version: internal, 
+  )
+  if !last_version.nil? && !last_version.empty?
+    increment_app_version(version_number: last_version)
+  end 
+end
+
+lane :start_next_release_version do
+  external = "0.0.0"
+  internal = "#{Integer(current_lib_internal_version) + 1}"
+  set_version(external_version: external, internal_version: internal)
+  increment_app_version(version_number: external)
+end
+
+# Github
+
+lane :unlock_secrets_keychain do |options|
+  unlock_keychain(
+    path: "login.keychain",
+    password: options[:password]
+  )
+end
+
+lane :send_build_failed_info do |options|
+  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+  build_info = BuildInfo.from_hash(build_info_hash)
+  build_info.branch_name = options[:issue_name]
+  build_info.issue = options[:issue_name]
+  telegram_chat_id = options[:telegram_chat_id]
+  telegram_token = options[:telegram_token]
+  action_id = options[:build_url]
+  info_body = formatted_build_info_json(build_info: build_info)
+  system("cd ./go_scripts && ./main build_failed #{info_body} #{telegram_chat_id} #{telegram_token} #{action_id}")
+end
+
+

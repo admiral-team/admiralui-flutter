@@ -30,6 +30,8 @@ class CheckBoxGroup extends StatefulWidget {
     this.onChanged,
     this.verticalPadding,
     this.checkboxScheme,
+    this.isEnabled = true,
+    this.style = CheckboxStyle.normal,
   });
 
   final List<String> items;
@@ -37,6 +39,8 @@ class CheckBoxGroup extends StatefulWidget {
   final void Function(Map<String, bool>)? onChanged;
   final double? verticalPadding;
   final CheckboxScheme? checkboxScheme;
+  final bool isEnabled;
+  final CheckboxStyle style;
 
   @override
   State<StatefulWidget> createState() => _CheckBoxGroupState();
@@ -67,6 +71,8 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
               isChecked: widget.selectedValues?.contains(item) ?? false,
               scheme: widget.checkboxScheme ?? CheckboxScheme(theme: theme),
               verticalPadding: widget.verticalPadding,
+              isEnabled: widget.isEnabled,
+              style: widget.style,
             ),
           )
       ],
