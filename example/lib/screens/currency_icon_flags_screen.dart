@@ -3,9 +3,6 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../navigation/tab_navigator_home.dart';
-import 'package:admiralui_flutter/src/widgets/views/currency/currency.dart';
-import 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header.dart';
-import 'package:admiralui_flutter/src/widgets/views/currency/currency_cell_type.dart';
 
 class CurrencyIconsFlagsScreen extends StatelessWidget {
   const CurrencyIconsFlagsScreen({
