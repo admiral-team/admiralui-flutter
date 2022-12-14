@@ -1,7 +1,3 @@
-import 'package:example/screens/currency_default_screen.dart';
-import 'package:example/screens/currency_flags_screen.dart';
-import 'package:example/screens/currency_icon_flags_screen.dart';
-import 'package:example/screens/currency_icon_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/currency_screen.dart';
@@ -26,7 +22,6 @@ import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
 import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
-import '../screens/currency_screen.dart';
 import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
