@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
 
 class TextOperationParameters<T> {
   final Map<String, T> _parameters = <String, T>{};

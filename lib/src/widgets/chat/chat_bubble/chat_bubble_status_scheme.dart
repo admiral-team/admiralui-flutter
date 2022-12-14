@@ -1,8 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_parameters.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
 import 'package:admiralui_flutter/theme/admiral_color.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +7,6 @@ class ChatBubbleStatusScheme {
   ChatBubbleStatusScheme({required this.theme}) {
     textFont = theme.fonts.caption1;
 
-    /// Direction-right style-initial state-normal
     textColor.set(
       theme.colors.textAccentAdditional.color(),
       ControlState.normal,
@@ -59,7 +55,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-right style-initial state-disabled
     textColor.set(
       theme.colors.textAccentAdditional.colorWithOpacity(),
       ControlState.disabled,
@@ -108,7 +103,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-right style-light state-normal
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
@@ -157,7 +151,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-right style-light state-disabled
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
@@ -206,7 +199,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-initial state-normal
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
@@ -255,7 +247,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-initial state-disabled
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
@@ -304,7 +295,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-light state-normal
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
@@ -353,7 +343,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-light state-disabled
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
@@ -402,7 +391,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-initial state-normal
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
@@ -451,7 +439,6 @@ class ChatBubbleStatusScheme {
       ChatStatus.none,
     );
 
-    /// Direction-left style-initial state-disabled
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.disabled,

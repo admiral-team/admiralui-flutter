@@ -1,7 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
 
 class ChatBubbleStatusParameters<T> {
   final Map<String, T> _parameters = <String, T>{};

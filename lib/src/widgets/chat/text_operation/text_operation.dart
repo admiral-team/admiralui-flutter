@@ -1,20 +1,14 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
-import 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_scheme.dart';
-import 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
 import 'package:flutter/material.dart';
 
 class TextOperation extends StatefulWidget {
   /// Creates an TextOperation.
-  const TextOperation({
+  const TextOperation(
+    this.style,
+    this.chatStatus,
+    this.direction, {
     super.key,
-    required this.style,
-    required this.chatStatus,
-    required this.direction,
     this.chatBubbleStatusStyle = ChatBubbleStatusStyle.initial,
     this.title = '',
     this.description = '',
@@ -69,7 +63,7 @@ class _TextOperationState extends State<TextOperation> {
           ),
           child: Container(
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
               left: LayoutGrid.tripleModule / 2,
               right: LayoutGrid.tripleModule / 2,
               top: LayoutGrid.module,
@@ -81,49 +75,37 @@ class _TextOperationState extends State<TextOperation> {
                   children: <Widget>[
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: TextView(
                         widget.title,
-                        style: TextStyle(
-                          fontSize: scheme.timeFont.fontSize,
-                          color: titleColor,
-                          fontFamily: scheme.titleFont.fontFamily,
-                          fontWeight: scheme.titleFont.fontWeight,
-                        ),
+                        font: scheme.titleFont,
+                        textColorNormal: titleColor,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: LayoutGrid.module / 2,
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: TextView(
                         widget.description,
-                        style: TextStyle(
-                          fontSize: scheme.descriptionFont.fontSize,
-                          color: scheme.descriptionColor.color(),
-                          fontFamily: scheme.descriptionFont.fontFamily,
-                          fontWeight: scheme.descriptionFont.fontWeight,
-                        ),
+                        font: scheme.descriptionFont,
+                        textColorNormal: scheme.descriptionColor.color(),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: LayoutGrid.module / 2,
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: TextView(
                         widget.time,
-                        style: TextStyle(
-                          fontSize: scheme.timeFont.fontSize,
-                          color: scheme.timeColor.color(),
-                          fontFamily: scheme.timeFont.fontFamily,
-                          fontWeight: scheme.timeFont.fontWeight,
-                        ),
+                        font: scheme.timeFont,
+                        textColorNormal: scheme.timeColor.color(),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: LayoutGrid.module),
+                const SizedBox(height: LayoutGrid.module),
                 Row(
                   children: <Widget>[
                     const Spacer(),

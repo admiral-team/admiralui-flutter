@@ -1,9 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_scheme.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubbleStatus extends StatefulWidget {
@@ -86,19 +83,15 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
 
     return Row(
       children: <Widget>[
-        Text(
+        TextView(
           widget.time,
-          style: TextStyle(
-            fontSize: scheme.textFont.fontSize,
-            color: textColor,
-            fontFamily: scheme.textFont.fontFamily,
-            fontWeight: scheme.textFont.fontWeight,
-          ),
+          font: scheme.textFont,
+          textColorNormal: textColor,
         ),
         if (widget.chatStatus != ChatStatus.none)
           Row(
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 width: LayoutGrid.tripleModule / 4,
               ),
               icon,
