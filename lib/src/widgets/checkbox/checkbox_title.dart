@@ -8,18 +8,20 @@ import 'package:flutter/material.dart';
 class CheckBoxTitle extends StatefulWidget {
   const CheckBoxTitle({
     required this.title,
+    required this.scheme,
+    required this.style,
     this.onChanged,
     this.isChecked,
     this.verticalPadding,
-    required this.scheme,
     this.isEnabled = true,
   });
 
   final String title;
+  final CheckboxScheme scheme;
+  final CheckboxStyle style;
   final void Function(MapEntry<String, bool>)? onChanged;
   final bool? isChecked;
   final double? verticalPadding;
-  final CheckboxScheme scheme;
   final bool isEnabled;
 
   @override
@@ -40,8 +42,12 @@ class _CheckBoxState extends State<CheckBoxTitle> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: widget.isEnabled ? null : Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: () {
-        onClicked();
+        if (widget.isEnabled) {
+          onClicked();
+        }
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: _verticalPadding),
@@ -51,26 +57,30 @@ class _CheckBoxState extends State<CheckBoxTitle> {
               width: LayoutGrid.tripleModule,
               height: LayoutGrid.tripleModule,
               child: CustomCheckBox(
-                onChanged: () {
-                  onClicked();
-                },
                 fillColor: widget.scheme.checkboxColor.unsafeParameter(
                   widget.isEnabled
                       ? ControlState.normal
                       : ControlState.disabled,
+                  widget.style,
                 ),
                 value: _isChecked,
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(
                 right: LayoutGrid.module,
               ),
             ),
             Expanded(
-              child: Text(
+              child: TextView(
                 widget.title,
-                style: widget.scheme.textStyle,
+                font: widget.scheme.textFont,
+                textColorNormal: widget.scheme.textColor.unsafeParameter(
+                  widget.isEnabled
+                      ? ControlState.normal
+                      : ControlState.disabled,
+                  widget.style,
+                ),
                 textAlign: TextAlign.start,
               ),
             )
