@@ -52,12 +52,8 @@ export 'package:admiralui_flutter/src/widgets/views/currency/currency_scheme.dar
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction_style.dart';
-export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction_style.dart';
-export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
-export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
-export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
 export 'package:admiralui_flutter/theme/admiral_font.dart';
 export 'package:admiralui_flutter/theme/app_theme.dart';
