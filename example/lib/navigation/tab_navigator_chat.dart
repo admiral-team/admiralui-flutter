@@ -1,6 +1,6 @@
-import 'package:example/screens/chat_screen.dart';
-import 'package:example/screens/text_operation_screen.dart';
 import 'package:flutter/material.dart';
+import '../screens/chat_screen.dart';
+import '../screens/text_operation_screen.dart';
 
 enum TabNavigatorChatRoutes {
   textOperation('/textOperation'),
