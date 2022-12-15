@@ -24,7 +24,7 @@ class SecondaryButton extends StatefulWidget {
     this.title = '',
     this.isEnable = true,
     this.sizeType = ButtonSizeType.big,
-    this.icon,
+    this.iconData,
     this.iconPosition,
     this.scheme,
   });
@@ -33,7 +33,7 @@ class SecondaryButton extends StatefulWidget {
   final String title;
   final bool isEnable;
   final ButtonSizeType sizeType;
-  final Widget? icon;
+  final IconData? iconData;
   final IconPosition? iconPosition;
   final SecondaryButtonScheme? scheme;
 
@@ -66,9 +66,10 @@ class _SecondaryButtonState extends State<SecondaryButton> {
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Container(
-        width: widget.sizeType.width,
-        height: widget.sizeType.height,
-        alignment: Alignment.center,
+        constraints: BoxConstraints(
+          minWidth: widget.sizeType.width,
+          minHeight: widget.sizeType.height,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             LayoutGrid.module,
@@ -78,36 +79,43 @@ class _SecondaryButtonState extends State<SecondaryButton> {
             color: color,
           ),
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              child: (widget.icon != null &&
+              child: (widget.iconData != null &&
                       (widget.iconPosition == IconPosition.left ||
                           widget.iconPosition == null))
-                  ? widget.icon
+                  ? Icon(
+                      widget.iconData,
+                      color: color,
+                    )
                   : null,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: LayoutGrid.halfModule * 3,
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.module,
               ),
-            ),
-            Flexible(
-              child: TextView(
-                widget.title,
-                font: scheme.font,
-                textColorNormal: color,
+              child: Flexible(
+                child: TextView(
+                  widget.title,
+                  font: scheme.font,
+                  textColorNormal: color,
+                ),
               ),
             ),
             SizedBox(
-              child: (widget.icon != null &&
+              child: (widget.iconData != null &&
                       widget.iconPosition == IconPosition.right)
-                  ? widget.icon
+                  ? Icon(
+                      widget.iconData,
+                      color: color,
+                    )
                   : null,
             ),
           ],
