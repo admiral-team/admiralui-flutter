@@ -17,6 +17,7 @@ import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/standart_textfield_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
 import '../screens/icon_tabs_screen.dart';
@@ -27,6 +28,7 @@ enum TabNavigatorRoutes {
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  standartTextfield('/textfields/standartTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
@@ -86,6 +88,11 @@ class TabNavigatorHome extends StatelessWidget {
               onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
+      TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
+          StandartTextFieldScreen(
+            title: 'Standart Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
             title: 'Badges',
             onPush: (TabNavigatorRoutes route) => _push(context, route),

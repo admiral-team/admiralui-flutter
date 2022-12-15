@@ -1,7 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/animatedLabel/textfield_animated_label_scheme.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldAnimatedLabel extends StatefulWidget {
@@ -46,18 +44,11 @@ class _TextFieldAnimatedLabelState extends State<TextFieldAnimatedLabel> {
     switch (widget.state) {
       case TextInputState.normal:
         labelTextColor = (widget.hasFocus && isEnabled)
-            ? scheme.tintColor.color()
-            : scheme.underlineColor.color();
+            ? scheme.textColor.unsafeParameter(TextInputState.normal)
+            : scheme.textColor.unsafeParameter(TextInputState.readOnly);
         break;
-      case TextInputState.error:
-        labelTextColor = scheme.errorColor.color();
-        break;
-      case TextInputState.readOnly:
-        labelTextColor = scheme.underlineColor.color();
-        break;
-      case TextInputState.disabled:
-        labelTextColor = scheme.disabledColor;
-        break;
+      default:
+        labelTextColor = scheme.textColor.unsafeParameter(widget.state);
     }
 
     return Positioned.fill(

@@ -1,7 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/separator/textfield_separator_scheme.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldSeparator extends StatefulWidget {

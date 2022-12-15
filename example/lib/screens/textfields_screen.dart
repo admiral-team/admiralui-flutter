@@ -21,7 +21,7 @@ class TextfieldsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Standart',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
       ),
       ListCellModel(
         title: 'Double',

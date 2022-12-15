@@ -1,8 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/animatedLabel/textfield_animated_label.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/separator/textfield_separator.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_scheme.dart';
 import 'package:flutter/material.dart';
 
 enum TextInputState { normal, error, disabled, readOnly }
@@ -69,7 +66,6 @@ class _TextFieldState extends State<TextFieldWidget>
   @override
   void dispose() {
     super.dispose();
-    widget.controller.dispose();
     _effectiveFocusNode.removeListener(() {});
     _focusNode?.dispose();
   }
@@ -104,7 +100,7 @@ class _TextFieldState extends State<TextFieldWidget>
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: (LayoutGrid.module * 7) / LayoutGrid.halfModule,
                       ),
                       TextFormField(
@@ -153,17 +149,14 @@ class _TextFieldState extends State<TextFieldWidget>
           widget.state,
           isEditing: _hasFocus,
         ),
-        SizedBox(height: LayoutGrid.module),
+        const SizedBox(height: LayoutGrid.module),
         if (widget.informerText != null &&
             widget.informerText?.isEmpty == false)
-          Text(
+          TextView(
             widget.informerText!,
-            style: TextStyle(
-              fontSize: scheme.informerFont.fontSize,
-              color: scheme.infomerLabelColor.unsafeParameter(widget.state),
-              fontFamily: scheme.informerFont.fontFamily,
-              fontWeight: scheme.informerFont.fontWeight,
-            ),
+            font: scheme.informerFont,
+            textColorNormal:
+                scheme.infomerLabelColor.unsafeParameter(widget.state),
           ),
       ],
     );
