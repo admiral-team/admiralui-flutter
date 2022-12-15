@@ -21,6 +21,7 @@ import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
 import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
+import '../screens/pin_code_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -43,7 +44,8 @@ enum TabNavigatorRoutes {
   badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges'),
-  tags('/tags');
+  tags('/tags'),
+  pinCode('/pinCode');
 
   const TabNavigatorRoutes(this.value);
 
@@ -134,6 +136,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
+      TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
+          const PinCodeScreen(),
     };
   }
 
