@@ -46,7 +46,7 @@ class TextfieldsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Pincode',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.textfields),
+        onPressed: () => onPush.call(TabNavigatorRoutes.pinCode),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
