@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 /// The view for display currency
 
 class CurrencyHeader extends StatefulWidget {
-  const CurrencyHeader({
-    required this.currencyText,
-    required this.buyText,
-    required this.sellText,
-    required this.isTextSpacingEnabled,
+  const CurrencyHeader(
+    this.currencyText,
+    this.buyText,
+    this.sellText, {
+    this.isTextSpacingEnabled = false,
     this.scheme,
   });
 
