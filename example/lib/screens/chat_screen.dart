@@ -47,7 +47,8 @@ class _ChatScreenState extends State<ChatScreen> {
       ListCellModel(
         title: 'Text Operation',
         description: '',
-        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.chat),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
       ),
       ListCellModel(
         title: 'Uploading Photo',
