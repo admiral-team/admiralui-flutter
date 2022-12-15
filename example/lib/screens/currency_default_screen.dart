@@ -46,10 +46,9 @@ class CurrencyDefaultScreen extends StatelessWidget {
           children: <Widget>[
             Spacer(),
             CurrencyHeader(
-              currencyText: 'Валюта',
-              buyText: 'Купить',
-              sellText: 'Продать',
-              isTextSpacingEnabled: false,
+              'Валюта',
+              'Купить',
+              'Продать',
             ),
             SizedBox(
               height: LayoutGrid.doubleModule,

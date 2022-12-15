@@ -46,9 +46,9 @@ class CurrencyIconScreen extends StatelessWidget {
           children: <Widget>[
             Spacer(),
             CurrencyHeader(
-              currencyText: 'Валюта',
-              buyText: 'Купить',
-              sellText: 'Продать',
+              'Валюта',
+              'Купить',
+              'Продать',
               isTextSpacingEnabled: true,
             ),
             SizedBox(
