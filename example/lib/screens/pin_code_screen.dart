@@ -30,14 +30,15 @@ class PinCodeScreen extends StatelessWidget {
             ),
       body: SizedBox.expand(
         child: Container(
-            color: colors.backgroundBasic.color(),
-            padding: EdgeInsets.all(
-              LayoutGrid.doubleModule,
-            ),
-            child: CodeInputWidget(
-              text: '123',
-              itemCount: 4,
-            )),
+          color: colors.backgroundBasic.color(),
+          padding: EdgeInsets.all(
+            LayoutGrid.doubleModule,
+          ),
+          child: CodeInputWidget(
+            text: '123',
+            itemCount: 4,
+          ),
+        ),
       ),
     );
   }
