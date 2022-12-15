@@ -26,6 +26,7 @@ import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
+import '../screens/pin_code_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -53,7 +54,8 @@ enum TabNavigatorRoutes {
   currencyIcon('/currency/icon'),
   currencyFlags('/currency/flags'),
   currencyIconFlags('/currency/iconflags'),
-  tags('/tags');
+  tags('/tags'),
+  pinCode('/pinCode');
 
   const TabNavigatorRoutes(this.value);
 
@@ -169,6 +171,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
+      TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
+          const PinCodeScreen(),
     };
   }
 
