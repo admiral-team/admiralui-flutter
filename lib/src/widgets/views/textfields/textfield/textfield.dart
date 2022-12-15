@@ -101,7 +101,7 @@ class _TextFieldState extends State<TextFieldWidget>
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       const SizedBox(
-                        height: (LayoutGrid.module * 7) / LayoutGrid.halfModule,
+                        height: LayoutGrid.doubleModule,
                       ),
                       TextFormField(
                         controller: widget.controller,
