@@ -36,7 +36,7 @@ class TextfieldsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Number',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.number),
       ),
       ListCellModel(
         title: 'Feedback',
