@@ -55,6 +55,8 @@ export 'package:admiralui_flutter/src/widgets/views/currency/currency_cell_type.
 export 'package:admiralui_flutter/src/widgets/views/currency/currency_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/informers/big_informer.dart';
+export 'package:admiralui_flutter/src/widgets/views/informers/big_informer_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
