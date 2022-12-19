@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/number_screen.dart';
+import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
 import '../screens/buttons/buttons_primary_screen.dart';
@@ -18,16 +19,23 @@ import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/standart_textfield_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
 import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
+import '../screens/currency_icon_screen.dart';
+import '../screens/currency_default_screen.dart';
+import '../screens/currency_flags_screen.dart';
+import '../screens/currency_icon_flags_screen.dart';
+import '../screens/pin_code_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
+  standartTextfield('/textfields/standartTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
@@ -44,7 +52,13 @@ enum TabNavigatorRoutes {
   badges('/badges'),
   normalBadges('/normalBadges'),
   smallBadges('/smallBadges'),
+  currency('/currency'),
+  currencyDefault('/currency/default'),
+  currencyIcon('/currency/icon'),
+  currencyFlags('/currency/flags'),
+  currencyIconFlags('/currency/iconflags'),
   tags('/tags'),
+  pinCode('/pinCode'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -88,6 +102,11 @@ class TabNavigatorHome extends StatelessWidget {
               onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
+      TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
+          StandartTextFieldScreen(
+            title: 'Standart Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
             title: 'Badges',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -134,10 +153,37 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.currency.value: (BuildContext context) =>
+          CurrencyScreen(
+            title: 'Currency',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyDefault.value: (BuildContext context) =>
+          CurrencyDefaultScreen(
+            title: 'Default',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyIcon.value: (BuildContext context) =>
+          CurrencyIconScreen(
+            title: 'Icon',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyFlags.value: (BuildContext context) =>
+          CurrencyFlagsScreen(
+            title: 'Flags',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.currencyIconFlags.value: (BuildContext context) =>
+          CurrencyIconsFlagsScreen(
+            title: 'Icon & Flags',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.number.value: (BuildContext context) =>
           const NumberScreen(),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
+      TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
+          const PinCodeScreen(),
     };
   }
 

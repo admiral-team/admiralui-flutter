@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Currency',
         description: 'Таблица курсов валют',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.currency),
       ),
       ListCellModel(
         title: 'Chat',

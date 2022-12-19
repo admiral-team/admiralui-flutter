@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'list_cell_model.dart';
 import '../navigation/tab_navigator_home.dart';
 
-class TextfieldsScreen extends StatelessWidget {
-  const TextfieldsScreen({
+class CurrencyScreen extends StatelessWidget {
+  const CurrencyScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,34 +19,24 @@ class TextfieldsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Standart',
+        title: 'Default',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
+        onPressed: () => onPush.call(TabNavigatorRoutes.currencyDefault),
       ),
       ListCellModel(
-        title: 'Double',
+        title: 'Icon',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.currencyIcon),
       ),
       ListCellModel(
-        title: 'Slide',
+        title: 'Flags',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.currencyFlags),
       ),
       ListCellModel(
-        title: 'Number',
+        title: 'Icon & Flags',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.number),
-      ),
-      ListCellModel(
-        title: 'Feedback',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
-      ),
-      ListCellModel(
-        title: 'Pincode',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.pinCode),
+        onPressed: () => onPush.call(TabNavigatorRoutes.currencyIconFlags),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
