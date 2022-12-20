@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 // BigInformer - The component is in four status colors, does not have a Pop-up.
 // It consists of several elements that can be disabled in layers.
-// Adapts to the width of the device screen. The maximum height
-// of the component is 400 px.
+// Adapts to the width of the device screen.
 class BigInformerWidget extends StatelessWidget {
   const BigInformerWidget({
     super.key,
