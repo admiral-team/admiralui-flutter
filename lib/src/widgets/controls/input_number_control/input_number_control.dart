@@ -4,17 +4,18 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
-typedef InputNumberCallback = void Function(double rating);
+typedef InputNumberCallback = void Function(double value);
 
 class InputNumber extends StatefulWidget {
   /// Creates a SecondaryButton.
   const InputNumber({
     super.key,
-    required this.onInputNumber,
+    required this.onChangedValue,
     this.title = '',
     this.isEnable = true,
     this.minimumValue = 0,
     this.maximumValue = 100,
+    this.numberValue = 0,
     this.stepValue = 1,
     this.style = InputNumberButtonStyle.normal,
     this.scheme,
@@ -24,8 +25,9 @@ class InputNumber extends StatefulWidget {
   final bool isEnable;
   final double minimumValue;
   final double maximumValue;
+  final double numberValue;
   final double stepValue;
-  final InputNumberCallback onInputNumber;
+  final InputNumberCallback? onChangedValue;
   final InputNumberButtonStyle style;
   final InputNumberScheme? scheme;
 
@@ -44,6 +46,12 @@ class _InputNumberState extends State<InputNumber> {
   Timer? timer;
   late InputNumberScheme scheme;
   double _numberValue = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _numberValue = widget.numberValue;
+  }
 
   @override
   Widget build(BuildContext context) {

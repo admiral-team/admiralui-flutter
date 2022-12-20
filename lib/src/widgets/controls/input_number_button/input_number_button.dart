@@ -3,7 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 class InputNumberButton extends StatefulWidget {
-  /// Creates a PrimaryButton.
+  /// Creates a InputNumberButton.
   const InputNumberButton({
     super.key,
     this.onPressed,

@@ -49,7 +49,7 @@ class NumberScreen extends StatelessWidget {
             SizedBox(height: LayoutGrid.doubleModule),
             InputNumber(
                 title: 'Optional value',
-                onInputNumber: _ChangeInputControl,
+                onChangedValue: _ChangeInputControl,
                 style: InputNumberButtonStyle.normal),
             SizedBox(height: LayoutGrid.doubleModule),
             // Secondary
@@ -65,7 +65,7 @@ class NumberScreen extends StatelessWidget {
             SizedBox(height: LayoutGrid.doubleModule),
             InputNumber(
                 title: 'Optional value',
-                onInputNumber: _ChangeInputControl,
+                onChangedValue: _ChangeInputControl,
                 style: InputNumberButtonStyle.secondary),
           ],
         ),
