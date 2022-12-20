@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // It consists of several elements that can be disabled in layers.
 // Adapts to the width of the device screen. The maximum height
 // of the component is 400 px.
-class BigInformerWidget extends StatefulWidget {
+class BigInformerWidget extends StatelessWidget {
   const BigInformerWidget({
     super.key,
     this.title,
@@ -27,63 +27,59 @@ class BigInformerWidget extends StatefulWidget {
   final BigInformerScheme? scheme;
 
   @override
-  State<BigInformerWidget> createState() => _BigInformerWidgetState();
-}
-
-class _BigInformerWidgetState extends State<BigInformerWidget> {
-  late BigInformerScheme scheme;
-
-  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    scheme = widget.scheme ?? BigInformerScheme(theme: theme);
+    final BigInformerScheme informerScheme =
+        scheme ?? BigInformerScheme(theme: theme);
 
-    final Color backgroundColor = scheme.backgroundColor.unsafeParameter(
-      widget.isEnable,
-      widget.style,
+    final Color backgroundColor =
+        informerScheme.backgroundColor.unsafeParameter(
+      isEnable,
+      style,
     );
-    final Color textColor =
-        widget.isEnable ? scheme.enabledTextColor : scheme.disabledTextColor;
+    final Color textColor = isEnable
+        ? informerScheme.enabledTextColor
+        : informerScheme.disabledTextColor;
 
-    final List<Widget> childrens = <Widget>[];
-    if (widget.title != null) {
-      childrens.add(
+    final List<Widget> children = <Widget>[];
+    if (title != null) {
+      children.add(
         TextView(
-          widget.title ?? '',
-          font: scheme.titleFont,
+          title ?? '',
+          font: informerScheme.titleFont,
           textColorNormal: textColor,
         ),
       );
     }
-    if (widget.subtitle != null) {
-      if (widget.title != null) {
-        childrens.add(
+    if (subtitle != null) {
+      if (title != null) {
+        children.add(
           const SizedBox(
             height: LayoutGrid.module,
           ),
         );
       }
-      childrens.add(
+      children.add(
         TextView(
-          widget.subtitle ?? '',
-          font: scheme.subtitleFont,
+          subtitle ?? '',
+          font: informerScheme.subtitleFont,
           textColorNormal: textColor,
         ),
       );
     }
-    if (widget.linkText != null) {
-      if (widget.title != null || widget.subtitle != null) {
-        childrens.add(
+    if (linkText != null) {
+      if (title != null || subtitle != null) {
+        children.add(
           const SizedBox(
             height: LayoutGrid.doubleModule,
           ),
         );
       }
-      childrens.add(
+      children.add(
         LinkControl(
-          title: widget.linkText ?? '',
-          scheme: scheme.linkControlScheme,
-          isEnable: widget.isEnable,
+          title: linkText ?? '',
+          scheme: informerScheme.linkControlScheme,
+          isEnable: isEnable,
         ),
       );
     }
@@ -104,7 +100,7 @@ class _BigInformerWidgetState extends State<BigInformerWidget> {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: childrens,
+          children: children,
         ),
       ),
     );

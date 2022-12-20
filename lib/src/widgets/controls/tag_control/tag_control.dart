@@ -66,11 +66,11 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       widget.style,
     );
 
-    List<Widget> childrensWidgets;
-    childrensWidgets = <Widget>[];
+    List<Widget> childWidgets;
+    childWidgets = <Widget>[];
 
     if (widget.leadingImage != null) {
-      childrensWidgets.add(
+      childWidgets.add(
         Icon(
           widget.leadingImage,
           color: tintColor,
@@ -79,14 +79,14 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       );
     }
     if (widget.leadingText != null) {
-      if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
           const SizedBox(
             width: LayoutGrid.module,
           ),
         );
       }
-      childrensWidgets.add(
+      childWidgets.add(
         Text(
           widget.leadingText ?? '',
           style: TextStyle(
@@ -99,14 +99,14 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       );
     }
     if (widget.title != null) {
-      if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
           const SizedBox(
             width: LayoutGrid.module,
           ),
         );
       }
-      childrensWidgets.add(
+      childWidgets.add(
         Text(
           widget.title ?? '',
           style: TextStyle(
@@ -119,14 +119,14 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       );
     }
     if (widget.trailingImage != null) {
-      if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
           const SizedBox(
             width: LayoutGrid.module,
           ),
         );
       }
-      childrensWidgets.add(
+      childWidgets.add(
         Icon(
           widget.trailingImage,
           color: tintColor,
@@ -135,14 +135,14 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       );
     }
     if (widget.trailingText != null) {
-      if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
           const SizedBox(
             width: LayoutGrid.module,
           ),
         );
       }
-      childrensWidgets.add(
+      childWidgets.add(
         Text(
           widget.trailingText ?? '',
           style: TextStyle(
@@ -155,14 +155,14 @@ class _TagControlWidgetState extends State<TagControlWidget> {
       );
     }
     if (widget.trailingButtonImage != null) {
-      if (childrensWidgets.isNotEmpty) {
-        childrensWidgets.add(
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
           const SizedBox(
             width: LayoutGrid.module,
           ),
         );
       }
-      childrensWidgets.add(
+      childWidgets.add(
         InkWell(
           onTap: widget.onTrailingButtonPressed,
           child: Icon(
@@ -193,7 +193,7 @@ class _TagControlWidgetState extends State<TagControlWidget> {
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: childrensWidgets,
+            children: childWidgets,
           ),
         ),
       ),
