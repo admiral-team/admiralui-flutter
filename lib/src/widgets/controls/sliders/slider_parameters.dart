@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_positional_boolean_parameters
 class SliderParameters<T> {
   final Map<String, T> _parameters = <String, T>{};
-
   
   void set(T parameter, bool isEnabled) {
     _parameters[key(isEnabled)] = parameter;

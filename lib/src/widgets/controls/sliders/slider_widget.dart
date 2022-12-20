@@ -49,7 +49,6 @@ class _SliderWidgetState extends State<SliderWidget> {
         inactiveTrackColor:
             scheme.inActiveColor.unsafeParameter(widget.isEnabled),
         thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
-        // overlayColor: Colors.white,
         thumbShape: CircleThumbShape(
           fillColor: scheme.tintColor.unsafeParameter(widget.isEnabled),
           borderColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
@@ -64,8 +63,10 @@ class _SliderWidgetState extends State<SliderWidget> {
         thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         onChanged: (double value) {
           setState(() {
-            _currentSliderValue = value;
-            widget.onChanged?.call(value);
+            if (widget.isEnabled) {
+              _currentSliderValue = value;
+              widget.onChanged?.call(value);
+            }
           });
         },
       ),
