@@ -28,6 +28,9 @@ export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_bu
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_parameters.dart';
+export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_widget.dart';
+export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_control.dart';
 export 'package:admiralui_flutter/src/widgets/controls/tag_control/tag_style.dart';
 export 'package:admiralui_flutter/src/widgets/controls/textfields/feedback/feedback_input_control.dart';
@@ -61,6 +64,8 @@ export 'package:admiralui_flutter/src/widgets/views/currency/currency_cell_type.
 export 'package:admiralui_flutter/src/widgets/views/currency/currency_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/header/currency_header_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/informers/big_informer.dart';
+export 'package:admiralui_flutter/src/widgets/views/informers/big_informer_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';

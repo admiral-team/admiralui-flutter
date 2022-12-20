@@ -23,10 +23,10 @@ class SmallInformerWidget extends StatefulWidget {
   final SmallInformerScheme? scheme;
 
   @override
-  State<SmallInformerWidget> createState() => _BadgeWidgetState();
+  State<SmallInformerWidget> createState() => _SmallInformerState();
 }
 
-class _BadgeWidgetState extends State<SmallInformerWidget> {
+class _SmallInformerState extends State<SmallInformerWidget> {
   late SmallInformerScheme scheme;
 
   @override
