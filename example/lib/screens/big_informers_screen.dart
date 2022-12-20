@@ -18,6 +18,7 @@ class BigInformersScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: CupertinoButton(
           child: const Icon(Icons.arrow_back_ios),
@@ -34,21 +35,93 @@ class BigInformersScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: colors.backgroundBasic.color(),
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[],
-              ),
+        child: SizedBox.expand(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                TextView(
+                  'Default',
+                  font: fonts.body1,
+                  textColorNormal: colors.textSecondary.color(),
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                Container(
+                  child: BigInformerWidget(
+                    title: 'Headline',
+                    subtitle: 'At breakpoint boundaries, mini units divide the'
+                        'screen into a fixed master.',
+                    linkText: 'Link text',
+                    style: InformerStyle.normal,
+                  ),
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                TextView(
+                  'Success',
+                  font: fonts.body1,
+                  textColorNormal: colors.textSecondary.color(),
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                BigInformerWidget(
+                  title: 'Headline',
+                  subtitle: 'At breakpoint boundaries, mini units divide the'
+                      'screen into a fixed master.',
+                  linkText: 'Link text',
+                  style: InformerStyle.success,
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                TextView(
+                  'Attention',
+                  font: fonts.body1,
+                  textColorNormal: colors.textSecondary.color(),
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                BigInformerWidget(
+                  title: 'Headline',
+                  subtitle: 'At breakpoint boundaries, mini units divide the'
+                      'screen into a fixed master.',
+                  linkText: 'Link text',
+                  style: InformerStyle.attention,
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                TextView(
+                  'Error',
+                  font: fonts.body1,
+                  textColorNormal: colors.textSecondary.color(),
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                BigInformerWidget(
+                  title: 'Headline',
+                  subtitle: 'At breakpoint boundaries, mini units divide the'
+                      'screen into a fixed master.',
+                  linkText: 'Link text',
+                  style: InformerStyle.error,
+                ),
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
