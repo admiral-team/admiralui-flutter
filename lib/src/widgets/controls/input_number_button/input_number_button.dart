@@ -72,7 +72,7 @@ class _InputNumberButtonState extends State<InputNumberButton> {
           LayoutGrid.module,
         ),
         border: Border.all(
-          width: 2,
+          width: LayoutGrid.halfModule / 2,
           color: background,
         ),
       );

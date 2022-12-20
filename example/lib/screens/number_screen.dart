@@ -36,6 +36,7 @@ class NumberScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            // Default
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -46,12 +47,12 @@ class NumberScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            InputNuber(
+            InputNumber(
                 title: 'Optional value',
                 onInputNumber: _ChangeInputControl,
                 style: InputNumberButtonStyle.normal),
             SizedBox(height: LayoutGrid.doubleModule),
-            // Additional
+            // Secondary
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -62,7 +63,7 @@ class NumberScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            InputNuber(
+            InputNumber(
                 title: 'Optional value',
                 onInputNumber: _ChangeInputControl,
                 style: InputNumberButtonStyle.secondary),

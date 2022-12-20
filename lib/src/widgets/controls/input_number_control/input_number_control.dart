@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 typedef InputNumberCallback = void Function(double rating);
 
-class InputNuber extends StatefulWidget {
+class InputNumber extends StatefulWidget {
   /// Creates a SecondaryButton.
-  const InputNuber({
+  const InputNumber({
     super.key,
     required this.onInputNumber,
     this.title = '',
@@ -30,10 +30,17 @@ class InputNuber extends StatefulWidget {
   final InputNumberScheme? scheme;
 
   @override
-  State<InputNuber> createState() => _InputNuberState();
+  State<InputNumber> createState() => _InputNumberState();
 }
 
-class _InputNuberState extends State<InputNuber> {
+class _InputNumberState extends State<InputNumber> {
+  double countTick = 0.25;
+  double firstStepMultiplier = 5;
+  double secondStepMultiplier = 10;
+  double thirdStepMultiplier = 100;
+
+  double runCount = 0;
+  double inputStepValue = 1;
   Timer? timer;
   late InputNumberScheme scheme;
   double _numberValue = 0;
@@ -89,39 +96,56 @@ class _InputNuberState extends State<InputNuber> {
     );
   }
 
+  void setStepValue() {
+    runCount += countTick;
+    if (runCount < countTick * 5) {
+      inputStepValue = widget.stepValue;
+    } else if (runCount >= countTick * 5 && runCount < countTick * 12) {
+      inputStepValue = widget.stepValue * firstStepMultiplier;
+    } else if (runCount >= countTick * 12 && runCount < countTick * 20) {
+      inputStepValue = widget.stepValue + secondStepMultiplier;
+    } else {
+      inputStepValue = widget.stepValue * thirdStepMultiplier;
+    }
+  }
+
   void minusButton() {
     setState(() {
-      if (_numberValue - 1 < widget.minimumValue) {
+      if (_numberValue - inputStepValue < widget.minimumValue) {
         _numberValue = widget.minimumValue;
       } else {
-        _numberValue -= 1;
+        _numberValue -= inputStepValue;
       }
     });
   }
 
   void plusButton() {
     setState(() {
-      if (_numberValue + 1 > widget.maximumValue) {
+      if (_numberValue + inputStepValue > widget.maximumValue) {
         _numberValue = widget.maximumValue;
       } else {
-        _numberValue += 1;
+        _numberValue += inputStepValue;
       }
     });
   }
 
   void longPressPlusButton() {
     timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
+      setStepValue();
       plusButton();
     });
   }
 
   void longPressMinusButton() {
     timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
+      setStepValue();
       minusButton();
     });
   }
 
   void longPressButtonCancel() {
     timer?.cancel();
+    runCount = 0;
+    inputStepValue = widget.stepValue;
   }
 }
