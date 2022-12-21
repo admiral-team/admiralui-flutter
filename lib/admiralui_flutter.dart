@@ -22,6 +22,8 @@ export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_bu
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/sliders/double_slider_widget.dart';
+export 'package:admiralui_flutter/src/widgets/controls/sliders/range_slider_thumb_shape.dart';
 export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_parameters.dart';
 export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_widget.dart';
 export 'package:admiralui_flutter/src/widgets/controls/sliders/slider_widget_scheme.dart';

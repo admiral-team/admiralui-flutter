@@ -1,18 +1,17 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/controls/sliders/circle_thumb_shape.dart';
 import 'package:flutter/material.dart';
 
-/// A control for selecting a single value from a continuous range of values.
-class SliderWidget extends StatefulWidget {
-  /// Creates a SliderWidget.
-  const SliderWidget({
+/// A control for selecting a double value from a continuous range of values.
+class DoubleSliderWidget extends StatefulWidget {
+  /// Creates a DoubleSliderWidget.
+  const DoubleSliderWidget({
     super.key,
     this.isEnabled = true,
     this.min = 0,
     this.max = 100,
     this.divisions = 100,
-    this.currentSliderValue = 0,
+    this.currentRangeValues,
     this.onChanged,
     this.scheme,
   });
@@ -21,22 +20,23 @@ class SliderWidget extends StatefulWidget {
   final double min;
   final double max;
   final int divisions;
-  final double currentSliderValue;
-  final ValueChanged<double>? onChanged;
+  final RangeValues? currentRangeValues;
+  final ValueChanged<RangeValues>? onChanged;
   final SliderScheme? scheme;
 
   @override
-  State<SliderWidget> createState() => _SliderWidgetState();
+  State<DoubleSliderWidget> createState() => _DoubleSliderWidgetState();
 }
 
-class _SliderWidgetState extends State<SliderWidget> {
-  double _currentSliderValue = 0;
+class _DoubleSliderWidgetState extends State<DoubleSliderWidget> {
+  RangeValues _currentRangeValues = const RangeValues(0, 100);
   late SliderScheme scheme;
 
   @override
   void initState() {
     super.initState();
-    _currentSliderValue = widget.currentSliderValue;
+    _currentRangeValues = widget.currentRangeValues 
+    ?? RangeValues(widget.min, widget.max);
   }
 
   @override
@@ -45,29 +45,29 @@ class _SliderWidgetState extends State<SliderWidget> {
     scheme = widget.scheme ?? SliderScheme(theme: theme);
 
     return SliderTheme(
-      data: SliderTheme.of(context).copyWith(
+      data: SliderThemeData(
         trackHeight: LayoutGrid.halfModule / 2,
-        activeTrackColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-        inactiveTrackColor:
-            scheme.inActiveColor.unsafeParameter(widget.isEnabled),
-        thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
-        thumbShape: CircleThumbShape(
+        rangeThumbShape: CustomThumbShape(
           fillColor: scheme.tintColor.unsafeParameter(widget.isEnabled),
           borderColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         ),
+        activeTrackColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
+        inactiveTrackColor: scheme.inActiveColor.unsafeParameter(
+          widget.isEnabled,
+        ),
+        thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
       ),
-      child: Slider(
-        value: _currentSliderValue,
+      child: RangeSlider(
         min: widget.min,
         max: widget.max,
+        values: _currentRangeValues,   
         divisions: widget.divisions,
         activeColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
         inactiveColor: scheme.inActiveColor.unsafeParameter(widget.isEnabled),
-        thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
-        onChanged: (double value) {
+        onChanged: (RangeValues value) {
           setState(() {
             if (widget.isEnabled) {
-              _currentSliderValue = value;
+              _currentRangeValues = value;
               widget.onChanged?.call(value);
             }
           });
