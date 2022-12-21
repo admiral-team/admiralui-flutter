@@ -18,6 +18,7 @@ import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
 import '../screens/textfields_screen.dart';
+import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/standart_textfield_screen.dart';
 import '../screens/tabs_screen.dart';
 import '../screens/undeline_tabs.dart';
@@ -35,6 +36,7 @@ enum TabNavigatorRoutes {
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   standartTextfield('/textfields/standartTextfield'),
+  otpTextField('/textfields/otpTextTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
@@ -103,6 +105,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
           StandartTextFieldScreen(
             title: 'Standart Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
+          SMSCodeTextFieldScreen(
+            title: 'SMS Code',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(

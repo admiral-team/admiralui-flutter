@@ -29,7 +29,7 @@ class TextfieldsScreen extends StatelessWidget {
         onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
       ),
       ListCellModel(
-        title: 'Slide',
+        title: 'Slider',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
       ),
@@ -37,6 +37,11 @@ class TextfieldsScreen extends StatelessWidget {
         title: 'Number',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+      ),
+      ListCellModel(
+        title: 'SMS Code',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.otpTextField),
       ),
       ListCellModel(
         title: 'Feedback',
