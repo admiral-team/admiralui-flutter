@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
@@ -57,7 +58,8 @@ enum TabNavigatorRoutes {
   currencyFlags('/currency/flags'),
   currencyIconFlags('/currency/iconflags'),
   tags('/tags'),
-  pinCode('/pinCode');
+  pinCode('/pinCode'),
+  number('/number');
 
   const TabNavigatorRoutes(this.value);
 
@@ -176,6 +178,8 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon & Flags',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.number.value: (BuildContext context) =>
+          const NumberScreen(),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
