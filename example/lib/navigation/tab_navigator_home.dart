@@ -1,6 +1,3 @@
-import 'package:example/screens/cells/base_cell_screen.dart';
-import 'package:example/screens/cells/cells_screen.dart';
-import 'package:example/screens/cells/center_cell_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/number_screen.dart';
@@ -32,6 +29,9 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
+import '../screens/cells/base_cell_screen.dart';
+import '../screens/cells/cells_screen.dart';
+import '../screens/cells/center_cell_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
