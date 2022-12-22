@@ -67,22 +67,8 @@ class BadgesScreen extends StatelessWidget {
                 index == items.length ? null : items[index];
             if (item is ListCellModel) {
               return BaseCellWidget(
-                centerCell: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      item.title,
-                      style: fonts.body1.toTextStyle(
-                        colors.textPrimary.color(),
-                      ),
-                    ),
-                  ],
-                ),
-                trailingCell: Icon(
-                  AdmiralIcons.admiral_ic_chevron_right_outline,
-                  color: colors.elementSecondary.color(),
-                ),
+                centerCell: TitleListWidget(title: item.title,),
+                trailingCell: ArrowListWidget(),
                 onPressed: item.onPressed,
               );
             }

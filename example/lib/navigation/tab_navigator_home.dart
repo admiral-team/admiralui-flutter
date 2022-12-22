@@ -1,3 +1,6 @@
+import 'package:example/screens/cells/base_cell_screen.dart';
+import 'package:example/screens/cells/cells_screen.dart';
+import 'package:example/screens/cells/center_cell_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/number_screen.dart';
@@ -59,6 +62,9 @@ enum TabNavigatorRoutes {
   currencyIconFlags('/currency/iconflags'),
   tags('/tags'),
   pinCode('/pinCode'),
+  cells('/cells'),
+  baseCells('/baseCells'),
+  centerCells('/centerCells'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -184,6 +190,15 @@ class TabNavigatorHome extends StatelessWidget {
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
           const PinCodeScreen(),
+      TabNavigatorRoutes.cells.value: (BuildContext context) => CellsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.baseCells.value: (BuildContext context) =>
+          BaseCellsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.centerCells.value: (BuildContext context) =>
+          const CenterCellsScreen(),
     };
   }
 
