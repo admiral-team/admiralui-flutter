@@ -1,8 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class TitleSubtitleListWidgetScheme {
-  TitleSubtitleListWidgetScheme({
+class TitleSubtitleCellWidgetScheme {
+  TitleSubtitleCellWidgetScheme({
     required this.theme,
   }) {
     titleColor = theme.colors.textPrimary.color();
