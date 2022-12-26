@@ -30,6 +30,9 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
+import '../screens/cells/base_cell_screen.dart';
+import '../screens/cells/cells_screen.dart';
+import '../screens/cells/center_cell_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -61,6 +64,9 @@ enum TabNavigatorRoutes {
   currencyIconFlags('/currency/iconflags'),
   tags('/tags'),
   pinCode('/pinCode'),
+  cells('/cells'),
+  baseCells('/baseCells'),
+  centerCells('/centerCells'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -191,6 +197,15 @@ class TabNavigatorHome extends StatelessWidget {
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
           const PinCodeScreen(),
+      TabNavigatorRoutes.cells.value: (BuildContext context) => CellsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.baseCells.value: (BuildContext context) =>
+          BaseCellsScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.centerCells.value: (BuildContext context) =>
+          const CenterCellsScreen(),
     };
   }
 
