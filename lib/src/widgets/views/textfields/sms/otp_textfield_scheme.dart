@@ -1,15 +1,15 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class TextFieldScheme {
-  TextFieldScheme({
+class OTPTextFieldScheme {
+  OTPTextFieldScheme({
     required this.theme,
   }) {
     placeholderColor = theme.colors.textSecondary.colorWithOpacity();
 
-    textFieldFont = theme.fonts.body1;
+    textFieldFont = theme.fonts.title2;
     informerFont = theme.fonts.subhead3;
-    placeholderFont = theme.fonts.body1;
+    placeholderFont = theme.fonts.title2;
 
     textColor.set(
       theme.colors.textPrimary.color(),
