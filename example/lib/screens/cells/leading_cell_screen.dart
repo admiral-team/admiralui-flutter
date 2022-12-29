@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CenterCellsScreen extends StatefulWidget {
-  const CenterCellsScreen({
+class LeadingCellsScreen extends StatefulWidget {
+  const LeadingCellsScreen({
     super.key,
     this.appBarHidden = false,
   });
@@ -12,10 +12,10 @@ class CenterCellsScreen extends StatefulWidget {
   final bool appBarHidden;
 
   @override
-  State<CenterCellsScreen> createState() => _CenterCellsScreenState();
+  State<LeadingCellsScreen> createState() => _LeadingCellsScreenState();
 }
 
-class _CenterCellsScreenState extends State<CenterCellsScreen> {
+class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
   bool isEnabled = true;
 
   @override
@@ -59,24 +59,55 @@ class _CenterCellsScreenState extends State<CenterCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
+                leadingCell: Image.asset('assets/Card.png'),
                 centerCell: TitleListWidget(
-                  title: 'Title', 
-                  isEnabled: isEnabled),
+                  title: 'Card Place', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: SubtitleTitleListWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
-                  isEnabled: isEnabled),
+                leadingCell: Image.asset('assets/Logo.png'),
+                centerCell: TitleListWidget(
+                  title: 'Lable Place', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: TitleSubtitleListWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
+                leadingCell: ImageNameCellWidget(
+                  text: 'IN', 
                   isEnabled: isEnabled),
+                centerCell: TitleListWidget(
+                  title: 'Icon Name',
+                   isEnabled: isEnabled,),
                 trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
+              ),
+              BaseCellWidget(
+                leadingCell: ImageBackgroundCellWidget(
+                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
+                  isEnabled: isEnabled,
+                ),
+                centerCell: TitleListWidget(
+                  title: 'Icon Place vs Background', 
+                  isEnabled: isEnabled,
+                ),
+                trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
+              ),
+              BaseCellWidget(
+                leadingCell: ImageCellWidget(
+                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
+                  isEnabled: isEnabled),
+                centerCell: TitleListWidget(
+                  title: 'Icon Place', 
+                  isEnabled: isEnabled,
+                ),
+                trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
             ],
           ),

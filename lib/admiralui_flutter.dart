@@ -64,6 +64,12 @@ export 'package:admiralui_flutter/src/widgets/views/cell/center/title_list_widge
 export 'package:admiralui_flutter/src/widgets/views/cell/center/title_list_widget/title_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/center/title_subtitle_list_widget/title_subtitle_list_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/center/title_subtitle_list_widget/title_subtitle_list_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_background_cell_widget/image_background_cell_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_background_cell_widget/image_background_cell_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_cell_widget/image_cell_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_cell_widget/image_cell_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_name_cell_widget/image_name_cell_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/leading/image_name_cell_widget/image_name_cell_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/arrow_list_widget/arrow_list_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/arrow_list_widget/arrow_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/cells/currency_leading_view.dart';
