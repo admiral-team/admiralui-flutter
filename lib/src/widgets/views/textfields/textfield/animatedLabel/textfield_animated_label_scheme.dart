@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_control_parameter.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldAnimatedLabelScheme {
