@@ -16,7 +16,7 @@ class DoubleTextFieldAlignment {
   final int? ratio;
 }
 
-/// DoubleTextField - An object that two textfields
+/// DoubleTextField - An object that contains two textfields
 /// that located at the left and right edge.
 class DoubleTextField extends StatefulWidget {
   const DoubleTextField(

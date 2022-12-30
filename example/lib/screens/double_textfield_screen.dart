@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../navigation/tab_navigator_home.dart';
 
-class DobuleTextFieldScreen extends StatefulWidget {
-  const DobuleTextFieldScreen({
+class DoubleTextFieldScreen extends StatefulWidget {
+  const DoubleTextFieldScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -15,14 +15,14 @@ class DobuleTextFieldScreen extends StatefulWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
-  State<DobuleTextFieldScreen> createState() => _DobuleTextFieldScreenState();
+  State<DoubleTextFieldScreen> createState() => _DoubleTextFieldScreenState();
 }
 
-class _DobuleTextFieldScreenState extends State<DobuleTextFieldScreen> {
-  FocusNode leftTextFieldfocusNode = FocusNode();
-  FocusNode rightTextFieldfocusNode = FocusNode();
-  TextInputState leftTextFieldstate = TextInputState.normal;
-  TextInputState rightTextFieldstate = TextInputState.normal;
+class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
+  FocusNode leftTextFieldFocusNode = FocusNode();
+  FocusNode rightTextFieldFocusNode = FocusNode();
+  TextInputState leftTextFieldState = TextInputState.normal;
+  TextInputState rightTextFieldState = TextInputState.normal;
   TextEditingController leftTextController = TextEditingController();
   TextEditingController rightTextController = TextEditingController();
 
@@ -69,20 +69,20 @@ class _DobuleTextFieldScreenState extends State<DobuleTextFieldScreen> {
                   setState(() {
                     switch (value) {
                       case 'Default':
-                        leftTextFieldstate = TextInputState.normal;
-                        rightTextFieldstate = TextInputState.normal;
+                        leftTextFieldState = TextInputState.normal;
+                        rightTextFieldState = TextInputState.normal;
                         break;
                       case 'Read Only':
-                        leftTextFieldstate = TextInputState.readOnly;
-                        rightTextFieldstate = TextInputState.readOnly;
+                        leftTextFieldState = TextInputState.readOnly;
+                        rightTextFieldState = TextInputState.readOnly;
                         break;
                       case 'Error':
-                        leftTextFieldstate = TextInputState.error;
-                        rightTextFieldstate = TextInputState.error;
+                        leftTextFieldState = TextInputState.error;
+                        rightTextFieldState = TextInputState.error;
                         break;
                       case 'Disabled':
-                        leftTextFieldstate = TextInputState.disabled;
-                        rightTextFieldstate = TextInputState.disabled;
+                        leftTextFieldState = TextInputState.disabled;
+                        rightTextFieldState = TextInputState.disabled;
                         break;
                     }
                   });
@@ -94,16 +94,16 @@ class _DobuleTextFieldScreenState extends State<DobuleTextFieldScreen> {
               DoubleTextField(
                 TextFieldWidget(
                   leftTextController,
-                  state: leftTextFieldstate,
-                  focusNode: leftTextFieldfocusNode,
+                  state: leftTextFieldState,
+                  focusNode: leftTextFieldFocusNode,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
                   rightTextController,
-                  state: rightTextFieldstate,
-                  focusNode: rightTextFieldfocusNode,
+                  state: rightTextFieldState,
+                  focusNode: rightTextFieldFocusNode,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',

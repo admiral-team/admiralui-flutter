@@ -110,7 +110,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.doubleTextField.value: (BuildContext context) =>
-          DobuleTextFieldScreen(
+          DoubleTextFieldScreen(
             title: 'Dobule Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
