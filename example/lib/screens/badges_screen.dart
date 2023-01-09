@@ -67,8 +67,8 @@ class BadgesScreen extends StatelessWidget {
                 index == items.length ? null : items[index];
             if (item is ListCellModel) {
               return BaseCellWidget(
-                centerCell: TitleListWidget(title: item.title,),
-                trailingCell: ArrowListWidget(),
+                centerCell: TitleCellWidget(title: item.title,),
+                trailingCell: ArrowCellWidget(),
                 onPressed: item.onPressed,
               );
             }

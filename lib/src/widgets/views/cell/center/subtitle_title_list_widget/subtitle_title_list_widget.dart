@@ -2,8 +2,8 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
-class SubtitleTitleListWidget extends StatelessWidget {
-  const SubtitleTitleListWidget({
+class SubtitleTitleCellWidget extends StatelessWidget {
+  const SubtitleTitleCellWidget({
     super.key,
     this.title,
     this.subtitle,
@@ -14,13 +14,13 @@ class SubtitleTitleListWidget extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final bool isEnabled;
-  final TitleSubtitleListWidgetScheme? scheme;
+  final TitleSubtitleCellWidgetScheme? scheme;
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    final TitleSubtitleListWidgetScheme listScheme =
-        scheme ?? TitleSubtitleListWidgetScheme(theme: theme);
+    final TitleSubtitleCellWidgetScheme listScheme =
+        scheme ?? TitleSubtitleCellWidgetScheme(theme: theme);
     final Color titleColor =
         isEnabled ? listScheme.titleColor : listScheme.disabledTitleColor;
     final Color subtitleColor =

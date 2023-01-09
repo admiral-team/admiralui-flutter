@@ -49,22 +49,22 @@ class BaseCellsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleListWidget(title: 'Leading elements'),
-            trailingCell: const ArrowListWidget(),
+            centerCell: TitleCellWidget(title: 'Leading elements'),
+            trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
               TabNavigatorRoutes.leadingCell,
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleListWidget(title: 'Center elements'),
-            trailingCell: const ArrowListWidget(),
+            centerCell: TitleCellWidget(title: 'Center elements'),
+            trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
               TabNavigatorRoutes.centerCells,
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleListWidget(title: 'Trailing elements'),
-            trailingCell: const ArrowListWidget(),
+            centerCell: TitleCellWidget(title: 'Trailing elements'),
+            trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
               TabNavigatorRoutes.centerCells,
             ),

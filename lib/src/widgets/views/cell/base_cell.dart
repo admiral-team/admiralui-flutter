@@ -72,6 +72,9 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           constraints: const BoxConstraints(
             minHeight: LayoutGrid.module * 9,
           ),
+          padding: const EdgeInsets.symmetric(
+            vertical: LayoutGrid.halfModule * 3,
+          ),
           width: double.infinity,
           child: Row(
             children: <Widget>[
