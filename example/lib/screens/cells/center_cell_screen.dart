@@ -59,24 +59,52 @@ class _CenterCellsScreenState extends State<CenterCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
-                leadingCell: TitleListWidget(
+                leadingCell: TitleCellWidget(
                   title: 'Title', 
                   isEnabled: isEnabled),
-                trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                trailingCell: ArrowCellWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: SubtitleTitleListWidget(
+                leadingCell: SubtitleTitleCellWidget(
                     title: 'Title', 
                     subtitle: 'Subtitle', 
                   isEnabled: isEnabled),
-                trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                trailingCell: ArrowCellWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: TitleSubtitleListWidget(
+                leadingCell: TitleSubtitleCellWidget(
                     title: 'Title', 
                     subtitle: 'Subtitle', 
                   isEnabled: isEnabled),
-                trailingCell: ArrowListWidget(isEnabled: isEnabled),
+                trailingCell: ArrowCellWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
+              ),
+              BaseCellWidget(
+                leadingCell: TitleMoreDetailTextMessageWidget(
+                  title: 'Title',
+                  more: 'More',
+                  detaile: 'Detail',
+                  detaileMore: 'More',
+                  subtitle: 'Subtitle',
+                  tagText: 'Percent',
+                  messageText: 'Text message',
+                  infoImage: AdmiralIcons.admiral_ic_info_outline,
+                  isEnabled: isEnabled),
+                trailingCell: ArrowCellWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
+              ),
+              BaseCellWidget(
+                leadingCell: TitleSubtitleButtonWidget(
+                  title: 'Title',
+                  subtitle: 'Subtitle',
+                  tagText: 'Percent',
+                  subtitleTwo: 'Subtitle 2',
+                  buttonTitle: 'Button',
+                  isEnabled: isEnabled),
+                trailingCell: ArrowCellWidget(isEnabled: isEnabled),
+                horizontalPadding: 0,
               ),
             ],
           ),

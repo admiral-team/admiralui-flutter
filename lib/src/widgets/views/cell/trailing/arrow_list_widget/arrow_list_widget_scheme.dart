@@ -1,8 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class ArrowListWidgetScheme {
-  ArrowListWidgetScheme({
+class ArrowCellWidgetScheme {
+  ArrowCellWidgetScheme({
     required this.theme,
   }) {
     tintColor = theme.colors.elementSecondary.color();
