@@ -39,7 +39,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
