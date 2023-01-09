@@ -33,6 +33,7 @@ import '../screens/pin_code_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
+import '../screens/cells/leading_cell_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -67,6 +68,7 @@ enum TabNavigatorRoutes {
   cells('/cells'),
   baseCells('/baseCells'),
   centerCells('/centerCells'),
+  leadingCell('/leadingCell'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -206,6 +208,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.centerCells.value: (BuildContext context) =>
           const CenterCellsScreen(),
+      TabNavigatorRoutes.leadingCell.value: (BuildContext context) =>
+          const LeadingCellsScreen(),
     };
   }
 
