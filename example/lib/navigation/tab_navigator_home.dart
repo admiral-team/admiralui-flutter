@@ -35,6 +35,10 @@ import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 
+import '../screens/textfields/input_number/input_number_default_screen.dart';
+import '../screens/textfields/input_number/input_number_secondary_screen.dart';
+import '../screens/textfields/input_number/input_number_textfield_screen.dart';
+
 enum TabNavigatorRoutes {
   home('/'),
   checkbox('/checkbox'),
@@ -42,6 +46,9 @@ enum TabNavigatorRoutes {
   feedback('/textfields/feedback'),
   standartTextfield('/textfields/standartTextfield'),
   otpTextField('/textfields/otpTextTextfield'),
+  inputNumberDefault('/textfields/inputNumber/inputNumberDefault'),
+  inputNumberSecondary('/textfields/inputNumber/inputNumberSecondary'),
+  inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
@@ -122,6 +129,21 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'SMS Code',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.inputNumberDefault.value: (BuildContext context) =>
+          InputNumberDefaultScreen(
+            title: 'Default',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberSecondary.value: (BuildContext context) =>
+          InputNumberSecondaryScreen(
+            title: 'Secondary',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberTextfield.value: (BuildContext context) =>
+          InputNumberTextFieldScreen(
+            title: 'Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
             title: 'Badges',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -193,8 +215,10 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon & Flags',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.number.value: (BuildContext context) =>
-          const NumberScreen(),
+      TabNavigatorRoutes.number.value: (BuildContext context) => NumberScreen(
+            title: 'Number',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>

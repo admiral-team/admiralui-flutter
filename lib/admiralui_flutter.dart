@@ -89,6 +89,10 @@ export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/sms/otp_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/sms/otp_textfield_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/animatedLabel/textfield_animated_label.dart';
