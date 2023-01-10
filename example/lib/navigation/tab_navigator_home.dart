@@ -34,6 +34,7 @@ import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
+import '../screens/cells/trailing_cell_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -69,6 +70,7 @@ enum TabNavigatorRoutes {
   baseCells('/baseCells'),
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
+  trailingCells('/trailingCells'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -210,6 +212,8 @@ class TabNavigatorHome extends StatelessWidget {
           const CenterCellsScreen(),
       TabNavigatorRoutes.leadingCell.value: (BuildContext context) =>
           const LeadingCellsScreen(),
+      TabNavigatorRoutes.trailingCells.value: (BuildContext context) =>
+          const TrailingCellsScreen(),
     };
   }
 
