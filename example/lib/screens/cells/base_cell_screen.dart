@@ -66,7 +66,7 @@ class BaseCellsScreen extends StatelessWidget {
             centerCell: TitleCellWidget(title: 'Trailing elements'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.centerCells,
+              TabNavigatorRoutes.trailingCells,
             ),
           ),
         ],

@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 class CheckBoxTitle extends StatefulWidget {
   const CheckBoxTitle({
     required this.title,
-    required this.scheme,
-    required this.style,
-    this.onChanged,
+    this.style = CheckboxStyle.normal,
     this.isChecked,
     this.verticalPadding,
     this.isEnabled = true,
+    this.scheme,
+    this.onChanged,
   });
 
   final String title;
-  final CheckboxScheme scheme;
+  final CheckboxScheme? scheme;
   final CheckboxStyle style;
   final void Function(MapEntry<String, bool>)? onChanged;
   final bool? isChecked;
@@ -31,6 +31,7 @@ class CheckBoxTitle extends StatefulWidget {
 class _CheckBoxState extends State<CheckBoxTitle> {
   bool _isChecked = false;
   double _verticalPadding = LayoutGrid.halfModule;
+  late CheckboxScheme scheme;
 
   @override
   void initState() {
@@ -41,6 +42,9 @@ class _CheckBoxState extends State<CheckBoxTitle> {
 
   @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    scheme = widget.scheme ?? CheckboxScheme(theme: theme);
+
     return InkWell(
       splashColor: widget.isEnabled ? null : Colors.transparent,
       highlightColor: Colors.transparent,
@@ -57,7 +61,7 @@ class _CheckBoxState extends State<CheckBoxTitle> {
               width: LayoutGrid.tripleModule,
               height: LayoutGrid.tripleModule,
               child: CustomCheckBox(
-                fillColor: widget.scheme.checkboxColor.unsafeParameter(
+                fillColor: scheme.checkboxColor.unsafeParameter(
                   widget.isEnabled
                       ? ControlState.normal
                       : ControlState.disabled,
@@ -71,19 +75,15 @@ class _CheckBoxState extends State<CheckBoxTitle> {
                 right: LayoutGrid.module,
               ),
             ),
-            Expanded(
-              child: TextView(
-                widget.title,
-                font: widget.scheme.textFont,
-                textColorNormal: widget.scheme.textColor.unsafeParameter(
-                  widget.isEnabled
-                      ? ControlState.normal
-                      : ControlState.disabled,
-                  widget.style,
-                ),
-                textAlign: TextAlign.start,
+            TextView(
+              widget.title,
+              font: scheme.textFont,
+              textColorNormal: scheme.textColor.unsafeParameter(
+                widget.isEnabled ? ControlState.normal : ControlState.disabled,
+                widget.style,
               ),
-            )
+              textAlign: TextAlign.start,
+            ),
           ],
         ),
       ),

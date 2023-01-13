@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/radio_button/radio_button.dart';
 import 'package:flutter/material.dart';
 
 ///A Material Design radio button.
