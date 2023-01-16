@@ -95,14 +95,14 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
             for (int i = 0; i < widget.items.length; i++) ...<Widget>[
               const Spacer(),
               GestureDetector(
-                onTap: () => {
+                onTap: () {
                   setState(() {
                     _selectedIndex = i;
                     if (widget.onTap != null) {
                       // ignore: prefer_null_aware_method_calls
                       widget.onTap!(i);
                     }
-                  })
+                  });
                 },
                 child: Column(
                   children: <Widget>[
