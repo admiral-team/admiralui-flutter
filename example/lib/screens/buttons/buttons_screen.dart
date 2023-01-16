@@ -49,7 +49,7 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            leadingCell: TextView('PrimaryButtons'),
+            centerCell: TextView('PrimaryButtons'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),
@@ -59,7 +59,7 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            leadingCell: TextView('Secondary buttons'),
+            centerCell: TextView('Secondary buttons'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),
@@ -69,7 +69,7 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            leadingCell: TextView('Ghost buttons'),
+            centerCell: TextView('Ghost buttons'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),
@@ -79,14 +79,14 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            leadingCell: TextView('Rules'),
+            centerCell: TextView('Rules'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),
             ),
           ),
           BaseCellWidget(
-            leadingCell: TextView('Other buttons'),
+            centerCell: TextView('Other buttons'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),

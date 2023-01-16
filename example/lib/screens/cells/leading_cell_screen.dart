@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CenterCellsScreen extends StatefulWidget {
-  const CenterCellsScreen({
+class LeadingCellsScreen extends StatefulWidget {
+  const LeadingCellsScreen({
     super.key,
     this.appBarHidden = false,
   });
@@ -12,10 +12,10 @@ class CenterCellsScreen extends StatefulWidget {
   final bool appBarHidden;
 
   @override
-  State<CenterCellsScreen> createState() => _CenterCellsScreenState();
+  State<LeadingCellsScreen> createState() => _LeadingCellsScreenState();
 }
 
-class _CenterCellsScreenState extends State<CenterCellsScreen> {
+class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
   bool isEnabled = true;
 
   @override
@@ -59,50 +59,53 @@ class _CenterCellsScreenState extends State<CenterCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
+                leadingCell: Image.asset('assets/Card.png'),
                 centerCell: TitleCellWidget(
-                  title: 'Title', 
-                  isEnabled: isEnabled),
+                  title: 'Card Place', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: SubtitleTitleCellWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
-                  isEnabled: isEnabled),
+                leadingCell: Image.asset('assets/Logo.png'),
+                centerCell: TitleCellWidget(
+                  title: 'Lable Place', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: TitleSubtitleCellWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
+                leadingCell: ImageNameCellWidget(
+                  text: 'IN', 
                   isEnabled: isEnabled),
+                centerCell: TitleCellWidget(
+                  title: 'Icon Name',
+                   isEnabled: isEnabled,),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: TitleMoreDetailTextMessageWidget(
-                  title: 'Title',
-                  more: 'More',
-                  detaile: 'Detail',
-                  detaileMore: 'More',
-                  subtitle: 'Subtitle',
-                  tagText: 'Percent',
-                  messageText: 'Text message',
-                  infoImage: AdmiralIcons.admiral_ic_info_outline,
-                  isEnabled: isEnabled),
+                leadingCell: ImageBackgroundCellWidget(
+                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
+                  isEnabled: isEnabled,
+                ),
+                centerCell: TitleCellWidget(
+                  title: 'Icon Place vs Background', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                centerCell: TitleSubtitleButtonWidget(
-                  title: 'Title',
-                  subtitle: 'Subtitle',
-                  tagText: 'Percent',
-                  subtitleTwo: 'Subtitle 2',
-                  buttonTitle: 'Button',
+                leadingCell: ImageCellWidget(
+                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
                   isEnabled: isEnabled),
+                centerCell: TitleCellWidget(
+                  title: 'Icon Place', 
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),

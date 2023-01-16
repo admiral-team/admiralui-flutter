@@ -47,7 +47,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),

@@ -72,16 +72,22 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
           constraints: const BoxConstraints(
             minHeight: LayoutGrid.module * 9,
           ),
+          padding: const EdgeInsets.symmetric(
+            vertical: LayoutGrid.halfModule * 3,
+          ),
           width: double.infinity,
           child: Row(
             children: <Widget>[
               SizedBox(
                 width: widget.horizontalPadding,
               ),
-              widget.leadingCell ?? Container(),
-              if (widget.leadingCell == null)
-                Container()
-              else
+              if (widget.leadingCell != null)
+                SizedBox(
+                  width: LayoutGrid.halfModule * 11,
+                  height: LayoutGrid.halfModule * 11,
+                  child: widget.leadingCell ?? Container(),
+                ),
+              if (widget.leadingCell != null)
                 const SizedBox(
                   width: LayoutGrid.quadrupleModule,
                 ),

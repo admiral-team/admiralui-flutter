@@ -1,12 +1,12 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class ArrowCellWidgetScheme {
-  ArrowCellWidgetScheme({
+class ImageCellWidgetScheme {
+  ImageCellWidgetScheme({
     required this.theme,
   }) {
-    tintColor = theme.colors.elementSecondary.color();
-    disabledTintColor = theme.colors.elementSecondary.colorWithOpacity();
+    tintColor = theme.colors.elementAccent.color();
+    disabledTintColor = theme.colors.elementAccent.colorWithOpacity();
   }
 
   AppTheme theme;

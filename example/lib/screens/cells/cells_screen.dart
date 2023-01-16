@@ -49,15 +49,15 @@ class CellsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            leadingCell: TitleListWidget(title: 'Base Cells'),
-            trailingCell: const ArrowListWidget(),
+            centerCell: TitleCellWidget(title: 'Base Cells'),
+            trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
               TabNavigatorRoutes.baseCells,
             ),
           ),
           BaseCellWidget(
-            leadingCell: TitleListWidget(title: 'Actionbar'),
-            trailingCell: const ArrowListWidget(),
+            centerCell: TitleCellWidget(title: 'Actionbar'),
+            trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
               TabNavigatorRoutes.baseCells,
             ),
