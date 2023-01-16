@@ -30,6 +30,7 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
+import '../screens/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
@@ -42,6 +43,7 @@ enum TabNavigatorRoutes {
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   standartTextfield('/textfields/standartTextfield'),
+  doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
@@ -117,6 +119,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
           StandartTextFieldScreen(
             title: 'Standart Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.doubleTextField.value: (BuildContext context) =>
+          DoubleTextFieldScreen(
+            title: 'Dobule Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
