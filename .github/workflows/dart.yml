@@ -32,6 +32,8 @@ jobs:
       - run: flutter --version
       - name: Analyze Flutter env
         run: flutter doctor -v
+      - name: Clean project
+        run: flutter clean
       - name: Check Lint issues
         run: flutter analyze --fatal-infos
       - name: Install dependencies
@@ -48,8 +50,6 @@ jobs:
           bundle install
           bundle update
           sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-      - name: Clean project
-        run: flutter clean
       - name: Build Flutter iOS 
         run: |
           cd example/lib
