@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Tool bar',
         description: 'Меню',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.toolbar),
       ),
       ListCellModel(
         title: 'Bottom-sheet',

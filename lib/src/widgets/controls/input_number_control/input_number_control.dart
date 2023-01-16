@@ -10,7 +10,7 @@ class InputNumber extends StatefulWidget {
   /// Creates a SecondaryButton.
   const InputNumber({
     super.key,
-    required this.onChangedValue,
+    this.onChangedValue,
     this.title = '',
     this.isEnable = true,
     this.minimumValue = 0,
@@ -124,6 +124,10 @@ class _InputNumberState extends State<InputNumber> {
       } else {
         _numberValue -= inputStepValue;
       }
+      if (widget.onChangedValue != null) {
+        // ignore: prefer_null_aware_method_calls
+        widget.onChangedValue!(_numberValue);
+      }
     });
   }
 
@@ -133,6 +137,10 @@ class _InputNumberState extends State<InputNumber> {
         _numberValue = widget.maximumValue;
       } else {
         _numberValue += inputStepValue;
+      }
+      if (widget.onChangedValue != null) {
+        // ignore: prefer_null_aware_method_calls
+        widget.onChangedValue!(_numberValue);
       }
     });
   }
