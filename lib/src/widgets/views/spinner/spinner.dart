@@ -14,9 +14,9 @@ enum SpinnerSize {
 }
 
 class Spinner extends StatefulWidget {
-  const Spinner(
-    this.style,
-    this.size, {
+  const Spinner({
+    this.style = SpinnerStyle.initial,
+    this.size = SpinnerSize.small,
     this.scheme,
   });
 

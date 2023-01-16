@@ -19,7 +19,7 @@ class SpinnerScreen extends StatefulWidget {
 }
 
 class _SpinnerScreenState extends State<SpinnerScreen> {
-  SpinnerSize spinnerStyle = SpinnerSize.small;
+  SpinnerSize spinnerSize = SpinnerSize.small;
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +64,13 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
                   setState(() {
                     switch (value) {
                       case 'small':
-                        spinnerStyle = SpinnerSize.small;
+                        spinnerSize = SpinnerSize.small;
                         break;
                       case 'medium':
-                        spinnerStyle = SpinnerSize.medium;
+                        spinnerSize = SpinnerSize.medium;
                         break;
                       case 'large':
-                        spinnerStyle = SpinnerSize.large;
+                        spinnerSize = SpinnerSize.large;
                         break;
                     }
                   });
@@ -80,8 +80,7 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
                 height: LayoutGrid.module * 5,
               ),
               Spinner(
-                SpinnerStyle.initial,
-                spinnerStyle,
+                size: spinnerSize,
               ),
             ],
           ),
