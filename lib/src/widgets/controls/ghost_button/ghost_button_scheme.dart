@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/theme/admiral_color.dart';
 import 'package:flutter/material.dart';
 
 class GhostButtonScheme {
@@ -6,6 +7,7 @@ class GhostButtonScheme {
     required this.theme,
   }) {
     font = theme.fonts.body1;
+    activityIndicatorColor = theme.colors.backgroundAccent;
 
     buttonColor.set(
       const Color(0xFF3A83F1),
@@ -23,5 +25,6 @@ class GhostButtonScheme {
 
   AppTheme theme;
   late AFont font;
+  late AColor activityIndicatorColor;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

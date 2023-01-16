@@ -37,6 +37,8 @@ import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
+import '../screens/alerts_screen.dart';
+import '../screens/alertsOnboarding/error_view_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -75,6 +77,8 @@ enum TabNavigatorRoutes {
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
+  alerts('/alerts'),
+  errorView('/alertsOnboarding/errorView'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -159,6 +163,15 @@ class TabNavigatorHome extends StatelessWidget {
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.alerts.value: (BuildContext context) => AlertsScreen(
+            title: 'Alerts',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.errorView.value: (BuildContext context) =>
+          ErrorViewScreen(
+            title: 'ErrorView',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.informers.value: (BuildContext context) =>
           InformersScreen(
             title: 'Informers',
