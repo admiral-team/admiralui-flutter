@@ -18,6 +18,7 @@ import '../screens/big_informers_screen.dart';
 import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
+import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/standart_textfield_screen.dart';
@@ -30,11 +31,13 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
+import '../screens/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
+import '../screens/cells/trailing_cell_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -42,7 +45,9 @@ enum TabNavigatorRoutes {
   textfields('/textfields'),
   feedback('/textfields/feedback'),
   standartTextfield('/textfields/standartTextfield'),
+  doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
+  sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
@@ -71,6 +76,7 @@ enum TabNavigatorRoutes {
   baseCells('/baseCells'),
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
+  trailingCells('/trailingCells'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -119,6 +125,11 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Standart Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.doubleTextField.value: (BuildContext context) =>
+          DoubleTextFieldScreen(
+            title: 'Dobule Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
           SMSCodeTextFieldScreen(
             title: 'SMS Code',
@@ -126,6 +137,11 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
             title: 'Spinner',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
+          SliderTextFieldScreen(
+            title: 'Slider',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
@@ -216,6 +232,8 @@ class TabNavigatorHome extends StatelessWidget {
           const CenterCellsScreen(),
       TabNavigatorRoutes.leadingCell.value: (BuildContext context) =>
           const LeadingCellsScreen(),
+      TabNavigatorRoutes.trailingCells.value: (BuildContext context) =>
+          const TrailingCellsScreen(),
     };
   }
 

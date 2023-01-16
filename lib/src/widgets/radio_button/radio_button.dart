@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 class RadioButton extends StatelessWidget {
   const RadioButton({
     required this.title,
-    required this.scheme,
-    required this.isEnabled,
-    required this.style,
+    this.style = RadioButtonStyle.normal,
     this.groupValue,
+    this.scheme,
+    this.isEnabled = true,
     this.onChanged,
   });
 
   final String title;
-  final RadioButtonScheme scheme;
+  final RadioButtonScheme? scheme;
   final bool isEnabled;
   final RadioButtonStyle style;
   final String? groupValue;
@@ -22,6 +22,10 @@ class RadioButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    final RadioButtonScheme radioScheme = scheme
+     ?? RadioButtonScheme(theme: theme);
+
     return InkWell(
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
@@ -32,7 +36,7 @@ class RadioButton extends StatelessWidget {
         title: title,
         groupValue: groupValue,
         onChanged: onChanged,
-        scheme: scheme,
+        scheme: radioScheme,
         isEnabled: isEnabled,
         style: style,
       ),

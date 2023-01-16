@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/checkbox/checkbox_title.dart';
 import 'package:flutter/material.dart';
 
 ///A Material Design checkbox.
