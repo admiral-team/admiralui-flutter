@@ -32,8 +32,6 @@ jobs:
       - run: flutter --version
       - name: Analyze Flutter env
         run: flutter doctor -v
-      - name: Clean project
-        run: flutter clean
       - name: Check Lint issues
         run: flutter analyze --fatal-infos
       - name: Install dependencies
