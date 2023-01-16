@@ -85,7 +85,7 @@ class _ToolbarScreenState extends State<ToolbarScreen> {
   }
 
   void setItems(int count) {
-    List<ToolbarItem> arrayItems = [];
+    List<ToolbarItem> arrayItems = <ToolbarItem>[];
     for (int i = 0; i < count; i++) {
       arrayItems.add(constItems[i]);
     }
