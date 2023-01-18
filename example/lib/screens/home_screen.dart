@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Spinner',
         description: 'Демонстрация процесса загрузки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.spinner),
       ),
       ListCellModel(
         title: 'Page Controls',
