@@ -97,6 +97,8 @@ export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/spinner/spinner.dart';
+export 'package:admiralui_flutter/src/widgets/views/spinner/spinner_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/double_textfield/double_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield_scheme.dart';

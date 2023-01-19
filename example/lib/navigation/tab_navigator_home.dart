@@ -36,6 +36,7 @@ import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
+import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
@@ -54,6 +55,7 @@ enum TabNavigatorRoutes {
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   informers('/informers'),
+  spinner('/spinner'),
   smallInformers('/smallInformers'),
   bigInformers('/bigInformers'),
   radioButtons('/radioButtons'),
@@ -135,6 +137,10 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
           SMSCodeTextFieldScreen(
             title: 'SMS Code',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
+            title: 'Spinner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
