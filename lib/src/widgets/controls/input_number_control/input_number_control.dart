@@ -124,10 +124,7 @@ class _InputNumberState extends State<InputNumber> {
       } else {
         _numberValue -= inputStepValue;
       }
-      if (widget.onChangedValue != null) {
-        // ignore: prefer_null_aware_method_calls
-        widget.onChangedValue!(_numberValue);
-      }
+      widget.onChangedValue?.call(_numberValue);
     });
   }
 
@@ -138,10 +135,7 @@ class _InputNumberState extends State<InputNumber> {
       } else {
         _numberValue += inputStepValue;
       }
-      if (widget.onChangedValue != null) {
-        // ignore: prefer_null_aware_method_calls
-        widget.onChangedValue!(_numberValue);
-      }
+      widget.onChangedValue?.call(_numberValue);
     });
   }
 

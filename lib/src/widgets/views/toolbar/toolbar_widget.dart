@@ -36,9 +36,8 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
     scheme = widget.scheme ?? ToolbarWidgetScheme(theme: theme);
 
     if (widget.items.length == 1) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+      return Center(
+        child: 
           Container(
             decoration: BoxDecoration(
               color: scheme.backgroundColor,
@@ -73,8 +72,7 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
                 ],
               ),
             ),
-          )
-        ],
+          ),
       );
     } else {
       return Container(
@@ -94,14 +92,11 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
           children: <Widget>[
             for (int i = 0; i < widget.items.length; i++) ...<Widget>[
               const Spacer(),
-              GestureDetector(
+              InkWell(
                 onTap: () {
                   setState(() {
                     _selectedIndex = i;
-                    if (widget.onTap != null) {
-                      // ignore: prefer_null_aware_method_calls
-                      widget.onTap!(i);
-                    }
+                    widget.onTap?.call(i);
                   });
                 },
                 child: Column(
