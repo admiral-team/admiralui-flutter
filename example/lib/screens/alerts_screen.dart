@@ -31,7 +31,7 @@ class AlertsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Zeroscreen',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.sliderTextField),
+        onPressed: () => onPush.call(TabNavigatorRoutes.zeroScreen),
       ),
       ListCellModel(
         title: 'ErrorView',

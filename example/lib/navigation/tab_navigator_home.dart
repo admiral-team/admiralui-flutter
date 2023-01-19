@@ -40,6 +40,7 @@ import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
+import '../screens/alertsOnboarding/zero_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -81,6 +82,7 @@ enum TabNavigatorRoutes {
   trailingCells('/trailingCells'),
   alerts('/alerts'),
   errorView('/alertsOnboarding/errorView'),
+  zeroScreen('/alertsOnboarding/zeroScreen'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -176,6 +178,10 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
           ErrorViewScreen(
             title: 'ErrorView',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.zeroScreen.value: (BuildContext context) => ZeroScreen(
+            title: 'ZeroScreen',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.informers.value: (BuildContext context) =>
