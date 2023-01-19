@@ -7,7 +7,7 @@ class GhostButtonScheme {
     required this.theme,
   }) {
     font = theme.fonts.body1;
-    activityIndicatorColor = theme.colors.backgroundAccent;
+    spinnerScheme = SpinnerScheme(theme: theme);
 
     buttonColor.set(
       const Color(0xFF3A83F1),
@@ -25,6 +25,6 @@ class GhostButtonScheme {
 
   AppTheme theme;
   late AFont font;
-  late AColor activityIndicatorColor;
+  late SpinnerScheme spinnerScheme;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

@@ -103,10 +103,7 @@ class _GhostButtonState extends State<GhostButton> {
                   : SizedBox(
                       width: LayoutGrid.doubleModule,
                       height: LayoutGrid.doubleModule,
-                      child: CircularProgressIndicator(
-                        color: scheme.activityIndicatorColor.color(),
-                        strokeWidth: LayoutGrid.doubleModule / 8,
-                      ),
+                      child: Spinner(scheme: scheme.spinnerScheme),
                     ),
             ),
             SizedBox(
