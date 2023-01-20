@@ -40,13 +40,13 @@ class _ButtonDropDownWidgetState extends State<ButtonDropDownWidget> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-      ButtonArrow(
-        title: widget.buttonTitle ?? '',
-        isEnable: widget.isEnable,
-        onPressed: widget.onPressed,
-        scheme: scheme.ghostButtonScheme,
-      ),
-      const Spacer()
+          ButtonArrow(
+            title: widget.buttonTitle ?? '',
+            isEnable: widget.isEnable,
+            onPressed: widget.onPressed,
+            scheme: scheme.ghostButtonScheme,
+          ),
+          const Spacer()
         ],
       ),
     );
