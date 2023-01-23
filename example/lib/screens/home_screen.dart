@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Text Blocks',
         description: 'Текстовые блоки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.textBlock),
       ),
       ListCellModel(
         title: 'Tabs',
