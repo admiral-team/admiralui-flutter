@@ -114,6 +114,9 @@ export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/separat
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_item.dart';
+export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget_scheme.dart';
 export 'package:admiralui_flutter/theme/admiral_font.dart';
 export 'package:admiralui_flutter/theme/app_theme.dart';
 export 'package:admiralui_flutter/theme/app_theme_provider.dart';
