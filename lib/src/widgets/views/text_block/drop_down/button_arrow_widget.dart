@@ -14,7 +14,7 @@ class ButtonArrow extends StatefulWidget {
   final VoidCallback? onPressed;
   final String title;
   final bool isEnable;
-  final GhostButtonScheme? scheme;
+  final ButtonArrowWidgetScheme? scheme;
 
   @override
   State<ButtonArrow> createState() => _ButtonArrowState();
@@ -22,12 +22,12 @@ class ButtonArrow extends StatefulWidget {
 
 class _ButtonArrowState extends State<ButtonArrow> {
   bool _isPressed = false;
-  late GhostButtonScheme scheme;
+  late ButtonArrowWidgetScheme scheme;
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    scheme = widget.scheme ?? GhostButtonScheme(theme: theme);
+    scheme = widget.scheme ?? ButtonArrowWidgetScheme(theme: theme);
 
     final Color textColorNormal =
         scheme.buttonColor.unsafeParameter(ControlState.normal);

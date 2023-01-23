@@ -1,8 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class GhostButtonScheme {
-  GhostButtonScheme({
+class ButtonArrowWidgetScheme {
+  ButtonArrowWidgetScheme({
     required this.theme,
   }) {
     font = theme.fonts.body1;

@@ -98,6 +98,7 @@ export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_sch
 export 'package:admiralui_flutter/src/widgets/views/spinner/spinner.dart';
 export 'package:admiralui_flutter/src/widgets/views/spinner/spinner_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_arrow_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_arrow_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_drop_down_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_button_drop_down_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_button_drop_down_widget_scheme.dart';
