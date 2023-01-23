@@ -38,6 +38,7 @@ import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
+import '../screens/toolbar_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -77,6 +78,7 @@ enum TabNavigatorRoutes {
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
+  toolbar('/toolbar'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -234,6 +236,8 @@ class TabNavigatorHome extends StatelessWidget {
           const LeadingCellsScreen(),
       TabNavigatorRoutes.trailingCells.value: (BuildContext context) =>
           const TrailingCellsScreen(),
+      TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
+           const ToolbarScreen(title: 'Toolbar')
     };
   }
 
