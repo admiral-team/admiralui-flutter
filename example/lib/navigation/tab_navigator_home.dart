@@ -249,7 +249,7 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.accordion.value: (BuildContext context) =>
           const AccordionScreen(),
       TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
-           const ToolbarScreen(title: 'Toolbar')
+           const ToolbarScreen(title: 'Toolbar'),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
     };

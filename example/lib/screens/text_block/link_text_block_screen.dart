@@ -33,6 +33,13 @@ class _LinkTextBlockScreenState extends State<LinkTextBlockScreen> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
+        title: Text(
+          'Link',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
+        centerTitle: true,
         bottomOpacity: 0.0,
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
