@@ -40,6 +40,7 @@ import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
+import '../screens/alertsOnboarding/onboarding_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -81,6 +82,7 @@ enum TabNavigatorRoutes {
   trailingCells('/trailingCells'),
   alerts('/alerts'),
   errorView('/alertsOnboarding/errorView'),
+  onboarding('/alertsOnboarding/onboarding'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -171,6 +173,11 @@ class TabNavigatorHome extends StatelessWidget {
           const TagsScreen(),
       TabNavigatorRoutes.alerts.value: (BuildContext context) => AlertsScreen(
             title: 'Alerts',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
+          OnboardingViewScreen(
+            title: 'Onboarding',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
