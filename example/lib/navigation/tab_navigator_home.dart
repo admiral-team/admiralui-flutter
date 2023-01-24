@@ -18,6 +18,7 @@ import '../screens/big_informers_screen.dart';
 import '../screens/small_informers_screen.dart';
 import '../screens/links_screen.dart';
 import '../screens/feedback_screen.dart';
+import '../screens/text_block/accordion_screen.dart';
 import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
@@ -41,6 +42,8 @@ import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
+import '../screens/text_block/text_block_screen.dart';
+import '../screens/toolbar_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -83,6 +86,9 @@ enum TabNavigatorRoutes {
   alerts('/alerts'),
   errorView('/alertsOnboarding/errorView'),
   onboarding('/alertsOnboarding/onboarding'),
+  textBlock('/textBlock'),
+  accordion('/accordion'),
+  toolbar('/toolbar'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -254,6 +260,14 @@ class TabNavigatorHome extends StatelessWidget {
           const LeadingCellsScreen(),
       TabNavigatorRoutes.trailingCells.value: (BuildContext context) =>
           const TrailingCellsScreen(),
+      TabNavigatorRoutes.textBlock.value: (BuildContext context) =>
+          TextBlockScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.accordion.value: (BuildContext context) =>
+          const AccordionScreen(),
+      TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
+          const ToolbarScreen(title: 'Toolbar')
     };
   }
 
