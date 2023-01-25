@@ -2,7 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 
 class LinkTextBlockWidgetScheme {
   LinkTextBlockWidgetScheme({
-    required this.theme,
+    this.theme = lightTheme,
   }) {
     linkScheme = LinkControlScheme(theme: theme);
   }
