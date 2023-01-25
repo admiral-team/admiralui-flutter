@@ -41,7 +41,7 @@ class _CircularPageControlState extends State<CircularPageControl>
   double? get _endAnimationValue => _currentStep == 0
       ? _stepLength
       : _stepLength + (_stepLength * _currentStep);
-  int get stepNofifierValue => widget.stepNotifier?.value ?? _currentStep;
+  int get _stepNofifierValue => widget.stepNotifier?.value ?? _currentStep;
 
   @override
   void initState() {
@@ -73,16 +73,16 @@ class _CircularPageControlState extends State<CircularPageControl>
   }
 
   void _handleStepValueUpdate() {
-    if (_currentStep != stepNofifierValue) {
-      if (_currentStep < stepNofifierValue) {
-        _currentStep = stepNofifierValue;
+    if (_currentStep != _stepNofifierValue) {
+      if (_currentStep < _stepNofifierValue) {
+        _currentStep = _stepNofifierValue;
         _runAnimation(_beginAnimationValue, _endAnimationValue);
-      } else if (_currentStep > stepNofifierValue) {
-        if (stepNofifierValue == 0) {
-          _currentStep = stepNofifierValue;
+      } else if (_currentStep > _stepNofifierValue) {
+        if (_stepNofifierValue == 0) {
+          _currentStep = _stepNofifierValue;
           _runAnimation(_tween.end, _stepLength);
         } else {
-          _currentStep = stepNofifierValue;
+          _currentStep = _stepNofifierValue;
           _runAnimation(_beginAnimationValue, _endAnimationValue);
         }
       }
