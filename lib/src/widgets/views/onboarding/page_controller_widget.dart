@@ -21,38 +21,19 @@ class PageControllerWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _PageControllerWidgetState();
 }
 
-class _PageControllerWidgetState extends State<PageControllerWidget>
-    with SingleTickerProviderStateMixin {
+class _PageControllerWidgetState extends State<PageControllerWidget> {
   late PageViewScheme scheme;
   late PageController pageController;
   late int currentPage;
-
-  late AnimationController animationController;
-  late Tween<double> _tween;
-  late double stepLength;
+  final ValueNotifier<int> _stepNotifier = ValueNotifier<int>(0);
 
   @override
   void initState() {
-    super.initState();
-    animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
     currentPage = widget.pagePosition;
-    stepLength = 1.0 / widget.items.length.toDouble();
-    _tween = Tween<double>(begin: 0.0, end: stepLength);
     pageController = widget.pageContoller == null
         ? PageController(initialPage: widget.pagePosition, keepPage: false)
         : widget.pageContoller!;
-    animateButton();
-  }
-
-  void animateButton() {
-    _tween.begin = _tween.end;
-    animationController.reset();
-    _tween.end =
-        currentPage == 0 ? stepLength : stepLength + (stepLength * currentPage);
-    animationController.forward();
+    super.initState();
   }
 
   void animateToPage() {
@@ -77,7 +58,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget>
             itemCount: widget.items.length,
             onPageChanged: (int value) => setState(() {
               currentPage = value;
-              animateButton();
+              _stepNotifier.value = value;
             }),
             itemBuilder: (BuildContext context, int pagePosition) {
               return PageViewWidget(widget.items[pagePosition]);
@@ -87,12 +68,13 @@ class _PageControllerWidgetState extends State<PageControllerWidget>
         CircularPageControl(
           widget.items.length,
           currentPage,
-          animatedController: animationController,
-          tween: _tween,
-          onPressed: () => setState(() {
-            currentPage += 1;
-            animateToPage();
-          }),
+          onPressed: () => setState(
+            () {
+              currentPage += 1;
+              animateToPage();
+            },
+          ),
+          stepNotifier: _stepNotifier,
         ),
         const SizedBox(
           height: LayoutGrid.module * 4,

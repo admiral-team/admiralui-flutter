@@ -8,22 +8,18 @@ class CircularPageControl extends StatefulWidget {
   const CircularPageControl(
     this.steps,
     this.currentStep, {
-    this.animationDuration = 500,
     this.style = CirclePageSliderStyle.initial,
     super.key,
     this.onPressed,
-    this.tween,
-    this.animatedController,
+    this.stepNotifier,
     this.scheme,
   });
 
   final int steps;
   final int currentStep;
-  final int animationDuration;
   final CirclePageSliderStyle style;
   final VoidCallback? onPressed;
-  final Tween<double>? tween;
-  final AnimationController? animatedController;
+  final ValueNotifier<int>? stepNotifier;
   final CircularPageControlScheme? scheme;
 
   @override
@@ -35,49 +31,69 @@ class _CircularPageControlState extends State<CircularPageControl>
   late CircularPageControlScheme scheme;
   bool _isPressed = false;
 
-  late double stepLength;
-  late Animation<double> animation;
-  late AnimationController animController;
+  late double _stepLength;
+  late Animation<double> _animation;
+  late AnimationController _animationController;
   late Tween<double> _tween;
   late int _currentStep;
+
+  double? get _beginAnimationValue => _currentStep == 0 ? 0.0 : _tween.end;
+  double? get _endAnimationValue => _currentStep == 0
+      ? _stepLength
+      : _stepLength + (_stepLength * _currentStep);
+  int get stepNofifierValue => widget.stepNotifier?.value ?? _currentStep;
 
   @override
   void initState() {
     super.initState();
-    _currentStep = widget.currentStep;
-    animController = widget.animatedController == null
-        ? AnimationController(
-            duration: Duration(milliseconds: widget.animationDuration),
-            vsync: this,
-          )
-        : widget.animatedController!;
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+
     final CurvedAnimation curveAnimation =
-        CurvedAnimation(parent: animController, curve: Curves.linear);
+        CurvedAnimation(parent: _animationController, curve: Curves.linear);
 
-    stepLength = 1.0 / widget.steps.toDouble();
-    _tween = widget.tween == null
-        ? Tween<double>(begin: 0.0, end: stepLength)
-        : widget.tween!;
+    _stepLength = 1.0 / widget.steps.toDouble();
+    _tween = Tween<double>(begin: 0.0, end: _stepLength);
+    _currentStep = widget.currentStep;
 
-    animation = _tween.animate(curveAnimation)
+    _animation = _tween.animate(curveAnimation)
       ..addListener(() {
         setState(() {});
       });
+
+    widget.stepNotifier?.addListener(() {
+      setState(() {
+        _handleStepValueUpdate();
+      });
+    });
+
+    _runAnimation(_beginAnimationValue, _endAnimationValue);
   }
 
-  void runAnimation() {
-    _tween.begin = _currentStep == 0 ? 0.0 : _tween.end;
-    animController.reset();
-    _tween.end = _currentStep == 0
-        ? stepLength
-        : stepLength + (stepLength * _currentStep);
-    animController.forward();
+  void _handleStepValueUpdate() {
+    if (_currentStep != stepNofifierValue) {
+      if (_currentStep < stepNofifierValue) {
+        _currentStep = stepNofifierValue;
+        _runAnimation(_beginAnimationValue, _endAnimationValue);
+      } else if (_currentStep > stepNofifierValue) {
+        if (stepNofifierValue == 0) {
+          _currentStep = stepNofifierValue;
+          _runAnimation(_tween.end, _stepLength);
+        } else {
+          _currentStep = stepNofifierValue;
+          _runAnimation(_beginAnimationValue, _endAnimationValue);
+        }
+      }
+    }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    animController.dispose();
+  void _runAnimation(double? beginAnimation, double? endAnimation) {
+    _tween.begin = beginAnimation;
+    _animationController.reset();
+    _tween.end = endAnimation;
+    _animationController.forward();
   }
 
   @override
@@ -86,10 +102,10 @@ class _CircularPageControlState extends State<CircularPageControl>
     scheme = widget.scheme ?? CircularPageControlScheme(theme: theme);
 
     return GestureDetector(
-      onTap: () => onPress(),
-      onTapUp: (_) => setHighlighted(highlighted: false),
-      onTapDown: (_) => setHighlighted(highlighted: true),
-      onTapCancel: () => setHighlighted(highlighted: false),
+      onTap: () => _onPress(),
+      onTapUp: (_) => _setHighlighted(highlighted: false),
+      onTapDown: (_) => _setHighlighted(highlighted: true),
+      onTapCancel: () => _setHighlighted(highlighted: false),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -104,7 +120,7 @@ class _CircularPageControlState extends State<CircularPageControl>
                     LayoutGrid.tripleModule * 3,
                   ),
                   painter: CircularPainter(
-                    percentage: animation.value,
+                    percentage: _animation.value,
                     color: scheme.backgroundColor.unsafeParameter(
                       _isPressed,
                       widget.style,
@@ -145,21 +161,15 @@ class _CircularPageControlState extends State<CircularPageControl>
     );
   }
 
-  void onPress() {
-    setState(() {
-      if (widget.animatedController == null) {
-        runAnimation();
-      }
-
-      if (_currentStep < widget.steps) {
-        _currentStep += 1;
-      }
-
+  void _onPress() {
+    if (_currentStep < widget.steps) {
+      _currentStep += 1;
+      _runAnimation(_beginAnimationValue, _endAnimationValue);
       widget.onPressed?.call();
-    });
+    }
   }
 
-  void setHighlighted({required bool highlighted}) {
+  void _setHighlighted({required bool highlighted}) {
     setState(() {
       _isPressed = highlighted;
     });
