@@ -21,6 +21,10 @@ export 'package:admiralui_flutter/src/widgets/controls/link_control/link_control
 export 'package:admiralui_flutter/src/widgets/controls/link_control/link_control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/controls/link_control/link_control_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/link_control/link_style.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_page_control.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_page_control_parameters.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_page_control_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_painter.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input_status.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/pin_code_item_parameters.dart';
@@ -97,6 +101,9 @@ export 'package:admiralui_flutter/src/widgets/views/informers/informer_direction
 export 'package:admiralui_flutter/src/widgets/views/informers/informer_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer.dart';
 export 'package:admiralui_flutter/src/widgets/views/informers/small_informer_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/onboarding/page_controller_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/onboarding/page_view_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/onboarding/page_view_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/spinner/spinner.dart';
 export 'package:admiralui_flutter/src/widgets/views/spinner/spinner_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_arrow_widget.dart';

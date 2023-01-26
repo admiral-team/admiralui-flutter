@@ -41,6 +41,7 @@ import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
+import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
@@ -85,6 +86,7 @@ enum TabNavigatorRoutes {
   trailingCells('/trailingCells'),
   alerts('/alerts'),
   errorView('/alertsOnboarding/errorView'),
+  onboarding('/alertsOnboarding/onboarding'),
   textBlock('/textBlock'),
   accordion('/accordion'),
   toolbar('/toolbar'),
@@ -179,6 +181,11 @@ class TabNavigatorHome extends StatelessWidget {
           const TagsScreen(),
       TabNavigatorRoutes.alerts.value: (BuildContext context) => AlertsScreen(
             title: 'Alerts',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
+          OnboardingViewScreen(
+            title: 'Onboarding',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
