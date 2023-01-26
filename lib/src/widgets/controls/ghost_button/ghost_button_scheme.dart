@@ -6,6 +6,7 @@ class GhostButtonScheme {
     required this.theme,
   }) {
     font = theme.fonts.body1;
+    spinnerScheme = SpinnerScheme(theme: theme);
 
     buttonColor.set(
       theme.colors.textAccent.color(),
@@ -23,5 +24,6 @@ class GhostButtonScheme {
 
   AppTheme theme;
   late AFont font;
+  late SpinnerScheme spinnerScheme;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

@@ -23,6 +23,7 @@ class GhostButton extends StatefulWidget {
     this.onPressed,
     this.title = '',
     this.isEnable = true,
+    this.isLoading = false,
     this.sizeType = ButtonSizeType.big,
     this.iconData,
     this.iconPosition,
@@ -32,6 +33,7 @@ class GhostButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final String title;
   final bool isEnable;
+  final bool isLoading;
   final ButtonSizeType sizeType;
   final IconData? iconData;
   final IconPosition? iconPosition;
@@ -92,11 +94,17 @@ class _GhostButtonState extends State<GhostButton> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 12,
               ),
-              child: TextView(
-                widget.title,
-                font: scheme.font,
-                textColorNormal: textColor,
-              ),
+              child: !widget.isLoading
+                  ? TextView(
+                      widget.title,
+                      font: scheme.font,
+                      textColorNormal: textColor,
+                    )
+                  : SizedBox(
+                      width: LayoutGrid.doubleModule,
+                      height: LayoutGrid.doubleModule,
+                      child: Spinner(scheme: scheme.spinnerScheme),
+                    ),
             ),
             SizedBox(
               child: (widget.iconData != null &&

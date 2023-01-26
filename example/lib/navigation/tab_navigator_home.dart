@@ -39,6 +39,9 @@ import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
+import '../screens/alerts_screen.dart';
+import '../screens/alertsOnboarding/error_view_screen.dart';
+import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
@@ -81,6 +84,9 @@ enum TabNavigatorRoutes {
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
+  alerts('/alerts'),
+  errorView('/alertsOnboarding/errorView'),
+  onboarding('/alertsOnboarding/onboarding'),
   textBlock('/textBlock'),
   accordion('/accordion'),
   toolbar('/toolbar'),
@@ -173,6 +179,20 @@ class TabNavigatorHome extends StatelessWidget {
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.alerts.value: (BuildContext context) => AlertsScreen(
+            title: 'Alerts',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
+          OnboardingViewScreen(
+            title: 'Onboarding',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.errorView.value: (BuildContext context) =>
+          ErrorViewScreen(
+            title: 'ErrorView',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.informers.value: (BuildContext context) =>
           InformersScreen(
             title: 'Informers',
@@ -249,7 +269,7 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.accordion.value: (BuildContext context) =>
           const AccordionScreen(),
       TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
-           const ToolbarScreen(title: 'Toolbar'),
+          const ToolbarScreen(title: 'Toolbar'),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
     };

@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Alerts',
         description: 'Информирующие сообщения',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.alerts),
       ),
       ListCellModel(
         title: 'Tool bar',
