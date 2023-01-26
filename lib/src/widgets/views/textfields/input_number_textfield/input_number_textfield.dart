@@ -18,7 +18,7 @@ class InputNumberTextField extends StatefulWidget {
     this.placeHolderText = '',
     this.minimumValue = 0,
     this.maximumValue = 100,
-    this.numberValue = 0,
+    this.currentValue = 0,
     this.stepValue = 1,
     this.onChanged,
     this.style = InputNumberButtonStyle.normal,
@@ -33,7 +33,7 @@ class InputNumberTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final double minimumValue;
   final double maximumValue;
-  final double numberValue;
+  final double currentValue;
   final double stepValue;
   final InputNumberCallback? onChangedValue;
   final ValueChanged<String>? onChanged;
@@ -57,42 +57,23 @@ class _InputNumberTextfieldState extends State<InputNumberTextField> {
   double inputStepValue = 1;
   Timer? timer;
   late InputNumberTextfieldScheme scheme;
-  double _numberValue = 0;
+  double _currentValue = 0;
 
   String get _placeHolderText =>
       widget.placeHolderText.isNotEmpty ? widget.placeHolderText : '';
 
   bool get _minusButtonEnabled =>
       // ignore: avoid_bool_literals_in_conditional_expressions
-      widget.minimumValue >= _numberValue ? false : true;
+      widget.minimumValue >= _currentValue ? false : true;
   bool get _plusButtonEnabled =>
       // ignore: avoid_bool_literals_in_conditional_expressions
-      widget.maximumValue <= _numberValue ? false : true;
+      widget.maximumValue <= _currentValue ? false : true;
 
   @override
   void initState() {
     super.initState();
-    _numberValue = widget.numberValue;
-  }
-
-  void _onChanged({required String text}) {
-    setState(() {});
-    widget.onChanged?.call(text);
-    final String str = text.replaceAll(' ', '');
-    if (double.tryParse(str) != null) {
-      final double textFieldValue = double.parse(str);
-      // ignore: lines_longer_than_80_chars
-      if (textFieldValue >= widget.minimumValue &&
-          textFieldValue <= widget.maximumValue) {
-        _numberValue = textFieldValue;
-      } else if (textFieldValue < widget.minimumValue) {
-        _numberValue = widget.minimumValue;
-        widget.controller.text = _numberValue.toInt().toString();
-      } else if (textFieldValue > widget.maximumValue) {
-        _numberValue = widget.maximumValue;
-        widget.controller.text = _numberValue.toInt().toString();
-      }
-    }
+    _currentValue = widget.currentValue;
+    _setTextfieldText(_currentValue);
   }
 
   @override
@@ -122,9 +103,9 @@ class _InputNumberTextfieldState extends State<InputNumberTextField> {
               ? false
               : _minusButtonEnabled,
           image: AdmiralIcons.admiral_ic_minus_outline,
-          onPressed: minusButton,
-          onLongPress: longPressMinusButton,
-          onLongPressCancel: longPressButtonCancel,
+          onPressed: _minusButton,
+          onLongPress: _longPressMinusButton,
+          onLongPressCancel: _longPressButtonCancel,
         ),
         const SizedBox(
           width: LayoutGrid.halfModule / 2,
@@ -179,15 +160,61 @@ class _InputNumberTextfieldState extends State<InputNumberTextField> {
               : _plusButtonEnabled,
           image: AdmiralIcons.admiral_ic_plus_outline,
           style: InputNumberTextfieldButtonStyle.right,
-          onPressed: plusButton,
-          onLongPress: longPressPlusButton,
-          onLongPressCancel: longPressButtonCancel,
+          onPressed: _plusButton,
+          onLongPress: _longPressPlusButton,
+          onLongPressCancel: _longPressButtonCancel,
         ),
       ],
     );
   }
 
-  void setStepValue() {
+  void _onChanged({required String text}) {
+    widget.onChanged?.call(text);
+    final String formatedString = text.replaceAll(' ', '');
+    if (double.tryParse(formatedString) != null) {
+      final double textFieldDoubleValue = double.parse(formatedString);
+      if (textFieldDoubleValue >= widget.minimumValue &&
+          textFieldDoubleValue <= widget.maximumValue) {
+        _setTextfieldText(textFieldDoubleValue);
+      } else if (textFieldDoubleValue < widget.minimumValue) {
+        _setTextfieldText(widget.minimumValue);
+      } else if (textFieldDoubleValue > widget.maximumValue) {
+        _setTextfieldText(widget.maximumValue);
+      }
+      _setTextFieldCursor();
+    }
+  }
+
+  void _setTextfieldText(double formatedValue) {
+    _currentValue = formatedValue;
+    widget.controller.text =
+        _getFormatedValue(formatedValue.toInt().toString());
+  }
+
+  void _setTextFieldCursor() {
+    widget.controller.selection = TextSelection.fromPosition(
+      TextPosition(offset: widget.controller.text.length),
+    );
+  }
+
+  String _getFormatedValue(String textValue) {
+    final List<String> chars = textValue.split('');
+    const String separator = ' ';
+    String newString = '';
+    if (textValue.endsWith(separator)) {
+      newString = textValue.substring(0, textValue.length - 1);
+    }
+
+    for (int i = chars.length - 1; i >= 0; i--) {
+      if ((chars.length - 1 - i) % 3 == 0 && i != chars.length - 1) {
+        newString = separator + newString;
+      }
+      newString = chars[i] + newString;
+    }
+    return newString;
+  }
+
+  void _setStepValue() {
     runCount += countTick;
     if (runCount < countTick * 5) {
       inputStepValue = widget.stepValue;
@@ -200,43 +227,45 @@ class _InputNumberTextfieldState extends State<InputNumberTextField> {
     }
   }
 
-  void minusButton() {
+  void _minusButton() {
     setState(() {
-      if (_numberValue - inputStepValue < widget.minimumValue) {
-        _numberValue = widget.minimumValue;
+      if (_currentValue - inputStepValue < widget.minimumValue) {
+        _currentValue = widget.minimumValue;
       } else {
-        _numberValue -= inputStepValue;
+        _currentValue -= inputStepValue;
       }
-      widget.controller.text = _numberValue.toInt().toString();
+      _setTextfieldText(_currentValue);
+      _setTextFieldCursor();
     });
   }
 
-  void plusButton() {
+  void _plusButton() {
     setState(() {
-      if (_numberValue + inputStepValue > widget.maximumValue) {
-        _numberValue = widget.maximumValue;
+      if (_currentValue + inputStepValue > widget.maximumValue) {
+        _currentValue = widget.maximumValue;
       } else {
-        _numberValue += inputStepValue;
+        _currentValue += inputStepValue;
       }
-      widget.controller.text = _numberValue.toInt().toString();
+      _setTextfieldText(_currentValue);
+      _setTextFieldCursor();
     });
   }
 
-  void longPressPlusButton() {
+  void _longPressPlusButton() {
     timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
-      setStepValue();
-      plusButton();
+      _setStepValue();
+      _plusButton();
     });
   }
 
-  void longPressMinusButton() {
+  void _longPressMinusButton() {
     timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
-      setStepValue();
-      minusButton();
+      _setStepValue();
+      _minusButton();
     });
   }
 
-  void longPressButtonCancel() {
+  void _longPressButtonCancel() {
     timer?.cancel();
     runCount = 0;
     inputStepValue = widget.stepValue;

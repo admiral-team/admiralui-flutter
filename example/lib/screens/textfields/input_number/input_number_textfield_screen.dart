@@ -23,7 +23,7 @@ class _InputNumberTextFieldScreenState
     extends State<InputNumberTextFieldScreen> {
   FocusNode focusNode = FocusNode();
   TextInputState state = TextInputState.normal;
-  TextEditingController textController = TextEditingController(text: '0');
+  TextEditingController textController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +79,11 @@ class _InputNumberTextFieldScreenState
               textController,
               _ChangeInputControl,
               state: state,
+              currentValue: 1000,
               focusNode: focusNode,
               title: 'Optional value',
+              maximumValue: 100000,
+              minimumValue: 0,
             )
           ],
         ),
