@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class ZeroScreenView extends StatefulWidget {
   const ZeroScreenView({
     this.image,
-    this.title = '',
-    this.subTitle = '',
-    this.buttonTitle = '',
+    this.title,
+    this.subTitle,
+    this.buttonTitle,
     this.isEnabled = true,
     this.onPressed,
     this.scheme,
@@ -38,18 +38,20 @@ class _ZeroScreeViewState extends State<ZeroScreenView> {
         children: <Widget>[
           const Spacer(),
           if (widget.image != null) widget.image!,
-          const SizedBox(
-            height: LayoutGrid.doubleModule * 2,
-          ),
+          if (widget.title != null)
+            const SizedBox(
+              height: LayoutGrid.doubleModule * 2,
+            ),
           if (widget.title != null)
             TextView(
               widget.title!,
               font: scheme.titleFont,
               textColorNormal: scheme.titleColor.color(),
             ),
-          const SizedBox(
-            height: LayoutGrid.module * 6,
-          ),
+          if (widget.subTitle != null)
+            const SizedBox(
+              height: LayoutGrid.module * 6,
+            ),
           if (widget.subTitle != null)
             TextView(
               widget.subTitle!,
