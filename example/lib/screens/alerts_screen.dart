@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'list_cell_model.dart';
 import '../navigation/tab_navigator_home.dart';
 
-class TextfieldsScreen extends StatelessWidget {
-  const TextfieldsScreen({
+class AlertsScreen extends StatelessWidget {
+  const AlertsScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,39 +19,24 @@ class TextfieldsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Standart',
+        title: 'Alert',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
       ),
       ListCellModel(
-        title: 'Double',
+        title: 'Onboarding',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.doubleTextField),
+        onPressed: () => onPush.call(TabNavigatorRoutes.onboarding),
       ),
       ListCellModel(
-        title: 'Slider',
+        title: 'Zeroscreen',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.sliderTextField),
       ),
       ListCellModel(
-        title: 'Number',
+        title: 'ErrorView',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.number),
-      ),
-      ListCellModel(
-        title: 'SMS Code',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.otpTextField),
-      ),
-      ListCellModel(
-        title: 'Feedback',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
-      ),
-      ListCellModel(
-        title: 'Pincode',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.pinCode),
+        onPressed: () => onPush.call(TabNavigatorRoutes.errorView),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);

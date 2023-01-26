@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../navigation/tab_navigator_home.dart';
 
-class BaseCellsScreen extends StatelessWidget {
-  const BaseCellsScreen({
+class TextBlockScreen extends StatelessWidget {
+  const TextBlockScreen({
     super.key,
     this.appBarHidden = false,
     required this.onPush,
@@ -43,30 +43,44 @@ class BaseCellsScreen extends StatelessWidget {
               LayoutGrid.doubleModule,
             ),
             child: TextView(
-              'Base Cells',
+              'Text Blocks',
               font: fonts.title1,
               textColorNormal: colors.textPrimary.color(),
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleCellWidget(title: 'Leading elements'),
+            centerCell: TitleCellWidget(title: 'Header'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.leadingCell,
+              TabNavigatorRoutes.accordion,
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleCellWidget(title: 'Center elements'),
+            centerCell: TitleCellWidget(title: 'Accordion'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.centerCells,
+              TabNavigatorRoutes.accordion,
             ),
           ),
           BaseCellWidget(
-            centerCell: TitleCellWidget(title: 'Trailing elements'),
+            centerCell: TitleCellWidget(title: 'Paragraph'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.trailingCells,
+              TabNavigatorRoutes.accordion,
+            ),
+          ),
+          BaseCellWidget(
+            centerCell: TitleCellWidget(title: 'Link'),
+            trailingCell: const ArrowCellWidget(),
+            onPressed: () => onPush.call(
+              TabNavigatorRoutes.linkTextBlock,
+            ),
+          ),
+          BaseCellWidget(
+            centerCell: TitleCellWidget(title: 'Padding'),
+            trailingCell: const ArrowCellWidget(),
+            onPressed: () => onPush.call(
+              TabNavigatorRoutes.accordion,
             ),
           ),
         ],

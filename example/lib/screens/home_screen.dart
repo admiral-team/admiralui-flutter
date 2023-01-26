@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Text Blocks',
         description: 'Текстовые блоки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.textBlock),
       ),
       ListCellModel(
         title: 'Tabs',
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Spinner',
         description: 'Демонстрация процесса загрузки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.spinner),
       ),
       ListCellModel(
         title: 'Page Controls',
@@ -132,12 +132,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Alerts',
         description: 'Информирующие сообщения',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.alerts),
       ),
       ListCellModel(
         title: 'Tool bar',
         description: 'Меню',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.toolbar),
       ),
       ListCellModel(
         title: 'Bottom-sheet',
