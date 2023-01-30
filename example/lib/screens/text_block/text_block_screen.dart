@@ -52,7 +52,7 @@ class TextBlockScreen extends StatelessWidget {
             centerCell: TitleCellWidget(title: 'Header'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.accordion,
+              TabNavigatorRoutes.titleTextBlock,
             ),
           ),
           BaseCellWidget(
