@@ -111,6 +111,8 @@ export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/button_drop_down_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_button_drop_down_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_button_drop_down_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/header/title_header/title_header_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/header/title_header/title_header_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/double_textfield/double_textfield.dart';
