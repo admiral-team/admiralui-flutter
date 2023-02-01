@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'list_cell_model.dart';
 import '../navigation/tab_navigator_home.dart';
 
-class NumberScreen extends StatelessWidget {
-  const NumberScreen({
+class AlertsScreen extends StatelessWidget {
+  const AlertsScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,19 +19,24 @@ class NumberScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Default',
+        title: 'Alert',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.inputNumberDefault),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
       ),
       ListCellModel(
-        title: 'Secondary',
+        title: 'Onboarding',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.inputNumberSecondary),
+        onPressed: () => onPush.call(TabNavigatorRoutes.onboarding),
       ),
       ListCellModel(
-        title: 'Input',
+        title: 'Zeroscreen',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.inputNumberTextfield),
+        onPressed: () => onPush.call(TabNavigatorRoutes.zeroScreen),
+      ),
+      ListCellModel(
+        title: 'ErrorView',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.errorView),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);

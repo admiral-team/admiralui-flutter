@@ -39,9 +39,17 @@ import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
+import '../screens/alerts_screen.dart';
+import '../screens/alertsOnboarding/error_view_screen.dart';
+import '../screens/alertsOnboarding/zero_screen.dart';
+import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
+import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/textfields/input_number/input_number_default_screen.dart';
+import '../screens/textfields/input_number/input_number_secondary_screen.dart';
+import '../screens/textfields/input_number/input_number_textfield_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -51,6 +59,9 @@ enum TabNavigatorRoutes {
   standartTextfield('/textfields/standartTextfield'),
   doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
+  inputNumberDefault('/textfields/inputNumber/inputNumberDefault'),
+  inputNumberSecondary('/textfields/inputNumber/inputNumberSecondary'),
+  inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
@@ -81,10 +92,15 @@ enum TabNavigatorRoutes {
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
+  alerts('/alerts'),
+  errorView('/alertsOnboarding/errorView'),
+  zeroScreen('/alertsOnboarding/zeroScreen'),
+  onboarding('/alertsOnboarding/onboarding'),
   textBlock('/textBlock'),
   accordion('/accordion'),
   toolbar('/toolbar'),
   paragraph('/paragraph'),
+  linkTextBlock('/linkTextBlock'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -143,6 +159,21 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'SMS Code',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.inputNumberDefault.value: (BuildContext context) =>
+          InputNumberDefaultScreen(
+            title: 'Default',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberSecondary.value: (BuildContext context) =>
+          InputNumberSecondaryScreen(
+            title: 'Secondary',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberTextfield.value: (BuildContext context) =>
+          InputNumberTextFieldScreen(
+            title: 'Textfield',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
             title: 'Spinner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -173,6 +204,24 @@ class TabNavigatorHome extends StatelessWidget {
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
           const TagsScreen(),
+      TabNavigatorRoutes.alerts.value: (BuildContext context) => AlertsScreen(
+            title: 'Alerts',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
+          OnboardingViewScreen(
+            title: 'Onboarding',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.errorView.value: (BuildContext context) =>
+          ErrorViewScreen(
+            title: 'ErrorView',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.zeroScreen.value: (BuildContext context) => ZeroScreen(
+            title: 'ZeroScreen',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.informers.value: (BuildContext context) =>
           InformersScreen(
             title: 'Informers',
@@ -223,8 +272,10 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon & Flags',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.number.value: (BuildContext context) =>
-          const NumberScreen(),
+      TabNavigatorRoutes.number.value: (BuildContext context) => NumberScreen(
+            title: 'Number',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
@@ -252,6 +303,8 @@ class TabNavigatorHome extends StatelessWidget {
            const ToolbarScreen(title: 'Toolbar'),
       TabNavigatorRoutes.paragraph.value: (BuildContext context) =>
           const ParagraphScreen(),
+      TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
+          const LinkTextBlockScreen(),
     };
   }
 
