@@ -2,10 +2,10 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class IconTabsScreen extends StatelessWidget {
-  const IconTabsScreen({
+class InformerTabsScreen extends StatefulWidget {
+  const InformerTabsScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -14,6 +14,17 @@ class IconTabsScreen extends StatelessWidget {
   final String title;
   final Function(TabNavigatorRoutes route) onPush;
 
+  State<InformerTabsScreen> createState() => _InformerTabsScreenState();
+}
+
+class _InformerTabsScreenState extends State<InformerTabsScreen> {
+  bool isEnabled = true;
+  bool isLoading = false;
+  FocusNode focusNode = FocusNode();
+  TextInputState state = TextInputState.normal;
+  TextEditingController textController = TextEditingController();
+  late double screenWidth;
+
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
@@ -21,21 +32,25 @@ class IconTabsScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
         title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
+          widget.title,
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
+        centerTitle: true,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -45,23 +60,7 @@ class IconTabsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                TextView(
-                  'Two items',
-                  font: theme.fonts.headline,
-                  textColorNormal: theme.colors.textSecondary.color(),
-                )
-              ],
-            ),
             SizedBox(height: LayoutGrid.doubleModule),
-            IconTabs(<IconTabItem>[
-              IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-              IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
-            ]),
-            SizedBox(height: LayoutGrid.quadrupleModule),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -73,13 +72,11 @@ class IconTabsScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            IconTabs(<IconTabItem>[
-              IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-              IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
-              IconTabItem(
-                  'Three', AdmiralIcons.admiral_ic_account_detail_outline),
+            InformerTabs(<InformerTabItem>[
+              InformerTabItem('2 900 ₽', 'в месяц'),
+              InformerTabItem('2 900 ₽', 'в месяц'),
+              InformerTabItem('2 900 ₽', 'в месяц'),
             ]),
-            Spacer(),
             Spacer(),
           ],
         ),
