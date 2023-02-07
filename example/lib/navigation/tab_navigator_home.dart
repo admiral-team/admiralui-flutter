@@ -46,7 +46,8 @@ import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
-
+import '../screens/pageControls/page_controls_screen.dart';
+import '../screens/pageControls/linear/page_control_linear_screen.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 import '../screens/textfields/input_number/input_number_textfield_screen.dart';
@@ -64,6 +65,8 @@ enum TabNavigatorRoutes {
   inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
+  pageControls('/pageControls'),
+  pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
@@ -180,6 +183,16 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
           SliderTextFieldScreen(
             title: 'Slider',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
+          PageControlsScreen(
+            title: 'Page Controls',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.pageControlLinear.value: (BuildContext context) =>
+          PageControlLinearScreen(
+            title: 'Linear',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
