@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 @immutable
 class ShimmeRenderObject extends SingleChildRenderObjectWidget {
   const ShimmeRenderObject({
-    Widget? child,
     required this.percent,
     required this.direction,
     required this.gradient,
+    required Widget child,
   }) : super(child: child);
   final double percent;
   final ShimmerDirection direction;

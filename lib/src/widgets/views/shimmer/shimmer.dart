@@ -6,14 +6,13 @@ enum ShimmerDirection { leftToRight, rightToleft, topToBotton, bottomToTop }
 @immutable
 class Shimmer extends StatefulWidget {
   const Shimmer({
-    Key? key,
     required this.child,
     this.direction = ShimmerDirection.leftToRight,
     this.period = const Duration(milliseconds: 1500),
     this.loop = 0,
     this.enabled = true,
     this.scheme,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Duration period;
@@ -87,7 +86,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
         direction: widget.direction,
         gradient: _gradient,
         percent: _controller.value,
-        child: child,
+        child: widget.child,
       ),
     );
   }
