@@ -46,6 +46,7 @@ import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/shimmer_screen.dart';
 
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
@@ -100,6 +101,7 @@ enum TabNavigatorRoutes {
   accordion('/accordion'),
   toolbar('/toolbar'),
   linkTextBlock('/linkTextBlock'),
+  shimmer('/shimmer'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -175,6 +177,10 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
             title: 'Spinner',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.shimmer.value: (BuildContext context) => ShimmerScreen(
+            title: 'Shimmer',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>

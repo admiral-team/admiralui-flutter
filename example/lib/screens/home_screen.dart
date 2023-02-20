@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Shimmers',
         description: 'Демонстрация процесса загрузки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.shimmer),
       ),
       ListCellModel(
         title: 'Calendar',
