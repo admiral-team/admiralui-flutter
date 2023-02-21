@@ -103,7 +103,7 @@ ToastFuture showToast(
   final Widget widget = Container(
     margin: EdgeInsets.symmetric(horizontal: toastHorizontalMargin),
     width: fullWidth
-        ? MediaQuery.of(context).size.width - (toastHorizontalMargin)
+        ? MediaQuery.of(context).size.width - toastHorizontalMargin
         : null,
     decoration: ShapeDecoration(
       color: backgroundColor,
@@ -180,53 +180,53 @@ ToastFuture showToastWidget(
   context = context ?? currentContext;
   assert(context != null);
 
-  final StyledToastTheme? _toastTheme = StyledToastTheme.of(context!);
+  final StyledToastTheme? toastTheme = StyledToastTheme.of(context!);
 
-  isHideKeyboard ??= _toastTheme?.isHideKeyboard ?? false;
+  isHideKeyboard ??= toastTheme?.isHideKeyboard ?? false;
 
-  duration ??= _toastTheme?.duration ?? _defaultDuration;
+  duration ??= toastTheme?.duration ?? _defaultDuration;
 
-  animDuration ??= _toastTheme?.animDuration ?? animationDuration;
+  animDuration ??= toastTheme?.animDuration ?? animationDuration;
 
-  dismissOtherToast ??= _toastTheme?.dismissOtherOnShow ?? true;
+  dismissOtherToast ??= toastTheme?.dismissOtherOnShow ?? true;
 
   textDirection ??=
-      textDirection ?? _toastTheme?.textDirection ?? TextDirection.ltr;
+      textDirection ?? toastTheme?.textDirection ?? TextDirection.ltr;
 
-  position ??= _toastTheme?.toastPositions ?? StyledToastPosition.bottom;
+  position ??= toastTheme?.toastPositions ?? StyledToastPosition.bottom;
 
-  alignment ??= _toastTheme?.alignment ?? Alignment.center;
+  alignment ??= toastTheme?.alignment ?? Alignment.center;
 
-  axis ??= _toastTheme?.axis ?? Axis.vertical;
+  axis ??= toastTheme?.axis ?? Axis.vertical;
 
-  startOffset ??= _toastTheme?.startOffset;
+  startOffset ??= toastTheme?.startOffset;
 
-  endOffset ??= _toastTheme?.endOffset;
+  endOffset ??= toastTheme?.endOffset;
 
-  reverseStartOffset ??= _toastTheme?.reverseStartOffset;
+  reverseStartOffset ??= toastTheme?.reverseStartOffset;
 
-  reverseEndOffset ??= _toastTheme?.reverseEndOffset;
+  reverseEndOffset ??= toastTheme?.reverseEndOffset;
 
-  curve ??= curve ?? _toastTheme?.curve ?? Curves.linear;
+  curve ??= curve ?? toastTheme?.curve ?? Curves.linear;
 
-  reverseCurve ??= reverseCurve ?? _toastTheme?.reverseCurve ?? Curves.linear;
+  reverseCurve ??= reverseCurve ?? toastTheme?.reverseCurve ?? Curves.linear;
 
   animation ??=
-      animation ?? _toastTheme?.toastAnimation ?? StyledToastAnimation.size;
+      animation ?? toastTheme?.toastAnimation ?? StyledToastAnimation.size;
 
   reverseAnimation ??= reverseAnimation ??
-      _toastTheme?.reverseAnimation ??
+      toastTheme?.reverseAnimation ??
       StyledToastAnimation.size;
 
-  animationBuilder ??= animationBuilder ?? _toastTheme?.animationBuilder;
+  animationBuilder ??= animationBuilder ?? toastTheme?.animationBuilder;
 
-  reverseAnimBuilder ??= reverseAnimBuilder ?? _toastTheme?.reverseAnimBuilder;
+  reverseAnimBuilder ??= reverseAnimBuilder ?? toastTheme?.reverseAnimBuilder;
 
-  onInitState ??= onInitState ?? _toastTheme?.onInitState;
+  onInitState ??= onInitState ?? toastTheme?.onInitState;
 
-  onDismiss ??= onDismiss ?? _toastTheme?.onDismiss;
+  onDismiss ??= onDismiss ?? toastTheme?.onDismiss;
 
-  isIgnoring ??= _toastTheme?.isIgnoring ?? true;
+  isIgnoring ??= toastTheme?.isIgnoring ?? true;
 
   if (isHideKeyboard) {
     /// Hide keyboard.
@@ -283,7 +283,7 @@ ToastFuture showToastWidget(
 /// to save the overall configuration for toast widget in.
 class StyledToast extends StatefulWidget {
 
-  StyledToast({
+  const StyledToast({
     super.key,
     required this.child,
     required this.locale,
@@ -511,6 +511,7 @@ class _StyledToastState extends State<StyledToast> {
 class _StyledToastWidget extends StatefulWidget {
 
   const _StyledToastWidget({
+    // ignore: avoid_unused_constructor_parameters
     Key? key,
     required this.child,
     required this.duration,
