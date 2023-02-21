@@ -2,6 +2,9 @@ import 'package:flutter/widgets.dart';
 
 /// Toast position.
 class StyledToastPosition {
+
+  const StyledToastPosition({this.align = Alignment.center, this.offset = 0.0});
+  
   /// Toast position align.
   final Alignment align;
 
@@ -13,27 +16,24 @@ class StyledToastPosition {
   /// if align is bottomLeft/bottomCenter/bottomRight, offset is the distance from bottom.
   final double offset;
 
-  const StyledToastPosition({this.align = Alignment.center, this.offset = 0.0});
-
   /// Center position.
-  static const center =
-      const StyledToastPosition(align: Alignment.center, offset: 0.0);
+  static const StyledToastPosition center = StyledToastPosition();
 
   /// Top center position.
-  static const top =
-      const StyledToastPosition(align: Alignment.topCenter, offset: 10.0);
+  static const StyledToastPosition top = 
+  StyledToastPosition(align: Alignment.topCenter, offset: 10.0);
 
   /// Bottom center position.
-  static const bottom =
-      const StyledToastPosition(align: Alignment.bottomCenter, offset: 20.0);
+  static const StyledToastPosition bottom =
+      StyledToastPosition(align: Alignment.bottomCenter, offset: 20.0);
 
   /// Center left position.
-  static const left =
-      const StyledToastPosition(align: Alignment.centerLeft, offset: 17.0);
+  static const StyledToastPosition left =
+      StyledToastPosition(align: Alignment.centerLeft, offset: 17.0);
 
   /// Center right position.
-  static const right =
-      const StyledToastPosition(align: Alignment.centerRight, offset: 17.0);
+  static const StyledToastPosition right =
+      StyledToastPosition(align: Alignment.centerRight, offset: 17.0);
 }
 
 /// Toast showing type.

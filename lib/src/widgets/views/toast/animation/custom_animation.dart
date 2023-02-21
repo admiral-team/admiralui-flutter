@@ -13,7 +13,8 @@ typedef CustomAnimationBuilder = Widget Function(
 
 /// Get the animation simply.
 ///
-/// Get the curved [Animation] object conveniently from [start], [end] value drove by the controller.
+/// Get the curved [Animation] object conveniently from [start], 
+/// [end] value drove by the controller.
 Animation<T> getAnimation<T>(
   T start,
   T end,

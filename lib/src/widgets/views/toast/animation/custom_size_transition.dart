@@ -1,19 +1,22 @@
-import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
+import 'package:flutter/widgets.dart';
 
 /// Animates its own size and clips and aligns its child.
 ///
-/// [CustomSizeTransition] acts as a [ClipRect] that animates either its width or its
+/// [CustomSizeTransition] acts as a [ClipRect] 
+/// that animates either its width or its
 /// height, depending upon the value of [axis]. The alignment of the child along
 /// the [axis] is specified by the [axisAlignment].
 ///
-/// Like most widgets, [CustomSizeTransition] will conform to the constraints it is
+/// Like most widgets, [CustomSizeTransition] 
+/// will conform to the constraints it is
 /// given, so be sure to put it in a context where it can change size. For
 /// instance, if you place it into a [Container] with a fixed size, then the
-/// [CustomSizeTransition] will not be able to change size, and will appear to do
-/// nothing.
+/// [CustomSizeTransition] will not be able 
+/// to change size, and will appear to do nothing.
 ///
-/// Here's an illustration of the [CustomSizeTransition] widget, with it's [sizeFactor]
+/// Here's an illustration of the [CustomSizeTransition] 
+/// widget, with it's [sizeFactor]
 /// animated by a [CurvedAnimation] set to [Curves.fastOutSlowIn]:
 /// {@animation 300 378 https://flutter.github.io/assets-for-api-docs/assets/widgets/size_transition.mp4}
 ///
@@ -80,10 +83,11 @@ class CustomSizeTransition extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     AlignmentDirectional alignmentDirect;
-    if (axis == Axis.vertical)
+    if (axis == Axis.vertical) {
       alignmentDirect = AlignmentDirectional(-1.0, axisAlignment);
-    else
+    } else {
       alignmentDirect = AlignmentDirectional(axisAlignment, -1.0);
+    }
     return ClipRect(
       child: Align(
         alignment: alignment ?? alignmentDirect,
