@@ -13,6 +13,17 @@ void dismissAllToast({bool showAnim = true}) {
 /// Use the [dismiss] to dismiss toast.
 /// When the Toast is dismissed, call [onDismiss] if specified.
 class ToastFuture {
+
+  ToastFuture.create(
+    Duration duration,
+    this._entry,
+    this._onDismiss,
+    this._containerKey,
+  ) {
+    if (duration != Duration.zero) {
+      _timer = Timer(duration, () => dismiss());
+    }
+  }
   /// Toast overlay.
   final OverlayEntry _entry;
 
@@ -40,17 +51,6 @@ class ToastFuture {
 
   /// Get the [_containerKey]
   GlobalKey get containerKey => _containerKey;
-
-  ToastFuture.create(
-    Duration duration,
-    this._entry,
-    this._onDismiss,
-    this._containerKey,
-  ) {
-    if (duration != Duration.zero) {
-      _timer = Timer(duration, () => dismiss());
-    }
-  }
 
   /// Dismiss toast overlay.
   ///
@@ -89,7 +89,7 @@ class ToastManager {
   }
 
   /// [Set] used to save [ToastFuture].
-  Set<ToastFuture> toastSet = Set();
+  Set<ToastFuture> toastSet = <ToastFuture>{};
 
   /// Dismiss all toast.
   void dismissAll({

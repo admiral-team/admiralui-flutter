@@ -71,10 +71,10 @@ ToastFuture showToast(
   bool? isIgnoring,
   OnInitStateCallback? onInitState,
 }) {
-  context = context != null ? context : currentContext;
+  context = context ?? currentContext;
   assert(context != null);
 
-  StyledToastTheme? toastThemeLocal = StyledToastTheme.of(context!);
+  final StyledToastTheme? toastThemeLocal = StyledToastTheme.of(context!);
 
   position ??= toastThemeLocal?.toastPositions ?? StyledToastPosition.bottom;
 
@@ -100,7 +100,7 @@ ToastFuture showToast(
 
   fullWidth ??= toastThemeLocal?.fullWidth ?? false;
 
-  Widget widget = Container(
+  final Widget widget = Container(
     margin: EdgeInsets.symmetric(horizontal: toastHorizontalMargin),
     width: fullWidth
         ? MediaQuery.of(context).size.width - (toastHorizontalMargin)
@@ -177,10 +177,10 @@ ToastFuture showToastWidget(
   OverlayEntry entry;
   ToastFuture future;
 
-  context = context != null ? context : currentContext;
+  context = context ?? currentContext;
   assert(context != null);
 
-  StyledToastTheme? _toastTheme = StyledToastTheme.of(context!);
+  final StyledToastTheme? _toastTheme = StyledToastTheme.of(context!);
 
   isHideKeyboard ??= _toastTheme?.isHideKeyboard ?? false;
 
@@ -233,9 +233,9 @@ ToastFuture showToastWidget(
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
-  GlobalKey<StyledToastWidgetState> key = GlobalKey();
+  final GlobalKey<StyledToastWidgetState> key = GlobalKey();
 
-  entry = OverlayEntry(builder: (ctx) {
+  entry = OverlayEntry(builder: (BuildContext ctx) {
     return IgnorePointer(
       ignoring: isIgnoring!,
       child: _StyledToastWidget(
@@ -259,13 +259,13 @@ ToastFuture showToastWidget(
         child: Directionality(
           textDirection: textDirection!,
           child: Material(
-            child: widget,
             color: Colors.transparent,
+            child: widget,
           ),
         ),
       ),
     );
-  });
+  },);
 
   if (dismissOtherToast) {
     dismissAllToast();
@@ -427,7 +427,7 @@ class _StyledToastState extends State<StyledToast> {
   Widget build(BuildContext context) {
     final Widget overlay = Overlay(
       initialEntries: <OverlayEntry>[
-        OverlayEntry(builder: (ctx) {
+        OverlayEntry(builder: (BuildContext ctx) {
           currentContext = ctx;
           return widget.child;
         },)
