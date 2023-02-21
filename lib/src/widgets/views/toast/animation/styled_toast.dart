@@ -282,6 +282,40 @@ ToastFuture showToastWidget(
 /// Toast configuration widget, which we use 
 /// to save the overall configuration for toast widget in.
 class StyledToast extends StatefulWidget {
+
+  StyledToast({
+    super.key,
+    required this.child,
+    required this.locale,
+    this.textAlign,
+    this.textDirection,
+    this.borderRadius,
+    this.backgroundColor,
+    this.textPadding,
+    this.textStyle = const TextStyle(fontSize: 16.0, color: Colors.white),
+    this.shapeBorder,
+    this.duration,
+    this.animDuration,
+    this.toastPositions,
+    this.toastAnimation,
+    this.reverseAnimation,
+    this.alignment,
+    this.axis,
+    this.startOffset,
+    this.endOffset,
+    this.reverseStartOffset,
+    this.reverseEndOffset,
+    this.curve,
+    this.reverseCurve,
+    this.dismissOtherOnShow = true,
+    this.onDismiss,
+    this.fullWidth,
+    this.isHideKeyboard,
+    this.animationBuilder,
+    this.reverseAnimBuilder,
+    this.isIgnoring = true,
+    this.onInitState,
+  });
   /// Child of toast scope.
   final Widget child;
 
@@ -372,40 +406,6 @@ class StyledToast extends StatefulWidget {
   /// When toast widget [initState], this callback will be called.
   final OnInitStateCallback? onInitState;
 
-  StyledToast({
-    Key? key,
-    required this.child,
-    required this.locale,
-    this.textAlign,
-    this.textDirection,
-    this.borderRadius,
-    this.backgroundColor,
-    this.textPadding,
-    this.textStyle = const TextStyle(fontSize: 16.0, color: Colors.white),
-    this.shapeBorder,
-    this.duration,
-    this.animDuration,
-    this.toastPositions,
-    this.toastAnimation,
-    this.reverseAnimation,
-    this.alignment,
-    this.axis,
-    this.startOffset,
-    this.endOffset,
-    this.reverseStartOffset,
-    this.reverseEndOffset,
-    this.curve,
-    this.reverseCurve,
-    this.dismissOtherOnShow = true,
-    this.onDismiss,
-    this.fullWidth,
-    this.isHideKeyboard,
-    this.animationBuilder,
-    this.reverseAnimBuilder,
-    this.isIgnoring = true,
-    this.onInitState,
-  }) : super(key: key);
-
   @override
   State<StatefulWidget> createState() {
     return _StyledToastState();
@@ -466,11 +466,12 @@ class _StyledToastState extends State<StyledToast> {
         );
 
     return MediaQuery(
+      data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
       child: Localizations(
-        delegates: [],
+        // ignore: always_specify_types
+        delegates: const [],
         locale: widget.locale,
         child: StyledToastTheme(
-          child: wrapper,
           textAlign: mTextAlign,
           textDirection: mTextDirection,
           borderRadius: mBorderRadius,
@@ -499,15 +500,36 @@ class _StyledToastState extends State<StyledToast> {
           reverseAnimBuilder: widget.reverseAnimBuilder,
           isIgnoring: widget.isIgnoring,
           onInitState: widget.onInitState,
+          child: wrapper,
         ),
       ),
-      data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
     );
   }
 }
 
 /// Styled Toast widget.
 class _StyledToastWidget extends StatefulWidget {
+
+  const _StyledToastWidget({
+    Key? key,
+    required this.child,
+    required this.duration,
+    required this.animDuration,
+    this.curve = Curves.linear,
+    this.reverseCurve = Curves.linear,
+    this.position = StyledToastPosition.bottom,
+    this.alignment = Alignment.center,
+    this.axis = Axis.horizontal,
+    this.startOffset,
+    this.endOffset,
+    this.reverseStartOffset,
+    this.reverseEndOffset,
+    this.animation = StyledToastAnimation.fade,
+    this.reverseAnimation,
+    this.animationBuilder,
+    this.reverseAnimBuilder,
+    this.onInitState,
+  })  : assert(animDuration * 2 <= duration || duration == Duration.zero);
   /// Child widget.
   final Widget child;
 
@@ -558,28 +580,6 @@ class _StyledToastWidget extends StatefulWidget {
 
   /// Custom animation builder method.
   final OnInitStateCallback? onInitState;
-
-  _StyledToastWidget({
-    Key? key,
-    required this.child,
-    required this.duration,
-    required this.animDuration,
-    this.curve = Curves.linear,
-    this.reverseCurve = Curves.linear,
-    this.position = StyledToastPosition.bottom,
-    this.alignment = Alignment.center,
-    this.axis = Axis.horizontal,
-    this.startOffset,
-    this.endOffset,
-    this.reverseStartOffset,
-    this.reverseEndOffset,
-    this.animation = StyledToastAnimation.fade,
-    this.reverseAnimation,
-    this.animationBuilder,
-    this.reverseAnimBuilder,
-    this.onInitState,
-  })  : assert(animDuration * 2 <= duration || duration == Duration.zero),
-        super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -1520,6 +1520,7 @@ class StyledToastWidgetState extends State<_StyledToastWidget>
         await _animationController.reverse().orCancel;
       }
       onAnimationEnd?.call();
+    // ignore: empty_catches
     } on TickerCanceled {}
   }
 

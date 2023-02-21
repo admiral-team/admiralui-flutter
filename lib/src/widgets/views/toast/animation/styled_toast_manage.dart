@@ -77,16 +77,17 @@ class ToastFuture {
 
 /// Toast manager, manage toast list.
 class ToastManager {
-  ToastManager._();
-
-  /// Instance of [ToastManager].
-  static ToastManager? _instance;
 
   /// Factory to create [ToastManager] singleton.
   factory ToastManager() {
     _instance ??= ToastManager._();
     return _instance!;
   }
+
+  ToastManager._();
+
+  /// Instance of [ToastManager].
+  static ToastManager? _instance;
 
   /// [Set] used to save [ToastFuture].
   Set<ToastFuture> toastSet = <ToastFuture>{};

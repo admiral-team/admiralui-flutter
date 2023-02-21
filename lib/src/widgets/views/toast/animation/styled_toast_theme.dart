@@ -8,7 +8,41 @@ import 'package:flutter/widgets.dart';
 /// If you have specified a custom content widget, 
 /// [ToastTheme] will not be working.
 class StyledToastTheme extends InheritedWidget {
+
+  const StyledToastTheme({
+    required this.child,
+    this.textAlign,
+    this.textDirection,
+    this.borderRadius,
+    this.backgroundColor,
+    this.textPadding,
+    this.textStyle,
+    this.shapeBorder,
+    this.duration,
+    this.animDuration,
+    this.toastPositions,
+    this.alignment,
+    this.axis,
+    this.startOffset,
+    this.endOffset,
+    this.reverseStartOffset,
+    this.reverseEndOffset,
+    this.toastAnimation,
+    this.reverseAnimation,
+    this.curve,
+    this.reverseCurve,
+    this.dismissOtherOnShow,
+    this.onDismiss,
+    this.fullWidth,
+    this.isHideKeyboard,
+    this.animationBuilder,
+    this.reverseAnimBuilder,
+    this.isIgnoring,
+    this.onInitState,
+  }) : super(child: child);
+
   /// Child widget.
+  // ignore: annotate_overrides, overridden_fields
   final Widget child;
 
   /// Text align.
@@ -94,38 +128,6 @@ class StyledToastTheme extends InheritedWidget {
 
   /// When toast widget [initState], this callback will be called.
   final OnInitStateCallback? onInitState;
-
-  StyledToastTheme({
-    required this.child,
-    this.textAlign,
-    this.textDirection,
-    this.borderRadius,
-    this.backgroundColor,
-    this.textPadding,
-    this.textStyle,
-    this.shapeBorder,
-    this.duration,
-    this.animDuration,
-    this.toastPositions,
-    this.alignment,
-    this.axis,
-    this.startOffset,
-    this.endOffset,
-    this.reverseStartOffset,
-    this.reverseEndOffset,
-    this.toastAnimation,
-    this.reverseAnimation,
-    this.curve,
-    this.reverseCurve,
-    this.dismissOtherOnShow,
-    this.onDismiss,
-    this.fullWidth,
-    this.isHideKeyboard,
-    this.animationBuilder,
-    this.reverseAnimBuilder,
-    this.isIgnoring,
-    this.onInitState,
-  }) : super(child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
