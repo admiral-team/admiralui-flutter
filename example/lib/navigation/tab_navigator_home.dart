@@ -48,6 +48,10 @@ import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
 import '../screens/text_block/title_text_block_screen.dart';
 
+import '../screens/textfields/input_number/input_number_default_screen.dart';
+import '../screens/textfields/input_number/input_number_secondary_screen.dart';
+import '../screens/textfields/input_number/input_number_textfield_screen.dart';
+
 enum TabNavigatorRoutes {
   home('/'),
   checkbox('/checkbox'),
@@ -56,6 +60,9 @@ enum TabNavigatorRoutes {
   standartTextfield('/textfields/standartTextfield'),
   doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
+  inputNumberDefault('/textfields/inputNumber/inputNumberDefault'),
+  inputNumberSecondary('/textfields/inputNumber/inputNumberSecondary'),
+  inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
@@ -151,6 +158,21 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
           SMSCodeTextFieldScreen(
             title: 'SMS Code',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberDefault.value: (BuildContext context) =>
+          InputNumberDefaultScreen(
+            title: 'Default',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberSecondary.value: (BuildContext context) =>
+          InputNumberSecondaryScreen(
+            title: 'Secondary',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.inputNumberTextfield.value: (BuildContext context) =>
+          InputNumberTextFieldScreen(
+            title: 'Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
@@ -251,8 +273,10 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon & Flags',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
-      TabNavigatorRoutes.number.value: (BuildContext context) =>
-          const NumberScreen(),
+      TabNavigatorRoutes.number.value: (BuildContext context) => NumberScreen(
+            title: 'Number',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
       TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
