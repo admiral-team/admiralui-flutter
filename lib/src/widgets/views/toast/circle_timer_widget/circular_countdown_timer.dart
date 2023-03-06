@@ -133,6 +133,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
         !countDownController!.isStarted) {
       if (widget.timeFormatterFunction != null) {
         return Function.apply(widget.timeFormatterFunction!,
+            // ignore: always_specify_types
             [_getTime, Duration(seconds: widget.duration)],).toString();
       } else {
         timeStamp = _getTime(Duration(seconds: widget.duration));
@@ -142,6 +143,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
       if (widget.timeFormatterFunction != null) {
         return Function.apply(
           widget.timeFormatterFunction!,
+          // ignore: always_specify_types
           [_getTime, duration],
         ).toString();
       } else {
@@ -305,8 +307,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                       ),
                     ),
                   ),
-                  widget.isTimerTextShown
-                      ? Align(
+                  if (widget.isTimerTextShown) Align(
                           alignment: FractionalOffset.center,
                           child: Text(
                             time,
@@ -317,8 +318,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                                 ),
                             textAlign: widget.textAlign,
                           ),
-                        )
-                      : Container(),
+                        ) else Container(),
                 ],
               ),
             ),
@@ -345,7 +345,7 @@ class CountDownController {
   bool isResumed = false;
   bool isRestarted = false;
   int? _initialDuration;
-  int? _duration;
+  late int? _duration;
 
   /// This Method Starts the Countdown Timer
   void start() {
