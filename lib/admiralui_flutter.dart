@@ -63,6 +63,16 @@ export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_style.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/action_pane_motions.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/actions.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/auto_close_behavior.dart'
+    show SlidableAutoCloseBehavior, SlidableAutoCloseNotification;
+export 'package:admiralui_flutter/src/widgets/views/cell/action/controller.dart'
+    show ResizeRequest, SlidableController, ActionPaneType;
+export 'package:admiralui_flutter/src/widgets/views/cell/action/dismissible_pane.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/dismissible_pane_motions.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/notifications.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/action/slidable.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/base_cell_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/center/subtitle_title_list_widget/subtitle_title_list_widget.dart';

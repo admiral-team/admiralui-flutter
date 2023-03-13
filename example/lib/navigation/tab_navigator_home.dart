@@ -46,6 +46,7 @@ import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/cells/action_cell_screen.dart';
 
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
@@ -89,6 +90,7 @@ enum TabNavigatorRoutes {
   pinCode('/pinCode'),
   cells('/cells'),
   baseCells('/baseCells'),
+  actionCells('/actionCells'),
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
@@ -302,6 +304,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ToolbarScreen(title: 'Toolbar'),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
+      TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
+          const ActionCellsScreen(),
     };
   }
 
