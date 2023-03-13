@@ -153,4 +153,3 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
     );
   }
 }
-
