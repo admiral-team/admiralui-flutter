@@ -45,6 +45,7 @@ import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
+import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
 import '../screens/text_block/title_text_block_screen.dart';
 
@@ -100,6 +101,7 @@ enum TabNavigatorRoutes {
   textBlock('/textBlock'),
   accordion('/accordion'),
   toolbar('/toolbar'),
+  paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
   titleTextBlock('/titleTextBlock'),
   number('/number');
@@ -301,7 +303,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.accordion.value: (BuildContext context) =>
           const AccordionScreen(),
       TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
-          const ToolbarScreen(title: 'Toolbar'),
+           const ToolbarScreen(title: 'Toolbar'),
+      TabNavigatorRoutes.paragraph.value: (BuildContext context) =>
+          const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
       TabNavigatorRoutes.titleTextBlock.value: (BuildContext context) =>

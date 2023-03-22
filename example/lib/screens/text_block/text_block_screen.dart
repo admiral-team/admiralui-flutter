@@ -66,7 +66,7 @@ class TextBlockScreen extends StatelessWidget {
             centerCell: TitleCellWidget(title: 'Paragraph'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.accordion,
+              TabNavigatorRoutes.paragraph,
             ),
           ),
           BaseCellWidget(
