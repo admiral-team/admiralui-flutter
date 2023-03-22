@@ -48,8 +48,8 @@ import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/toast_informers_screen.dart';
+import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
-
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 import '../screens/textfields/input_number/input_number_textfield_screen.dart';
@@ -102,6 +102,7 @@ enum TabNavigatorRoutes {
   textBlock('/textBlock'),
   accordion('/accordion'),
   toolbar('/toolbar'),
+  paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
   toastInformers('/toastInformers'),
   notification('/notification'),
@@ -305,7 +306,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.accordion.value: (BuildContext context) =>
           const AccordionScreen(),
       TabNavigatorRoutes.toolbar.value: (BuildContext context) =>
-          const ToolbarScreen(title: 'Toolbar'),
+           const ToolbarScreen(title: 'Toolbar'),
+      TabNavigatorRoutes.paragraph.value: (BuildContext context) =>
+          const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>
