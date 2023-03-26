@@ -118,6 +118,10 @@ export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_b
 export 'package:admiralui_flutter/src/widgets/views/text_block/drop_down/title_button_drop_down_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_leading_image_type.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_style.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/double_textfield/double_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button_scheme.dart';
@@ -134,6 +138,11 @@ export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/separat
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_control_parameter.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/toast/animation/styled_toast.dart';
+export 'package:admiralui_flutter/src/widgets/views/toast/animation/styled_toast_enum.dart';
+export 'package:admiralui_flutter/src/widgets/views/toast/toast_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/toast/toast_style.dart';
+export 'package:admiralui_flutter/src/widgets/views/toast/toast_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_item.dart';
 export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget_scheme.dart';
