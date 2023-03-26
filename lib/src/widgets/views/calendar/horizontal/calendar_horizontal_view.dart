@@ -1,0 +1,150 @@
+import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:flutter/cupertino.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:infinity_page_view/infinity_page_view.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+class CalendarHorizontalView extends StatefulWidget {
+  const CalendarHorizontalView({
+    this.startDate,
+    this.endDate,
+    this.currentDate,
+    this.notActiveAfterDate,
+    this.locale,
+    this.scheme,
+  });
+
+  final DateTime? startDate;
+  final DateTime? endDate;
+  final DateTime? currentDate;
+  final DateTime? notActiveAfterDate;
+  final String? locale;
+  final CalendarHorizontalViewScheme? scheme;
+
+  @override
+  State<StatefulWidget> createState() => _CalendarHorizontalViewState();
+}
+
+class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
+  late CalendarDatesDataSource dataSource;
+  late bool isDatePickerActive = false;
+  late CalendarHorizontalViewScheme scheme;
+  late int currentIndex = 1;
+  late String locale;
+
+  InfinityPageController infinityPageController = InfinityPageController(
+    initialPage: 1,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = 1;
+    locale = widget.locale ?? 'ru';
+    initializeDateFormatting(locale);
+    dataSource = CalendarDatesDataSource(
+      widget.startDate,
+      widget.endDate,
+      widget.currentDate,
+      widget.notActiveAfterDate,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    scheme = widget.scheme ?? CalendarHorizontalViewScheme(theme: theme);
+    return Column(
+      children: <Widget>[
+        CalendarControlsView(
+          isDatePickerActive: isDatePickerActive,
+          dataSource.currentDate ?? DateTime.now(),
+          onPressedPickerButton: () => _handlePickerButtonTap(),
+          onPressedSlideLeft: () => _slideToIndex(currentIndex - 1),
+          onPressedSlideRight: () => _slideToIndex(currentIndex + 1),
+          onPressedSelect: () => _handlePickerButtonTap(),
+        ),
+        if (isDatePickerActive)
+          Expanded(
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: dataSource.currentDate ?? DateTime.now(),
+              onDateTimeChanged: (DateTime val) {
+                setState(
+                  () {
+                    dataSource.currentDate = val;
+                  },
+                );
+              },
+            ),
+          ),
+        if (!isDatePickerActive)
+          CalendarWeekView(
+            locale: locale,
+            scheme: scheme.weekScheme,
+          ),
+        if (!isDatePickerActive)
+          const SizedBox(
+            height: LayoutGrid.doubleModule,
+          ),
+        if (!isDatePickerActive)
+          Expanded(
+            child: InfinityPageView(
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: <Widget>[
+                    CalendarMonthView(
+                      dataSource.monthList[index],
+                      onTap: (CalendarDayItem dayItem) {
+                        setState(
+                          () {
+                            dataSource.didTapAtDate(
+                              dayItem.date,
+                            );
+                            _onPageChanged(currentIndex);
+                          },
+                        );
+                      },
+                      scheme: scheme.monthScheme,
+                    ),
+                  ],
+                );
+              },
+              itemCount: 3,
+              onPageChanged: (int index) {
+                setState(() {
+                  _onPageChanged(index);
+                });
+              },
+              controller: infinityPageController,
+            ),
+          ),
+      ],
+    );
+  }
+
+  void _slideToIndex(int index) {
+    infinityPageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeIn,
+    );
+  }
+
+  void _onPageChanged(int index) {
+    currentIndex = index;
+    dataSource.updateMonthList(index);
+  }
+
+  void _handlePickerButtonTap() {
+    setState(
+      () {
+        isDatePickerActive = !isDatePickerActive;
+        if (!isDatePickerActive) {
+          dataSource.updateMonthListByCurrentDate();
+        }
+      },
+    );
+  }
+}

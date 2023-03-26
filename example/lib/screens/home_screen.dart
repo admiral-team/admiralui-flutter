@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Calendar',
         description: 'Календарь',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.calendar),
       ),
       ListCellModel(
         title: 'Time Picker',

@@ -46,6 +46,8 @@ import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/calendars_screen.dart';
+import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
 
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
@@ -65,6 +67,8 @@ enum TabNavigatorRoutes {
   sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
   tabs('/tabs'),
+  calendar('/calendar'),
+  calendarHorizontal('/calendar/calendarHorizontal'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   informers('/informers'),
@@ -180,6 +184,16 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
           SliderTextFieldScreen(
             title: 'Slider',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.calendar.value: (BuildContext context) =>
+          CalendarsScreen(
+            title: 'Calendar',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
+          CalendarHorizontalScreen(
+            title: 'Horizontal',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
