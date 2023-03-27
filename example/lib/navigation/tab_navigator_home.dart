@@ -47,6 +47,7 @@ import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
+import '../screens/action_toast_screen.dart';
 import '../screens/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
@@ -109,6 +110,7 @@ enum TabNavigatorRoutes {
   notification('/notification'),
   toast('/toast'),
   toastStatic('/toastStatic'),
+  toastAction('/toastAction'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -327,6 +329,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ToastScreen(),
       TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
           const ToastStaticScreen()
+      TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
+          const ActionToastScreen()
     };
   }
 

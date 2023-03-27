@@ -31,7 +31,7 @@ class NotificationScreen extends StatelessWidget {
       ListCellModel(
         title: 'Action',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.toast),
+        onPressed: () => onPush.call(TabNavigatorRoutes.toastAction),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
