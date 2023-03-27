@@ -328,7 +328,7 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.toast.value: (BuildContext context) =>
           const ToastScreen(),
       TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
-          const ToastStaticScreen()
+          const ToastStaticScreen(),
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
           const ActionToastScreen()
     };
