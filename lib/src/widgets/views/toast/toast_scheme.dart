@@ -18,6 +18,16 @@ class ToastScheme {
       ToastStyle.normal,
     );
 
+    // Additional
+    backgroundColor.set(
+      theme.colors.backgroundSelected.color(),
+      ToastStyle.additional,
+    );
+    imageColor.set(
+      theme.colors.elementAccent.color(),
+      ToastStyle.additional,
+    );
+
     // Attention
     backgroundColor.set(
       theme.colors.backgroundAttention.color(),
