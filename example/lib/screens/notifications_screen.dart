@@ -26,7 +26,7 @@ class NotificationScreen extends StatelessWidget {
       ListCellModel(
         title: 'Static',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.toast),
+        onPressed: () => onPush.call(TabNavigatorRoutes.toastStatic),
       ),
       ListCellModel(
         title: 'Action',

@@ -51,6 +51,7 @@ import '../screens/action_toast_screen.dart';
 import '../screens/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 import '../screens/textfields/input_number/input_number_textfield_screen.dart';
@@ -108,6 +109,7 @@ enum TabNavigatorRoutes {
   toastInformers('/toastInformers'),
   notification('/notification'),
   toast('/toast'),
+  toastStatic('/toastStatic'),
   toastAction('/toastAction'),
   number('/number');
 
@@ -325,6 +327,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.toast.value: (BuildContext context) =>
           const ToastScreen(),
+      TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
+          const ToastStaticScreen(),
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
           const ActionToastScreen()
     };
@@ -345,4 +349,5 @@ class TabNavigatorHome extends StatelessWidget {
       },
     );
   }
+  
 }
