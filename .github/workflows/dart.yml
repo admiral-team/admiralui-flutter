@@ -57,6 +57,7 @@ jobs:
     needs: setup
     runs-on: [ self-hosted, main ]
     steps:
+      - uses: actions/checkout@v3
       - run: cd example && flutter build web
 #
 #  build-android:
