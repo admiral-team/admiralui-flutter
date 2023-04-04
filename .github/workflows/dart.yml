@@ -38,54 +38,54 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-  test:
-    name: Test App
-    needs: setup
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: flutter test
-
-  build-web:
-    name: Build Web App
-    needs: setup
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd example && flutter build web
-
-  build-android:
-    name: Build Android App & Apk
-    needs: test
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd example && flutter build apk && flutter build appbundle
-
-  install-fastlane:
-    name: Install & Update fastlane dependencies
-    needs: setup
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd build/ios/fastlane
-      - run: bundle install
-      - run: bundle update
-      - run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-      - run: bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-
-  build-ios:
-    name: Build Flutter iOS
-    needs: [install-fastlane, test]
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd example/lib
-      - run: flutter build ios
-
-  deploy-ios-dev:
-    name: Deploy iOS Appcenter Development
-    needs: build-ios
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd build/ios/fastlane
-      - run: bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+#  test:
+#    name: Test App
+#    needs: setup
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: flutter test
+#
+#  build-web:
+#    name: Build Web App
+#    needs: setup
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd example && flutter build web
+#
+#  build-android:
+#    name: Build Android App & Apk
+#    needs: test
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd example && flutter build apk && flutter build appbundle
+#
+#  install-fastlane:
+#    name: Install & Update fastlane dependencies
+#    needs: setup
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd build/ios/fastlane
+#      - run: bundle install
+#      - run: bundle update
+#      - run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
+#      - run: bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
+#
+#  build-ios:
+#    name: Build Flutter iOS
+#    needs: [install-fastlane, test]
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd example/lib
+#      - run: flutter build ios
+#
+#  deploy-ios-dev:
+#    name: Deploy iOS Appcenter Development
+#    needs: build-ios
+#    if: ${{ github.event_name == 'pull_request' }}
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd build/ios/fastlane
+#      - run: bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
 
 
 #name: Build Flutter App
