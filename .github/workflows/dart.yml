@@ -104,9 +104,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: cd build/ios/fastlane
-      - run: bundle install
-      - run: bundle update
+      - run: cd build/ios/fastlane && bundle install && bundle update
       - run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
       - run: bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
       - run: cd example/lib
