@@ -66,14 +66,22 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: cd example && flutter build web
-#
-#  build-android:
-#    name: Build Android App & Apk
-#    needs: test
-#    runs-on: [ self-hosted, main ]
-#    steps:
-#      - run: cd example && flutter build apk && flutter build appbundle
-#
+
+  build-android:
+    name: Build Android App & Apk
+    needs: setup
+    runs-on: [ self-hosted, main ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - run: cd example && flutter build apk && flutter build appbundle
+
 #  install-fastlane:
 #    name: Install & Update fastlane dependencies
 #    needs: setup
