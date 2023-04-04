@@ -106,11 +106,14 @@ jobs:
           java-version: '11'
       - run: cd build/ios/fastlane && bundle install && bundle update
       - run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-      - run: bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-      - run: cd example/lib
-      - run: flutter build ios
-      - run: cd build/ios/fastlane
-      - run: bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+      - run: cd build/ios/fastlane && bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
+      - run: cd example/lib && flutter build ios
+      - run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+      - name: Check If Deploy iOS Appcenter Failed
+        if: ${{ failure() }}
+        run: |
+          cd build/ios/fastlane
+          bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }}
 #
 #  build-ios:
 #    name: Build Flutter iOS
