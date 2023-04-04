@@ -38,7 +38,7 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
           textColorNormal: colors.textPrimary.color(),
         ),
       ),
-     body: Container(
+      body: Container(
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
         ),
@@ -49,6 +49,20 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                SizedBox(
+                  height: LayoutGrid.doubleModule,
+                ),
+                StandardTabs(
+                  <String>['Default', 'Disabled'],
+                  onTap: (String value) {
+                    setState(() {
+                      isEnabled = value == 'Default';
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: LayoutGrid.quadrupleModule,
+                ),
                 TextView(
                   'Default',
                   font: fonts.body1,
@@ -58,26 +72,26 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
                   height: LayoutGrid.doubleModule,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_info_outline,
-                  style: ToastStyle.normal,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_info_outline,
+                    style: ToastStyle.normal,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 const SizedBox(
                   height: LayoutGrid.module,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_info_outline,
-                  style: ToastStyle.additional,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_info_outline,
+                    style: ToastStyle.additional,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 SizedBox(
                   height: LayoutGrid.doubleModule,
                 ),
@@ -90,26 +104,26 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
                   height: LayoutGrid.doubleModule,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_check_solid,
-                  style: ToastStyle.normal,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_check_solid,
+                    style: ToastStyle.normal,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 const SizedBox(
                   height: LayoutGrid.module,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_check_solid,
-                  style: ToastStyle.success,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_check_solid,
+                    style: ToastStyle.success,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 SizedBox(
                   height: LayoutGrid.doubleModule,
                 ),
@@ -122,26 +136,26 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
                   height: LayoutGrid.doubleModule,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_error_triangle_solid,
-                  style: ToastStyle.normal,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_error_triangle_solid,
+                    style: ToastStyle.normal,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 const SizedBox(
                   height: LayoutGrid.module,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_error_triangle_solid,
-                  style: ToastStyle.attention,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_error_triangle_solid,
+                    style: ToastStyle.attention,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 SizedBox(
                   height: LayoutGrid.doubleModule,
                 ),
@@ -154,26 +168,26 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
                   height: LayoutGrid.doubleModule,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_error_outline,
-                  style: ToastStyle.normal,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_error_outline,
+                    style: ToastStyle.normal,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 const SizedBox(
                   height: LayoutGrid.module,
                 ),
                 ToastWidget(
-                  title:
-                      'At breakpoint boundaries, mini units divide the screen'
-                      ' into a fixed master grid.',
-                  linkText: 'Link text',
-                  image: AdmiralIcons.admiral_ic_error_outline,
-                  style: ToastStyle.error,
-                  onClosePressed: (){}
-                ),
+                    title:
+                        'At breakpoint boundaries, mini units divide the screen'
+                        ' into a fixed master grid.',
+                    linkText: 'Link text',
+                    image: AdmiralIcons.admiral_ic_error_outline,
+                    style: ToastStyle.error,
+                    isEnable: isEnabled,
+                    onClosePressed: () {}),
                 SizedBox(
                   height: LayoutGrid.doubleModule,
                 ),
