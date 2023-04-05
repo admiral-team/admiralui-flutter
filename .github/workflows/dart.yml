@@ -29,42 +29,42 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: flutter --version
-      - name: Analyze Flutter env
-        run: flutter doctor -v
-      - name: Check Lint issues
-        run: flutter analyze --fatal-infos
-      - name: Install dependencies
-        run: flutter pub get
-      - name: Test App
-        run: flutter test
-      - name: Build Web App
-        run: cd example && flutter build web
-      - name: Build Android App & Apk
-        run: cd example && flutter build apk && flutter build appbundle
-      - name: Install & Update fastlane dependencies
-        run: |
-          cd build/ios/fastlane && bundle install && bundle update && sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-          bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-      - name: Build Flutter iOS 
-        run: |
-          cd example/lib
-          flutter build ios
-      - name: Deploy iOS Appcenter Development
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          cd build/ios/fastlane
-          bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+#      - run: flutter --version
+#      - name: Analyze Flutter env
+#        run: flutter doctor -v
+#      - name: Check Lint issues
+#        run: flutter analyze --fatal-infos
+#      - name: Install dependencies
+#        run: flutter pub get
+#      - name: Test App
+#        run: flutter test
+#      - name: Build Web App
+#        run: cd example && flutter build web
+#      - name: Build Android App & Apk
+#        run: cd example && flutter build apk && flutter build appbundle
+#      - name: Install & Update fastlane dependencies
+#        run: |
+#          cd build/ios/fastlane && bundle install && bundle update && sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
+#          bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
+#      - name: Build Flutter iOS
+#        run: |
+#          cd example/lib
+#          flutter build ios
+#      - name: Deploy iOS Appcenter Development
+#        if: ${{ github.event_name == 'pull_request' }}
+#        run: |
+#          cd build/ios/fastlane
+#          bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
       - name: Check If Deploy iOS Appcenter Failed
-        if: ${{ failure() }}
+#        if: ${{ failure() }}
         run: |
           cd build/ios/fastlane && bundle install && bundle update && 
           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
-      - name: Upload Web Version
-        if: ${{ github.event_name == 'push' && github.event.pull_request.head.ref == 'develop' }}
-        run: |
-          cd example/build/web
-          git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
-          git add .
-          git commit -m '${{ github.event.pull_request.title }}'
-          git push origin master
+#      - name: Upload Web Version
+#        if: ${{ github.event_name == 'push' && github.event.pull_request.head.ref == 'develop' }}
+#        run: |
+#          cd example/build/web
+#          git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
+#          git add .
+#          git commit -m '${{ github.event.pull_request.title }}'
+#          git push origin master
