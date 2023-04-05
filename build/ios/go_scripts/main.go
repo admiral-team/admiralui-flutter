@@ -50,7 +50,7 @@ func main() {
 		fmt.Println(telegramChatId)
 		fmt.Println("tkn")
 		fmt.Println(os.Args[4])
-		formatedBuildInfoFailed := buildInfo.build_failed_info(os.Args[5])
+		formatedBuildInfoFailed := buildInfo.build_failed_info(os.Args[2])
 		fmt.Println("formatedBuildInfoFailed")
 		fmt.Println(formatedBuildInfoFailed)
 		telegram.SendTextToTelegramChat(telegramChatId, formatedBuildInfoFailed, os.Args[4])
