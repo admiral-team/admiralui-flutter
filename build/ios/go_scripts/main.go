@@ -43,8 +43,14 @@ func main() {
 		telegram.SendTextToTelegramChat(telegramChatId, releaseBody, os.Args[5])
 	case "build_failed":
 		buildInfo := configureBuildInfo(os.Args[2])
+		fmt.Println("BUILD INFO")
+		fmt.Println(buildInfo)
 		formatedBuildInfoFailed := buildInfo.build_failed_info(os.Args[5])
+		fmt.Println("formatedBuildInfoFailed")
+		fmt.Println(formatedBuildInfoFailed)
 		telegramChatId, _ := strconv.Atoi(os.Args[3])
+		fmt.Println("telegramChatId")
+		fmt.Println(telegramChatId)
 		telegram.SendTextToTelegramChat(telegramChatId, formatedBuildInfoFailed, os.Args[4])
 	default:
 		fmt.Println("Unknown command")
