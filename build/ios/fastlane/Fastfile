@@ -141,7 +141,7 @@ lane :send_build_failed_info do |options|
   telegram_token = options[:telegram_token]
   action_id = options[:build_url]
   info_body = formatted_build_info_json(build_info: build_info)
-  system("cd ./go_scripts && ./main build_failed #{info_body} #{telegram_chat_id} #{telegram_token} #{action_id}")
+  system("cd ../go_scripts && ./main build_failed #{info_body} #{telegram_chat_id} #{telegram_token} #{action_id}")
 end
 
 
