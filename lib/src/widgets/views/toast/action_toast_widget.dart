@@ -10,6 +10,7 @@ class ActionToastWidget extends StatelessWidget {
     this.linkText,
     this.onLinkPressed,
     this.style = ToastStyle.normal,
+    this.isEnable = true,
     this.scheme,
   });
 
@@ -18,6 +19,7 @@ class ActionToastWidget extends StatelessWidget {
   final String? linkText;
   final VoidCallback? onLinkPressed;
   final ToastStyle style;
+  final bool isEnable;
   final ActionToastScheme? scheme;
 
   @override
@@ -27,9 +29,11 @@ class ActionToastWidget extends StatelessWidget {
     ?? ActionToastScheme(theme: theme);
 
     final Color backgroundColor = toastScheme.backgroundColor.unsafeParameter(
+      isEnable,
       style,
     );
-    final Color textColor = toastScheme.textColor;
+    final Color textColor = isEnable ? 
+    toastScheme.textColor : toastScheme.disabledTextColor;
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -93,6 +97,7 @@ class ActionToastWidget extends StatelessWidget {
                 title: linkText ?? '',
                 scheme: toastScheme.linkControlScheme,
                 onPressed: onLinkPressed,
+                isEnable: isEnable,
               ),
               ),
             ],
