@@ -261,7 +261,6 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.currency.value: (BuildContext context) =>
           CurrencyScreen(
-            title: 'Currency',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.currencyDefault.value: (BuildContext context) =>
