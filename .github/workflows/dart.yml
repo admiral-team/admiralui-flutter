@@ -117,6 +117,6 @@ jobs:
       - name: Check If Deploy iOS Appcenter Failed
         if: ${{ failure() }}
         run: |
-          cd build/ios/fastlane
-          bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }}
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
