@@ -59,7 +59,7 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               StandardTabs(
-                <String>['Small', 'Medium', 'Large'],
+                <String>['Small', 'Medium', 'Big'],
                 onTap: (String value) {
                   setState(() {
                     switch (value) {
@@ -69,7 +69,7 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
                       case 'Medium':
                         spinnerSize = SpinnerSize.medium;
                         break;
-                      case 'Large':
+                      case 'Big':
                         spinnerSize = SpinnerSize.large;
                         break;
                     }
