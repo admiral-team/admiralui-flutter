@@ -20,6 +20,8 @@ class InputNumberDefaultScreen extends StatefulWidget {
 }
 
 class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
+  bool isEnabled = true;
+
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
@@ -60,8 +62,10 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
                 setState(() {
                   switch (value) {
                     case 'Default':
+                      isEnabled = true;
                       break;
                     case 'Disabled':
+                      isEnabled = false;
                       break;
                   }
                 });
@@ -82,7 +86,8 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
             InputNumber(
                 title: 'Optional value',
                 onChangedValue: _ChangeInputControl,
-                style: InputNumberButtonStyle.normal),
+                style: InputNumberButtonStyle.normal,
+                isEnable: isEnabled),
           ],
         ),
       ),
