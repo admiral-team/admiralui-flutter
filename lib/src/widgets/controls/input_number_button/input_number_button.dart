@@ -79,12 +79,15 @@ class _InputNumberButtonState extends State<InputNumberButton> {
     }
 
     return GestureDetector(
-      onTap: () => widget.onPressed?.call(),
-      onLongPress: () => onLongPress(),
-      onLongPressEnd: (_) => onLongPressCancel(),
-      onTapUp: (_) => setHighlighted(highlighted: false),
-      onTapDown: (_) => setHighlighted(highlighted: true),
-      onTapCancel: () => setHighlighted(highlighted: false),
+      onTap: () => widget.isEnable ? widget.onPressed?.call() : null,
+      onLongPress: () => widget.isEnable ? onLongPress() : null,
+      onLongPressEnd: (_) => widget.isEnable ? onLongPressCancel() : null,
+      onTapUp: (_) => widget.isEnable ? 
+      setHighlighted(highlighted: false) : null,
+      onTapDown: (_) => widget.isEnable ? 
+      setHighlighted(highlighted: true) : null,
+      onTapCancel: () => widget.isEnable ? 
+      setHighlighted(highlighted: false) : null,
       child: Container(
         width: buttonSize,
         height: buttonSize,
