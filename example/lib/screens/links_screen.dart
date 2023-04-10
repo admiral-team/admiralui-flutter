@@ -64,7 +64,7 @@ class _LinksScreenState extends State<LinksScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  '24 Links',
+                  '24 Link',
                   textAlign: TextAlign.left,
                   style: theme.fonts.body1.toTextStyle(
                     colors.textSecondary.color(),
@@ -102,7 +102,7 @@ class _LinksScreenState extends State<LinksScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  '18 Links',
+                  '18 Link',
                   textAlign: TextAlign.left,
                   style: theme.fonts.body1.toTextStyle(
                     colors.textSecondary.color(),
