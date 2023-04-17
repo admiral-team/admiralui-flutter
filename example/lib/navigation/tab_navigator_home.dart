@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/notifications_screen.dart';
+import '../screens/informers/notifications_screen.dart';
 import '../screens/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
@@ -25,7 +25,7 @@ import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/standart_textfield_screen.dart';
 import '../screens/tabs_screen.dart';
-import '../screens/toast_screen.dart';
+import '../screens/informers/toast_screen.dart';
 import '../screens/undeline_tabs.dart';
 import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
@@ -47,11 +47,14 @@ import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
-import '../screens/toast_informers_screen.dart';
+import '../screens/action_toast_screen.dart';
+import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
+import '../screens/cells/action_cell_screen.dart';
+import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 import '../screens/textfields/input_number/input_number_textfield_screen.dart';
@@ -96,6 +99,7 @@ enum TabNavigatorRoutes {
   pinCode('/pinCode'),
   cells('/cells'),
   baseCells('/baseCells'),
+  actionCells('/actionCells'),
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
@@ -111,6 +115,8 @@ enum TabNavigatorRoutes {
   toastInformers('/toastInformers'),
   notification('/notification'),
   toast('/toast'),
+  toastStatic('/toastStatic'),
+  toastAction('/toastAction'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -269,7 +275,6 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.currency.value: (BuildContext context) =>
           CurrencyScreen(
-            title: 'Currency',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.currencyDefault.value: (BuildContext context) =>
@@ -325,6 +330,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
+      TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
+          const ActionCellsScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>
           ToastInformersScreen(
             title: 'Informers & Notifications',
@@ -336,7 +343,11 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.toast.value: (BuildContext context) =>
-          const ToastScreen()
+          const ToastScreen(),
+      TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
+          const ToastStaticScreen(),
+      TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
+          const ActionToastScreen()
     };
   }
 

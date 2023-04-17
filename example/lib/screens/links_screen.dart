@@ -3,13 +3,17 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LinksScreen extends StatelessWidget {
-  const LinksScreen({
-    super.key,
-    this.appBarHidden = false,
-  });
+class LinksScreen extends StatefulWidget {
+  const LinksScreen({super.key, this.appBarHidden = false});
 
   final bool appBarHidden;
+
+  @override
+  State<LinksScreen> createState() => _LinksScreenState();
+}
+
+class _LinksScreenState extends State<LinksScreen> {
+  bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class LinksScreen extends StatelessWidget {
     final ColorPalette colors = theme.colors;
 
     return Scaffold(
-      appBar: appBarHidden
+      appBar: widget.appBarHidden
           ? null
           : AppBar(
               leading: CupertinoButton(
@@ -27,6 +31,12 @@ class LinksScreen extends StatelessWidget {
               bottomOpacity: 0.0,
               elevation: 0.0,
               backgroundColor: colors.backgroundBasic.color(),
+              title: Text(
+                'Links',
+                style: theme.fonts.subtitle2.toTextStyle(
+                  colors.textPrimary.color(),
+                ),
+              ),
             ),
       body: Container(
         color: colors.backgroundBasic.color(),
@@ -36,12 +46,29 @@ class LinksScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            StandardTabs(
+              <String>['Default', 'Disabled'],
+              onTap: (String value) {
+                setState(() {
+                  isEnabled = value == 'Default';
+                });
+              },
+            ),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
-                  '24 Links',
+                Text(
+                  '24 Link',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -53,27 +80,33 @@ class LinksScreen extends StatelessWidget {
                   title: 'Link',
                   leadingImage: AdmiralIcons.admiral_ic_arrow_left_outline,
                   style: LinkStyle.medium,
+                  isEnable: isEnabled,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
                   trailingImage: AdmiralIcons.admiral_ic_arrow_right_outline,
                   style: LinkStyle.medium,
+                  isEnable: isEnabled,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
                   style: LinkStyle.medium,
+                  isEnable: isEnabled,
                 ),
               ],
             ),
-            SizedBox(height: LayoutGrid.doubleModule),
+            SizedBox(height: LayoutGrid.quadrupleModule),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
-                  '18 Links',
+                Text(
+                  '18 Link',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -85,17 +118,20 @@ class LinksScreen extends StatelessWidget {
                   title: 'Link',
                   leadingImage: AdmiralIcons.admiral_ic_arrow_left_outline,
                   style: LinkStyle.normal,
+                  isEnable: isEnabled,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
                   trailingImage: AdmiralIcons.admiral_ic_arrow_right_outline,
                   style: LinkStyle.normal,
+                  isEnable: isEnabled,
                 ),
                 SizedBox(width: LayoutGrid.quadrupleModule),
                 LinkControl(
                   title: 'Link',
                   style: LinkStyle.normal,
+                  isEnable: isEnabled,
                 ),
               ],
             ),

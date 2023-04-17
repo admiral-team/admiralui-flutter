@@ -10,6 +10,7 @@ class ToastWidget extends StatelessWidget {
     this.onLinkPressed,
     this.style = ToastStyle.normal,
     this.image,
+    this.isEnable = true,
     this.onClosePressed,
     this.scheme,
   });
@@ -17,6 +18,7 @@ class ToastWidget extends StatelessWidget {
   final String? title;
   final String? linkText;
   final VoidCallback? onLinkPressed;
+  final bool isEnable;
   final VoidCallback? onClosePressed;
   final ToastStyle style;
   final IconData? image;
@@ -28,9 +30,13 @@ class ToastWidget extends StatelessWidget {
     final ToastScheme toastScheme = scheme ?? ToastScheme(theme: theme);
 
     final Color backgroundColor = toastScheme.backgroundColor.unsafeParameter(
+      isEnable,
       style,
     );
-    final Color textColor = toastScheme.textColor;
+    final Color textColor = isEnable ? 
+    toastScheme.textColor : toastScheme.disabledTextColor;
+    final Color closeImageColor = isEnable ? 
+    toastScheme.closeImageColor : toastScheme.disabledCloseImageColor;
 
     final List<Widget> children = <Widget>[];
     if (title != null) {
@@ -56,6 +62,7 @@ class ToastWidget extends StatelessWidget {
           title: linkText ?? '',
           scheme: toastScheme.linkControlScheme,
           onPressed: onLinkPressed,
+          isEnable: isEnable,
         ),
       );
     }
@@ -87,6 +94,7 @@ class ToastWidget extends StatelessWidget {
                 Icon(
                   image,
                   color: toastScheme.imageColor.unsafeParameter(
+                    isEnable,
                     style,
                   ),
                   size: LayoutGrid.halfModule * 5,
@@ -109,7 +117,7 @@ class ToastWidget extends StatelessWidget {
                   onPressed: onClosePressed,
                   icon: Icon(
                     AdmiralIcons.admiral_ic_close_outline,
-                    color: toastScheme.closeImageColor,
+                    color: closeImageColor,
                     size: LayoutGrid.halfModule * 5,
                   ),
                 ),

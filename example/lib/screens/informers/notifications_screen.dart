@@ -2,11 +2,11 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'list_cell_model.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../list_cell_model.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class ToastInformersScreen extends StatelessWidget {
-  const ToastInformersScreen({
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,14 +19,19 @@ class ToastInformersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Informers',
+        title: 'Toast',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.informers),
+        onPressed: () => onPush.call(TabNavigatorRoutes.toast),
       ),
       ListCellModel(
-        title: 'Notifications',
+        title: 'Static',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.notification),
+        onPressed: () => onPush.call(TabNavigatorRoutes.toastStatic),
+      ),
+      ListCellModel(
+        title: 'Action',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.toastAction),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
