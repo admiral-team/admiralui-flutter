@@ -19,7 +19,7 @@ class PageControlsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Linear',
+        title: 'Liner',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.pageControlLinear),
       ),

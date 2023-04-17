@@ -206,7 +206,7 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.pageControlLinear.value: (BuildContext context) =>
           PageControlLinearScreen(
-            title: 'Linear',
+            title: 'Liner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
