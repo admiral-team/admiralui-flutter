@@ -73,6 +73,7 @@ ToastFuture showToast(
   bool? isIgnoring,
   OnInitStateCallback? onInitState,
 }) {
+  // ignore: parameter_assignments
   context = context ?? currentContext;
   assert(context != null);
 
@@ -178,6 +179,7 @@ ToastFuture showToastWidget(
   OverlayEntry entry;
   ToastFuture future;
 
+  // ignore: parameter_assignments
   context = context ?? currentContext;
   assert(context != null);
 
