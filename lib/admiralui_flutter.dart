@@ -76,6 +76,8 @@ export 'package:admiralui_flutter/src/widgets/views/calendar/components/day/cale
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/day/calendar_day_view_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/month/calendar_month_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/month/calendar_month_view_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/components/page_view/calendar_page_controller.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/components/page_view/calendar_page_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/week/calendar_week_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/week/calendar_week_view_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/dates_data_source/calendar_dates_data_source.dart';

@@ -1,8 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:infinity_page_view/infinity_page_view.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class CalendarHorizontalView extends StatefulWidget {
@@ -33,8 +31,10 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
   late int currentIndex = 1;
   late String locale;
 
-  InfinityPageController infinityPageController = InfinityPageController(
-    initialPage: 1,
+  CalendartPageController infinityPageController = CalendartPageController(
+    true,
+    1,
+    1.0,
   );
 
   @override
@@ -90,7 +90,7 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
           ),
         if (!isDatePickerActive)
           Expanded(
-            child: InfinityPageView(
+            child: CalendarPageView(
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: <Widget>[
@@ -127,8 +127,8 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
   void _slideToIndex(int index) {
     infinityPageController.animateToPage(
       index,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeIn,
+      const Duration(milliseconds: 500),
+      Curves.easeIn,
     );
   }
 
