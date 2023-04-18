@@ -25,6 +25,8 @@ export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_pa
 export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_page_control_parameters.dart';
 export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_page_control_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/page_controls/circular_page_control/circular_painter.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/linear/linear_page_control.dart';
+export 'package:admiralui_flutter/src/widgets/controls/page_controls/linear/linear_page_control_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input_status.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/pin_code_item_parameters.dart';
