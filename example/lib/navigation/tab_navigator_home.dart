@@ -51,6 +51,7 @@ import '../screens/action_toast_screen.dart';
 import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
 import '../screens/cells/action_cell_screen.dart';
@@ -112,6 +113,7 @@ enum TabNavigatorRoutes {
   toolbar('/toolbar'),
   paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
+  shimmer('/shimmer'),
   toastInformers('/toastInformers'),
   notification('/notification'),
   toast('/toast'),
@@ -192,6 +194,10 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
             title: 'Spinner',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.shimmer.value: (BuildContext context) => ShimmerScreen(
+            title: 'Shimmers',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
