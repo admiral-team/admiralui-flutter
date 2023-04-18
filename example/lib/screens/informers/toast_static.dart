@@ -33,7 +33,7 @@ class _ToastStaticScreenState extends State<ToastStaticScreen> {
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
         title: TextView(
-          'Toast',
+          'Static',
           font: fonts.subtitle2,
           textColorNormal: colors.textPrimary.color(),
         ),
