@@ -193,7 +193,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.shimmer.value: (BuildContext context) => ShimmerScreen(
-            title: 'Shimmer',
+            title: 'Shimmers',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
