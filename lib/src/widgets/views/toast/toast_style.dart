@@ -3,6 +3,9 @@ enum ToastStyle {
   /// The default state of the toast.
   normal,
 
+  /// The additional state of the toast.
+  additional,
+
   /// The success state of the toast.
   success,
 

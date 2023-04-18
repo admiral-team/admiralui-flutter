@@ -21,6 +21,8 @@ class InputNumberSecondaryScreen extends StatefulWidget {
 
 class _InputNumberSecondaryScreenState
     extends State<InputNumberSecondaryScreen> {
+  bool isEnabled = true;
+
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
@@ -61,8 +63,10 @@ class _InputNumberSecondaryScreenState
                 setState(() {
                   switch (value) {
                     case 'Default':
+                      isEnabled = true;
                       break;
                     case 'Disabled':
+                      isEnabled = false;
                       break;
                   }
                 });
@@ -82,9 +86,11 @@ class _InputNumberSecondaryScreenState
             ),
             SizedBox(height: LayoutGrid.doubleModule),
             InputNumber(
-                title: 'Optional value',
-                onChangedValue: _ChangeInputControl,
-                style: InputNumberButtonStyle.secondary),
+              title: 'Optional value',
+              onChangedValue: _ChangeInputControl,
+              style: InputNumberButtonStyle.secondary,
+              isEnable: isEnabled,
+            ),
             SizedBox(height: LayoutGrid.doubleModule),
           ],
         ),

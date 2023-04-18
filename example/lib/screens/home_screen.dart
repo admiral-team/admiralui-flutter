@@ -112,12 +112,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ListCellModel(
         title: 'Page Controls',
         description: 'Прогресс просмотра страниц',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.pageControls),
       ),
       ListCellModel(
         title: 'Shimmers',
         description: 'Демонстрация процесса загрузки',
-        onPressed: () => widget.onPush.call(TabNavigatorRoutes.buttons),
+        onPressed: () => widget.onPush.call(TabNavigatorRoutes.shimmer),
       ),
       ListCellModel(
         title: 'Calendar',

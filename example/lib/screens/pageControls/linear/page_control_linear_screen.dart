@@ -2,10 +2,10 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../../navigation/tab_navigator_home.dart';
 
-class SpinnerScreen extends StatefulWidget {
-  const SpinnerScreen({
+class PageControlLinearScreen extends StatefulWidget {
+  const PageControlLinearScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -15,11 +15,25 @@ class SpinnerScreen extends StatefulWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
-  State<SpinnerScreen> createState() => _SpinnerScreenState();
+  State<PageControlLinearScreen> createState() =>
+      _PageControlLinearScreenState();
 }
 
-class _SpinnerScreenState extends State<SpinnerScreen> {
+class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
+  final ValueNotifier<int> _stepNotifier = ValueNotifier<int>(0);
+
+  final List<String> tabItems = <String>[
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+  ];
+
+  int _currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,29 +73,43 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               StandardTabs(
-                <String>['Small', 'Medium', 'Big'],
+                tabItems,
                 onTap: (String value) {
                   setState(() {
-                    switch (value) {
-                      case 'Small':
-                        spinnerSize = SpinnerSize.small;
-                        break;
-                      case 'Medium':
-                        spinnerSize = SpinnerSize.medium;
-                        break;
-                      case 'Big':
-                        spinnerSize = SpinnerSize.large;
-                        break;
-                    }
+                    final int index = tabItems
+                        .indexWhere((String element) => element == value);
+                    _stepNotifier.value = index;
+                    _currentStep = index;
                   });
                 },
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
-              Spinner(
-                size: spinnerSize,
+              LinearPageControl(
+                tabItems.length,
+                _currentStep,
+                5,
+                stepNotifier: _stepNotifier,
               ),
+              SizedBox(
+                height: LayoutGrid.tripleModule * 3,
+              ),
+              PrimaryButton(
+                onPressed: () {
+                  if (_currentStep < tabItems.length - 1) {
+                    setState(() {
+                      _currentStep += 1;
+                      _stepNotifier.value = _currentStep;
+                    });
+                  }
+                },
+                isEnable: true,
+                title: 'Next',
+                sizeType: ButtonSizeType.small,
+                iconData: AdmiralIcons.admiral_ic_arrow_right_outline,
+                iconPosition: IconPosition.right,
+              )
             ],
           ),
         ),
