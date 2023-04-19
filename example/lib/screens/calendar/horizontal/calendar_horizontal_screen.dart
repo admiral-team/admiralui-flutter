@@ -50,7 +50,18 @@ class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
           horizontal: LayoutGrid.doubleModule,
         ),
         child: CalendarHorizontalView(
+          startDate: null,
+          endDate: null,
+          currentDate: null,
+          onPageChanged: () {
+            print('Calendar page did change');
+          },
+          onChangedRangeDates: (List<DateTime?> datesRange) {
+            print('Dates range $datesRange');
+          },
+          locale: 'ru',
           notActiveAfterDate: DateTime.now(),
+          datePickerButtonTitle: 'Выбрать',
         ),
       ),
     );

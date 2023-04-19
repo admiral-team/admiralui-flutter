@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:flutter/cupertino.dart';
 
 class CalendarDatesDataSource {
   CalendarDatesDataSource(
@@ -6,6 +7,7 @@ class CalendarDatesDataSource {
     this.endDate,
     this.currentDate,
     this.notActiveAfterDate,
+    this.datesRangeNotifier,
   ) {
     monthList = generator.generateDataSourceByDate(
       currentDate ?? DateTime.now(),
@@ -19,7 +21,7 @@ class CalendarDatesDataSource {
   late DateTime? endDate;
   late DateTime? currentDate;
   final DateTime? notActiveAfterDate;
-
+  final ValueNotifier<List<DateTime?>> datesRangeNotifier;
 
   late List<List<CalendarDayItem>> monthList;
   final CalendarDaysGenerator generator = CalendarDaysGenerator();
@@ -54,16 +56,19 @@ class CalendarDatesDataSource {
   void didTapAtDate(DateTime? date) {
     if (startDate == null) {
       startDate = date;
+      sendDatesChangeEvent();
       return;
     }
 
     if (startDate != null && endDate == null && date != null) {
       if (date.isAfter(startDate!)) {
         endDate = date;
+        sendDatesChangeEvent();
         return;
       } else if (date.isBefore(startDate!)) {
         endDate = startDate;
         startDate = date;
+        sendDatesChangeEvent();
         return;
       }
     }
@@ -73,14 +78,17 @@ class CalendarDatesDataSource {
         if (date.isDateInRange(startDate, endDate)) {
           startDate = date;
           endDate = null;
+          sendDatesChangeEvent();
           return;
         } else if (date.isDaysEqual(startDate)) {
           startDate = date;
           endDate = null;
+          sendDatesChangeEvent();
           return;
         } else if (date.isDaysEqual(endDate)) {
           startDate = date;
           endDate = null;
+          sendDatesChangeEvent();
           return;
         } else {
           final int startDateDifference =
@@ -89,12 +97,14 @@ class CalendarDatesDataSource {
 
           if (endDateDifference > startDateDifference) {
             startDate = date;
+            sendDatesChangeEvent();
             return;
           }
 
           // ignore: invariant_booleans
           if (startDateDifference > endDateDifference) {
             endDate = date;
+            sendDatesChangeEvent();
             return;
           }
         }
@@ -102,5 +112,9 @@ class CalendarDatesDataSource {
         return;
       }
     }
+  }
+
+  void sendDatesChangeEvent() {
+    datesRangeNotifier.value = <DateTime?>[startDate, endDate];
   }
 }

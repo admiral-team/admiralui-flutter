@@ -17,84 +17,59 @@ class CalendarsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<ListCellModel> items = <ListCellModel>[
-      ListCellModel(
-        title: 'Horizontal',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.calendarHorizontal),
-      ),
-      ListCellModel(
-        title: 'Vertical',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.calendarHorizontal),
-      ),
-    ];
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
-        title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
-            colors.textPrimary.color(),
-          ),
-        ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
-        color: colors.backgroundBasic.color(),
-        child: ListView.separated(
-          addAutomaticKeepAlives: false,
-          addRepaintBoundaries: false,
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(
+              LayoutGrid.doubleModule,
+            ),
+            child: TextView(
+              'Calendar',
+              font: fonts.title1,
+              textColorNormal: colors.textPrimary.color(),
+            ),
           ),
-          itemCount: items.length,
-          itemBuilder: (BuildContext ctx, int index) {
-            final ListCellModel? item =
-                index == items.length ? null : items[index];
-            if (item is ListCellModel) {
-              return BaseCellWidget(
-                centerCell: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      item.title,
-                      style: fonts.body1.toTextStyle(
-                        colors.textPrimary.color(),
-                      ),
-                    ),
-                  ],
-                ),
-                trailingCell: Icon(
-                  AdmiralIcons.admiral_ic_chevron_right_outline,
-                  color: colors.elementSecondary.color(),
-                ),
-                onPressed: item.onPressed,
-              );
-            }
-            return Container();
-          },
-          separatorBuilder: (
-            BuildContext ctx,
-            int index,
-          ) {
-            return Container();
-          },
-        ),
+          BaseCellWidget(
+            centerCell: TextView('Vertical'),
+            trailingCell: Icon(
+              AdmiralIcons.admiral_ic_chevron_right_outline,
+              color: colors.elementSecondary.color(),
+            ),
+            onPressed: () => onPush.call(
+              TabNavigatorRoutes.calendarHorizontal,
+            ),
+          ),
+          BaseCellWidget(
+            centerCell: TextView('Horizontal'),
+            trailingCell: Icon(
+              AdmiralIcons.admiral_ic_chevron_right_outline,
+              color: colors.elementSecondary.color(),
+            ),
+            onPressed: () => onPush.call(
+              TabNavigatorRoutes.calendarHorizontal,
+            ),
+          ),
+        ],
       ),
     );
   }

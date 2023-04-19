@@ -10,6 +10,9 @@ class CalendarHorizontalView extends StatefulWidget {
     this.currentDate,
     this.notActiveAfterDate,
     this.locale,
+    this.datePickerButtonTitle,
+    this.onPageChanged,
+    this.onChangedRangeDates,
     this.scheme,
   });
 
@@ -18,6 +21,9 @@ class CalendarHorizontalView extends StatefulWidget {
   final DateTime? currentDate;
   final DateTime? notActiveAfterDate;
   final String? locale;
+  final String? datePickerButtonTitle;
+  final VoidCallback? onPageChanged;
+  final ValueChanged<List<DateTime?>>? onChangedRangeDates;
   final CalendarHorizontalViewScheme? scheme;
 
   @override
@@ -30,6 +36,11 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
   late CalendarHorizontalViewScheme scheme;
   late int currentIndex = 1;
   late String locale;
+
+  final ValueNotifier<List<DateTime?>> _datesRangeNotifier =
+      ValueNotifier<List<DateTime?>>(
+    <DateTime?>[],
+  );
 
   CalendartPageController infinityPageController = CalendartPageController(
     true,
@@ -48,6 +59,13 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
       widget.endDate,
       widget.currentDate,
       widget.notActiveAfterDate,
+      _datesRangeNotifier,
+    );
+
+    _datesRangeNotifier.addListener(
+      () {
+        widget.onChangedRangeDates?.call(_datesRangeNotifier.value);
+      },
     );
   }
 
@@ -60,6 +78,8 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
         CalendarControlsView(
           isDatePickerActive: isDatePickerActive,
           dataSource.currentDate ?? DateTime.now(),
+          widget.datePickerButtonTitle ?? 'Выбрать',
+          locale: widget.locale,
           onPressedPickerButton: () => _handlePickerButtonTap(),
           onPressedSlideLeft: () => _slideToIndex(currentIndex - 1),
           onPressedSlideRight: () => _slideToIndex(currentIndex + 1),
@@ -135,6 +155,7 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
   void _onPageChanged(int index) {
     currentIndex = index;
     dataSource.updateMonthList(index);
+    widget.onPageChanged?.call();
   }
 
   void _handlePickerButtonTap() {

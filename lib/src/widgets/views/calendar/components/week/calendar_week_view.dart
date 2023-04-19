@@ -16,6 +16,7 @@ class CalendarWeekView extends StatefulWidget {
 }
 
 class _CalendarWeekViewState extends State<CalendarWeekView> {
+  static const int dayInWeekCount = 7;
   late CalendarWeekViewScheme scheme;
   final CalendarDaysGenerator calendarDaysGenerator = CalendarDaysGenerator();
 
@@ -41,9 +42,9 @@ class _CalendarWeekViewState extends State<CalendarWeekView> {
   }
 
   List<TableRow> _buildWeekDay(List<String> weekDayList) {
-    final int rowAmount = weekDayList.length ~/ 7;
+    final int rowAmount = weekDayList.length ~/ dayInWeekCount;
 
-    return List<int>.generate(rowAmount, (int index) => index * 7)
+    return List<int>.generate(rowAmount, (int index) => index * dayInWeekCount)
         .map(
           (int index) => TableRow(
             decoration: const BoxDecoration(),

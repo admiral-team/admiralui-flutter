@@ -17,6 +17,7 @@ class CalendarMonthView extends StatefulWidget {
 }
 
 class _CalendarMonthViewState extends State<CalendarMonthView> {
+  static const int daysInWeekCount = 7;
   late CalendarMonthViewScheme scheme;
 
   @override
@@ -37,9 +38,9 @@ class _CalendarMonthViewState extends State<CalendarMonthView> {
   }
 
   List<TableRow> _rows(List<CalendarDayItem> visibleDays) {
-    final int rowAmount = visibleDays.length ~/ 7;
+    final int rowAmount = visibleDays.length ~/ daysInWeekCount;
 
-    return List<int>.generate(rowAmount, (int index) => index * 7)
+    return List<int>.generate(rowAmount, (int index) => index * daysInWeekCount)
         .map(
           (int index) => TableRow(
             decoration: const BoxDecoration(),

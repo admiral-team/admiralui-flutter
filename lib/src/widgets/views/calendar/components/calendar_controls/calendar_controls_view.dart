@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 
 class CalendarControlsView extends StatefulWidget {
   const CalendarControlsView(
-    this.currentDate, {
+    this.currentDate,
+    this.datePickerButtonTitle, {
     this.locale,
     this.onPressedPickerButton,
     this.isDatePickerActive = false,
@@ -18,6 +19,7 @@ class CalendarControlsView extends StatefulWidget {
   final String? locale;
   final DateTime currentDate;
   final bool isDatePickerActive;
+  final String datePickerButtonTitle;
   final VoidCallback? onPressedPickerButton;
   final VoidCallback? onPressedSlideLeft;
   final VoidCallback? onPressedSlideRight;
@@ -29,6 +31,7 @@ class CalendarControlsView extends StatefulWidget {
 }
 
 class _CalendarControlsViewState extends State<CalendarControlsView> {
+  static const String dateLocaleFormat = 'LLLL yyyy';
   late CalendarControlsViewScheme scheme;
 
   @override
@@ -43,7 +46,7 @@ class _CalendarControlsViewState extends State<CalendarControlsView> {
     return Row(
       children: <Widget>[
         TextView(
-          getDate(),
+          _getDate(),
           font: scheme.font,
           textColorNormal: scheme.textColor.color(),
         ),
@@ -60,7 +63,7 @@ class _CalendarControlsViewState extends State<CalendarControlsView> {
         if (widget.isDatePickerActive)
           GhostButton(
             sizeType: ButtonSizeType.small,
-            title: 'Выбрать',
+            title: widget.datePickerButtonTitle,
             onPressed: widget.onPressedSelect,
           ),
         if (!widget.isDatePickerActive)
@@ -81,8 +84,8 @@ class _CalendarControlsViewState extends State<CalendarControlsView> {
     );
   }
 
-  String getDate() {
-    final DateFormat formatter = DateFormat('LLLL yyyy', 'ru');
+  String _getDate() {
+    final DateFormat formatter = DateFormat(dateLocaleFormat, widget.locale);
     final String formatted = formatter.format(widget.currentDate);
     return formatted._capitalize();
   }
