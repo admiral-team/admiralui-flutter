@@ -215,10 +215,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
-          CalendarHorizontalScreen(
-            title: 'Horizontal',
-            onPush: (TabNavigatorRoutes route) => _push(context, route),
-          ),
+          const CalendarHorizontalScreen(title: 'Horizontal'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
             title: 'Page Controls',
