@@ -22,11 +22,6 @@ class _BadgeCellWidgetState extends State<BadgeCellWidget> {
   double currentValue = 1;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
@@ -76,7 +71,7 @@ class _BadgeCellWidgetState extends State<BadgeCellWidget> {
           const Spacer(),
           InputNumber(
               numberValue: currentValue,
-              onChangedValue: _ChangeInputControl,
+              onChangedValue: _changeInputControl,
               style: InputNumberButtonStyle.normal,
               isEnable: widget.isEnabled),
         ],
@@ -84,7 +79,7 @@ class _BadgeCellWidgetState extends State<BadgeCellWidget> {
     );
   }
 
-  void _ChangeInputControl(double value) {
+  void _changeInputControl(double value) {
     setState(() {
       currentValue = value;
     });
