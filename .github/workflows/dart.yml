@@ -68,10 +68,28 @@ jobs:
       - run: cd example && flutter pub get
       - run: cd example && flutter build apk && flutter build appbundle
 
+  deploy-android:
+    name: Deploy Android App
+    needs: build-android
+    runs-on: [ self-hosted, main ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Install Fastlane Dependencies
+        run: cd build/ios/fastlane && bundle install && bundle update
+      - name: Deploy Android App to App Center
+        run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_andoid_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+
   test:
     name: Test App
     runs-on: [ self-hosted, main ]
-    needs: build-android
+    needs: deploy-android
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
