@@ -1,6 +1,11 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/cupertino.dart';
 
+/// The CalendarDatesDataSource.
+///
+/// An object that store dates generator and
+/// sets start, end, current date depending on the state of the calendar.
+///
 class CalendarDatesDataSource {
   CalendarDatesDataSource(
     this.startDate,
@@ -27,21 +32,23 @@ class CalendarDatesDataSource {
   final CalendarDaysGenerator generator = CalendarDaysGenerator();
 
   void updateMonthList(int pageIndex) {
-    currentDate = monthList[pageIndex]
+    final DateTime? currentDate_ = monthList[pageIndex]
         .firstWhere(
           (CalendarDayItem element) =>
               element.state != CalendarDayItemState.notVisible,
         )
         .date;
 
-    monthList = generator.generateDataSource(
-      monthList[pageIndex],
-      currentDate!,
-      pageIndex,
-      startDate,
-      endDate,
-      notActiveAfterDate,
-    );
+    if (currentDate_ != null) {
+      monthList = generator.generateDataSource(
+        monthList[pageIndex],
+        currentDate_,
+        pageIndex,
+        startDate,
+        endDate,
+        notActiveAfterDate,
+      );
+    }
   }
 
   void updateMonthListByCurrentDate() {

@@ -19,7 +19,7 @@ class CalendarPageView extends StatefulWidget {
   final ValueChanged<int> onPageChanged;
   final bool reverse;
   final IndexedWidgetBuilder itemBuilder;
-  final CalendartPageController? controller;
+  final CalendartPageController controller;
   final int itemCount;
 
   @override
@@ -30,8 +30,8 @@ class _CalendarPageViewState extends State<CalendarPageView> {
   late CalendartPageController controller;
 
   void _onPageChange(int realIndex) {
-    widget.controller?.realIndex = realIndex;
-    widget.onPageChanged(widget.controller!.page);
+    widget.controller.realIndex = realIndex;
+    widget.onPageChanged(widget.controller.page);
   }
 
   Widget _itemBuild(BuildContext context, int index) {
@@ -56,11 +56,7 @@ class _CalendarPageViewState extends State<CalendarPageView> {
 
   @override
   void initState() {
-    if (widget.controller == null) {
-      controller = CalendartPageController(true, 0, 1.0);
-    } else {
-      controller = widget.controller!;
-    }
+    controller = widget.controller;
     controller.itemCount = widget.itemCount;
     super.initState();
   }
@@ -68,9 +64,7 @@ class _CalendarPageViewState extends State<CalendarPageView> {
   @override
   void didUpdateWidget(CalendarPageView oldWidget) {
     if (widget.controller != controller) {
-      if (widget.controller != null) {
-        controller = widget.controller!;
-      }
+      controller = widget.controller;
     }
     controller.itemCount = widget.itemCount;
     super.didUpdateWidget(oldWidget);

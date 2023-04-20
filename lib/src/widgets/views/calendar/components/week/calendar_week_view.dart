@@ -2,6 +2,14 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// The CalendarWeekView.
+///
+/// A view that display a number of days in week.
+/// You can create CalendarWeekView by specifying parameters:
+/// String? locale - The localization.
+/// CalendarWeekViewScheme? scheme - The visual scheme of CalendarWeekView.
+/// of CalendarHorizontalView.
+///
 class CalendarWeekView extends StatefulWidget {
   const CalendarWeekView({
     this.locale,
@@ -49,7 +57,7 @@ class _CalendarWeekViewState extends State<CalendarWeekView> {
           (int index) => TableRow(
             decoration: const BoxDecoration(),
             children: List<Widget>.generate(
-              7,
+              dayInWeekCount,
               (int id) => SizedBox(
                 width: LayoutGrid.halfModule * 9,
                 height: LayoutGrid.halfModule * 9,

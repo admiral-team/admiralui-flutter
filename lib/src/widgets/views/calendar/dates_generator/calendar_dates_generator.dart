@@ -1,6 +1,12 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:intl/intl.dart';
 
+/// The CalendarDaysGenerator.
+///
+/// An object that defines the state of the date,
+/// returns the month of List<List<CalendarDayItem>>
+/// and week days.
+///
 class CalendarDaysGenerator {
   CalendarDaysGenerator();
 

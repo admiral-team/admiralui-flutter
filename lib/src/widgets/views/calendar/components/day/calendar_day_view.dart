@@ -2,6 +2,14 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// The CalendarDayView.
+///
+/// A view that dispay a day.
+/// You can create CalendarDayView by specifying parameters:
+/// CalendarDayItem day - The item of day.
+/// VoidCallback? onPressed - An action of tap at day view.
+/// CalendarDayViewScheme? scheme - The visual scheme of CalendarDayView.
+///
 class CalendarDayView extends StatefulWidget {
   const CalendarDayView(
     this.day, {

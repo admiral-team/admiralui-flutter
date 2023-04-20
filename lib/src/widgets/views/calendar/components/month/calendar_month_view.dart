@@ -1,6 +1,14 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
+/// The CalendarMonthView.
+///
+/// A view that display a number of days in month.
+/// You can create CalendarMonthView by specifying parameters:
+/// List<CalendarDayItem>? monthDays - The list of items in month.
+/// ValueChanged<CalendarDayItem>? onTap - An action of tap at day view.
+/// CalendarMonthViewScheme? scheme - The visual scheme of CalendarMonthView.
+///
 class CalendarMonthView extends StatefulWidget {
   const CalendarMonthView(
     this.monthDays, {
@@ -45,7 +53,7 @@ class _CalendarMonthViewState extends State<CalendarMonthView> {
           (int index) => TableRow(
             decoration: const BoxDecoration(),
             children: List<Widget>.generate(
-              7,
+              daysInWeekCount,
               (int id) => CalendarDayView(
                 visibleDays[index + id],
                 onPressed: () => widget.onTap?.call(visibleDays[index + id]),

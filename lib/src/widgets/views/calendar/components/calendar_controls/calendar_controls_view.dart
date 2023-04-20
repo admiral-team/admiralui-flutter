@@ -3,6 +3,23 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+/// The CalendarControlsView.
+///
+/// A view that dispays a top panel for switch bettwen month
+/// and calls date picker.
+/// You can create CalendarControlsView by specifying parameters:
+/// DateTime currentDate - The current day of selected month.
+/// String? locale - The localization.
+/// bool isDatePickerActive - The state that shows/hides date picker.
+/// VoidCallback? onPressedPickerButton - An action that toggle
+///  isDatePickerActive state.
+/// VoidCallback? onPressedSlideLeft - An action of tap at left chevron icon.
+/// final VoidCallback? onPressedSlideRight - An action of tap at right
+/// chevron icon.
+/// VoidCallback? onPressedSelect - An action of tap at select month button.
+/// CalendarControlsViewScheme? scheme - The visual scheme
+/// of CalendarControlsView.
+///
 class CalendarControlsView extends StatefulWidget {
   const CalendarControlsView(
     this.currentDate,

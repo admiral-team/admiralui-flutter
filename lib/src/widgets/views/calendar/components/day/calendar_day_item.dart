@@ -1,9 +1,20 @@
 enum CalendarDayItemState {
+  /// The cell in not visible
   notVisible,
+
+  /// Default state.
   regular,
+
+  /// Cell with current date.
   current,
+
+  /// The date that located between range of dates.
   inRange,
+
+  /// Selected.
   selected,
+
+  /// Inactive.
   inactive,
 }
 

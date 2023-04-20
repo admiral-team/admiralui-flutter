@@ -3,6 +3,26 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+/// The CalendarHorizontalView.
+///
+/// CalendarHorizontalView let users select a date, or a range of dates.
+/// A horizontal calendar is a display of the month.
+/// Switching between months and years is carried out using
+/// the left and right buttons.
+/// You can also switch between months using picker view.
+/// You can create CalendarHorizontalView by specifying parameters:
+/// DateTime? startDate - The start date of calendar.
+/// DateTime? endDate - The end date of calendar.
+/// DateTime? currentDate - The start date of calendar
+/// String? locale - The day in the month which will be disaplyed.
+/// String? datePickerButtonTitle - The button title of datepicker controls view
+/// VoidCallback? onPageChanged - The closure that calls when
+/// calendar page changes.
+/// ValueChanged<List<DateTime?>>?? onChangedRangeDates - The notification of
+/// changing start and end date.
+/// CalendarHorizontalViewScheme? scheme - The visual scheme
+/// of CalendarHorizontalView.
+///
 class CalendarHorizontalView extends StatefulWidget {
   const CalendarHorizontalView({
     this.startDate,
