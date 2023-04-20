@@ -81,8 +81,28 @@ class _TagsScreenState extends State<TagsScreen> {
                   TagControlWidget(
                     leadingImage: AdmiralIcons.admiral_ic_car_solid,
                     title: 'Text',
-                    trailingButtonImage:
-                        AdmiralIcons.admiral_ic_close_circle_outline,
+                    trailingButtonWidget: GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage('assets/Close.png'),
+                        fit: BoxFit.cover,
+                        height: 20,
+                      ),
+                    ),
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
+                  SizedBox(width: LayoutGrid.module),
+                  TagControlWidget(
+                    title: 'Text',
+                    trailingButtonWidget: GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage('assets/Close.png'),
+                        fit: BoxFit.cover,
+                        height: 20,
+                      ),
+                    ),
                     style: TagStyle.normal,
                     isEnabled: isEnabled,
                   ),
@@ -102,6 +122,17 @@ class _TagsScreenState extends State<TagsScreen> {
                   TagControlWidget(
                     leadingText: '🐶',
                     title: 'Emoji',
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
+                  SizedBox(width: LayoutGrid.module),
+                  TagControlWidget(
+                    leadingWidget: Image(
+                      image: AssetImage('assets/Russia.png'),
+                      fit: BoxFit.cover,
+                      height: LayoutGrid.halfModule * 7,
+                    ),
+                    title: 'Flags',
                     style: TagStyle.normal,
                     isEnabled: isEnabled,
                   ),
@@ -145,6 +176,17 @@ class _TagsScreenState extends State<TagsScreen> {
                       style: TagStyle.additional,
                       isEnabled: isEnabled,
                     ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/Russia.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.additional,
+                      isEnabled: isEnabled,
+                    ),
                   ],
                 ),
               ),
@@ -183,6 +225,17 @@ class _TagsScreenState extends State<TagsScreen> {
                     TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
+                      style: TagStyle.success,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/Russia.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
                       style: TagStyle.success,
                       isEnabled: isEnabled,
                     ),
@@ -228,6 +281,17 @@ class _TagsScreenState extends State<TagsScreen> {
                       style: TagStyle.error,
                       isEnabled: isEnabled,
                     ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/Russia.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.error,
+                      isEnabled: isEnabled,
+                    ),
                   ],
                 ),
               ),
@@ -267,6 +331,17 @@ class _TagsScreenState extends State<TagsScreen> {
                     TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
+                      style: TagStyle.attention,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/Russia.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
                       style: TagStyle.attention,
                       isEnabled: isEnabled,
                     ),
