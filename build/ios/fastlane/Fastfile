@@ -24,6 +24,7 @@ lane :deploy_appcenter_andoid_dev do |options|
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
+  puts ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
   puts release_notes
 
   appcenter_upload(
