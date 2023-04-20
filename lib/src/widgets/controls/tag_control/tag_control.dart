@@ -6,16 +6,24 @@ import 'package:admiralui_flutter/theme/app_theme.dart';
 import 'package:admiralui_flutter/theme/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 
+/// The Chips and Tags component groups allow users to quickly enter information
+/// make selections, filter content, or trigger actions. 
+/// A group of such components should be displayed sequentially, 
+/// and the content of each component should be short with a clear call to 
+/// action, which can be supported by an additional 
+/// graphic element (icon) or emoji.
 class TagControlWidget extends StatefulWidget {
   const TagControlWidget({
     super.key,
     this.onPressed,
     this.leadingText,
     this.leadingImage,
+    this.leadingWidget,
     this.title,
     this.trailingText,
     this.trailingImage,
     this.trailingButtonImage,
+    this.trailingButtonWidget,
     this.onTrailingButtonPressed,
     this.style = TagStyle.normal,
     this.isEnabled = true,
@@ -25,9 +33,11 @@ class TagControlWidget extends StatefulWidget {
   final VoidCallback? onPressed;
   final String? leadingText;
   final IconData? leadingImage;
+  final Widget? leadingWidget;
   final String? trailingText;
   final IconData? trailingImage;
   final IconData? trailingButtonImage;
+  final Widget? trailingButtonWidget;
   final VoidCallback? onTrailingButtonPressed;
   final TagStyle style;
   final String? title;
@@ -41,6 +51,10 @@ class TagControlWidget extends StatefulWidget {
 class _TagControlWidgetState extends State<TagControlWidget> {
   late TagControlScheme scheme;
   bool _isPressed = false;
+
+  /// Constants.
+  final double enabledAlpha = 1;
+  final double disabledAlpha = 0.5;
 
   @override
   void initState() {
@@ -77,8 +91,7 @@ class _TagControlWidgetState extends State<TagControlWidget> {
           size: LayoutGrid.halfModule * 5,
         ),
       );
-    }
-    if (widget.leadingText != null) {
+    } else if (widget.leadingText != null) {
       if (childWidgets.isNotEmpty) {
         childWidgets.add(
           const SizedBox(
@@ -95,6 +108,20 @@ class _TagControlWidgetState extends State<TagControlWidget> {
             fontFamily: scheme.font.fontFamily,
             fontWeight: scheme.font.fontWeight,
           ),
+        ),
+      );
+    } else if (widget.leadingWidget != null) {
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
+      }
+      childWidgets.add(
+        Opacity(
+          opacity: widget.isEnabled ? enabledAlpha : disabledAlpha,
+          child: widget.leadingWidget ?? const SizedBox(),
         ),
       );
     }
@@ -133,8 +160,21 @@ class _TagControlWidgetState extends State<TagControlWidget> {
           size: LayoutGrid.halfModule * 5,
         ),
       );
-    }
-    if (widget.trailingText != null) {
+    } else if (widget.trailingButtonWidget != null) {
+      if (childWidgets.isNotEmpty) {
+        childWidgets.add(
+          const SizedBox(
+            width: LayoutGrid.module,
+          ),
+        );
+      }
+      childWidgets.add(
+        Opacity(
+          opacity: widget.isEnabled ? enabledAlpha : disabledAlpha,
+          child: widget.trailingButtonWidget ?? const SizedBox(),
+        ),
+      );
+    } else if (widget.trailingText != null) {
       if (childWidgets.isNotEmpty) {
         childWidgets.add(
           const SizedBox(
@@ -153,8 +193,7 @@ class _TagControlWidgetState extends State<TagControlWidget> {
           ),
         ),
       );
-    }
-    if (widget.trailingButtonImage != null) {
+    } else if (widget.trailingButtonImage != null) {
       if (childWidgets.isNotEmpty) {
         childWidgets.add(
           const SizedBox(
@@ -188,8 +227,8 @@ class _TagControlWidgetState extends State<TagControlWidget> {
         child: Container(
           height: LayoutGrid.halfModule * 9,
           padding: const EdgeInsets.symmetric(
-            vertical: 6.0,
-            horizontal: 16.0,
+            vertical: LayoutGrid.halfModule,
+            horizontal: LayoutGrid.doubleModule,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
