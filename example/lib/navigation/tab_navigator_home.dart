@@ -51,6 +51,8 @@ import '../screens/action_toast_screen.dart';
 import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/calendars_screen.dart';
+import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
 import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
@@ -76,6 +78,8 @@ enum TabNavigatorRoutes {
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
+  calendar('/calendar'),
+  calendarHorizontal('/calendar/calendarHorizontal'),
   underlineTabs('/underlineTabs'),
   buttons('/buttons'),
   informers('/informers'),
@@ -205,6 +209,13 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Slider',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.calendar.value: (BuildContext context) =>
+          CalendarsScreen(
+            title: 'Calendar',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
+          const CalendarHorizontalScreen(title: 'Horizontal'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
             title: 'Page Controls',
