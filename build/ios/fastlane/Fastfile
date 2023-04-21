@@ -14,6 +14,7 @@ lane :deploy_appcenter_andoid_dev do |options|
   issue_name = options[:issue_name]
   telegram_token = options[:telegram_token]
   telegram_chat_id = options[:telegram_chat_id]
+  pull_request_number = options[:pull_request_number]
   branch_name = issue_name
 
   if issue_name.nil? || issue_name == ""
@@ -30,14 +31,15 @@ lane :deploy_appcenter_andoid_dev do |options|
   puts __FILE__
   puts File.dirname(__FILE__)
   puts File.expand_path(File.dirname(__FILE__))
+  puts Dir.pwd
 
   appcenter_upload(
-    api_token: ENV['APPCENTER_API_TOKEN_ANDROID_PROD'],
+    api_token: ENV['APPCENTER_API_TOKEN_ANDROID_DEV'],
     owner_name: ENV['APPCENTER_OWNER_NAME'],
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
-    app_name: ENV['APPCENTER_APP_ANDROID_NAME_PROD'],
-    file: File.expand_path(File.dirname(__FILE__)) + "/app-release.apk",
-    destinations: ENV['APPCENTER_DESTINATIONS_PROD'],
+    app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
+    file: Dir.pwd + "/app-release.apk",
+    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
     destination_type: "group",
     release_notes: release_notes,
     notify_testers: true
