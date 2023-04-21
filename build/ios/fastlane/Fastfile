@@ -33,7 +33,7 @@ lane :deploy_appcenter_andoid_dev do |options|
     owner_name: ENV['APPCENTER_OWNER_NAME'],
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
     app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
-    file: current_directory + "example/build/app/outputs/flutter-apk/app-release.apk",
+    file: current_directory + "/example/build/app/outputs/flutter-apk/app-release.apk",
     destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
     destination_type: "group",
     release_notes: release_notes,
