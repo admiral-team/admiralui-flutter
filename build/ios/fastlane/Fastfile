@@ -27,7 +27,9 @@ lane :deploy_appcenter_andoid_dev do |options|
   dirname = File.basename(Dir.getwd)
   puts ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
   puts release_notes
-  puts dirname
+  puts __FILE__
+  puts File.dirname(__FILE__)
+  puts File.expand_path(File.dirname(__FILE__))
 
   appcenter_upload(
     api_token: ENV['APPCENTER_API_TOKEN_ANDROID_PROD'],
