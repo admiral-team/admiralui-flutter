@@ -53,25 +53,9 @@ jobs:
           java-version: '11'
       - run: cd example && flutter build web
 
-  build-android:
-    name: Build Android App & Apk
-    needs: build-web
-    runs-on: [ self-hosted, main ]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.0.5'
-          channel: 'stable'
-          architecture: x64
-          distribution: 'zulu'
-          java-version: '11'
-      - run: cd example && flutter pub get
-      - run: cd example && flutter build apk && flutter build appbundle
-
   deploy-android:
     name: Deploy Android App
-    needs: build-android
+    needs: build-web
     runs-on: [ self-hosted, main ]
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
@@ -93,6 +77,8 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
+      - run: cd example && flutter pub get
+      - run: cd example && flutter build apk && flutter build appbundle
       - name: Install Fastlane Dependencies
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Deploy Android App to App Center
