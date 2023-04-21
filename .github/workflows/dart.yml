@@ -113,7 +113,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: flutter test
-    - name: Check If Test Failed
+      - name: Check If Test Failed
         if: ${{ failure() }}
         run: |
             cd build/ios/fastlane && bundle install && bundle update &&
