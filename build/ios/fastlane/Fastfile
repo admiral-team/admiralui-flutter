@@ -25,14 +25,17 @@ lane :deploy_appcenter_andoid_dev do |options|
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
-  puts Dir.pwd + "/../../example/build/app/outputs/flutter-apk/app-release.apk"
+  current_directory = Dir.pwd
+  Dir.chdir('..')
+  Dir.chdir('..')
+  puts current_directory + "example/build/app/outputs/flutter-apk/app-release.apk"
 
   appcenter_upload(
     api_token: ENV['APPCENTER_API_TOKEN_ANDROID_DEV'],
     owner_name: ENV['APPCENTER_OWNER_NAME'],
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
     app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
-    file: Dir.pwd + "/../../../example/build/app/outputs/flutter-apk/app-release.apk",
+    file: current_directory + "example/build/app/outputs/flutter-apk/app-release.apk",
     destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
     destination_type: "group",
     release_notes: release_notes,
