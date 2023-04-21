@@ -24,8 +24,10 @@ lane :deploy_appcenter_andoid_dev do |options|
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
+  dirname = File.basename(Dir.getwd)
   puts ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
   puts release_notes
+  puts dirname
 
   appcenter_upload(
     api_token: ENV['APPCENTER_API_TOKEN_ANDROID_PROD'],
@@ -33,7 +35,7 @@ lane :deploy_appcenter_andoid_dev do |options|
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
     app_name: ENV['APPCENTER_APP_ANDROID_NAME_PROD'],
     file: "app-release.apk",
-    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
+    destinations: ENV['APPCENTER_DESTINATIONS_PROD'],
     destination_type: "group",
     release_notes: release_notes,
     notify_testers: true
