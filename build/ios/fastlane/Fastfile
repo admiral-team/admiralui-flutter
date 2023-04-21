@@ -25,9 +25,7 @@ lane :deploy_appcenter_andoid_dev do |options|
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
-  current_directory = File.expand_path('../../', __FILE__)
-  Dir.chdir('..')
-  Dir.chdir('..')
+  current_directory = File.expand_path('../../../../', __FILE__)
   puts current_directory + "/example/build/app/outputs/flutter-apk/app-release.apk"
 
   appcenter_upload(
