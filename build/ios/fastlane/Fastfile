@@ -28,11 +28,11 @@ lane :deploy_appcenter_andoid_dev do |options|
   puts release_notes
 
   appcenter_upload(
-    api_token: ENV['APPCENTER_API_TOKEN_ANDROID_DEV'],
+    api_token: ENV['APPCENTER_API_TOKEN_ANDROID_PROD'],
     owner_name: ENV['APPCENTER_OWNER_NAME'],
     owner_type: ENV['APPCENTER_OWNER_TYPE'],
-    app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
-    file: "../../example/build/app/outputs/flutter-apk/app-release.apk",
+    app_name: ENV['APPCENTER_APP_ANDROID_NAME_PROD'],
+    file: "app-release.apk",
     destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
     destination_type: "group",
     release_notes: release_notes,
