@@ -37,6 +37,11 @@ jobs:
         run: flutter analyze --fatal-infos
       - name: Install dependencies
         run: flutter pub get
+      - name: Check If Setup Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   build-web:
     name: Build Web App
@@ -52,6 +57,11 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: cd example && flutter build web
+      - name: Check If Build Web Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   deploy-android:
     name: Deploy Android App
@@ -83,6 +93,11 @@ jobs:
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Deploy Android App to App Center
         run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_andoid_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+      - name: Check If Deploy Android Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   test:
     name: Test App
@@ -98,6 +113,11 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: flutter test
+    - name: Check If Test Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   deploy-ios-dev:
     name: Deploy iOS Appcenter Development
