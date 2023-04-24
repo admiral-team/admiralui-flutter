@@ -65,14 +65,15 @@ class _InputNumberState extends State<InputNumber> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextView(
-          widget.title,
-          font: scheme.font,
-          textColorNormal: textColor,
-          textColorDisabled: textColor,
-          maxLines: 1,
-        ),
-        const Spacer(),
+        if (widget.title.isNotEmpty)
+          TextView(
+            widget.title,
+            font: scheme.font,
+            textColorNormal: textColor,
+            textColorDisabled: textColor,
+            maxLines: 1,
+          ),
+        if (widget.title.isNotEmpty) const Spacer(),
         InputNumberButton(
           isEnable: widget.isEnable,
           image: AdmiralIcons.admiral_ic_minus_outline,

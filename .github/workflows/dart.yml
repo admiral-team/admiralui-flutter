@@ -65,6 +65,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
+      - run: cd example && flutter pub get
       - run: cd example && flutter build apk && flutter build appbundle
 
   test:

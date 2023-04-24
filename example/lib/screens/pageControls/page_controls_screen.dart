@@ -2,11 +2,11 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'list_cell_model.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../list_cell_model.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class BadgesScreen extends StatelessWidget {
-  const BadgesScreen({
+class PageControlsScreen extends StatelessWidget {
+  const PageControlsScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,14 +19,14 @@ class BadgesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Normal',
+        title: 'Liner',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.normalBadges),
+        onPressed: () => onPush.call(TabNavigatorRoutes.pageControlLinear),
       ),
       ListCellModel(
-        title: 'Small',
+        title: 'Circular',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.smallBadges),
+        onPressed: () => onPush.call(TabNavigatorRoutes.doubleTextField),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
@@ -67,8 +67,22 @@ class BadgesScreen extends StatelessWidget {
                 index == items.length ? null : items[index];
             if (item is ListCellModel) {
               return BaseCellWidget(
-                centerCell: TitleCellWidget(title: item.title,),
-                trailingCell: ArrowCellWidget(),
+                centerCell: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      item.title,
+                      style: fonts.body1.toTextStyle(
+                        colors.textPrimary.color(),
+                      ),
+                    ),
+                  ],
+                ),
+                trailingCell: Icon(
+                  AdmiralIcons.admiral_ic_chevron_right_outline,
+                  color: colors.elementSecondary.color(),
+                ),
                 onPressed: item.onPressed,
               );
             }

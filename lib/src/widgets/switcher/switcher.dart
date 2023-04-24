@@ -75,6 +75,9 @@ class _SwitcherState extends State<Switcher> {
       trackColor: trackColor,
       activeColor: activeTrackColor,
       onChanged: (bool value) {
+        if (!widget.isEnabled) {
+          return;
+        }
         setState(() {
           _isSwitched = value;
           widget.onChanged?.call(value);

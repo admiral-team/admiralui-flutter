@@ -96,7 +96,7 @@ class _RadioButtonScreenState extends State<RadioButtonScreen> {
               height: LayoutGrid.tripleModule,
             ),
             TextView(
-              'Selected',
+              'Error',
               font: fonts.body1,
               textColorNormal: colors.textSecondary.color(),
             ),
