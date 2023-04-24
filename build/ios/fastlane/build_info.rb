@@ -42,11 +42,10 @@ def current_app_build_number
   get_build_number(xcodeproj: ENV['LIBRARY_PROJECT_PATH'])
 end
 
-def appcenter_build_dev_url(build_id:)
+def appcenter_build_dev_url(build_id:, app_name:)
   return nil if build_id.nil?
   base_url = ENV['APPCENTER_BASE_URL']
   owner_name = ENV['APPCENTER_OWNER_NAME']
-  app_name = ENV['APPCENTER_APP_NAME_DEV']
   File.join(base_url, 'orgs', owner_name, 'apps', app_name, 'releases', "#{build_id}")
 end
 
