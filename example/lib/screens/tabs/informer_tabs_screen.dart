@@ -136,14 +136,10 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                             SizedBox(
                               width: LayoutGrid.doubleModule,
                             ),
-                            Container(
-                              width: 21,
-                              height: 21,
-                              decoration: BoxDecoration(
-                                color:
-                                    theme.colors.textAccentAdditional.color(),
-                                shape: BoxShape.circle,
-                              ),
+                            Icon(
+                              AdmiralIcons.admiral_ic_help_outline,
+                              size: LayoutGrid.halfModule * 7,
+                              color: theme.colors.elementPrimary.color(),
                             ),
                           ],
                         ),
@@ -233,14 +229,10 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                             SizedBox(
                               width: LayoutGrid.doubleModule,
                             ),
-                            Container(
-                              width: 21,
-                              height: 21,
-                              decoration: BoxDecoration(
-                                color:
-                                    theme.colors.textAccentAdditional.color(),
-                                shape: BoxShape.circle,
-                              ),
+                            Icon(
+                              AdmiralIcons.admiral_ic_help_outline,
+                              size: LayoutGrid.halfModule * 7,
+                              color: theme.colors.elementPrimary.color(),
                             ),
                           ],
                         ),
