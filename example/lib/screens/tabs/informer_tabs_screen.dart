@@ -151,6 +151,7 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                           height: LayoutGrid.module,
                         ),
                         TextView(
+                          // ignore: lines_longer_than_80_chars
                           'Выгодный вариант для  двухкомнатной квартиры или дачного дома',
                           font: theme.fonts.subhead4,
                           textColorNormal: theme.colors.textPrimary.color(),
@@ -247,6 +248,7 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                           height: LayoutGrid.module,
                         ),
                         TextView(
+                          // ignore: lines_longer_than_80_chars
                           'Выгодный вариант для  двухкомнатной квартиры или дачного дома',
                           font: theme.fonts.subhead4,
                           textColorNormal: theme.colors.textPrimary.color(),
