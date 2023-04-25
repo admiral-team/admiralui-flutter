@@ -65,7 +65,8 @@ export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tab_it
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tab_item_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs_scheme.dart';
-export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs/standart_tabs.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs/standart_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';
