@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/notifications_screen.dart';
+import '../screens/informers/notifications_screen.dart';
 import '../screens/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
@@ -9,9 +9,9 @@ import '../screens/buttons/buttons_primary_screen.dart';
 import '../screens/buttons/buttons_secondary_screen.dart';
 import '../screens/buttons/buttons_screen.dart';
 import '../screens/home_screen.dart';
-import '../screens/badges_screen.dart';
-import '../screens/normal_badges_screen.dart';
-import '../screens/small_badges_sreen.dart';
+import '../screens/badges/badges_screen.dart';
+import '../screens/badges/normal_badges_screen.dart';
+import '../screens/badges/small_badges_sreen.dart';
 import '../screens/switcher_screen.dart';
 import '../screens/tags_screen.dart';
 import '../screens/informers_screen.dart';
@@ -28,8 +28,7 @@ import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
 import '../screens/tabs/informer_tabs_screen.dart';
-
-import '../screens/toast_screen.dart';
+import '../screens/informers/toast_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
@@ -49,9 +48,17 @@ import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
-import '../screens/toast_informers_screen.dart';
+import '../screens/action_toast_screen.dart';
+import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/calendars_screen.dart';
+import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
+import '../screens/shimmer_screen.dart';
+import '../screens/pageControls/page_controls_screen.dart';
+import '../screens/pageControls/linear/page_control_linear_screen.dart';
+import '../screens/cells/action_cell_screen.dart';
+import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 import '../screens/textfields/input_number/input_number_textfield_screen.dart';
@@ -69,7 +76,11 @@ enum TabNavigatorRoutes {
   inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   sliderTextField('/textfields/sliderTextfield'),
   switcher('/switcher'),
+  pageControls('/pageControls'),
+  pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
+  calendar('/calendar'),
+  calendarHorizontal('/calendar/calendarHorizontal'),
   underlineTabs('/underlineTabs'),
   informerTabs('/informerTabs'),
   buttons('/buttons'),
@@ -95,6 +106,7 @@ enum TabNavigatorRoutes {
   pinCode('/pinCode'),
   cells('/cells'),
   baseCells('/baseCells'),
+  actionCells('/actionCells'),
   centerCells('/centerCells'),
   leadingCell('/leadingCell'),
   trailingCells('/trailingCells'),
@@ -107,9 +119,12 @@ enum TabNavigatorRoutes {
   toolbar('/toolbar'),
   paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
+  shimmer('/shimmer'),
   toastInformers('/toastInformers'),
   notification('/notification'),
   toast('/toast'),
+  toastStatic('/toastStatic'),
+  toastAction('/toastAction'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -187,9 +202,30 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Spinner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.shimmer.value: (BuildContext context) => ShimmerScreen(
+            title: 'Shimmers',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.sliderTextField.value: (BuildContext context) =>
           SliderTextFieldScreen(
             title: 'Slider',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.calendar.value: (BuildContext context) =>
+          CalendarsScreen(
+            title: 'Calendar',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
+          const CalendarHorizontalScreen(title: 'Horizontal'),
+      TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
+          PageControlsScreen(
+            title: 'Page Controls',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.pageControlLinear.value: (BuildContext context) =>
+          PageControlLinearScreen(
+            title: 'Liner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
@@ -263,7 +299,6 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.currency.value: (BuildContext context) =>
           CurrencyScreen(
-            title: 'Currency',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.currencyDefault.value: (BuildContext context) =>
@@ -319,6 +354,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
+      TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
+          const ActionCellsScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>
           ToastInformersScreen(
             title: 'Informers & Notifications',
@@ -330,7 +367,11 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.toast.value: (BuildContext context) =>
-          const ToastScreen()
+          const ToastScreen(),
+      TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
+          const ToastStaticScreen(),
+      TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
+          const ActionToastScreen()
     };
   }
 

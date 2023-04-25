@@ -96,7 +96,7 @@ class _CheckboxScreenState extends State<CheckboxScreen> {
               height: LayoutGrid.tripleModule,
             ),
             TextView(
-              'Selected',
+              'Error',
               font: fonts.body1,
               textColorNormal: colors.textSecondary.color(),
             ),

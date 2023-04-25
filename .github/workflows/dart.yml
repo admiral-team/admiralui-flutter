@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Build and Test default scheme using any available iPhone simulator
+  setup:
+    name: Setup Environment
     runs-on: [ self-hosted, main ]
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
@@ -36,38 +36,88 @@ jobs:
         run: flutter analyze --fatal-infos
       - name: Install dependencies
         run: flutter pub get
-      - name: Test App
-        run: flutter test
-      - name: Build Web App
-        run: cd example && flutter build web
-      - name: Build Android App & Apk
-        run: cd example && flutter build apk && flutter build appbundle
-      - name: Install & Update fastlane dependencies
-        run: |
-          cd build/ios/fastlane
-          bundle install
-          bundle update
-          sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-          bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-      - name: Build Flutter iOS 
-        run: |
-          cd example/lib
-          flutter build ios
-      - name: Deploy iOS Appcenter Development
-        if: ${{ github.event_name == 'pull_request' }}
-        run: |
-          cd build/ios/fastlane
-          bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+
+  build-web:
+    name: Build Web App
+    needs: setup
+    runs-on: [ self-hosted, main ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - run: cd example && flutter build web
+
+  build-android:
+    name: Build Android App & Apk
+    needs: build-web
+    runs-on: [ self-hosted, main ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - run: cd example && flutter pub get
+      - run: cd example && flutter build apk && flutter build appbundle
+
+  test:
+    name: Test App
+    runs-on: [ self-hosted, main ]
+    needs: build-android
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - run: flutter test
+
+  deploy-ios-dev:
+    name: Deploy iOS Appcenter Development
+    needs: test
+    runs-on: [ self-hosted, main ]
+    env:
+      API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
+      APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
+      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      PUll_REQUEST_NUMBER: ${{ github.event.number }}
+      CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
+      TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Install Fastlane Dependencies
+        run: cd build/ios/fastlane && bundle install && bundle update
+      - name: Set Xcode Command Line Tools Path
+        run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
+      - name: Unlock Fastlane Secrets Keychain
+        run: cd build/ios/fastlane && bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
+      - name: Build iOS App
+        run: cd example/lib && flutter build ios
+      - name: Deploy iOS App to App Center
+        run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
       - name: Check If Deploy iOS Appcenter Failed
         if: ${{ failure() }}
         run: |
-          cd build/ios/fastlane
-          bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"$PUll_NUMBER"
-      - name: Upload Web Version
-        if: ${{ github.event_name == 'push' && github.event.pull_request.head.ref == 'develop' }}
-        run: |
-          cd example/build/web
-          git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
-          git add .
-          git commit -m '${{ github.event.pull_request.title }}'
-          git push origin master
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+

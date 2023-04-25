@@ -30,7 +30,8 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
-
+    screenWidth = MediaQuery.of(context).size.width;
+    print('device width - $screenWidth');
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
@@ -52,32 +53,219 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
-        color: colors.backgroundBasic.color(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: LayoutGrid.doubleModule),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: StandardTabs(
+                <String>['Default', 'Disabled'],
+                onTap: (String value) {
+                  setState(() {
+                    isEnabled = value == 'Default';
+                  });
+                },
+              ),
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+                SizedBox(
+                  width: LayoutGrid.doubleModule,
+                ),
                 TextView(
-                  'Three items',
+                  'Two controls',
                   font: theme.fonts.headline,
                   textColorNormal: theme.colors.textSecondary.color(),
-                )
+                ),
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            InformerTabs(<InformerTabItem>[
-              InformerTabItem('2 900 ₽', 'в месяц'),
-              InformerTabItem('2 900 ₽', 'в месяц'),
-              InformerTabItem('2 900 ₽', 'в месяц'),
-            ]),
-            Spacer(),
+            InformerTabs(
+              <InformerTabItem>[
+                InformerTabItem('2 900 ₽', 'в месяц'),
+                InformerTabItem('2 900 ₽', 'в месяц'),
+              ],
+              isEnabled: isEnabled,
+              paddingHorizontal: LayoutGrid.doubleModule,
+              customView: Container(
+                color: isEnabled
+                    ? theme.colors.backgroundAdditionalOne.color()
+                    : theme.colors.backgroundAdditionalOne.colorWithOpacity(),
+                width: screenWidth,
+                child: Center(
+                  child: SizedBox(
+                    width: 290.0,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: LayoutGrid.module * 3,
+                        ),
+                        TextView(
+                          'то получу в страховом случае',
+                          font: theme.fonts.headline,
+                          textColorNormal: theme.colors.textPrimary.color(),
+                          textColorDisabled:
+                              theme.colors.textPrimary.colorWithOpacity(),
+                          textAlign: TextAlign.center,
+                          isEnabled: isEnabled,
+                        ),
+                        SizedBox(
+                          height: LayoutGrid.halfModule,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            TextView(
+                              'до 1 500 000 ₽',
+                              font: theme.fonts.largeTitle1,
+                              textColorNormal: theme.colors.textAccent.color(),
+                              textColorDisabled:
+                                  theme.colors.textAccent.colorWithOpacity(),
+                              textAlign: TextAlign.center,
+                              isEnabled: isEnabled,
+                            ),
+                            SizedBox(
+                              width: LayoutGrid.doubleModule,
+                            ),
+                            Container(
+                              width: 21,
+                              height: 21,
+                              decoration: BoxDecoration(
+                                color:
+                                    theme.colors.textAccentAdditional.color(),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: LayoutGrid.module,
+                        ),
+                        TextView(
+                          'Выгодный вариант для  двухкомнатной квартиры или дачного дома',
+                          font: theme.fonts.subhead4,
+                          textColorNormal: theme.colors.textPrimary.color(),
+                          textColorDisabled:
+                              theme.colors.textPrimary.colorWithOpacity(),
+                          isEnabled: isEnabled,
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 38,
+            ),
+            Row(
+              children: <Widget>[
+                SizedBox(
+                  width: LayoutGrid.doubleModule,
+                ),
+                TextView(
+                  'Three controls',
+                  font: theme.fonts.headline,
+                  textColorNormal: theme.colors.textSecondary.color(),
+                ),
+              ],
+            ),
+            SizedBox(height: LayoutGrid.doubleModule),
+            InformerTabs(
+              <InformerTabItem>[
+                InformerTabItem('2 900 ₽', 'в месяц'),
+                InformerTabItem('2 900 ₽', 'в месяц'),
+                InformerTabItem('2 900 ₽', 'в месяц'),
+              ],
+              isEnabled: isEnabled,
+              paddingHorizontal: LayoutGrid.doubleModule,
+              customView: Container(
+                color: isEnabled
+                    ? theme.colors.backgroundAdditionalOne.color()
+                    : theme.colors.backgroundAdditionalOne.colorWithOpacity(),
+                width: screenWidth,
+                child: Center(
+                  child: SizedBox(
+                    width: 290.0,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          height: LayoutGrid.module * 3,
+                        ),
+                        TextView(
+                          'то получу в страховом случае',
+                          font: theme.fonts.headline,
+                          textColorNormal: theme.colors.textPrimary.color(),
+                          textColorDisabled:
+                              theme.colors.textPrimary.colorWithOpacity(),
+                          textAlign: TextAlign.center,
+                          isEnabled: isEnabled,
+                        ),
+                        SizedBox(
+                          height: LayoutGrid.halfModule,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            TextView(
+                              'до 1 500 000 ₽',
+                              font: theme.fonts.largeTitle1,
+                              textColorNormal: theme.colors.textAccent.color(),
+                              textColorDisabled:
+                                  theme.colors.textAccent.colorWithOpacity(),
+                              textAlign: TextAlign.center,
+                              isEnabled: isEnabled,
+                            ),
+                            SizedBox(
+                              width: LayoutGrid.doubleModule,
+                            ),
+                            Container(
+                              width: 21,
+                              height: 21,
+                              decoration: BoxDecoration(
+                                color:
+                                    theme.colors.textAccentAdditional.color(),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: LayoutGrid.module,
+                        ),
+                        TextView(
+                          'Выгодный вариант для  двухкомнатной квартиры или дачного дома',
+                          font: theme.fonts.subhead4,
+                          textColorNormal: theme.colors.textPrimary.color(),
+                          textColorDisabled:
+                              theme.colors.textPrimary.colorWithOpacity(),
+                          isEnabled: isEnabled,
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 38,
+            ),
           ],
         ),
       ),

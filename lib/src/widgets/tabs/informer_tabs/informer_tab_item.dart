@@ -91,7 +91,7 @@ class _InformerTabItemState extends State<InformerTabItemWidget> {
     final Color itemBorderColor = widget.isSelected ? thubmColor : borderColor;
 
     return GestureDetector(
-      onTap: () => widget.onTap?.call(widget.index),
+      onTap: () => widget.isEnabled ? widget.onTap?.call(widget.index) : null,
       child: Container(
         height: LayoutGrid.halfModule * 20,
         width: widget.width,

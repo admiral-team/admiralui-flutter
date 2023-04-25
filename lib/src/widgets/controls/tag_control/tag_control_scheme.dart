@@ -24,6 +24,11 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.none,
     );
+    backgroundColor.set(
+      Colors.transparent, 
+      ControlState.disabled,
+      TagStyle.none,
+    );
 
     // Normal
     backgroundColor.set(
@@ -41,6 +46,11 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.normal,
     );
+    backgroundColor.set(
+      theme.colors.backgroundSelected.colorWithOpacity(), 
+      ControlState.disabled,
+      TagStyle.normal,
+    );
     tintColor.set(
       theme.colors.elementAccent.color(), 
       ControlState.normal,
@@ -54,6 +64,11 @@ class TagControlScheme {
     tintColor.set(
       theme.colors.elementAccent.colorWithOpacity(), 
       ControlState.highlighted,
+      TagStyle.normal,
+    );
+    tintColor.set(
+      theme.colors.elementAccent.colorWithOpacity(), 
+      ControlState.disabled,
       TagStyle.normal,
     );
 
@@ -73,6 +88,12 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.additional,
     );
+    backgroundColor.set(
+      theme.colors.backgroundAdditionalOne.colorWithOpacity(), 
+      ControlState.disabled,
+      TagStyle.additional,
+    );
+
     tintColor.set(
       theme.colors.elementSecondary.color(), 
       ControlState.normal,
@@ -86,6 +107,11 @@ class TagControlScheme {
     tintColor.set(
       theme.colors.elementSecondary.colorWithOpacity(), 
       ControlState.highlighted,
+      TagStyle.additional,
+    );
+    tintColor.set(
+      theme.colors.elementSecondary.colorWithOpacity(), 
+      ControlState.disabled,
       TagStyle.additional,
     );
 
@@ -105,6 +131,11 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.success,
     );
+    backgroundColor.set(
+      theme.colors.backgroundSuccess.colorWithOpacity(), 
+      ControlState.disabled,
+      TagStyle.success,
+    );
     tintColor.set(
       theme.colors.elementSuccess.color(), 
       ControlState.normal,
@@ -118,6 +149,11 @@ class TagControlScheme {
     tintColor.set(
       theme.colors.elementSuccessPressed.color(), 
       ControlState.highlighted,
+      TagStyle.success,
+    );
+    tintColor.set(
+      theme.colors.elementSuccess.colorWithOpacity(), 
+      ControlState.disabled,
       TagStyle.success,
     );
 
@@ -137,6 +173,11 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.error,
     );
+    backgroundColor.set(
+      theme.colors.backgroundError.colorWithOpacity(), 
+      ControlState.disabled,
+      TagStyle.error,
+    );
     tintColor.set(
       theme.colors.elementError.color(), 
       ControlState.normal,
@@ -150,6 +191,11 @@ class TagControlScheme {
     tintColor.set(
       theme.colors.elementErrorPressed.color(), 
       ControlState.highlighted,
+      TagStyle.error,
+    );
+    tintColor.set(
+      theme.colors.elementError.colorWithOpacity(), 
+      ControlState.disabled,
       TagStyle.error,
     );
 
@@ -169,6 +215,11 @@ class TagControlScheme {
       ControlState.highlighted,
       TagStyle.attention,
     );
+    backgroundColor.set(
+      theme.colors.backgroundAttention.colorWithOpacity(), 
+      ControlState.disabled,
+      TagStyle.attention,
+    );
     tintColor.set(
       theme.colors.elementAttention.color(), 
       ControlState.normal,
@@ -182,6 +233,11 @@ class TagControlScheme {
     tintColor.set(
       theme.colors.elementAttentionPressed.color(), 
       ControlState.highlighted,
+      TagStyle.attention,
+    );
+    tintColor.set(
+      theme.colors.elementAttention.colorWithOpacity(), 
+      ControlState.disabled,
       TagStyle.attention,
     );
 

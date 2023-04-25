@@ -14,6 +14,7 @@ class TextFieldWidget extends StatefulWidget {
     this.labelText = '',
     this.informerText,
     this.placeHolderText = '',
+    this.bottomWidget,
     this.onChanged,
     this.onEditingComplete,
     this.scheme,
@@ -28,6 +29,7 @@ class TextFieldWidget extends StatefulWidget {
   final String labelText;
   final String? informerText;
   final String placeHolderText;
+  final Widget? bottomWidget;
 
   final ValueChanged<String>? onChanged;
   final VoidCallback? onEditingComplete;
@@ -149,6 +151,11 @@ class _TextFieldState extends State<TextFieldWidget>
           widget.state,
           isEditing: _hasFocus,
         ),
+        if (widget.bottomWidget != null) 
+          SizedBox(
+            height: LayoutGrid.halfModule * 10, 
+            child: widget.bottomWidget,
+          ),
         const SizedBox(height: LayoutGrid.module),
         if (widget.informerText != null &&
             widget.informerText?.isEmpty == false)

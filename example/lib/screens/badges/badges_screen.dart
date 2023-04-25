@@ -2,11 +2,11 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'list_cell_model.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../list_cell_model.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class ToastInformersScreen extends StatelessWidget {
-  const ToastInformersScreen({
+class BadgesScreen extends StatelessWidget {
+  const BadgesScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -19,14 +19,14 @@ class ToastInformersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Informers',
+        title: 'Normal',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.informers),
+        onPressed: () => onPush.call(TabNavigatorRoutes.normalBadges),
       ),
       ListCellModel(
-        title: 'Notifications',
+        title: 'Small',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.notification),
+        onPressed: () => onPush.call(TabNavigatorRoutes.smallBadges),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
@@ -67,22 +67,8 @@ class ToastInformersScreen extends StatelessWidget {
                 index == items.length ? null : items[index];
             if (item is ListCellModel) {
               return BaseCellWidget(
-                centerCell: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      item.title,
-                      style: fonts.body1.toTextStyle(
-                        colors.textPrimary.color(),
-                      ),
-                    ),
-                  ],
-                ),
-                trailingCell: Icon(
-                  AdmiralIcons.admiral_ic_chevron_right_outline,
-                  color: colors.elementSecondary.color(),
-                ),
+                centerCell: TitleCellWidget(title: item.title,),
+                trailingCell: ArrowCellWidget(),
                 onPressed: item.onPressed,
               );
             }
