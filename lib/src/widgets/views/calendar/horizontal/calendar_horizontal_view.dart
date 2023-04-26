@@ -107,16 +107,25 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
         ),
         if (isDatePickerActive)
           Expanded(
-            child: CupertinoDatePicker(
-              mode: CupertinoDatePickerMode.date,
-              initialDateTime: dataSource.currentDate ?? DateTime.now(),
-              onDateTimeChanged: (DateTime val) {
-                setState(
-                  () {
-                    dataSource.currentDate = val;
-                  },
-                );
-              },
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                textTheme: CupertinoTextThemeData(
+                  dateTimePickerTextStyle: scheme.datePickerFont.toTextStyle(
+                    scheme.datePickerTextColor.color(),
+                  ),
+                ),
+              ),
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: dataSource.currentDate ?? DateTime.now(),
+                onDateTimeChanged: (DateTime val) {
+                  setState(
+                    () {
+                      dataSource.currentDate = val;
+                    },
+                  );
+                },
+              ),
             ),
           ),
         if (!isDatePickerActive)
