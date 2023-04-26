@@ -110,9 +110,8 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
             child: CupertinoTheme(
               data: CupertinoThemeData(
                 textTheme: CupertinoTextThemeData(
-                  dateTimePickerTextStyle: TextStyle(
-                    color: scheme.datePickerTextColor.color(),
-                    fontSize: 22.0,
+                  dateTimePickerTextStyle: scheme.datePickerFont.toTextStyle(
+                    scheme.datePickerTextColor.color(),
                   ),
                 ),
               ),
