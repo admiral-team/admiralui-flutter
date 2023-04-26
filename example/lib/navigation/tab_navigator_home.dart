@@ -24,10 +24,11 @@ import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/standart_textfield_screen.dart';
-import '../screens/tabs_screen.dart';
+import '../screens/tabs/tabs_screen.dart';
+import '../screens/tabs/undeline_tabs.dart';
+import '../screens/tabs/icon_tabs_screen.dart';
+import '../screens/tabs/informer_tabs_screen.dart';
 import '../screens/informers/toast_screen.dart';
-import '../screens/undeline_tabs.dart';
-import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
@@ -81,6 +82,7 @@ enum TabNavigatorRoutes {
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   underlineTabs('/underlineTabs'),
+  informerTabs('/informerTabs'),
   buttons('/buttons'),
   informers('/informers'),
   spinner('/spinner'),
@@ -288,6 +290,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.iconTabs.value: (BuildContext context) =>
           IconTabsScreen(
             title: 'Icon Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.informerTabs.value: (BuildContext context) =>
+          InformerTabsScreen(
+            title: 'Informer Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.currency.value: (BuildContext context) =>

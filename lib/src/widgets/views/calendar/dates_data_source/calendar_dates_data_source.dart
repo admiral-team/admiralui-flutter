@@ -39,6 +39,8 @@ class CalendarDatesDataSource {
         )
         .date;
 
+    currentDate = currentDate_;
+
     if (currentDate_ != null) {
       monthList = generator.generateDataSource(
         monthList[pageIndex],
