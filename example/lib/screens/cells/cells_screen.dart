@@ -59,7 +59,7 @@ class CellsScreen extends StatelessWidget {
             centerCell: TitleCellWidget(title: 'Actionbar'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.baseCells,
+              TabNavigatorRoutes.actionCells,
             ),
           ),
         ],

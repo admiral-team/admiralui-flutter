@@ -66,31 +66,56 @@ class _TitleTextBlockScreenState extends State<TitleTextBlockScreen> {
               TitleHeaderWidget(
                 title: 'Title', 
                 style: TitleHeaderStyle.headlineSecondary,
-                textAlign: TextAlign.left
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
               ),
               const SizedBox(height: LayoutGrid.quadrupleModule),
               TitleHeaderWidget(
                 title: 'Title', 
                 style: TitleHeaderStyle.title,
-                textAlign: TextAlign.left
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
               ),
               const SizedBox(height: LayoutGrid.doubleModule),
               TitleHeaderWidget(
                 title: 'Title', 
                 style: TitleHeaderStyle.title,
-                textAlign: TextAlign.center
+                textAlign: TextAlign.center,
+                isEnable: isEnabled,
+              ),
+              const SizedBox(height: LayoutGrid.doubleModule),
+              DropDownHeaderWidget(
+                title: 'Title', 
+                style: TitleHeaderStyle.title,
+                isEnable: isEnabled,
+                dropDownStyle: DropDownHeaderStyle.down,
               ),
               const SizedBox(height: LayoutGrid.doubleModule),
               SubtitleTitleHeaderWidget(
                 title: 'Title', 
                 subtitle: 'Subtitle',
                 style: TitleHeaderStyle.title,
+                isEnable: isEnabled,
               ),
               const SizedBox(height: LayoutGrid.doubleModule),
               TitleSubtitleHeaderWidget(
                 title: 'Title', 
                 subtitle: 'Subtitle',
                 style: TitleHeaderStyle.title,
+                isEnable: isEnabled,
+              ),
+              const SizedBox(height: LayoutGrid.doubleModule),
+              ArrowWithButtonWidget(
+                title: 'Title', 
+                style: TitleHeaderStyle.title, 
+                dropDownStyle: DropDownHeaderStyle.down,
+                buttonTitle: 'Button'
+              ),
+              const SizedBox(height: LayoutGrid.doubleModule),
+              ArrowWithButtonWidget(
+                title: 'Title', 
+                style: TitleHeaderStyle.title,
+                buttonTitle: 'Button'
               ),
 
               const SizedBox(height: LayoutGrid.quadrupleModule),

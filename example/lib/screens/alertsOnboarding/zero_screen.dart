@@ -29,7 +29,6 @@ class _ZeroScreenState extends State<ZeroScreen> {
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
-    final FontPalette fonts = theme.fonts;
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
@@ -41,13 +40,6 @@ class _ZeroScreenState extends State<ZeroScreen> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
-          widget.title,
-          style: fonts.subtitle2.toTextStyle(
-            colors.textPrimary.color(),
-          ),
-        ),
-        centerTitle: true,
         bottomOpacity: 0.0,
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),

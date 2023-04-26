@@ -9,12 +9,14 @@ class StandardTabs extends StatefulWidget {
     this.isEnabled = true,
     this.tabBarViews,
     this.onTap,
+    this.scheme,
     super.key,
   });
 
   final List<String> tabs;
   final bool isEnabled;
   final List<Widget>? tabBarViews;
+  final StandartTabsScheme? scheme;
 
   /// An optional callback that's called when the [TabBar] is tapped.
   ///
@@ -34,16 +36,24 @@ class StandardTabs extends StatefulWidget {
 class _StandardTabsState extends State<StandardTabs>
     with SingleTickerProviderStateMixin {
   int currentPos = 0;
+  late StandartTabsScheme scheme;
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    final ColorPalette colors = theme.colors;
-    final FontPalette fonts = theme.fonts;
+    scheme = widget.scheme ?? StandartTabsScheme(theme: theme);
 
     final Color textColor = widget.isEnabled
-        ? colors.textPrimary.color()
-        : colors.textPrimary.colorWithOpacity();
+        ? scheme.textColor
+        : scheme.disabledTextColor;
+    final Color borderColor = widget.isEnabled
+        ? scheme.borderColor
+        : scheme.disabledBorderColor;
+    final Color selectedBorderColor = widget.isEnabled
+        ? scheme.selectedBorderColor
+        : scheme.disabledSelectedBorderColor;
+    final TextStyle unselectedLabelStyle = 
+    scheme.unselectedTextFont.toTextStyle(textColor);
     return DefaultTabController(
       length: widget.tabs.length,
       child: Column(
@@ -52,8 +62,11 @@ class _StandardTabsState extends State<StandardTabs>
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(LayoutGrid.module),
+                side: BorderSide(
+                  color: borderColor,
+                ),
               ),
-              color: colors.backgroundBasic.color(),
+              color: scheme.backgroundColor,
             ),
             child: TabBar(
               splashFactory: NoSplash.splashFactory,
@@ -72,7 +85,7 @@ class _StandardTabsState extends State<StandardTabs>
               },
               indicator: BoxDecoration(
                 border: Border.all(
-                  color: colors.elementAccent.color(),
+                  color: selectedBorderColor,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(
@@ -81,8 +94,8 @@ class _StandardTabsState extends State<StandardTabs>
               ),
               padding: EdgeInsets.zero,
               labelPadding: EdgeInsets.zero,
-              labelStyle: fonts.subhead2.toTextStyle(textColor),
-              unselectedLabelStyle: fonts.subhead3.toTextStyle(textColor),
+              labelStyle: scheme.textFont.toTextStyle(textColor),
+              unselectedLabelStyle: unselectedLabelStyle,
               labelColor: textColor,
               unselectedLabelColor: textColor,
               tabs: <Widget>[
