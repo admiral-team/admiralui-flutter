@@ -52,6 +52,8 @@ import '../screens/action_toast_screen.dart';
 import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/text_block/title_text_block_screen.dart';
+
 import '../screens/calendars_screen.dart';
 import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
 import '../screens/shimmer_screen.dart';
@@ -119,6 +121,7 @@ enum TabNavigatorRoutes {
   toolbar('/toolbar'),
   paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
+  titleTextBlock('/titleTextBlock'),
   shimmer('/shimmer'),
   toastInformers('/toastInformers'),
   notification('/notification'),
@@ -354,6 +357,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
+      TabNavigatorRoutes.titleTextBlock.value: (BuildContext context) =>
+          const TitleTextBlockScreen(),
       TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
           const ActionCellsScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>
