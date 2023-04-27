@@ -1,6 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
+/// A header with header title and subtitle.
 class TitleSubtitleHeaderWidget extends StatefulWidget {
   const TitleSubtitleHeaderWidget({
     super.key,
