@@ -1,6 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
+/// A header with empty title.
 class TitleHeaderWidget extends StatefulWidget {
   const TitleHeaderWidget({
     super.key,

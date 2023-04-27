@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// A header with header title, arrow and button.
 class DropDownHeaderWidget extends StatefulWidget {
   const DropDownHeaderWidget({
     super.key,
