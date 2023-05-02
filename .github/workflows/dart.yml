@@ -89,17 +89,11 @@ jobs:
           java-version: '11'
       - name: Push to destination repo
         run: |
-          mkdir -p admiral-team.github.io/example
-          cp -r example/web admiral-team.github.io/example
-          cd admiral-team.github.io
-          git checkout -b main
-          git config --global user.email "andyatkov@gmail.com"
-          git config --global user.name "Andyatkov"
-          git config --global credential.helper cache
-          git clone https://${{secrets.API_GITHUB_TOKEN}}github.com/admiral-team/admiral-team.github.io.git
-          git add --all
-          git commit -m "Add example/web"
-          git push origin main --force
+          cd example/build/web
+          && git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
+          && git add .
+          && git commit -m '${{ github.event.pull_request.title }}'
+          && git push origin master
 #     - name: Check If Deploy Web Failed
 #        if: ${{ failure() }}
 #        run: |
