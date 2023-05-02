@@ -96,7 +96,7 @@ jobs:
         run: |
           cd admiral-team.github.io
           git checkout -b main
-          git config user.email "andyatkov@github.com"
+          git config user.email "andyatkov@gmail.com"
           git config user.name "Andyatkov"
           git add --all
           git commit -m "Add example/web"
