@@ -95,10 +95,15 @@ jobs:
       - name: Commit and push changes to destination repo
         uses: ad-m/github-push-action@master
         with:
-          github_token: API_GITHUB_TOKEN
+          github_token: CI_GITHUB_TOKEN
           branch: main
           force: true
           directory: "admiral-team.github.io"
+     - name: Check If Deploy Web Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
 #  deploy-android:
 #    name: Deploy Android App
