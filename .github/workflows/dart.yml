@@ -96,7 +96,7 @@ jobs:
           git config --global user.email "andyatkov@gmail.com"
           git config --global user.name "Andyatkov"
           git config --global credential.helper cache
-          git clone https://${{API_GITHUB_TOKEN}}github.com/admiral-team/admiral-team.github.io.git
+          git clone https://${{secrets.API_GITHUB_TOKEN}}github.com/admiral-team/admiral-team.github.io.git
           git add --all
           git commit -m "Add example/web"
           git push origin main
