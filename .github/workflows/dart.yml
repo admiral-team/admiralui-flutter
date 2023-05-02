@@ -92,13 +92,14 @@ jobs:
           git clone https://github.com/admiral-team/admiral-team.github.io.git
           mkdir -p admiral-team.github.io/example
           cp -r example/web admiral-team.github.io/example
-      - name: Commit and push changes to destination repo
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: API_GITHUB_TOKEN
-          branch: main
-          force: true
-          directory: "admiral-team.github.io"
+      - name: Push to destination repo
+        run: |
+          cd admiral-team.github.io
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git add --all
+          git commit -m "Add example/web"
+          git push origin main
 #     - name: Check If Deploy Web Failed
 #        if: ${{ failure() }}
 #        run: |
