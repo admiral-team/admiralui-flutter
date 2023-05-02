@@ -95,6 +95,7 @@ jobs:
       - name: Push to destination repo
         run: |
           cd admiral-team.github.io
+          git checkout -b main
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git add --all
