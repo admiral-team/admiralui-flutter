@@ -95,7 +95,7 @@ jobs:
       - name: Commit and push changes to destination repo
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.API_GITHUB_TOKEN }}
+          github_token: API_GITHUB_TOKEN
           branch: main
           force: true
           directory: "admiral-team.github.io"
