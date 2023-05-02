@@ -99,7 +99,7 @@ jobs:
           git clone https://${{secrets.API_GITHUB_TOKEN}}github.com/admiral-team/admiral-team.github.io.git
           git add --all
           git commit -m "Add example/web"
-#          git push origin main --force
+          git push origin main --force
 #     - name: Check If Deploy Web Failed
 #        if: ${{ failure() }}
 #        run: |
