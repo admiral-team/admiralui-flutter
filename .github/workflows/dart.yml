@@ -91,7 +91,7 @@ jobs:
         run: |
           cd example/web
           git remote set-url origin https://github.com/admiral-team/admiral-team.github.io.git
-          git checkout master
+          git checkout -b master origin/master
           git add .
           git commit -m '${{ github.event.pull_request.title }}'
           git push origin master
