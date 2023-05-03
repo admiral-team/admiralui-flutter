@@ -79,14 +79,6 @@ jobs:
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
       APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.0.5'
-          channel: 'stable'
-          architecture: x64
-          distribution: 'zulu'
-          java-version: '11'
       - name: Push to destination repo
         run: cd example/build/web
           && git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
