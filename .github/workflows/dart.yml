@@ -88,13 +88,11 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - name: Push to destination repo
-        run: |
-          cd example/web
-          git remote set-url origin https://github.com/admiral-team/admiral-team.github.io.git
-          git checkout -b master origin/master
-          git add .
-          git commit -m '${{ github.event.pull_request.title }}'
-          git push origin master
+        run: cd example/build/web
+          && git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
+          && git add .
+          && git commit -m '${{ github.event.pull_request.title }}'
+          && git push origin master
 #     - name: Check If Deploy Web Failed
 #        if: ${{ failure() }}
 #        run: |
