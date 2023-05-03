@@ -90,7 +90,7 @@ jobs:
       - name: Push to destination repo
         run: |
           cd example/web
-          git remote add origin https://github.com/admiral-team/admiral-team.github.io.git
+          git remote set-url origin https://github.com/admiral-team/admiral-team.github.io.git
           git add .
           git commit -m '${{ github.event.pull_request.title }}'
           git push origin master
