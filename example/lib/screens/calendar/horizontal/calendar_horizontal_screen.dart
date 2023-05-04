@@ -50,6 +50,8 @@ class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
           startDate: null,
           endDate: null,
           currentDate: null,
+          selectedEndDate: null,
+          selectedStartDate: null,
           onPageChanged: () {
             print('Calendar page did change');
           },

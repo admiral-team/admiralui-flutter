@@ -26,21 +26,21 @@ class CalendarDaysGenerator {
         .first
         .date!;
 
-    final List<CalendarDayItem> currentMonth = _generateMonthDays(
+    final List<CalendarDayItem> currentMonth = generateMonthDays(
       currentMonthDay,
       startDate,
       endDate,
       nonActiveDate,
     );
 
-    final List<CalendarDayItem> nextMonth = _getNextMonth(
+    final List<CalendarDayItem> nextMonth = getNextMonth(
       currentDate,
       startDate,
       endDate,
       nonActiveDate,
     );
 
-    final List<CalendarDayItem> previousMonth = _getPreviousMonth(
+    final List<CalendarDayItem> previousMonth = getPreviousMonth(
       currentDate,
       startDate,
       endDate,
@@ -76,21 +76,21 @@ class CalendarDaysGenerator {
     DateTime? endDate,
     DateTime? nonActiveDate,
   ) {
-    final List<CalendarDayItem> nextMonth = _getNextMonth(
+    final List<CalendarDayItem> nextMonth = getNextMonth(
       currentDate,
       startDate,
       endDate,
       nonActiveDate,
     );
 
-    final List<CalendarDayItem> previousMonth = _getPreviousMonth(
+    final List<CalendarDayItem> previousMonth = getPreviousMonth(
       currentDate,
       startDate,
       endDate,
       nonActiveDate,
     );
 
-    final List<CalendarDayItem> currentMonth = _generateMonthDays(
+    final List<CalendarDayItem> currentMonth = generateMonthDays(
       currentDate,
       startDate,
       endDate,
@@ -99,7 +99,7 @@ class CalendarDaysGenerator {
     return <List<CalendarDayItem>>[previousMonth, currentMonth, nextMonth];
   }
 
-  List<CalendarDayItem> _getPreviousMonth(
+  List<CalendarDayItem> getPreviousMonth(
     DateTime date,
     DateTime? startDate,
     DateTime? endDate,
@@ -107,7 +107,7 @@ class CalendarDaysGenerator {
   ) {
     final DateTime previousMonthDate =
         DateTime(date.year, date.month - 1, date.day);
-    return _generateMonthDays(
+    return generateMonthDays(
       previousMonthDate,
       startDate,
       endDate,
@@ -115,7 +115,7 @@ class CalendarDaysGenerator {
     );
   }
 
-  List<CalendarDayItem> _getNextMonth(
+  List<CalendarDayItem> getNextMonth(
     DateTime date,
     DateTime? startDate,
     DateTime? endDate,
@@ -123,7 +123,7 @@ class CalendarDaysGenerator {
   ) {
     final DateTime previousMonthDate =
         DateTime(date.year, date.month + 1, date.day);
-    return _generateMonthDays(
+    return generateMonthDays(
       previousMonthDate,
       startDate,
       endDate,
@@ -143,7 +143,7 @@ class CalendarDaysGenerator {
         .toList();
   }
 
-  List<CalendarDayItem> _generateMonthDays(
+  List<CalendarDayItem> generateMonthDays(
     DateTime date,
     DateTime? startDate,
     DateTime? endDate,
