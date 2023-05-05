@@ -55,16 +55,8 @@ class _CalendarVerticalScreenState extends State<CalendarVerticalScreen> {
         child: Column(
           children: <Widget>[
             CalendarVerticalView(
-              selectedEndDate: DateTime(
-                nowDate.year,
-                nowDate.month - 1,
-                nowDate.day + 10,
-              ),
-              selectedStartDate: DateTime(
-                nowDate.year,
-                nowDate.month - 1,
-                nowDate.day,
-              ),
+              selectedEndDate: null,
+              selectedStartDate: null,
               startDate: null,
               currentDate: nowDate,
               endDate: null,
