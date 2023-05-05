@@ -96,16 +96,19 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return CalendarVerticalPageView(
-                        dataSource.getMonthInRangeOfStatedEndDate(index),
-                        locale,
-                        onTap: (DateTime? date) => setState(
-                          () {
-                            dataSource.didTapAtDate(date);
-                          },
-                        ),
-                        scheme: scheme.pageViewScheme,
-                      );
+                      if (dataSource.getMonthInRangeOfStatedEndDate(index) !=
+                          null) {
+                        return CalendarVerticalPageView(
+                          dataSource.getMonthInRangeOfStatedEndDate(index)!,
+                          locale,
+                          onTap: (DateTime? date) => setState(
+                            () {
+                              dataSource.didTapAtDate(date);
+                            },
+                          ),
+                          scheme: scheme.pageViewScheme,
+                        );
+                      }
                     },
                     childCount: dataSource.getDayMonthDifferenceCount(
                       widget.startDate!,

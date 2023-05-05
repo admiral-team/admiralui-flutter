@@ -79,25 +79,29 @@ class CalendarDatesDataSource {
 
   int getDayMonthDifferenceCount(DateTime date, DateTime? secondDate) {
     final int days = date.difference(secondDate ?? DateTime.now()).inDays;
-    final int months = days ~/ 28;
+    final int months = days ~/ 30;
     return months.abs();
   }
 
-  List<CalendarDayItem> getMonthInRangeOfStatedEndDate(int index) {
-    final DateTime priorityDate =
-        startDate!.isAfter(endDate!) ? endDate! : startDate!;
-    final DateTime nextMonthDate = DateTime(
-      priorityDate.year,
-      priorityDate.month + index,
-      priorityDate.day,
-    );
+  List<CalendarDayItem>? getMonthInRangeOfStatedEndDate(int index) {
+    if (endDate != null && startDate != null) {
+      final DateTime priorityDate =
+          startDate!.isAfter(endDate!) ? endDate! : startDate!;
+      final DateTime nextMonthDate = DateTime(
+        priorityDate.year,
+        priorityDate.month + index,
+        priorityDate.day,
+      );
 
-    return generator.generateMonthDays(
-      nextMonthDate,
-      selectedStartDate,
-      selectedEndDate,
-      notActiveAfterDate,
-    );
+      return generator.generateMonthDays(
+        nextMonthDate,
+        selectedStartDate,
+        selectedEndDate,
+        notActiveAfterDate,
+      );
+    } else {
+      return null;
+    }
   }
 
   List<CalendarDayItem> getMonth(int index) {
