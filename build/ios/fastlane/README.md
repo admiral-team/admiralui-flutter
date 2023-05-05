@@ -13,6 +13,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### deploy_appcenter_andoid_dev
+
+```sh
+[bundle exec] fastlane deploy_appcenter_andoid_dev
+```
+
+
+
 ### deploy_appcenter_dev
 
 ```sh
