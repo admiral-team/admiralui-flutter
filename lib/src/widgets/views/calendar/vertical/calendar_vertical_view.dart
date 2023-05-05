@@ -109,6 +109,7 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
                           scheme: scheme.pageViewScheme,
                         );
                       }
+                      return null;
                     },
                     childCount: dataSource.getDayMonthDifferenceCount(
                       widget.startDate!,
