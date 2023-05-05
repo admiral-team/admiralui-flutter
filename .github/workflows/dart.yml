@@ -37,28 +37,29 @@ jobs:
         run: flutter analyze --fatal-infos
       - name: Install dependencies
         run: flutter pub get
+      - run: cd example && flutter build web
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
             cd build/ios/fastlane && bundle install && bundle update &&
              bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
-  build-web:
-    name: Build Web App
-    needs: setup
-    runs-on: [ self-hosted, main ]
-    steps:
-      - run: cd example && flutter build web
-      - name: Check If Build Web Failed
-        if: ${{ failure() }}
-        run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+#  build-web:
+#    name: Build Web App
+#    needs: setup
+#    runs-on: [ self-hosted, main ]
+#    steps:
+#      - run: cd example && flutter build web
+#      - name: Check If Build Web Failed
+#        if: ${{ failure() }}
+#        run: |
+#            cd build/ios/fastlane && bundle install && bundle update &&
+#             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   push-web:
     name: Push web
     runs-on: [ self-hosted, main ]
-    needs: build-web
+    needs: setup
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
