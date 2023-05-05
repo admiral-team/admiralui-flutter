@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CalendarHorizontalScreen extends StatefulWidget {
-  const CalendarHorizontalScreen({
+class CalendarVerticalScreen extends StatefulWidget {
+  const CalendarVerticalScreen({
     super.key,
     required this.title,
   });
@@ -12,18 +12,24 @@ class CalendarHorizontalScreen extends StatefulWidget {
   final String title;
 
   @override
-  State<CalendarHorizontalScreen> createState() =>
-      _CalendarHorizontalScreenState();
+  State<CalendarVerticalScreen> createState() => _CalendarVerticalScreenState();
 }
 
-class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
-  bool isEnabled = true;
+class _CalendarVerticalScreenState extends State<CalendarVerticalScreen> {
+  final DateTime currentDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
+
+    final DateTime nowDate = DateTime.now();
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
@@ -46,21 +52,21 @@ class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
         padding: EdgeInsets.symmetric(
           horizontal: LayoutGrid.doubleModule,
         ),
-        child: CalendarHorizontalView(
-          startDate: null,
-          endDate: null,
-          currentDate: null,
-          selectedEndDate: null,
-          selectedStartDate: null,
-          onPageChanged: () {
-            print('Calendar page did change');
-          },
-          onChangedRangeDates: (List<DateTime?> datesRange) {
-            print('Dates range $datesRange');
-          },
-          locale: 'ru',
-          notActiveAfterDate: DateTime.now(),
-          datePickerButtonTitle: 'Выбрать',
+        child: Column(
+          children: <Widget>[
+            CalendarVerticalView(
+              selectedEndDate: null,
+              selectedStartDate: null,
+              startDate: null,
+              currentDate: nowDate,
+              endDate: null,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                print('Dates range $datesRange');
+              },
+              locale: 'ru',
+              notActiveAfterDate: DateTime.now(),
+            ),
+          ],
         ),
       ),
     );

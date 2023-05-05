@@ -87,9 +87,14 @@ export 'package:admiralui_flutter/src/widgets/views/calendar/components/page_vie
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/week/calendar_week_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/components/week/calendar_week_view_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/dates_data_source/calendar_dates_data_source.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/dates_data_source/calendar_scroll_state.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/dates_generator/calendar_dates_generator.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/horizontal/calendar_horizontal_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/calendar/horizontal/calendar_horizontal_view_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/vertical/calendar_vertical_page_view.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/vertical/calendar_vertical_page_view_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/vertical/calendar_vertical_view.dart';
+export 'package:admiralui_flutter/src/widgets/views/calendar/vertical/calendar_vertical_view_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/action/action_pane_motions.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/action/actions.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/action/auto_close_behavior.dart'

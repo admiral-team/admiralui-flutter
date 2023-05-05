@@ -56,6 +56,7 @@ import '../screens/text_block/title_text_block_screen.dart';
 
 import '../screens/calendars_screen.dart';
 import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
+import '../screens/calendar/horizontal/calendar_vertical_screen.dart';
 import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
@@ -83,6 +84,7 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
+  calendarVertical('/calendar/calendarVertical'),
   underlineTabs('/underlineTabs'),
   informerTabs('/informerTabs'),
   buttons('/buttons'),
@@ -221,6 +223,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
           const CalendarHorizontalScreen(title: 'Horizontal'),
+        TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
+          const CalendarVerticalScreen(title: 'Vertical'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
             title: 'Page Controls',
