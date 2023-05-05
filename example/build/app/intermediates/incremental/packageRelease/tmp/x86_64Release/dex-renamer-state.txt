@@ -1,0 +1,4 @@
+#Fri Mar 17 10:53:21 MSK 2023
+base.0=/Users/adyatkov/admiralui-flutter/example/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
