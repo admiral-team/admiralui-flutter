@@ -33,6 +33,8 @@ class CalendarHorizontalView extends StatefulWidget {
     this.datePickerButtonTitle,
     this.onPageChanged,
     this.onChangedRangeDates,
+    this.selectedEndDate,
+    this.selectedStartDate,
     this.scheme,
   });
 
@@ -44,6 +46,8 @@ class CalendarHorizontalView extends StatefulWidget {
   final String? datePickerButtonTitle;
   final VoidCallback? onPageChanged;
   final ValueChanged<List<DateTime?>>? onChangedRangeDates;
+  final DateTime? selectedStartDate;
+  final DateTime? selectedEndDate;
   final CalendarHorizontalViewScheme? scheme;
 
   @override
@@ -80,6 +84,8 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
       widget.currentDate,
       widget.notActiveAfterDate,
       _datesRangeNotifier,
+      widget.selectedStartDate,
+      widget.selectedEndDate,
     );
 
     _datesRangeNotifier.addListener(
@@ -107,16 +113,25 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
         ),
         if (isDatePickerActive)
           Expanded(
-            child: CupertinoDatePicker(
-              mode: CupertinoDatePickerMode.date,
-              initialDateTime: dataSource.currentDate ?? DateTime.now(),
-              onDateTimeChanged: (DateTime val) {
-                setState(
-                  () {
-                    dataSource.currentDate = val;
-                  },
-                );
-              },
+            child: CupertinoTheme(
+              data: CupertinoThemeData(
+                textTheme: CupertinoTextThemeData(
+                  dateTimePickerTextStyle: scheme.datePickerFont.toTextStyle(
+                    scheme.datePickerTextColor.color(),
+                  ),
+                ),
+              ),
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: dataSource.currentDate ?? DateTime.now(),
+                onDateTimeChanged: (DateTime val) {
+                  setState(
+                    () {
+                      dataSource.currentDate = val;
+                    },
+                  );
+                },
+              ),
             ),
           ),
         if (!isDatePickerActive)

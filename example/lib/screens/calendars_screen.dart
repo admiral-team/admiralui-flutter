@@ -55,7 +55,7 @@ class CalendarsScreen extends StatelessWidget {
               color: colors.elementSecondary.color(),
             ),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.calendarHorizontal,
+              TabNavigatorRoutes.calendarVertical,
             ),
           ),
           BaseCellWidget(

@@ -24,10 +24,11 @@ import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/standart_textfield_screen.dart';
-import '../screens/tabs_screen.dart';
+import '../screens/tabs/tabs_screen.dart';
+import '../screens/tabs/undeline_tabs.dart';
+import '../screens/tabs/icon_tabs_screen.dart';
+import '../screens/tabs/informer_tabs_screen.dart';
 import '../screens/informers/toast_screen.dart';
-import '../screens/undeline_tabs.dart';
-import '../screens/icon_tabs_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
@@ -51,8 +52,11 @@ import '../screens/action_toast_screen.dart';
 import '../screens/informers/toast_informers_screen.dart';
 import '../screens/text_block/paragraph_screen.dart';
 import '../screens/text_block/link_text_block_screen.dart';
+import '../screens/text_block/title_text_block_screen.dart';
+
 import '../screens/calendars_screen.dart';
 import '../screens/calendar/horizontal/calendar_horizontal_screen.dart';
+import '../screens/calendar/horizontal/calendar_vertical_screen.dart';
 import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
@@ -80,7 +84,9 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
+  calendarVertical('/calendar/calendarVertical'),
   underlineTabs('/underlineTabs'),
+  informerTabs('/informerTabs'),
   buttons('/buttons'),
   informers('/informers'),
   spinner('/spinner'),
@@ -117,6 +123,7 @@ enum TabNavigatorRoutes {
   toolbar('/toolbar'),
   paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
+  titleTextBlock('/titleTextBlock'),
   shimmer('/shimmer'),
   toastInformers('/toastInformers'),
   notification('/notification'),
@@ -216,6 +223,8 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
           const CalendarHorizontalScreen(title: 'Horizontal'),
+        TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
+          const CalendarVerticalScreen(title: 'Vertical'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
             title: 'Page Controls',
@@ -290,6 +299,11 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Icon Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.informerTabs.value: (BuildContext context) =>
+          InformerTabsScreen(
+            title: 'Informer Tabs',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.currency.value: (BuildContext context) =>
           CurrencyScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -347,6 +361,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ParagraphScreen(),
       TabNavigatorRoutes.linkTextBlock.value: (BuildContext context) =>
           const LinkTextBlockScreen(),
+      TabNavigatorRoutes.titleTextBlock.value: (BuildContext context) =>
+          const TitleTextBlockScreen(),
       TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
           const ActionCellsScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>

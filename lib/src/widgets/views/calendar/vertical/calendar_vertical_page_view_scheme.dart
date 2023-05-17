@@ -1,19 +1,21 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/theme/admiral_color.dart';
 
-class CalendarHorizontalViewScheme {
-  CalendarHorizontalViewScheme({
+class CalendarVerticalPageViewScheme {
+  CalendarVerticalPageViewScheme({
     required this.theme,
   }) {
-    datePickerTextColor = theme.colors.textPrimary;
-    datePickerFont = theme.fonts.title2;
+    monthLabelFont = theme.fonts.subtitle1;
+    monthLabelColor = theme.colors.textPrimary;
+    dividerColor = theme.colors.elementAdditional;
     monthScheme = CalendarMonthViewScheme(theme: theme);
     weekScheme = CalendarWeekViewScheme(theme: theme);
   }
 
   AppTheme theme;
-  late AColor datePickerTextColor;
-  late AFont datePickerFont;
+  late AFont monthLabelFont;
+  late AColor monthLabelColor;
+  late AColor dividerColor;
   late CalendarMonthViewScheme monthScheme;
   late CalendarWeekViewScheme weekScheme;
 }

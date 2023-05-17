@@ -104,12 +104,12 @@ class _CalendarControlsViewState extends State<CalendarControlsView> {
   String _getDate() {
     final DateFormat formatter = DateFormat(dateLocaleFormat, widget.locale);
     final String formatted = formatter.format(widget.currentDate);
-    return formatted._capitalize();
+    return formatted.capitalize();
   }
 }
 
 extension StringExtension on String {
-  String _capitalize() {
+  String capitalize() {
     return '${this[0].toUpperCase()}${substring(1).toLowerCase()}';
   }
 }
