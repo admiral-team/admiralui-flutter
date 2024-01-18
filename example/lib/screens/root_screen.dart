@@ -45,6 +45,7 @@ class _RootScreenState extends State<RootScreen> {
       });
     }
 
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
         final bool isFirstRouteInCurrentTab =

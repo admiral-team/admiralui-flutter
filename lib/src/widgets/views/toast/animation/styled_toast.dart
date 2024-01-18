@@ -437,7 +437,7 @@ class _StyledToastState extends State<StyledToast> {
             currentContext = ctx;
             return widget.child;
           },
-        )
+        ),
       ],
     );
 
