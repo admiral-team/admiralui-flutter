@@ -474,7 +474,8 @@ class _StyledToastState extends State<StyledToast> {
         );
 
     return MediaQuery(
-      data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+      // ignore: deprecated_member_use
+      data: MediaQueryData.fromView(WidgetsBinding.instance.window),
       child: Localizations(
         // ignore: always_specify_types
         delegates: const [],
@@ -1202,7 +1203,8 @@ class StyledToastWidgetState extends State<_StyledToastWidget>
       child: w,
     );
 
-    final MediaQueryData mediaQueryData = MediaQueryData.fromWindow(ui.window);
+    // ignore: deprecated_member_use
+    final MediaQueryData mediaQueryData = MediaQueryData.fromView(ui.window);
     w = Container(
       padding: EdgeInsets.only(
         bottom: mediaQueryData.padding.bottom,

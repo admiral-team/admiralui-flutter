@@ -32,8 +32,8 @@ class _SlidableDismissalState extends State<SlidableDismissal>
     super.initState();
 
     animationController = AnimationController(vsync: this);
-    resizeAnimation = 
-    animationController.drive(Tween<double>(begin: 1, end: 0));
+    resizeAnimation =
+        animationController.drive(Tween<double>(begin: 1, end: 0));
     widget.controller.resizeRequest.addListener(handleResizeRequestChanged);
   }
 
@@ -83,7 +83,7 @@ class _SlidableDismissalState extends State<SlidableDismissal>
                 'Make sure to implement the onDismissed handle of the '
                 'ActionPane and to immediately remove the Slidable widget from '
                 'the application once that handler has fired.',
-              )
+              ),
             ],
           );
         }

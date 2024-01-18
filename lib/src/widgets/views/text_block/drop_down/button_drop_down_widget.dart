@@ -46,7 +46,7 @@ class _ButtonDropDownWidgetState extends State<ButtonDropDownWidget> {
             onPressed: widget.onPressed,
             scheme: scheme.ghostButtonScheme,
           ),
-          const Spacer()
+          const Spacer(),
         ],
       ),
     );

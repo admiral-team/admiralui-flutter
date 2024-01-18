@@ -37,42 +37,41 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
 
     if (widget.items.length == 1) {
       return Center(
-        child: 
-          Container(
-            decoration: BoxDecoration(
-              color: scheme.backgroundColor,
-              borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
-            ),
-            constraints: const BoxConstraints(
-              minHeight: LayoutGrid.halfModule * 24,
-              minWidth: LayoutGrid.halfModule * 52,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: LayoutGrid.module,
-              horizontal: LayoutGrid.halfModule * 3,
-            ),
-            child: SizedBox(
-              width: LayoutGrid.halfModule * 24,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    widget.items[0].image,
-                    color: scheme.selectedImageColor,
-                    size: LayoutGrid.halfModule * 6,
-                  ),
-                  const SizedBox(
-                    width: LayoutGrid.doubleModule,
-                  ),
-                  TextView(
-                    widget.items[0].title,
-                    font: scheme.font,
-                    textColorNormal: scheme.selectedTextColor,
-                  )
-                ],
-              ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: scheme.backgroundColor,
+            borderRadius: BorderRadius.circular(LayoutGrid.doubleModule),
+          ),
+          constraints: const BoxConstraints(
+            minHeight: LayoutGrid.halfModule * 24,
+            minWidth: LayoutGrid.halfModule * 52,
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: LayoutGrid.module,
+            horizontal: LayoutGrid.halfModule * 3,
+          ),
+          child: SizedBox(
+            width: LayoutGrid.halfModule * 24,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  widget.items[0].image,
+                  color: scheme.selectedImageColor,
+                  size: LayoutGrid.halfModule * 6,
+                ),
+                const SizedBox(
+                  width: LayoutGrid.doubleModule,
+                ),
+                TextView(
+                  widget.items[0].title,
+                  font: scheme.font,
+                  textColorNormal: scheme.selectedTextColor,
+                ),
+              ],
             ),
           ),
+        ),
       );
     } else {
       return Container(
@@ -114,7 +113,7 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
                       textColorNormal: i == _selectedIndex
                           ? scheme.selectedTextColor
                           : scheme.textColor,
-                    )
+                    ),
                   ],
                 ),
               ),

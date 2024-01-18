@@ -52,19 +52,19 @@ class CalendarDaysGenerator {
       dataSource = <List<CalendarDayItem>>[
         currentMonth,
         nextMonth,
-        previousMonth
+        previousMonth,
       ];
     } else if (currentIndex == 1) {
       dataSource = <List<CalendarDayItem>>[
         previousMonth,
         currentMonth,
-        nextMonth
+        nextMonth,
       ];
     } else if (currentIndex == 2) {
       dataSource = <List<CalendarDayItem>>[
         nextMonth,
         previousMonth,
-        currentMonth
+        currentMonth,
       ];
     }
     return dataSource;

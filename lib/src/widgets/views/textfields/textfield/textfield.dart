@@ -141,7 +141,7 @@ class _TextFieldState extends State<TextFieldWidget>
                       _labelText,
                       isTextFieldActive: _isTextFieldActive,
                       hasFocus: _hasFocus,
-                    )
+                    ),
                 ],
               ),
             ),
@@ -151,9 +151,9 @@ class _TextFieldState extends State<TextFieldWidget>
           widget.state,
           isEditing: _hasFocus,
         ),
-        if (widget.bottomWidget != null) 
+        if (widget.bottomWidget != null)
           SizedBox(
-            height: LayoutGrid.halfModule * 10, 
+            height: LayoutGrid.halfModule * 10,
             child: widget.bottomWidget,
           ),
         const SizedBox(height: LayoutGrid.module),
