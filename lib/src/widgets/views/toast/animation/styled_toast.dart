@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui' as ui;
 
 import 'package:admiralui_flutter/src/widgets/views/toast/animation/custom_animation.dart';
 import 'package:admiralui_flutter/src/widgets/views/toast/animation/custom_size_transition.dart';
@@ -437,7 +436,7 @@ class _StyledToastState extends State<StyledToast> {
             currentContext = ctx;
             return widget.child;
           },
-        )
+        ),
       ],
     );
 
@@ -474,7 +473,7 @@ class _StyledToastState extends State<StyledToast> {
         );
 
     return MediaQuery(
-      data: MediaQueryData.fromWindow(WidgetsBinding.instance.window),
+      data: MediaQueryData.fromView(View.of(context)),
       child: Localizations(
         // ignore: always_specify_types
         delegates: const [],
@@ -1202,7 +1201,8 @@ class StyledToastWidgetState extends State<_StyledToastWidget>
       child: w,
     );
 
-    final MediaQueryData mediaQueryData = MediaQueryData.fromWindow(ui.window);
+   final MediaQueryData mediaQueryData = 
+   MediaQueryData.fromView(View.of(context),);
     w = Container(
       padding: EdgeInsets.only(
         bottom: mediaQueryData.padding.bottom,

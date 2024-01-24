@@ -54,7 +54,7 @@ class _TitleButtonDropDownWidgetState extends State<TitleButtonDropDownWidget> {
             isEnable: widget.isEnable,
             onPressed: widget.onPressed,
             scheme: scheme.ghostButtonScheme,
-          )
+          ),
         ],
       ),
     );

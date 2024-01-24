@@ -52,7 +52,7 @@ class _ErrorViewState extends State<ErrorView> {
           isEnable: widget.isEnabled,
           isLoading: widget.isLoading,
           scheme: scheme.ghostButtonScheme,
-        )
+        ),
       ],
     );
   }

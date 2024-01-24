@@ -74,7 +74,7 @@ class _ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
         scheme.backgroundShimmerColor.color(),
         scheme.shimmerColor.color(),
         scheme.backgroundShimmerColor.color(),
-        scheme.backgroundShimmerColor.color()
+        scheme.backgroundShimmerColor.color(),
       ],
       stops: const <double>[0.0, 0.35, 0.5, 0.65, 1.0],
     );

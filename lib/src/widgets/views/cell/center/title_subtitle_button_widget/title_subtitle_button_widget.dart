@@ -58,7 +58,7 @@ class TitleSubtitleButtonWidget extends StatelessWidget {
               font: cellScheme.titleFont,
               textColorNormal: titleColor,
               textAlign: TextAlign.left,
-            )
+            ),
           ],
         ),
       );

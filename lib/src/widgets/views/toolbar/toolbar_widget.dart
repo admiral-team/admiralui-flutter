@@ -68,7 +68,7 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
                     widget.items[0].title,
                     font: scheme.font,
                     textColorNormal: scheme.selectedTextColor,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -114,7 +114,7 @@ class _ToolbarWidgetState extends State<ToolbarWidget> {
                       textColorNormal: i == _selectedIndex
                           ? scheme.selectedTextColor
                           : scheme.textColor,
-                    )
+                    ),
                   ],
                 ),
               ),

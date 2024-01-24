@@ -45,18 +45,15 @@ class _RootScreenState extends State<RootScreen> {
       });
     }
 
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvoked: (_) async {
         final bool isFirstRouteInCurrentTab =
             !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
         if (isFirstRouteInCurrentTab) {
           if (_currentTab != TabItem.main) {
             _selectTab(TabItem.main);
-            return false;
           }
         }
-        // let system handle back button if we're on the first route
-        return isFirstRouteInCurrentTab;
       },
       child: Scaffold(
         body: Stack(
