@@ -22,17 +22,17 @@ class _OnboardingViewScreenState extends State<OnboardingViewScreen> {
   int step = 0;
 
   List<PageViewItem> items = <PageViewItem>[
-    PageViewItem('assets/Illustration.png',
+    PageViewItem('assets/onboarding/one.png',
         title: 'Добро пожаловать!',
         subtitle:
             // ignore: lines_longer_than_80_chars
             'Приветствуем вас в нашем мобильном приложении.  Это приложение служит удобным инструментом для всех участников команд!'),
-    PageViewItem('assets/Illustration.png',
+    PageViewItem('assets/onboarding/two.png',
         title: 'Что внутри приложения',
         subtitle:
             // ignore: lines_longer_than_80_chars
             'В приложении есть набор всех стилей и компонентов UI kit 3.0 Mobile, который вы сможете протестировать в реальном времени.'),
-    PageViewItem('assets/Illustration.png',
+    PageViewItem('assets/onboarding/three.png',
         title: 'Ждем ваших 👍🏽',
         subtitle:
             // ignore: lines_longer_than_80_chars

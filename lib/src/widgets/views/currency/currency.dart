@@ -20,7 +20,7 @@ class Currency extends StatefulWidget {
   final String buyText;
   final String sellText;
 
-  final IconData? iconData;
+  final Image? iconData;
   final CurrencyCellType firstCellType;
   final CurrencyCellType secondCellType;
 
@@ -58,7 +58,7 @@ class _CurrencyState extends State<Currency> {
           width: LayoutGrid.halfModule * 10,
         ),
         CurrencyQuatationView(
-          widget.firstCellType,
+          widget.secondCellType,
           text: widget.buyText,
           scheme: scheme,
         ),

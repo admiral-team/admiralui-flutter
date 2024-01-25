@@ -95,7 +95,9 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                   title: 'Title',
                   isEnabled: isEnabled,
                 ),
-                trailingCell: Switcher(isEnabled: isEnabled,),
+                trailingCell: Switcher(
+                  isEnabled: isEnabled,
+                ),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
@@ -103,7 +105,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                   title: 'Title',
                   isEnabled: isEnabled,
                 ),
-                trailingCell: Image.asset('assets/Logo.png'),
+                trailingCell: Image.asset('assets/card/rnb.png'),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
@@ -111,7 +113,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                   title: 'Title',
                   isEnabled: isEnabled,
                 ),
-                trailingCell: Image.asset('assets/Card.png'),
+                trailingCell: Image.asset('assets/card/visa.png'),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
@@ -133,7 +135,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                 ),
                 trailingCell: ImageSubtitleCellWidget(
                   subtitle: 'Date',
-                  imageWidget: Image.asset('assets/logoMir.png'),
+                  imageWidget: Image.asset('assets/card/mir.png'),
                   isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
