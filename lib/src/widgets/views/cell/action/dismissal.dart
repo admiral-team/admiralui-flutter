@@ -83,7 +83,7 @@ class _SlidableDismissalState extends State<SlidableDismissal>
                 'Make sure to implement the onDismissed handle of the '
                 'ActionPane and to immediately remove the Slidable widget from '
                 'the application once that handler has fired.',
-              )
+              ),
             ],
           );
         }

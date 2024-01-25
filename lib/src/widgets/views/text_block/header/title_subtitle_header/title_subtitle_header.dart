@@ -73,7 +73,7 @@ class _TitleSubtitleHeaderWidgetState extends State<TitleSubtitleHeaderWidget> {
           widget.subtitle,
           font: subtitleFont,
           textColorNormal: subtextColor,
-        )
+        ),
       ],
     );
   }

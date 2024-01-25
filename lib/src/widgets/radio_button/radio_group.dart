@@ -63,7 +63,7 @@ class _RadioGroupState extends State<RadioGroup> {
 
     return Column(
       children: <Widget>[
-        for (String item in widget.items)
+        for (final String item in widget.items)
           SizedBox(
             height: LayoutGrid.module / 2 * 5 + widget.verticalPadding,
             child: RadioButton(
@@ -74,7 +74,7 @@ class _RadioGroupState extends State<RadioGroup> {
               isEnabled: widget.isEnabled,
               style: widget.style,
             ),
-          )
+          ),
       ],
     );
   }

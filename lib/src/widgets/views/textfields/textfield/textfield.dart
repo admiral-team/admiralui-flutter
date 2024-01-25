@@ -141,7 +141,7 @@ class _TextFieldState extends State<TextFieldWidget>
                       _labelText,
                       isTextFieldActive: _isTextFieldActive,
                       hasFocus: _hasFocus,
-                    )
+                    ),
                 ],
               ),
             ),

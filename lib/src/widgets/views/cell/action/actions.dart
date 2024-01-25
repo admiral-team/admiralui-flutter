@@ -200,7 +200,7 @@ class SlidableAction extends StatelessWidget {
                 (Widget child) => Flexible(
                   child: child,
                 ),
-              )
+              ),
             ],
           );
 

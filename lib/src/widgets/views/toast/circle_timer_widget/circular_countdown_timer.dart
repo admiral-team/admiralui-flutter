@@ -205,7 +205,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     }
     // For ss format
     else if (widget.textFormat == CountdownTextFormat.SS) {
-      return (duration.inSeconds).toString().padLeft(2, '0');
+      return duration.inSeconds.toString().padLeft(2, '0');
     }
     // For s format
     else if (widget.textFormat == CountdownTextFormat.S) {

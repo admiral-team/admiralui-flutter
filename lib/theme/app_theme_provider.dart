@@ -34,7 +34,7 @@ class AppThemeProviderWrapper extends StatefulWidget {
   final Widget child;
 
   static AppThemeProviderWrapperState of(BuildContext context) {
-    return (context.dependOnInheritedWidgetOfExactType<AppThemeProvider>())!
+    return context.dependOnInheritedWidgetOfExactType<AppThemeProvider>()!
         .data;
   }
 

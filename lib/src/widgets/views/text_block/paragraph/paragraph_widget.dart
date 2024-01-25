@@ -111,7 +111,7 @@ class _TitleButtonDropDownWidgetState extends State<ParagrapgWidget> {
                 ),
                 child: widget.trailingImageWidget!,
               ),
-            )
+            ),
         ],
       ),
     );
