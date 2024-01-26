@@ -91,8 +91,9 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
                 const SizedBox(
                   width: LayoutGrid.quadrupleModule,
                 ),
-              widget.centerCell ?? Container(),
-              const Spacer(),
+              Expanded(
+                child: widget.centerCell ?? Container(),
+              ),
               widget.trailingCell ?? Container(),
               SizedBox(
                 width: widget.horizontalPadding,

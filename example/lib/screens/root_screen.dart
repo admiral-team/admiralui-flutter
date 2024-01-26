@@ -67,14 +67,16 @@ class _RootScreenState extends State<RootScreen> {
           currentTab: _currentTab,
           onSelectTab: _selectTab,
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
           backgroundColor: colors.backgroundExtraSurface.color(),
-          onPressed: changeTheme,
-          tooltip: 'Theme',
-          child: Icon(
+          shape: CircleBorder(),
+          label: Icon(
             AdmiralIcons.admiral_ic_menu_outline,
             color: colors.elementExtra.color(),
           ),
+          onPressed: () {
+            changeTheme();
+          },
         ),
       ),
     );

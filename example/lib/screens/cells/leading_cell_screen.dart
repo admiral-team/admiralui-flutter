@@ -59,40 +59,40 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/Card.png'),
+                leadingCell: Image.asset('assets/card/visa.png'),
                 centerCell: TitleCellWidget(
-                  title: 'Card Place', 
+                  title: 'Card Place',
                   isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/Logo.png'),
+                leadingCell: Image.asset('assets/card/rnb.png'),
                 centerCell: TitleCellWidget(
-                  title: 'Lable Place', 
+                  title: 'Lable Place',
                   isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: ImageNameCellWidget(
-                  text: 'IN', 
-                  isEnabled: isEnabled),
+                leadingCell:
+                    ImageNameCellWidget(text: 'IN', isEnabled: isEnabled),
                 centerCell: TitleCellWidget(
                   title: 'Icon Name',
-                   isEnabled: isEnabled,),
+                  isEnabled: isEnabled,
+                ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
                 leadingCell: ImageBackgroundCellWidget(
-                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
+                  icon: AdmiralIcons.admiral_ic_diamond_outline,
                   isEnabled: isEnabled,
                 ),
                 centerCell: TitleCellWidget(
-                  title: 'Icon Place vs Background', 
+                  title: 'Icon Place vs Background',
                   isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
@@ -100,10 +100,10 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
               ),
               BaseCellWidget(
                 leadingCell: ImageCellWidget(
-                  icon: AdmiralIcons.admiral_ic_diamond_outline, 
-                  isEnabled: isEnabled),
+                    icon: AdmiralIcons.admiral_ic_diamond_outline,
+                    isEnabled: isEnabled),
                 centerCell: TitleCellWidget(
-                  title: 'Icon Place', 
+                  title: 'Icon Place',
                   isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),

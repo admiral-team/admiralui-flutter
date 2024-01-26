@@ -238,12 +238,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 colors.textPrimary.color(),
               ),
             ),
-            Text(
-              item.description,
-              style: fonts.subhead3.toTextStyle(
-                colors.textSecondary.color(),
+            Container(
+              child: RichText(
+                text: TextSpan(
+                    style: fonts.subhead3.toTextStyle(
+                      colors.textSecondary.color(),
+                    ),
+                    text: item.description),
+                maxLines: 2,
               ),
-            ),
+            )
           ],
         ),
         trailingCell: Icon(

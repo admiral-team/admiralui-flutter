@@ -51,7 +51,7 @@ class _ZeroScreenState extends State<ZeroScreen> {
           child: Column(
             children: <Widget>[
               ZeroScreenView(
-                image: Image.asset('assets/CheckSolid.png'),
+                image: Image.asset('assets/zeroScreen/success.png'),
                 title: 'Header',
                 subTitle:
                     // ignore: lines_longer_than_80_chars

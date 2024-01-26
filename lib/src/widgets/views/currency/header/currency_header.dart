@@ -58,7 +58,7 @@ class _CurrencyHeaderState extends State<CurrencyHeader> {
         ),
         if (widget.isTextSpacingEnabled)
           const SizedBox(
-            width: LayoutGrid.tripleModule,
+            width: LayoutGrid.doubleModule,
           ),
       ],
     );
