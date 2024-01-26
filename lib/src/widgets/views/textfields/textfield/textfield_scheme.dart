@@ -11,6 +11,23 @@ class TextFieldScheme {
     informerFont = theme.fonts.subhead3;
     placeholderFont = theme.fonts.body1;
 
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.normal,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.colorWithOpacity(),
+      TextInputState.disabled,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.error,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.readOnly,
+    );
+
     textColor.set(
       theme.colors.textPrimary.color(),
       TextInputState.normal,
@@ -53,6 +70,9 @@ class TextFieldScheme {
   late AFont textFieldFont;
   late AFont placeholderFont;
 
+
+  TextFieldControlParameter<Color> iconColor =
+      TextFieldControlParameter<Color>();
   TextFieldControlParameter<Color> textColor =
       TextFieldControlParameter<Color>();
   TextFieldControlParameter<Color> infomerLabelColor =
