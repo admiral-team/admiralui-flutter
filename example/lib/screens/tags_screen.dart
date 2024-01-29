@@ -84,7 +84,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     trailingButtonWidget: GestureDetector(
                       onTap: () {},
                       child: Image(
-                        image: AssetImage('assets/Close.png'),
+                        image: AssetImage('assets/tagsChips/close.png'),
                         fit: BoxFit.cover,
                         height: 20,
                       ),
@@ -98,7 +98,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     trailingButtonWidget: GestureDetector(
                       onTap: () {},
                       child: Image(
-                        image: AssetImage('assets/Close.png'),
+                        image: AssetImage('assets/tagsChips/close.png'),
                         fit: BoxFit.cover,
                         height: 20,
                       ),
@@ -128,7 +128,7 @@ class _TagsScreenState extends State<TagsScreen> {
                   SizedBox(width: LayoutGrid.module),
                   TagControlWidget(
                     leadingWidget: Image(
-                      image: AssetImage('assets/Russia.png'),
+                      image: AssetImage('assets/tagsChips/russiaFlag.png'),
                       fit: BoxFit.cover,
                       height: LayoutGrid.halfModule * 7,
                     ),
@@ -179,7 +179,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
                       leadingWidget: Image(
-                        image: AssetImage('assets/Russia.png'),
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
                         fit: BoxFit.cover,
                         height: LayoutGrid.halfModule * 7,
                       ),
@@ -231,7 +231,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
                       leadingWidget: Image(
-                        image: AssetImage('assets/Russia.png'),
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
                         fit: BoxFit.cover,
                         height: LayoutGrid.halfModule * 7,
                       ),
@@ -284,7 +284,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
                       leadingWidget: Image(
-                        image: AssetImage('assets/Russia.png'),
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
                         fit: BoxFit.cover,
                         height: LayoutGrid.halfModule * 7,
                       ),
@@ -337,7 +337,7 @@ class _TagsScreenState extends State<TagsScreen> {
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
                       leadingWidget: Image(
-                        image: AssetImage('assets/Russia.png'),
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
                         fit: BoxFit.cover,
                         height: LayoutGrid.halfModule * 7,
                       ),

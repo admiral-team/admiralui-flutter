@@ -60,7 +60,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
             children: <Widget>[
               BaseCellWidget(
                 leadingCell: Image.asset(
-                  'assets/Card.png',
+                  'assets/card/visa.png',
                   width: 40,
                   height: 28,
                 ),
@@ -98,7 +98,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
                 leadingCell: Shimmer(
                   period: Duration(milliseconds: 2500),
                   child: Image.asset(
-                    'assets/Card.png',
+                    'assets/card/visa.png',
                     width: 40,
                     height: 28,
                   ),
@@ -119,7 +119,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
                   ],
                 ),
                 trailingCell: Image.asset(
-                  'assets/LogoVisa.jpg',
+                  'assets/card/visaLabel.png',
                   height: 16,
                   width: 28,
                 ),
@@ -127,7 +127,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
               ),
               BaseCellWidget(
                 leadingCell: Image.asset(
-                  'assets/Card.png',
+                  'assets/card/visa.png',
                   width: 40,
                   height: 28,
                 ),
@@ -158,7 +158,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
                   ],
                 ),
                 trailingCell: Image.asset(
-                  'assets/LogoVisa.jpg',
+                  'assets/card/visaLabel.png',
                   height: 16,
                   width: 28,
                 ),

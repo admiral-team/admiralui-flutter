@@ -65,6 +65,11 @@ flutter:
   assets:
     - assets/
     - assets/svg/
+    - assets/card/
+    - assets/onboarding/
+    - assets/tagsChips/
+    - assets/zeroScreen/
+    - assets/currency/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

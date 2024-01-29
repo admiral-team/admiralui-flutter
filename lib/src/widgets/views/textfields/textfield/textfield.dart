@@ -14,6 +14,7 @@ class TextFieldWidget extends StatefulWidget {
     this.labelText = '',
     this.informerText,
     this.placeHolderText = '',
+    this.hasSecure,
     this.bottomWidget,
     this.onChanged,
     this.onEditingComplete,
@@ -29,6 +30,7 @@ class TextFieldWidget extends StatefulWidget {
   final String labelText;
   final String? informerText;
   final String placeHolderText;
+  final bool? hasSecure;
   final Widget? bottomWidget;
 
   final ValueChanged<String>? onChanged;
@@ -45,6 +47,7 @@ class _TextFieldState extends State<TextFieldWidget>
   FocusNode get _effectiveFocusNode =>
       widget.focusNode ?? (_focusNode ??= FocusNode());
   bool _hasFocus = false;
+  bool _isSecure = false;
 
   String get _textFieldText => widget.controller.text;
   String get _labelText => widget.labelText;
@@ -106,6 +109,7 @@ class _TextFieldState extends State<TextFieldWidget>
                         height: LayoutGrid.doubleModule,
                       ),
                       TextFormField(
+                        obscureText: _isSecure,
                         controller: widget.controller,
                         focusNode: _effectiveFocusNode,
                         textAlign: TextAlign.left,
@@ -145,6 +149,32 @@ class _TextFieldState extends State<TextFieldWidget>
                 ],
               ),
             ),
+            if (widget.hasSecure == true)
+              AbsorbPointer(
+                absorbing: widget.state == TextInputState.disabled,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isSecure = !_isSecure;
+                    });
+                  },
+                  child: SizedBox(
+                    height: LayoutGrid.quadrupleModule,
+                    width: LayoutGrid.quadrupleModule,
+                    child: _isSecure
+                        ? Icon(
+                            AdmiralIcons.admiral_ic_eye_close_outline,
+                            color:
+                                scheme.iconColor.unsafeParameter(widget.state),
+                          )
+                        : Icon(
+                            AdmiralIcons.admiral_ic_eye_outline,
+                            color:
+                                scheme.iconColor.unsafeParameter(widget.state),
+                          ),
+                  ),
+                ),
+              ),
           ],
         ),
         TextFieldSeparator(
