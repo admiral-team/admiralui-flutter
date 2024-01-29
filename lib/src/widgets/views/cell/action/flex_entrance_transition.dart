@@ -33,7 +33,9 @@ class FlexEntranceTransition extends MultiChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, _RenderFlexEntranceTransition renderObject,) {
+    BuildContext context,
+    _RenderFlexEntranceTransition renderObject,
+  ) {
     renderObject
       ..mainAxisPosition = mainAxisPosition
       ..direction = direction
@@ -143,8 +145,8 @@ class _RenderFlexEntranceTransition extends RenderBox
   int getTotalFlex() {
     int totalFlex = 0;
     visitChildren((RenderObject child) {
-      final _FlexEntranceTransitionParentData? parentData = 
-      child.parentData as _FlexEntranceTransitionParentData?;
+      final _FlexEntranceTransitionParentData? parentData =
+          child.parentData as _FlexEntranceTransitionParentData?;
       assert(() {
         if (parentData!.flex != null) {
           return true;
@@ -174,8 +176,8 @@ class _RenderFlexEntranceTransition extends RenderBox
     size = constraints.biggest;
 
     visitChildren((RenderObject child) {
-      final _FlexEntranceTransitionParentData? parentData = 
-      child.parentData as _FlexEntranceTransitionParentData?;
+      final _FlexEntranceTransitionParentData? parentData =
+          child.parentData as _FlexEntranceTransitionParentData?;
       final double extentFactor = parentData!.flex! / totalFlex;
       late BoxConstraints innerConstraints;
       double? mainAxisExtent;

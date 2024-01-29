@@ -26,7 +26,7 @@ class CustomSlidableAction extends StatelessWidget {
     this.padding,
     required this.onPressed,
     required this.child,
-  })  : assert(flex > 0);
+  }) : assert(flex > 0);
 
   /// {@template slidable.actions.flex}
   /// The flex factor to use for this child.
@@ -95,9 +95,9 @@ class CustomSlidableAction extends StatelessWidget {
         child: OutlinedButton(
           onPressed: () => _handleTap(context),
           style: OutlinedButton.styleFrom(
-            foregroundColor: effectiveForegroundColor, 
+            foregroundColor: effectiveForegroundColor,
             padding: padding,
-            backgroundColor: backgroundColor, 
+            backgroundColor: backgroundColor,
             disabledForegroundColor: effectiveForegroundColor.withOpacity(0.38),
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius,

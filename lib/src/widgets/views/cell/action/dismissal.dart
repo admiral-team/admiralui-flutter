@@ -32,8 +32,8 @@ class _SlidableDismissalState extends State<SlidableDismissal>
     super.initState();
 
     animationController = AnimationController(vsync: this);
-    resizeAnimation = 
-    animationController.drive(Tween<double>(begin: 1, end: 0));
+    resizeAnimation =
+        animationController.drive(Tween<double>(begin: 1, end: 0));
     widget.controller.resizeRequest.addListener(handleResizeRequestChanged);
   }
 
