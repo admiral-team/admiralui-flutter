@@ -182,10 +182,8 @@ class _TextFieldState extends State<TextFieldWidget>
           isEditing: _hasFocus,
         ),
         if (widget.bottomWidget != null)
-          SizedBox(
-            height: LayoutGrid.halfModule * 10,
-            child: widget.bottomWidget,
-          ),
+          const SizedBox(height: LayoutGrid.module),
+        Container(child: widget.bottomWidget),
         const SizedBox(height: LayoutGrid.module),
         if (widget.informerText != null &&
             widget.informerText?.isEmpty == false)
