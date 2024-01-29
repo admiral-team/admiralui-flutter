@@ -152,7 +152,7 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
                     children: <Widget>[
                       for (int i = 0; i < 10; i++)
                         Row(
-                          children: [
+                          children: <Widget>[
                             TagControlWidget(
                               trailingImage:
                                   AdmiralIcons.admiral_ic_heart_solid,
