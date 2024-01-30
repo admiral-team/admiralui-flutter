@@ -145,6 +145,7 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
                 focusNode: secureFocusNode,
                 labelText: 'Optional label',
                 placeHolderText: 'Placeholder',
+                trailingIcon: Icon(AdmiralIcons.admiral_ic_info_outline),
                 bottomWidget: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
