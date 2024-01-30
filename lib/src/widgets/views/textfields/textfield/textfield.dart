@@ -15,7 +15,9 @@ class TextFieldWidget extends StatefulWidget {
     this.informerText,
     this.placeHolderText = '',
     this.hasSecure,
+    this.trailingIcon,
     this.bottomWidget,
+    this.onTrailingTap,
     this.onChanged,
     this.onEditingComplete,
     this.scheme,
@@ -31,10 +33,12 @@ class TextFieldWidget extends StatefulWidget {
   final String? informerText;
   final String placeHolderText;
   final bool? hasSecure;
+  final Icon? trailingIcon;
   final Widget? bottomWidget;
 
   final ValueChanged<String>? onChanged;
   final VoidCallback? onEditingComplete;
+  final VoidCallback? onTrailingTap;
   final TextFieldScheme? scheme;
 
   @override
@@ -177,6 +181,23 @@ class _TextFieldState extends State<TextFieldWidget>
                   ),
                 ),
               ),
+            if (widget.trailingIcon != null)
+              AbsorbPointer(
+                absorbing: widget.state == TextInputState.disabled,
+                child: GestureDetector(
+                  onTap: () {
+                    widget.onTrailingTap?.call();
+                  },
+                  child: SizedBox(
+                    height: LayoutGrid.quadrupleModule,
+                    width: LayoutGrid.quadrupleModule,
+                    child: Icon(
+                      widget.trailingIcon?.icon,
+                      color: scheme.iconColor.unsafeParameter(widget.state),
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
         TextFieldSeparator(
@@ -184,10 +205,8 @@ class _TextFieldState extends State<TextFieldWidget>
           isEditing: _hasFocus,
         ),
         if (widget.bottomWidget != null)
-          SizedBox(
-            height: LayoutGrid.halfModule * 10,
-            child: widget.bottomWidget,
-          ),
+          const SizedBox(height: LayoutGrid.module),
+        Container(child: widget.bottomWidget),
         const SizedBox(height: LayoutGrid.module),
         if (widget.informerText != null &&
             widget.informerText?.isEmpty == false)
