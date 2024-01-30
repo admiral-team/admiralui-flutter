@@ -16,7 +16,7 @@ class StandardTabs extends StatefulWidget {
   final List<String> tabs;
   final bool isEnabled;
   final List<Widget>? tabBarViews;
-  final StandartTabsScheme? scheme;
+  final StandardTabsScheme? scheme;
 
   /// An optional callback that's called when the [TabBar] is tapped.
   ///
@@ -36,12 +36,12 @@ class StandardTabs extends StatefulWidget {
 class _StandardTabsState extends State<StandardTabs>
     with SingleTickerProviderStateMixin {
   int currentPos = 0;
-  late StandartTabsScheme scheme;
+  late StandardTabsScheme scheme;
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    scheme = widget.scheme ?? StandartTabsScheme(theme: theme);
+    scheme = widget.scheme ?? StandardTabsScheme(theme: theme);
 
     final Color textColor =
         widget.isEnabled ? scheme.textColor : scheme.disabledTextColor;

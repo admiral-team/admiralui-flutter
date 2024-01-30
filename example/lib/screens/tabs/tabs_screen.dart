@@ -19,9 +19,9 @@ class TabsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Standart Tabs',
+        title: 'Standard Tabs',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.standartTabs),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standardTabs),
       ),
       ListCellModel(
         title: 'Logo Tabs',

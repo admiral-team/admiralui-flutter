@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../navigation/tab_navigator_home.dart';
 
-class StandartTextFieldScreen extends StatefulWidget {
-  const StandartTextFieldScreen({
+class StandardTextFieldScreen extends StatefulWidget {
+  const StandardTextFieldScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -15,11 +15,11 @@ class StandartTextFieldScreen extends StatefulWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
-  State<StandartTextFieldScreen> createState() =>
-      _StandartTextFieldScreenState();
+  State<StandardTextFieldScreen> createState() =>
+      _StandardTextFieldScreenState();
 }
 
-class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
+class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
   bool isEnabled = true;
   FocusNode focusNode = FocusNode();
   FocusNode secureFocusNode = FocusNode();
@@ -45,7 +45,7 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Standart TextField',
+          'Standard TextField',
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),

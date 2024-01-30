@@ -23,12 +23,12 @@ import '../screens/text_block/accordion_screen.dart';
 import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
-import '../screens/standart_textfield_screen.dart';
+import '../screens/standard_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
 import '../screens/tabs/informer_tabs_screen.dart';
-import '../screens/tabs/tabs_standart_screen.dart';
+import '../screens/tabs/tabs_standard_screen.dart';
 import '../screens/informers/toast_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
@@ -72,7 +72,7 @@ enum TabNavigatorRoutes {
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
-  standartTextfield('/textfields/standartTextfield'),
+  standardTextfield('/textfields/standardTextfield'),
   doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
   inputNumberDefault('/textfields/inputNumber/inputNumberDefault'),
@@ -83,7 +83,7 @@ enum TabNavigatorRoutes {
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
-  standartTabs('/tabs/standartTabs'),
+  standardTabs('/tabs/standardTabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
@@ -175,9 +175,9 @@ class TabNavigatorHome extends StatelessWidget {
               onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
-      TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
-          StandartTextFieldScreen(
-            title: 'Standart Textfield',
+      TabNavigatorRoutes.standardTextfield.value: (BuildContext context) =>
+          StandardTextFieldScreen(
+            title: 'Standard Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.doubleTextField.value: (BuildContext context) =>
@@ -383,8 +383,8 @@ class TabNavigatorHome extends StatelessWidget {
           const ToastStaticScreen(),
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
           const ActionToastScreen(),
-      TabNavigatorRoutes.standartTabs.value: (BuildContext context) =>
-          const TabStandartScreen()
+      TabNavigatorRoutes.standardTabs.value: (BuildContext context) =>
+          const TabStandardScreen()
     };
   }
 
