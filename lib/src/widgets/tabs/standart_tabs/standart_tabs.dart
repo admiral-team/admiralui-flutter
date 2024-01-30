@@ -43,85 +43,87 @@ class _StandardTabsState extends State<StandardTabs>
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? StandartTabsScheme(theme: theme);
 
-    final Color textColor = widget.isEnabled
-        ? scheme.textColor
-        : scheme.disabledTextColor;
-    final Color borderColor = widget.isEnabled
-        ? scheme.borderColor
-        : scheme.disabledBorderColor;
+    final Color textColor =
+        widget.isEnabled ? scheme.textColor : scheme.disabledTextColor;
+    final Color borderColor =
+        widget.isEnabled ? scheme.borderColor : scheme.disabledBorderColor;
     final Color selectedBorderColor = widget.isEnabled
         ? scheme.selectedBorderColor
         : scheme.disabledSelectedBorderColor;
-    final TextStyle unselectedLabelStyle = 
-    scheme.unselectedTextFont.toTextStyle(textColor);
-    return DefaultTabController(
-      length: widget.tabs.length,
-      child: Column(
-        children: <Widget>[
-          DecoratedBox(
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(LayoutGrid.module),
-                side: BorderSide(
-                  color: borderColor,
-                ),
-              ),
-              color: scheme.backgroundColor,
-            ),
-            child: TabBar(
-              splashFactory: NoSplash.splashFactory,
-              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  return states.contains(MaterialState.focused)
-                      ? null
-                      : Colors.transparent;
-                },
-              ),
-              onTap: (int index) {
-                setState(() {
-                  currentPos = index;
-                });
-                widget.onTap?.call(widget.tabs[index]);
-              },
-              indicator: BoxDecoration(
-                border: Border.all(
-                  color: selectedBorderColor,
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(
-                  LayoutGrid.module,
-                ),
-              ),
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              labelStyle: scheme.textFont.toTextStyle(textColor),
-              unselectedLabelStyle: unselectedLabelStyle,
-              labelColor: textColor,
-              unselectedLabelColor: textColor,
-              tabs: <Widget>[
-                for (int i = 0; i < widget.tabs.length; i++) ...<Widget>[
-                  SizedBox(
-                    height: LayoutGrid.quadrupleModule,
-                    child: AdmiralTab(
-                      text: widget.tabs[i],
-                      curPosition: i,
-                      selected: currentPos,
-                    ),
+    final TextStyle unselectedLabelStyle =
+        scheme.unselectedTextFont.toTextStyle(textColor);
+    return IgnorePointer(
+      ignoring: !widget.isEnabled,
+      child: DefaultTabController(
+        length: widget.tabs.length,
+        child: Column(
+          children: <Widget>[
+            DecoratedBox(
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(LayoutGrid.module),
+                  side: BorderSide(
+                    color: borderColor,
                   ),
-                ],
-              ],
-            ),
-          ),
-          if (widget.tabBarViews?.length == widget.tabs.length)
-            Expanded(
-              child: SizedBox(
-                child: TabBarView(
-                  physics: const BouncingScrollPhysics(),
-                  children: widget.tabBarViews ?? <Widget>[],
                 ),
+                color: scheme.backgroundColor,
+              ),
+              child: TabBar(
+                dividerColor: Colors.transparent,
+                splashFactory: NoSplash.splashFactory,
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    return states.contains(MaterialState.focused)
+                        ? null
+                        : Colors.transparent;
+                  },
+                ),
+                onTap: (int index) {
+                  setState(() {
+                    currentPos = index;
+                  });
+                  widget.onTap?.call(widget.tabs[index]);
+                },
+                indicator: BoxDecoration(
+                  border: Border.all(
+                    color: selectedBorderColor,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    LayoutGrid.module,
+                  ),
+                ),
+                padding: EdgeInsets.zero,
+                labelPadding: EdgeInsets.zero,
+                labelStyle: scheme.textFont.toTextStyle(textColor),
+                unselectedLabelStyle: unselectedLabelStyle,
+                labelColor: textColor,
+                unselectedLabelColor: textColor,
+                tabs: <Widget>[
+                  for (int i = 0; i < widget.tabs.length; i++) ...<Widget>[
+                    SizedBox(
+                      height: LayoutGrid.quadrupleModule,
+                      child: AdmiralTab(
+                        text: widget.tabs[i],
+                        curPosition: i,
+                        selected: currentPos,
+                      ),
+                    ),
+                  ],
+                ],
               ),
             ),
-        ],
+            if (widget.tabBarViews?.length == widget.tabs.length)
+              Expanded(
+                child: SizedBox(
+                  child: TabBarView(
+                    physics: const BouncingScrollPhysics(),
+                    children: widget.tabBarViews ?? <Widget>[],
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

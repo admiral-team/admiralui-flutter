@@ -28,6 +28,7 @@ import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
 import '../screens/tabs/informer_tabs_screen.dart';
+import '../screens/tabs/tabs_standart_screen.dart';
 import '../screens/informers/toast_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
@@ -82,6 +83,7 @@ enum TabNavigatorRoutes {
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
+  standartTabs('/tabs/standartTabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
@@ -380,7 +382,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.toastStatic.value: (BuildContext context) =>
           const ToastStaticScreen(),
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
-          const ActionToastScreen()
+          const ActionToastScreen(),
+      TabNavigatorRoutes.standartTabs.value: (BuildContext context) =>
+          const TabStandartScreen()
     };
   }
 

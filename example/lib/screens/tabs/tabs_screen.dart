@@ -21,7 +21,7 @@ class TabsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Standart Tabs',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standartTabs),
       ),
       ListCellModel(
         title: 'Logo Tabs',
