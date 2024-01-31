@@ -188,6 +188,7 @@ lane :send_build_failed_info do |options|
   build_info = BuildInfo.from_hash(build_info_hash)
   build_info.branch_name = options[:issue_name]
   build_info.issue = options[:issue_name]
+  build_info.issue_url = github_issue_url(issue: options[:issue_name])
   telegram_chat_id = options[:telegram_chat_id]
   telegram_token = options[:telegram_token]
   action_id = options[:build_url]

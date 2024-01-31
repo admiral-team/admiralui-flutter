@@ -45,6 +45,9 @@ func (buildInfo BuildInfo) formatted_build_info_git() string {
 	if buildInfo.Branch_name != "" {
 		resultString += "Branch Name: " + buildInfo.Branch_name + "\n"
 	}
+	if buildInfo.Issue_url != "" {
+		resultString += "Issue URL: " + buildInfo.Issue_url + "\n"
+	}
 	if buildInfo.Build_url != "" {
 		resultString += "Install URL: " + buildInfo.Build_url + "\n"
 	}
@@ -54,6 +57,9 @@ func (buildInfo BuildInfo) formatted_build_info_git() string {
 func (buildInfo BuildInfo) build_failed_info(pullNumber string) string {
 	var resultString string
 	resultString += "🆘<strong>Build failed</strong>🆘" + "\n"
+	if buildInfo.Issue_url != "" {
+		resultString += "Issue URL: " + buildInfo.Issue_url + "\n"
+	}
 	if buildInfo.Branch_name != "" {
 		resultString += "<strong>Branch name: </strong>" + buildInfo.Branch_name + "\n"
 	}
