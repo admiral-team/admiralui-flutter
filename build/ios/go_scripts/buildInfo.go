@@ -17,7 +17,7 @@ type BuildInfo struct {
 	Build_url        string `json:"build_url,omitempty"`
 	Branch_name      string `json:"BranchName,omitempty"`
 	Issue            int    `json:"Issue,string,omitempty"`
-	Issue_url        string `json:"IssueUrl,string,omitempty"`
+	Issue_url        string `json:"IssueUrl,omitempty"`
 	TelegramChatId   string `json:"TelegramChatId,string,omitempty"`
 	TelegramToken    string `json:"TelegramToken,string,omitempty"`
 	ActionId         string `json:"ActionId,string,omitempty"`
@@ -99,12 +99,10 @@ func (buildInfo BuildInfo) formatted_build_info_telegram() string {
 	if buildInfo.Issue_url != "" {
 		resultString += "<strong>Issue URL: </strong>" + buildInfo.Issue_url + "\n"
 	}
-	resultString += "<strong>Issue URL: </strong>" + "issue" + "\n"
 	if buildInfo.Build_url != "" {
 		resultString += "<strong>Install URL: </strong>" + buildInfo.Build_url + "\n"
 	}
 
-	fmt.Println("TTTT", buildInfo)
 	return resultString
 }
 
