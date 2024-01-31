@@ -218,4 +218,22 @@ lane :send_build_failed_info do |options|
   system("cd ../go_scripts && ./main build_failed #{info_body} #{telegram_chat_id} #{telegram_token} #{action_id}")
 end
 
+lane :get_all_github_request_android_builds do |options|
+  repo_owner = 'admiral-team'
+  repo_name = 'admiralui-flutter'
+  pull_request_number = options[:pull_request_number]
+
+  client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
+
+  # Fetch comments on the pull request
+  comments = client.issue_comments("#{repo_owner}/#{repo_name}", pull_request_number)
+
+  # Extract Android Build IDs
+  android_build_ids = comments.select { |comment| comment.body =~ /Platform: Android 🤖.*Build ID: (\d+)/ }
+                              .map { |comment| comment.body.match(/Build ID: (\d+)/)[1] }
+
+  # Output Android Build IDs
+  UI.message("Android Build IDs: #{android_build_ids.join(', ')}")
+end
+
 
