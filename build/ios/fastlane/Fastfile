@@ -230,10 +230,15 @@ lane :get_all_github_request_android_builds do |options|
   comments = client.issue_comments("#{repo_owner}/#{repo_name}", pull_request_number)
 
   comments.each do |comment|
-    puts "Автор: #{comment.user.login}"
-    puts "Комментарий: #{comment.body}"
-    puts "Дата: #{comment.created_at}"
-    puts "------------------------"
+    if comment.user.login == 'github-actions[bot]'
+      build_id_match = comment.body.match(/Build ID: (\d+)/)
+      if build_id_match
+        build_id = build_id_match[1]
+        puts "Build ID: #{build_id}"
+      else
+        puts "Build ID не найден в комментарии."
+      end
+    end
   end
 
   # Extract Android Build IDs
