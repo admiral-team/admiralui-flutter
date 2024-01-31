@@ -10,7 +10,7 @@ on:
 jobs:
   setup:
     name: Setup Environment
-    runs-on: [ self-hosted, main ]
+    runs-on: [ self-hosted, main, flutter ]
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
@@ -46,7 +46,7 @@ jobs:
   build-web:
     name: Build Web App
     needs: setup
-    runs-on: [ self-hosted, main ]
+    runs-on: [ self-hosted, main, flutter ]
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
@@ -66,7 +66,7 @@ jobs:
   deploy-android:
     name: Deploy Android App
     needs: build-web
-    runs-on: [ self-hosted, main ]
+    runs-on: [ self-hosted, main, flutter ]
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
@@ -101,7 +101,7 @@ jobs:
 
   test:
     name: Test App
-    runs-on: [ self-hosted, main ]
+    runs-on: [ self-hosted, main, flutter ]
     needs: deploy-android
     steps:
       - uses: actions/checkout@v3
@@ -122,7 +122,7 @@ jobs:
   deploy-ios-dev:
     name: Deploy iOS Appcenter Development
     needs: test
-    runs-on: [ self-hosted, main ]
+    runs-on: [ self-hosted, main, flutter ]
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
