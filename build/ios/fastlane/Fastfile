@@ -234,11 +234,11 @@ lane :get_all_github_request_android_builds do |options|
       if build_id_match
         build_id = build_id_match[1]
         puts "Build ID: #{build_id}"
-        if comment_text.include?('Platform: Android')
+        if comment.body.include?('Platform: Android')
           puts "Android Build ID: #{build_id}"
           delete_build_android_from_appcenter(build_id: build_id)
         end
-        if comment_text.include?('Platform: iOS')
+        if comment.body.include?('Platform: iOS')
           puts "iOS Build ID: #{build_id}"
         end
       else
