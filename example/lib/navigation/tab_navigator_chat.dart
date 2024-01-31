@@ -3,11 +3,10 @@ import '../screens/chat_screen.dart';
 import '../screens/text_operation_screen.dart';
 
 enum TabNavigatorChatRoutes {
-  textOperation('/textOperation'),
-  chat('/chat');
+  home('/'),
+  textOperation('/textOperation');
 
   const TabNavigatorChatRoutes(this.value);
-
   final String value;
 }
 
@@ -32,7 +31,7 @@ class TabNavigatorChat extends StatelessWidget {
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return <String, WidgetBuilder>{
-      TabNavigatorChatRoutes.chat.value: (BuildContext context) => ChatScreen(
+      TabNavigatorChatRoutes.home.value: (BuildContext context) => ChatScreen(
             title: 'Chat',
             onPush: (TabNavigatorChatRoutes route) => _push(context, route),
           ),
@@ -50,7 +49,7 @@ class TabNavigatorChat extends StatelessWidget {
 
     return Navigator(
       key: navigatorKey,
-      initialRoute: TabNavigatorChatRoutes.chat.value,
+      initialRoute: TabNavigatorChatRoutes.home.value,
       onGenerateRoute: (RouteSettings routeSettings) {
         return MaterialPageRoute<Map<String, WidgetBuilder>>(
           builder: (BuildContext context) =>

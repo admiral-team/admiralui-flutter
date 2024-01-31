@@ -37,12 +37,14 @@ class _ChatScreenState extends State<ChatScreen> {
       ListCellModel(
         title: 'Input',
         description: '',
-        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.chat),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
       ),
       ListCellModel(
         title: 'Text Message',
         description: '',
-        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.chat),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
       ),
       ListCellModel(
         title: 'Text Operation',
@@ -53,12 +55,14 @@ class _ChatScreenState extends State<ChatScreen> {
       ListCellModel(
         title: 'Uploading Photo',
         description: '',
-        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.chat),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
       ),
       ListCellModel(
         title: 'Uploading File',
         description: '',
-        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.chat),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
       ),
     ];
 
