@@ -49,7 +49,7 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ),
           BaseCellWidget(
-            centerCell: TextView('PrimaryButtons'),
+            centerCell: TextView('Primary buttons'),
             trailingCell: Icon(
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),

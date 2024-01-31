@@ -10,7 +10,7 @@ class CurrencyLeadingView extends StatefulWidget {
   });
 
   final String text;
-  final IconData? iconData;
+  final Image? iconData;
   final CurrencyScheme? scheme;
 
   @override
@@ -25,30 +25,19 @@ class _CurrencyLeadingViewState extends State<CurrencyLeadingView> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? CurrencyScheme(theme: theme);
 
-    if (widget.iconData != null) {
-      return Row(
-        children: <Widget>[
-          Icon(
-            widget.iconData,
-            size: LayoutGrid.tripleModule,
-            color: scheme.imageTintColor.color(),
-          ),
+    return Row(
+      children: <Widget>[
+        if (widget.iconData != null) widget.iconData!,
+        if (widget.iconData != null)
           const SizedBox(
             width: LayoutGrid.halfModule * 3,
           ),
-          TextView(
-            widget.text,
-            font: scheme.textFont,
-            textColorNormal: scheme.textColor.color(),
-          ),
-        ],
-      );
-    } else {
-      return TextView(
-        widget.text,
-        font: scheme.textFont,
-        textColorNormal: scheme.textColor.color(),
-      );
-    }
+        TextView(
+          widget.text,
+          font: scheme.textFont,
+          textColorNormal: scheme.textColor.color(),
+        ),
+      ],
+    );
   }
 }

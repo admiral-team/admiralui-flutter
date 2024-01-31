@@ -95,13 +95,13 @@ class _TitleButtonDropDownWidgetState extends State<ParagrapgWidget> {
               width: LayoutGrid.doubleModule,
             ),
           Expanded(
-              child: TextView(
-                widget.title ?? '',
-                font: scheme.font,
-                textColorNormal: textColor,
-                textAlign: widget.textAligment,
-              ),
+            child: TextView(
+              widget.title ?? '',
+              font: scheme.font,
+              textColorNormal: textColor,
+              textAlign: widget.textAligment,
             ),
+          ),
           if (widget.trailingImageWidget != null)
             Padding(
               padding: const EdgeInsets.only(left: LayoutGrid.doubleModule),
@@ -111,7 +111,7 @@ class _TitleButtonDropDownWidgetState extends State<ParagrapgWidget> {
                 ),
                 child: widget.trailingImageWidget!,
               ),
-            )
+            ),
         ],
       ),
     );

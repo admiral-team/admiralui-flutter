@@ -11,7 +11,7 @@
     
       
       <testcase classname="fastlane.lanes" name="1: increment_version_number" time="2.515789">
-        
+  
       </testcase>
     
   </testsuite>

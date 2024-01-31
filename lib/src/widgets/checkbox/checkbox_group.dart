@@ -62,7 +62,7 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
 
     return Column(
       children: <Widget>[
-        for (String item in widget.items)
+        for (final String item in widget.items)
           SizedBox(
             child: CheckBoxTitle(
               title: item,
@@ -73,7 +73,7 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
               isEnabled: widget.isEnabled,
               style: widget.style,
             ),
-          )
+          ),
       ],
     );
   }

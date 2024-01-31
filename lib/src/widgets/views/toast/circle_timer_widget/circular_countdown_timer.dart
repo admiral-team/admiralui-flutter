@@ -132,9 +132,11 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
         !widget.autoStart &&
         !countDownController!.isStarted) {
       if (widget.timeFormatterFunction != null) {
-        return Function.apply(widget.timeFormatterFunction!,
-            // ignore: always_specify_types
-            [_getTime, Duration(seconds: widget.duration)],).toString();
+        return Function.apply(
+          widget.timeFormatterFunction!,
+          // ignore: always_specify_types
+          [_getTime, Duration(seconds: widget.duration)],
+        ).toString();
       } else {
         timeStamp = _getTime(Duration(seconds: widget.duration));
       }
@@ -205,7 +207,7 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
     }
     // For ss format
     else if (widget.textFormat == CountdownTextFormat.SS) {
-      return (duration.inSeconds).toString().padLeft(2, '0');
+      return duration.inSeconds.toString().padLeft(2, '0');
     }
     // For s format
     else if (widget.textFormat == CountdownTextFormat.S) {
@@ -307,18 +309,21 @@ class CircularCountDownTimerState extends State<CircularCountDownTimer>
                       ),
                     ),
                   ),
-                  if (widget.isTimerTextShown) Align(
-                          alignment: FractionalOffset.center,
-                          child: Text(
-                            time,
-                            style: widget.textStyle ??
-                                const TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.black,
-                                ),
-                            textAlign: widget.textAlign,
-                          ),
-                        ) else Container(),
+                  if (widget.isTimerTextShown)
+                    Align(
+                      alignment: FractionalOffset.center,
+                      child: Text(
+                        time,
+                        style: widget.textStyle ??
+                            const TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                            ),
+                        textAlign: widget.textAlign,
+                      ),
+                    )
+                  else
+                    Container(),
                 ],
               ),
             ),

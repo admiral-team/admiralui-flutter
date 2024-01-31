@@ -79,7 +79,7 @@ class _CalendaVerticalPageViewState extends State<CalendarVerticalPageView> {
         ),
         const SizedBox(
           height: LayoutGrid.halfModule * 5,
-        )
+        ),
       ],
     );
   }

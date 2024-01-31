@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 // ignore_for_file: public_member_api_docs
 
 class FlexExitTransition extends MultiChildRenderObjectWidget {
-  FlexExitTransition({
+  const FlexExitTransition({
     super.key,
     required this.mainAxisExtent,
     required this.direction,
@@ -39,7 +39,9 @@ class FlexExitTransition extends MultiChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, _RenderFlexExitTransition renderObject,) {
+    BuildContext context,
+    _RenderFlexExitTransition renderObject,
+  ) {
     renderObject
       ..mainAxisExtent = mainAxisExtent
       ..direction = direction
@@ -135,8 +137,8 @@ class _RenderFlexExitTransition extends RenderBox
   int getTotalFlex() {
     int totalFlex = 0;
     visitChildren((RenderObject child) {
-      final _FlexExitTransitionParentData? parentData = 
-      child.parentData as _FlexExitTransitionParentData?;
+      final _FlexExitTransitionParentData? parentData =
+          child.parentData as _FlexExitTransitionParentData?;
       assert(() {
         if (parentData!.flex != null) {
           return true;
@@ -170,19 +172,19 @@ class _RenderFlexExitTransition extends RenderBox
     RenderBox? child = startToEnd ? firstChild : lastChild;
 
     while (child != null) {
-      final _FlexExitTransitionParentData? parentData = 
-      child.parentData as _FlexExitTransitionParentData?;
-      final double extentFactor = 
-      parentData!.flex! / totalFlex * initialExtentRatio;
+      final _FlexExitTransitionParentData? parentData =
+          child.parentData as _FlexExitTransitionParentData?;
+      final double extentFactor =
+          parentData!.flex! / totalFlex * initialExtentRatio;
       late BoxConstraints innerConstraints;
       double? initialMainAxisExtent;
       switch (_direction) {
         case Axis.horizontal:
           initialMainAxisExtent = constraints.maxWidth * extentFactor;
           final double extent = Tween<double>(
-                  begin: initialMainAxisExtent,
-                  end: totalMainAxisExtent - totalMainAxisExtentSoFar,)
-              .evaluate(_mainAxisExtent);
+            begin: initialMainAxisExtent,
+            end: totalMainAxisExtent - totalMainAxisExtentSoFar,
+          ).evaluate(_mainAxisExtent);
           final double begin = startToEnd
               ? totalMainAxisExtentSoFar
               : totalMainAxisExtent - totalMainAxisExtentSoFar - extent;
@@ -195,9 +197,9 @@ class _RenderFlexExitTransition extends RenderBox
         case Axis.vertical:
           initialMainAxisExtent = constraints.maxHeight * extentFactor;
           final double extent = Tween<double>(
-                  begin: initialMainAxisExtent,
-                  end: totalMainAxisExtent - totalMainAxisExtentSoFar,)
-              .evaluate(_mainAxisExtent);
+            begin: initialMainAxisExtent,
+            end: totalMainAxisExtent - totalMainAxisExtentSoFar,
+          ).evaluate(_mainAxisExtent);
           final double begin = startToEnd
               ? totalMainAxisExtentSoFar
               : totalMainAxisExtent - totalMainAxisExtentSoFar - extent;

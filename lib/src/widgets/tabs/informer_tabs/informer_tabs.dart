@@ -75,7 +75,7 @@ class _InformerTabsState extends State<InformerTabs>
                       if (i != widget.items.length - 1)
                         const SizedBox(
                           width: LayoutGrid.module,
-                        )
+                        ),
                     },
                   ],
                 ),
