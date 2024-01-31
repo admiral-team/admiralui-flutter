@@ -124,6 +124,7 @@ def formatted_build_info_json(build_info:)
   str += '\"TelegramToken\"' + ':"\"' + "#{build_info.telegram_token}" + '"\"' + '","' unless build_info.telegram_token.nil?
   str += '\"ActionId\"' + ':"\"' + "#{build_info.action_id}" + '"\"' + '","' unless build_info.action_id.nil?
   str += '\"Issue\"' + ':"\"' + "#{build_info.issue}" + '"\"' unless build_info.issue.nil?
+  str += '\"IssueUrl\"' + ':"\"' + "#{build_info.issue_url}" + '"\"' + unless build_info.issue.nil?
   str += '}'
   str
 end
