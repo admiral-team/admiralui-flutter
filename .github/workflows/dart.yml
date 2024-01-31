@@ -45,7 +45,7 @@ jobs:
 
   remove-android-build:
       name: Remove Android Appcenter Build
-      #needs: deploy-ios-dev
+      needs: setup
       runs-on: [ self-hosted, main, flutter ]
       env:
         API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
