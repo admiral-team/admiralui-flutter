@@ -232,7 +232,6 @@ lane :get_all_github_request_android_builds do |options|
 
   # Extract Android Build IDs
   android_build_ids = comments.select { |comment| comment.body =~ /Platform: Android 🤖.*Build ID: (\d+)/ }
-                              .map { |comment| comment.body.match(/Build ID: (\d+)/)[1] }
   puts android_build_ids
 
   # Output Android Build IDs
