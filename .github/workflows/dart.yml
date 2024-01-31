@@ -61,10 +61,8 @@ jobs:
       steps:
         - name: Install Fastlane Dependencies
           run: cd build/ios/fastlane && bundle install && bundle update
-        - name: Get all request android builds and delete
+        - name: Remove all builds from request
           run: cd build/ios/fastlane && bundle exec fastlane get_all_github_request_android_builds pull_request_number:${{ github.event.number }}
-        - name: Remove android build
-          run: cd build/ios/fastlane && bundle exec fastlane delete_build_android_from_appcenter
 
   # build-web:
   #   name: Build Web App

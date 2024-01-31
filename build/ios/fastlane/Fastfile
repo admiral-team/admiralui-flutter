@@ -135,6 +135,17 @@ def delete_build_android_from_appcenter(build_id:)
   system(command)
 end
 
+def delete_build_ios_from_appcenter(build_id:)
+
+  app_name = ENV['APPCENTER_APP_NAME_DEV']
+  owner_name = ENV['APPCENTER_OWNER_NAME']
+  api_token = ENV['APPCENTER_API_TOKEN_IOS_DEV']
+
+  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/releases/#{build_id}'"
+
+  system(command)
+end
+
 # Supporting Methods
 
 lane :increment_app_version do |options|
@@ -225,7 +236,6 @@ lane :get_all_github_request_android_builds do |options|
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
 
-  # Fetch comments on the pull request
   comments = client.issue_comments("#{repo_owner}/#{repo_name}", pull_request_number)
 
   comments.each do |comment|
@@ -233,26 +243,19 @@ lane :get_all_github_request_android_builds do |options|
       build_id_match = comment.body.match(/Build ID: (\d+)/)
       if build_id_match
         build_id = build_id_match[1]
-        puts "Build ID: #{build_id}"
         if comment.body.include?('Platform: Android')
           puts "Android Build ID: #{build_id}"
           delete_build_android_from_appcenter(build_id: build_id)
         end
         if comment.body.include?('Platform: iOS')
           puts "iOS Build ID: #{build_id}"
+          delete_build_ios_from_appcenter(build_id: build_id)
         end
       else
         puts "Build ID не найден в комментарии."
       end
     end
   end
-
-  # Extract Android Build IDs
-  android_build_ids = comments.select { |comment| comment.body =~ /Platform: Android 🤖.*Build ID: (\d+)/ }
-  puts android_build_ids
-
-  # Output Android Build IDs
-  UI.message("Android Build IDs: #{android_build_ids.join(', ')}")
 end
 
 
