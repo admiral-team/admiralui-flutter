@@ -130,9 +130,7 @@ lane :delete_build_android_from_appcenter do |options|
   api_token = ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
   build_id = "55"
 
-  puts api_token
-
-  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'Authorization: Bearer #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/releases/#{build_id}'"
+  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/releases/#{build_id}'"
 
   system(command)
 end
