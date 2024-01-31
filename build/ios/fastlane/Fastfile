@@ -121,6 +121,20 @@ lane :deploy_appcenter_dev do |options|
   end
 end
 
+# Appcenter
+
+lane :delete_build_android_from_appcenter do |options|
+
+  app_name = ENV['APPCENTER_APP_ANDROID_NAME_DEV']
+  owner_name = ENV['APPCENTER_OWNER_NAME']
+  api_token = ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
+  build_id = "55"
+
+  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/builds/#{build_id}'"
+
+  system(command)
+end
+
 # Supporting Methods
 
 lane :increment_app_version do |options|
@@ -181,18 +195,6 @@ lane :unlock_secrets_keychain do |options|
     path: "login.keychain",
     password: options[:password]
   )
-end
-
-lane :delete_build_android_from_appcenter do
-
-  app_name = ENV['APPCENTER_APP_ANDROID_NAME_DEV']
-  owner_name = ENV['APPCENTER_OWNER_NAME']
-  api_token = ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
-  build_id = "55"
-
-  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/builds/#{build_id}'"
-
-  system(command)
 end
 
 lane :send_build_failed_info do |options|
