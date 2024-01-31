@@ -5,6 +5,7 @@ import '../navigation/bottom_navigation.dart';
 import '../navigation/tab_item.dart';
 import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_process.dart';
+import '../navigation/tab_navigator_chat.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -19,6 +20,7 @@ class _RootScreenState extends State<RootScreen> {
       <TabItem, GlobalKey<NavigatorState>>{
     TabItem.main: GlobalKey<NavigatorState>(),
     TabItem.info: GlobalKey<NavigatorState>(),
+    TabItem.chat: GlobalKey<NavigatorState>(),
     TabItem.settings: GlobalKey<NavigatorState>(),
   };
 
@@ -58,9 +60,10 @@ class _RootScreenState extends State<RootScreen> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            _buildOffstageNavigator(TabItem.main, true),
-            _buildOffstageNavigator(TabItem.info, false),
-            _buildOffstageNavigator(TabItem.settings, false),
+            _buildOffstageNavigator(TabItem.main),
+            _buildOffstageNavigator(TabItem.info),
+            _buildOffstageNavigator(TabItem.chat),
+            _buildOffstageNavigator(TabItem.settings),
           ],
         ),
         bottomNavigationBar: BottomNavigation(
@@ -82,16 +85,28 @@ class _RootScreenState extends State<RootScreen> {
     );
   }
 
-  Widget _buildOffstageNavigator(TabItem tabItem, bool isFinished) {
-    return Offstage(
-      offstage: _currentTab != tabItem,
-      child: isFinished
-          ? TabNavigatorHome(
-              navigatorKey: _navigatorKeys[tabItem],
-            )
-          : TabNavigatorProcess(
-              navigatorKey: _navigatorKeys[tabItem],
-            ),
-    );
+  Widget _buildOffstageNavigator(TabItem tabItem) {
+    switch (tabItem) {
+      case TabItem.main:
+        return Offstage(
+          offstage: _currentTab != tabItem,
+          child: TabNavigatorHome(navigatorKey: _navigatorKeys[tabItem]),
+        );
+      case TabItem.settings:
+        return Offstage(
+          offstage: _currentTab != tabItem,
+          child: TabNavigatorProcess(navigatorKey: _navigatorKeys[tabItem]),
+        );
+      case TabItem.info:
+        return Offstage(
+          offstage: _currentTab != tabItem,
+          child: TabNavigatorProcess(navigatorKey: _navigatorKeys[tabItem]),
+        );
+      case TabItem.chat:
+        return Offstage(
+          offstage: _currentTab != tabItem,
+          child: TabNavigatorChat(navigatorKey: _navigatorKeys[tabItem]),
+        );
+    }
   }
 }
