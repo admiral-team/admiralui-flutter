@@ -38,31 +38,31 @@ class _ChatScreenState extends State<ChatScreen> {
         title: 'Input',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
+            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
       ),
       ListCellModel(
         title: 'Text Message',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
+            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
       ),
       ListCellModel(
         title: 'Text Operation',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
+            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
       ),
       ListCellModel(
         title: 'Uploading Photo',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
+            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
       ),
       ListCellModel(
         title: 'Uploading File',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperation),
+            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
       ),
     ];
 

@@ -4,7 +4,7 @@ import '../screens/text_operation_screen.dart';
 
 enum TabNavigatorChatRoutes {
   home('/'),
-  textOperation('/textOperation');
+  textOperations('/textOperations');
 
   const TabNavigatorChatRoutes(this.value);
   final String value;
@@ -35,7 +35,7 @@ class TabNavigatorChat extends StatelessWidget {
             title: 'Chat',
             onPush: (TabNavigatorChatRoutes route) => _push(context, route),
           ),
-      TabNavigatorChatRoutes.textOperation.value: (BuildContext context) =>
+      TabNavigatorChatRoutes.textOperations.value: (BuildContext context) =>
           TextOperationScreen(
             title: 'Text Operation',
             onPush: (TabNavigatorChatRoutes route) => _push(context, route),
