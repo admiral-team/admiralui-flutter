@@ -46,7 +46,7 @@ end
 def github_issue_url(issue:)
   return nil if issue.nil?
   github_url = 'https://github.com'
-  File.join(github_url, 'admiral-team', 'admiralui-flutter', 'issues', issue)
+  File.join(github_url, 'admiral-team', 'admiralui-flutter', 'issues', "#{issue}")
 end
 
 def appcenter_build_dev_url(build_id:, app_name:)
