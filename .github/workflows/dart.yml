@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    types: [ 'opened', 'synchronize', 'reopened' ]
+    types: [ 'opened', 'synchronize', 'reopened', 'closed']
     branches: [ 'main', 'develop', 'feature/**', 'rc/**' ]
   workflow_dispatch:
 
@@ -44,9 +44,10 @@ jobs:
              bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   remove-android-build:
-      name: Remove Android Appcenter Build
+      name: Remove Request Appcenter Build
       needs: setup
       runs-on: [ self-hosted, main, flutter ]
+      if: github.event_name == 'pull_request' && (github.event.action == 'closed' || github.event.pull_request.merged)
       env:
         API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
         APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
