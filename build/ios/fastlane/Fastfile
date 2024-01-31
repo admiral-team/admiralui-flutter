@@ -228,10 +228,12 @@ lane :get_all_github_request_android_builds do |options|
 
   # Fetch comments on the pull request
   comments = client.issue_comments("#{repo_owner}/#{repo_name}", pull_request_number)
+  puts comments
 
   # Extract Android Build IDs
   android_build_ids = comments.select { |comment| comment.body =~ /Platform: Android 🤖.*Build ID: (\d+)/ }
                               .map { |comment| comment.body.match(/Build ID: (\d+)/)[1] }
+  puts android_build_ids
 
   # Output Android Build IDs
   UI.message("Android Build IDs: #{android_build_ids.join(', ')}")
