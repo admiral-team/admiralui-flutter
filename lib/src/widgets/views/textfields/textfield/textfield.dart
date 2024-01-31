@@ -68,6 +68,8 @@ class _TextFieldState extends State<TextFieldWidget>
   @override
   void initState() {
     super.initState();
+
+    _isSecure = widget.hasSecure ?? false;
     _effectiveFocusNode
         .addListener(() => _onFocus(hasFocus: _effectiveFocusNode.hasFocus));
   }
@@ -167,12 +169,12 @@ class _TextFieldState extends State<TextFieldWidget>
                     width: LayoutGrid.quadrupleModule,
                     child: _isSecure
                         ? Icon(
-                            AdmiralIcons.admiral_ic_eye_close_outline,
+                            AdmiralIcons.admiral_ic_eye_outline,
                             color:
                                 scheme.iconColor.unsafeParameter(widget.state),
                           )
                         : Icon(
-                            AdmiralIcons.admiral_ic_eye_outline,
+                            AdmiralIcons.admiral_ic_eye_close_outline,
                             color:
                                 scheme.iconColor.unsafeParameter(widget.state),
                           ),

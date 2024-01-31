@@ -19,9 +19,9 @@ class TextfieldsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
       ListCellModel(
-        title: 'Standart',
+        title: 'Standard',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standardTextfield),
       ),
       ListCellModel(
         title: 'Double',

@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TabStandartScreen extends StatefulWidget {
-  const TabStandartScreen({
+class TabStandardScreen extends StatefulWidget {
+  const TabStandardScreen({
     super.key,
     this.appBarHidden = false,
   });
@@ -12,10 +12,10 @@ class TabStandartScreen extends StatefulWidget {
   final bool appBarHidden;
 
   @override
-  State<TabStandartScreen> createState() => _TabStandartScreenState();
+  State<TabStandardScreen> createState() => _TabStandardScreenState();
 }
 
-class _TabStandartScreenState extends State<TabStandartScreen> {
+class _TabStandardScreenState extends State<TabStandardScreen> {
   bool isEnabled = true;
 
   @override
