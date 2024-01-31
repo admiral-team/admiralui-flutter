@@ -183,12 +183,32 @@ lane :unlock_secrets_keychain do |options|
   )
 end
 
+lane :delete_build_android_from_appcenter do
+
+  app_name = ENV['APPCENTER_APP_ANDROID_NAME_DEV']
+  owner_name = ENV['APPCENTER_OWNER_NAME']
+  api_token = ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
+  build_id = "55"
+
+  command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/builds/#{build_id}'"
+
+  system(command)
+end
+
 lane :send_build_failed_info do |options|
   build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
   build_info = BuildInfo.from_hash(build_info_hash)
   build_info.branch_name = options[:issue_name]
   build_info.issue = options[:issue_name]
-  build_info.issue_url = github_issue_url(issue: options[:issue_name])
+
+  issue_name = options[:issue_name]
+  branch_name = issue_name
+  if issue_name.nil? || issue_name == ""
+    issue_name = extract_issue_name(branch_name: branch_name)
+  else
+    issue_name = extract_issue_name(branch_name: issue_name)
+  end
+  build_info.issue_url = github_issue_url(issue: issue_name)
   telegram_chat_id = options[:telegram_chat_id]
   telegram_token = options[:telegram_token]
   action_id = options[:build_url]

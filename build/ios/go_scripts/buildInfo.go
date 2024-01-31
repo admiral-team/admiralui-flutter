@@ -58,7 +58,7 @@ func (buildInfo BuildInfo) build_failed_info(pullNumber string) string {
 	var resultString string
 	resultString += "🆘<strong>Build failed</strong>🆘" + "\n"
 	if buildInfo.Issue_url != "" {
-		resultString += "Issue URL: " + buildInfo.Issue_url + "\n"
+		resultString += "<strong>Issue URL: </strong>" + buildInfo.Issue_url + "\n"
 	}
 	if buildInfo.Branch_name != "" {
 		resultString += "<strong>Branch name: </strong>" + buildInfo.Branch_name + "\n"
