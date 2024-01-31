@@ -124,12 +124,11 @@ end
 
 # Appcenter
 
-lane :delete_build_android_from_appcenter do |options|
+def delete_build_android_from_appcenter(build_id:)
 
   app_name = ENV['APPCENTER_APP_ANDROID_NAME_DEV']
   owner_name = ENV['APPCENTER_OWNER_NAME']
   api_token = ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
-  build_id = "55"
 
   command = "curl -X DELETE -H 'Content-Type: application/json' -H 'X-API-Token: #{api_token}' 'https://api.appcenter.ms/v0.1/apps/#{owner_name}/#{app_name}/releases/#{build_id}'"
 
@@ -235,6 +234,13 @@ lane :get_all_github_request_android_builds do |options|
       if build_id_match
         build_id = build_id_match[1]
         puts "Build ID: #{build_id}"
+        if comment_text.include?('Platform: Android')
+          puts "Android Build ID: #{build_id}"
+          delete_build_android_from_appcenter(build_id: build_id)
+        end
+        if comment_text.include?('Platform: iOS')
+          puts "iOS Build ID: #{build_id}"
+        end
       else
         puts "Build ID не найден в комментарии."
       end
