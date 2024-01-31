@@ -21,7 +21,6 @@ class CurrencyIconScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: CupertinoButton(
           child: const Icon(Icons.arrow_back_ios),
@@ -32,7 +31,7 @@ class CurrencyIconScreen extends StatelessWidget {
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle1.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
@@ -44,12 +43,30 @@ class CurrencyIconScreen extends StatelessWidget {
         color: colors.backgroundBasic.color(),
         child: Column(
           children: <Widget>[
-            Spacer(),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
+            Row(
+              children: <Widget>[
+                Text('Курсы валют',
+                    style: fonts.subtitle1
+                        .toTextStyle(colors.textPrimary.color())),
+                SizedBox(width: LayoutGrid.halfModule),
+                Icon(AdmiralIcons.admiral_ic_chevron_down_outline),
+                Spacer(),
+                LinkControl(
+                  title: 'Button',
+                  style: LinkStyle.medium,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
             CurrencyHeader(
               'Валюта',
               'Купить',
               'Продать',
-              isTextSpacingEnabled: true,
             ),
             SizedBox(
               height: LayoutGrid.doubleModule,
@@ -59,33 +76,41 @@ class CurrencyIconScreen extends StatelessWidget {
               '89',
               '90',
               null,
-              CurrencyCellType.arrowDown,
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
+              'EUR',
               '89',
               '90',
               null,
-              CurrencyCellType.arrowDown,
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
+              'GBP',
               '89',
               '90',
               null,
-              CurrencyCellType.arrowDown,
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
+            ),
+            Currency(
+              'CNY',
+              '89',
+              '90',
+              null,
+              CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             Spacer(),
           ],

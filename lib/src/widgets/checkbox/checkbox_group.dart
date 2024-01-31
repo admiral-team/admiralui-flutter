@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/checkbox/checkbox_title.dart';
 import 'package:flutter/material.dart';
 
 ///A Material Design checkbox.
@@ -63,7 +62,7 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
 
     return Column(
       children: <Widget>[
-        for (String item in widget.items)
+        for (final String item in widget.items)
           SizedBox(
             child: CheckBoxTitle(
               title: item,
@@ -74,7 +73,7 @@ class _CheckBoxGroupState extends State<CheckBoxGroup> {
               isEnabled: widget.isEnabled,
               style: widget.style,
             ),
-          )
+          ),
       ],
     );
   }

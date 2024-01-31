@@ -21,7 +21,6 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: CupertinoButton(
           child: const Icon(Icons.arrow_back_ios),
@@ -32,7 +31,7 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle1.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
@@ -44,7 +43,26 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
         color: colors.backgroundBasic.color(),
         child: Column(
           children: <Widget>[
-            Spacer(),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
+            Row(
+              children: <Widget>[
+                Text('Курсы валют',
+                    style: fonts.subtitle1
+                        .toTextStyle(colors.textPrimary.color())),
+                SizedBox(width: LayoutGrid.halfModule),
+                Icon(AdmiralIcons.admiral_ic_chevron_down_outline),
+                Spacer(),
+                LinkControl(
+                  title: 'Button',
+                  style: LinkStyle.medium,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
             CurrencyHeader(
               'Валюта',
               'Купить',
@@ -58,34 +76,58 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
               'USD',
               '89',
               '90',
-              AdmiralIcons.admiral_ic_flag_outline,
-              CurrencyCellType.arrowDown,
+              Image(
+                image: AssetImage('assets/currency/usa.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
+              'EUR',
               '89',
               '90',
-              AdmiralIcons.admiral_ic_flag_outline,
-              CurrencyCellType.arrowDown,
+              Image(
+                image: AssetImage('assets/currency/european.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
+              'GBP',
               '89',
               '90',
-              AdmiralIcons.admiral_ic_flag_outline,
-              CurrencyCellType.arrowDown,
+              Image(
+                image: AssetImage('assets/currency/britain.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
               CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
+            ),
+            Currency(
+              'CNY',
+              '89',
+              '90',
+              Image(
+                image: AssetImage('assets/currency/china.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
+              CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             Spacer(),
           ],

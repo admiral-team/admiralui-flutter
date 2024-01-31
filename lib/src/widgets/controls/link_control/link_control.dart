@@ -103,7 +103,6 @@ class _LinkControlState extends State<LinkControl> {
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: childrenWidgets,
       ),
     );

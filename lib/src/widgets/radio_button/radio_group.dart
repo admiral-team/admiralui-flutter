@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/radio_button/radio_button.dart';
 import 'package:flutter/material.dart';
 
 ///A Material Design radio button.
@@ -64,7 +63,7 @@ class _RadioGroupState extends State<RadioGroup> {
 
     return Column(
       children: <Widget>[
-        for (String item in widget.items)
+        for (final String item in widget.items)
           SizedBox(
             height: LayoutGrid.module / 2 * 5 + widget.verticalPadding,
             child: RadioButton(
@@ -75,7 +74,7 @@ class _RadioGroupState extends State<RadioGroup> {
               isEnabled: widget.isEnabled,
               style: widget.style,
             ),
-          )
+          ),
       ],
     );
   }

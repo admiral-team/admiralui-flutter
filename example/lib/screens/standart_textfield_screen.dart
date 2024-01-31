@@ -22,8 +22,11 @@ class StandartTextFieldScreen extends StatefulWidget {
 class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
   bool isEnabled = true;
   FocusNode focusNode = FocusNode();
+  FocusNode secureFocusNode = FocusNode();
   TextInputState state = TextInputState.normal;
-  TextEditingController textController = TextEditingController();
+  TextEditingController textController = TextEditingController(text: 'Text');
+  TextEditingController secureTextController =
+      TextEditingController(text: 'Text');
 
   @override
   Widget build(BuildContext context) {
@@ -86,13 +89,85 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
+              TitleHeaderWidget(
+                title: 'Basic',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
               TextFieldWidget(
                 textController,
                 state: state,
                 focusNode: focusNode,
-                labelText: 'label',
-                placeHolderText: 'placeholder',
-                informerText: 'informer text',
+                labelText: 'Optional label',
+                placeHolderText: 'Placeholder',
+                informerText: 'Additional text',
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
+                title: 'Masked',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TextFieldWidget(
+                secureTextController,
+                state: state,
+                focusNode: secureFocusNode,
+                labelText: 'Optional label',
+                placeHolderText: 'Placeholder',
+                informerText: 'Additional text',
+                hasSecure: true,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
+                title: '+ Tags & Informer',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TextFieldWidget(
+                secureTextController,
+                state: state,
+                focusNode: secureFocusNode,
+                labelText: 'Optional label',
+                placeHolderText: 'Placeholder',
+                trailingIcon: Icon(AdmiralIcons.admiral_ic_info_outline),
+                bottomWidget: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      for (int i = 0; i < 10; i++)
+                        Row(
+                          children: <Widget>[
+                            TagControlWidget(
+                              trailingImage:
+                                  AdmiralIcons.admiral_ic_heart_solid,
+                              title: 'Text',
+                              style: TagStyle.normal,
+                              isEnabled: isEnabled,
+                            ),
+                            if (i != 9) SizedBox(width: LayoutGrid.module),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
+                informerText: 'Additional text',
               ),
             ],
           ),

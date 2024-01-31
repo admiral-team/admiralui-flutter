@@ -1,5 +1,4 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/views/textfields/textfield/textfield_control_parameter.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldScheme {
@@ -11,6 +10,23 @@ class TextFieldScheme {
     textFieldFont = theme.fonts.body1;
     informerFont = theme.fonts.subhead3;
     placeholderFont = theme.fonts.body1;
+
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.normal,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.colorWithOpacity(),
+      TextInputState.disabled,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.error,
+    );
+    iconColor.set(
+      theme.colors.elementPrimary.color(),
+      TextInputState.readOnly,
+    );
 
     textColor.set(
       theme.colors.textPrimary.color(),
@@ -54,6 +70,9 @@ class TextFieldScheme {
   late AFont textFieldFont;
   late AFont placeholderFont;
 
+
+  TextFieldControlParameter<Color> iconColor =
+      TextFieldControlParameter<Color>();
   TextFieldControlParameter<Color> textColor =
       TextFieldControlParameter<Color>();
   TextFieldControlParameter<Color> infomerLabelColor =

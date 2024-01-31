@@ -6,22 +6,24 @@ class GhostButtonScheme {
     required this.theme,
   }) {
     font = theme.fonts.body1;
+    spinnerScheme = SpinnerScheme(theme: theme);
 
     buttonColor.set(
-      const Color(0xFF3A83F1),
+      theme.colors.textAccent.color(),
       ControlState.normal,
     );
     buttonColor.set(
-      const Color(0xFF316FCC),
+      theme.colors.textAccentPressed.color(),
       ControlState.highlighted,
     );
     buttonColor.set(
-      const Color(0xFF3A83F1).withOpacity(0.6),
+      theme.colors.textAccent.colorWithOpacity(),
       ControlState.disabled,
     );
   }
 
   AppTheme theme;
   late AFont font;
+  late SpinnerScheme spinnerScheme;
   ControlParameter<Color> buttonColor = ControlParameter<Color>();
 }

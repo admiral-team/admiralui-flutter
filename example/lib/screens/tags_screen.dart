@@ -3,13 +3,17 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TagsScreen extends StatelessWidget {
-  const TagsScreen({
-    super.key,
-    this.appBarHidden = false,
-  });
+class TagsScreen extends StatefulWidget {
+  const TagsScreen({super.key, this.appBarHidden = false});
 
   final bool appBarHidden;
+
+  @override
+  State<TagsScreen> createState() => _TagsScreenState();
+}
+
+class _TagsScreenState extends State<TagsScreen> {
+  bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,7 @@ class TagsScreen extends StatelessWidget {
     final ColorPalette colors = theme.colors;
 
     return Scaffold(
-      appBar: appBarHidden
+      appBar: widget.appBarHidden
           ? null
           : AppBar(
               leading: CupertinoButton(
@@ -27,6 +31,12 @@ class TagsScreen extends StatelessWidget {
               bottomOpacity: 0.0,
               elevation: 0.0,
               backgroundColor: colors.backgroundBasic.color(),
+              title: Text(
+                'Tags & Chips',
+                style: theme.fonts.subtitle2.toTextStyle(
+                  colors.textPrimary.color(),
+                ),
+              ),
             ),
       body: Container(
         color: colors.backgroundBasic.color(),
@@ -36,12 +46,29 @@ class TagsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            StandardTabs(
+              <String>['Default', 'Disabled'],
+              onTap: (String value) {
+                setState(() {
+                  isEnabled = value == 'Default';
+                });
+              },
+            ),
+            SizedBox(
+              height: LayoutGrid.quadrupleModule,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                Text(
                   'Default',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -51,26 +78,64 @@ class TagsScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  const TagControlWidget(
-                      leadingImage: AdmiralIcons.admiral_ic_car_solid,
-                      title: 'Text',
-                      trailingButtonImage: 
-                      AdmiralIcons.admiral_ic_close_circle_outline,
-                      style: TagStyle.normal),
+                  TagControlWidget(
+                    leadingImage: AdmiralIcons.admiral_ic_car_solid,
+                    title: 'Text',
+                    trailingButtonWidget: GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage('assets/tagsChips/close.png'),
+                        fit: BoxFit.cover,
+                        height: 20,
+                      ),
+                    ),
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
                   SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
-                      leadingImage: AdmiralIcons.admiral_ic_car_solid,
-                      title: 'Icons',
-                      style: TagStyle.normal),
+                  TagControlWidget(
+                    title: 'Text',
+                    trailingButtonWidget: GestureDetector(
+                      onTap: () {},
+                      child: Image(
+                        image: AssetImage('assets/tagsChips/close.png'),
+                        fit: BoxFit.cover,
+                        height: 20,
+                      ),
+                    ),
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
                   SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
-                      leadingImage: AdmiralIcons.admiral_ic_car_solid,
-                      style: TagStyle.normal),
+                  TagControlWidget(
+                    leadingImage: AdmiralIcons.admiral_ic_car_solid,
+                    title: 'Icons',
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
                   SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
-                      leadingText: '🐶',
-                      title: 'Emoji',
-                      style: TagStyle.normal),
+                  TagControlWidget(
+                      leadingImage: AdmiralIcons.admiral_ic_car_solid,
+                      style: TagStyle.normal,
+                      isEnabled: isEnabled),
+                  SizedBox(width: LayoutGrid.module),
+                  TagControlWidget(
+                    leadingText: '🐶',
+                    title: 'Emoji',
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
+                  SizedBox(width: LayoutGrid.module),
+                  TagControlWidget(
+                    leadingWidget: Image(
+                      image: AssetImage('assets/tagsChips/russiaFlag.png'),
+                      fit: BoxFit.cover,
+                      height: LayoutGrid.halfModule * 7,
+                    ),
+                    title: 'Flags',
+                    style: TagStyle.normal,
+                    isEnabled: isEnabled,
+                  ),
                 ],
               ),
             ),
@@ -79,9 +144,12 @@ class TagsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                Text(
                   'Additional',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -89,32 +157,51 @@ class TagsScreen extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  const TagControlWidget(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
-                      style: TagStyle.additional),
-                  SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
+                      style: TagStyle.additional,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
-                      style: TagStyle.additional),
-                ],
-              ),),
+                      style: TagStyle.additional,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.additional,
+                      isEnabled: isEnabled,
+                    ),
+                  ],
+                ),
+              ),
             ),
             SizedBox(height: LayoutGrid.doubleModule),
             // Success
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                Text(
                   'Success',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -122,32 +209,51 @@ class TagsScreen extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  const TagControlWidget(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
-                      style: TagStyle.success),
-                  SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
+                      style: TagStyle.success,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
-                      style: TagStyle.success),
-                ],
-              ),),
+                      style: TagStyle.success,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.success,
+                      isEnabled: isEnabled,
+                    ),
+                  ],
+                ),
+              ),
             ),
             SizedBox(height: LayoutGrid.doubleModule),
             // Error
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                Text(
                   'Error',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -155,33 +261,52 @@ class TagsScreen extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  const TagControlWidget(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
-                      style: TagStyle.error),
-                  SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
+                      style: TagStyle.error,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
-                      style: TagStyle.error),
-                ],
-              ),),
+                      style: TagStyle.error,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.error,
+                      isEnabled: isEnabled,
+                    ),
+                  ],
+                ),
+              ),
             ),
             SizedBox(height: LayoutGrid.doubleModule),
             // Attention
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                const Text(
+                Text(
                   'Attention',
                   textAlign: TextAlign.left,
+                  style: theme.fonts.body1.toTextStyle(
+                    colors.textSecondary.color(),
+                  ),
                 ),
               ],
             ),
@@ -189,24 +314,40 @@ class TagsScreen extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  const TagControlWidget(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    TagControlWidget(
                       leadingImage: AdmiralIcons.admiral_ic_car_solid,
                       title: 'Icons',
-                      style: TagStyle.attention),
-                  SizedBox(width: LayoutGrid.module),
-                  const TagControlWidget(
+                      style: TagStyle.attention,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
                       leadingText: '🐶',
                       title: 'Emoji',
-                      style: TagStyle.attention),
-                ],
-              ),),
+                      style: TagStyle.attention,
+                      isEnabled: isEnabled,
+                    ),
+                    SizedBox(width: LayoutGrid.module),
+                    TagControlWidget(
+                      leadingWidget: Image(
+                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
+                        fit: BoxFit.cover,
+                        height: LayoutGrid.halfModule * 7,
+                      ),
+                      title: 'Flags',
+                      style: TagStyle.attention,
+                      isEnabled: isEnabled,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

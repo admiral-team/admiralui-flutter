@@ -47,7 +47,7 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16,
+          horizontal: LayoutGrid.doubleModule,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -68,8 +68,8 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
               ),
               TwoTitleGhostButton(
                 isEnable: isEnabled,
-                leftTitle: '08.06.20 — 14.08.20',
-                rightTitle: 'Выбрать',
+                leftTitle: 'Выбрать все карты',
+                rightTitle: 'Готово',
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
@@ -84,7 +84,7 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
               ),
               GhostButton(
                 isEnable: isEnabled,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
+                iconData: AdmiralIcons.admiral_ic_maintenance_outline,
                 iconPosition: IconPosition.right,
                 title: 'Big Button',
               ),
@@ -98,30 +98,35 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Medium Button',
-                sizeType: ButtonSizeType.medium,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
-                iconPosition: IconPosition.left,
+              Center(
+                child: GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Medium Button',
+                  sizeType: ButtonSizeType.medium,
+                  iconData: AdmiralIcons.admiral_ic_heart_outline,
+                  iconPosition: IconPosition.left,
+                ),
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Medium Button',
-                sizeType: ButtonSizeType.medium,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
-                iconPosition: IconPosition.right,
+              Center(
+                child: GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Medium Button',
+                  sizeType: ButtonSizeType.medium,
+                  iconData: AdmiralIcons.admiral_ic_maintenance_outline,
+                ),
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Medium Button',
-                sizeType: ButtonSizeType.medium,
+              Center(
+                child: GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Medium Button',
+                  sizeType: ButtonSizeType.medium,
+                ),
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
@@ -140,7 +145,7 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
                 isEnable: isEnabled,
                 title: 'Small Button',
                 sizeType: ButtonSizeType.small,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
+                iconData: AdmiralIcons.admiral_ic_maintenance_solid,
                 iconPosition: IconPosition.right,
               ),
               SizedBox(
@@ -150,6 +155,7 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
                 isEnable: isEnabled,
                 title: 'Small Button',
                 sizeType: ButtonSizeType.small,
+                iconPosition: IconPosition.left,
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
