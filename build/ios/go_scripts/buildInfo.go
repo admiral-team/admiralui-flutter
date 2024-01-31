@@ -103,6 +103,8 @@ func (buildInfo BuildInfo) formatted_build_info_telegram() string {
 	if buildInfo.Build_url != "" {
 		resultString += "<strong>Install URL: </strong>" + buildInfo.Build_url + "\n"
 	}
+
+	fmt.Println("TTTT", buildInfo)
 	return resultString
 }
 

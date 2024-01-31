@@ -51,10 +51,9 @@ lane :deploy_appcenter_andoid_dev do |options|
   build_info.issue_url = github_issue_url(issue: issue_name)
   build_info.pull_request_number = pull_request_number
 
-  puts build_info.issue_url
-
   if !issue_name.nil?
     comment_body = formatted_build_info_json(build_info: build_info)
+    puts comment_body
     system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CI_GITHUB_TOKEN']} #{telegram_chat_id} #{telegram_token}")
   end
 
