@@ -1,5 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../navigation/tab_navigator_home.dart';
@@ -51,7 +52,7 @@ class _ZeroScreenState extends State<ZeroScreen> {
           child: Column(
             children: <Widget>[
               ZeroScreenView(
-                image: Image.asset('assets/zeroScreen/success.png'),
+                image: Assets.zeroScreen.success.image(),
                 title: 'Header',
                 subTitle:
                     // ignore: lines_longer_than_80_chars

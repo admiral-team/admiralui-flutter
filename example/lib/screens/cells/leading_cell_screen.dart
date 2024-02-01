@@ -1,5 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/card/visa.png'),
+                leadingCell: Assets.card.visa.image(),
                 centerCell: TitleCellWidget(
                   title: 'Card Place',
                   isEnabled: isEnabled,
@@ -68,7 +69,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/card/rnb.png'),
+                leadingCell: Assets.card.rnb.image(),
                 centerCell: TitleCellWidget(
                   title: 'Lable Place',
                   isEnabled: isEnabled,
