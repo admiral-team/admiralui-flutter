@@ -12,10 +12,4 @@ class FontFamily {
 
   /// Font family: AdmiralIcons
   static const String admiralIcons = 'AdmiralIcons';
-
-  /// Font family: SFProDisplay
-  static const String sFProDisplay = 'SFProDisplay';
-
-  /// Font family: SFProText
-  static const String sFProText = 'SFProText';
 }
