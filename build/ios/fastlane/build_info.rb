@@ -13,6 +13,7 @@ class BuildInfo
   attr_accessor :build_url
   attr_accessor :branch_name
   attr_accessor :issue
+  attr_accessor :issue_url
   attr_accessor :telegram_chat_id
   attr_accessor :telegram_token
   attr_accessor :action_id
@@ -40,6 +41,12 @@ end
 
 def current_app_build_number
   get_build_number(xcodeproj: ENV['LIBRARY_PROJECT_PATH'])
+end
+
+def github_issue_url(issue:)
+  return nil if issue.nil?
+  github_url = 'https://github.com'
+  File.join(github_url, 'admiral-team', 'admiralui-flutter', 'issues', "#{issue}")
 end
 
 def appcenter_build_dev_url(build_id:, app_name:)
@@ -80,6 +87,7 @@ def formatted_build_info(build_info:)
   result_string += "Internal Version: #{build_info.internal_version}\n" unless build_info.internal_version.nil?
   result_string += "Short Version: #{build_info.short_version}\n" unless build_info.short_version.nil?
   result_string += "Branch Name: #{build_info.branch_name}\n" unless build_info.branch_name.nil?
+  result_string += "Issue: #{build_info.issue_url}\n" unless build_info.issue_url.nil?
   result_string += "*Install URL* [URL|#{build_info.build_url}]" unless build_info.build_url.nil?
   result_string.strip
 end
@@ -115,12 +123,11 @@ def formatted_build_info_json(build_info:)
   str += '\"TelegramChatId\"' + ':"\"' + "#{build_info.telegram_chat_id}" + '"\"' + '","' unless build_info.telegram_chat_id.nil?
   str += '\"TelegramToken\"' + ':"\"' + "#{build_info.telegram_token}" + '"\"' + '","' unless build_info.telegram_token.nil?
   str += '\"ActionId\"' + ':"\"' + "#{build_info.action_id}" + '"\"' + '","' unless build_info.action_id.nil?
-  str += '\"Issue\"' + ':"\"' + "#{build_info.issue}" + '"\"' unless build_info.issue.nil?
+  str += '\"Issue\"' + ':"\"' + "#{build_info.issue}" + '"\"' + '","' unless build_info.issue.nil?
+  str += '\"IssueUrl\"' + ':"\"' + "#{build_info.issue_url}" + '"\"' unless build_info.issue_url.nil?
   str += '}'
   str
 end
 
   
-    
-
 
