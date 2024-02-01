@@ -229,7 +229,7 @@ lane :send_build_failed_info do |options|
   system("cd ../go_scripts && ./main build_failed #{info_body} #{telegram_chat_id} #{telegram_token} #{action_id}")
 end
 
-lane :get_all_github_request_android_builds do |options|
+lane :get_all_github_request_builds_and_remove do |options|
   repo_owner = 'admiral-team'
   repo_name = 'admiralui-flutter'
   pull_request_number = options[:pull_request_number]

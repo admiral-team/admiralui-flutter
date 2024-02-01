@@ -183,6 +183,6 @@ jobs:
       - name: Install Fastlane Dependencies
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Remove all builds from request
-        run: cd build/ios/fastlane && bundle exec fastlane get_all_github_request_android_builds pull_request_number:${{ github.event.number }}
+        run: cd build/ios/fastlane && bundle exec fastlane get_all_github_request_builds_and_remove pull_request_number:${{ github.event.number }}
   
 
