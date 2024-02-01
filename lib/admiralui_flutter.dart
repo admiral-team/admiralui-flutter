@@ -2,6 +2,12 @@ library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
+export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_group.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_style.dart';
@@ -65,8 +71,8 @@ export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tab_it
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tab_item_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs_scheme.dart';
-export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs/standart_tabs.dart';
-export 'package:admiralui_flutter/src/widgets/tabs/standart_tabs/standart_tabs_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';
