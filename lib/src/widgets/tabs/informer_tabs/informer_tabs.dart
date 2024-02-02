@@ -52,8 +52,8 @@ class _InformerTabsState extends State<InformerTabs>
         children: <Widget>[
           Column(
             children: <Widget>[
-              SizedBox(
-                width: _widgetWidth - _padding,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: _padding,),
                 child: Row(
                   children: <Widget>[
                     for (int i = 0; i < widget.items.length; i++) ...<Widget>{
