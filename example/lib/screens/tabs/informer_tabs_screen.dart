@@ -54,6 +54,7 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: LayoutGrid.doubleModule * 4),
         physics: BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -124,14 +125,17 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                         ),
                         Row(
                           children: <Widget>[
-                            TextView(
-                              'до 1 500 000 ₽',
-                              font: theme.fonts.largeTitle1,
-                              textColorNormal: theme.colors.textAccent.color(),
-                              textColorDisabled:
-                                  theme.colors.textAccent.colorWithOpacity(),
-                              textAlign: TextAlign.center,
-                              isEnabled: isEnabled,
+                            Expanded(
+                              child: TextView(
+                                'до 1 500 000₽',
+                                font: theme.fonts.largeTitle1,
+                                textColorNormal:
+                                    theme.colors.textAccent.color(),
+                                textColorDisabled:
+                                    theme.colors.textAccent.colorWithOpacity(),
+                                textAlign: TextAlign.left,
+                                isEnabled: isEnabled,
+                              ),
                             ),
                             SizedBox(
                               width: LayoutGrid.doubleModule,
@@ -217,14 +221,17 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
                         ),
                         Row(
                           children: <Widget>[
-                            TextView(
-                              'до 1 500 000 ₽',
-                              font: theme.fonts.largeTitle1,
-                              textColorNormal: theme.colors.textAccent.color(),
-                              textColorDisabled:
-                                  theme.colors.textAccent.colorWithOpacity(),
-                              textAlign: TextAlign.center,
-                              isEnabled: isEnabled,
+                            Expanded(
+                              child: TextView(
+                                'до 1 500 000₽',
+                                font: theme.fonts.largeTitle1,
+                                textColorNormal:
+                                    theme.colors.textAccent.color(),
+                                textColorDisabled:
+                                    theme.colors.textAccent.colorWithOpacity(),
+                                textAlign: TextAlign.left,
+                                isEnabled: isEnabled,
+                              ),
                             ),
                             SizedBox(
                               width: LayoutGrid.doubleModule,
