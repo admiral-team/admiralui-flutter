@@ -50,6 +50,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
           horizontal: LayoutGrid.doubleModule,
         ),
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: LayoutGrid.doubleModule * 6),
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
