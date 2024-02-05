@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../screens/chat_screen.dart';
-import '../screens/text_operation_screen.dart';
+import '../screens/chat/chat_screen.dart';
+import '../screens/chat/text_operation/text_operation_screen.dart';
+import '../screens/chat/input/chat_input_screen.dart';
 
 enum TabNavigatorChatRoutes {
   home('/'),
-  textOperations('/textOperations');
+  textOperations('/textOperations'),
+  input('/input');
 
   const TabNavigatorChatRoutes(this.value);
   final String value;
@@ -38,6 +40,11 @@ class TabNavigatorChat extends StatelessWidget {
       TabNavigatorChatRoutes.textOperations.value: (BuildContext context) =>
           TextOperationScreen(
             title: 'Text Operation',
+            onPush: (TabNavigatorChatRoutes route) => _push(context, route),
+          ),
+      TabNavigatorChatRoutes.input.value: (BuildContext context) =>
+          ChatInputScreen(
+            title: 'Chat Input',
             onPush: (TabNavigatorChatRoutes route) => _push(context, route),
           ),
     };

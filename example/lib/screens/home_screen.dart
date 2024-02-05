@@ -305,6 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _searchBar(ColorPalette colors, FontPalette fonts) {
     return Container(
+      color: colors.backgroundBasic.color(),
       padding: EdgeInsets.all(16),
       child: SizedBox(
         height: 36.0,

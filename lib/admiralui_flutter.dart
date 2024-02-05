@@ -2,9 +2,13 @@ library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
-export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status.dart';
-export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_style.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status_style.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_button.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_button_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
