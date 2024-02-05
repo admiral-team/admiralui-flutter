@@ -26,7 +26,10 @@ class _ActionToastScreenState extends State<ActionToastScreen> {
       appBar: AppBar(
         centerTitle: true,
         leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -64,8 +67,7 @@ class _ActionToastScreenState extends State<ActionToastScreen> {
               onPressed: () {
                 showToastWidget(
                     ActionToastWidget(
-                      title:
-                          'Сообщение будет удалено',
+                      title: 'Сообщение будет удалено',
                       linkText: 'Отмена',
                       onLinkPressed: () {
                         closeAllToastWidget();

@@ -30,7 +30,10 @@ class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
       appBar: AppBar(
         centerTitle: true,
         leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,

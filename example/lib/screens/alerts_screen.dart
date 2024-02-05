@@ -47,7 +47,10 @@ class AlertsScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
