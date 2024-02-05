@@ -169,6 +169,9 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 ),
                 informerText: 'Additional text',
               ),
+              SizedBox(
+                height: LayoutGrid.module * 6,
+              )
             ],
           ),
         ),
