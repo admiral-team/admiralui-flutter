@@ -21,14 +21,11 @@ class DoubleTextFieldScreen extends StatefulWidget {
 class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
   FocusNode leftTextFieldFocusNode = FocusNode();
   FocusNode rightTextFieldFocusNode = FocusNode();
-  FocusNode leftTextFieldUnequalFocusNode = FocusNode();
-  FocusNode rightTextFieldUnequalFocusNode = FocusNode();
   TextEditingController leftTextController = TextEditingController();
   TextEditingController rightTextController = TextEditingController();
   TextEditingController leftTextUnequalController = TextEditingController();
   TextEditingController rightTextUnequalController = TextEditingController();
-  TextInputState leftTextFieldState = TextInputState.normal;
-  TextInputState rightTextFieldState = TextInputState.normal;
+  TextInputState textFieldState = TextInputState.normal;
 
   @override
   Widget build(BuildContext context) {
@@ -73,20 +70,16 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
                   setState(() {
                     switch (value) {
                       case 'Default':
-                        leftTextFieldState = TextInputState.normal;
-                        rightTextFieldState = TextInputState.normal;
+                        textFieldState = TextInputState.normal;
                         break;
                       case 'Read Only':
-                        leftTextFieldState = TextInputState.readOnly;
-                        rightTextFieldState = TextInputState.readOnly;
+                        textFieldState = TextInputState.readOnly;
                         break;
                       case 'Error':
-                        leftTextFieldState = TextInputState.error;
-                        rightTextFieldState = TextInputState.error;
+                        textFieldState = TextInputState.error;
                         break;
                       case 'Disabled':
-                        leftTextFieldState = TextInputState.disabled;
-                        rightTextFieldState = TextInputState.disabled;
+                        textFieldState = TextInputState.disabled;
                         break;
                     }
                   });
@@ -105,16 +98,14 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
               DoubleTextField(
                 TextFieldWidget(
                   leftTextController,
-                  state: leftTextFieldState,
-                  // focusNode: leftTextFieldFocusNode,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
                   rightTextController,
-                  state: rightTextFieldState,
-                  // focusNode: rightTextFieldFocusNode,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
@@ -134,14 +125,14 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
               DoubleTextField(
                 TextFieldWidget(
                   leftTextUnequalController,
-                  state: leftTextFieldState,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
                   rightTextUnequalController,
-                  state: rightTextFieldState,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
