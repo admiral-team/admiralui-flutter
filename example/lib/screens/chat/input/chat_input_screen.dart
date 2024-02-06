@@ -3,6 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/navigation/tab_navigator_chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'chat_message_item.dart';
 import '../../../storage/app_theme_storage.dart';
 
 class ChatInputScreen extends StatefulWidget {
@@ -17,14 +18,6 @@ class ChatInputScreen extends StatefulWidget {
 
   @override
   State<ChatInputScreen> createState() => _ChatInputScreenState();
-}
-
-class ChatMessageItem {
-  ChatMessageItem({
-    required this.text,
-  });
-
-  final String text;
 }
 
 class _ChatInputScreenState extends State<ChatInputScreen> {

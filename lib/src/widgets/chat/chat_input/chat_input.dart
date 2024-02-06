@@ -2,6 +2,31 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// View for chat input message and add files.
+///
+/// Takes TextInputState, default text and several options to setup
+/// chat input actions.
+///
+/// You can create ChatInput by specifying following parameters:
+/// state - Current state of chat input text/field
+/// content - The text that the text field displays.
+/// isSendButtonDisabled - Flag disabled send button.
+/// isShowFileButton - Flag show file button.
+/// textEditingController - TextEditingController for TextFormField.
+/// maxLinesCount - Maximum number of lines availible in TextFormField.
+/// minLinesCount - Minimun number of lines availible in TextFormField.
+/// placeholder - The string that displays when there is no other text
+/// hintText - The string that displays hint when over textfield.
+/// keyboardType - Requests that a particular keyboard type
+/// be displayed when a text widget
+/// with the keyboard.
+/// textInputAction - An action the user has requested the text
+/// input control to perform.
+/// onChanged - A closure that calls every time when TextFormField
+/// text changes
+/// onSendButtonPress - A closure that calls when send button clicked
+/// onFileButtonPress - A closure that calls when file button clicked
+/// scheme - The visual scheme of ChatInput
 class ChatInput extends StatefulWidget {
   /// Creates an ChatInput.
   const ChatInput({
@@ -16,7 +41,6 @@ class ChatInput extends StatefulWidget {
     this.minLinesCount = 1,
     this.placeholder = '',
     this.hintText = '',
-    this.focusNode,
     this.keyboardType,
     this.textInputAction,
     this.onChanged,
@@ -34,7 +58,6 @@ class ChatInput extends StatefulWidget {
   final int minLinesCount;
   final bool isShowFileButton;
   final bool isTapSendButtonHidden;
-  final FocusNode? focusNode;
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
@@ -50,30 +73,16 @@ class ChatInput extends StatefulWidget {
 class _ChatInputState extends State<ChatInput> {
   late ChatInputScheme scheme;
   late Icon icon;
-
-  FocusNode? _focusNode;
-  FocusNode get _effectiveFocusNode =>
-      widget.focusNode ?? (_focusNode ??= FocusNode());
   TextInputState get _state => widget.state;
 
   @override
   void initState() {
     super.initState();
-    _effectiveFocusNode
-        .addListener(() => _onFocus(hasFocus: _effectiveFocusNode.hasFocus));
   }
 
   @override
   void dispose() {
     super.dispose();
-    _effectiveFocusNode.removeListener(() {});
-    _focusNode?.dispose();
-  }
-
-  void _onFocus({required bool hasFocus}) {
-    if (!mounted) {
-      return;
-    }
   }
 
   void _onChanged({required String text}) {
@@ -150,7 +159,6 @@ class _ChatInputState extends State<ChatInput> {
                       textAlign: TextAlign.left,
                       maxLines: widget.maxLinesCount,
                       minLines: widget.minLinesCount,
-                      focusNode: _effectiveFocusNode,
                       keyboardType: widget.keyboardType,
                       textInputAction: widget.textInputAction,
                       decoration: InputDecoration(
@@ -164,11 +172,7 @@ class _ChatInputState extends State<ChatInput> {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          // ignore: use_named_constants
-                          borderSide: const BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          ),
+                          borderSide: BorderSide.none,
                         ),
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(

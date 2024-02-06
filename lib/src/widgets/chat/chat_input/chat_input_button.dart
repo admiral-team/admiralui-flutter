@@ -2,6 +2,14 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// Rounded button that handles send message action in ChatInput
+///
+/// Takes closure, enabled flat and scheme parameter.
+///
+/// You can create ChatInputButton by specifying following parameters:
+/// onPressed - Closure that calls when button tapped.
+/// isEnable - The flag that controls enabled/disable state of button.
+/// scheme - The visual scheme of ChatInputButton
 class ChatInputButton extends StatefulWidget {
   /// Creates a ChatInputButton.
   const ChatInputButton({
