@@ -6,6 +6,7 @@ import '../navigation/tab_item.dart';
 import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_process.dart';
 import '../navigation/tab_navigator_chat.dart';
+import '../storage/app_theme_storage.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -16,6 +17,10 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   TabItem _currentTab = TabItem.main;
+  bool _appThemeButtonHidden = false;
+
+  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+
   final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys =
       <TabItem, GlobalKey<NavigatorState>>{
     TabItem.main: GlobalKey<NavigatorState>(),
@@ -35,7 +40,27 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    appThemeButtonStorage.addListener(_appThemeButtonListener);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    appThemeButtonStorage.removeListener(_appThemeButtonListener);
+  }
+
+  void _appThemeButtonListener() {
+    setState(() {
+      _appThemeButtonHidden = appThemeButtonStorage.isButtonHidden;
+    });
+  }
+
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
 
@@ -70,17 +95,19 @@ class _RootScreenState extends State<RootScreen> {
           currentTab: _currentTab,
           onSelectTab: _selectTab,
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: colors.backgroundExtraSurface.color(),
-          shape: CircleBorder(),
-          label: Icon(
-            AdmiralIcons.admiral_ic_menu_outline,
-            color: colors.elementExtra.color(),
-          ),
-          onPressed: () {
-            changeTheme();
-          },
-        ),
+        floatingActionButton: !_appThemeButtonHidden
+            ? FloatingActionButton.extended(
+                backgroundColor: colors.backgroundExtraSurface.color(),
+                shape: CircleBorder(),
+                label: Icon(
+                  AdmiralIcons.admiral_ic_menu_outline,
+                  color: colors.elementExtra.color(),
+                ),
+                onPressed: () {
+                  changeTheme();
+                },
+              )
+            : null,
       ),
     );
   }
