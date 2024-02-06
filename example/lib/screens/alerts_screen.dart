@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'list_cell_model.dart';
 import '../navigation/tab_navigator_home.dart';
@@ -46,11 +45,7 @@ class AlertsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,

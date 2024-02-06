@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CenterCellsScreen extends StatefulWidget {
@@ -26,11 +25,7 @@ class _CenterCellsScreenState extends State<CenterCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -59,50 +54,45 @@ class _CenterCellsScreenState extends State<CenterCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
-                centerCell: TitleCellWidget(
-                  title: 'Title', 
-                  isEnabled: isEnabled),
+                centerCell:
+                    TitleCellWidget(title: 'Title', isEnabled: isEnabled),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
                 centerCell: SubtitleTitleCellWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
-                  isEnabled: isEnabled),
+                    title: 'Title', subtitle: 'Subtitle', isEnabled: isEnabled),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
                 centerCell: TitleSubtitleCellWidget(
-                    title: 'Title', 
-                    subtitle: 'Subtitle', 
-                  isEnabled: isEnabled),
+                    title: 'Title', subtitle: 'Subtitle', isEnabled: isEnabled),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
                 centerCell: TitleMoreDetailTextMessageWidget(
-                  title: 'Title',
-                  more: 'More',
-                  detaile: 'Detail',
-                  detaileMore: 'More',
-                  subtitle: 'Subtitle',
-                  tagText: 'Percent',
-                  messageText: 'Text message',
-                  infoImage: AdmiralIcons.admiral_ic_info_outline,
-                  isEnabled: isEnabled),
+                    title: 'Title',
+                    more: 'More',
+                    detaile: 'Detail',
+                    detaileMore: 'More',
+                    subtitle: 'Subtitle',
+                    tagText: 'Percent',
+                    messageText: 'Text message',
+                    infoImage: AdmiralIcons.admiral_ic_info_outline,
+                    isEnabled: isEnabled),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
                 centerCell: TitleSubtitleButtonWidget(
-                  title: 'Title',
-                  subtitle: 'Subtitle',
-                  tagText: 'Percent',
-                  subtitleTwo: 'Subtitle 2',
-                  buttonTitle: 'Button',
-                  isEnabled: isEnabled),
+                    title: 'Title',
+                    subtitle: 'Subtitle',
+                    tagText: 'Percent',
+                    subtitleTwo: 'Subtitle 2',
+                    buttonTitle: 'Button',
+                    isEnabled: isEnabled),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
               ),
