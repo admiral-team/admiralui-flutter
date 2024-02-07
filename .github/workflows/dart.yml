@@ -11,7 +11,6 @@ jobs:
   set-pull-request:
     name: Set Pull Request
     runs-on: [ self-hosted, main, flutter ]
-    if: github.event.action == 'opened' || github.event.action == 'reopened'
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
@@ -28,7 +27,8 @@ jobs:
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Link issue
         run: cd build/ios/fastlane && bundle exec fastlane link_issue issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }}
-
+        
+  # if: github.event.action == 'opened' || github.event.action == 'reopened'
   # setup:
   #   name: Setup Environment
   #   runs-on: [ self-hosted, main, flutter ]
