@@ -290,7 +290,7 @@ lane :link_issue do |options|
   end 
 
   if issue_number.to_i.zero?
-    UI.user_error!("Wrong branch name")
+    UI.user_error!("No issue number from branch name")
     return
   end 
 
