@@ -14,6 +14,7 @@ class TextFieldWidget extends StatefulWidget {
     this.labelText = '',
     this.informerText,
     this.placeHolderText = '',
+    this.numberOfLines = 1,
     this.hasSecure,
     this.trailingIcon,
     this.bottomWidget,
@@ -32,6 +33,7 @@ class TextFieldWidget extends StatefulWidget {
   final String labelText;
   final String? informerText;
   final String placeHolderText;
+  final int? numberOfLines;
   final bool? hasSecure;
   final Icon? trailingIcon;
   final Widget? bottomWidget;
@@ -114,7 +116,8 @@ class _TextFieldState extends State<TextFieldWidget>
                       const SizedBox(
                         height: LayoutGrid.doubleModule,
                       ),
-                      TextFormField(
+                      TextField(
+                        maxLines: widget.numberOfLines,
                         obscureText: _isSecure,
                         controller: widget.controller,
                         focusNode: _effectiveFocusNode,
