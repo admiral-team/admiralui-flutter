@@ -280,10 +280,7 @@ lane :link_issue do |options|
     labels << "enhancement"
   end
 
-  issue_number = ''
-  if issue_name.nil? || issue_name == ""
-    issue_number = extract_issue_name(branch_name: issue_name)
-  end
+  issue_number = extract_issue_name(branch_name: issue_name)
 
   if issue_number.downcase == "tech"
     return
