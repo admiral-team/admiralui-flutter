@@ -276,7 +276,7 @@ lane :link_issue do |options|
   end
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
-  client.add_comment("#{repo_owner}/#{repo_name}", pull_request_number, "Related to ##{issue_number}")
+  client.add_comment("#{repo_owner}/#{repo_name}", pull_request_number, "Resolve ##{issue_number}")
   client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, labels: labels)
 end
 
