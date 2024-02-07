@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SmallBadgesScreen extends StatelessWidget {
@@ -19,8 +18,7 @@ class SmallBadgesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
