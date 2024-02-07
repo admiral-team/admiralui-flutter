@@ -2,20 +2,18 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:example/gen/assets.gen.dart';
 
-class TabStandardScreen extends StatefulWidget {
-  const TabStandardScreen({
-    super.key,
-    this.appBarHidden = false,
+class LogoTabsScreen extends StatefulWidget {
+  const LogoTabsScreen({
+    super.key
   });
 
-  final bool appBarHidden;
-
   @override
-  State<TabStandardScreen> createState() => _TabStandardScreenState();
+  State<LogoTabsScreen> createState() => _LogoTabsScreenState();
 }
 
-class _TabStandardScreenState extends State<TabStandardScreen> {
+class _LogoTabsScreenState extends State<LogoTabsScreen> {
   bool isEnabled = true;
 
   @override
@@ -35,7 +33,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Standard Tabs',
+          'Logo Tabs',
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
@@ -76,11 +74,12 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               SizedBox(
                 height: LayoutGrid.module * 3,
               ),
-              StandardTabs(
-                <String>['One', 'Two'],
-                isEnabled: isEnabled,
-                onTap: (String _) {
-                },
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image()
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -94,10 +93,13 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image()
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -111,12 +113,15 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three', 'Four'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
-              ),
-              SizedBox(
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image(),
+                Assets.card.applePay.image(),
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
+              ),              SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
@@ -128,10 +133,15 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three', 'Four', 'Five'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image(),
+                Assets.card.applePay.image(),
+                Assets.card.googlePay.image(),
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
             ],
           ),

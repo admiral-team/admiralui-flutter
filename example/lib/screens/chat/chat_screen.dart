@@ -2,7 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
-import '../navigation/tab_navigator_chat.dart';
+import '../../navigation/tab_navigator_chat.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -37,8 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ListCellModel(
         title: 'Input',
         description: '',
-        onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
+        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.input),
       ),
       ListCellModel(
         title: 'Text Message',

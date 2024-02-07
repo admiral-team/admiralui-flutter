@@ -1,3 +1,4 @@
+import 'package:example/screens/tabs/logo_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
@@ -84,6 +85,7 @@ enum TabNavigatorRoutes {
   pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
   standardTabs('/tabs/standardTabs'),
+  logoTabs('/tabs/logoTabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
@@ -384,7 +386,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
           const ActionToastScreen(),
       TabNavigatorRoutes.standardTabs.value: (BuildContext context) =>
-          const TabStandardScreen()
+          const TabStandardScreen(),
+      TabNavigatorRoutes.logoTabs.value: (BuildContext context) =>
+          const LogoTabsScreen()  
     };
   }
 

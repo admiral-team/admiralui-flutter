@@ -1,5 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
-import 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_status_parameters.dart';
+import 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status_parameters.dart';
 import 'package:admiralui_flutter/theme/admiral_color.dart';
 import 'package:flutter/material.dart';
 
