@@ -23,11 +23,12 @@ jobs:
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
       APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
     steps:
+      - uses: actions/checkout@v3
       - name: Install Fastlane Dependencies
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Link issue
         run: cd build/ios/fastlane && bundle exec fastlane link_issue issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }}
-        
+
   # if: github.event.action == 'opened' || github.event.action == 'reopened'
   # setup:
   #   name: Setup Environment
