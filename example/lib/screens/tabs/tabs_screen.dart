@@ -36,7 +36,7 @@ class TabsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Outline Slider Tabs',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.feedback),
+        onPressed: () => onPush.call(TabNavigatorRoutes.outlineTabs),
       ),
       ListCellModel(
         title: 'Underline Tabs',
