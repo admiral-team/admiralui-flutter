@@ -268,7 +268,15 @@ lane :link_issue do |options|
     labels << "enhancement"
   end
 
+  issue_number = ''
+  if issue_name.nil? || issue_name == ""
+    issue_number = extract_issue_name(branch_name: branch_name)
+  else
+    issue_number = extract_issue_name(branch_name: issue_name)
+  end
+
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
+  client.add_comment("#{repo_owner}/#{repo_name}", pull_request_number, "Related to ##{issue_number}")
   client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, labels: labels)
 end
 
