@@ -11,19 +11,38 @@ class LogoTabsScheme {
     labelFont = theme.fonts.subhead2;
     unselectedLabelFont = theme.fonts.subhead3;
 
-    borderColor.set(
+    selectedBorderColor.set(
+      theme.colors.elementAccent.color(),
+      ControlState.normal,
+    );
+    selectedBorderColor.set(
       theme.colors.elementAccent.color(),
       ControlState.highlighted,
     );
-    borderColor.set(
+    selectedBorderColor.set(
       theme.colors.elementAccent.colorWithOpacity(),
+      ControlState.disabled,
+    );
+
+    borderColor.set(
+      theme.colors.elementAdditional.color(),
+      ControlState.normal,
+    );
+    borderColor.set(
+      theme.colors.elementAdditional.color(),
+      ControlState.highlighted,
+    );
+    borderColor.set(
+      theme.colors.elementAdditional.colorWithOpacity(),
       ControlState.disabled,
     );
   }
 
   AppTheme theme;
   late Color labelColor;
+
   late ControlParameter<Color> borderColor = ControlParameter<Color>();
+  late ControlParameter<Color> selectedBorderColor = ControlParameter<Color>();
   late Color backgroundColor;
 
   late AFont labelFont;

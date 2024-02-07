@@ -88,6 +88,14 @@ class AdmiralTab extends StatelessWidget {
 
     final double calculatedHeight;
     final Widget label;
+    bool isShowContainer = true;
+    if (selected == curPosition) {
+      isShowContainer = false;
+    } else if (selected != curPosition && selected != 0)  {
+      if (curPosition == (selected - 1)) {
+        isShowContainer = false;
+      }
+    }
     if (icon == null) {
       calculatedHeight = _kTabHeight;
       label = Row(
@@ -103,9 +111,7 @@ class AdmiralTab extends StatelessWidget {
           Container(
             height: LayoutGrid.doubleModule,
             width: 1,
-            color: selected != curPosition &&
-                    curPosition != (selected - 1) &&
-                    curPosition != (selected + 1)
+            color: isShowContainer
                 ? colors.elementAdditional.color()
                 : Colors.transparent,
           ),
@@ -113,7 +119,20 @@ class AdmiralTab extends StatelessWidget {
       );
     } else if (text == null && child == null) {
       calculatedHeight = _kTabHeight;
-      label = icon!;
+      label = Row(
+        children: <Widget>[
+          Expanded(
+            child: icon!,
+          ),
+          Container(
+            height: LayoutGrid.doubleModule,
+            width: 1,
+            color: isShowContainer
+                ? colors.elementAdditional.color()
+                : Colors.transparent,
+          ),
+        ],
+      );
     } else {
       calculatedHeight = _kTextAndIconTabHeight;
       label = Column(
