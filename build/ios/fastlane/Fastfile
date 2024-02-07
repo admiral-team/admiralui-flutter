@@ -260,10 +260,10 @@ lane :link_issue do |options|
   pull_request_number = options[:pull_request_number]
   issue_name = options[:issue_name]
 
-  branch_part = issue_name.split("/").first
+  first_branch_part = issue_name.split("/").first
   last_branch_part = issue_name.split("/").last
 
-  if first_part == "rc"
+  if first_branch_part == "rc"
     return
   end 
 
