@@ -56,9 +56,8 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
+        padding: const EdgeInsets.fromLTRB(LayoutGrid.doubleModule, 0,
+            LayoutGrid.doubleModule, LayoutGrid.module * 6),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
@@ -168,7 +167,7 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                   ),
                 ),
                 informerText: 'Additional text',
-              ),
+              )
             ],
           ),
         ),
