@@ -1,9 +1,33 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/tabs/logo_tabs/logo_tabs_scheme.dart';
 import 'package:admiralui_flutter/src/widgets/tabs/tab.dart';
 import 'package:flutter/material.dart';
 
+/// Widget representing a set of tabs with logos/images.
+///
+/// This widget extends [StatefulWidget], allowing dynamic updates to its state.
+///
+/// Constructor:
+/// ```
+/// LogoTabs(
+///   List<Widget> images, {
+///   bool isEnabled = true,
+///   Function(int)? onSelected,
+///   LogoTabsScheme? scheme,
+///   Key? key,
+/// })
+/// ```
+///
+/// Parameters:
+/// - `images`: A list of widgets representing the logos/icons to be displayed as tabs.
+/// - `isEnabled`: A boolean indicating whether the tabs are enabled or disabled
+/// Defaults to `true`.
+/// - `onSelected`: A callback function that takes an integer 
+/// indicating the index of the selected tab when it's tapped. 
+/// It's invoked when a tab is selected.
+/// - `scheme`: An optional `LogoTabsScheme` object that 
+/// defines the color scheme for the tabs.
+/// - `key`: An optional `Key` that uniquely identifies this widget.
 class LogoTabs extends StatefulWidget {
   const LogoTabs(
     this.images, {
@@ -36,61 +60,76 @@ class _LogoTabsState extends State<LogoTabs>
         scheme.borderColor.unsafeParameter(ControlState.normal);
     final Color borderColorDisabled =
         scheme.borderColor.unsafeParameter(ControlState.disabled);
-    // ignore: lines_longer_than_80_chars
     final Color borderColor =
         widget.isEnabled ? borderColorNormal : borderColorDisabled;
 
-    return DefaultTabController(
-      length: widget.images.length,
-      child: DecoratedBox(
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(LayoutGrid.module),
-          ),
-          color: scheme.backgroundColor,
-        ),
-        child: TabBar(
-          onTap: (int index) {
-            setState(() {
-              currentPos = index;
-              if (widget.onSelected != null) {
-                setState(() {
-                  widget.onSelected!(currentPos);
-                });
-              }
-            });
-          },
-          indicator: BoxDecoration(
-            border: Border.all(
-              color: borderColor,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(
-              LayoutGrid.module,
-            ),
-          ),
-          padding: EdgeInsets.zero,
-          labelPadding: EdgeInsets.zero,
-          labelStyle: scheme.labelFont.toTextStyle(
-            scheme.labelColor,
-          ),
-          unselectedLabelStyle: scheme.unselectedLabelFont.toTextStyle(
-            scheme.labelColor,
-          ),
-          labelColor: scheme.labelColor,
-          unselectedLabelColor: scheme.labelColor,
-          tabs: <Widget>[
-            for (int i = 0; i < widget.images.length; i++) ...<Widget>[
-              SizedBox(
-                height: LayoutGrid.quadrupleModule,
-                child: AdmiralTab(
-                  icon: widget.images[i],
-                  curPosition: i,
-                  selected: currentPos,
-                ),
+    final Color selectedBorderColorNormal =
+        scheme.selectedBorderColor.unsafeParameter(ControlState.normal);
+    final Color selectedBorderColorDisabled =
+        scheme.selectedBorderColor.unsafeParameter(ControlState.disabled);
+    final Color selectedBorderColor = widget.isEnabled
+        ? selectedBorderColorNormal
+        : selectedBorderColorDisabled;
+
+    return IgnorePointer(
+      ignoring: !widget.isEnabled,
+      child: DefaultTabController(
+        length: widget.images.length,
+        child: DecoratedBox(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(LayoutGrid.module),
+              side: BorderSide(
+                color: borderColor,
               ),
+            ),
+            color: scheme.backgroundColor,
+          ),
+          child: TabBar(
+            dividerColor: Colors.transparent,
+            onTap: (int index) {
+              setState(() {
+                currentPos = index;
+                if (widget.onSelected != null) {
+                  setState(() {
+                    widget.onSelected!(currentPos);
+                  });
+                }
+              });
+            },
+            indicator: BoxDecoration(
+              border: Border.all(
+                color: selectedBorderColor,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(
+                LayoutGrid.module,
+              ),
+            ),
+            padding: EdgeInsets.zero,
+            labelPadding: EdgeInsets.zero,
+            labelStyle: scheme.labelFont.toTextStyle(
+              scheme.labelColor,
+            ),
+            unselectedLabelStyle: scheme.unselectedLabelFont.toTextStyle(
+              scheme.labelColor,
+            ),
+            labelColor: scheme.labelColor,
+            unselectedLabelColor: scheme.labelColor,
+            tabs: <Widget>[
+              for (int i = 0; i < widget.images.length; i++) ...<Widget>[
+                SizedBox(
+                  height: LayoutGrid.module * 6,
+                  width: double.infinity,
+                  child: AdmiralTab(
+                    icon: widget.images[i],
+                    curPosition: i,
+                    selected: currentPos,
+                  ),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

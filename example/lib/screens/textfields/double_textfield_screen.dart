@@ -1,7 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
 class DoubleTextFieldScreen extends StatefulWidget {
   const DoubleTextFieldScreen({
@@ -20,10 +20,11 @@ class DoubleTextFieldScreen extends StatefulWidget {
 class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
   FocusNode leftTextFieldFocusNode = FocusNode();
   FocusNode rightTextFieldFocusNode = FocusNode();
-  TextInputState leftTextFieldState = TextInputState.normal;
-  TextInputState rightTextFieldState = TextInputState.normal;
   TextEditingController leftTextController = TextEditingController();
   TextEditingController rightTextController = TextEditingController();
+  TextEditingController leftTextUnequalController = TextEditingController();
+  TextEditingController rightTextUnequalController = TextEditingController();
+  TextInputState textFieldState = TextInputState.normal;
 
   @override
   Widget build(BuildContext context) {
@@ -64,20 +65,16 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
                   setState(() {
                     switch (value) {
                       case 'Default':
-                        leftTextFieldState = TextInputState.normal;
-                        rightTextFieldState = TextInputState.normal;
+                        textFieldState = TextInputState.normal;
                         break;
                       case 'Read Only':
-                        leftTextFieldState = TextInputState.readOnly;
-                        rightTextFieldState = TextInputState.readOnly;
+                        textFieldState = TextInputState.readOnly;
                         break;
                       case 'Error':
-                        leftTextFieldState = TextInputState.error;
-                        rightTextFieldState = TextInputState.error;
+                        textFieldState = TextInputState.error;
                         break;
                       case 'Disabled':
-                        leftTextFieldState = TextInputState.disabled;
-                        rightTextFieldState = TextInputState.disabled;
+                        textFieldState = TextInputState.disabled;
                         break;
                     }
                   });
@@ -86,25 +83,57 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
+              TitleHeaderWidget(
+                  title: '50/50',
+                  style: TitleHeaderStyle.headlineSecondary,
+                  textAlign: TextAlign.left),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
               DoubleTextField(
                 TextFieldWidget(
                   leftTextController,
-                  state: leftTextFieldState,
-                  focusNode: leftTextFieldFocusNode,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
                   rightTextController,
-                  state: rightTextFieldState,
-                  focusNode: rightTextFieldFocusNode,
+                  state: textFieldState,
                   labelText: 'label',
                   placeHolderText: 'placeholder',
                   informerText: 'informer text',
                 ),
                 DoubleTextFieldAlignment(),
               ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
+                  title: '70/30',
+                  style: TitleHeaderStyle.headlineSecondary,
+                  textAlign: TextAlign.left),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              DoubleTextField(
+                TextFieldWidget(
+                  leftTextUnequalController,
+                  state: textFieldState,
+                  labelText: 'label',
+                  placeHolderText: 'placeholder',
+                  informerText: 'informer text',
+                ),
+                TextFieldWidget(
+                  rightTextUnequalController,
+                  state: textFieldState,
+                  labelText: 'label',
+                  placeHolderText: 'placeholder',
+                  informerText: 'informer text',
+                ),
+                DoubleTextFieldAlignment(ratio: 70),
+              )
             ],
           ),
         ),

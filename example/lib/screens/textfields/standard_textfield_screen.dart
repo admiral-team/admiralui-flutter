@@ -1,7 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
 class StandardTextFieldScreen extends StatefulWidget {
   const StandardTextFieldScreen({
@@ -51,9 +51,8 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
+        padding: const EdgeInsets.fromLTRB(LayoutGrid.doubleModule, 0,
+            LayoutGrid.doubleModule, LayoutGrid.module * 6),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
@@ -163,7 +162,7 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                   ),
                 ),
                 informerText: 'Additional text',
-              ),
+              )
             ],
           ),
         ),
