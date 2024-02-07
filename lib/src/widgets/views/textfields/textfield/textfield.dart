@@ -2,7 +2,76 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// Enum representing the possible states of a text input field.
+///
+/// - `normal`: The default state of the text input field.
+/// - `error`: Indicates an error state in the text input field.
+/// - `disabled`: Represents a disabled state for the text input field.
+/// - `readOnly`: Indicates that the text input field is in read-only mode.
+///
+/// This enum is often used to control the appearance and behavior of a text
+/// input widget based on its state.
+/// ```
+
 enum TextInputState { normal, error, disabled, readOnly }
+
+/// This widget provides a customizable text input field
+/// with additional features
+///
+/// Constructor:
+/// ```
+/// TextFieldWidget(
+///   TextEditingController controller, {
+///   TextInputState state = TextInputState.normal,
+///   FocusNode? focusNode,
+///   TextInputType? keyboardType,
+///   TextInputAction? textInputAction,
+///   String labelText = '',
+///   String? informerText,
+///   String placeHolderText = '',
+///   int? numberOfLines = 1,
+///   bool? hasSecure,
+///   Icon? trailingIcon,
+///   Widget? bottomWidget,
+///   ValueChanged<String>? onChanged,
+///   VoidCallback? onEditingComplete,
+///   VoidCallback? onTrailingTap,
+///   TextFieldScheme? scheme,
+///   Key? key,
+/// })
+/// ```
+///
+/// Parameters:
+/// - `controller`: A controller for the text field.
+/// - `state`: The state of the text input field
+///   (normal, error, disabled, readOnly).
+/// - `focusNode`: An optional focus node for the text input.
+/// - `keyboardType`: An optional keyboard type for the text input.
+/// - `textInputAction`: An optional text input action for the text input.
+/// - `labelText`: The label text for the text input.
+/// - `informerText`: Additional informative text.
+/// - `placeHolderText`: Placeholder text for the text input.
+/// - `numberOfLines`: The number of lines for the text input.
+/// - `hasSecure`: A boolean indicating if the text input is secure (password).
+/// - `trailingIcon`: An optional trailing icon for the text input.
+/// - `bottomWidget`: An optional widget to display below the text input.
+/// - `onChanged`: Callback function when the text input value changes.
+/// - `onEditingComplete`: Callback function when editing is complete.
+/// - `onTrailingTap`: Callback function when the trailing icon is tapped.
+/// - `scheme`: An optional scheme defining the appearance of the text input.
+/// - `key`: An optional key to uniquely identify this widget.
+///
+/// Example usage:
+///
+/// TextFieldWidget(
+///   myTextEditingController,
+///   labelText: 'Username',
+///   state: TextInputState.normal,
+///   onChanged: (text) {
+///     // Handle text changes
+///   },
+/// )
+/// ```
 
 class TextFieldWidget extends StatefulWidget {
   const TextFieldWidget(
