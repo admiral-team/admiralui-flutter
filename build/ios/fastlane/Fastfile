@@ -287,7 +287,7 @@ lane :link_issue do |options|
   puts pull_request_issue_description
 
   if pull_request_issue_description.include?("# Задача")
-    new_description = pull_request_issue_description.gsub("# Задача", "Closes ##{issue_number}\n#{issue_description}\n")
+    new_description = pull_request_issue_description.gsub("# Задача", "# Задача\n#{issue_description}\nCloses ##{issue_number}\n")
 
     client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, body: new_description)
     UI.success("Update issue description")
