@@ -260,6 +260,18 @@ lane :link_issue do |options|
   pull_request_number = options[:pull_request_number]
   issue_name = options[:issue_name]
 
+  branch_part = branch_name.split("/").first
+  last_branch_part = branch_name.split("/").last
+
+  if first_part == "rc"
+    return
+  end 
+
+  if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
+    UI.user_error!("Wrong branch name")
+    return
+  end 
+
   labels = []
 
   if issue_name.downcase.include?('bugfix')
@@ -275,6 +287,15 @@ lane :link_issue do |options|
     issue_number = extract_issue_name(branch_name: issue_name)
   end
 
+  if issue_number.downcase == "tech"
+    return
+  end 
+
+  if issue_number.to_i.zero?
+    UI.user_error!("Wrong branch name")
+    return
+  end 
+
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
 
   issue_info = client.issue("#{repo_owner}/#{repo_name}", issue_number)
@@ -282,9 +303,6 @@ lane :link_issue do |options|
 
   pull_request_issue_info = client.issue("#{repo_owner}/#{repo_name}", pull_request_number)
   pull_request_issue_description = pull_request_issue_info[:body]
-
-  puts issue_description
-  puts pull_request_issue_description
 
   if pull_request_issue_description.include?("# Задача")
     new_description = pull_request_issue_description.gsub("# Задача", "# Задача\n#{issue_description}\nCloses ##{issue_number}\n")
