@@ -283,10 +283,11 @@ lane :link_issue do |options|
   pull_request_issue_info = client.issue("#{repo_owner}/#{repo_name}", pull_request_number)
   pull_request_issue_description = issue_info[:body]
 
-  if issue_description.include?("# Задача")
-    new_description = issue_description.gsub("# Задача", "Closes ##{issue_number}\n#{issue_description}\n")
+  if pull_request_issue_description.include?("# Задача")
+    new_description = pull_request_issue_description.gsub("# Задача", "Closes ##{issue_number}\n#{issue_description}\n")
 
     client.update_issue("#{repo_owner}/#{repo_name}", issue_number, body: new_description)
+    UI.success("Update issue description")
   end
 
 end
