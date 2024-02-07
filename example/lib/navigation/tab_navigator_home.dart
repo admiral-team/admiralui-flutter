@@ -24,7 +24,7 @@ import '../screens/text_block/accordion_screen.dart';
 import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
-import '../screens/standard_textfield_screen.dart';
+import '../screens/textfields/standard_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
@@ -37,7 +37,7 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
-import '../screens/double_textfield_screen.dart';
+import '../screens/textfields/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
@@ -227,7 +227,7 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
           const CalendarHorizontalScreen(title: 'Horizontal'),
-        TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
+      TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
           const CalendarVerticalScreen(title: 'Vertical'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
