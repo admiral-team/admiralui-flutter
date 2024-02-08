@@ -2,7 +2,6 @@
 
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ToastScreen extends StatefulWidget {
@@ -27,8 +26,7 @@ class _ToastScreenState extends State<ToastScreen> {
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         centerTitle: true,
-        leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,

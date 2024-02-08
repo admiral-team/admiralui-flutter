@@ -79,6 +79,8 @@ export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs.d
 export 'package:admiralui_flutter/src/widgets/tabs/informer_tabs/informer_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/logo_tabs/logo_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/logo_tabs/logo_tabs_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/outline_tabs/outline_tabs.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/outline_tabs/outline_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';

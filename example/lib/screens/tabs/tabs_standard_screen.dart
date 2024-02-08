@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TabStandardScreen extends StatefulWidget {
@@ -27,11 +26,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
@@ -68,7 +63,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Two controls', 
+                title: 'Two controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -79,14 +74,13 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               StandardTabs(
                 <String>['One', 'Two'],
                 isEnabled: isEnabled,
-                onTap: (String _) {
-                },
+                onTap: (String _) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Three controls', 
+                title: 'Three controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -103,7 +97,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Four controls', 
+                title: 'Four controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -120,7 +114,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Five controls', 
+                title: 'Five controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,

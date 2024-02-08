@@ -1,4 +1,5 @@
 import 'package:example/screens/tabs/logo_tabs_screen.dart';
+import 'package:example/screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
@@ -25,7 +26,7 @@ import '../screens/text_block/accordion_screen.dart';
 import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
-import '../screens/standard_textfield_screen.dart';
+import '../screens/textfields/standard_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
@@ -38,7 +39,7 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
-import '../screens/double_textfield_screen.dart';
+import '../screens/textfields/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
@@ -87,6 +88,7 @@ enum TabNavigatorRoutes {
   tabs('/tabs'),
   standardTabs('/tabs/standardTabs'),
   logoTabs('/tabs/logoTabs'),
+  outlineTabs('/tabs/outlineTabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
@@ -392,7 +394,9 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.standardTabs.value: (BuildContext context) =>
           const TabStandardScreen(),
       TabNavigatorRoutes.logoTabs.value: (BuildContext context) =>
-          const LogoTabsScreen()
+          const LogoTabsScreen(),
+      TabNavigatorRoutes.outlineTabs.value: (BuildContext context) =>
+          const OutlineTabsScreen()
     };
   }
 
