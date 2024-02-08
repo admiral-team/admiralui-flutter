@@ -26,6 +26,8 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
   TextEditingController textController = TextEditingController(text: 'Text');
   TextEditingController secureTextController =
       TextEditingController(text: 'Text');
+  TextEditingController multilineTextController = TextEditingController(
+      text: 'Here is an example of how you can create multiline Text Field');
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +123,24 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 informerText: 'Additional text',
                 hasSecure: true,
               ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
+                title: 'Multiline',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TextFieldWidget(multilineTextController,
+                  state: state,
+                  numberOfLines: null,
+                  labelText: 'Optional label',
+                  placeHolderText: 'Placeholder',
+                  informerText: 'Additional text'),
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
