@@ -100,7 +100,7 @@ class _OutlineTabsState extends State<OutlineTabs>
                           color: currentPos == i
                               ? selectedBorderColor
                               : borderColor,
-                          width: 2,
+                          width: LayoutGrid.halfModule / 2,
                         ),
                         borderRadius: BorderRadius.circular(
                           LayoutGrid.module,
