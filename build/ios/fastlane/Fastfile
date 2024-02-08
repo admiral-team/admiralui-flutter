@@ -264,12 +264,11 @@ lane :link_issue do |options|
   last_branch_part = issue_name.split("/").last
 
   if first_branch_part == "rc"
-    return
+    next
   end 
 
   if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
     UI.user_error!("Wrong branch name")
-    return
   end 
 
   labels = []
@@ -283,12 +282,12 @@ lane :link_issue do |options|
   issue_number = extract_issue_name(branch_name: issue_name)
 
   if issue_number.downcase == "tech" || issue_number.downcase == "bump"
-    return
+    next
   end 
 
   if issue_number.to_i.zero?
     UI.user_error!("No issue number from branch name")
-    return
+    next
   end 
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
