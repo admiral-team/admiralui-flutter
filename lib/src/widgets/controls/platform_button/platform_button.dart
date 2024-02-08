@@ -21,7 +21,8 @@ import 'package:flutter/material.dart';
 /// - `key`: An optional key to uniquely identify this widget.
 /// - `onPressed`: Callback function triggered when the button is pressed.
 /// - `title`: The text displayed on the button.
-/// - `isEnable`: A boolean indicating whether the button is enabled or disabled.
+/// - `isEnable`: A boolean indicating whether the button
+/// is enabled or disabled.
 ///   Defaults to `true`.
 /// - `iconData`: An optional image to be displayed on the button.
 /// - `iconPosition`: An optional position for the image
@@ -125,7 +126,11 @@ class _PlatformButtonState extends State<PlatformButton> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(
-                  LayoutGrid.doubleModule, 0, LayoutGrid.module, 0),
+                LayoutGrid.doubleModule,
+                0,
+                LayoutGrid.module,
+                0,
+              ),
               child: Center(
                 widthFactor: 1,
                 child: TextView(
