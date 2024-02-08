@@ -282,7 +282,7 @@ lane :link_issue do |options|
 
   issue_number = extract_issue_name(branch_name: issue_name)
 
-  if issue_number.downcase == "tech"
+  if issue_number.downcase == "tech" || issue_number.downcase == "bump"
     return
   end 
 
