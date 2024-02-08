@@ -11,7 +11,7 @@ jobs:
   set-pull-request:
     name: Set Pull Request
     runs-on: [ self-hosted, main, flutter ]
-    # if: github.event.action == 'opened'
+    if: github.event.action == 'opened'
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
