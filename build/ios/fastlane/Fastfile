@@ -254,4 +254,59 @@ lane :get_all_github_request_builds_and_remove do |options|
   end
 end
 
+lane :link_issue do |options|
+  repo_owner = 'admiral-team'
+  repo_name = 'admiralui-flutter'
+  pull_request_number = options[:pull_request_number]
+  issue_name = options[:issue_name]
+
+  first_branch_part = issue_name.split("/").first
+  last_branch_part = issue_name.split("/").last
+
+  if first_branch_part == "rc"
+    next
+  end 
+
+  if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
+    UI.user_error!("Wrong branch name")
+  end 
+
+  labels = []
+
+  if issue_name.downcase.include?('bugfix')
+    labels << "bug"
+  elsif issue_name.downcase.include?('feature')
+    labels << "enhancement"
+  end
+
+  issue_number = extract_issue_name(branch_name: issue_name)
+
+  if issue_number.downcase == "tech" || issue_number.downcase == "bump"
+    next
+  end 
+
+  if issue_number.to_i.zero?
+    UI.user_error!("No issue number from branch name")
+    next
+  end 
+
+  client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
+
+  issue_info = client.issue("#{repo_owner}/#{repo_name}", issue_number)
+  issue_description = issue_info[:body]
+
+  pull_request_issue_info = client.issue("#{repo_owner}/#{repo_name}", pull_request_number)
+  pull_request_issue_description = pull_request_issue_info[:body]
+
+  if pull_request_issue_description.include?("# Задача")
+    new_description = pull_request_issue_description.gsub("# Задача", "# Задача\n#{issue_description}\nCloses ##{issue_number}\n")
+
+    client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, body: new_description)
+    UI.success("Update issue description")
+  else 
+    UI.error("Dont update issue description")
+  end
+
+end
+
 
