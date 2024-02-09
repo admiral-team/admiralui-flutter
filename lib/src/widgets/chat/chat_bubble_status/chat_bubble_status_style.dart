@@ -3,5 +3,8 @@ enum ChatBubbleStatusStyle {
   initial,
 
   /// The light style of ChatBubbleStatusStyle.
-  light
+  light,
+
+  /// The secondary style of ChatBubbleStatusStyle.
+  secondary
 }

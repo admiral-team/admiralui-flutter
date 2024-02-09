@@ -41,6 +41,16 @@ class $AssetsCardGen {
       [applePay, googlePay, masterCard, mir, rnb, visa, visaLabel];
 }
 
+class $AssetsChatGen {
+  const $AssetsChatGen();
+
+  /// File path: assets/chat/Photo.png
+  AssetGenImage get photo => const AssetGenImage('assets/chat/Photo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [photo];
+}
+
 class $AssetsCurrencyGen {
   const $AssetsCurrencyGen();
 
@@ -207,6 +217,7 @@ class Assets {
   Assets._();
 
   static const $AssetsCardGen card = $AssetsCardGen();
+  static const $AssetsChatGen chat = $AssetsChatGen();
   static const $AssetsCurrencyGen currency = $AssetsCurrencyGen();
   static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
