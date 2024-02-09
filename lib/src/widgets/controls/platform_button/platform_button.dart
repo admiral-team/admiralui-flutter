@@ -43,7 +43,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 ///
-
 class PlatformButton extends StatefulWidget {
   /// Creates a PlatformButton.
   const PlatformButton({
