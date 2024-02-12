@@ -55,7 +55,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: 'Uploading Photo',
         description: '',
         onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
+            widget.onPush.call(TabNavigatorChatRoutes.uploadingPhoto),
       ),
       ListCellModel(
         title: 'Uploading File',

@@ -55,19 +55,19 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
         break;
       case ChatStatus.read:
         icon = Icon(
-          AdmiralIcons.admiral_ic_chat_outline,
+          AdmiralIcons.admiral_ic_email_read_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.receive:
         icon = Icon(
-          AdmiralIcons.admiral_ic_chat_outline,
+          AdmiralIcons.admiral_ic_ok_send_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.sent:
         icon = Icon(
-          AdmiralIcons.admiral_ic_chat_outline,
+          AdmiralIcons.admiral_ic_ok_send_outline,
           color: imageColor,
         );
         break;

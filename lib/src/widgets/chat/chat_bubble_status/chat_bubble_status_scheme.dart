@@ -106,7 +106,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.loading,
     );
@@ -114,7 +114,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.error,
     );
@@ -122,7 +122,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.sent,
     );
@@ -130,7 +130,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.receive,
     );
@@ -138,7 +138,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.read,
     );
@@ -146,7 +146,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.normal,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.none,
     );
@@ -154,7 +154,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.loading,
     );
@@ -162,7 +162,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.error,
     );
@@ -170,7 +170,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.sent,
     );
@@ -178,7 +178,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.receive,
     );
@@ -186,7 +186,7 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
       ChatStatus.read,
     );
@@ -194,200 +194,8 @@ class ChatBubbleStatusScheme {
     textColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
-      ChatBubbleStatusStyle.light,
+      ChatBubbleStatusStyle.secondary,
       ChatDirection.right,
-      ChatStatus.none,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.loading,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.error,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.sent,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.receive,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.read,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.none,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.loading,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.error,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.sent,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.receive,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.read,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.initial,
-      ChatDirection.left,
-      ChatStatus.none,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.loading,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.error,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.sent,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.receive,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.read,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.color(),
-      ControlState.normal,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.none,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.loading,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.error,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.sent,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.receive,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
-      ChatStatus.read,
-    );
-
-    textColor.set(
-      theme.colors.textSecondary.colorWithOpacity(),
-      ControlState.disabled,
-      ChatBubbleStatusStyle.light,
-      ChatDirection.left,
       ChatStatus.none,
     );
 
@@ -440,6 +248,198 @@ class ChatBubbleStatusScheme {
     );
 
     textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.secondary,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textSecondary.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
       theme.colors.textSecondary.color(),
       ControlState.disabled,
       ChatBubbleStatusStyle.initial,
@@ -483,6 +483,198 @@ class ChatBubbleStatusScheme {
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
       ChatBubbleStatusStyle.initial,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.right,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.color(),
+      ControlState.normal,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.none,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.loading,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.error,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.sent,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.receive,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
+      ChatDirection.left,
+      ChatStatus.read,
+    );
+
+    textColor.set(
+      theme.colors.textStaticWhite.colorWithOpacity(),
+      ControlState.disabled,
+      ChatBubbleStatusStyle.light,
       ChatDirection.left,
       ChatStatus.none,
     );

@@ -2,6 +2,7 @@ library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
+export 'package:admiralui_flutter/src/utils/partion.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status_style.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
@@ -12,6 +13,13 @@ export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_scheme.
 export 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_cell_item.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_grid_corner_style.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_item.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_view.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_view_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/grid/uploading_photo_grid.dart';
+export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/grid/uploading_photo_grid_builder.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_group.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_style.dart';
