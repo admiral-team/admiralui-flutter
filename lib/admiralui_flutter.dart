@@ -41,6 +41,8 @@ export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input.dart'
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/code_input_status.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/pin_code_item_parameters.dart';
 export 'package:admiralui_flutter/src/widgets/controls/pin_code/pin_code_item_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/controls/platform_button/platform_button.dart';
+export 'package:admiralui_flutter/src/widgets/controls/platform_button/platform_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/primary_button/primary_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/secondary_button/secondary_button.dart';

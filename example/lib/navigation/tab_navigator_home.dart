@@ -9,6 +9,7 @@ import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
 import '../screens/buttons/buttons_primary_screen.dart';
 import '../screens/buttons/buttons_secondary_screen.dart';
+import '../screens/buttons/buttons_other_screen.dart';
 import '../screens/buttons/buttons_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/badges/badges_screen.dart';
@@ -102,6 +103,7 @@ enum TabNavigatorRoutes {
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
+  buttonsOther('/buttons/other'),
   links('/links'),
   iconTabs('/iconTabs'),
   badges('/badges'),
@@ -258,6 +260,8 @@ class TabNavigatorHome extends StatelessWidget {
           ButtonsSecondaryScreen(),
       TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
           ButtonsGhostScreen(),
+      TabNavigatorRoutes.buttonsOther.value: (BuildContext context) =>
+          ButtonsOtherScreen(),
       TabNavigatorRoutes.checkbox.value: (BuildContext context) =>
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
@@ -392,7 +396,7 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.logoTabs.value: (BuildContext context) =>
           const LogoTabsScreen(),
       TabNavigatorRoutes.outlineTabs.value: (BuildContext context) =>
-          const OutlineTabsScreen()  
+          const OutlineTabsScreen()
     };
   }
 
