@@ -1,7 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'screens/root_screen.dart';
 
 void main() {
@@ -23,11 +22,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppThemeProviderWrapper(
+    final AppTheme theme = AppThemeProvider.of(context);
+    final ColorPalette colors = theme.colors;
+
+    return AppThemeProviderWrapper(
       child: MaterialApp(
         title: 'Дизайн-система  «Адмирал»',
         home: RootScreen(),
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(color: colors.elementPrimary.color()),
+          ),
+        ),
       ),
     );
   }

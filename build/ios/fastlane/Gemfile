@@ -11,6 +11,7 @@ gem "rqrcode", '~> 2.0'
 gem "cocoapods", '~>1.9.3'
 gem "fastlane"
 gem "xcov"
+gem "octokit"
 gem 'fastlane-plugin-appcenter'
 gem 'fastlane-plugin-create_xcframework'
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')

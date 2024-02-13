@@ -1,21 +1,18 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:example/gen/assets.gen.dart';
 
-class TabStandartScreen extends StatefulWidget {
-  const TabStandartScreen({
-    super.key,
-    this.appBarHidden = false,
+class LogoTabsScreen extends StatefulWidget {
+  const LogoTabsScreen({
+    super.key
   });
 
-  final bool appBarHidden;
-
   @override
-  State<TabStandartScreen> createState() => _TabStandartScreenState();
+  State<LogoTabsScreen> createState() => _LogoTabsScreenState();
 }
 
-class _TabStandartScreenState extends State<TabStandartScreen> {
+class _LogoTabsScreenState extends State<LogoTabsScreen> {
   bool isEnabled = true;
 
   @override
@@ -27,15 +24,11 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Standard Tabs',
+          'Logo Tabs',
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
@@ -50,6 +43,7 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
           horizontal: LayoutGrid.doubleModule,
         ),
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: LayoutGrid.doubleModule * 6),
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -75,11 +69,12 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
               SizedBox(
                 height: LayoutGrid.module * 3,
               ),
-              StandardTabs(
-                <String>['One', 'Two'],
-                isEnabled: isEnabled,
-                onTap: (String _) {
-                },
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image()
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -93,10 +88,13 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image()
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -110,12 +108,15 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three', 'Four'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
-              ),
-              SizedBox(
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image(),
+                Assets.card.applePay.image(),
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
+              ),              SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
@@ -127,10 +128,15 @@ class _TabStandartScreenState extends State<TabStandartScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              StandardTabs(
-                <String>['One', 'Two', 'Three', 'Four', 'Five'],
-                isEnabled: isEnabled,
-                onTap: (String _) {},
+              LogoTabs(<Widget>[
+                Assets.card.visaLabel.image(),
+                Assets.card.masterCard.image(),
+                Assets.card.mir.image(),
+                Assets.card.applePay.image(),
+                Assets.card.googlePay.image(),
+              ],
+              isEnabled: isEnabled,
+              onSelected: (int index) {},
               ),
             ],
           ),

@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import '../navigation/tab_navigator_home.dart';
 
@@ -30,11 +30,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
@@ -59,8 +55,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               BaseCellWidget(
-                leadingCell: Image.asset(
-                  'assets/card/visa.png',
+                leadingCell: Assets.card.visa.image(
                   width: 40,
                   height: 28,
                 ),
@@ -97,8 +92,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
               BaseCellWidget(
                 leadingCell: Shimmer(
                   period: Duration(milliseconds: 2500),
-                  child: Image.asset(
-                    'assets/card/visa.png',
+                  child: Assets.card.visa.image(
                     width: 40,
                     height: 28,
                   ),
@@ -118,16 +112,14 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
                     ),
                   ],
                 ),
-                trailingCell: Image.asset(
-                  'assets/card/visaLabel.png',
+                trailingCell: Assets.card.visaLabel.image(
                   height: 16,
                   width: 28,
                 ),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset(
-                  'assets/card/visa.png',
+                leadingCell: Assets.card.visa.image(
                   width: 40,
                   height: 28,
                 ),
@@ -157,8 +149,7 @@ class _ShimmerScreenState extends State<ShimmerScreen> {
                     ),
                   ],
                 ),
-                trailingCell: Image.asset(
-                  'assets/card/visaLabel.png',
+                trailingCell: Assets.card.visaLabel.image(
                   height: 16,
                   width: 28,
                 ),

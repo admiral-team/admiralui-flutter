@@ -1,3 +1,5 @@
+import 'package:example/screens/tabs/logo_tabs_screen.dart';
+import 'package:example/screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
@@ -7,7 +9,9 @@ import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
 import '../screens/buttons/buttons_primary_screen.dart';
 import '../screens/buttons/buttons_secondary_screen.dart';
+import '../screens/buttons/buttons_other_screen.dart';
 import '../screens/buttons/buttons_screen.dart';
+import '../screens/buttons/buttons_rules_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/badges/badges_screen.dart';
 import '../screens/badges/normal_badges_screen.dart';
@@ -23,12 +27,12 @@ import '../screens/text_block/accordion_screen.dart';
 import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
-import '../screens/standart_textfield_screen.dart';
+import '../screens/textfields/standard_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/undeline_tabs.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
 import '../screens/tabs/informer_tabs_screen.dart';
-import '../screens/tabs/tabs_standart_screen.dart';
+import '../screens/tabs/tabs_standard_screen.dart';
 import '../screens/informers/toast_screen.dart';
 import '../screens/checkbox_screen.dart';
 import '../screens/currency_icon_screen.dart';
@@ -36,7 +40,7 @@ import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
 import '../screens/pin_code_screen.dart';
-import '../screens/double_textfield_screen.dart';
+import '../screens/textfields/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
@@ -72,7 +76,7 @@ enum TabNavigatorRoutes {
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
-  standartTextfield('/textfields/standartTextfield'),
+  standardTextfield('/textfields/standardTextfield'),
   doubleTextField('/textfields/dobuleTextField'),
   otpTextField('/textfields/otpTextTextfield'),
   inputNumberDefault('/textfields/inputNumber/inputNumberDefault'),
@@ -83,7 +87,9 @@ enum TabNavigatorRoutes {
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
   tabs('/tabs'),
-  standartTabs('/tabs/standartTabs'),
+  standardTabs('/tabs/standardTabs'),
+  logoTabs('/tabs/logoTabs'),
+  outlineTabs('/tabs/outlineTabs'),
   calendar('/calendar'),
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
@@ -98,6 +104,8 @@ enum TabNavigatorRoutes {
   buttonsPrimary('/buttons/primary'),
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
+  buttonsOther('/buttons/other'),
+  buttonsRules('/buttons/rules'),
   links('/links'),
   iconTabs('/iconTabs'),
   badges('/badges'),
@@ -175,9 +183,9 @@ class TabNavigatorHome extends StatelessWidget {
               onPush: (TabNavigatorRoutes route) => _push(context, route)),
       TabNavigatorRoutes.feedback.value: (BuildContext context) =>
           const FeedbackScreen(title: 'Feedback'),
-      TabNavigatorRoutes.standartTextfield.value: (BuildContext context) =>
-          StandartTextFieldScreen(
-            title: 'Standart Textfield',
+      TabNavigatorRoutes.standardTextfield.value: (BuildContext context) =>
+          StandardTextFieldScreen(
+            title: 'Standard Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.doubleTextField.value: (BuildContext context) =>
@@ -225,7 +233,7 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.calendarHorizontal.value: (BuildContext context) =>
           const CalendarHorizontalScreen(title: 'Horizontal'),
-        TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
+      TabNavigatorRoutes.calendarVertical.value: (BuildContext context) =>
           const CalendarVerticalScreen(title: 'Vertical'),
       TabNavigatorRoutes.pageControls.value: (BuildContext context) =>
           PageControlsScreen(
@@ -254,6 +262,10 @@ class TabNavigatorHome extends StatelessWidget {
           ButtonsSecondaryScreen(),
       TabNavigatorRoutes.buttonsGhost.value: (BuildContext context) =>
           ButtonsGhostScreen(),
+      TabNavigatorRoutes.buttonsOther.value: (BuildContext context) =>
+          ButtonsOtherScreen(),
+      TabNavigatorRoutes.buttonsRules.value: (BuildContext context) =>
+          ButtonsRulesScreen(),
       TabNavigatorRoutes.checkbox.value: (BuildContext context) =>
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
@@ -383,8 +395,12 @@ class TabNavigatorHome extends StatelessWidget {
           const ToastStaticScreen(),
       TabNavigatorRoutes.toastAction.value: (BuildContext context) =>
           const ActionToastScreen(),
-      TabNavigatorRoutes.standartTabs.value: (BuildContext context) =>
-          const TabStandartScreen()
+      TabNavigatorRoutes.standardTabs.value: (BuildContext context) =>
+          const TabStandardScreen(),
+      TabNavigatorRoutes.logoTabs.value: (BuildContext context) =>
+          const LogoTabsScreen(),
+      TabNavigatorRoutes.outlineTabs.value: (BuildContext context) =>
+          const OutlineTabsScreen()
     };
   }
 

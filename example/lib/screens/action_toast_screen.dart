@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ActionToastScreen extends StatefulWidget {
@@ -25,8 +24,7 @@ class _ActionToastScreenState extends State<ActionToastScreen> {
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         centerTitle: true,
-        leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -64,8 +62,7 @@ class _ActionToastScreenState extends State<ActionToastScreen> {
               onPressed: () {
                 showToastWidget(
                     ActionToastWidget(
-                      title:
-                          'Сообщение будет удалено',
+                      title: 'Сообщение будет удалено',
                       linkText: 'Отмена',
                       onLinkPressed: () {
                         closeAllToastWidget();

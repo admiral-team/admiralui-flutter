@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 class FontFamily {
   FontFamily._();
@@ -13,9 +13,9 @@ class FontFamily {
   /// Font family: AdmiralIcons
   static const String admiralIcons = 'AdmiralIcons';
 
-  /// Font family: sfProDisplay
-  static const String sfprodisplay = 'SFProDisplay';
+  /// Font family: SFProDisplay
+  static const String sFProDisplay = 'SFProDisplay';
 
-  /// Font family: sfProText
-  static const String sfprotext = 'SFProText';
+  /// Font family: SFProText
+  static const String sFProText = 'SFProText';
 }

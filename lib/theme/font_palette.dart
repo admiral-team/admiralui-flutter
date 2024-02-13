@@ -48,82 +48,82 @@ class FontPalette {
 const defaultFontPalette = FontPalette(
   largeTitle1: AFont(
     fontSize: 32,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w700,
   ),
   caption2: AFont(
     fontSize: 10,
-    fontFamily: FontFamily.sfprotext,
+    fontFamily: FontFamily.sFProText,
     fontWeight: FontWeight.w500,
   ),
   body1: AFont(
     fontSize: 16,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w500,
   ),
   subtitle1: AFont(
     fontSize: 18,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w700,
   ),
   subhead1: AFont(
     fontSize: 14,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w700,
   ),
   headline: AFont(
     fontSize: 16,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w600,
   ),
   subtitle2: AFont(
     fontSize: 18,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w600,
   ),
   subtitle3: AFont(
     fontSize: 18,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w400,
   ),
   subhead4: AFont(
     fontSize: 14,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w400,
   ),
   title2: AFont(
     fontSize: 22,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w500,
   ),
   subhead2: AFont(
     fontSize: 14,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w600,
   ),
   subhead3: AFont(
     fontSize: 14,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w500,
   ),
   body2: AFont(
     fontSize: 16,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w400,
   ),
   largeTitle2: AFont(
     fontSize: 28,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w700,
   ),
   title1: AFont(
     fontSize: 22,
-    fontFamily: FontFamily.sfprodisplay,
+    fontFamily: FontFamily.sFProDisplay,
     fontWeight: FontWeight.w700,
   ),
   caption1: AFont(
     fontSize: 12,
-    fontFamily: FontFamily.sfprotext,
+    fontFamily: FontFamily.sFProText,
     fontWeight: FontWeight.w500,
   ),
 );

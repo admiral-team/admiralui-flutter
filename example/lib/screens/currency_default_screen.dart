@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../navigation/tab_navigator_home.dart';
 
@@ -22,8 +21,7 @@ class CurrencyDefaultScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -63,12 +61,7 @@ class CurrencyDefaultScreen extends StatelessWidget {
             SizedBox(
               height: LayoutGrid.quadrupleModule,
             ),
-            CurrencyHeader(
-              'Валюта',
-              'Купить',
-              'Продать',
-              isTextSpacingEnabled: true,
-            ),
+            CurrencyHeader('Валюта', 'Купить', 'Продать'),
             SizedBox(
               height: LayoutGrid.doubleModule,
             ),

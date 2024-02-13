@@ -1,11 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class StandartTextFieldScreen extends StatefulWidget {
-  const StandartTextFieldScreen({
+class StandardTextFieldScreen extends StatefulWidget {
+  const StandardTextFieldScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -15,11 +14,11 @@ class StandartTextFieldScreen extends StatefulWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
-  State<StandartTextFieldScreen> createState() =>
-      _StandartTextFieldScreenState();
+  State<StandardTextFieldScreen> createState() =>
+      _StandardTextFieldScreenState();
 }
 
-class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
+class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
   bool isEnabled = true;
   FocusNode focusNode = FocusNode();
   FocusNode secureFocusNode = FocusNode();
@@ -27,6 +26,8 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
   TextEditingController textController = TextEditingController(text: 'Text');
   TextEditingController secureTextController =
       TextEditingController(text: 'Text');
+  TextEditingController multilineTextController = TextEditingController(
+      text: 'Here is an example of how you can create multiline Text Field');
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +38,11 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Standart TextField',
+          'Standard TextField',
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
@@ -56,9 +53,8 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
+        padding: const EdgeInsets.fromLTRB(LayoutGrid.doubleModule, 0,
+            LayoutGrid.doubleModule, LayoutGrid.module * 6),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
@@ -131,6 +127,24 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
+                title: 'Multiline',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TextFieldWidget(multilineTextController,
+                  state: state,
+                  numberOfLines: null,
+                  labelText: 'Optional label',
+                  placeHolderText: 'Placeholder',
+                  informerText: 'Additional text'),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
                 title: '+ Tags & Informer',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
@@ -168,7 +182,7 @@ class _StandartTextFieldScreenState extends State<StandartTextFieldScreen> {
                   ),
                 ),
                 informerText: 'Additional text',
-              ),
+              )
             ],
           ),
         ),

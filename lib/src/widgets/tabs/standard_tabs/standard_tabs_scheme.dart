@@ -1,8 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
-class StandartTabsScheme {
-  StandartTabsScheme({
+class StandardTabsScheme {
+  StandardTabsScheme({
     required this.theme,
   }) {
     textColor = theme.colors.textPrimary.color();

@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'list_cell_model.dart';
 import '../navigation/tab_navigator_home.dart';
@@ -21,7 +20,7 @@ class AlertsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Alert',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.standartTextfield),
+        onPressed: () => onPush.call(TabNavigatorRoutes.standardTextfield),
       ),
       ListCellModel(
         title: 'Onboarding',
@@ -46,8 +45,7 @@ class AlertsScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: const Icon(Icons.arrow_back_ios),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,

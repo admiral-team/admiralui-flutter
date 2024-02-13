@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class LeadingCellsScreen extends StatefulWidget {
@@ -26,11 +26,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -59,7 +55,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/card/visa.png'),
+                leadingCell: Assets.card.visa.image(),
                 centerCell: TitleCellWidget(
                   title: 'Card Place',
                   isEnabled: isEnabled,
@@ -68,7 +64,7 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
-                leadingCell: Image.asset('assets/card/rnb.png'),
+                leadingCell: Assets.card.rnb.image(),
                 centerCell: TitleCellWidget(
                   title: 'Lable Place',
                   isEnabled: isEnabled,

@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class TrailingCellsScreen extends StatefulWidget {
@@ -26,11 +26,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
+        leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
@@ -105,7 +101,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                   title: 'Title',
                   isEnabled: isEnabled,
                 ),
-                trailingCell: Image.asset('assets/card/rnb.png'),
+                trailingCell: Assets.card.rnb.image(),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
@@ -113,7 +109,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                   title: 'Title',
                   isEnabled: isEnabled,
                 ),
-                trailingCell: Image.asset('assets/card/visa.png'),
+                trailingCell: Assets.card.visa.image(),
                 horizontalPadding: 0,
               ),
               BaseCellWidget(
@@ -135,7 +131,7 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                 ),
                 trailingCell: ImageSubtitleCellWidget(
                   subtitle: 'Date',
-                  imageWidget: Image.asset('assets/card/mir.png'),
+                  imageWidget: Assets.card.mir.image(),
                   isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
