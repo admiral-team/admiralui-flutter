@@ -85,6 +85,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### get_all_github_request_builds_and_remove
+
+```sh
+[bundle exec] fastlane get_all_github_request_builds_and_remove
+```
+
+
+
+### link_issue
+
+```sh
+[bundle exec] fastlane link_issue
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
