@@ -79,6 +79,9 @@ class ButtonsScreen extends StatelessWidget {
               AdmiralIcons.admiral_ic_chevron_right_outline,
               color: colors.elementSecondary.color(),
             ),
+            onPressed: () => onPush.call(
+              TabNavigatorRoutes.buttonsRules,
+            ),
           ),
           BaseCellWidget(
             centerCell: TextView('Other buttons'),

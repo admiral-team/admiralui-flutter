@@ -11,6 +11,7 @@ import '../screens/buttons/buttons_primary_screen.dart';
 import '../screens/buttons/buttons_secondary_screen.dart';
 import '../screens/buttons/buttons_other_screen.dart';
 import '../screens/buttons/buttons_screen.dart';
+import '../screens/buttons/buttons_rules_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/badges/badges_screen.dart';
 import '../screens/badges/normal_badges_screen.dart';
@@ -104,6 +105,7 @@ enum TabNavigatorRoutes {
   buttonsSecondary('/buttons/secondary'),
   buttonsGhost('/buttons/ghost'),
   buttonsOther('/buttons/other'),
+  buttonsRules('/buttons/rules'),
   links('/links'),
   iconTabs('/iconTabs'),
   badges('/badges'),
@@ -262,6 +264,8 @@ class TabNavigatorHome extends StatelessWidget {
           ButtonsGhostScreen(),
       TabNavigatorRoutes.buttonsOther.value: (BuildContext context) =>
           ButtonsOtherScreen(),
+      TabNavigatorRoutes.buttonsRules.value: (BuildContext context) =>
+          ButtonsRulesScreen(),
       TabNavigatorRoutes.checkbox.value: (BuildContext context) =>
           const CheckboxScreen(),
       TabNavigatorRoutes.tags.value: (BuildContext context) =>
