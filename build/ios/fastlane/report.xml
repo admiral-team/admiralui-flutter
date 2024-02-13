@@ -5,12 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Switch to increment_app_version lane" time="0.001454">
+      <testcase classname="fastlane.lanes" name="0: Switch to increment_app_version lane" time="0.000182">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="2.202028">
+      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="1.25862">
         
       </testcase>
     
