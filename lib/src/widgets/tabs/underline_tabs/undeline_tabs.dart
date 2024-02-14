@@ -3,6 +3,50 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/undeline_tabs_scheme.dart';
 import 'package:flutter/material.dart';
 
+/// A customizable widget for displaying a set of
+/// tabs with an underline indicator.
+///
+/// Constructor:
+/// ```
+/// UnderlineTabs(
+///   List<String> items, {
+///     bool isEnable = true,
+///     int? selectedIndex,
+///     ValueChanged<int>? onTap,
+///     bool isCenterTabs = false,
+///     double horizontalPadding = 0.0,
+///     UnderlineTabsScheme? scheme,
+///     Key? key,
+///   })
+/// ```
+///
+/// Parameters:
+/// - `items`: A list of strings representing the labels for each tab.
+/// - `isEnable`: A boolean indicating whether the tabs are enabled or disabled.
+///  Defaults to `true`.
+/// - `selectedIndex`: The index of the initially selected tab.
+/// Defaults to the first tab (index 0).
+/// - `onTap`: Callback function triggered when a tab is tapped.
+/// It provides the index of the tapped tab.
+/// - `isCenterTabs`: A boolean indicating whether tabs should be centered.
+/// Defaults to `false`.
+/// - `horizontalPadding`: Horizontal padding for the entire widget.
+/// - `scheme`: An optional scheme defining
+/// the appearance of the underline tabs.
+/// - `key`: An optional key to uniquely identify this widget.
+///
+/// Example usage:
+/// ```dart
+/// UnderlineTabs(
+///   ['Tab 1', 'Tab 2', 'Tab 3'],
+///   onTap: (index) {
+///     // Handle tab selection
+///   },
+///   isCenterTabs: true,
+///   scheme: UnderlineTabsScheme.light(),
+/// )
+/// ```
+///
 class UnderlineTabs extends StatefulWidget {
   const UnderlineTabs(
     this.items, {
