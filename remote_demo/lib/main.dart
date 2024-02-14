@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore_for_file: directives_ordering
 import 'package:admiralui_flutter/src/widgets/text_view.dart';
 
 void main() {
