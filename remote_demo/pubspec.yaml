@@ -1,0 +1,24 @@
+name: remote_demo
+description: "Remote demo project"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  admiralui_flutter:
+    git:
+      url: https://github.com/admiral-team/admiralui-flutter.git
+      ref: main
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
