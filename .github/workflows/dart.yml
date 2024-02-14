@@ -146,6 +146,34 @@ jobs:
             cd build/ios/fastlane && bundle install && bundle update &&
              bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
+  build_demo_remote:
+    name: Build remote demo project
+    runs-on: [ self-hosted, main, flutter ]
+    if: github.event.action != 'closed'
+    needs: test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.8'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Install dependencies
+        run: cd remote_demo && flutter pub get
+      - name: Check If Setup Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+      - run: cd remote_demo && flutter build web
+      - name: Check If Build Web Failed
+        if: ${{ failure() }}
+        run: |
+            cd build/ios/fastlane && bundle install && bundle update &&
+             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+
   deploy-ios-dev:
     name: Deploy iOS Appcenter Development
     needs: test
