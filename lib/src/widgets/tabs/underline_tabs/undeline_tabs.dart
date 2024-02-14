@@ -9,6 +9,8 @@ class UnderlineTabs extends StatefulWidget {
     this.isEnable = true,
     this.selectedIndex,
     this.onTap,
+    this.isCenterTabs = false,
+    this.horizontalPadding = 0.0,
     this.scheme,
     super.key,
   });
@@ -17,6 +19,8 @@ class UnderlineTabs extends StatefulWidget {
   final bool isEnable;
   final int? selectedIndex;
   final ValueChanged<int>? onTap;
+  final bool isCenterTabs;
+  final double horizontalPadding;
   final UnderlineTabsScheme? scheme;
 
   @override
@@ -42,10 +46,10 @@ class _UnderlineTabsState extends State<UnderlineTabs>
 
     final Color textColorNormal =
         scheme.labelColor.unsafeParameter(ControlState.normal);
-    final Color textColordDisabled =
+    final Color textColorDisabled =
         scheme.labelColor.unsafeParameter(ControlState.disabled);
     final Color textColor =
-        widget.isEnable ? textColorNormal : textColordDisabled;
+        widget.isEnable ? textColorNormal : textColorDisabled;
 
     final AFont textFont = widget.isEnable
         ? scheme.labelFont.unsafeParameter(ControlState.normal)
@@ -54,46 +58,54 @@ class _UnderlineTabsState extends State<UnderlineTabs>
     return DefaultTabController(
       length: widget.items.length,
       initialIndex: widget.selectedIndex ?? 0,
-      child: Column(
-        children: <Widget>[
-          DecoratedBox(
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
-              color: scheme.backgroundColor,
-            ),
-            child: TabBar(
-              onTap: (int index) {
-                setState(() {
-                  currentPos = index;
-                  widget.onTap?.call(index);
-                });
-              },
-              indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(
-                  color: borderColor,
-                  width: LayoutGrid.halfModule / 2,
-                ),
-              ),
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              tabs: <Widget>[
-                for (int i = 0; i < widget.items.length; i++) ...<Widget>[
-                  Text(
-                    widget.items[i],
-                    style: TextStyle(
-                      fontSize: textFont.fontSize,
-                      color: textColor,
-                      fontFamily: textFont.fontFamily,
-                      fontWeight: textFont.fontWeight,
-                    ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
+        child: Column(
+          children: <Widget>[
+            IgnorePointer(
+              ignoring: !widget.isEnable,
+              child: TabBar(
+                tabAlignment: widget.isCenterTabs ? null : TabAlignment.start,
+                isScrollable: !widget.isCenterTabs,
+                dividerColor: Colors.transparent,
+                onTap: (int index) {
+                  setState(() {
+                    currentPos = index;
+                    widget.onTap?.call(index);
+                  });
+                },
+                labelPadding: const EdgeInsets.only(bottom: LayoutGrid.module),
+                indicator: UnderlineTabIndicator(
+                  borderSide: BorderSide(
+                    color: borderColor,
+                    width: LayoutGrid.halfModule / 2,
                   ),
+                ),
+                padding: EdgeInsets.zero,
+                tabs: <Widget>[
+                  for (int i = 0; i < widget.items.length; i++) ...<Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: widget.isCenterTabs ? 0 : LayoutGrid.module,
+                      ),
+                      child: Center(
+                        child: Text(
+                          widget.items[i],
+                          style: TextStyle(
+                            fontSize: textFont.fontSize,
+                            color: textColor,
+                            fontFamily: textFont.fontFamily,
+                            fontWeight: textFont.fontWeight,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

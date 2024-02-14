@@ -91,6 +91,7 @@ export 'package:admiralui_flutter/src/widgets/tabs/outline_tabs/outline_tabs.dar
 export 'package:admiralui_flutter/src/widgets/tabs/outline_tabs/outline_tabs_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/tabs/standard_tabs/standard_tabs_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/undeline_tabs.dart';
 export 'package:admiralui_flutter/src/widgets/text_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge.dart';
 export 'package:admiralui_flutter/src/widgets/views/badge/badge_scheme.dart';

@@ -20,14 +20,14 @@ import 'package:flutter/material.dart';
 ///
 /// Parameters:
 /// - `tabs`: A list of strings representing the labels of the tabs.
-/// - `isEnabled`: A boolean indicating whether the tabs are 
+/// - `isEnabled`: A boolean indicating whether the tabs are
 /// enabled or disabled. Defaults to `true`.
-/// - `horizontalPadding`: The horizontal padding applied to each tab. 
+/// - `horizontalPadding`: The horizontal padding applied to each tab.
 /// Defaults to `0.0`.
-/// - `scheme`: An optional `OutlineTabsScheme` object that defines 
+/// - `scheme`: An optional `OutlineTabsScheme` object that defines
 /// the color scheme for the tabs.
-/// - `onSelected`: A callback function that takes an integer 
-/// indicating the index of the selected tab when it's tapped. 
+/// - `onSelected`: A callback function that takes an integer
+/// indicating the index of the selected tab when it's tapped.
 /// It's invoked when a tab is selected.
 /// - `key`: An optional `Key` that uniquely identifies this widget.
 class OutlineTabs extends StatefulWidget {
