@@ -14,7 +14,7 @@ class SliderWidget extends StatefulWidget {
     this.divisions = 100,
     this.currentSliderValue = 0,
     this.onChanged,
-    required this.textFieldChange,
+    this.textFieldChange,
     this.scheme,
   });
 
@@ -24,7 +24,7 @@ class SliderWidget extends StatefulWidget {
   final int divisions;
   final double currentSliderValue;
   final ValueChanged<double>? onChanged;
-  final ValueNotifier<double> textFieldChange;
+  final ValueNotifier<double>? textFieldChange;
   final SliderScheme? scheme;
 
   @override
@@ -39,10 +39,10 @@ class _SliderWidgetState extends State<SliderWidget> {
   void initState() {
     super.initState();
     _currentSliderValue = widget.currentSliderValue;
-    widget.textFieldChange.addListener(
+    widget.textFieldChange?.addListener(
       () {
         setState(() {
-          _currentSliderValue = widget.textFieldChange.value;
+          _currentSliderValue = widget.textFieldChange?.value ?? 0;
         });
       },
     );
@@ -51,7 +51,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   @override
   void dispose() {
     super.dispose();
-    widget.textFieldChange.removeListener(() {});
+    widget.textFieldChange?.removeListener(() {});
   }
 
   @override
