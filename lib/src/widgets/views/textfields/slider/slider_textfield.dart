@@ -1,13 +1,16 @@
+// ignore_for_file: avoid_print
+
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SliderTextField extends StatefulWidget {
   const SliderTextField(
     this.controller, {
     this.state = TextInputState.normal,
     this.focusNode,
-    this.keyboardType,
+    this.keyboardType = TextInputType.number,
     this.textInputAction,
     this.labelText = '',
     this.trailingText = '',
@@ -62,9 +65,12 @@ class _SliderTextFieldState extends State<SliderTextField>
   late double _currentSliderValue;
   late InputRangeTextFieldScheme scheme;
 
+  late ValueNotifier<double> notifier;
+
   @override
   void initState() {
     super.initState();
+    notifier = ValueNotifier<double>(widget.currentValue);
     _effectiveFocusNode
         .addListener(() => _onFocus(hasFocus: _effectiveFocusNode.hasFocus));
   }
@@ -86,8 +92,34 @@ class _SliderTextFieldState extends State<SliderTextField>
   }
 
   void _onChanged({required String text}) {
-    setState(() {});
-    widget.onChanged?.call(text);
+    try {
+      if (text.isNotEmpty) {
+        final double currentTextValue = double.parse(text);
+        if (currentTextValue >= widget.minLabelText &&
+            currentTextValue <= widget.maxLabelText) {
+          setState(() {
+            _currentSliderValue = currentTextValue;
+          });
+
+          notifier.value = currentTextValue;
+          widget.onChanged?.call(text);
+        } else if (currentTextValue > widget.maxLabelText) {
+          setState(() {
+            _currentSliderValue = widget.maxLabelText;
+            notifier.value = widget.maxLabelText;
+            widget.controller.text = '${widget.maxLabelText.toInt()}';
+          });
+        } else if (currentTextValue < widget.minLabelText) {
+          setState(() {
+            _currentSliderValue = widget.minLabelText;
+            notifier.value = widget.minLabelText;
+            widget.controller.text = '${widget.minLabelText.toInt()}';
+          });
+        }
+      }
+    } catch (e) {
+      print('Invalid input string $text');
+    }
   }
 
   @override
@@ -114,10 +146,15 @@ class _SliderTextFieldState extends State<SliderTextField>
                   Row(
                     children: <Widget>[
                       IntrinsicWidth(
-                        child: TextFormField(
+                        child: TextField(
                           controller: widget.controller,
                           focusNode: _effectiveFocusNode,
                           textAlign: TextAlign.left,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r'^\d+\.?\d*'),
+                            ),
+                          ],
                           style: TextStyle(
                             fontWeight:
                                 scheme.textFieldScheme.textFieldFont.fontWeight,
@@ -128,7 +165,10 @@ class _SliderTextFieldState extends State<SliderTextField>
                             color:
                                 scheme.textColor.unsafeParameter(widget.state),
                           ),
-                          keyboardType: widget.keyboardType,
+                          keyboardType: const TextInputType.numberWithOptions(
+                            signed: true,
+                            decimal: true,
+                          ),
                           decoration: InputDecoration(
                             hintText:
                                 _textFieldText.isEmpty ? _placeHolderText : '',
@@ -150,13 +190,26 @@ class _SliderTextFieldState extends State<SliderTextField>
                           readOnly: widget.state == TextInputState.readOnly,
                         ),
                       ),
-                      if (_textFieldText.isNotEmpty)
-                        TextView(
-                          widget.trailingText,
-                          font: scheme.leadingTextFont,
-                          textColorNormal: scheme.leadingTextColor
-                              .unsafeParameter(widget.state),
+                      if (widget.trailingText.isNotEmpty)
+                        Container(
+                          padding: const EdgeInsets.only(
+                            top: LayoutGrid.halfModule / 2,
+                          ),
+                          child: TextView(
+                            widget.trailingText,
+                            font: scheme.leadingTextFont,
+                            textColorNormal: scheme.leadingTextColor
+                                .unsafeParameter(widget.state),
+                            textColorDisabled: scheme.leadingTextColor
+                                .unsafeParameter(widget.state),
+                          ),
                         ),
+                      const Spacer(),
+                      Icon(
+                        AdmiralIcons.admiral_ic_info_outline,
+                        size: LayoutGrid.halfModule * 7,
+                        color: scheme.iconColor.color(),
+                      ),
                     ],
                   ),
                   SliderWidget(
@@ -165,8 +218,11 @@ class _SliderTextFieldState extends State<SliderTextField>
                     max: widget.maxLabelText,
                     divisions: widget.divisions,
                     currentSliderValue: _currentSliderValue,
-                    onChanged: (double value) =>
-                        widget.controller.text = '${value.toInt()}',
+                    textFieldChange: notifier,
+                    onChanged: (double value) => setState(() {
+                      _currentSliderValue = value;
+                      widget.controller.text = '${value.toInt()}';
+                    }),
                   ),
                 ],
               ),
