@@ -11,7 +11,7 @@
         
     #### BUMP (2 неделя от начала спринта)
         * Далее необходимо создать ветку **bump-<version>(например bump-1-1-1)** от ветки **develop** и 
-        * Запустив скрипт set_version.command необходимо проставить проставить external_version = 0.0.0 и internal_version увеличить на +1
+        * Запустив скрипт set_version.command необходимо проставить external_version = 0.0.0 и internal_version увеличить на +1
         * Так же необходимо проставить версию библиотеки на 0.0.0 в файле pubspec.yaml (строка version: 0.0.0)
         * Далее создается pull request ветки **bump-<version>** в ветку **develop** Название pull request (например [BUMP] - 8)
 
