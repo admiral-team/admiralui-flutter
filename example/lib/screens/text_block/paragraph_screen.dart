@@ -25,6 +25,12 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        title: Text(
+          'Paragraph',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
