@@ -25,6 +25,12 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        title: Text(
+          'Action cell',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),

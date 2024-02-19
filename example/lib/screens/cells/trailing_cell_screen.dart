@@ -26,6 +26,12 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        title: Text(
+          'Trailing elements',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
