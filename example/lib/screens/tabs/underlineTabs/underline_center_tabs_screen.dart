@@ -74,7 +74,10 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>['One', 'Two'],
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two')
+              ],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -98,7 +101,11 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>['One', 'Two', 'Three'],
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two'),
+                UnderlineTabItem('Three'),
+              ],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -122,7 +129,12 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>['One', 'Two', 'Three', 'Four'],
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two'),
+                UnderlineTabItem('Three'),
+                UnderlineTabItem('Four'),
+              ],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -146,7 +158,41 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>['One', 'Two', 'Three', 'Four', 'Five'],
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two'),
+                UnderlineTabItem('Three'),
+                UnderlineTabItem('Four'),
+                UnderlineTabItem('Five')
+              ],
+              selectedIndex: 0,
+              isEnable: isEnabled,
+              isCenterTabs: true,
+              horizontalPadding: LayoutGrid.doubleModule,
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: TitleHeaderWidget(
+                title: 'Notifications',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 3,
+            ),
+            UnderlineTabs(
+              <UnderlineTabItem>[
+                UnderlineTabItem('One', badgeStyle: BadgeStyle.normal),
+                UnderlineTabItem('Two', badgeStyle: BadgeStyle.normal),
+                UnderlineTabItem('Three', badgeStyle: BadgeStyle.additional)
+              ],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
