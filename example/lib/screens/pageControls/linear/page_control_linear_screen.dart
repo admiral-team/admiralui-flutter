@@ -32,7 +32,7 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
     'seven',
   ];
 
-  int _currentStep = 0;
+  int _countStep = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -67,35 +67,29 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              StandardTabs(
+              // OutlineTabs(tabItems),
+              OutlineTabs(
                 tabItems,
-                onTap: (String value) {
+                onSelected: (int index) {
                   setState(() {
-                    final int index = tabItems
-                        .indexWhere((String element) => element == value);
-                    _stepNotifier.value = index;
-                    _currentStep = index;
+                    _countStep = index + 1;
+                    _stepNotifier.value = 0;
                   });
                 },
               ),
               SizedBox(
-                height: LayoutGrid.module * 5,
+                height: LayoutGrid.quadrupleModule * 4,
               ),
-              LinearPageControl(
-                tabItems.length,
-                _currentStep,
-                5,
-                stepNotifier: _stepNotifier,
-              ),
+              LinearPageControl(_countStep, _stepNotifier.value, 5,
+                  stepNotifier: _stepNotifier),
               SizedBox(
                 height: LayoutGrid.tripleModule * 3,
               ),
               PrimaryButton(
                 onPressed: () {
-                  if (_currentStep < tabItems.length - 1) {
+                  if (_stepNotifier.value < _countStep - 1) {
                     setState(() {
-                      _currentStep += 1;
-                      _stepNotifier.value = _currentStep;
+                      _stepNotifier.value += 1;
                     });
                   }
                 },
