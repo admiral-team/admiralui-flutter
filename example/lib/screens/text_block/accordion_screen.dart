@@ -25,6 +25,12 @@ class _AccordionScreenState extends State<AccordionScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        title: Text(
+          'Accordion',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
