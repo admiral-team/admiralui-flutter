@@ -5,6 +5,67 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+///  An object that displays an editable text area and slider.
+///
+/// Constructor:
+/// ```
+/// SliderTextField(
+///   TextEditingController controller,
+///   TextInputState state,
+///   FocusNode? focusNode
+///   TextInputType? keyboardType
+///   TextInputAction? textInputAction
+///   String labelText
+///   String trailingText
+///   String placeHolderText
+///   double minLabelText
+///   double maxLabelText
+///   int divisions
+///   double currentValue
+///   ValueChanged<String>? onChanged
+///   VoidCallback? onEditingComplete
+///   InputRangeTextFieldScheme? scheme
+/// )
+/// ```
+///
+/// Parameters:
+/// - `controller`: Textfield text editing controller.
+/// - `state`: The current state of textfield.
+/// - `focusNode`: An object that can be used by a stateful widget to obtain
+/// the keyboard focus and to handle keyboard events.
+/// - `keyboardType`: The type of information for which to optimize
+/// the text input control.
+/// - `textInputAction`: An action the user has requested the text input
+/// control to perform.
+/// - `labelText`: The text of the label at the left edge.
+/// - `trailingText`: The text of the label at the right edge.
+/// - `placeHolderText`: The placeholder of textfield.
+/// - `minLabelText`:  The minimum value of slider.
+/// - `maxLabelText`: The maximum value of slider.
+/// - `divisions`: The number of discrete divisions.
+/// - `currentValue`: The current value of slider.
+/// - `onChanged`: The closure that return textfield text.
+/// - `onEditingComplete`: The closure that calls when textfield text changes.
+/// SliderTextField.
+/// - `key`: An optional key to uniquely identify this widget.
+///
+/// Example usage:
+/// ```dart
+///SliderTextField(
+///   textController,
+///   state: state,
+///   focusNode: focusNode,
+///   labelText: 'Optional label',
+///   trailingText: '₽',
+///   placeHolderText: 'placeholder',
+///   informerText: 'Additional text',
+///   minLabelText: 0.0,
+///   maxLabelText: 100.0,
+///   divisions: 100,
+///   currentValue: _currentSliderValue,
+///),
+/// ```
+///
 class SliderTextField extends StatefulWidget {
   const SliderTextField(
     this.controller, {
