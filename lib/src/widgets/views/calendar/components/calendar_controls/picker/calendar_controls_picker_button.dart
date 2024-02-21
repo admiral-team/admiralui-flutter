@@ -42,8 +42,8 @@ class _CalendarControlsPickerButtonState
         height: LayoutGrid.halfModule * 7,
         child: Icon(
           widget.isEnable
-              ? AdmiralIcons.admiral_ic_chevron_down_outline
-              : AdmiralIcons.admiral_ic_chevron_up_outline,
+              ? AdmiralIcons.admiral_ic_chevron_up_outline
+              : AdmiralIcons.admiral_ic_chevron_down_outline,
           color: buttonColor,
         ),
       ),
