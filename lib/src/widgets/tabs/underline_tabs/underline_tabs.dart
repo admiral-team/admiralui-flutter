@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/undeline_tabs_scheme.dart';
+import 'package:admiralui_flutter/src/widgets/tabs/underline_tabs/underline_tabs_scheme.dart';
 import 'package:flutter/material.dart';
 
 /// A customizable widget for displaying a set of
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// Constructor:
 /// ```
 /// UnderlineTabs(
-///   List<String> items, {
+///   List<UnderlineTabItem> items, {
 ///     bool isEnable = true,
 ///     int? selectedIndex,
 ///     ValueChanged<int>? onTap,
@@ -21,7 +21,8 @@ import 'package:flutter/material.dart';
 /// ```
 ///
 /// Parameters:
-/// - `items`: A list of strings representing the labels for each tab.
+/// - `items`: A list of [UnderlineTabItem] representing the labels
+/// and badge styles for each tab.
 /// - `isEnable`: A boolean indicating whether the tabs are enabled or disabled.
 ///  Defaults to `true`.
 /// - `selectedIndex`: The index of the initially selected tab.
@@ -38,7 +39,8 @@ import 'package:flutter/material.dart';
 /// Example usage:
 /// ```dart
 /// UnderlineTabs(
-///   ['Tab 1', 'Tab 2', 'Tab 3'],
+///   [UnderlineTabItem('Tab 1'), UnderlineTabItem('Tab 2'),
+/// UnderlineTabItem('Tab 3')],
 ///   onTap: (index) {
 ///     // Handle tab selection
 ///   },
@@ -59,7 +61,7 @@ class UnderlineTabs extends StatefulWidget {
     super.key,
   });
 
-  final List<String> items;
+  final List<UnderlineTabItem> items;
   final bool isEnable;
   final int? selectedIndex;
   final ValueChanged<int>? onTap;
@@ -133,14 +135,31 @@ class _UnderlineTabsState extends State<UnderlineTabs>
                         horizontal: widget.isCenterTabs ? 0 : LayoutGrid.module,
                       ),
                       child: Center(
-                        child: Text(
-                          widget.items[i],
-                          style: TextStyle(
-                            fontSize: textFont.fontSize,
-                            color: textColor,
-                            fontFamily: textFont.fontFamily,
-                            fontWeight: textFont.fontWeight,
-                          ),
+                        child: Stack(
+                          children: <Widget>[
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              child: Text(
+                                maxLines: 1,
+                                widget.items[i].text,
+                                style: TextStyle(
+                                  fontSize: textFont.fontSize,
+                                  color: textColor,
+                                  fontFamily: textFont.fontFamily,
+                                  fontWeight: textFont.fontWeight,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              right: 0,
+                              top: 0,
+                              child: BadgeWidget(
+                                style: widget.items[i].badgeStyle,
+                                isEnable: widget.isEnable,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

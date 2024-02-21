@@ -26,6 +26,12 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        title: Text(
+          'Leading elements',
+          style: theme.fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
+          ),
+        ),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),

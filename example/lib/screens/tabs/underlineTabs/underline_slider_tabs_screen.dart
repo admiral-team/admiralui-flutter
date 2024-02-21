@@ -74,7 +74,11 @@ class _UnderlineSliderTabsScreenState extends State<UnderlineSliderTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>['One', 'Two', 'Three'],
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two'),
+                UnderlineTabItem('Three')
+              ],
               selectedIndex: 0,
               isEnable: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
@@ -97,16 +101,49 @@ class _UnderlineSliderTabsScreenState extends State<UnderlineSliderTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             UnderlineTabs(
-              <String>[
-                'One',
-                'Two',
-                'Three',
-                'Four',
-                'Five',
-                'Six',
-                'Seven',
-                'Eight',
-                'Nine'
+              <UnderlineTabItem>[
+                UnderlineTabItem('One'),
+                UnderlineTabItem('Two'),
+                UnderlineTabItem('Three'),
+                UnderlineTabItem('Four'),
+                UnderlineTabItem('Five'),
+                UnderlineTabItem('Six'),
+                UnderlineTabItem('Seve'),
+                UnderlineTabItem('Eight'),
+                UnderlineTabItem('Nine'),
+              ],
+              selectedIndex: 0,
+              isEnable: isEnabled,
+              horizontalPadding: LayoutGrid.doubleModule,
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: TitleHeaderWidget(
+                title: 'Notifications',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 3,
+            ),
+            UnderlineTabs(
+              <UnderlineTabItem>[
+                UnderlineTabItem('One', badgeStyle: BadgeStyle.normal),
+                UnderlineTabItem('Two', badgeStyle: BadgeStyle.normal),
+                UnderlineTabItem('Three', badgeStyle: BadgeStyle.additional),
+                UnderlineTabItem('Four'),
+                UnderlineTabItem('Five'),
+                UnderlineTabItem('Six'),
+                UnderlineTabItem('Seve'),
+                UnderlineTabItem('Eight'),
+                UnderlineTabItem('Nine'),
               ],
               selectedIndex: 0,
               isEnable: isEnabled,
