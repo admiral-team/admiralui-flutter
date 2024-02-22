@@ -85,7 +85,7 @@ class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
                 textController,
                 state: state,
                 focusNode: focusNode,
-                labelText: 'label text',
+                labelText: 'Optional label',
                 trailingText: '₽',
                 placeHolderText: 'placeholder',
                 informerText: 'Additional text',
