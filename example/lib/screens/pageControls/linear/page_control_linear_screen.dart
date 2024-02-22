@@ -67,7 +67,6 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // OutlineTabs(tabItems),
               OutlineTabs(
                 tabItems,
                 onSelected: (int index) {

@@ -87,6 +87,12 @@ class _LinearPageControlState extends State<LinearPageControl>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    widget.stepNotifier?.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? LinearPageControlScheme(theme: theme);
