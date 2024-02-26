@@ -32,26 +32,27 @@ class _IconTabItemState extends State<IconTabItemWidget> {
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? IconTabItemScheme(theme: theme);
+    final double opacityParameter = scheme.alfaColor.unsafeParameter(
+      widget.isEnabled ? ControlState.normal : ControlState.disabled,
+    );
 
     final Color circleColorNormal =
         scheme.circleColor.unsafeParameter(ControlState.normal);
     final Color circleColorSelected =
         scheme.circleColor.unsafeParameter(ControlState.selected);
-    final Color circleColorDisabled =
-        scheme.circleColor.unsafeParameter(ControlState.disabled);
-    final Color circleColor = widget.isEnabled
-        ? (widget.isSelected ? circleColorSelected : circleColorNormal)
-        : circleColorDisabled;
+    final Color circleColor = widget.isSelected
+        ? circleColorSelected.withOpacity(opacityParameter)
+        : circleColorNormal.withOpacity(opacityParameter);
 
     final Color titleColorNormal =
         scheme.titleColor.unsafeParameter(ControlState.normal);
     final Color titleColorSelected =
         scheme.titleColor.unsafeParameter(ControlState.selected);
-    final Color titleColorDisabled =
-        scheme.titleColor.unsafeParameter(ControlState.disabled);
-    final Color titleColor = widget.isEnabled
-        ? (widget.isSelected ? titleColorSelected : titleColorNormal)
-        : titleColorDisabled;
+    final Color titleColorDisabled = widget.isSelected
+        ? titleColorSelected.withOpacity(opacityParameter)
+        : titleColorNormal.withOpacity(opacityParameter);
+    final Color titleColor =
+        widget.isSelected ? titleColorSelected : titleColorNormal;
 
     final AFont titleFontNormal =
         scheme.titleFont.unsafeParameter(ControlState.normal);
@@ -67,11 +68,9 @@ class _IconTabItemState extends State<IconTabItemWidget> {
         scheme.iconColor.unsafeParameter(ControlState.normal);
     final Color iconColorSelected =
         scheme.iconColor.unsafeParameter(ControlState.selected);
-    final Color iconColorDisabled =
-        scheme.iconColor.unsafeParameter(ControlState.disabled);
-    final Color iconColor = widget.isEnabled
-        ? (widget.isSelected ? iconColorNormal : iconColorSelected)
-        : iconColorDisabled;
+    final Color iconColor = widget.isSelected
+        ? iconColorNormal.withOpacity(opacityParameter)
+        : iconColorSelected.withOpacity(opacityParameter);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
