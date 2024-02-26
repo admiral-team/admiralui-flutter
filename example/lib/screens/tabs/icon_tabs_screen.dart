@@ -37,7 +37,7 @@ class _IconTabsScreenState extends State<IconTabsScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Rules',
+          'Icon Tabs',
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
