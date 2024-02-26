@@ -29,6 +29,38 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### unlock_secrets_keychain
+
+```sh
+[bundle exec] fastlane unlock_secrets_keychain
+```
+
+
+
+### send_build_failed_info
+
+```sh
+[bundle exec] fastlane send_build_failed_info
+```
+
+
+
+### get_all_github_request_builds_and_remove
+
+```sh
+[bundle exec] fastlane get_all_github_request_builds_and_remove
+```
+
+
+
+### link_issue
+
+```sh
+[bundle exec] fastlane link_issue
+```
+
+
+
 ### increment_app_version
 
 ```sh
@@ -65,38 +97,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ```sh
 [bundle exec] fastlane start_next_release_version
-```
-
-
-
-### unlock_secrets_keychain
-
-```sh
-[bundle exec] fastlane unlock_secrets_keychain
-```
-
-
-
-### send_build_failed_info
-
-```sh
-[bundle exec] fastlane send_build_failed_info
-```
-
-
-
-### get_all_github_request_builds_and_remove
-
-```sh
-[bundle exec] fastlane get_all_github_request_builds_and_remove
-```
-
-
-
-### link_issue
-
-```sh
-[bundle exec] fastlane link_issue
 ```
 
 
