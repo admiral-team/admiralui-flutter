@@ -73,7 +73,11 @@ class _OutlineTabsScreenState extends State<OutlineTabsScreen> {
               height: LayoutGrid.module * 3,
             ),
             OutlineTabs(
-              <String>['One', 'Two', 'Three'],
+              <OutlineTabItem>[
+                OutlineTabItem('One'),
+                OutlineTabItem('Two'),
+                OutlineTabItem('Three'),
+              ],
               isEnabled: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
               onSelected: (int index) {},
@@ -96,17 +100,51 @@ class _OutlineTabsScreenState extends State<OutlineTabsScreen> {
               height: LayoutGrid.halfModule * 5,
             ),
             OutlineTabs(
-              <String>[
-                'One',
-                'Two',
-                'Three',
-                'Four',
-                'Five',
-                'Six',
-                'Seven',
-                'Eight',
-                'Nine',
-                'Ten'
+              <OutlineTabItem>[
+                OutlineTabItem('One'),
+                OutlineTabItem('Two'),
+                OutlineTabItem('Three'),
+                OutlineTabItem('Four'),
+                OutlineTabItem('Five'),
+                OutlineTabItem('Six'),
+                OutlineTabItem('Seve'),
+                OutlineTabItem('Eight'),
+                OutlineTabItem('Nine'),
+                OutlineTabItem('Ten'),
+              ],
+              isEnabled: isEnabled,
+              horizontalPadding: LayoutGrid.doubleModule,
+              onSelected: (int index) {},
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: TitleHeaderWidget(
+                title: 'Notifications',
+                style: TitleHeaderStyle.headlineSecondary,
+                textAlign: TextAlign.left,
+                isEnable: isEnabled,
+              ),
+            ),
+            SizedBox(
+              height: LayoutGrid.halfModule * 5,
+            ),
+            OutlineTabs(
+              <OutlineTabItem>[
+                OutlineTabItem('One', badgeStyle: BadgeStyle.normal),
+                OutlineTabItem('Two', badgeStyle: BadgeStyle.normal),
+                OutlineTabItem('Three', badgeStyle: BadgeStyle.additional),
+                OutlineTabItem('Four'),
+                OutlineTabItem('Five'),
+                OutlineTabItem('Six'),
+                OutlineTabItem('Seve'),
+                OutlineTabItem('Eight'),
+                OutlineTabItem('Nine'),
+                OutlineTabItem('Ten'),
               ],
               isEnabled: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
