@@ -129,14 +129,15 @@ class _OutlineTabsState extends State<OutlineTabs>
                                   textAlign: TextAlign.center,
                                 ),
                               ),
-                              Positioned(
-                                right: 0,
-                                top: 0,
-                                child: BadgeWidget(
-                                  style: widget.tabs[i].badgeStyle,
-                                  isEnable: widget.isEnabled,
+                              if (widget.tabs[i].badgeStyle != BadgeStyle.clear)
+                                Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: BadgeWidget(
+                                    style: widget.tabs[i].badgeStyle,
+                                    isEnable: widget.isEnabled,
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                         ),
