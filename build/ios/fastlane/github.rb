@@ -1,4 +1,4 @@
-fastlane_require 'dotenv'
+require 'dotenv'
 require './build_info.rb'
 require './utils.rb'
 require './appcenter.rb'

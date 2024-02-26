@@ -1,4 +1,4 @@
-fastlane_require 'dotenv'
+require 'dotenv'
 
 before_all do
   Dotenv.overload('.env', '.env.secret')
