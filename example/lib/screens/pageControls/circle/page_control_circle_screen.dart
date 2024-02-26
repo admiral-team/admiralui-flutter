@@ -20,7 +20,6 @@ class PageControlCircleScreen extends StatefulWidget {
 
 class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
-  // final ValueNotifier<int> _stepNotifier = ValueNotifier<int>(0);
   final ValueNotifier<int> _countNotifier = ValueNotifier<int>(1);
 
   final List<String> tabItems = <String>[
@@ -52,8 +51,6 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
           ),
         ),
         centerTitle: true,
-        bottomOpacity: 0.0,
-        elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
@@ -72,7 +69,6 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
                   setState(() {
                     print(index + 1);
                     _countNotifier.value = index + 1;
-                    // _stepNotifier.value = 0;
                   });
                 },
               ),
