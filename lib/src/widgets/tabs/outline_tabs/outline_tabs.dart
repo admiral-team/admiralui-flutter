@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// Constructor:
 /// ```
 /// OutlineTabs(
-///   List<String> tabs, {
+///   List<OutlineTabItem> tabs, {
 ///   bool isEnabled = true,
 ///   ValueChanged<int>? onSelected,
 ///   OutlineTabsScheme? scheme,
@@ -19,7 +19,8 @@ import 'package:flutter/material.dart';
 /// ```
 ///
 /// Parameters:
-/// - `tabs`: A list of strings representing the labels of the tabs.
+/// - `items`: A list of [OutlineTabItem] representing the labels
+/// and badge styles for each tab.
 /// - `isEnabled`: A boolean indicating whether the tabs are
 /// enabled or disabled. Defaults to `true`.
 /// - `horizontalPadding`: The horizontal padding applied to each tab.
@@ -40,7 +41,7 @@ class OutlineTabs extends StatefulWidget {
     super.key,
   });
 
-  final List<String> tabs;
+  final List<OutlineTabItem> tabs;
   final bool isEnabled;
   final double horizontalPadding;
   final OutlineTabsScheme? scheme;
@@ -111,15 +112,33 @@ class _OutlineTabsState extends State<OutlineTabs>
                           horizontal: LayoutGrid.module,
                           vertical: LayoutGrid.halfModule,
                         ),
-                        child: TextView(
-                          widget.tabs[i],
-                          style: currentPos == i
-                              ? scheme.textFont.toTextStyle(textColor)
-                              : scheme.unselectedTextFont
-                                  .toTextStyle(textColor),
-                          softWrap: false,
-                          overflow: TextOverflow.fade,
-                          textAlign: TextAlign.center,
+                        child: Center(
+                          child: Stack(
+                            children: <Widget>[
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: TextView(
+                                  widget.tabs[i].text,
+                                  style: currentPos == i
+                                      ? scheme.textFont.toTextStyle(textColor)
+                                      : scheme.unselectedTextFont
+                                          .toTextStyle(textColor),
+                                  softWrap: false,
+                                  overflow: TextOverflow.fade,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Positioned(
+                                right: 0,
+                                top: 0,
+                                child: BadgeWidget(
+                                  style: widget.tabs[i].badgeStyle,
+                                  isEnable: widget.isEnabled,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
