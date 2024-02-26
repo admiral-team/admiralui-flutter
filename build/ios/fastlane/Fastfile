@@ -13,11 +13,13 @@ end
 
 # Deploy Methods
 lane :deploy_appcenter_andoid_dev do |options|
-  deploy_appcenter_andoid_dev(options: options)
+  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+  deploy_appcenter_andoid_dev(options: options, build_info_hash: build_info_hash)
 end
 
 lane :deploy_appcenter_dev do |options|
-  deploy_appcenter_dev(options: options)
+  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+  deploy_appcenter_dev(options: options, build_info_hash: build_info_hash)
 end
 
 #Github
@@ -26,7 +28,8 @@ lane :unlock_secrets_keychain do |options|
 end
 
 lane :send_build_failed_info do |options|
-  send_build_failed_info(options: options)
+  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+  send_build_failed_info(options: options, build_info_hash: build_info_hash)
 end
 
 lane :get_all_github_request_builds_and_remove do |options|

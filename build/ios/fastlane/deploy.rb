@@ -9,7 +9,7 @@ require 'fastlane'
 
 # Deploy Methods
 
-def deploy_appcenter_andoid_dev(options:)
+def deploy_appcenter_andoid_dev(options:, build_info_hash:)
   pull_request_url = options[:pull_request_url] || ""
   issue_name = options[:issue_name]
   telegram_token = options[:telegram_token]
@@ -40,7 +40,6 @@ def deploy_appcenter_andoid_dev(options:)
     notify_testers: true
   )
 
-  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
   build_info = BuildInfo.from_hash(build_info_hash)
   build_info.branch_name = branch_name
   build_info.platform = 'Android 🤖'
@@ -58,7 +57,7 @@ def deploy_appcenter_andoid_dev(options:)
 
 end
 
-def deploy_appcenter_dev(options:)
+def deploy_appcenter_dev(options:, build_info_hash:)
   skip_archive = options[:skip_archive] || false
   skip_git_comment = options[:skip_git_comment] || false
   issue_name = options[:issue_name]
@@ -104,7 +103,6 @@ def deploy_appcenter_dev(options:)
     notify_testers: true
   )
 
-  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
   build_info = BuildInfo.from_hash(build_info_hash)
   build_info.branch_name = branch_name
   build_info.platform = 'iOS 🍏'

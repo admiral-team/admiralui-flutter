@@ -11,8 +11,7 @@ def unlock_secrets_keychain(options:)
   unlock_keychain(path: "login.keychain", password: options[:password])
 end
 
-def send_build_failed_info(options:)
-  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+def send_build_failed_info(options:, build_info_hash:)
   build_info = BuildInfo.from_hash(build_info_hash)
   build_info.branch_name = options[:issue_name]
   build_info.issue = options[:issue_name]
