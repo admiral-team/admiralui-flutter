@@ -1,9 +1,5 @@
 require 'dotenv'
 
-before_all do
-  Dotenv.overload('.env', '.env.secret')
-end
-
 # Appcenter
 
 def delete_build_android_from_appcenter(build_id:)

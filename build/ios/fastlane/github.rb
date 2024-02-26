@@ -5,10 +5,6 @@ require './appcenter.rb'
 require './version'
 require 'octokit'
 
-before_all do
-  Dotenv.overload('.env', '.env.secret')
-end
-
 # Github
 
 lane :unlock_secrets_keychain do |options|
