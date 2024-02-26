@@ -12,8 +12,7 @@ def increment_app_version(options:)
   )
 end
 
-def increment_app_build(options:)
-  build_number = options[:build_number]
+def increment_app_build(build_number:)
   increment_build_number(
     build_number: build_number,
     xcodeproj: ENV['LIBRARY_PROJECT_PATH']
