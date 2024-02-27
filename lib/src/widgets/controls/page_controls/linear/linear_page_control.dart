@@ -1,7 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 /// A linear page control widget for indicating the
 /// progress or steps in a linear process.
@@ -62,25 +61,22 @@ class LinearPageControl extends StatefulWidget {
 class _LinearPageControlState extends State<LinearPageControl>
     with SingleTickerProviderStateMixin {
   late LinearPageControlScheme scheme;
-  final ItemScrollController _scrollController = ItemScrollController();
   final double width = LayoutGrid.doubleModule;
   final double height = LayoutGrid.halfModule;
   final double paddingRight = LayoutGrid.module;
 
-  int get _stepNofifierValue =>
+  int get _stepNotifierValue =>
       widget.stepNotifier?.value ?? widget.currentStep;
+  GlobalKey itemKey = GlobalKey();
+  List<GlobalKey> itemKeys = <GlobalKey>[];
 
   @override
   void initState() {
     super.initState();
-
     widget.stepNotifier?.addListener(() {
       setState(() {
-        if (_stepNofifierValue < widget.steps - (widget.displayedItems - 1)) {
-          _scrollController.scrollTo(
-            index: _stepNofifierValue,
-            duration: const Duration(milliseconds: 500),
-          );
+        if (_stepNotifierValue < widget.steps - (widget.displayedItems - 1)) {
+          _scrollToStep(_stepNotifierValue);
         }
       });
     });
@@ -96,40 +92,53 @@ class _LinearPageControlState extends State<LinearPageControl>
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? LinearPageControlScheme(theme: theme);
+    itemKeys =
+        List<GlobalKey>.generate(widget.steps, (int index) => GlobalKey());
 
     return SizedBox(
       height: LayoutGrid.halfModule,
       width: _calculateWidth(),
-      child: ScrollablePositionedList.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemScrollController: _scrollController,
+      child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        itemCount: widget.steps,
-        itemBuilder: (_, int index) {
-          return Padding(
-            padding: EdgeInsets.fromLTRB(
-              0,
-              0,
-              index == widget.steps - 1 ? 0 : paddingRight,
-              0,
-            ),
-            child: SizedBox(
-              width: width,
-              height: height,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(LayoutGrid.module),
-                  color: index == widget.currentStep
-                      ? scheme.backgroundColor
-                          .unsafeParameter(ControlState.selected)
-                      : scheme.backgroundColor
-                          .unsafeParameter(ControlState.normal),
+        physics: const NeverScrollableScrollPhysics(),
+        child: Row(
+          children: List<Widget>.generate(widget.steps, (int index) {
+            return KeyedSubtree(
+              key: itemKeys[index],
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  0,
+                  0,
+                  index == widget.steps - 1 ? 0 : paddingRight,
+                  0,
+                ),
+                child: SizedBox(
+                  width: width,
+                  height: height,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(LayoutGrid.module),
+                      color: index == widget.currentStep
+                          ? scheme.backgroundColor
+                              .unsafeParameter(ControlState.selected)
+                          : scheme.backgroundColor
+                              .unsafeParameter(ControlState.normal),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          }),
+        ),
       ),
+    );
+  }
+
+  void _scrollToStep(int step) {
+    Scrollable.ensureVisible(
+      itemKeys[step].currentContext!,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeInOut,
     );
   }
 

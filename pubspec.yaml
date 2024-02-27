@@ -14,7 +14,6 @@ dependencies:
   golden_toolkit: ^0.15.0
   intl: ^0.18.0
   path: ^1.8.1
-  scrollable_positioned_list: ^0.3.8
   simple_animations: ^5.0.2
 
 dev_dependencies:
