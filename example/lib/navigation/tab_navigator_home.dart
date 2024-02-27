@@ -67,6 +67,7 @@ import '../screens/calendar/horizontal/calendar_vertical_screen.dart';
 import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
+import '../screens/pageControls/circle/page_control_circle_screen.dart';
 import '../screens/cells/action_cell_screen.dart';
 import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
@@ -88,6 +89,7 @@ enum TabNavigatorRoutes {
   switcher('/switcher'),
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
+  pageControlCicle('/pageControls/linear/circlePageControl'),
   tabs('/tabs'),
   standardTabs('/tabs/standardTabs'),
   logoTabs('/tabs/logoTabs'),
@@ -247,6 +249,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.pageControlLinear.value: (BuildContext context) =>
           PageControlLinearScreen(
             title: 'Liner',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.pageControlCicle.value: (BuildContext context) =>
+          PageControlCircleScreen(
+            title: 'Circle',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(

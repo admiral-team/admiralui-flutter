@@ -25,7 +25,7 @@ class PageControlsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Circular',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.doubleTextField),
+        onPressed: () => onPush.call(TabNavigatorRoutes.pageControlCicle),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);
