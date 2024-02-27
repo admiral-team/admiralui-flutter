@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:admiralui_flutter/theme/admiral_color.dart';
 import 'package:flutter/material.dart';
 
 class InputRangeTextFieldScheme {
@@ -11,6 +12,7 @@ class InputRangeTextFieldScheme {
     valueFont = theme.fonts.subhead3;
     labelFont = theme.fonts.subhead3;
     leadingTextFont = theme.fonts.body1;
+    iconColor = theme.colors.elementPrimary;
 
     labelTextColor.set(
       theme.colors.elementAccent.color(),
@@ -88,7 +90,7 @@ class InputRangeTextFieldScheme {
   late AFont labelFont;
   late AFont valueFont;
   late AFont leadingTextFont;
-
+  late AColor iconColor;
   TextFieldControlParameter<Color> textColor =
       TextFieldControlParameter<Color>();
   TextFieldControlParameter<Color> labelTextColor =

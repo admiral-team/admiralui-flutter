@@ -29,7 +29,9 @@ import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/textfields/standard_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
-import '../screens/tabs/undeline_tabs.dart';
+import '../screens/tabs/underlineTabs/underline_tabs_screen.dart';
+import '../screens/tabs/underlineTabs/underline_center_tabs_screen.dart';
+import '../screens/tabs/underlineTabs/underline_slider_tabs_screen.dart';
 import '../screens/tabs/icon_tabs_screen.dart';
 import '../screens/tabs/informer_tabs_screen.dart';
 import '../screens/tabs/tabs_standard_screen.dart';
@@ -65,6 +67,7 @@ import '../screens/calendar/horizontal/calendar_vertical_screen.dart';
 import '../screens/shimmer_screen.dart';
 import '../screens/pageControls/page_controls_screen.dart';
 import '../screens/pageControls/linear/page_control_linear_screen.dart';
+import '../screens/pageControls/circle/page_control_circle_screen.dart';
 import '../screens/cells/action_cell_screen.dart';
 import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
@@ -86,6 +89,7 @@ enum TabNavigatorRoutes {
   switcher('/switcher'),
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
+  pageControlCicle('/pageControls/linear/circlePageControl'),
   tabs('/tabs'),
   standardTabs('/tabs/standardTabs'),
   logoTabs('/tabs/logoTabs'),
@@ -94,6 +98,8 @@ enum TabNavigatorRoutes {
   calendarHorizontal('/calendar/calendarHorizontal'),
   calendarVertical('/calendar/calendarVertical'),
   underlineTabs('/underlineTabs'),
+  underlineCenterTabs('/underlineTabs/underlineCenterTabs'),
+  underlineSliderTabs('/underlineTabs/underlineSliderTabs'),
   informerTabs('/informerTabs'),
   buttons('/buttons'),
   informers('/informers'),
@@ -245,6 +251,11 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Liner',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.pageControlCicle.value: (BuildContext context) =>
+          PageControlCircleScreen(
+            title: 'Circle',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.badges.value: (BuildContext context) => BadgesScreen(
             title: 'Badges',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -308,6 +319,10 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Underline Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.underlineCenterTabs.value: (BuildContext context) =>
+          UnderlineCenterTabsScreen(),
+      TabNavigatorRoutes.underlineSliderTabs.value: (BuildContext context) =>
+          UnderlineSliderTabsScreen(),
       TabNavigatorRoutes.iconTabs.value: (BuildContext context) =>
           IconTabsScreen(
             title: 'Icon Tabs',
