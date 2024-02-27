@@ -22,14 +22,14 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
   final ValueNotifier<int> _countNotifier = ValueNotifier<int>(1);
 
-  final List<String> tabItems = <String>[
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
+  final List<OutlineTabItem> tabItems = <OutlineTabItem>[
+    OutlineTabItem('One'),
+    OutlineTabItem('Two'),
+    OutlineTabItem('Three'),
+    OutlineTabItem('Four'),
+    OutlineTabItem('Five'),
+    OutlineTabItem('Six'),
+    OutlineTabItem('Seven'),
   ];
 
   @override
