@@ -72,7 +72,7 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
                 },
               ),
               SizedBox(
-                height: LayoutGrid.module * 5,
+                height: LayoutGrid.tripleModule * 5,
               ),
               Spinner(
                 size: spinnerSize,
