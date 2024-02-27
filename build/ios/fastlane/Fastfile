@@ -6,6 +6,7 @@ require_relative 'appcenter'
 require_relative 'github'
 require_relative 'release'
 require_relative 'deploy'
+require 'fastlane'
 
 before_all do
   Dotenv.overload('.env', '.env.secret')
