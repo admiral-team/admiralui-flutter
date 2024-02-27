@@ -122,7 +122,7 @@ class _CalendarHorizontalViewState extends State<CalendarHorizontalView> {
                 ),
               ),
               child: CupertinoDatePicker(
-                mode: CupertinoDatePickerMode.date,
+                mode: CupertinoDatePickerMode.monthYear,
                 initialDateTime: dataSource.currentDate ?? DateTime.now(),
                 onDateTimeChanged: (DateTime val) {
                   setState(

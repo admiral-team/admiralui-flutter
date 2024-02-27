@@ -1,10 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../../navigation/tab_navigator_home.dart';
 
-class SpinnerScreen extends StatefulWidget {
-  const SpinnerScreen({
+class PageControlCircleScreen extends StatefulWidget {
+  const PageControlCircleScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -14,11 +14,23 @@ class SpinnerScreen extends StatefulWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
-  State<SpinnerScreen> createState() => _SpinnerScreenState();
+  State<PageControlCircleScreen> createState() =>
+      _PageControlCircleScreenState();
 }
 
-class _SpinnerScreenState extends State<SpinnerScreen> {
+class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
+  final ValueNotifier<int> _countNotifier = ValueNotifier<int>(1);
+
+  final List<String> tabItems = <String>[
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +51,6 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
           ),
         ),
         centerTitle: true,
-        bottomOpacity: 0.0,
-        elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
@@ -53,30 +63,23 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              StandardTabs(
-                <String>['Small', 'Medium', 'Big'],
-                onTap: (String value) {
+              OutlineTabs(
+                tabItems,
+                onSelected: (int index) {
                   setState(() {
-                    switch (value) {
-                      case 'Small':
-                        spinnerSize = SpinnerSize.small;
-                        break;
-                      case 'Medium':
-                        spinnerSize = SpinnerSize.medium;
-                        break;
-                      case 'Big':
-                        spinnerSize = SpinnerSize.large;
-                        break;
-                    }
+                    print(index + 1);
+                    _countNotifier.value = index + 1;
                   });
                 },
               ),
               SizedBox(
-                height: LayoutGrid.tripleModule * 5,
+                height: LayoutGrid.quadrupleModule * 4,
               ),
-              Spinner(
-                size: spinnerSize,
-              ),
+              CircularPageControl(
+                _countNotifier.value,
+                0,
+                countNotifier: _countNotifier,
+              )
             ],
           ),
         ),

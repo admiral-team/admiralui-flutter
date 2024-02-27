@@ -2,8 +2,61 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// An enumeration representing the style options for the circular
+/// page control slider.
+///
+/// Values:
+/// - `initial`: Represents the initial style of the circular
+/// page control slider.
+/// - `additional`: Represents an additional or secondary style for the
+/// circular page control slider.
+///
 enum CirclePageSliderStyle { initial, additional }
 
+/// A circular page control widget for indicating the progress or
+/// steps in a circular process.
+///
+/// Constructor:
+/// ```
+/// CircularPageControl(
+///   int steps,
+///   int currentStep, {
+///     CirclePageSliderStyle style = CirclePageSliderStyle.initial,
+///     VoidCallback? onPressed,
+///     ValueNotifier<int>? stepNotifier,
+///     ValueNotifier<int>? countNotifier,
+///     CircularPageControlScheme? scheme,
+///     Key? key,
+///   }
+/// )
+/// ```
+///
+/// Parameters:
+/// - `steps`: The total number of steps in the circular process.
+/// - `currentStep`: The index of the current step in the circular process.
+/// - `style`: The style of the circular page control (initial or additional).
+/// - `onPressed`: Callback function triggered when the circular
+/// control is pressed.
+/// - `stepNotifier`: A [ValueNotifier] that, when provided, allows external
+/// control of the current step.
+/// - `countNotifier`: A [ValueNotifier] that, when provided, allows dynamic
+/// updates to the total number of steps.
+/// - `scheme`: An optional scheme defining the appearance of the
+/// circular page control.
+/// - `key`: An optional key to uniquely identify this widget.
+///
+/// Example usage:
+///
+/// CircularPageControl(
+///   steps: 5,
+///   currentStep: 2,
+///   style: CirclePageSliderStyle.initial,
+///   onPressed: () {
+///     // Handle button press
+///   }
+/// )
+/// ```
+///
 class CircularPageControl extends StatefulWidget {
   const CircularPageControl(
     this.steps,
@@ -12,6 +65,7 @@ class CircularPageControl extends StatefulWidget {
     super.key,
     this.onPressed,
     this.stepNotifier,
+    this.countNotifier,
     this.scheme,
   });
 
@@ -20,6 +74,7 @@ class CircularPageControl extends StatefulWidget {
   final CirclePageSliderStyle style;
   final VoidCallback? onPressed;
   final ValueNotifier<int>? stepNotifier;
+  final ValueNotifier<int>? countNotifier;
   final CircularPageControlScheme? scheme;
 
   @override
@@ -41,7 +96,9 @@ class _CircularPageControlState extends State<CircularPageControl>
   double? get _endAnimationValue => _currentStep == 0
       ? _stepLength
       : _stepLength + (_stepLength * _currentStep);
-  int get _stepNofifierValue => widget.stepNotifier?.value ?? _currentStep;
+  int get _stepNotifierValue => widget.stepNotifier?.value ?? _currentStep;
+  double get _countNotifierValue =>
+      widget.countNotifier?.value.toDouble() ?? 0.0;
 
   @override
   void initState() {
@@ -69,20 +126,28 @@ class _CircularPageControlState extends State<CircularPageControl>
       });
     });
 
+    widget.countNotifier?.addListener(() {
+      setState(() {
+        _stepLength = 1.0 / _countNotifierValue;
+        _currentStep = widget.currentStep;
+        _runAnimation(_beginAnimationValue, _endAnimationValue);
+      });
+    });
+
     _runAnimation(_beginAnimationValue, _endAnimationValue);
   }
 
   void _handleStepValueUpdate() {
-    if (_currentStep != _stepNofifierValue) {
-      if (_currentStep < _stepNofifierValue) {
-        _currentStep = _stepNofifierValue;
+    if (_currentStep != _stepNotifierValue) {
+      if (_currentStep < _stepNotifierValue) {
+        _currentStep = _stepNotifierValue;
         _runAnimation(_beginAnimationValue, _endAnimationValue);
-      } else if (_currentStep > _stepNofifierValue) {
-        if (_stepNofifierValue == 0) {
-          _currentStep = _stepNofifierValue;
+      } else if (_currentStep > _stepNotifierValue) {
+        if (_stepNotifierValue == 0) {
+          _currentStep = _stepNotifierValue;
           _runAnimation(_tween.end, _stepLength);
         } else {
-          _currentStep = _stepNofifierValue;
+          _currentStep = _stepNotifierValue;
           _runAnimation(_beginAnimationValue, _endAnimationValue);
         }
       }
@@ -94,6 +159,14 @@ class _CircularPageControlState extends State<CircularPageControl>
     _animationController.reset();
     _tween.end = endAnimation;
     _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    widget.stepNotifier?.dispose();
+    widget.countNotifier?.dispose();
+    super.dispose();
   }
 
   @override

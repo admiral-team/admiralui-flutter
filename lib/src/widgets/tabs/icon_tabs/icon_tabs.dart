@@ -39,38 +39,42 @@ class _IconTabsState extends State<IconTabs>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: widget.items.length,
-      initialIndex: widget.selectedIndex ?? 0,
-      child: SizedBox(
-        child: Column(
-          children: <Widget>[
-            DecoratedBox(
-              decoration: const ShapeDecoration(
-                shape: RoundedRectangleBorder(),
-              ),
-              child: TabBar(
-                onTap: (int index) {
-                  setState(() {
-                    currentPos = index;
-                    widget.onTap?.call(index);
-                  });
-                },
-                indicatorColor: Colors.transparent,
-                padding: EdgeInsets.zero,
-                labelPadding: EdgeInsets.zero,
-                tabs: <Widget>[
-                  for (int i = 0; i < widget.items.length; i++) ...<Widget>[
-                    IconTabItemWidget(
-                      widget.items[i],
-                      isEnabled: widget.isEnabled,
-                      isSelected: currentPos == i,
-                    ),
+    return IgnorePointer(
+      ignoring: !widget.isEnabled,
+      child: DefaultTabController(
+        length: widget.items.length,
+        initialIndex: widget.selectedIndex ?? 0,
+        child: SizedBox(
+          child: Column(
+            children: <Widget>[
+              DecoratedBox(
+                decoration: const ShapeDecoration(
+                  shape: RoundedRectangleBorder(),
+                ),
+                child: TabBar(
+                  dividerColor: Colors.transparent,
+                  onTap: (int index) {
+                    setState(() {
+                      currentPos = index;
+                      widget.onTap?.call(index);
+                    });
+                  },
+                  indicatorColor: Colors.transparent,
+                  padding: EdgeInsets.zero,
+                  labelPadding: EdgeInsets.zero,
+                  tabs: <Widget>[
+                    for (int i = 0; i < widget.items.length; i++) ...<Widget>[
+                      IconTabItemWidget(
+                        widget.items[i],
+                        isEnabled: widget.isEnabled,
+                        isSelected: currentPos == i,
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
