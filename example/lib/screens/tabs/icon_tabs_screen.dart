@@ -1,9 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../../navigation/tab_navigator_home.dart';
 
-class IconTabsScreen extends StatelessWidget {
+class IconTabsScreen extends StatefulWidget {
   const IconTabsScreen({
     super.key,
     required this.title,
@@ -14,36 +15,57 @@ class IconTabsScreen extends StatelessWidget {
   final Function(TabNavigatorRoutes route) onPush;
 
   @override
+  State<IconTabsScreen> createState() => _IconTabsScreenState();
+}
+
+class _IconTabsScreenState extends State<IconTabsScreen> {
+  bool isEnabled = true;
+  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: BackButton(
+        leading: CupertinoButton(
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
         title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
+          'Icon Tabs',
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
+        centerTitle: true,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
           horizontal: LayoutGrid.doubleModule,
         ),
-        color: colors.backgroundBasic.color(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Spacer(),
+            StandardTabs(
+              <String>['Default', 'Disabled'],
+              onTap: (String value) {
+                setState(() {
+                  isEnabled = value == 'Default';
+                });
+              },
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -55,10 +77,13 @@ class IconTabsScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            IconTabs(<IconTabItem>[
-              IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-              IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
-            ]),
+            IconTabs(
+              <IconTabItem>[
+                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
+                IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
+              ],
+              isEnabled: isEnabled,
+            ),
             SizedBox(height: LayoutGrid.quadrupleModule),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -71,14 +96,15 @@ class IconTabsScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: LayoutGrid.doubleModule),
-            IconTabs(<IconTabItem>[
-              IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-              IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
-              IconTabItem(
-                  'Three', AdmiralIcons.admiral_ic_account_detail_outline),
-            ]),
-            Spacer(),
-            Spacer(),
+            IconTabs(
+              <IconTabItem>[
+                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
+                IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
+                IconTabItem(
+                    'Three', AdmiralIcons.admiral_ic_account_detail_outline),
+              ],
+              isEnabled: isEnabled,
+            ),
           ],
         ),
       ),

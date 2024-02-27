@@ -5,6 +5,8 @@ class IconTabItemScheme {
   IconTabItemScheme({
     required this.theme,
   }) {
+    alfaColor.set(1, ControlState.normal);
+    alfaColor.set(0.6, ControlState.disabled);
     circleColor.set(
       theme.colors.backgroundAdditionalOne.color(),
       ControlState.normal,
@@ -39,10 +41,6 @@ class IconTabItemScheme {
       theme.colors.textAccent.color(),
       ControlState.selected,
     );
-    titleColor.set(
-      theme.colors.textAccent.colorWithOpacity(),
-      ControlState.disabled,
-    );
 
     iconColor.set(
       theme.colors.backgroundAccent.color(),
@@ -52,13 +50,10 @@ class IconTabItemScheme {
       theme.colors.textStaticWhite.color(),
       ControlState.normal,
     );
-    iconColor.set(
-      theme.colors.textStaticWhite.colorWithOpacity(),
-      ControlState.disabled,
-    );
   }
 
   AppTheme theme;
+  ControlParameter<double> alfaColor = ControlParameter<double>();
   ControlParameter<Color> circleColor = ControlParameter<Color>();
   ControlParameter<AFont> titleFont = ControlParameter<AFont>();
   ControlParameter<Color> titleColor = ControlParameter<Color>();
