@@ -19,8 +19,7 @@ lane :deploy_appcenter_andoid_dev do |options|
 end
 
 lane :deploy_appcenter_dev do |options|
-  build_info_hash = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
-  deploy_appcenter_dev(options: options, build_info_hash: build_info_hash)
+  deploy_appcenter_dev(options: options)
 end
 
 #Github
