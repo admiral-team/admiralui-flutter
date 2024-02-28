@@ -30,8 +30,6 @@ func main() {
 		buildInfo := configureBuildInfo(os.Args[2])
 		formatedBuildInfo := buildInfo.formatted_build_info_git()
 		formatedBuildInfoTelegram := buildInfo.formatted_build_info_telegram()
-		fmt.Println("formatedBuildInfoTelegram")
-		fmt.Println(formatedBuildInfoTelegram)
 		telegram.SendTextToTelegramChat(telegramChatId, formatedBuildInfoTelegram, os.Args[5])
 		issues.CreateComment(ctx, os.Getenv("OWNER"), os.Getenv("REPO"), buildInfo.PullNumber, formatedBuildInfo, *client)
 	case "getIssues":
