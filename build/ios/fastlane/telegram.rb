@@ -7,7 +7,7 @@ require './version'
 
 # Telegram Methods
 
-def send_telegram_message(options:, build_info_hash:)
+def send_ios_telegram_message(options:, build_info_hash:)
   skip_git_comment = options[:skip_git_comment] || false
   issue_name = options[:issue_name]
   telegram_token = options[:telegram_token]

@@ -9,19 +9,9 @@ require 'fastlane'
 
 # Deploy Methods
 
-def deploy_appcenter_andoid_dev(options:, build_info_hash:)
+def deploy_appcenter_andoid_dev(options:)
   pull_request_url = options[:pull_request_url] || ""
-  issue_name = options[:issue_name]
-  telegram_token = options[:telegram_token]
-  telegram_chat_id = options[:telegram_chat_id]
-  pull_request_number = options[:pull_request_number]
   branch_name = issue_name
-
-  if issue_name.nil? || issue_name == ""
-    issue_name = extract_issue_name(branch_name: branch_name)
-  else
-    issue_name = extract_issue_name(branch_name: issue_name)
-  end
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
@@ -39,22 +29,6 @@ def deploy_appcenter_andoid_dev(options:, build_info_hash:)
     release_notes: release_notes,
     notify_testers: true
   )
-
-  build_info = BuildInfo.from_hash(build_info_hash)
-  build_info.branch_name = branch_name
-  build_info.platform = 'Android 🤖'
-  build_info.build_url = appcenter_build_dev_url(build_id: build_info.build_id, app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'])
-  build_info.internal_version = current_lib_internal_version
-  build_info.external_version = current_lib_external_version
-  build_info.issue = issue_name
-  build_info.issue_url = github_issue_url(issue: issue_name)
-  build_info.pull_request_number = pull_request_number
-
-  if !issue_name.nil?
-    comment_body = formatted_build_info_json(build_info: build_info)
-    system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CI_GITHUB_TOKEN']} #{telegram_chat_id} #{telegram_token}")
-  end
-
 end
 
 def deploy_appcenter_dev(options:)
