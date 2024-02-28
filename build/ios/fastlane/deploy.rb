@@ -115,6 +115,8 @@ def deploy_appcenter_dev(options:, build_info_hash:)
 
   if !skip_git_comment && !issue_name.nil?
     comment_body = formatted_build_info_json(build_info: build_info)
+    puts "COMMENT BODY \n"
+    puts comment_body
     system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CI_GITHUB_TOKEN']} #{telegram_chat_id} #{telegram_token}")
   end
 end
