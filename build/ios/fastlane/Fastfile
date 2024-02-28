@@ -78,7 +78,7 @@ lane :deploy_appcenter_dev do |options|
 
   if !skip_archive
     increment_app_build(build_number: build_number)
-    
+
     build_app(
       workspace: ENV['PROJECT_WORKSPACE_PATH'],
       configuration: "Release",
@@ -117,7 +117,9 @@ lane :deploy_appcenter_dev do |options|
   build_info.pull_request_number = pull_request_number
 
   if !skip_git_comment && !issue_name.nil?
-    comment_body = formatted_build_info_json(build_info: build_info) 
+    comment_body = formatted_build_info_json(build_info: build_info)
+    puts "COMMENT BODY \n"
+    puts comment_body
     system("cd ../go_scripts && ./main createComment #{comment_body} #{ENV['CI_GITHUB_TOKEN']} #{telegram_chat_id} #{telegram_token}")
   end
 end
@@ -185,11 +187,11 @@ lane :finish_release_version do |options|
   internal = current_lib_internal_version
   set_version(
     external_version: external,
-    internal_version: internal, 
+    internal_version: internal,
   )
   if !last_version.nil? && !last_version.empty?
     increment_app_version(version_number: last_version)
-  end 
+  end
 end
 
 lane :start_next_release_version do
@@ -265,11 +267,11 @@ lane :link_issue do |options|
 
   if first_branch_part == "rc"
     next
-  end 
+  end
 
   if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
     UI.user_error!("Wrong branch name")
-  end 
+  end
 
   labels = []
 
@@ -283,12 +285,12 @@ lane :link_issue do |options|
 
   if issue_number.downcase == "tech" || issue_number.downcase == "bump"
     next
-  end 
+  end
 
   if issue_number.to_i.zero?
     UI.user_error!("No issue number from branch name")
     next
-  end 
+  end
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
 
@@ -303,10 +305,8 @@ lane :link_issue do |options|
 
     client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, body: new_description)
     UI.success("Update issue description")
-  else 
+  else
     UI.error("Dont update issue description")
   end
 
 end
-
-
