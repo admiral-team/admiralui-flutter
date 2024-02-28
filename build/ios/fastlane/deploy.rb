@@ -11,7 +11,7 @@ require 'fastlane'
 
 def deploy_appcenter_andoid_dev(options:)
   pull_request_url = options[:pull_request_url] || ""
-  branch_name = issue_name
+  branch_name = options[:issue_name]
 
   release_notes = "**Pull request url:** #{pull_request_url}\n\n**Branch:** #{branch_name}"
 
