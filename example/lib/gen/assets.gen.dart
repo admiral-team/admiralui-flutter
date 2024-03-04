@@ -9,6 +9,33 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsActionBarGen {
+  const $AssetsActionBarGen();
+
+  /// File path: assets/actionBar/arrowDownOutline.png
+  AssetGenImage get arrowDownOutline =>
+      const AssetGenImage('assets/actionBar/arrowDownOutline.png');
+
+  /// File path: assets/actionBar/arrowUpOutline.png
+  AssetGenImage get arrowUpOutline =>
+      const AssetGenImage('assets/actionBar/arrowUpOutline.png');
+
+  /// File path: assets/actionBar/closeOutline.png
+  AssetGenImage get closeOutline =>
+      const AssetGenImage('assets/actionBar/closeOutline.png');
+
+  /// File path: assets/actionBar/moreOutline.png
+  AssetGenImage get moreOutline =>
+      const AssetGenImage('assets/actionBar/moreOutline.png');
+
+  /// File path: assets/actionBar/union.png
+  AssetGenImage get union => const AssetGenImage('assets/actionBar/union.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [arrowDownOutline, arrowUpOutline, closeOutline, moreOutline, union];
+}
+
 class $AssetsCardGen {
   const $AssetsCardGen();
 
@@ -220,6 +247,7 @@ class $AssetsZeroScreenGen {
 class Assets {
   Assets._();
 
+  static const $AssetsActionBarGen actionBar = $AssetsActionBarGen();
   static const $AssetsCardGen card = $AssetsCardGen();
   static const $AssetsChatGen chat = $AssetsChatGen();
   static const $AssetsCurrencyGen currency = $AssetsCurrencyGen();

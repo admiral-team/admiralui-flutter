@@ -141,7 +141,23 @@ class SlidableAction extends StatelessWidget {
     this.borderRadius = BorderRadius.zero,
     this.padding,
   })  : assert(flex > 0),
-        assert(icon != null || label != null);
+        assert(icon != null || label != null),
+        image = null;
+
+  const SlidableAction.withImage({
+    super.key,
+    this.flex = _kFlex,
+    this.backgroundColor = _kBackgroundColor,
+    this.foregroundColor,
+    this.autoClose = _kAutoClose,
+    required this.onPressed,
+    this.image,
+    this.spacing = 4,
+    this.label,
+    this.borderRadius = BorderRadius.zero,
+    this.padding,
+  })  : assert(flex > 0),
+        icon = null;
 
   final int flex;
   final Color backgroundColor;
@@ -151,6 +167,8 @@ class SlidableAction extends StatelessWidget {
 
   /// An icon to display above the [label].
   final IconData? icon;
+
+  final Widget? image;
 
   /// The space between [icon] and [label] if both set.
   ///
@@ -174,6 +192,10 @@ class SlidableAction extends StatelessWidget {
       children.add(
         Icon(icon),
       );
+    }
+
+    if (image != null) {
+      children.add(image!);
     }
 
     if (label != null) {

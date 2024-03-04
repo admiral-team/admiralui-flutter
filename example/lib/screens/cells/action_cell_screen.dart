@@ -1,5 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class ActionCellsScreen extends StatefulWidget {
@@ -38,17 +39,17 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              StandardTabs(
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: StandardTabs(
                 <String>['Default', 'Disabled'],
                 onTap: (String value) {
                   setState(() {
@@ -56,98 +57,131 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                   });
                 },
               ),
-              SizedBox(
-                height: LayoutGrid.module * 5,
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
               ),
-              TextView(
+              child: TextView(
                 'Default',
                 font: theme.fonts.body1,
                 textColorNormal: colors.textSecondary.color(),
               ),
-              Slidable(
-                endActionPane: const ActionPane(
-                  motion: ScrollMotion(),
-                  children: <SlidableAction>[
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFF3A83F1),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_email_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFF44BF78),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_edit_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFFFB9130),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_star_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                  ],
-                ),
-                child: BaseCellWidget(
-                  centerCell:
-                      TitleCellWidget(title: 'Title', isEnabled: isEnabled),
-                  trailingCell: ArrowCellWidget(isEnabled: isEnabled),
-                  horizontalPadding: 0,
-                ),
+            ),
+            Slidable(
+              endActionPane: ActionPane(
+                motion: ScrollMotion(),
+                children: <SlidableAction>[
+                  SlidableAction.withImage(
+                    onPressed: null,
+                    backgroundColor:
+                        theme.colors.backgroundAdditionalOne.color(),
+                    image: Assets.actionBar.moreOutline.image(),
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction.withImage(
+                    onPressed: null,
+                    backgroundColor:
+                        theme.colors.backgroundAdditionalOne.color(),
+                    image: Assets.actionBar.arrowUpOutline.image(),
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction.withImage(
+                    onPressed: null,
+                    backgroundColor:
+                        theme.colors.backgroundAdditionalOne.color(),
+                    image: Assets.actionBar.arrowDownOutline.image(),
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction.withImage(
+                    onPressed: null,
+                    backgroundColor:
+                        theme.colors.backgroundAdditionalOne.color(),
+                    image: Assets.actionBar.union.image(),
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction.withImage(
+                    onPressed: null,
+                    backgroundColor:
+                        theme.colors.backgroundAdditionalOne.color(),
+                    image: Assets.actionBar.closeOutline.image(),
+                    padding: EdgeInsets.zero,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: LayoutGrid.doubleModule,
+              child: BaseCellWidget(
+                leadingCell: Assets.card.visa.image(),
+                centerCell: TitleMoreDetailTextMessageWidget(
+                  title: 'Card',
+                  detaile: '50 000.00 ₽',
+                ),
+                trailingCell: SubtitleImageCellWidget(
+                  subtitle: 'Swipe',
+                  imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
+                ),
+                horizontalPadding: LayoutGrid.doubleModule,
               ),
-              TextView(
+            ),
+            SizedBox(
+              height: LayoutGrid.doubleModule,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: LayoutGrid.doubleModule,
+              ),
+              child: TextView(
                 'Secondary',
                 font: theme.fonts.body1,
                 textColorNormal: colors.textSecondary.color(),
               ),
-              Slidable(
-                endActionPane: const ActionPane(
-                  motion: ScrollMotion(),
-                  children: <SlidableAction>[
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFF3A83F1),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_email_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFF44BF78),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_edit_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                    SlidableAction(
-                      onPressed: null,
-                      backgroundColor: Color(0xFFFB9130),
-                      foregroundColor: Colors.white,
-                      icon: AdmiralIcons.admiral_ic_star_outline,
-                      label: 'Text',
-                      padding: EdgeInsets.zero,
-                    ),
-                  ],
-                ),
-                child: BaseCellWidget(
-                  centerCell:
-                      TitleCellWidget(title: 'Title', isEnabled: isEnabled),
-                  trailingCell: ArrowCellWidget(isEnabled: isEnabled),
-                  horizontalPadding: 0,
-                ),
+            ),
+            Slidable(
+              endActionPane: ActionPane(
+                motion: ScrollMotion(),
+                children: <SlidableAction>[
+                  SlidableAction(
+                    onPressed: null,
+                    backgroundColor: theme.colors.elementAccent.color(),
+                    foregroundColor: theme.colors.elementStaticWhite.color(),
+                    icon: AdmiralIcons.admiral_ic_email_outline,
+                    label: 'Text',
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction(
+                    onPressed: null,
+                    backgroundColor: theme.colors.elementSuccess.color(),
+                    foregroundColor: theme.colors.elementStaticWhite.color(),
+                    icon: AdmiralIcons.admiral_ic_edit_outline,
+                    label: 'Text',
+                    padding: EdgeInsets.zero,
+                  ),
+                  SlidableAction(
+                    onPressed: null,
+                    backgroundColor: theme.colors.elementAttention.color(),
+                    foregroundColor: theme.colors.elementStaticWhite.color(),
+                    icon: AdmiralIcons.admiral_ic_star_outline,
+                    label: 'Text',
+                    padding: EdgeInsets.zero,
+                  ),
+                ],
               ),
-            ],
-          ),
+              child: BaseCellWidget(
+                leadingCell: Assets.card.visa.image(),
+                centerCell: TitleMoreDetailTextMessageWidget(
+                  title: 'Card',
+                  detaile: '50 000.00 ₽',
+                ),
+                trailingCell: SubtitleImageCellWidget(
+                  subtitle: 'Swipe',
+                  imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
+                ),
+                horizontalPadding: LayoutGrid.doubleModule,
+              ),
+            ),
+          ],
         ),
       ),
     );

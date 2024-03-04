@@ -101,13 +101,6 @@ class TitleMoreDetailTextMessageWidget extends StatelessWidget {
     }
 
     if (detaile != null || detaileMore != null || infoImage != null) {
-      if (children.isNotEmpty) {
-        children.add(
-          const SizedBox(
-            height: LayoutGrid.module,
-          ),
-        );
-      }
       List<Widget> detaileMoreLineWidgets;
       detaileMoreLineWidgets = <Widget>[];
       if (detaile != null) {
@@ -250,7 +243,7 @@ class TitleMoreDetailTextMessageWidget extends StatelessWidget {
                   topRight: Radius.circular(LayoutGrid.doubleModule),
                   bottomLeft: Radius.circular(LayoutGrid.module),
                   bottomRight: Radius.circular(LayoutGrid.doubleModule),
-                  ),
+                ),
               ),
               child: Container(
                 constraints: const BoxConstraints(
