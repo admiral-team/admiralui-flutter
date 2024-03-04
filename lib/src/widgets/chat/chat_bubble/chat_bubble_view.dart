@@ -25,7 +25,7 @@ import 'package:flutter/material.dart';
 /// - `time`: The time of the chat buble.
 /// - `key`: An optional `Key` that uniquely identifies this widget.
 class ChatBubbleView extends StatefulWidget {
-  /// Creates an ChatBubbleStatus.
+  /// Creates an ChatBubbleView.
   const ChatBubbleView({
     super.key,
     required this.text,
@@ -55,8 +55,7 @@ class ChatBubbleView extends StatefulWidget {
 
 class _ChatBubbleViewState extends State<ChatBubbleView> {
   late ChatBubbleScheme scheme;
-  // ignore: use_named_constants
-  final ValueNotifier<Size> notifier = ValueNotifier<Size>(const Size(0, 0));
+  late final ValueNotifier<Size> notifier = ValueNotifier<Size>(Size.zero);
   double _textSize = 0.0;
   bool get _isMultiline => _textSize > LayoutGrid.halfModule * 10;
   double get _textBottomPadding =>
@@ -117,7 +116,7 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
                   ),
                 ),
               ),
-              child: _ChildSizeNotifier(
+              child: ChildSizeNotifier(
                 notifier: notifier,
                 builder: (BuildContext context, Size size, Widget? child) {
                   return Stack(
@@ -163,34 +162,6 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
         ),
         if (widget.direction == ChatDirection.left) const Spacer(),
       ],
-    );
-  }
-}
-
-class _ChildSizeNotifier extends StatelessWidget {
-  const _ChildSizeNotifier({
-    required this.notifier,
-    required this.builder,
-    // ignore: unused_element
-    this.child,
-  });
-  // ignore: always_specify_types, use_named_constants
-  final ValueNotifier<Size> notifier;
-  final Widget Function(BuildContext context, Size size, Widget? child) builder;
-  final Widget? child;
-
-  @override
-  Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        notifier.value = (context.findRenderObject()! as RenderBox).size;
-      },
-    );
-    // ignore: always_specify_types
-    return ValueListenableBuilder(
-      valueListenable: notifier,
-      builder: builder,
-      child: child,
     );
   }
 }
