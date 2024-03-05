@@ -73,12 +73,8 @@ class _UnderlineSliderTabsScreenState extends State<UnderlineSliderTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two'),
-                UnderlineTabItem('Three')
-              ],
+            UnderlineTabs.withStringItems(
+              <String>['One', 'Two', 'Three'],
               selectedIndex: 0,
               isEnable: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
@@ -100,17 +96,17 @@ class _UnderlineSliderTabsScreenState extends State<UnderlineSliderTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two'),
-                UnderlineTabItem('Three'),
-                UnderlineTabItem('Four'),
-                UnderlineTabItem('Five'),
-                UnderlineTabItem('Six'),
-                UnderlineTabItem('Seve'),
-                UnderlineTabItem('Eight'),
-                UnderlineTabItem('Nine'),
+            UnderlineTabs.withStringItems(
+              <String>[
+                'One',
+                'Two',
+                'Three',
+                'Four',
+                'Five',
+                'Six',
+                'Seven',
+                'Eight',
+                'Nine',
               ],
               selectedIndex: 0,
               isEnable: isEnabled,
@@ -141,7 +137,7 @@ class _UnderlineSliderTabsScreenState extends State<UnderlineSliderTabsScreen> {
                 UnderlineTabItem('Four'),
                 UnderlineTabItem('Five'),
                 UnderlineTabItem('Six'),
-                UnderlineTabItem('Seve'),
+                UnderlineTabItem('Seven'),
                 UnderlineTabItem('Eight'),
                 UnderlineTabItem('Nine'),
               ],
