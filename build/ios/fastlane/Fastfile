@@ -25,10 +25,6 @@ lane :deploy_appcenter_dev do |options|
 end
 
 #Github
-lane :unlock_secrets_keychain do |options|
-  unlock_secrets_keychain(options: options)
-end
-
 lane :send_build_failed_info do |options|
   send_build_failed_info(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
 end
