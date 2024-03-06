@@ -42,7 +42,12 @@ lane :unlock_secrets_keychain do |options|
 end
 
 lane :check_close_release_issue do |options|
-  check_close_release_issue(UI: UI)
+  is_success = check_close_release_issue();
+  if is_success
+    UI.success("Версия готова к релизу!");
+  else 
+    UI.user_error!("Ошибка: Необходимо закрыть все задачи в milestone перед выпуском.");
+  end 
 end
 
 #Supporting Methods

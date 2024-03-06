@@ -64,13 +64,15 @@ def check_close_release_issue(UI:)
   milestone = client.list_milestones("#{repo_owner}/#{repo_name}").find { |m| m.title == version }
 
   if milestone.nil?
-    UI.user_error!("Milestone для версии #{version} не найден.");
-    return
+    puts("Milestone для версии #{version} не найден.");
+    return false;
   end
 
   issues = client.list_issues("#{repo_owner}/#{repo_name}", milestone: milestone.number, state: 'open');
   if issues.any?
-    UI.user_error!("Ошибка: Необходимо закрыть все задачи в milestone #{version} перед выпуском.");
+    return false;
+  else
+    return true;
   end
 end
 
