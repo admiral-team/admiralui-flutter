@@ -42,7 +42,7 @@ lane :unlock_secrets_keychain do |options|
 end
 
 lane :check_close_release_issue do |options|
-  check_close_release_issue(options: options)
+  check_close_release_issue()
 end
 
 #Supporting Methods

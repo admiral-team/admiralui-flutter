@@ -84,7 +84,7 @@ jobs:
       steps:
           - name: Install Fastlane Dependencies
             run: cd build/ios/fastlane && bundle install && bundle update
-          - name: Remove all builds from request
+          - name: Check Release Issue
             run: cd build/ios/fastlane && bundle exec fastlane check_close_release_issue
   
 

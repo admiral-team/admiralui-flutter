@@ -54,7 +54,7 @@ def get_all_github_request_builds_and_remove(options:)
   end
 end
 
-def check_close_release_issue(options:)
+def check_close_release_issue()
   repo_owner = 'admiral-team'
   repo_name = 'admiralui-flutter'
   version = current_lib_internal_version
