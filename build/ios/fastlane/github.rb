@@ -5,6 +5,7 @@ require './appcenter.rb'
 require './version'
 require 'octokit'
 require 'fastlane'
+require 'fastlane/runner'
 
 # Github
 def unlock_secrets_keychain(options:)
