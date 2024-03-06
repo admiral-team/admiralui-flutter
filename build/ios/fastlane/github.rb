@@ -5,7 +5,6 @@ require './appcenter.rb'
 require './version'
 require 'octokit'
 require 'fastlane'
-require 'fastlane_core/ui/ui'
 
 # Github
 def unlock_secrets_keychain(options:)
@@ -55,7 +54,7 @@ def get_all_github_request_builds_and_remove(options:)
   end
 end
 
-def check_close_release_issue()
+def check_close_release_issue(UI:)
   repo_owner = 'admiral-team'
   repo_name = 'admiralui-flutter'
   version = current_lib_internal_version
