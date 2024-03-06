@@ -73,11 +73,8 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two')
-              ],
+            UnderlineTabs.withStringItems(
+              <String>['One', 'Two'],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -100,12 +97,8 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two'),
-                UnderlineTabItem('Three'),
-              ],
+            UnderlineTabs.withStringItems(
+              <String>['One', 'Two', 'Three'],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -128,13 +121,8 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two'),
-                UnderlineTabItem('Three'),
-                UnderlineTabItem('Four'),
-              ],
+            UnderlineTabs.withStringItems(
+              <String>['One', 'Two', 'Three', 'Four'],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
@@ -157,14 +145,8 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            UnderlineTabs(
-              <UnderlineTabItem>[
-                UnderlineTabItem('One'),
-                UnderlineTabItem('Two'),
-                UnderlineTabItem('Three'),
-                UnderlineTabItem('Four'),
-                UnderlineTabItem('Five')
-              ],
+            UnderlineTabs.withStringItems(
+              <String>['One', 'Two', 'Three', 'Four', 'Five'],
               selectedIndex: 0,
               isEnable: isEnabled,
               isCenterTabs: true,
