@@ -41,6 +41,14 @@ lane :link_issue do |options|
   link_issue(options: options)
 end
 
+lane :unlock_secrets_keychain do |options|
+  unlock_secrets_keychain(options: options)
+end
+
+lane :check_close_release_issue do |options|
+  check_close_release_issue(options: options)
+end
+
 #Supporting Methods
 lane :increment_app_version do |options|
   increment_app_version(options: options)

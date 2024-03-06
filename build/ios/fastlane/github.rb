@@ -54,6 +54,26 @@ def get_all_github_request_builds_and_remove(options:)
   end
 end
 
+def check_close_release_issue(options:)
+  repo_owner = 'admiral-team'
+  repo_name = 'admiralui-flutter'
+  version = current_lib_internal_version
+
+  client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
+
+  milestone = client.list_milestones("#{repo_owner}/#{repo_name}").find { |m| m.title == version }
+
+  if milestone.nil?
+    UI.user_error!("Milestone для версии #{version} не найден.");
+    return
+  end
+
+  issues = client.list_issues("#{repo_owner}/#{repo_name}", milestone: milestone.number, state: 'open');
+  if issues.any?
+    UI.user_error!("Ошибка: Необходимо закрыть все задачи в milestone #{version} перед выпуском.");
+  end
+end
+
 def link_issue(options:)
   repo_owner = 'admiral-team'
   repo_name = 'admiralui-flutter'
