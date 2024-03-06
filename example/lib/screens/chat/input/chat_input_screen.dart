@@ -22,8 +22,12 @@ class ChatInputScreen extends StatefulWidget {
 
 class _ChatInputScreenState extends State<ChatInputScreen> {
   TextInputState textInputState = TextInputState.normal;
-  final List<ChatMessageItem> chatMessages = <ChatMessageItem>[
-    ChatMessageItem(text: 'Добрый день !'),
+  late List<ChatMessageItem> chatMessages = <ChatMessageItem>[
+    ChatMessageItem(
+      text: 'Добрый день !',
+      direction: ChatDirection.left,
+      time: _getTime(),
+    ),
   ];
 
   final TextEditingController textEditingController = TextEditingController();
@@ -41,7 +45,13 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
     appThemeButtonStorage.toggleButton();
   }
 
-  @override
+  String _getTime() {
+    DateTime now = DateTime.now();
+    TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
+    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
+    return time;
+  }
+
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
@@ -99,18 +109,17 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                     ),
                     itemCount: chatMessages.length,
                     itemBuilder: (BuildContext ctx, int index) {
-                      return Row(
-                        children: <Widget>[
-                          Spacer(),
-                          Text(chatMessages[index].text),
-                        ],
+                      return ChatBubbleView(
+                        text: chatMessages[index].text,
+                        chatStatus: ChatStatus.sent,
+                        direction: chatMessages[index].direction,
+                        time: chatMessages[index].time,
                       );
                     },
                   ),
                 ),
               ),
             ),
-            Spacer(),
             ChatInput(
               state: textInputState,
               content: '',
@@ -121,8 +130,11 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               textEditingController: textEditingController,
               onSendButtonPress: () {
                 setState(() {
-                  chatMessages
-                      .add(ChatMessageItem(text: textEditingController.text));
+                  chatMessages.add(ChatMessageItem(
+                    text: textEditingController.text,
+                    direction: ChatDirection.right,
+                    time: _getTime(),
+                  ));
                   textEditingController.text = '';
                 });
               },

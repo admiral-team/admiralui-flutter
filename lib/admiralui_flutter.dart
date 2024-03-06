@@ -3,6 +3,9 @@ library admiralui_flutter;
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
 export 'package:admiralui_flutter/src/icon_data.dart';
 export 'package:admiralui_flutter/src/utils/partion.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_parameters.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_view.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble_status/chat_bubble_status_style.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_direction.dart';
@@ -235,6 +238,7 @@ export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget.dart'
 export 'package:admiralui_flutter/src/widgets/views/toolbar/toolbar_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/zero_screen/zero_screen.dart';
 export 'package:admiralui_flutter/src/widgets/views/zero_screen/zero_screen_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/widget_size/child_size_notifier.dart';
 export 'package:admiralui_flutter/src/widgets/widget_size/widget_size.dart';
 export 'package:admiralui_flutter/theme/admiral_font.dart';
 export 'package:admiralui_flutter/theme/app_theme.dart';
