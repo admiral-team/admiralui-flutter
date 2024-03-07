@@ -70,3 +70,37 @@ enum UploadingPhotoGridCornerStyle {
   static const Radius radius = Radius.circular(LayoutGrid.tripleModule / 2);
   final BorderRadius value;
 }
+
+extension UploadingPhotoGridCornerStyleExtension
+    on UploadingPhotoGridCornerStyle {
+  BorderRadius get fileInfo {
+    switch (this) {
+      case UploadingPhotoGridCornerStyle.allSides:
+        return const BorderRadius.only(
+          bottomLeft: UploadingPhotoGridCornerStyle.radius,
+          bottomRight: UploadingPhotoGridCornerStyle.radius,
+        );
+      case UploadingPhotoGridCornerStyle.none:
+        return BorderRadius.zero;
+      case UploadingPhotoGridCornerStyle.bottomLeftBottomRight:
+        return const BorderRadius.only(
+          bottomLeft: UploadingPhotoGridCornerStyle.radius,
+          bottomRight: UploadingPhotoGridCornerStyle.radius,
+        );
+      case UploadingPhotoGridCornerStyle.topLeftTopRight:
+        return UploadingPhotoGridCornerStyle.none.value;
+      case UploadingPhotoGridCornerStyle.topLeftBottomLeft:
+        return UploadingPhotoGridCornerStyle.bottomLeft.value;
+      case UploadingPhotoGridCornerStyle.topRightBottomRight:
+        return UploadingPhotoGridCornerStyle.bottomRight.value;
+      case UploadingPhotoGridCornerStyle.topLeft:
+        return UploadingPhotoGridCornerStyle.none.value;
+      case UploadingPhotoGridCornerStyle.topRight:
+        return UploadingPhotoGridCornerStyle.none.value;
+      case UploadingPhotoGridCornerStyle.bottomLeft:
+        return UploadingPhotoGridCornerStyle.bottomLeft.value;
+      case UploadingPhotoGridCornerStyle.bottomRight:
+        return UploadingPhotoGridCornerStyle.bottomRight.value;
+    }
+  }
+}
