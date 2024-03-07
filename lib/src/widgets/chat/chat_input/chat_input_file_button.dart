@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 /// Button that handles file open action in ChatInput
 ///
-/// This widget extends [ChatInputFileButton], allowing dynamic updates to its state.
+/// This widget extends [ChatInputFileButton], allowing dynamic updates
+///  to its state.
 ///
 /// Constructor:
 /// ```

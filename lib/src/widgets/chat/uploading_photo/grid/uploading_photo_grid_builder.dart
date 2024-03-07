@@ -142,7 +142,7 @@ class UploadingPhotoGridItemBuilder {
     }
 
     return dataSource.length % 2 != 0
-        ? partition([dataSource.first], 2).toList() +
+        ? partition(<UploadingPhotoCellItem>[dataSource.first], 2).toList() +
             partition(dataSource.sublist(1), 2).toList()
         : partition(dataSource, 2).toList();
   }
