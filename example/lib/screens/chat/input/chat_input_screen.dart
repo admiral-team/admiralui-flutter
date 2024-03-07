@@ -22,6 +22,7 @@ class ChatInputScreen extends StatefulWidget {
 
 class _ChatInputScreenState extends State<ChatInputScreen> {
   TextInputState textInputState = TextInputState.normal;
+  final ScrollController _controller = ScrollController();
   late List<ChatMessageItem> chatMessages = <ChatMessageItem>[
     ChatMessageItem(
       text: 'Добрый день !',
@@ -103,6 +104,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                 child: Material(
                   color: colors.backgroundBasic.color(),
                   child: ListView.builder(
+                    controller: _controller,
                     addAutomaticKeepAlives: false,
                     physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics(),
@@ -120,6 +122,9 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                 ),
               ),
             ),
+            SizedBox(
+              height: LayoutGrid.halfModule * 3,
+            ),
             ChatInput(
               state: textInputState,
               content: '',
@@ -136,6 +141,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                     time: _getTime(),
                   ));
                   textEditingController.text = '';
+                  _scrollDown();
                 });
               },
             ),
@@ -145,6 +151,14 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void _scrollDown() {
+    _controller.animateTo(
+      _controller.position.maxScrollExtent,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.linear,
     );
   }
 }

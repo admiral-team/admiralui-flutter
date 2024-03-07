@@ -41,15 +41,15 @@ class UploadingPhotoGridItemBuilder {
         dataSource = <UploadingPhotoCellItem>[
           UploadingPhotoCellItem(
             item: items[0],
-            cornerStyle: UploadingPhotoGridCornerStyle.topLeft,
+            cornerStyle: UploadingPhotoGridCornerStyle.topLeftTopRight,
           ),
           UploadingPhotoCellItem(
             item: items[1],
-            cornerStyle: UploadingPhotoGridCornerStyle.topRight,
+            cornerStyle: UploadingPhotoGridCornerStyle.bottomLeft,
           ),
           UploadingPhotoCellItem(
             item: items[2],
-            cornerStyle: UploadingPhotoGridCornerStyle.topRight,
+            cornerStyle: UploadingPhotoGridCornerStyle.bottomRight,
           ),
         ];
         break;
@@ -61,7 +61,7 @@ class UploadingPhotoGridItemBuilder {
           ),
           UploadingPhotoCellItem(
             item: items[1],
-            cornerStyle: UploadingPhotoGridCornerStyle.topLeft,
+            cornerStyle: UploadingPhotoGridCornerStyle.topRight,
           ),
           UploadingPhotoCellItem(
             item: items[2],
@@ -77,11 +77,11 @@ class UploadingPhotoGridItemBuilder {
         dataSource = <UploadingPhotoCellItem>[
           UploadingPhotoCellItem(
             item: items[0],
-            cornerStyle: UploadingPhotoGridCornerStyle.topLeft,
+            cornerStyle: UploadingPhotoGridCornerStyle.topLeftTopRight,
           ),
           UploadingPhotoCellItem(
             item: items[1],
-            cornerStyle: UploadingPhotoGridCornerStyle.topRight,
+            cornerStyle: UploadingPhotoGridCornerStyle.none,
           ),
           UploadingPhotoCellItem(
             item: items[2],
@@ -89,11 +89,11 @@ class UploadingPhotoGridItemBuilder {
           ),
           UploadingPhotoCellItem(
             item: items[3],
-            cornerStyle: UploadingPhotoGridCornerStyle.none,
+            cornerStyle: UploadingPhotoGridCornerStyle.bottomLeft,
           ),
           UploadingPhotoCellItem(
             item: items[4],
-            cornerStyle: UploadingPhotoGridCornerStyle.bottomLeftBottomRight,
+            cornerStyle: UploadingPhotoGridCornerStyle.bottomRight,
           ),
         ];
         break;
@@ -110,25 +110,23 @@ class UploadingPhotoGridItemBuilder {
             dataSource.add(
               UploadingPhotoCellItem(
                 item: items[i],
-                cornerStyle: UploadingPhotoGridCornerStyle.topRight,
+                cornerStyle: items.length.isEven
+                    ? UploadingPhotoGridCornerStyle.topRight
+                    : UploadingPhotoGridCornerStyle.none,
               ),
             );
           } else if (i == items.length - 1) {
             dataSource.add(
               UploadingPhotoCellItem(
                 item: items[i],
-                cornerStyle: items.length.isEven
-                    ? UploadingPhotoGridCornerStyle.bottomRight
-                    : UploadingPhotoGridCornerStyle.bottomLeftBottomRight,
+                cornerStyle: UploadingPhotoGridCornerStyle.bottomRight,
               ),
             );
           } else if (i == items.length - 2) {
             dataSource.add(
               UploadingPhotoCellItem(
                 item: items[i],
-                cornerStyle: items.length.isEven
-                    ? UploadingPhotoGridCornerStyle.bottomLeft
-                    : UploadingPhotoGridCornerStyle.none,
+                cornerStyle: UploadingPhotoGridCornerStyle.bottomLeft,
               ),
             );
           } else {
@@ -143,6 +141,9 @@ class UploadingPhotoGridItemBuilder {
         break;
     }
 
-    return partition(dataSource, 2).toList();
+    return dataSource.length % 2 != 0
+        ? partition([dataSource.first], 2).toList() +
+            partition(dataSource.sublist(1), 2).toList()
+        : partition(dataSource, 2).toList();
   }
 }

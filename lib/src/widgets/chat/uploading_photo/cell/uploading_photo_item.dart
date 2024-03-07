@@ -17,10 +17,14 @@ class UploadingPhotoItem {
     required this.backgroundImage,
     required this.chatBubbleStatusStyle,
     required this.chatStatus,
+    this.fileName,
+    this.fileSize,
   });
 
   bool isLoading;
   final String time;
+  final String? fileSize;
+  final String? fileName;
   final Image backgroundImage;
   final ChatBubbleStatusStyle chatBubbleStatusStyle;
   final ChatStatus chatStatus;
