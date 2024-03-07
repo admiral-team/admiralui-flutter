@@ -1,11 +1,11 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:example/navigation/tab_navigator_chat.dart';
+import '../../../navigation/tab_navigator_chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../storage/app_theme_storage.dart';
 import './uploading_photo_section.dart';
-import 'package:example/gen/assets.gen.dart';
+import '../../../gen/assets.gen.dart';
 
 class UploadingPhotoScreen extends StatefulWidget {
   const UploadingPhotoScreen({

@@ -9,6 +9,7 @@
 .buildlog/
 .history
 .svn/
+build/test_cache/build/
 
 # IntelliJ related
 *.iml
@@ -124,3 +125,4 @@ app.*.symbols
 
 # Tests
 test/failures/*
+build/test_cache/build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill

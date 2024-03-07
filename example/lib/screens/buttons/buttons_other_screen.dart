@@ -2,7 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:example/gen/assets.gen.dart';
+import '../../gen/assets.gen.dart';
 
 class ButtonsOtherScreen extends StatefulWidget {
   const ButtonsOtherScreen({
