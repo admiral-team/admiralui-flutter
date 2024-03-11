@@ -6,6 +6,7 @@ require './github.rb'
 require './appcenter.rb'
 require './version'
 require 'fastlane'
+require 'octokit'
 
 # Deploy Methods
 
@@ -50,6 +51,7 @@ def deploy_appcenter_dev(options:)
     )
 
     increment_app_build(build_number: previous_build_number)
+    UI.success("Build App Succesfully")
   end
 
   appcenter_upload(
