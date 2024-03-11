@@ -1,5 +1,5 @@
-import 'package:example/screens/tabs/logo_tabs_screen.dart';
-import 'package:example/screens/tabs/outline_tabs_screen.dart';
+import '../screens/tabs/logo_tabs_screen.dart';
+import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
