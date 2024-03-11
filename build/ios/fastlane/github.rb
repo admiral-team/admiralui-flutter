@@ -2,6 +2,7 @@ require 'dotenv'
 require './build_info.rb'
 require './utils.rb'
 require './appcenter.rb'
+require './result.rb'
 require './version'
 require 'octokit'
 require 'fastlane'
@@ -68,7 +69,8 @@ def link_issue(options:)
   end
 
   if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
-    UI.user_error!("Wrong branch name")
+    error = ResultInfo.new("Error", "Wrong branch name")
+    return error
   end
 
   labels = []
@@ -86,8 +88,8 @@ def link_issue(options:)
   end
 
   if issue_number.to_i.zero?
-    UI.user_error!("No issue number from branch name")
-    return
+    error = ResultInfo.new("Error", "No issue number from branch name")
+    return error
   end
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
@@ -101,9 +103,11 @@ def link_issue(options:)
   if pull_request_issue_description.include?("# Задача")
     new_description = pull_request_issue_description.gsub("# Задача", "# Задача\n#{issue_description}\nCloses ##{issue_number}\n")
     client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, body: new_description)
-    UI.success("Update issue description")
+    error = ResultInfo.new("Error", "Update issue description")
+    return error
   else
-    UI.error("Dont update issue description")
+    error = ResultInfo.new("Error", "Dont update issue description")
+    return error
   end
 
 end

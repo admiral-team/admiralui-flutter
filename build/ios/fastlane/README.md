@@ -61,18 +61,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### increment_app_version
+### test_build
 
 ```sh
-[bundle exec] fastlane increment_app_version
+[bundle exec] fastlane test_build
 ```
 
 
 
-### increment_app_build
+### increment_app_version
 
 ```sh
-[bundle exec] fastlane increment_app_build
+[bundle exec] fastlane increment_app_version
 ```
 
 
