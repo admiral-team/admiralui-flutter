@@ -10,15 +10,6 @@ class ChatInputScheme {
     textFont = theme.fonts.body2;
     placeholderFont = theme.fonts.body2;
 
-    fileButtonImageColor.set(
-      theme.colors.elementPrimary.colorWithOpacity(),
-      ControlState.disabled,
-    );
-    fileButtonImageColor.set(
-      theme.colors.elementPrimary.colorWithOpacity(),
-      ControlState.normal,
-    );
-
     placeHolderColor.set(
       theme.colors.textSecondary.colorWithOpacity(),
       ControlState.disabled,
@@ -54,7 +45,6 @@ class ChatInputScheme {
   late AFont textFont;
   late AFont placeholderFont;
 
-  ControlParameter<Color> fileButtonImageColor = ControlParameter<Color>();
   ControlParameter<Color> placeHolderColor = ControlParameter<Color>();
   ControlParameter<Color> backgroundColor = ControlParameter<Color>();
 }

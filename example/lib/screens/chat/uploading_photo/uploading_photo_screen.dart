@@ -33,15 +33,65 @@ class _UploadingPhotoScreenState extends State<UploadingPhotoScreen> {
     chatStatus: ChatStatus.sent,
   );
 
+  static UploadingPhotoItem itemFullProperties = UploadingPhotoItem(
+    isLoading: false,
+    backgroundImage: Assets.chat.photo.image(),
+    time: '22:42',
+    chatBubbleStatusStyle: ChatBubbleStatusStyle.light,
+    chatStatus: ChatStatus.sent,
+    fileName: 'Название файла длиннее чем в...',
+    fileSize: '17.5 MB PDF,',
+  );
+
   final List<UploadingPhotoSection> sections = <UploadingPhotoSection>[
-    UploadingPhotoSection('One File', item, 1, ChatDirection.left),
-    UploadingPhotoSection('Two Files', item, 2, ChatDirection.left),
-    UploadingPhotoSection('Three Files', item, 3, ChatDirection.left),
-    UploadingPhotoSection('Four Files', item, 4, ChatDirection.left),
-    UploadingPhotoSection('Five Files', item, 5, ChatDirection.left),
-    UploadingPhotoSection('Six Files', item, 6, ChatDirection.left),
-    UploadingPhotoSection('Seven Files', item, 7, ChatDirection.left),
-    UploadingPhotoSection('Eight Files', item, 8, ChatDirection.right),
+    UploadingPhotoSection(
+      'One File',
+      itemFullProperties,
+      1,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Two Files',
+      itemFullProperties,
+      2,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Three Files',
+      item,
+      3,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Four Files',
+      item,
+      4,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Five Files',
+      item,
+      5,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Six Files',
+      item,
+      6,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Seven Files',
+      item,
+      7,
+      ChatDirection.left,
+    ),
+    UploadingPhotoSection(
+      'Eight Files',
+      item,
+      8,
+      ChatDirection.right,
+    ),
   ];
 
   @override
