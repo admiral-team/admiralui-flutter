@@ -22,14 +22,14 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
   final ValueNotifier<int> _countNotifier = ValueNotifier<int>(1);
 
-  final List<OutlineTabItem> tabItems = <OutlineTabItem>[
-    OutlineTabItem('One'),
-    OutlineTabItem('Two'),
-    OutlineTabItem('Three'),
-    OutlineTabItem('Four'),
-    OutlineTabItem('Five'),
-    OutlineTabItem('Six'),
-    OutlineTabItem('Seven'),
+  final List<String> tabItems = <String>[
+    'One',
+    'Two',
+    'Three',
+    'Four',
+    'Five',
+    'Six',
+    'Seven'
   ];
 
   @override
@@ -63,7 +63,7 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              OutlineTabs(
+              OutlineTabs.withStringItems(
                 tabItems,
                 onSelected: (int index) {
                   setState(() {

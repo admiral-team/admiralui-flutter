@@ -18,6 +18,19 @@ import 'package:flutter/material.dart';
 ///     UnderlineTabsScheme? scheme,
 ///     Key? key,
 ///   })
+///
+/// /// Factory:
+/// ```
+/// UnderlineTabs.withStringItems(
+///   List<String> items, {
+///     bool isEnable = true,
+///     int? selectedIndex,
+///     ValueChanged<int>? onTap,
+///     bool isCenterTabs = false,
+///     double horizontalPadding = 0.0,
+///     UnderlineTabsScheme? scheme,
+///     Key? key,
+///   })
 /// ```
 ///
 /// Parameters:
@@ -45,10 +58,19 @@ import 'package:flutter/material.dart';
 ///     // Handle tab selection
 ///   },
 ///   isCenterTabs: true,
-///   scheme: UnderlineTabsScheme.light(),
 /// )
 /// ```
 ///
+////// Example usage with List<String>:
+/// ```dart
+/// UnderlineTabs.withStringItems(
+///   ['Tab 1', 'Tab 2', 'Tab 3'],
+///   onTap: (index) {
+///     // Handle tab selection
+///   },
+///   isCenterTabs: true,
+/// )
+/// ```
 class UnderlineTabs extends StatefulWidget {
   const UnderlineTabs(
     this.items, {
@@ -60,6 +82,30 @@ class UnderlineTabs extends StatefulWidget {
     this.scheme,
     super.key,
   });
+
+  factory UnderlineTabs.withStringItems(
+    List<String> items, {
+    bool isEnable = true,
+    int? selectedIndex,
+    ValueChanged<int>? onTap,
+    bool isCenterTabs = false,
+    double horizontalPadding = 0.0,
+    UnderlineTabsScheme? scheme,
+    Key? key,
+  }) {
+    final List<UnderlineTabItem> tabItems =
+        items.map((String title) => UnderlineTabItem(title)).toList();
+    return UnderlineTabs(
+      tabItems,
+      isEnable: isEnable,
+      selectedIndex: selectedIndex,
+      onTap: onTap,
+      isCenterTabs: isCenterTabs,
+      horizontalPadding: horizontalPadding,
+      scheme: scheme,
+      key: key,
+    );
+  }
 
   final List<UnderlineTabItem> items;
   final bool isEnable;
