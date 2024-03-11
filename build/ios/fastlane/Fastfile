@@ -17,12 +17,22 @@ end
 # Deploy Methods
 lane :deploy_appcenter_andoid_dev do |options|
   deploy_appcenter_andoid_dev(options: options)
-  send_android_telegram_message(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
+  send_telegram_message(
+    options: options,
+    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    platform: 'Android 🤖',
+    app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV']
+  )
 end
 
 lane :deploy_appcenter_dev do |options|
   deploy_appcenter_dev(options: options)
-  send_ios_telegram_message(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
+  send_telegram_message(
+    options: options,
+    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    platform: 'iOS 🍏',
+    app_name: ENV['APPCENTER_APP_NAME_DEV']
+  )
 end
 
 #Github

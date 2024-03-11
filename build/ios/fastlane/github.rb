@@ -45,10 +45,18 @@ def get_all_github_request_builds_and_remove(options:)
       if build_id_match
         build_id = build_id_match[1]
         if comment.body.include?('Platform: Android')
-          delete_build_android_from_appcenter(build_id: build_id)
+          delete_build_from_appcenter(
+            build_id: build_id,
+            app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
+            api_token: ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
+          )
         end
         if comment.body.include?('Platform: iOS')
-          delete_build_ios_from_appcenter(build_id: build_id)
+          delete_build_from_appcenter(
+            build_id: build_id,
+            app_name: ENV['APPCENTER_APP_NAME_DEV'],
+            api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV']
+          )
         end
       end
     end
