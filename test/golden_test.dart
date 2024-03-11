@@ -15,8 +15,8 @@ void main() {
       await tester.pumpWidgetBuilder(const MyApp());
       await multiScreenGolden(
         tester,
-         'home_page',
-         devices: <Device>[
+        'home_page',
+        devices: <Device>[
           const Device(
             name: 'iPhone SE',
             size: Size(375, 667),
