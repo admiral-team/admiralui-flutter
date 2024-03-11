@@ -29,46 +29,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### increment_app_version
-
-```sh
-[bundle exec] fastlane increment_app_version
-```
-
-
-
-### increment_app_build
-
-```sh
-[bundle exec] fastlane increment_app_build
-```
-
-
-
-### set_version
-
-```sh
-[bundle exec] fastlane set_version
-```
-
-
-
-### finish_release_version
-
-```sh
-[bundle exec] fastlane finish_release_version
-```
-
-
-
-### start_next_release_version
-
-```sh
-[bundle exec] fastlane start_next_release_version
-```
-
-
-
 ### unlock_secrets_keychain
 
 ```sh
@@ -97,6 +57,46 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ```sh
 [bundle exec] fastlane link_issue
+```
+
+
+
+### test_build
+
+```sh
+[bundle exec] fastlane test_build
+```
+
+
+
+### increment_app_version
+
+```sh
+[bundle exec] fastlane increment_app_version
+```
+
+
+
+### set_version
+
+```sh
+[bundle exec] fastlane set_version
+```
+
+
+
+### finish_release_version
+
+```sh
+[bundle exec] fastlane finish_release_version
+```
+
+
+
+### start_next_release_version
+
+```sh
+[bundle exec] fastlane start_next_release_version
 ```
 
 
