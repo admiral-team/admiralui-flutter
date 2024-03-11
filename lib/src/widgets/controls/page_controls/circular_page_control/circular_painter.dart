@@ -6,10 +6,12 @@ class CircularPainter extends CustomPainter {
   const CircularPainter({
     required this.percentage,
     required this.color,
+    this.strokeWidth = LayoutGrid.module / 4,
   });
 
   final double percentage;
   final Color color;
+  final double strokeWidth;
 
   double deg2Rand(double deg) => deg * math.pi / 180;
 
@@ -23,7 +25,7 @@ class CircularPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = LayoutGrid.module / 4;
+      ..strokeWidth = strokeWidth;
     canvas.drawArc(
       Rect.fromCenter(
         center: midOffset,

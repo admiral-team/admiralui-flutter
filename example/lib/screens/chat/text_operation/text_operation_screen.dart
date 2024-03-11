@@ -21,98 +21,100 @@ class TextOperationScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
         title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
+          'Text Operation',
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
+        centerTitle: true,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
           horizontal: LayoutGrid.doubleModule,
         ),
-        color: colors.backgroundBasic.color(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                TextView(
-                  'Default',
-                  font: theme.fonts.headline,
-                  textColorNormal: theme.colors.textSecondary.color(),
-                )
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            TextOperation(
-              TextOperationStyle.initial,
-              ChatStatus.none,
-              ChatDirection.left,
-              chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
-              title: '- 35 000',
-              description: 'НПО Ромашка',
-              time: '22:11',
-              chatBubbleTime: '10:22',
-            ),
-            SizedBox(height: LayoutGrid.quadrupleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                TextView(
-                  'Success',
-                  font: theme.fonts.headline,
-                  textColorNormal: theme.colors.textSecondary.color(),
-                )
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            TextOperation(
-              TextOperationStyle.success,
-              ChatStatus.none,
-              ChatDirection.left,
-              chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
-              title: '+ 35 000',
-              description: 'НПО Ромашка',
-              time: '22:11',
-              chatBubbleTime: '10:22',
-            ),
-            SizedBox(height: LayoutGrid.quadrupleModule),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                TextView(
-                  'Error',
-                  font: theme.fonts.headline,
-                  textColorNormal: theme.colors.textSecondary.color(),
-                )
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            TextOperation(
-              TextOperationStyle.error,
-              ChatStatus.none,
-              ChatDirection.left,
-              chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
-              title: 'Счет заблокирован',
-              description: 'Оплатите задолженность',
-              time: '22:11',
-              chatBubbleTime: '10:22',
-            ),
-            Spacer(),
-            Spacer(),
-          ],
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: LayoutGrid.tripleModule),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    'Default',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              TextOperation(
+                TextOperationStyle.initial,
+                ChatStatus.none,
+                ChatDirection.left,
+                chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
+                title: '- 35 000',
+                description: 'НПО Ромашка',
+                time: '22:11',
+                chatBubbleTime: '14:52',
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    'Success',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              TextOperation(
+                TextOperationStyle.success,
+                ChatStatus.none,
+                ChatDirection.left,
+                chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
+                title: '+ 35 000',
+                description: 'НПО Ромашка',
+                time: '22:11',
+                chatBubbleTime: '14:52',
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    'Error',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.doubleModule),
+              TextOperation(
+                TextOperationStyle.error,
+                ChatStatus.none,
+                ChatDirection.left,
+                chatBubbleStatusStyle: ChatBubbleStatusStyle.initial,
+                title: 'Счет заблокирован',
+                description: 'Оплатите задолженность',
+                time: '22:11',
+                chatBubbleTime: '14:52',
+              ),
+            ],
+          ),
         ),
       ),
     );
