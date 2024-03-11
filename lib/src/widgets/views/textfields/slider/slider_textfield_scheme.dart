@@ -12,6 +12,7 @@ class InputRangeTextFieldScheme {
     valueFont = theme.fonts.subhead3;
     labelFont = theme.fonts.subhead3;
     leadingTextFont = theme.fonts.body1;
+    fromToTextFont = theme.fonts.body1;
     iconColor = theme.colors.elementPrimary;
 
     labelTextColor.set(
@@ -90,6 +91,7 @@ class InputRangeTextFieldScheme {
   late AFont labelFont;
   late AFont valueFont;
   late AFont leadingTextFont;
+  late AFont fromToTextFont;
   late AColor iconColor;
   TextFieldControlParameter<Color> textColor =
       TextFieldControlParameter<Color>();

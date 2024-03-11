@@ -209,6 +209,7 @@ export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_text
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/slider/double_slider_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/sms/otp_textfield.dart';
