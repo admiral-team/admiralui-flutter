@@ -112,23 +112,27 @@ class _SliderWidgetState extends State<SliderWidget> {
           fillColor: scheme.tintColor.unsafeParameter(widget.isEnabled),
           borderColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         ),
+        overlayShape: SliderComponentShape.noOverlay,
       ),
-      child: Slider(
-        value: _currentSliderValue,
-        min: widget.min,
-        max: widget.max,
-        divisions: widget.divisions,
-        activeColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-        inactiveColor: scheme.inActiveColor.unsafeParameter(widget.isEnabled),
-        thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
-        onChanged: (double value) {
-          setState(() {
-            if (widget.isEnabled) {
-              _currentSliderValue = value;
-              widget.onChanged?.call(value);
-            }
-          });
-        },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: LayoutGrid.halfModule),
+        child: Slider(
+          value: _currentSliderValue,
+          min: widget.min,
+          max: widget.max,
+          divisions: widget.divisions,
+          activeColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
+          inactiveColor: scheme.inActiveColor.unsafeParameter(widget.isEnabled),
+          thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
+          onChanged: (double value) {
+            setState(() {
+              if (widget.isEnabled) {
+                _currentSliderValue = value;
+                widget.onChanged?.call(value);
+              }
+            });
+          },
+        ),
       ),
     );
   }

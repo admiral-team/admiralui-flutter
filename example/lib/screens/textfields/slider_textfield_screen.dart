@@ -20,9 +20,16 @@ class SliderTextFieldScreen extends StatefulWidget {
 class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
   bool isEnabled = true;
   FocusNode focusNode = FocusNode();
+  FocusNode focusNodeDoubleSlider = FocusNode();
   TextInputState state = TextInputState.normal;
   TextEditingController textController = TextEditingController(text: '10');
+  TextEditingController textControllerLeading =
+      TextEditingController(text: '0');
+  TextEditingController textControllerTrailing =
+      TextEditingController(text: '100');
+
   late double _currentSliderValue = 0.0;
+  late RangeValues _currentRangeValues = RangeValues(0, 100);
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +88,13 @@ class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
+              TitleHeaderWidget(
+                  title: 'Standard',
+                  style: TitleHeaderStyle.headlineSecondary,
+                  textAlign: TextAlign.left),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
               SliderTextField(
                 textController,
                 state: state,
@@ -93,6 +107,34 @@ class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
                 maxLabelText: 100.0,
                 divisions: 100,
                 currentValue: _currentSliderValue,
+              ),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              TitleHeaderWidget(
+                  title: 'Double',
+                  style: TitleHeaderStyle.headlineSecondary,
+                  textAlign: TextAlign.left),
+              SizedBox(
+                height: LayoutGrid.module * 5,
+              ),
+              DoubleSliderTextField(
+                textControllerLeading: textControllerLeading,
+                textControllerTrailing: textControllerTrailing,
+                state: state,
+                focusNode: focusNodeDoubleSlider,
+                labelText: 'Optional label',
+                trailingText: '₽',
+                placeholderFrom: 'Min Placeholder',
+                placeholderTo: 'Max Placeholder',
+                informerText: 'Additional text',
+                minValue: 0.0,
+                maxValue: 100.0,
+                divisions: 100,
+                currentRangeValues: _currentRangeValues,
+              ),
+              SizedBox(
+                height: LayoutGrid.doubleModule * 4,
               ),
             ],
           ),
