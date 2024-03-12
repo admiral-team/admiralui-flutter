@@ -89,7 +89,7 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
                 ),
               if (widget.leadingCell != null)
                 const SizedBox(
-                  width: LayoutGrid.tripleModule,
+                  width: LayoutGrid.doubleModule,
                 ),
               Expanded(
                 child: widget.centerCell ?? Container(),
