@@ -235,5 +235,27 @@ jobs:
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Remove all builds from request
         run: cd build/ios/fastlane && bundle exec fastlane get_all_github_request_builds_and_remove pull_request_number:${{ github.event.number }}
+
+  check-release-issue:
+      name: Check Release Issue
+      needs: deploy-ios-dev
+      runs-on: [ self-hosted, main, flutter ]
+      if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
+      env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
+          APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
+          CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+          PUll_REQUEST_NUMBER: ${{ github.event.number }}
+          CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
+          TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
+          APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
+          APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
+      steps:
+          - name: Install Fastlane Dependencies
+            run: cd build/ios/fastlane && bundle install && bundle update
+          - name: Check Release Issue
+            run: cd build/ios/fastlane && bundle exec fastlane check_close_release_issue
   
 
