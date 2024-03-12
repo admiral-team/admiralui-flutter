@@ -162,6 +162,8 @@ export 'package:admiralui_flutter/src/widgets/views/cell/trailing/date_percent_l
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/date_percent_list_widget/date_percent_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/image_subtitle_list_widget/image_subtitle_list_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/image_subtitle_list_widget/image_subtitle_list_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/trailing/subtitle_image_list_widget/subtitle_image_list_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/trailing/subtitle_image_list_widget/subtitle_image_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/cells/currency_leading_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/cells/currency_quotation_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/currency.dart';
