@@ -8,6 +8,7 @@ require_relative 'release'
 require_relative 'deploy'
 require_relative 'telegram'
 require_relative 'result.rb'
+require_relative 'demo.rb'
 require 'fastlane'
 
 before_all do
@@ -63,9 +64,9 @@ lane :check_close_release_issue do |options|
   is_success = check_close_release_issue();
   if is_success
     UI.success("Версия готова к релизу!");
-  else 
+  else
     UI.user_error!("Ошибка: Необходимо закрыть все задачи в milestone перед выпуском.");
-  end 
+  end
 end
 
 #Supporting Methods
@@ -83,4 +84,9 @@ end
 
 lane :start_next_release_version do
   start_next_release_version(options: options)
+end
+
+#Build Remote Demo Methods
+lane :build_remote_demo do |options|
+  build_remote_demo(options: options)
 end
