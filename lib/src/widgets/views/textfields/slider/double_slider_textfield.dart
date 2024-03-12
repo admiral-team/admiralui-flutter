@@ -159,321 +159,275 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  TextView(
-                    widget.labelText,
-                    font: scheme.labelFont,
-                    textColorNormal:
-                        scheme.labelTextColor.unsafeParameter(widget.state),
-                  ),
-                  const SizedBox(
-                    width: LayoutGrid.module,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      TextView(
-                        widget.textControllerLeading.text.isNotEmpty
-                            ? 'от'
-                            : '',
-                        font: scheme.fromToTextFont,
-                        textColorNormal:
-                            scheme.valueTextColor.unsafeParameter(widget.state),
-                      ),
-                      SizedBox(
-                        width: widget.textControllerLeading.text.isNotEmpty
-                            ? LayoutGrid.halfModule
-                            : 0,
-                      ),
-                      IntrinsicWidth(
-                        child: TextField(
-                          controller: widget.textControllerLeading,
-                          focusNode: _focusNode,
-                          textAlign: TextAlign.left,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r'^\d+\.?\d*'),
-                            ),
-                          ],
-                          style: TextStyle(
-                            fontWeight:
-                                scheme.textFieldScheme.textFieldFont.fontWeight,
-                            fontFamily:
-                                scheme.textFieldScheme.textFieldFont.fontFamily,
-                            fontSize:
-                                scheme.textFieldScheme.textFieldFont.fontSize,
-                            color:
-                                scheme.textColor.unsafeParameter(widget.state),
-                          ),
-                          keyboardType: const TextInputType.numberWithOptions(
-                            signed: true,
-                            decimal: true,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: widget.textControllerLeading.text.isEmpty
-                                ? widget.placeholderFrom
-                                : '',
-                            border: InputBorder.none,
-                            isDense: true,
-                            hintStyle: TextStyle(
-                              fontWeight: scheme
-                                  .textFieldScheme.placeholderFont.fontWeight,
-                              fontFamily: scheme
-                                  .textFieldScheme.placeholderFont.fontFamily,
-                              fontStyle: FontStyle.normal,
-                              fontSize: scheme
-                                  .textFieldScheme.placeholderFont.fontSize,
-                              color: scheme.textFieldScheme.placeholderColor,
-                            ),
-                          ),
-                          onSubmitted: (String text) {
-                            try {
-                              if (text.isNotEmpty) {
-                                final double currentTextValue =
-                                    double.parse(text);
-                                if (currentTextValue >= widget.minValue &&
-                                    currentTextValue <=
-                                        _currentRangeValues.end) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      currentTextValue,
-                                      _currentRangeValues.end,
-                                    );
-                                  });
-
-                                  widget.textControllerLeading.text = text;
-                                  widget.onChanged?.call(_currentRangeValues);
-                                } else if (currentTextValue >
-                                    _currentRangeValues.end) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      _currentRangeValues.end,
-                                      _currentRangeValues.end,
-                                    );
-                                    widget.textControllerLeading.text =
-                                        '${_currentRangeValues.end.toInt()}';
-                                  });
-                                } else if (currentTextValue < widget.minValue) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      widget.minValue,
-                                      _currentRangeValues.end,
-                                    );
-                                    widget.textControllerLeading.text =
-                                        '${widget.minValue.toInt()}';
-                                  });
-                                }
-                              } else {
-                                setState(() {
-                                  _currentRangeValues = RangeValues(
-                                    0,
-                                    _currentRangeValues.end,
-                                  );
-                                  widget.textControllerLeading.text = '';
-                                });
-                              }
-                            } catch (e) {
-                              print('Invalid input string $text');
-                            }
-                          },
-                          enabled: widget.state != TextInputState.disabled,
-                          readOnly: widget.state == TextInputState.readOnly,
-                        ),
-                      ),
-                      if (widget.textControllerLeading.text.isNotEmpty)
-                        Container(
-                          padding: const EdgeInsets.only(
-                            top: LayoutGrid.halfModule / 2,
-                          ),
-                          child: TextView(
-                            widget.trailingText,
-                            font: scheme.leadingTextFont,
-                            textColorNormal: scheme.leadingTextColor
-                                .unsafeParameter(widget.state),
-                            textColorDisabled: scheme.leadingTextColor
-                                .unsafeParameter(widget.state),
-                          ),
-                        ),
-                      const Spacer(),
-                      TextView(
-                        widget.textControllerTrailing.text.isNotEmpty
-                            ? 'до'
-                            : '',
-                        font: scheme.fromToTextFont,
-                        textColorNormal:
-                            scheme.valueTextColor.unsafeParameter(widget.state),
-                      ),
-                      SizedBox(
-                        width: widget.textControllerTrailing.text.isNotEmpty
-                            ? LayoutGrid.halfModule
-                            : 0,
-                      ),
-                      IntrinsicWidth(
-                        child: TextField(
-                          controller: widget.textControllerTrailing,
-                          textAlign: TextAlign.left,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r'^\d+\.?\d*'),
-                            ),
-                          ],
-                          style: TextStyle(
-                            fontWeight:
-                                scheme.textFieldScheme.textFieldFont.fontWeight,
-                            fontFamily:
-                                scheme.textFieldScheme.textFieldFont.fontFamily,
-                            fontSize:
-                                scheme.textFieldScheme.textFieldFont.fontSize,
-                            color:
-                                scheme.textColor.unsafeParameter(widget.state),
-                          ),
-                          keyboardType: const TextInputType.numberWithOptions(
-                            signed: true,
-                            decimal: true,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: widget.textControllerTrailing.text.isEmpty
-                                ? widget.placeholderTo
-                                : '',
-                            border: InputBorder.none,
-                            isDense: true,
-                            hintStyle: TextStyle(
-                              fontWeight: scheme
-                                  .textFieldScheme.placeholderFont.fontWeight,
-                              fontFamily: scheme
-                                  .textFieldScheme.placeholderFont.fontFamily,
-                              fontStyle: FontStyle.normal,
-                              fontSize: scheme
-                                  .textFieldScheme.placeholderFont.fontSize,
-                              color: scheme.textFieldScheme.placeholderColor,
-                            ),
-                          ),
-                          onSubmitted: (String text) {
-                            try {
-                              if (text.isNotEmpty) {
-                                final double currentTextValue =
-                                    double.parse(text);
-                                if (currentTextValue >=
-                                        _currentRangeValues.start &&
-                                    currentTextValue <= widget.maxValue) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      _currentRangeValues.start,
-                                      currentTextValue,
-                                    );
-                                  });
-
-                                  widget.textControllerTrailing.text = text;
-                                  widget.onChanged?.call(_currentRangeValues);
-                                } else if (currentTextValue > widget.maxValue) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      _currentRangeValues.start,
-                                      widget.maxValue,
-                                    );
-                                    widget.textControllerTrailing.text =
-                                        '${widget.maxValue.toInt()}';
-                                  });
-                                } else if (currentTextValue <
-                                    _currentRangeValues.start) {
-                                  setState(() {
-                                    _currentRangeValues = RangeValues(
-                                      _currentRangeValues.start,
-                                      _currentRangeValues.start,
-                                    );
-                                    widget.textControllerTrailing.text =
-                                        '${_currentRangeValues.start.toInt()}';
-                                  });
-                                }
-                              } else {
-                                setState(() {
-                                  _currentRangeValues = RangeValues(
-                                    _currentRangeValues.start,
-                                    widget.maxValue,
-                                  );
-                                  widget.textControllerTrailing.text = '';
-                                });
-                              }
-                            } catch (e) {
-                              print('Invalid input string $text');
-                            }
-                          },
-                          enabled: widget.state != TextInputState.disabled,
-                          readOnly: widget.state == TextInputState.readOnly,
-                        ),
-                      ),
-                      if (widget.textControllerTrailing.text.isNotEmpty)
-                        Container(
-                          padding: const EdgeInsets.only(
-                            top: LayoutGrid.halfModule / 2,
-                          ),
-                          child: TextView(
-                            widget.trailingText,
-                            font: scheme.leadingTextFont,
-                            textColorNormal: scheme.leadingTextColor
-                                .unsafeParameter(widget.state),
-                            textColorDisabled: scheme.leadingTextColor
-                                .unsafeParameter(widget.state),
-                          ),
-                        ),
-                    ],
-                  ),
-                  const SizedBox(height: LayoutGrid.halfModule),
-                  DoubleSliderWidget(
-                    isEnabled: widget.state != TextInputState.disabled,
-                    min: widget.minValue,
-                    max: widget.maxValue,
-                    divisions: widget.divisions,
-                    currentRangeValues: _currentRangeValues,
-                    onChanged: (RangeValues values) {
-                      setState(() {
-                        _currentRangeValues = values;
-                        widget.textControllerLeading.text =
-                            '${values.start.toInt()}';
-                        widget.textControllerTrailing.text =
-                            '${values.end.toInt()}';
-                      });
-                      widget.onChanged?.call(_currentRangeValues);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        _buildLabelText(),
+        const SizedBox(width: LayoutGrid.module),
+        _buildTextFieldsRow(),
+        const SizedBox(height: LayoutGrid.halfModule * 3),
+        _buildDoubleSliderWidget(),
         const SizedBox(height: LayoutGrid.module),
-        Row(
-          children: <Widget>[
-            TextView(
-              widget.minValue.toInt().toString(),
-              font: scheme.valueFont,
-              textColorNormal:
-                  scheme.valueTextColor.unsafeParameter(widget.state),
-            ),
-            const Spacer(),
-            TextView(
-              widget.maxValue.toInt().toString(),
-              font: scheme.valueFont,
-              textColorNormal:
-                  scheme.valueTextColor.unsafeParameter(widget.state),
-            ),
-          ],
-        ),
+        _buildMinAndMaxValuesRow(),
         const SizedBox(height: LayoutGrid.halfModule * 3),
         if (widget.informerText != null &&
-            widget.informerText?.isEmpty == false)
-          TextView(
-            widget.informerText!,
-            font: scheme.textFieldScheme.informerFont,
-            textColorNormal: scheme.textFieldScheme.infomerLabelColor
-                .unsafeParameter(widget.state),
+            widget.informerText?.isNotEmpty == true)
+          _buildInformerText(),
+      ],
+    );
+  }
+
+  Widget _buildLabelText() {
+    return TextView(
+      widget.labelText,
+      font: scheme.labelFont,
+      textColorNormal: scheme.labelTextColor.unsafeParameter(widget.state),
+    );
+  }
+
+  Widget _buildTextFieldsRow() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildLeadingTextField(),
+        const Spacer(),
+        _buildTrailingTextField(),
+      ],
+    );
+  }
+
+  Widget _buildLeadingTextField() {
+    return Row(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.only(
+            top: LayoutGrid.halfModule / 2,
+          ),
+          child: TextView(
+            'от',
+            font: scheme.fromToTextFont,
+            textColorNormal:
+                scheme.valueTextColor.unsafeParameter(widget.state),
+          ),
+        ),
+        const SizedBox(width: LayoutGrid.halfModule),
+        IntrinsicWidth(
+          child: TextField(
+            controller: widget.textControllerLeading,
+            focusNode: _focusNode,
+            textAlign: TextAlign.left,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(
+                RegExp(r'^\d+\.?\d*'),
+              ),
+            ],
+            style: TextStyle(
+              fontWeight: scheme.textFieldScheme.textFieldFont.fontWeight,
+              fontFamily: scheme.textFieldScheme.textFieldFont.fontFamily,
+              fontSize: scheme.textFieldScheme.textFieldFont.fontSize,
+              color: scheme.textColor.unsafeParameter(widget.state),
+            ),
+            keyboardType: const TextInputType.numberWithOptions(
+              signed: true,
+              decimal: true,
+            ),
+            decoration: InputDecoration(
+              hintText: widget.textControllerLeading.text.isEmpty
+                  ? widget.placeholderFrom
+                  : '',
+              border: InputBorder.none,
+              isDense: true,
+              hintStyle: TextStyle(
+                fontWeight: scheme.textFieldScheme.placeholderFont.fontWeight,
+                fontFamily: scheme.textFieldScheme.placeholderFont.fontFamily,
+                fontStyle: FontStyle.normal,
+                fontSize: scheme.textFieldScheme.placeholderFont.fontSize,
+                color: scheme.textFieldScheme.placeholderColor,
+              ),
+            ),
+            onSubmitted: (String text) {
+              _updateCurrentRangeValues(text, true);
+            },
+            enabled: widget.state != TextInputState.disabled,
+            readOnly: widget.state == TextInputState.readOnly,
+          ),
+        ),
+        if (widget.textControllerLeading.text.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.only(
+              top: LayoutGrid.halfModule / 2,
+            ),
+            child: TextView(
+              widget.trailingText,
+              font: scheme.leadingTextFont,
+              textColorNormal:
+                  scheme.leadingTextColor.unsafeParameter(widget.state),
+              textColorDisabled:
+                  scheme.leadingTextColor.unsafeParameter(widget.state),
+            ),
           ),
       ],
+    );
+  }
+
+  Widget _buildTrailingTextField() {
+    return Row(
+      children: <Widget>[
+        Container(
+          padding: const EdgeInsets.only(
+            top: LayoutGrid.halfModule / 2,
+          ),
+          child: TextView(
+            'до',
+            font: scheme.fromToTextFont,
+            textColorNormal:
+                scheme.valueTextColor.unsafeParameter(widget.state),
+          ),
+        ),
+        const SizedBox(width: LayoutGrid.halfModule),
+        IntrinsicWidth(
+          child: TextField(
+            controller: widget.textControllerTrailing,
+            textAlign: TextAlign.left,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(
+                RegExp(r'^\d+\.?\d*'),
+              ),
+            ],
+            style: TextStyle(
+              fontWeight: scheme.textFieldScheme.textFieldFont.fontWeight,
+              fontFamily: scheme.textFieldScheme.textFieldFont.fontFamily,
+              fontSize: scheme.textFieldScheme.textFieldFont.fontSize,
+              color: scheme.textColor.unsafeParameter(widget.state),
+            ),
+            keyboardType: const TextInputType.numberWithOptions(
+              signed: true,
+              decimal: true,
+            ),
+            decoration: InputDecoration(
+              hintText: widget.textControllerTrailing.text.isEmpty
+                  ? widget.placeholderTo
+                  : '',
+              border: InputBorder.none,
+              isDense: true,
+              hintStyle: TextStyle(
+                fontWeight: scheme.textFieldScheme.placeholderFont.fontWeight,
+                fontFamily: scheme.textFieldScheme.placeholderFont.fontFamily,
+                fontStyle: FontStyle.normal,
+                fontSize: scheme.textFieldScheme.placeholderFont.fontSize,
+                color: scheme.textFieldScheme.placeholderColor,
+              ),
+            ),
+            onSubmitted: (String text) {
+              _updateCurrentRangeValues(text, false);
+            },
+            enabled: widget.state != TextInputState.disabled,
+            readOnly: widget.state == TextInputState.readOnly,
+          ),
+        ),
+        if (widget.textControllerTrailing.text.isNotEmpty)
+          Container(
+            padding: const EdgeInsets.only(
+              top: LayoutGrid.halfModule / 2,
+            ),
+            child: TextView(
+              widget.trailingText,
+              font: scheme.leadingTextFont,
+              textColorNormal:
+                  scheme.leadingTextColor.unsafeParameter(widget.state),
+              textColorDisabled:
+                  scheme.leadingTextColor.unsafeParameter(widget.state),
+            ),
+          ),
+      ],
+    );
+  }
+
+  void _updateCurrentRangeValues(String text, bool isLeading) {
+    try {
+      final double currentTextValue =
+          text.isNotEmpty ? double.parse(text) : 0.0;
+
+      double start = _currentRangeValues.start;
+      double end = _currentRangeValues.end;
+
+      if (isLeading) {
+        if (currentTextValue >= widget.minValue && currentTextValue <= end) {
+          start = currentTextValue;
+        } else if (currentTextValue > end) {
+          start = end;
+          widget.textControllerLeading.text = '${end.toInt()}';
+        } else if (currentTextValue < widget.minValue) {
+          start = widget.minValue;
+          widget.textControllerLeading.text = '${widget.minValue.toInt()}';
+        }
+      } else {
+        if (currentTextValue >= start && currentTextValue <= widget.maxValue) {
+          end = currentTextValue;
+        } else if (currentTextValue > widget.maxValue) {
+          end = widget.maxValue;
+          widget.textControllerTrailing.text = '${widget.maxValue.toInt()}';
+        } else if (currentTextValue < start) {
+          end = start;
+          widget.textControllerTrailing.text = '${start.toInt()}';
+        }
+      }
+
+      setState(() {
+        _currentRangeValues = RangeValues(start, end);
+      });
+
+      if (isLeading) {
+        widget.textControllerLeading.text = text;
+      } else {
+        widget.textControllerTrailing.text = text;
+      }
+
+      widget.onChanged?.call(_currentRangeValues);
+    } catch (e) {
+      print('Invalid input string $text');
+    }
+  }
+
+  Widget _buildDoubleSliderWidget() {
+    return DoubleSliderWidget(
+      isEnabled: widget.state != TextInputState.disabled,
+      min: widget.minValue,
+      max: widget.maxValue,
+      divisions: widget.divisions,
+      currentRangeValues: _currentRangeValues,
+      onChanged: (RangeValues values) {
+        setState(() {
+          _currentRangeValues = values;
+          widget.textControllerLeading.text = '${values.start.toInt()}';
+          widget.textControllerTrailing.text = '${values.end.toInt()}';
+        });
+        widget.onChanged?.call(_currentRangeValues);
+      },
+    );
+  }
+
+  Widget _buildMinAndMaxValuesRow() {
+    return Row(
+      children: <Widget>[
+        TextView(
+          widget.minValue.toInt().toString(),
+          font: scheme.valueFont,
+          textColorNormal: scheme.valueTextColor.unsafeParameter(widget.state),
+        ),
+        const Spacer(),
+        TextView(
+          widget.maxValue.toInt().toString(),
+          font: scheme.valueFont,
+          textColorNormal: scheme.valueTextColor.unsafeParameter(widget.state),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInformerText() {
+    return TextView(
+      widget.informerText!,
+      font: scheme.textFieldScheme.informerFont,
+      textColorNormal: scheme.textFieldScheme.infomerLabelColor
+          .unsafeParameter(widget.state),
     );
   }
 }
