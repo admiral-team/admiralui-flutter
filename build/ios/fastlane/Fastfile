@@ -8,6 +8,7 @@ require_relative 'release'
 require_relative 'deploy'
 require_relative 'telegram'
 require_relative 'result.rb'
+require_relative 'demo.rb'
 require 'fastlane'
 
 before_all do
@@ -74,4 +75,9 @@ end
 
 lane :start_next_release_version do
   start_next_release_version(options: options)
+end
+
+#Build Remote Demo Methods
+lane :build_remote_demo do |options|
+  build_remote_demo(options: options)
 end

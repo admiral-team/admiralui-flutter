@@ -231,6 +231,8 @@ jobs:
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
       APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
     steps:
+      - name: Change Branch Name
+        run: cd build/ios/fastlane && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }}
       - name: Install Fastlane Dependencies
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Remove all builds from request
