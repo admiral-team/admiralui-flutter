@@ -182,8 +182,8 @@ jobs:
             cd build/ios/fastlane && bundle install && bundle update &&
              bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - run: cd remote_demo && flutter build web
-      - name: Build Android 
-      - run: cd remote_demo && flutter pub get && flutter build apk && flutter build appbundle
+      - name: Build Android Demo 
+      - run: cd remote_demo && flutter pub get
 
   deploy-ios-dev:
     name: Deploy iOS Appcenter Development
