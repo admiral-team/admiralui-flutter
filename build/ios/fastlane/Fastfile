@@ -36,10 +36,6 @@ lane :deploy_appcenter_dev do |options|
 end
 
 #Github
-lane :unlock_secrets_keychain do |options|
-  unlock_secrets_keychain(options: options)
-end
-
 lane :send_build_failed_info do |options|
   send_build_failed_info(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
 end
@@ -57,6 +53,19 @@ lane :link_issue do |options|
   if result.status == "Success"
     UI.success(result.description)
   end
+end
+
+lane :unlock_secrets_keychain do |options|
+  unlock_secrets_keychain(options: options)
+end
+
+lane :check_close_release_issue do |options|
+  is_success = check_close_release_issue();
+  if is_success
+    UI.success("Версия готова к релизу!");
+  else 
+    UI.user_error!("Ошибка: Необходимо закрыть все задачи в milestone перед выпуском.");
+  end 
 end
 
 #Supporting Methods
