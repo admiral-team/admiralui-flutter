@@ -47,8 +47,6 @@ class _UploadingPhotoGridViewState extends State<UploadingPhotoGridView> {
   }
 
   Widget _generateRow(List<UploadingPhotoCellItem> rowItems) {
-    const double spacingBetweenCells = LayoutGrid.module;
-
     return Wrap(
       alignment: widget.chatDirection == ChatDirection.left
           ? WrapAlignment.start
@@ -58,8 +56,9 @@ class _UploadingPhotoGridViewState extends State<UploadingPhotoGridView> {
         for (final UploadingPhotoCellItem item in rowItems)
           UploadingPhotoView(
             item: item.item,
-            width: rowItems.length == 2 ? 142 : (142 * 2) + spacingBetweenCells,
+            width: rowItems.length == 2 ? 142 : (142 * 2) + LayoutGrid.module,
             borderRadius: item.cornerStyle.value,
+            fileInfoRadius: item.cornerStyle.fileInfo,
             chatDirection: widget.chatDirection,
           ),
       ],

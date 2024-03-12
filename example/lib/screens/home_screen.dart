@@ -1,7 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../navigation/tab_navigator_home.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -258,12 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: BoxShape.circle,
           ),
           child: SizedBox(
-            child: SvgPicture.asset(
-              item.svgIconName,
-              fit: BoxFit.scaleDown,
-              height: 10,
-              width: 10,
-            ),
+            child: Text(''), // Вернуть картинку
             width: 10,
             height: 10,
           ),
