@@ -374,12 +374,6 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
         _currentRangeValues = RangeValues(start, end);
       });
 
-      if (isLeading) {
-        widget.textControllerLeading.text = text;
-      } else {
-        widget.textControllerTrailing.text = text;
-      }
-
       widget.onChanged?.call(_currentRangeValues);
     } catch (e) {
       print('Invalid input string $text');
