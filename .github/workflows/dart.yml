@@ -238,7 +238,7 @@ jobs:
 
   check-release-issue:
       name: Check Release Issue
-      needs: setup
+      needs: deploy-ios-dev
       runs-on: [ self-hosted, main, flutter ]
       if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
       env:
