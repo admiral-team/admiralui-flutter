@@ -160,6 +160,8 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
+      - name: Update Dependencies
+        run: cd build/ios/fastlane && bundle install && bundle update
       - name: Change Remote Branch Name
         run: cd build/ios/fastlane && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }}
       - name: Check If Setup Failed
