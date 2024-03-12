@@ -6,6 +6,7 @@ require './github.rb'
 require './appcenter.rb'
 require './version'
 require 'fastlane'
+require 'octokit'
 
 # Deploy Methods
 

@@ -100,13 +100,6 @@ class _ChatInputState extends State<ChatInput> {
           : ControlState.normal,
     );
 
-    final Color fileButtonImageColor =
-        scheme.fileButtonImageColor.unsafeParameter(
-      _state == TextInputState.disabled
-          ? ControlState.disabled
-          : ControlState.normal,
-    );
-
     final Color placeHolderColor = scheme.placeHolderColor.unsafeParameter(
       _state == TextInputState.disabled
           ? ControlState.disabled
@@ -128,30 +121,25 @@ class _ChatInputState extends State<ChatInput> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
+                  const SizedBox(
+                    width: LayoutGrid.module,
+                  ),
                   if (widget.isShowFileButton)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         const Spacer(),
-                        SizedBox(
-                          width: LayoutGrid.tripleModule,
-                          height: LayoutGrid.tripleModule,
-                          child: IconButton(
-                            icon: const Icon(
-                              AdmiralIcons.admiral_ic_attach_file_outline,
-                            ),
-                            color: fileButtonImageColor,
-                            iconSize: LayoutGrid.tripleModule,
-                            onPressed: widget.onFileButtonPress,
-                          ),
+                        ChatInputFileButton(
+                          onPressed: widget.onFileButtonPress,
+                          isEnable: _state == TextInputState.normal,
                         ),
                         const SizedBox(
-                          height: LayoutGrid.doubleModule,
+                          height: 8,
                         ),
                       ],
                     ),
                   const SizedBox(
-                    width: LayoutGrid.halfModule * 3,
+                    width: LayoutGrid.halfModule,
                   ),
                   Flexible(
                     child: TextFormField(
@@ -161,6 +149,7 @@ class _ChatInputState extends State<ChatInput> {
                       minLines: widget.minLinesCount,
                       keyboardType: widget.keyboardType,
                       textInputAction: widget.textInputAction,
+                      style: TextStyle(color: scheme.textColor.color()),
                       decoration: InputDecoration(
                         labelText: widget.placeholder,
                         hintText: widget.hintText,

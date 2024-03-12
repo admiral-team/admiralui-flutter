@@ -72,12 +72,8 @@ class _OutlineTabsScreenState extends State<OutlineTabsScreen> {
             SizedBox(
               height: LayoutGrid.module * 3,
             ),
-            OutlineTabs(
-              <OutlineTabItem>[
-                OutlineTabItem('One'),
-                OutlineTabItem('Two'),
-                OutlineTabItem('Three'),
-              ],
+            OutlineTabs.withStringItems(
+              <String>['One', 'Two', 'Three'],
               isEnabled: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
               onSelected: (int index) {},
@@ -99,18 +95,18 @@ class _OutlineTabsScreenState extends State<OutlineTabsScreen> {
             SizedBox(
               height: LayoutGrid.halfModule * 5,
             ),
-            OutlineTabs(
-              <OutlineTabItem>[
-                OutlineTabItem('One'),
-                OutlineTabItem('Two'),
-                OutlineTabItem('Three'),
-                OutlineTabItem('Four'),
-                OutlineTabItem('Five'),
-                OutlineTabItem('Six'),
-                OutlineTabItem('Seve'),
-                OutlineTabItem('Eight'),
-                OutlineTabItem('Nine'),
-                OutlineTabItem('Ten'),
+            OutlineTabs.withStringItems(
+              <String>[
+                'One',
+                'Two',
+                'Three',
+                'Four',
+                'Five',
+                'Six',
+                'Seven',
+                'Eight',
+                'Nine',
+                'Ten'
               ],
               isEnabled: isEnabled,
               horizontalPadding: LayoutGrid.doubleModule,
@@ -141,7 +137,7 @@ class _OutlineTabsScreenState extends State<OutlineTabsScreen> {
                 OutlineTabItem('Four'),
                 OutlineTabItem('Five'),
                 OutlineTabItem('Six'),
-                OutlineTabItem('Seve'),
+                OutlineTabItem('Seven'),
                 OutlineTabItem('Eight'),
                 OutlineTabItem('Nine'),
                 OutlineTabItem('Ten'),

@@ -7,6 +7,7 @@ require_relative 'github'
 require_relative 'release'
 require_relative 'deploy'
 require_relative 'telegram'
+require_relative 'result.rb'
 require 'fastlane'
 
 before_all do
@@ -16,12 +17,22 @@ end
 # Deploy Methods
 lane :deploy_appcenter_andoid_dev do |options|
   deploy_appcenter_andoid_dev(options: options)
-  send_android_telegram_message(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
+  send_telegram_message(
+    options: options,
+    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    platform: 'Android 🤖',
+    app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV']
+  )
 end
 
 lane :deploy_appcenter_dev do |options|
   deploy_appcenter_dev(options: options)
-  send_ios_telegram_message(options: options, build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION])
+  send_telegram_message(
+    options: options,
+    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    platform: 'iOS 🍏',
+    app_name: ENV['APPCENTER_APP_NAME_DEV']
+  )
 end
 
 #Github
@@ -34,7 +45,14 @@ lane :get_all_github_request_builds_and_remove do |options|
 end
 
 lane :link_issue do |options|
-  link_issue(options: options)
+  result = link_issue(options: options)
+  if result.status == "Error"
+    UI.error(result.description)
+  end
+
+  if result.status == "Success"
+    UI.success(result.description)
+  end
 end
 
 lane :unlock_secrets_keychain do |options|

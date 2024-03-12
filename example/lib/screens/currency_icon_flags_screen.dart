@@ -50,7 +50,8 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
                     style: fonts.subtitle1
                         .toTextStyle(colors.textPrimary.color())),
                 SizedBox(width: LayoutGrid.halfModule),
-                Icon(AdmiralIcons.admiral_ic_chevron_down_outline),
+                Icon(AdmiralIcons.admiral_ic_chevron_down_outline,
+                    color: colors.elementPrimary.color()),
                 Spacer(),
                 LinkControl(
                   title: 'Button',

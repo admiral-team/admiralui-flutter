@@ -2,6 +2,7 @@ require 'dotenv'
 require './build_info.rb'
 require './utils.rb'
 require './appcenter.rb'
+require './result.rb'
 require './version'
 require 'octokit'
 require 'fastlane'
@@ -44,10 +45,18 @@ def get_all_github_request_builds_and_remove(options:)
       if build_id_match
         build_id = build_id_match[1]
         if comment.body.include?('Platform: Android')
-          delete_build_android_from_appcenter(build_id: build_id)
+          delete_build_from_appcenter(
+            build_id: build_id,
+            app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV'],
+            api_token: ENV['APPCENTER_API_TOKEN_ANDROID_DEV']
+          )
         end
         if comment.body.include?('Platform: iOS')
-          delete_build_ios_from_appcenter(build_id: build_id)
+          delete_build_from_appcenter(
+            build_id: build_id,
+            app_name: ENV['APPCENTER_APP_NAME_DEV'],
+            api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV']
+          )
         end
       end
     end
@@ -90,7 +99,8 @@ def link_issue(options:)
   end
 
   if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
-    UI.user_error!("Wrong branch name")
+    error = ResultInfo.new("Error", "Wrong branch name")
+    return error
   end
 
   labels = []
@@ -108,8 +118,8 @@ def link_issue(options:)
   end
 
   if issue_number.to_i.zero?
-    UI.user_error!("No issue number from branch name")
-    return
+    error = ResultInfo.new("Error", "No issue number from branch name")
+    return error
   end
 
   client = Octokit::Client.new(access_token: ENV['CI_GITHUB_TOKEN'])
@@ -123,9 +133,11 @@ def link_issue(options:)
   if pull_request_issue_description.include?("# Задача")
     new_description = pull_request_issue_description.gsub("# Задача", "# Задача\n#{issue_description}\nCloses ##{issue_number}\n")
     client.update_issue("#{repo_owner}/#{repo_name}", pull_request_number, body: new_description)
-    UI.success("Update issue description")
+    error = ResultInfo.new("Error", "Update issue description")
+    return error
   else
-    UI.error("Dont update issue description")
+    error = ResultInfo.new("Error", "Dont update issue description")
+    return error
   end
 
 end
