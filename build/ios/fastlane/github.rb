@@ -114,7 +114,7 @@ def link_issue(options:)
   issue_number = extract_issue_name(branch_name: issue_name)
 
   if issue_number.downcase == "tech" || issue_number.downcase == "bump"
-    return ResultInfo.new("INFO", "TECH || BUMP")
+    return ResultInfo.new("Info", "TECH || BUMP")
   end
 
   if issue_number.to_i.zero?
