@@ -29,14 +29,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### unlock_secrets_keychain
-
-```sh
-[bundle exec] fastlane unlock_secrets_keychain
-```
-
-
-
 ### send_build_failed_info
 
 ```sh
@@ -61,10 +53,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### test_build
+### unlock_secrets_keychain
 
 ```sh
-[bundle exec] fastlane test_build
+[bundle exec] fastlane unlock_secrets_keychain
+```
+
+
+
+### check_close_release_issue
+
+```sh
+[bundle exec] fastlane check_close_release_issue
 ```
 
 
@@ -97,6 +97,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ```sh
 [bundle exec] fastlane start_next_release_version
+```
+
+
+
+### build_remote_demo
+
+```sh
+[bundle exec] fastlane build_remote_demo
 ```
 
 

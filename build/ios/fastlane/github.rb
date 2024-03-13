@@ -95,7 +95,7 @@ def link_issue(options:)
   last_branch_part = issue_name.split("/").last
 
   if first_branch_part == "rc"
-    return
+    return ResultInfo.new("Info", "RC")
   end
 
   if last_branch_part.nil? || last_branch_part.empty? || last_branch_part.include?("_")
@@ -114,7 +114,7 @@ def link_issue(options:)
   issue_number = extract_issue_name(branch_name: issue_name)
 
   if issue_number.downcase == "tech" || issue_number.downcase == "bump"
-    return
+    return ResultInfo.new("Info", "TECH || BUMP")
   end
 
   if issue_number.to_i.zero?
