@@ -4,5 +4,10 @@
     
     
     
+      
+      <testcase classname="fastlane.lanes" name="0: increment_version_number" time="4.116349">
+        
+      </testcase>
+    
   </testsuite>
 </testsuites>
