@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:example/navigation/tab_navigator_chat.dart';
+import '../../../navigation/tab_navigator_chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'chat_message_item.dart';
@@ -22,8 +22,13 @@ class ChatInputScreen extends StatefulWidget {
 
 class _ChatInputScreenState extends State<ChatInputScreen> {
   TextInputState textInputState = TextInputState.normal;
-  final List<ChatMessageItem> chatMessages = <ChatMessageItem>[
-    ChatMessageItem(text: 'Добрый день !'),
+  final ScrollController _controller = ScrollController();
+  late List<ChatMessageItem> chatMessages = <ChatMessageItem>[
+    ChatMessageItem(
+      text: 'Добрый день !',
+      direction: ChatDirection.left,
+      time: _getTime(),
+    ),
   ];
 
   final TextEditingController textEditingController = TextEditingController();
@@ -41,7 +46,13 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
     appThemeButtonStorage.toggleButton();
   }
 
-  @override
+  String _getTime() {
+    DateTime now = DateTime.now();
+    TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
+    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
+    return time;
+  }
+
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
@@ -93,24 +104,27 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                 child: Material(
                   color: colors.backgroundBasic.color(),
                   child: ListView.builder(
+                    controller: _controller,
                     addAutomaticKeepAlives: false,
                     physics: const BouncingScrollPhysics(
                       parent: AlwaysScrollableScrollPhysics(),
                     ),
                     itemCount: chatMessages.length,
                     itemBuilder: (BuildContext ctx, int index) {
-                      return Row(
-                        children: <Widget>[
-                          Spacer(),
-                          Text(chatMessages[index].text),
-                        ],
+                      return ChatBubbleView(
+                        text: chatMessages[index].text,
+                        chatStatus: ChatStatus.sent,
+                        direction: chatMessages[index].direction,
+                        time: chatMessages[index].time,
                       );
                     },
                   ),
                 ),
               ),
             ),
-            Spacer(),
+            SizedBox(
+              height: LayoutGrid.halfModule * 3,
+            ),
             ChatInput(
               state: textInputState,
               content: '',
@@ -121,9 +135,13 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               textEditingController: textEditingController,
               onSendButtonPress: () {
                 setState(() {
-                  chatMessages
-                      .add(ChatMessageItem(text: textEditingController.text));
+                  chatMessages.add(ChatMessageItem(
+                    text: textEditingController.text,
+                    direction: ChatDirection.right,
+                    time: _getTime(),
+                  ));
                   textEditingController.text = '';
+                  _scrollDown();
                 });
               },
             ),
@@ -133,6 +151,14 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void _scrollDown() {
+    _controller.animateTo(
+      _controller.position.maxScrollExtent,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.linear,
     );
   }
 }

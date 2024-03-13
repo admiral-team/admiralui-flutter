@@ -17,6 +17,17 @@ import 'package:flutter/material.dart';
 ///   Key? key,
 /// })
 /// ```
+/// Factory:
+/// ```
+/// OutlineTabs.withStringItems(
+///   List<String> tabTitles, {
+///     bool isEnabled = true,
+///     ValueChanged<int>? onSelected,
+///     OutlineTabsScheme? scheme,
+///     double horizontalPadding = 0.0,
+///     Key? key,
+///   })
+/// ```
 ///
 /// Parameters:
 /// - `items`: A list of [OutlineTabItem] representing the labels
@@ -31,6 +42,31 @@ import 'package:flutter/material.dart';
 /// indicating the index of the selected tab when it's tapped.
 /// It's invoked when a tab is selected.
 /// - `key`: An optional `Key` that uniquely identifies this widget.
+///
+/// /// Example usage:
+/// ```dart
+/// OutlineTabs(
+///   [OutlineTabItem('Tab 1'), OutlineTabItem('Tab 2'),
+///    OutlineTabItem('Tab 3')],
+///   onSelected: (index) {
+///     // Handle tab selection
+///   },
+///   isEnabled: true,
+///   horizontalPadding: 16.0,
+/// )
+/// ```
+///
+/// Example usage with List<String>:
+/// ```dart
+/// OutlineTabs.withStringItems(
+///   ['Tab 1', 'Tab 2', 'Tab 3'],
+///   onSelected: (index) {
+///     // Handle tab selection
+///   },
+///   isEnabled: true,
+///   horizontalPadding: 16.0,
+/// )
+/// ```
 class OutlineTabs extends StatefulWidget {
   const OutlineTabs(
     this.tabs, {
@@ -40,6 +76,26 @@ class OutlineTabs extends StatefulWidget {
     this.horizontalPadding = 0.0,
     super.key,
   });
+
+  factory OutlineTabs.withStringItems(
+    List<String> tabTitles, {
+    bool isEnabled = true,
+    ValueChanged<int>? onSelected,
+    OutlineTabsScheme? scheme,
+    double horizontalPadding = 0.0,
+    Key? key,
+  }) {
+    final List<OutlineTabItem> tabItems =
+        tabTitles.map((String title) => OutlineTabItem(title)).toList();
+    return OutlineTabs(
+      tabItems,
+      isEnabled: isEnabled,
+      onSelected: onSelected,
+      scheme: scheme,
+      horizontalPadding: horizontalPadding,
+      key: key,
+    );
+  }
 
   final List<OutlineTabItem> tabs;
   final bool isEnabled;

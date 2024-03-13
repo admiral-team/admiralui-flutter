@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"main/auth"
+	"main/demo"
 	"main/issues"
 	"main/release"
 	"main/telegram"
@@ -46,6 +47,9 @@ func main() {
 		formatedBuildInfoFailed := buildInfo.build_failed_info(os.Args[5])
 		telegramChatId, _ := strconv.Atoi(os.Args[3])
 		telegram.SendTextToTelegramChat(telegramChatId, formatedBuildInfoFailed, os.Args[4])
+	case "change_remote_project_branch":
+		branchName := os.Args[2]
+		demo.ChangeRemoteDemoBranch(branchName)
 	default:
 		fmt.Println("Unknown command")
 	}

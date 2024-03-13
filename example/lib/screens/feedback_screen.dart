@@ -1,8 +1,9 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class FeedbackScreen extends StatelessWidget {
+class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({
     super.key,
     required this.title,
@@ -11,35 +12,62 @@ class FeedbackScreen extends StatelessWidget {
   final String title;
 
   @override
+  State<FeedbackScreen> createState() => _FeedbackScreenState();
+}
+
+class _FeedbackScreenState extends State<FeedbackScreen> {
+  bool isEnabled = true;
+  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: BackButton(
+        leading: CupertinoButton(
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: colors.elementSecondary.color(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
         title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
+          'Feedback',
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
+        centerTitle: true,
+        backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.all(
-          LayoutGrid.doubleModule,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: LayoutGrid.doubleModule,
         ),
-        child: FeedbackInputControl(onRatingChanged: _ChangeInputControl),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            StandardTabs(
+              <String>['Default', 'Disabled'],
+              onTap: (String value) {
+                setState(() {
+                  isEnabled = value == 'Default';
+                });
+              },
+            ),
+            SizedBox(
+              height: LayoutGrid.module * 5,
+            ),
+            FeedbackInputControl(
+              onRatingChanged: _ChangeInputControl,
+              isEnabled: isEnabled,
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+          ],
+        ),
       ),
     );
   }
