@@ -70,6 +70,7 @@ import 'package:flutter/material.dart';
 class OutlineTabs extends StatefulWidget {
   const OutlineTabs(
     this.tabs, {
+    this.selectedIndex = 0,
     this.isEnabled = true,
     this.onSelected,
     this.scheme,
@@ -79,6 +80,7 @@ class OutlineTabs extends StatefulWidget {
 
   factory OutlineTabs.withStringItems(
     List<String> tabTitles, {
+    int selectedIndex = 0,
     bool isEnabled = true,
     ValueChanged<int>? onSelected,
     OutlineTabsScheme? scheme,
@@ -89,6 +91,7 @@ class OutlineTabs extends StatefulWidget {
         tabTitles.map((String title) => OutlineTabItem(title)).toList();
     return OutlineTabs(
       tabItems,
+      selectedIndex: selectedIndex,
       isEnabled: isEnabled,
       onSelected: onSelected,
       scheme: scheme,
@@ -98,6 +101,7 @@ class OutlineTabs extends StatefulWidget {
   }
 
   final List<OutlineTabItem> tabs;
+  final int selectedIndex;
   final bool isEnabled;
   final double horizontalPadding;
   final OutlineTabsScheme? scheme;
@@ -109,8 +113,8 @@ class OutlineTabs extends StatefulWidget {
 
 class _OutlineTabsState extends State<OutlineTabs>
     with SingleTickerProviderStateMixin {
-  int currentPos = 0;
   late OutlineTabsScheme scheme;
+  late int currentStep = widget.selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -142,10 +146,10 @@ class _OutlineTabsState extends State<OutlineTabs>
                     splashColor: Colors.transparent,
                     onTap: () {
                       setState(() {
-                        currentPos = i;
+                        currentStep = i;
                         if (widget.onSelected != null) {
                           setState(() {
-                            widget.onSelected!(currentPos);
+                            widget.onSelected!(currentStep);
                           });
                         }
                       });
@@ -154,7 +158,7 @@ class _OutlineTabsState extends State<OutlineTabs>
                       height: LayoutGrid.quadrupleModule,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: currentPos == i
+                          color: currentStep == i
                               ? selectedBorderColor
                               : borderColor,
                           width: LayoutGrid.halfModule / 2,
@@ -176,7 +180,7 @@ class _OutlineTabsState extends State<OutlineTabs>
                                     const EdgeInsets.symmetric(horizontal: 16),
                                 child: TextView(
                                   widget.tabs[i].text,
-                                  style: currentPos == i
+                                  style: currentStep == i
                                       ? scheme.textFont.toTextStyle(textColor)
                                       : scheme.unselectedTextFont
                                           .toTextStyle(textColor),
