@@ -184,6 +184,8 @@ jobs:
       - run: cd remote_demo && flutter build web
       - name: Test build android
         run: cd remote_demo && flutter build apk && flutter build appbundle
+      - name: Test build iOS
+        run: cd remote_demo/lib && flutter build ios
 
   deploy-ios-dev:
     name: Deploy iOS Appcenter Development
