@@ -20,7 +20,7 @@ class AlertsScreen extends StatelessWidget {
       ListCellModel(
         title: 'Alert',
         description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.standardTextfield),
+        onPressed: () => onPush.call(TabNavigatorRoutes.alert),
       ),
       ListCellModel(
         title: 'Onboarding',
