@@ -290,6 +290,7 @@ class _SliderTextFieldState extends State<SliderTextField>
             ),
           ],
         ),
+        const SizedBox(height: LayoutGrid.module),
         Row(
           children: <Widget>[
             TextView(
@@ -307,7 +308,7 @@ class _SliderTextFieldState extends State<SliderTextField>
             ),
           ],
         ),
-        const SizedBox(height: LayoutGrid.doubleModule),
+        const SizedBox(height: LayoutGrid.halfModule * 3),
         if (widget.informerText != null &&
             widget.informerText?.isEmpty == false)
           TextView(

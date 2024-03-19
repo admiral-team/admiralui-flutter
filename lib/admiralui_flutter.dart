@@ -162,6 +162,8 @@ export 'package:admiralui_flutter/src/widgets/views/cell/trailing/date_percent_l
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/date_percent_list_widget/date_percent_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/image_subtitle_list_widget/image_subtitle_list_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/cell/trailing/image_subtitle_list_widget/image_subtitle_list_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/trailing/subtitle_image_list_widget/subtitle_image_list_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/cell/trailing/subtitle_image_list_widget/subtitle_image_list_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/cells/currency_leading_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/cells/currency_quotation_view.dart';
 export 'package:admiralui_flutter/src/widgets/views/currency/currency.dart';
@@ -214,6 +216,7 @@ export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_text
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/button/input_number_textfield_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/input_number_textfield/input_number_textfield_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/textfields/slider/double_slider_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/slider/slider_textfield_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/textfields/sms/otp_textfield.dart';
