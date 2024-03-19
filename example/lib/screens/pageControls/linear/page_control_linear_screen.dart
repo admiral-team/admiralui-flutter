@@ -32,7 +32,7 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
     OutlineTabItem('Seven'),
   ];
 
-  int _countStep = 1;
+  int _countStep = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +69,7 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
             children: <Widget>[
               OutlineTabs(
                 tabItems,
+                selectedIndex: _countStep - 1,
                 onSelected: (int index) {
                   setState(() {
                     _countStep = index + 1;
