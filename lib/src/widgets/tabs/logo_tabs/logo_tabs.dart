@@ -129,7 +129,7 @@ class _LogoTabsState extends State<LogoTabs>
                       selected: currentPos,
                     ),
                   ),
-                )
+                ),
               ],
             ],
           ),
