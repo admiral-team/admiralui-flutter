@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import '../../gen/assets.gen.dart';
 
 class LogoTabsScreen extends StatefulWidget {
-  const LogoTabsScreen({
-    super.key
-  });
+  const LogoTabsScreen({super.key});
 
   @override
   State<LogoTabsScreen> createState() => _LogoTabsScreenState();
@@ -61,7 +59,7 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Two controls', 
+                title: 'Two controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -69,18 +67,19 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
               SizedBox(
                 height: LayoutGrid.module * 3,
               ),
-              LogoTabs(<Widget>[
-                Assets.card.visaLabel.image(),
-                Assets.card.masterCard.image()
-              ],
-              isEnabled: isEnabled,
-              onSelected: (int index) {},
+              LogoTabs(
+                <Widget>[
+                  Assets.card.visaLabel.image(width: 43, height: 14),
+                  Assets.card.masterCard.image(width: 32, height: 20),
+                ],
+                isEnabled: isEnabled,
+                onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Three controls', 
+                title: 'Three controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -88,19 +87,20 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              LogoTabs(<Widget>[
-                Assets.card.visaLabel.image(),
-                Assets.card.masterCard.image(),
-                Assets.card.mir.image()
-              ],
-              isEnabled: isEnabled,
-              onSelected: (int index) {},
+              LogoTabs(
+                <Widget>[
+                  Assets.card.visaLabel.image(width: 43, height: 14),
+                  Assets.card.masterCard.image(width: 32, height: 20),
+                  Assets.card.mir.image(width: 50, height: 14),
+                ],
+                isEnabled: isEnabled,
+                onSelected: (int index) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Four controls', 
+                title: 'Four controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -108,19 +108,21 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              LogoTabs(<Widget>[
-                Assets.card.visaLabel.image(),
-                Assets.card.masterCard.image(),
-                Assets.card.mir.image(),
-                Assets.card.applePay.image(),
-              ],
-              isEnabled: isEnabled,
-              onSelected: (int index) {},
-              ),              SizedBox(
+              LogoTabs(
+                <Widget>[
+                  Assets.card.visaLabel.image(width: 43, height: 14),
+                  Assets.card.masterCard.image(width: 32, height: 20),
+                  Assets.card.mir.image(width: 50, height: 14),
+                  Assets.card.applePay.image(width: 49, height: 28),
+                ],
+                isEnabled: isEnabled,
+                onSelected: (int index) {},
+              ),
+              SizedBox(
                 height: LayoutGrid.module * 5,
               ),
               TitleHeaderWidget(
-                title: 'Five controls', 
+                title: 'Five controls',
                 style: TitleHeaderStyle.headlineSecondary,
                 textAlign: TextAlign.left,
                 isEnable: isEnabled,
@@ -128,15 +130,16 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
-              LogoTabs(<Widget>[
-                Assets.card.visaLabel.image(),
-                Assets.card.masterCard.image(),
-                Assets.card.mir.image(),
-                Assets.card.applePay.image(),
-                Assets.card.googlePay.image(),
-              ],
-              isEnabled: isEnabled,
-              onSelected: (int index) {},
+              LogoTabs(
+                <Widget>[
+                  Assets.card.visaLabel.image(width: 43, height: 14),
+                  Assets.card.masterCard.image(width: 32, height: 20),
+                  Assets.card.mir.image(width: 50, height: 14),
+                  Assets.card.applePay.image(width: 49, height: 28),
+                  Assets.card.googlePay.image(width: 49, height: 28),
+                ],
+                isEnabled: isEnabled,
+                onSelected: (int index) {},
               ),
             ],
           ),
