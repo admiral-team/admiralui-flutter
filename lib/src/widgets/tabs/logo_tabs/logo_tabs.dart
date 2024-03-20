@@ -22,10 +22,10 @@ import 'package:flutter/material.dart';
 /// - `images`: A list of widgets representing the logos/icons to be displayed as tabs.
 /// - `isEnabled`: A boolean indicating whether the tabs are enabled or disabled
 /// Defaults to `true`.
-/// - `onSelected`: A callback function that takes an integer 
-/// indicating the index of the selected tab when it's tapped. 
+/// - `onSelected`: A callback function that takes an integer
+/// indicating the index of the selected tab when it's tapped.
 /// It's invoked when a tab is selected.
-/// - `scheme`: An optional `LogoTabsScheme` object that 
+/// - `scheme`: An optional `LogoTabsScheme` object that
 /// defines the color scheme for the tabs.
 /// - `key`: An optional `Key` that uniquely identifies this widget.
 class LogoTabs extends StatefulWidget {
@@ -118,13 +118,16 @@ class _LogoTabsState extends State<LogoTabs>
             unselectedLabelColor: scheme.labelColor,
             tabs: <Widget>[
               for (int i = 0; i < widget.images.length; i++) ...<Widget>[
-                SizedBox(
-                  height: LayoutGrid.module * 6,
-                  width: double.infinity,
-                  child: AdmiralTab(
-                    icon: widget.images[i],
-                    curPosition: i,
-                    selected: currentPos,
+                Opacity(
+                  opacity: widget.isEnabled ? 1 : 0.6,
+                  child: SizedBox(
+                    height: LayoutGrid.module * 6,
+                    width: double.infinity,
+                    child: AdmiralTab(
+                      icon: widget.images[i],
+                      curPosition: i,
+                      selected: currentPos,
+                    ),
                   ),
                 ),
               ],
