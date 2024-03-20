@@ -45,8 +45,6 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
         ),
         centerTitle: true,
         bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -59,7 +57,9 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
               ),
               TextView(
                   // ignore: lines_longer_than_80_chars
-                  'Всплывающие окна поверх контента, часто содержат короткое информирующее сообщение, иллюстрацию и кнопки основгого или альтернативного действия.',
+                  '''Всплывающие окна поверх контента, часто содержат короткое 
+                  информирующее сообщение, иллюстрацию и кнопки основгого или 
+                  альтернативного действия.''',
                   font: theme.fonts.body2,
                   textColorNormal: theme.colors.textPrimary.color()),
               SizedBox(
@@ -75,8 +75,8 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
                             title: 'Header',
                             image: Assets.onboarding.two.image(),
                             description:
-                                // ignore: lines_longer_than_80_chars
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
                             buttonTitle: 'Хорошо',
                             buttonAction: () {
                               _closeDialog();
