@@ -12,7 +12,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
     await _load(_loadFontFile());
   });
 
-  await testMain();
+  return testMain();
 }
 
 Map<String, List<Future<ByteData>>> _loadFontFile() {
