@@ -50,6 +50,7 @@ import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
+import '../screens/alertsOnboarding/alert_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
 import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
@@ -146,6 +147,7 @@ enum TabNavigatorRoutes {
   toast('/toast'),
   toastStatic('/toastStatic'),
   toastAction('/toastAction'),
+  alert('/checkbox'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -293,6 +295,10 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
           ErrorViewScreen(
             title: 'ErrorView',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.alert.value: (BuildContext context) => AlertViewScreen(
+            title: 'Alert',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.zeroScreen.value: (BuildContext context) => ZeroScreen(
