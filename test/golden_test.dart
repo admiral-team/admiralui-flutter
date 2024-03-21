@@ -1,4 +1,5 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'check_box_sreen_golden.dart';
 import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
@@ -13,5 +14,7 @@ void main() {
       runLinksScreen(device);
       // Radio buttons
       runRadioButtonsScreen(device);
+      // Check box
+      runCheckBoxScreen(device);
     }
 }
