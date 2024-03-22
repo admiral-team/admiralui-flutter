@@ -28,7 +28,9 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        backgroundColor: colors.backgroundBasic.color(),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -41,7 +43,6 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
         centerTitle: true,
         bottomOpacity: 0.0,
         elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(LayoutGrid.doubleModule, 0,
