@@ -44,50 +44,127 @@ class _InputNumberSecondaryScreenState
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Container(
-        color: colors.backgroundBasic.color(),
-        padding: EdgeInsets.all(
-          LayoutGrid.doubleModule,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            StandardTabs(
-              <String>['Default', 'Disabled'],
-              onTap: (String value) {
-                setState(() {
-                  switch (value) {
-                    case 'Default':
-                      isEnabled = true;
-                      break;
-                    case 'Disabled':
-                      isEnabled = false;
-                      break;
-                  }
-                });
-              },
-            ),
-            SizedBox(height: LayoutGrid.quadrupleModule),
-            // Secondary
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                TextView(
-                  'Secondary',
-                  font: theme.fonts.headline,
-                  textColorNormal: theme.colors.textSecondary.color(),
-                )
-              ],
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-            InputNumber(
-              title: 'Optional value',
-              onChangedValue: _ChangeInputControl,
-              style: InputNumberButtonStyle.secondary,
-              isEnable: isEnabled,
-            ),
-            SizedBox(height: LayoutGrid.doubleModule),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(LayoutGrid.doubleModule, 0,
+            LayoutGrid.doubleModule, LayoutGrid.module * 6),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              StandardTabs(
+                <String>['Default', 'Disabled'],
+                onTap: (String value) {
+                  setState(() {
+                    switch (value) {
+                      case 'Default':
+                        isEnabled = true;
+                        break;
+                      case 'Disabled':
+                        isEnabled = false;
+                        break;
+                    }
+                  });
+                },
+              ),
+              SizedBox(height: LayoutGrid.module * 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    '5 Symbols',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              InputNumber(
+                  title: 'Optional value',
+                  maximumValue: 10000,
+                  numberValue: 1,
+                  onChangedValue: _ChangeInputControl,
+                  style: InputNumberButtonStyle.secondary,
+                  isEnable: isEnabled),
+              SizedBox(height: LayoutGrid.module * 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    '6 Symbols',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              InputNumber(
+                  title: 'Optional value',
+                  maximumValue: 100000,
+                  numberValue: 100000,
+                  onChangedValue: _ChangeInputControl,
+                  style: InputNumberButtonStyle.secondary,
+                  isEnable: isEnabled),
+              SizedBox(height: LayoutGrid.module * 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    '8 Symbols',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              InputNumber(
+                  title: 'Optional value',
+                  maximumValue: 10000000,
+                  numberValue: 10000000,
+                  onChangedValue: _ChangeInputControl,
+                  style: InputNumberButtonStyle.secondary,
+                  isEnable: isEnabled),
+              SizedBox(height: LayoutGrid.module * 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    '9 Symbols',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              InputNumber(
+                  title: 'Optional value',
+                  maximumValue: 100000000,
+                  numberValue: 100000000,
+                  onChangedValue: _ChangeInputControl,
+                  style: InputNumberButtonStyle.secondary,
+                  isEnable: isEnabled),
+              SizedBox(height: LayoutGrid.module * 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  TextView(
+                    'Unlimited',
+                    font: theme.fonts.headline,
+                    textColorNormal: theme.colors.textSecondary.color(),
+                  )
+                ],
+              ),
+              SizedBox(height: LayoutGrid.quadrupleModule),
+              InputNumber(
+                  title: 'Optional value',
+                  maximumValue: double.infinity,
+                  onChangedValue: _ChangeInputControl,
+                  style: InputNumberButtonStyle.secondary,
+                  isEnable: isEnabled),
+              SizedBox(height: LayoutGrid.module * 5),
+            ],
+          ),
         ),
       ),
     );
