@@ -19,12 +19,18 @@ class BottomNavigation extends StatelessWidget {
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
+    final TextStyle selectedLabelStyle = fonts.caption2.toTextStyle(
+      colors.textAccent.color()
+    );
+    final TextStyle unselectedLabelStyle = fonts.caption2.toTextStyle(
+      colors.textContrast.color()
+    );
+
     return BottomNavigationBar(
       selectedItemColor: colors.elementAccent.color(),
       unselectedItemColor: colors.elementContrast.color(),
-      selectedLabelStyle: fonts.caption2.toTextStyle(colors.textAccent.color()),
-      unselectedLabelStyle:
-          fonts.caption2.toTextStyle(colors.textContrast.color()),
+      selectedLabelStyle: selectedLabelStyle,
+      unselectedLabelStyle: unselectedLabelStyle,
       backgroundColor: colors.backgroundAccentDark.color(),
       elevation: 0,
       type: BottomNavigationBarType.fixed,
