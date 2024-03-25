@@ -146,7 +146,7 @@ enum TabNavigatorRoutes {
   toast('/toast'),
   toastStatic('/toastStatic'),
   toastAction('/toastAction'),
-  alert('/checkbox'),
+  alert('/alert'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
