@@ -26,7 +26,7 @@ class SmallBadgesScreen extends StatelessWidget {
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
