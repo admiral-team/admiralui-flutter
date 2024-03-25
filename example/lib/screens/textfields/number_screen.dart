@@ -1,8 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import 'list_cell_model.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../list_cell_model.dart';
+import '../../navigation/tab_navigator_home.dart';
 
 class NumberScreen extends StatelessWidget {
   const NumberScreen({
@@ -26,11 +26,6 @@ class NumberScreen extends StatelessWidget {
         title: 'Secondary',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.inputNumberSecondary),
-      ),
-      ListCellModel(
-        title: 'Input',
-        description: '',
-        onPressed: () => onPush.call(TabNavigatorRoutes.inputNumberTextfield),
       ),
     ];
     final AppTheme theme = AppThemeProvider.of(context);

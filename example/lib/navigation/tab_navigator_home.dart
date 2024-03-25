@@ -3,7 +3,7 @@ import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
-import '../screens/number_screen.dart';
+import '../screens/textfields/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
@@ -73,7 +73,6 @@ import '../screens/cells/action_cell_screen.dart';
 import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
-import '../screens/textfields/input_number/input_number_textfield_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -214,11 +213,6 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.inputNumberSecondary.value: (BuildContext context) =>
           InputNumberSecondaryScreen(
             title: 'Secondary',
-            onPush: (TabNavigatorRoutes route) => _push(context, route),
-          ),
-      TabNavigatorRoutes.inputNumberTextfield.value: (BuildContext context) =>
-          InputNumberTextFieldScreen(
-            title: 'Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(

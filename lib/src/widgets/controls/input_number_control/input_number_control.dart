@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 typedef InputNumberCallback = void Function(double value);
 
@@ -86,7 +87,7 @@ class _InputNumberState extends State<InputNumber> {
           padding:
               const EdgeInsets.symmetric(horizontal: LayoutGrid.doubleModule),
           child: TextView(
-            _numberValue.toString().replaceAll(RegExp(r'([.]*0)(?!.*\d)'), ''),
+            formatToNumberOfString(_numberValue),
             font: scheme.font,
             textColorNormal: textColor,
             textColorDisabled: textColor,
@@ -103,6 +104,11 @@ class _InputNumberState extends State<InputNumber> {
         ),
       ],
     );
+  }
+
+  String formatToNumberOfString(double number) {
+    final NumberFormat formatter = NumberFormat('#,###');
+    return formatter.format(number).replaceAll(',', ' ');
   }
 
   void setStepValue() {
