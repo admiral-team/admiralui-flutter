@@ -100,13 +100,22 @@ class _SliderWidgetState extends State<SliderWidget> {
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? SliderScheme(theme: theme);
+    final Color activeColor = scheme.activeColor.unsafeParameter(
+      widget.isEnabled,
+    );
+
+    final Color inactiveColor = scheme.inActiveColor.unsafeParameter(
+      widget.isEnabled,
+    );
+
+    final double lineWidth =
+        MediaQuery.of(context).size.width - (LayoutGrid.module * 4);
 
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         trackHeight: LayoutGrid.halfModule / 2,
-        activeTrackColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-        inactiveTrackColor:
-            scheme.inActiveColor.unsafeParameter(widget.isEnabled),
+        activeTrackColor: activeColor,
+        inactiveTrackColor: inactiveColor,
         thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         thumbShape: CircleThumbShape(
           fillColor: scheme.tintColor.unsafeParameter(widget.isEnabled),
@@ -114,25 +123,50 @@ class _SliderWidgetState extends State<SliderWidget> {
         ),
         overlayShape: SliderComponentShape.noOverlay,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: LayoutGrid.halfModule),
-        child: Slider(
-          value: _currentSliderValue,
-          min: widget.min,
-          max: widget.max,
-          divisions: widget.divisions,
-          activeColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-          inactiveColor: scheme.inActiveColor.unsafeParameter(widget.isEnabled),
-          thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
-          onChanged: (double value) {
-            setState(() {
-              if (widget.isEnabled) {
-                _currentSliderValue = value;
-                widget.onChanged?.call(value);
-              }
-            });
-          },
-        ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: LayoutGrid.module + 2,
+            child: Center(
+              child: CustomPaint(
+                size: Size(lineWidth, LayoutGrid.halfModule / 2),
+                painter: SliderLinePainter(
+                  color: inactiveColor,
+                  divisions: widget.divisions,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: LayoutGrid.module + 2,
+            child: Center(
+              child: CustomPaint(
+                size: Size(lineWidth, LayoutGrid.halfModule),
+                painter: SliderLinePainter(
+                  color: activeColor,
+                  divisions: widget.divisions,
+                  currentSliderValue: _currentSliderValue,
+                ),
+              ),
+            ),
+          ),
+          Slider(
+            value: _currentSliderValue,
+            min: widget.min,
+            max: widget.max,
+            activeColor: activeColor,
+            inactiveColor: inactiveColor,
+            thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
+            onChanged: (double value) {
+              setState(() {
+                if (widget.isEnabled) {
+                  _currentSliderValue = value;
+                  widget.onChanged?.call(value);
+                }
+              });
+            },
+          ),
+        ],
       ),
     );
   }
