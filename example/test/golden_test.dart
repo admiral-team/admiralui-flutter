@@ -4,6 +4,7 @@ import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
+import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -21,5 +22,7 @@ void main() {
     runTagsAndChipsScreen(device);
     // Check box
     runCheckBoxScreen(device);
+    // Switcher
+    runSwitcherScreen(device);
   }
 }
