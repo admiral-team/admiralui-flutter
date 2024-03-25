@@ -21,6 +21,7 @@ Map<String, List<Future<ByteData>>> _loadFontFile() {
   final String currentDir = path.dirname(Platform.script.path);
   final String fontsDirectory = path.join(
     currentDir,
+    '../',
     'lib',
     'fonts',
   );
