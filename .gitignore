@@ -125,3 +125,5 @@ app.*.symbols
 
 # Tests
 test/failures/*
+*.dill
+/build/test_cache/build

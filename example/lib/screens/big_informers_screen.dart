@@ -23,11 +23,9 @@ class BigInformersScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
-        elevation: 0.0,
-        backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
