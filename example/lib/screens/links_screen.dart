@@ -3,9 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 class LinksScreen extends StatefulWidget {
-  const LinksScreen({super.key, this.appBarHidden = false});
-
-  final bool appBarHidden;
+  const LinksScreen({super.key});
 
   @override
   State<LinksScreen> createState() => _LinksScreenState();
@@ -18,22 +16,25 @@ class _LinksScreenState extends State<LinksScreen> {
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
+    final FontPalette fonts = theme.fonts;
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        backgroundColor: colors.backgroundBasic.color(),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
           'Links',
-          style: theme.fonts.subtitle2.toTextStyle(
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
+        centerTitle: true,
+        bottomOpacity: 1.0,
       ),
       body: Container(
-        color: colors.backgroundBasic.color(),
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
         ),
