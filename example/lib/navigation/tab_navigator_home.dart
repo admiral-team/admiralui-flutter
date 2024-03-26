@@ -41,7 +41,7 @@ import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
-import '../screens/pin_code_screen.dart';
+import '../screens/textfields/pin_code_screen.dart';
 import '../screens/textfields/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
@@ -363,8 +363,10 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
-      TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
-          const PinCodeScreen(),
+      TabNavigatorRoutes.pinCode.value: (BuildContext context) => PinCodeScreen(
+            title: 'Number',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.cells.value: (BuildContext context) => CellsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
