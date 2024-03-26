@@ -40,66 +40,68 @@ class InformersScreen extends StatelessWidget {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
         bottomOpacity: 0.0,
-        elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
-        title: Text(
-          title,
-          style: fonts.largeTitle1.toTextStyle(
-            colors.textPrimary.color(),
-          ),
-        ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
-        ),
-        color: colors.backgroundBasic.color(),
-        child: ListView.separated(
-          addAutomaticKeepAlives: false,
-          addRepaintBoundaries: false,
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(LayoutGrid.doubleModule),
+            child: TextView(
+              title,
+              font: fonts.title1,
+              textColorNormal: colors.textPrimary.color(),
+            ),
           ),
-          itemCount: items.length,
-          itemBuilder: (BuildContext ctx, int index) {
-            final ListCellModel? item =
-                index == items.length ? null : items[index];
-            if (item is ListCellModel) {
-              return BaseCellWidget(
-                centerCell: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      item.title,
-                      style: fonts.body1.toTextStyle(
-                        colors.textPrimary.color(),
-                      ),
+          Expanded(
+            child: ListView.separated(
+              addAutomaticKeepAlives: false,
+              addRepaintBoundaries: false,
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              itemCount: items.length,
+              itemBuilder: (BuildContext ctx, int index) {
+                final ListCellModel? item =
+                    index == items.length ? null : items[index];
+                if (item is ListCellModel) {
+                  return BaseCellWidget(
+                    centerCell: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          item.title,
+                          style: fonts.body1.toTextStyle(
+                            colors.textPrimary.color(),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                trailingCell: Icon(
-                  AdmiralIcons.admiral_ic_chevron_right_outline,
-                  color: colors.elementSecondary.color(),
-                ),
-                onPressed: item.onPressed,
-              );
-            }
-            return Container();
-          },
-          separatorBuilder: (
-            BuildContext ctx,
-            int index,
-          ) {
-            return Container();
-          },
-        ),
+                    trailingCell: Icon(
+                      AdmiralIcons.admiral_ic_chevron_right_outline,
+                      color: colors.elementSecondary.color(),
+                    ),
+                    onPressed: item.onPressed,
+                  );
+                }
+                return Container();
+              },
+              separatorBuilder: (
+                BuildContext ctx,
+                int index,
+              ) {
+                return Container();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

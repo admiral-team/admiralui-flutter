@@ -36,7 +36,7 @@ class _NormalBadgesScreenState extends State<NormalBadgesScreen> {
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
           widget.title,
-          style: fonts.largeTitle1.toTextStyle(
+          style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),

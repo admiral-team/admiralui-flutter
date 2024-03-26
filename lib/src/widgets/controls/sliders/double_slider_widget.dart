@@ -81,6 +81,17 @@ class _DoubleSliderWidgetState extends State<DoubleSliderWidget> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? SliderScheme(theme: theme);
 
+    final Color activeColor = scheme.activeColor.unsafeParameter(
+      widget.isEnabled,
+    );
+
+    final Color inactiveColor = scheme.inActiveColor.unsafeParameter(
+      widget.isEnabled,
+    );
+
+    final double lineWidth =
+        MediaQuery.of(context).size.width - (LayoutGrid.module * 4);
+
     return SliderTheme(
       data: SliderThemeData(
         trackHeight: LayoutGrid.halfModule / 2,
@@ -88,30 +99,40 @@ class _DoubleSliderWidgetState extends State<DoubleSliderWidget> {
           fillColor: scheme.tintColor.unsafeParameter(widget.isEnabled),
           borderColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         ),
-        activeTrackColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-        inactiveTrackColor: scheme.inActiveColor.unsafeParameter(
-          widget.isEnabled,
-        ),
+        activeTrackColor: activeColor,
+        inactiveTrackColor: inactiveColor,
         thumbColor: scheme.thumbColor.unsafeParameter(widget.isEnabled),
         overlayShape: SliderComponentShape.noOverlay,
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: LayoutGrid.halfModule),
-        child: RangeSlider(
-          min: widget.min,
-          max: widget.max,
-          values: widget.currentRangeValues,
-          divisions: widget.divisions,
-          activeColor: scheme.activeColor.unsafeParameter(widget.isEnabled),
-          inactiveColor: scheme.inActiveColor.unsafeParameter(widget.isEnabled),
-          onChanged: (RangeValues value) {
-            setState(() {
-              if (widget.isEnabled) {
-                widget.onChanged?.call(value);
-              }
-            });
-          },
-        ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: LayoutGrid.module + 2,
+            child: Center(
+              child: CustomPaint(
+                size: Size(lineWidth, LayoutGrid.halfModule / 2),
+                painter: SliderLinePainter(
+                  color: inactiveColor,
+                  divisions: widget.divisions,
+                ),
+              ),
+            ),
+          ),
+          RangeSlider(
+            min: widget.min,
+            max: widget.max,
+            values: widget.currentRangeValues,
+            activeColor: activeColor,
+            inactiveColor: inactiveColor,
+            onChanged: (RangeValues value) {
+              setState(() {
+                if (widget.isEnabled) {
+                  widget.onChanged?.call(value);
+                }
+              });
+            },
+          ),
+        ],
       ),
     );
   }
