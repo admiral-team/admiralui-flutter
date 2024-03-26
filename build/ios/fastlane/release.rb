@@ -4,8 +4,7 @@ require './version.rb'
 
 # Supporting Methods
 
-def increment_app_version(options:)
-  version_number = options[:version_number]
+def increment_app_version(version_number:)
   increment_version_number(
     version_number: version_number,
     xcodeproj: ENV['LIBRARY_PROJECT_PATH']
@@ -19,7 +18,7 @@ def increment_app_build(build_number:)
   )
 end
 
-def set_version(options:)
+def set_release_version(options:)
   internal = options[:internal_version]
   external = options[:external_version]
   update_app_version = options[:update_app_version]

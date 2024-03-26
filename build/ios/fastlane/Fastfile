@@ -75,7 +75,7 @@ lane :increment_app_version do |options|
 end
 
 lane :set_version do |options|
-  set_version(options: options)
+  set_release_version(options: options)
 end
 
 lane :finish_release_version do |options|
