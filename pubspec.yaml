@@ -1,6 +1,6 @@
 name: admiralui_flutter
 description: The visual component library for Flutter
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/admiral-team/admiralui-flutter.git
 
 environment:
@@ -30,6 +30,12 @@ flutter:
     - family: AdmiralIcons
       fonts:
         - asset: lib/fonts/AdmiralIcons.ttf
+    - family: MaterialIcons
+      fonts:
+        - asset: lib/fonts/MaterialIcons-Regular.otf
+    - family: CupertinoIcons
+      fonts:
+        - asset: lib/fonts/CupertinoIcons.ttf
     - family: SFProDisplay
       fonts:
         - asset: lib/fonts/SFProDisplay-Regular.ttf
@@ -38,6 +44,6 @@ flutter:
         - asset: lib/fonts/SFProDisplay-Semibold.ttf
     - family: SFProText
       fonts:
-        - asset: lib/fonts/SFProText-Medium.ttf
-        - asset: lib/fonts/SFProText-Regular.ttf
-        - asset: lib/fonts/SFProText-Bold.ttf
+        - asset: lib/fonts/SF-Pro-Text-Semibold.otf
+        - asset: lib/fonts/SF-Pro-Text-Regular.otf
+        - asset: lib/fonts/SF-Pro-Text-Bold.ttf

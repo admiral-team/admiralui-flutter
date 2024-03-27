@@ -3,7 +3,7 @@ import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
-import '../screens/number_screen.dart';
+import '../screens/textfields/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
 import '../screens/buttons/buttons_ghost_screen.dart';
@@ -41,7 +41,7 @@ import '../screens/currency_icon_screen.dart';
 import '../screens/currency_default_screen.dart';
 import '../screens/currency_flags_screen.dart';
 import '../screens/currency_icon_flags_screen.dart';
-import '../screens/pin_code_screen.dart';
+import '../screens/textfields/pin_code_screen.dart';
 import '../screens/textfields/double_textfield_screen.dart';
 import '../screens/cells/base_cell_screen.dart';
 import '../screens/cells/cells_screen.dart';
@@ -50,6 +50,7 @@ import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
+import '../screens/alertsOnboarding/alert_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
 import '../screens/alertsOnboarding/zero_screen.dart';
 import '../screens/alertsOnboarding/onboarding_screen.dart';
@@ -72,7 +73,6 @@ import '../screens/cells/action_cell_screen.dart';
 import '../screens/informers/toast_static.dart';
 import '../screens/textfields/input_number/input_number_default_screen.dart';
 import '../screens/textfields/input_number/input_number_secondary_screen.dart';
-import '../screens/textfields/input_number/input_number_textfield_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
@@ -146,6 +146,7 @@ enum TabNavigatorRoutes {
   toast('/toast'),
   toastStatic('/toastStatic'),
   toastAction('/toastAction'),
+  alert('/alert'),
   number('/number');
 
   const TabNavigatorRoutes(this.value);
@@ -212,11 +213,6 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.inputNumberSecondary.value: (BuildContext context) =>
           InputNumberSecondaryScreen(
             title: 'Secondary',
-            onPush: (TabNavigatorRoutes route) => _push(context, route),
-          ),
-      TabNavigatorRoutes.inputNumberTextfield.value: (BuildContext context) =>
-          InputNumberTextFieldScreen(
-            title: 'Textfield',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.spinner.value: (BuildContext context) => SpinnerScreen(
@@ -295,6 +291,10 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'ErrorView',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.alert.value: (BuildContext context) => AlertViewScreen(
+            title: 'Alert',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.zeroScreen.value: (BuildContext context) => ZeroScreen(
             title: 'ZeroScreen',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
@@ -363,8 +363,10 @@ class TabNavigatorHome extends StatelessWidget {
           ),
       TabNavigatorRoutes.links.value: (BuildContext context) =>
           const LinksScreen(),
-      TabNavigatorRoutes.pinCode.value: (BuildContext context) =>
-          const PinCodeScreen(),
+      TabNavigatorRoutes.pinCode.value: (BuildContext context) => PinCodeScreen(
+            title: 'Number',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.cells.value: (BuildContext context) => CellsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),

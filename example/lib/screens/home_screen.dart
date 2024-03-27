@@ -304,6 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SizedBox(
         height: 36.0,
         child: TextField(
+          key: const Key('mainSearchBar'),
           controller: _searchController,
           textAlign: TextAlign.left,
           decoration: InputDecoration(

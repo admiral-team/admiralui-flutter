@@ -20,7 +20,7 @@ class PageControlCircleScreen extends StatefulWidget {
 
 class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
   SpinnerSize spinnerSize = SpinnerSize.small;
-  final ValueNotifier<int> _countNotifier = ValueNotifier<int>(1);
+  final ValueNotifier<int> _countNotifier = ValueNotifier<int>(3);
 
   final List<String> tabItems = <String>[
     'One',
@@ -65,9 +65,9 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
             children: <Widget>[
               OutlineTabs.withStringItems(
                 tabItems,
+                selectedIndex: 2,
                 onSelected: (int index) {
                   setState(() {
-                    print(index + 1);
                     _countNotifier.value = index + 1;
                   });
                 },

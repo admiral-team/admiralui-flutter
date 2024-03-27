@@ -1,5 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import '../gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class TagsScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class _TagsScreenState extends State<TagsScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        backgroundColor: colors.backgroundBasic.color(),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -33,6 +35,7 @@ class _TagsScreenState extends State<TagsScreen> {
         ),
       ),
       body: Container(
+        width: double.infinity, 
         color: colors.backgroundBasic.color(),
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
@@ -70,6 +73,7 @@ class _TagsScreenState extends State<TagsScreen> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   TagControlWidget(
@@ -77,10 +81,10 @@ class _TagsScreenState extends State<TagsScreen> {
                     title: 'Text',
                     trailingButtonWidget: GestureDetector(
                       onTap: () {},
-                      child: Image(
-                        image: AssetImage('assets/tagsChips/close.png'),
+                      child: Assets.tagsChips.close.image(
                         fit: BoxFit.cover,
-                        height: 20,
+                        width: LayoutGrid.halfModule * 5,
+                        height: LayoutGrid.halfModule * 5,
                       ),
                     ),
                     style: TagStyle.normal,
@@ -91,10 +95,10 @@ class _TagsScreenState extends State<TagsScreen> {
                     title: 'Text',
                     trailingButtonWidget: GestureDetector(
                       onTap: () {},
-                      child: Image(
-                        image: AssetImage('assets/tagsChips/close.png'),
+                      child: Assets.tagsChips.close.image(
                         fit: BoxFit.cover,
-                        height: 20,
+                        width: LayoutGrid.halfModule * 5,
+                        height: LayoutGrid.halfModule * 5,
                       ),
                     ),
                     style: TagStyle.normal,
@@ -121,15 +125,14 @@ class _TagsScreenState extends State<TagsScreen> {
                   ),
                   SizedBox(width: LayoutGrid.module),
                   TagControlWidget(
-                    leadingWidget: Image(
-                      image: AssetImage('assets/tagsChips/russiaFlag.png'),
-                      fit: BoxFit.cover,
-                      height: LayoutGrid.halfModule * 7,
-                    ),
+                    leadingWidget: Assets.tagsChips.russiaFlag.image(
+                        width: LayoutGrid.halfModule * 7,
+                        height: LayoutGrid.halfModule * 7),
                     title: 'Flags',
                     style: TagStyle.normal,
                     isEnabled: isEnabled,
                   ),
+                  SizedBox(width: MediaQuery.of(context).size.width / 2),
                 ],
               ),
             ),
@@ -172,11 +175,9 @@ class _TagsScreenState extends State<TagsScreen> {
                     ),
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
-                      leadingWidget: Image(
-                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
-                        fit: BoxFit.cover,
-                        height: LayoutGrid.halfModule * 7,
-                      ),
+                      leadingWidget: Assets.tagsChips.russiaFlag.image(
+                          width: LayoutGrid.halfModule * 7,
+                          height: LayoutGrid.halfModule * 7),
                       title: 'Flags',
                       style: TagStyle.additional,
                       isEnabled: isEnabled,
@@ -224,11 +225,9 @@ class _TagsScreenState extends State<TagsScreen> {
                     ),
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
-                      leadingWidget: Image(
-                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
-                        fit: BoxFit.cover,
-                        height: LayoutGrid.halfModule * 7,
-                      ),
+                      leadingWidget: Assets.tagsChips.russiaFlag.image(
+                          width: LayoutGrid.halfModule * 7,
+                          height: LayoutGrid.halfModule * 7),
                       title: 'Flags',
                       style: TagStyle.success,
                       isEnabled: isEnabled,
@@ -277,11 +276,9 @@ class _TagsScreenState extends State<TagsScreen> {
                     ),
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
-                      leadingWidget: Image(
-                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
-                        fit: BoxFit.cover,
-                        height: LayoutGrid.halfModule * 7,
-                      ),
+                      leadingWidget: Assets.tagsChips.russiaFlag.image(
+                          width: LayoutGrid.halfModule * 7,
+                          height: LayoutGrid.halfModule * 7),
                       title: 'Flags',
                       style: TagStyle.error,
                       isEnabled: isEnabled,
@@ -330,11 +327,9 @@ class _TagsScreenState extends State<TagsScreen> {
                     ),
                     SizedBox(width: LayoutGrid.module),
                     TagControlWidget(
-                      leadingWidget: Image(
-                        image: AssetImage('assets/tagsChips/russiaFlag.png'),
-                        fit: BoxFit.cover,
-                        height: LayoutGrid.halfModule * 7,
-                      ),
+                      leadingWidget: Assets.tagsChips.russiaFlag.image(
+                          width: LayoutGrid.halfModule * 7,
+                          height: LayoutGrid.halfModule * 7),
                       title: 'Flags',
                       style: TagStyle.attention,
                       isEnabled: isEnabled,
