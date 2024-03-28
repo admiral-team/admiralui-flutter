@@ -16,8 +16,7 @@ void runSecondaryButtonsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Buttons');
           await selectSecondaryMenu(
-            tester, scenarioWidgetKey, 'Secondary buttons'
-          );
+              tester, scenarioWidgetKey, 'Secondary buttons');
         },
       );
 
@@ -28,7 +27,8 @@ void runSecondaryButtonsScreen(Device device) {
     );
   });
 
-  testGoldens('secondary_buttons_light_disabled_app', (WidgetTester tester) async {
+  testGoldens('secondary_buttons_light_disabled_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -37,8 +37,7 @@ void runSecondaryButtonsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Buttons');
           await selectSecondaryMenu(
-            tester, scenarioWidgetKey, 'Secondary buttons'
-          );
+              tester, scenarioWidgetKey, 'Secondary buttons');
           await setDisabledState(tester, scenarioWidgetKey);
         },
       );
@@ -60,8 +59,7 @@ void runSecondaryButtonsScreen(Device device) {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Buttons');
           await selectSecondaryMenu(
-            tester, scenarioWidgetKey, 'Secondary buttons'
-          );
+              tester, scenarioWidgetKey, 'Secondary buttons');
         },
       );
 
@@ -72,7 +70,8 @@ void runSecondaryButtonsScreen(Device device) {
     );
   });
 
-  testGoldens('secondary_buttons_dark_disabled_app', (WidgetTester tester) async {
+  testGoldens('secondary_buttons_dark_disabled_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -82,8 +81,7 @@ void runSecondaryButtonsScreen(Device device) {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Buttons');
           await selectSecondaryMenu(
-            tester, scenarioWidgetKey, 'Secondary buttons'
-          );
+              tester, scenarioWidgetKey, 'Secondary buttons');
           await setDisabledState(tester, scenarioWidgetKey);
         },
       );
