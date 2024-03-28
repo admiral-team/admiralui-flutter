@@ -28,7 +28,7 @@ void runPrimaryButtonsScreen(Device device) {
     );
   });
 
-  testGoldens('primary_buttons_light_disabled_app', (WidgetTester tester) async {
+  testGoldens('primary_buttons_light_disabled_app',(WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(

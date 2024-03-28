@@ -8,7 +8,7 @@ import '../lib/main.dart';
 import 'set_steps.dart';
 
 void runSwitcherScreen(Device device) {
-  testGoldens('check_box_light_app', (WidgetTester tester) async {
+  testGoldens('switcher_light_app', (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
