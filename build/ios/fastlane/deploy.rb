@@ -53,15 +53,5 @@ def deploy_appcenter_dev(options:)
     increment_app_build(build_number: previous_build_number)
   end
 
-  appcenter_upload(
-    api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV'],
-    owner_name: ENV['APPCENTER_OWNER_NAME'],
-    owner_type: ENV['APPCENTER_OWNER_TYPE'],
-    app_name: ENV['APPCENTER_APP_NAME_DEV'],
-    file: "Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
-    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
-    destination_type: "group",
-    release_notes: "",
-    notify_testers: true
-  )
+  system("cd ../Release/AdmiralUI-Example/Dev && firebase appdistribution:distribute admiralui-flutter-example.ipa --app 1:792224744111:ios:a52fac26e4fe3887708a5a --release-notes "Bug fixes and improvements")
 end
