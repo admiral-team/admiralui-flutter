@@ -282,10 +282,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
-          OnboardingViewScreen(
-            title: 'Onboarding',
-            onPush: (TabNavigatorRoutes route) => _push(context, route),
-          ),
+          OnboardingViewScreen(title: 'Onboarding'),
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
           ErrorViewScreen(
             title: 'ErrorView',
