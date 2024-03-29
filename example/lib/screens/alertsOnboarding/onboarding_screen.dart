@@ -53,17 +53,15 @@ class _OnboardingViewScreenState extends State<OnboardingViewScreen> {
                 onPressed: () => Navigator.of(context).pop(),
               )
             : null,
-        actions: <Widget>[
-          Row(
-            children: <Widget>[
-              GhostButton(
-                title: 'Пропустить',
-                sizeType: ButtonSizeType.small,
-                onPressed: () => widget.onPush?.call(),
-              )
-            ],
-          )
-        ],
+        actions: widget.isInitial
+            ? <Widget>[
+                GhostButton(
+                  title: 'Пропустить',
+                  sizeType: ButtonSizeType.small,
+                  onPressed: () => widget.onPush?.call(),
+                )
+              ]
+            : null,
         title: Text(
           widget.title,
           style: fonts.subtitle2.toTextStyle(
