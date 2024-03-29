@@ -53,5 +53,5 @@ def deploy_appcenter_dev(options:)
     increment_app_build(build_number: previous_build_number)
   end
 
-  system("cd ../Release/AdmiralUI-Example/Dev && firebase appdistribution:distribute admiralui-flutter-example.ipa --app 1:792224744111:ios:a52fac26e4fe3887708a5a --release-notes "Bug fixes and improvements")
+  system("cd ../Release/AdmiralUI-Example/Dev && firebase appdistribution:distribute admiralui-flutter-example.ipa --app 1:792224744111:ios:a52fac26e4fe3887708a5a --release-notes 'Bug fixes and improvements'")
 end
