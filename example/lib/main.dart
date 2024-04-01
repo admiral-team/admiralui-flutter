@@ -2,7 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'screens/alertsOnboarding/onboarding_screen.dart';
+import 'screens/onboarding_screen.dart';
 import 'screens/root_screen.dart';
 
 void main() async {
@@ -31,31 +31,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppTheme theme = AppThemeProvider.of(context);
+    final ColorPalette colors = theme.colors;
+
     return AppThemeProviderWrapper(
       child: MaterialApp(
         title: 'Дизайн-система  «Адмирал»',
         home: isShowOnboarding ? OnboardingScreen() : RootScreen(),
         debugShowCheckedModeBanner: false,
-      ),
-    );
-  }
-}
-
-class OnboardingScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return OnboardingViewScreen(
-      title: '',
-      isInitial: true,
-      onPush: () async {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => RootScreen(),
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(color: colors.elementPrimary.color()),
           ),
-        );
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('showOnboarding', false);
-      },
+        ),
+      ),
     );
   }
 }

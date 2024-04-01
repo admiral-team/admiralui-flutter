@@ -53,7 +53,7 @@ import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/alert_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
 import '../screens/alertsOnboarding/zero_screen.dart';
-import '../screens/alertsOnboarding/onboarding_screen.dart';
+import '../screens/alertsOnboarding/onboarding_view_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/action_toast_screen.dart';
