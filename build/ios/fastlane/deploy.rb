@@ -1,4 +1,5 @@
 require_relative 'appcenter'
+require_relative 'firebase_app_distribution'
 require './build_info.rb'
 require './utils.rb'
 require './release.rb'
@@ -34,6 +35,7 @@ end
 
 def deploy_appcenter_dev(options:)
   skip_archive = options[:skip_archive] || false
+  issue_name = options[:issue_name]
   previous_build_number = current_app_build_number
   build_number = generate_random_build_number()
   if !skip_archive
@@ -53,5 +55,10 @@ def deploy_appcenter_dev(options:)
     increment_app_build(build_number: previous_build_number)
   end
 
-  system("cd ../Release/AdmiralUI-Example/Dev && firebase appdistribution:distribute admiralui-flutter-example.ipa --app 1:792224744111:ios:a52fac26e4fe3887708a5a --release-notes 'Bug fixes and improvements'")
+  release = firebase_app_distribution(
+    app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
+    ipa_path: "../Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
+    release_notes: "Branch #{issue_name} Build Number: #{build_number}",
+    groups: "Testers",
+  )
 end

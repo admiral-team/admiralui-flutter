@@ -28,9 +28,10 @@ end
 
 lane :deploy_appcenter_dev do |options|
   deploy_appcenter_dev(options: options)
+  puts "Release Info #{lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]}"
   send_telegram_message(
     options: options,
-    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    build_info_hash: lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE],
     platform: 'iOS 🍏',
     app_name: ENV['APPCENTER_APP_NAME_DEV']
   )
