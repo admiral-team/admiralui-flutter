@@ -9,6 +9,7 @@ import (
 	"main/issues"
 	"main/release"
 	"main/telegram"
+	"main/config"
 	"os"
 	"strconv"
 
@@ -50,6 +51,9 @@ func main() {
 	case "change_remote_project_branch":
 		branchName := os.Args[2]
 		demo.ChangeRemoteDemoBranch(branchName)
+	case "setup_ios_config_files":
+		googleApiKey := os.Args[2]
+		config.BuildIosConfigFiles(googleApiKey)
 	default:
 		fmt.Println("Unknown command")
 	}
