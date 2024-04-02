@@ -220,7 +220,7 @@ jobs:
       # - name: Build iOS Config files
       #   run: cd build/ios/go_scripts && ./main setup_ios_config_files "$IOS_GOOGLE_API_KEY"
       - name: Build iOS App
-        run: brew upgrade cocoapods && cd example/lib && flutter build ios
+        run: cd example/lib && flutter build ios
       - name: Deploy iOS App to App Center
         if: ${{ github.event_name == 'pull_request' }}
         run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
