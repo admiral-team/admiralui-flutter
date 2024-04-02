@@ -53,7 +53,7 @@ import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/alert_screen.dart';
 import '../screens/alertsOnboarding/error_view_screen.dart';
 import '../screens/alertsOnboarding/zero_screen.dart';
-import '../screens/alertsOnboarding/onboarding_screen.dart';
+import '../screens/alertsOnboarding/onboarding_view_screen.dart';
 import '../screens/text_block/text_block_screen.dart';
 import '../screens/toolbar_screen.dart';
 import '../screens/action_toast_screen.dart';
@@ -282,10 +282,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.onboarding.value: (BuildContext context) =>
-          OnboardingViewScreen(
-            title: 'Onboarding',
-            onPush: (TabNavigatorRoutes route) => _push(context, route),
-          ),
+          OnboardingViewScreen(title: 'Onboarding'),
       TabNavigatorRoutes.errorView.value: (BuildContext context) =>
           ErrorViewScreen(
             title: 'ErrorView',

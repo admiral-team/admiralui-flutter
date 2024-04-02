@@ -72,6 +72,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
             () {
               currentPage += 1;
               animateToPage();
+              widget.onPageChanged?.call(currentPage);
             },
           ),
           stepNotifier: _stepNotifier,
