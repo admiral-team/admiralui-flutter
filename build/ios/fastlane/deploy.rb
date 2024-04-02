@@ -34,7 +34,6 @@ end
 
 def deploy_appcenter_dev(options:)
   skip_archive = options[:skip_archive] || false
-  issue_name = options[:issue_name]
   previous_build_number = current_app_build_number
   build_number = generate_random_build_number()
   if !skip_archive
