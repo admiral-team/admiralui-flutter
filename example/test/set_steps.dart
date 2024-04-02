@@ -46,3 +46,14 @@ Future<void> setDisabledState(
   );
   await tester.tap(finderDisabled);
 }
+
+Future<void> selectSecondaryMenu(
+  WidgetTester tester,
+  Key scenarioWidgetKey,
+  String menu,
+) async {
+  await tester.pump(const Duration(milliseconds: 50));
+  
+  final Finder finderMenu = find.text(menu);
+  await tester.tap(finderMenu);
+}
