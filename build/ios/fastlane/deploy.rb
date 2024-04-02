@@ -1,5 +1,4 @@
 require_relative 'appcenter'
-require_relative 'firebase_app_distribution'
 require './build_info.rb'
 require './utils.rb'
 require './release.rb'
@@ -54,11 +53,4 @@ def deploy_appcenter_dev(options:)
 
     increment_app_build(build_number: previous_build_number)
   end
-
-  release = firebase_app_distribution(
-    app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
-    ipa_path: "../Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
-    release_notes: "Branch #{issue_name} Build Number: #{build_number}",
-    groups: "Testers",
-  )
 end
