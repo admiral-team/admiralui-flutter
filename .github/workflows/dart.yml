@@ -217,8 +217,8 @@ jobs:
         run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
       - name: Unlock Fastlane Secrets Keychain
         run: cd build/ios/fastlane && bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-      # - name: Build iOS Config files
-      #   run: cd build/ios/go_scripts && ./main setup_ios_config_files "$IOS_GOOGLE_API_KEY"
+      - name: Add FireBase Lane Distribution
+        run: cd build/ios/fastlane && fastlane add_plugin firebase_app_distribution
       - name: Build iOS App
         run: cd example/lib && flutter build ios
       - name: Deploy iOS App to App Center
