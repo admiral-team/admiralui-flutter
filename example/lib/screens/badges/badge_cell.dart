@@ -7,11 +7,13 @@ class BadgeCellWidget extends StatefulWidget {
     super.key,
     required this.badgeStyle,
     this.title = '',
+    this.isSmallBadge = false,
     this.isEnabled = true,
   });
 
   final BadgeStyle badgeStyle;
   final String title;
+  final bool isSmallBadge;
   final bool isEnabled;
 
   @override
@@ -51,7 +53,9 @@ class _BadgeCellWidgetState extends State<BadgeCellWidget> {
                 right: 0,
                 top: 0,
                 child: BadgeWidget(
-                  title: currentValue.toInt().toString(),
+                  title: widget.isSmallBadge
+                      ? null
+                      : currentValue.toInt().toString(),
                   style: widget.badgeStyle,
                   isEnable: widget.isEnabled,
                 ),

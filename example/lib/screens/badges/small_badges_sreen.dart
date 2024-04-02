@@ -1,14 +1,19 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'badge_cell.dart';
 import 'package:flutter/material.dart';
 
-class SmallBadgesScreen extends StatelessWidget {
-  const SmallBadgesScreen({
-    super.key,
-    required this.title,
-  });
+class SmallBadgesScreen extends StatefulWidget {
+  const SmallBadgesScreen({super.key, required this.title});
 
   final String title;
+
+  @override
+  State<SmallBadgesScreen> createState() => _SmallBadgesScreenState();
+}
+
+class _SmallBadgesScreenState extends State<SmallBadgesScreen> {
+  bool isEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -25,41 +30,62 @@ class SmallBadgesScreen extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
         title: Text(
-          title,
+          widget.title,
           style: fonts.subtitle2.toTextStyle(
             colors.textPrimary.color(),
           ),
         ),
       ),
-      body: SizedBox.expand(
-        child: Container(
-          color: colors.backgroundBasic.color(),
-          padding: EdgeInsets.all(
-            LayoutGrid.doubleModule,
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: LayoutGrid.doubleModule,
+        ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      const BadgeWidget(style: BadgeStyle.additional),
-                      SizedBox(width: LayoutGrid.module),
-                      const BadgeWidget(style: BadgeStyle.natural),
-                      SizedBox(width: LayoutGrid.module),
-                      const BadgeWidget(style: BadgeStyle.normal),
-                      SizedBox(width: LayoutGrid.module),
-                      const BadgeWidget(style: BadgeStyle.success),
-                      SizedBox(width: LayoutGrid.module),
-                      const BadgeWidget(style: BadgeStyle.error),
-                      SizedBox(width: LayoutGrid.module),
-                      const BadgeWidget(style: BadgeStyle.attention),
-                    ],
-                  ),
-                ),
-              ]),
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              StandardTabs(
+                <String>['Default', 'Disabled'],
+                onTap: (String value) {
+                  setState(() {
+                    isEnabled = value == 'Default';
+                  });
+                },
+              ),
+              BadgeCellWidget(
+                  title: 'Additional',
+                  badgeStyle: BadgeStyle.additional,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled),
+              BadgeCellWidget(
+                  title: 'Natural',
+                  badgeStyle: BadgeStyle.natural,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled),
+              BadgeCellWidget(
+                  title: 'Default',
+                  badgeStyle: BadgeStyle.normal,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled),
+              BadgeCellWidget(
+                  title: 'Success',
+                  badgeStyle: BadgeStyle.success,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled),
+              BadgeCellWidget(
+                  title: 'Error',
+                  badgeStyle: BadgeStyle.error,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled),
+              BadgeCellWidget(
+                  title: 'Attention',
+                  badgeStyle: BadgeStyle.attention,
+                  isSmallBadge: true,
+                  isEnabled: isEnabled)
+            ],
+          ),
         ),
       ),
     );
