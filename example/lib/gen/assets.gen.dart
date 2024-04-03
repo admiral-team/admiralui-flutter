@@ -50,6 +50,10 @@ class $AssetsCardGen {
   AssetGenImage get googlePay =>
       const AssetGenImage('assets/card/googlePay.png');
 
+  /// File path: assets/card/googlePayBig.png
+  AssetGenImage get googlePayBig =>
+      const AssetGenImage('assets/card/googlePayBig.png');
+
   /// File path: assets/card/masterCard.png
   AssetGenImage get masterCard =>
       const AssetGenImage('assets/card/masterCard.png');
@@ -68,8 +72,17 @@ class $AssetsCardGen {
       const AssetGenImage('assets/card/visaLabel.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [applePay, appleWallet, googlePay, masterCard, mir, rnb, visa, visaLabel];
+  List<AssetGenImage> get values => [
+        applePay,
+        appleWallet,
+        googlePay,
+        googlePayBig,
+        masterCard,
+        mir,
+        rnb,
+        visa,
+        visaLabel
+      ];
 }
 
 class $AssetsChatGen {
