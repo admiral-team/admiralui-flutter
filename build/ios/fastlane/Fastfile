@@ -29,7 +29,6 @@ end
 lane :deploy_appcenter_dev do |options|
   issue_name = options[:issue_name]
   build_number = generate_random_build_number()
-  deploy_appcenter_dev(options: options)
   release = firebase_app_distribution(
     app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
     ipa_path: "../Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
