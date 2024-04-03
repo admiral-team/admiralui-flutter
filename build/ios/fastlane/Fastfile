@@ -30,18 +30,20 @@ lane :deploy_appcenter_dev do |options|
   deploy_appcenter_dev(options: options)
   issue_name = options[:issue_name]
   build_number = generate_random_build_number()
-  current_directory = File.expand_path('../..', __FILE__)
   release = firebase_app_distribution(
     app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
-    ipa_path: current_directory + "/Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
+    ipa_path: File.expand_path('../..', __FILE__) + "/Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
     release_notes: "Branch #{issue_name} Build Number: #{build_number}",
     groups: "Testers"
   )
 
-  puts "Release Info #{lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]}"
+  context = lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]
+
+  puts "url is - #{context[:binaryDownloadUri]}"
+
   send_telegram_message(
     options: options,
-    build_info_hash: lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE],
+    release: lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE],
     platform: 'iOS 🍏',
     app_name: ENV['APPCENTER_APP_NAME_DEV']
   )
