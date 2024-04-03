@@ -1,5 +1,9 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'badges_screen_golden.dart';
+import 'buttons/ghost_buttons_screen_golden.dart';
+import 'buttons/other_buttons_screen_golder.dart';
+import 'buttons/primary_buttons_screen_golden.dart';
+import 'buttons/rules_buttons_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'device_config.dart';
 import 'links_screen_golden.dart';
@@ -27,5 +31,16 @@ void main() {
     runSwitcherScreen(device);
     // Badges
     runBadgesScreen(device);
+    // Primary Buttons
+    runPrimaryButtonsScreen(device);
+    // Secondary Buttons
+    // Исправить кнопки Secondary
+    //runSecondaryButtonsScreen(device);
+    // Ghost Buttons
+    runGhostButtonsScreen(device);
+    // Rules Buttons
+    runRulesButtonsScreen(device);
+    // Other Buttons
+    runOtherButtonsScreen(device);
   }
 }
