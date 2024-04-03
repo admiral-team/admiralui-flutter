@@ -27,6 +27,7 @@ lane :deploy_appcenter_andoid_dev do |options|
 end
 
 lane :deploy_appcenter_dev do |options|
+  deploy_appcenter_dev(options: options)
   issue_name = options[:issue_name]
   build_number = generate_random_build_number()
   current_directory = File.expand_path('../..', __FILE__)
