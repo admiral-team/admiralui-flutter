@@ -22,6 +22,7 @@ class _NormalBadgesScreenState extends State<NormalBadgesScreen> {
     final FontPalette fonts = theme.fonts;
 
     return Scaffold(
+      backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
