@@ -32,9 +32,9 @@ lane :deploy_appcenter_dev do |options|
   current_directory = File.expand_path('../', __FILE__)
   release = firebase_app_distribution(
     app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
-    ipa_path: "Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
+    ipa_path: current_directory + "Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
     release_notes: "Branch #{issue_name} Build Number: #{build_number}",
-    groups: "Testers",
+    groups: "Testers"
   )
   puts "Release Info #{lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]}"
   send_telegram_message(
