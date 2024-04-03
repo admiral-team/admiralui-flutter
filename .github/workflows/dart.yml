@@ -139,7 +139,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: cd example
+      - run: cd example && flutter test
       - name: Check If Test Failed
         if: ${{ failure() }}
         run: |
@@ -221,9 +221,9 @@ jobs:
         run: cd build/ios/fastlane && fastlane add_plugin firebase_app_distribution
       - name: Build iOS App
         run: cd example/lib && flutter build ios
-      - name: Deploy iOS App to App Center
+      - name: Deploy iOS App Firebase
         if: ${{ github.event_name == 'pull_request' }}
-        run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
+        run: cd build/ios/fastlane && bundle exec fastlane deploy_firebase_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
       - name: Check If Deploy iOS Appcenter Failed
         if: ${{ failure() }}
         run: |

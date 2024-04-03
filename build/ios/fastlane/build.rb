@@ -32,7 +32,7 @@ def deploy_appcenter_andoid_dev(options:)
   )
 end
 
-def deploy_appcenter_dev(options:)
+def build_ios_app(options:)
   skip_archive = options[:skip_archive] || false
   previous_build_number = current_app_build_number
   build_number = generate_random_build_number()
