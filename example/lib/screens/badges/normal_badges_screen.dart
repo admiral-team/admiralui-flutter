@@ -4,14 +4,9 @@ import 'badge_cell.dart';
 import 'package:flutter/material.dart';
 
 class NormalBadgesScreen extends StatefulWidget {
-  const NormalBadgesScreen({
-    super.key,
-    required this.title,
-    this.appBarHidden = false,
-  });
+  const NormalBadgesScreen({super.key, required this.title});
 
   final String title;
-  final bool appBarHidden;
 
   @override
   State<NormalBadgesScreen> createState() => _NormalBadgesScreenState();
