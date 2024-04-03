@@ -37,6 +37,7 @@ lane :deploy_appcenter_dev do |options|
     release_notes: "Branch #{issue_name} Build Number: #{build_number}",
     groups: "Testers"
   )
+
   puts "Release Info #{lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]}"
   send_telegram_message(
     options: options,
