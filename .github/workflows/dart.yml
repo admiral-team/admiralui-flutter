@@ -139,7 +139,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: cd example
+      - run: cd example && flutter test
       - name: Check If Test Failed
         if: ${{ failure() }}
         run: |
