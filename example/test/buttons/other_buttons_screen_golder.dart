@@ -18,6 +18,7 @@ void runOtherButtonsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Other buttons'
           );
+          await tester.pump(const Duration(milliseconds: 50));
         },
       );
 
@@ -40,6 +41,7 @@ void runOtherButtonsScreen(Device device) {
             tester, scenarioWidgetKey, 'Other buttons'
           );
           await setDisabledState(tester, scenarioWidgetKey);
+          await tester.pump(const Duration(milliseconds: 50));
         },
       );
 
@@ -62,6 +64,7 @@ void runOtherButtonsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Other buttons'
           );
+          await tester.pump(const Duration(milliseconds: 50));
         },
       );
 
@@ -85,6 +88,7 @@ void runOtherButtonsScreen(Device device) {
             tester, scenarioWidgetKey, 'Other buttons'
           );
           await setDisabledState(tester, scenarioWidgetKey);
+          await tester.pump(const Duration(milliseconds: 50));
         },
       );
 
