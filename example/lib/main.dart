@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,9 +18,13 @@ void main() async {
       statusBarColor: Colors.transparent,
     ),
   );
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } else if (Platform.isIOS) {
+    await Firebase.initializeApp();
+  }
   runApp(
     MyApp(
       isShowOnboarding: showOnboarding,
