@@ -219,6 +219,8 @@ jobs:
         run: cd build/ios/fastlane && bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
       - name: Add FireBase Lane Distribution
         run: cd build/ios/fastlane && fastlane add_plugin firebase_app_distribution
+      - name: Write Env to Config
+        run: cd example/ios && touch .env && echo "GOOGLE_API_KEY="+"$IOS_GOOGLE_API_KEY" > .env
       - name: Build iOS App
         run: cd example/lib && flutter build ios
       - name: Deploy iOS App Firebase
