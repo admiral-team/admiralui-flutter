@@ -1,4 +1,5 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'badges_screen_golden.dart';
 import 'buttons/ghost_buttons_screen_golden.dart';
 import 'buttons/other_buttons_screen_golder.dart';
 import 'buttons/primary_buttons_screen_golden.dart';
@@ -28,6 +29,8 @@ void main() {
     runCheckBoxScreen(device);
     // Switcher
     runSwitcherScreen(device);
+    // Badges
+    runBadgesScreen(device);
     // Primary Buttons
     runPrimaryButtonsScreen(device);
     // Secondary Buttons
