@@ -53,7 +53,7 @@ Future<void> selectSecondaryMenu(
   String menu,
 ) async {
   await tester.pump(const Duration(milliseconds: 50));
-  
+
   final Finder finderMenu = find.text(menu);
   await tester.tap(finderMenu);
 }
