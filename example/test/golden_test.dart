@@ -13,6 +13,8 @@ import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'toolbar_screen_golden.dart';
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -42,5 +44,7 @@ void main() {
     runRulesButtonsScreen(device);
     // Other Buttons
     runOtherButtonsScreen(device);
+    // Toolbar
+    runToolbarScreen(device);
   }
 }
