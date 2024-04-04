@@ -5,7 +5,7 @@ require_relative 'utils'
 require_relative 'appcenter'
 require_relative 'github'
 require_relative 'release'
-require_relative 'deploy'
+require_relative 'build'
 require_relative 'telegram'
 require_relative 'result.rb'
 require_relative 'demo.rb'
@@ -18,19 +18,26 @@ end
 # Deploy Methods
 lane :deploy_appcenter_andoid_dev do |options|
   deploy_appcenter_andoid_dev(options: options)
-  send_telegram_message(
-    options: options,
-    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
-    platform: 'Android 🤖',
-    app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV']
-  )
+  # send_telegram_message(
+  #   options: options,
+  #   build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+  #   platform: 'Android 🤖',
+  #   app_name: ENV['APPCENTER_APP_ANDROID_NAME_DEV']
+  # )
 end
 
-lane :deploy_appcenter_dev do |options|
-  deploy_appcenter_dev(options: options)
+lane :deploy_firebase_dev do |options|
+  build_ios_app(options: options)
+  release = firebase_app_distribution(
+    app: "1:792224744111:ios:a52fac26e4fe3887708a5a",
+    ipa_path: File.expand_path('../..', __FILE__) + "/Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
+    release_notes: "Branch #{options[:issue_name]} Build Number: #{generate_random_build_number()}",
+    groups: "Testers"
+  )
+  context = lane_context[SharedValues::FIREBASE_APP_DISTRO_RELEASE]
   send_telegram_message(
     options: options,
-    build_info_hash: lane_context[SharedValues::APPCENTER_BUILD_INFORMATION],
+    build_url: context[:binaryDownloadUri],
     platform: 'iOS 🍏',
     app_name: ENV['APPCENTER_APP_NAME_DEV']
   )

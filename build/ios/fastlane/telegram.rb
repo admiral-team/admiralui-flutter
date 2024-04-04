@@ -6,7 +6,7 @@ require './appcenter.rb'
 require './version'
 
 # Telegram Methods
-def send_telegram_message(options:, build_info_hash:, platform:, app_name:)
+def send_telegram_message(options:, build_url:, platform:, app_name:)
   issue_name = options[:issue_name]
   telegram_token = options[:telegram_token]
   telegram_chat_id = options[:telegram_chat_id]
@@ -19,10 +19,10 @@ def send_telegram_message(options:, build_info_hash:, platform:, app_name:)
     issue_name = extract_issue_name(branch_name: issue_name)
   end
 
-  build_info = BuildInfo.from_hash(build_info_hash)
+  build_info = BuildInfo.new
   build_info.branch_name = branch_name
   build_info.platform = platform
-  build_info.build_url = appcenter_build_dev_url(build_id: build_info.build_id, app_name: app_name)
+  build_info.build_url = build_url
   build_info.internal_version = current_lib_internal_version
   build_info.external_version = current_lib_external_version
   build_info.issue = issue_name
