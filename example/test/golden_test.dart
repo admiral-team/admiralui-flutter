@@ -1,4 +1,5 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'badges_screen_golden.dart';
 import 'buttons/ghost_buttons_screen_golden.dart';
 import 'buttons/other_buttons_screen_golder.dart';
 import 'buttons/primary_buttons_screen_golden.dart';
@@ -11,6 +12,8 @@ import 'radio_buttons_screen_golden.dart';
 import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'toolbar_screen_golden.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +31,8 @@ void main() {
     runCheckBoxScreen(device);
     // Switcher
     runSwitcherScreen(device);
+    // Badges
+    runBadgesScreen(device);
     // Primary Buttons
     runPrimaryButtonsScreen(device);
     // Secondary Buttons
@@ -39,5 +44,7 @@ void main() {
     runRulesButtonsScreen(device);
     // Other Buttons
     runOtherButtonsScreen(device);
+    // Toolbar
+    runToolbarScreen(device);
   }
 }
