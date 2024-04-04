@@ -85,6 +85,7 @@ unlinked_spec.ds
 **/ios/**/Pods/
 **/ios/**/.symlinks/
 **/ios/**/profile
+**/ios/**/.env
 **/ios/**/xcuserdata
 **/ios/.generated/
 **/ios/Flutter/.last_build_id
@@ -112,6 +113,13 @@ coverage/
 
 # Symbols
 app.*.symbols
+
+#GoLang 
+/bin
+/pkg
+
+#Env
+example/ios/.env
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
