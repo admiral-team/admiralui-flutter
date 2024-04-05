@@ -101,12 +101,10 @@ class _SecondaryButtonState extends State<SecondaryButton> {
               padding: const EdgeInsets.symmetric(
                 horizontal: LayoutGrid.module,
               ),
-              child: Flexible(
-                child: TextView(
-                  widget.title,
-                  font: scheme.font,
-                  textColorNormal: color,
-                ),
+              child: TextView(
+                widget.title,
+                font: scheme.font,
+                textColorNormal: color,
               ),
             ),
             SizedBox(
