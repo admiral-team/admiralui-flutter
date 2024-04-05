@@ -258,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: BoxShape.circle,
           ),
           child: SizedBox(
-             child: SvgPicture.asset(
+            child: SvgPicture.asset(
               item.svgIconName,
               fit: BoxFit.scaleDown,
               height: 10,
@@ -309,10 +309,11 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: EdgeInsets.all(16),
       child: SizedBox(
         height: 36.0,
-        child: TextField(
+        child: TextFormField(
           key: const Key('mainSearchBar'),
           controller: _searchController,
           textAlign: TextAlign.left,
+          style: TextStyle(color: colors.textPrimary.color()),
           decoration: InputDecoration(
             labelText: 'Поиск',
             hintText: 'Поиск',
