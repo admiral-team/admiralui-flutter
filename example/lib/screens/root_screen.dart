@@ -1,4 +1,3 @@
-import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/bottom_navigation.dart';
