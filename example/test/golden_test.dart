@@ -10,6 +10,7 @@ import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
+import 'shimmer_screen_golden.dart';
 import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,5 +47,7 @@ void main() {
     runOtherButtonsScreen(device);
     // Toolbar
     runToolbarScreen(device);
+    // Shimmer
+    runShimmerScreen(device);
   }
 }
