@@ -7,6 +7,7 @@ import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_process.dart';
 import '../navigation/tab_navigator_chat.dart';
 import '../storage/app_theme_storage.dart';
+import 'themeSwitch/theme_swith_widget.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -58,20 +59,7 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    final AppTheme theme = AppThemeProvider.of(context);
-    final ColorPalette colors = theme.colors;
-
-    void changeTheme() {
-      setState(() {
-        final AppThemeProviderWrapperState wrapper =
-            AppThemeProviderWrapper.of(context);
-        wrapper.updateTheme();
-      });
-    }
-
+  Widget build(BuildContext context) {
     return PopScope(
       onPopInvoked: (_) async {
         final bool isFirstRouteInCurrentTab =
@@ -95,19 +83,8 @@ class _RootScreenState extends State<RootScreen> {
           currentTab: _currentTab,
           onSelectTab: _selectTab,
         ),
-        floatingActionButton: !_appThemeButtonHidden
-            ? FloatingActionButton.extended(
-                backgroundColor: colors.backgroundExtraSurface.color(),
-                shape: CircleBorder(),
-                label: Icon(
-                  AdmiralIcons.admiral_ic_menu_outline,
-                  color: colors.elementExtra.color(),
-                ),
-                onPressed: () {
-                  changeTheme();
-                },
-              )
-            : null,
+        floatingActionButton:
+            !_appThemeButtonHidden ? ThemeSwitchWidget() : null,
       ),
     );
   }
