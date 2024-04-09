@@ -2,9 +2,35 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
+/// A floating action button with a customizable menu that appears when pressed.
+///
+/// This widget extends [StatefulWidget] to allow dynamic updates to its state.
+///
+/// Constructor:
+/// ```
+/// AdmiralFloatingButton({
+///   Key? key,
+///   required List<String> items,
+/// })
+/// ```
+///
+/// Parameters:
+/// - `items`: A list of strings representing the menu items to display
+///   when the floating action button is pressed.
+///
+/// Example usage:
+/// ```dart
+/// AdmiralFloatingButton(
+///   items: ['Item 1', 'Item 2', 'Item 3'],
+/// )
+///
 class AdmiralFloatingButton extends StatefulWidget {
-  AdmiralFloatingButton({super.key});
-  final List<String> items = <String>['Light', 'Dark'];
+  const AdmiralFloatingButton({
+    super.key,
+    required this.items,
+  });
+
+  final List<String> items;
 
   @override
   State<AdmiralFloatingButton> createState() => _AdmiralFloatingButtonState();

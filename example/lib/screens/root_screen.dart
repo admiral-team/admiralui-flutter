@@ -82,8 +82,11 @@ class _RootScreenState extends State<RootScreen> {
           currentTab: _currentTab,
           onSelectTab: _selectTab,
         ),
-        floatingActionButton:
-            !_appThemeButtonHidden ? AdmiralFloatingButton() : null,
+        floatingActionButton: !_appThemeButtonHidden
+            ? AdmiralFloatingButton(
+                items: <String>['Light', 'Dark'],
+              )
+            : null,
       ),
     );
   }
