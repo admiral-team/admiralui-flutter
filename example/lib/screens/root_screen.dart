@@ -1,3 +1,4 @@
+import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/bottom_navigation.dart';
@@ -6,7 +7,6 @@ import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_process.dart';
 import '../navigation/tab_navigator_chat.dart';
 import '../storage/app_theme_storage.dart';
-import 'themeSwitch/theme_swith_widget.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -83,7 +83,7 @@ class _RootScreenState extends State<RootScreen> {
           onSelectTab: _selectTab,
         ),
         floatingActionButton:
-            !_appThemeButtonHidden ? ThemeSwitchWidget() : null,
+            !_appThemeButtonHidden ? AdmiralFloatingButton() : null,
       ),
     );
   }
