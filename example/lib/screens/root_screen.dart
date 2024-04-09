@@ -58,20 +58,7 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    final AppTheme theme = AppThemeProvider.of(context);
-    final ColorPalette colors = theme.colors;
-
-    void changeTheme() {
-      setState(() {
-        final AppThemeProviderWrapperState wrapper =
-            AppThemeProviderWrapper.of(context);
-        wrapper.updateTheme();
-      });
-    }
-
+  Widget build(BuildContext context) {
     return PopScope(
       onPopInvoked: (_) async {
         final bool isFirstRouteInCurrentTab =
@@ -96,16 +83,8 @@ class _RootScreenState extends State<RootScreen> {
           onSelectTab: _selectTab,
         ),
         floatingActionButton: !_appThemeButtonHidden
-            ? FloatingActionButton.extended(
-                backgroundColor: colors.backgroundExtraSurface.color(),
-                shape: CircleBorder(),
-                label: Icon(
-                  AdmiralIcons.admiral_ic_menu_outline,
-                  color: colors.elementExtra.color(),
-                ),
-                onPressed: () {
-                  changeTheme();
-                },
+            ? AdmiralFloatingButton(
+                items: <String>['Light', 'Dark'],
               )
             : null,
       ),
