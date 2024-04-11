@@ -43,7 +43,7 @@ class _ToastScreenState extends State<ToastScreen> {
           horizontal: LayoutGrid.doubleModule,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
               height: LayoutGrid.doubleModule,

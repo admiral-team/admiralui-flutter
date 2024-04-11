@@ -25,12 +25,23 @@ Future<void> changeTheme(
   WidgetTester tester,
   Key scenarioWidgetKey,
 ) async {
-  final Finder finderTheme = find.descendant(
+  final Finder floatingCicrcle = find.descendant(
     of: find.byKey(scenarioWidgetKey),
     matching: find.byIcon(AdmiralIcons.admiral_ic_menu_outline),
   );
-  await tester.tap(finderTheme);
-
+  final Finder darkThemeButton = find.descendant(
+    of: find.byKey(scenarioWidgetKey),
+    matching: find.text('Dark'),
+  );
+  final Finder floatingClose = find.descendant(
+    of: find.byKey(scenarioWidgetKey),
+    matching: find.byIcon(AdmiralIcons.admiral_ic_close_outline),
+  );
+  await tester.tap(floatingCicrcle);
+  await tester.pump(const Duration(milliseconds: 50));
+  await tester.tap(darkThemeButton);
+  await tester.pump(const Duration(milliseconds: 50));
+  await tester.tap(floatingClose);
   await tester.pump(const Duration(milliseconds: 50));
 }
 
@@ -45,4 +56,15 @@ Future<void> setDisabledState(
     matching: find.text('Disabled'),
   );
   await tester.tap(finderDisabled);
+}
+
+Future<void> selectSecondaryMenu(
+  WidgetTester tester,
+  Key scenarioWidgetKey,
+  String menu,
+) async {
+  await tester.pump(const Duration(milliseconds: 50));
+
+  final Finder finderMenu = find.text(menu);
+  await tester.tap(finderMenu);
 }

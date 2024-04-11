@@ -137,10 +137,13 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
                 ),
                 trailingCell: ImageSubtitleCellWidget(
                   subtitle: 'Date',
-                  imageWidget: Assets.card.mir.image(),
+                  imageWidget: Assets.card.mir.image(width: 50, height: 14),
                   isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
+              ),
+              SizedBox(
+                height: LayoutGrid.doubleModule * 4,
               ),
             ],
           ),

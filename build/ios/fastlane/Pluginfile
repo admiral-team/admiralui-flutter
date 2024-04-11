@@ -4,3 +4,4 @@
 
 gem 'fastlane-plugin-appcenter'
 gem 'fastlane-plugin-create_xcframework'
+gem 'fastlane-plugin-firebase_app_distribution'

@@ -68,10 +68,6 @@ class _GhostButtonState extends State<GhostButton> {
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Container(
-        constraints: BoxConstraints(
-          minWidth: widget.sizeType.width,
-          minHeight: widget.sizeType.height,
-        ),
         padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
           horizontal: LayoutGrid.doubleModule,

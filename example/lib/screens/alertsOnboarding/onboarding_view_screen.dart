@@ -1,17 +1,18 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../../navigation/tab_navigator_home.dart';
 
 class OnboardingViewScreen extends StatefulWidget {
   const OnboardingViewScreen({
     super.key,
+    this.isInitial = false,
+    this.onPush = null,
     required this.title,
-    required this.onPush,
   });
 
   final String title;
-  final Function(TabNavigatorRoutes route) onPush;
+  final bool isInitial;
+  final Function()? onPush;
 
   @override
   State<OnboardingViewScreen> createState() => _OnboardingViewScreenState();
@@ -47,9 +48,20 @@ class _OnboardingViewScreenState extends State<OnboardingViewScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () => Navigator.of(context).pop(),
-        ),
+        leading: !widget.isInitial
+            ? BackButton(
+                onPressed: () => Navigator.of(context).pop(),
+              )
+            : null,
+        actions: widget.isInitial
+            ? <Widget>[
+                GhostButton(
+                  title: 'Пропустить',
+                  sizeType: ButtonSizeType.small,
+                  onPressed: () => widget.onPush?.call(),
+                )
+              ]
+            : null,
         title: Text(
           widget.title,
           style: fonts.subtitle2.toTextStyle(
@@ -68,6 +80,11 @@ class _OnboardingViewScreenState extends State<OnboardingViewScreen> {
         child: PageControllerWidget(
           items,
           pagePosition: step,
+          onPageChanged: (int value) {
+            if (widget.isInitial && value >= items.length) {
+              widget.onPush?.call();
+            }
+          },
         ),
       ),
     );

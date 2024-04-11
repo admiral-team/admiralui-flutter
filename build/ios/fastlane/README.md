@@ -21,10 +21,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### deploy_appcenter_dev
+### deploy_firebase_dev
 
 ```sh
-[bundle exec] fastlane deploy_appcenter_dev
+[bundle exec] fastlane deploy_firebase_dev
 ```
 
 

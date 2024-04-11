@@ -32,7 +32,7 @@ def deploy_appcenter_andoid_dev(options:)
   )
 end
 
-def deploy_appcenter_dev(options:)
+def build_ios_app(options:)
   skip_archive = options[:skip_archive] || false
   previous_build_number = current_app_build_number
   build_number = generate_random_build_number()
@@ -52,16 +52,4 @@ def deploy_appcenter_dev(options:)
 
     increment_app_build(build_number: previous_build_number)
   end
-
-  appcenter_upload(
-    api_token: ENV['APPCENTER_API_TOKEN_IOS_DEV'],
-    owner_name: ENV['APPCENTER_OWNER_NAME'],
-    owner_type: ENV['APPCENTER_OWNER_TYPE'],
-    app_name: ENV['APPCENTER_APP_NAME_DEV'],
-    file: "Release/AdmiralUI-Example/Dev/admiralui-flutter-example.ipa",
-    destinations: ENV['APPCENTER_DESTINATIONS_DEV'],
-    destination_type: "group",
-    release_notes: "",
-    notify_testers: true
-  )
 end

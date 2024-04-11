@@ -31,6 +31,8 @@ export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_style.dart';
 export 'package:admiralui_flutter/src/widgets/checkbox/checkbox_title.dart';
 export 'package:admiralui_flutter/src/widgets/controls/button_size_type.dart';
 export 'package:admiralui_flutter/src/widgets/controls/control_parameter.dart';
+export 'package:admiralui_flutter/src/widgets/controls/floating_button/floating_button.dart';
+export 'package:admiralui_flutter/src/widgets/controls/floating_button/floating_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button.dart';
 export 'package:admiralui_flutter/src/widgets/controls/ghost_button/ghost_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/controls/icon_position.dart';

@@ -67,7 +67,7 @@ class _ButtonsOtherScreenState extends State<ButtonsOtherScreen> {
             ),
             PlatformButton(
               isEnable: isEnabled,
-              iconData: Assets.card.appleWallet.image(),
+              iconData: Assets.card.appleWallet.image(width: 38, height: 28),
               title: 'Добавить в Apple Wallet',
             ),
             SizedBox(
@@ -76,7 +76,7 @@ class _ButtonsOtherScreenState extends State<ButtonsOtherScreen> {
             PlatformButton(
               isEnable: isEnabled,
               iconPosition: IconPosition.right,
-              iconData: Assets.card.googlePay.image(),
+              iconData: Assets.card.googlePayBig.image(width: 56, height: 24),
               title: 'Добавить в',
             ),
           ],
