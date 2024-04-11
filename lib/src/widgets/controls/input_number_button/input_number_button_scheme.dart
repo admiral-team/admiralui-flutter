@@ -17,7 +17,7 @@ class InputNumberButtonScheme {
       InputNumberButtonStyle.normal,
     );
     buttonColor.set(
-      theme.colors.backgroundAdditionalOne.colorWithOpacity(),
+      theme.colors.backgroundAdditionalOne.colorWithOpacity(opacity: 0.4),
       ControlState.disabled,
       InputNumberButtonStyle.normal,
     );
@@ -27,7 +27,7 @@ class InputNumberButtonScheme {
       InputNumberButtonStyle.normal,
     );
     imageColor.set(
-      theme.colors.elementPrimary.colorWithOpacity(),
+      theme.colors.elementPrimary.colorWithOpacity(opacity: 0.4),
       ControlState.disabled,
       InputNumberButtonStyle.normal,
     );
