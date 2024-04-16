@@ -76,7 +76,7 @@ class _InputNumberState extends State<InputNumber> {
           ),
         if (widget.title.isNotEmpty) const Spacer(),
         InputNumberButton(
-          isEnable: widget.isEnable,
+          isEnable: isMinusButtonEnable(),
           image: AdmiralIcons.admiral_ic_minus_outline,
           style: widget.style,
           onPressed: minusButton,
@@ -95,7 +95,7 @@ class _InputNumberState extends State<InputNumber> {
           ),
         ),
         InputNumberButton(
-          isEnable: widget.isEnable,
+          isEnable: isPlusButtonEnable(),
           image: AdmiralIcons.admiral_ic_plus_outline,
           style: widget.style,
           onPressed: plusButton,
@@ -164,5 +164,19 @@ class _InputNumberState extends State<InputNumber> {
     timer?.cancel();
     runCount = 0;
     inputStepValue = widget.stepValue;
+  }
+
+  bool isMinusButtonEnable() {
+    if (widget.minimumValue >= _numberValue) {
+      return false;
+    }
+    return widget.isEnable;
+  }
+
+  bool isPlusButtonEnable() {
+    if (widget.maximumValue <= _numberValue) {
+      return false;
+    }
+    return widget.isEnable;
   }
 }
