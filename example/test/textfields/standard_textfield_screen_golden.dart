@@ -18,9 +18,7 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Standard Textfields Light screen',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
         },
       );
 
@@ -31,7 +29,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_read_only_light_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_read_only_light_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -39,9 +38,7 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Standard Textfields Read Only Light screen',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Read Only');
@@ -57,7 +54,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_error_light_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_error_light_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -65,9 +63,7 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Standard Textfields Error Light screen',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Error');
@@ -83,7 +79,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_disabled_light_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_disabled_light_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -91,9 +88,7 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Standard Textfields Disabled Light screen',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Disabled');
@@ -119,9 +114,7 @@ void runStandardTextFieldsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
         },
       );
 
@@ -132,7 +125,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_read_only_dark_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_read_only_dark_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -141,9 +135,7 @@ void runStandardTextFieldsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Read Only');
@@ -159,7 +151,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_error_dark_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_error_dark_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -168,9 +161,7 @@ void runStandardTextFieldsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Error');
@@ -186,7 +177,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('standard_textfields_disabled_dark_app', (WidgetTester tester) async {
+  testGoldens('standard_textfields_disabled_dark_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -195,9 +187,7 @@ void runStandardTextFieldsScreen(Device device) {
         onCreate: (Key scenarioWidgetKey) async {
           await changeTheme(tester, scenarioWidgetKey);
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finderType = find.text('Disabled');
@@ -215,7 +205,8 @@ void runStandardTextFieldsScreen(Device device) {
 
   // Unique Cases
   // Setting many letters
-  testGoldens('standard_textfield_many_letters_app', (WidgetTester tester) async {
+  testGoldens('standard_textfield_many_letters_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -223,13 +214,12 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Standard Textfields Many Letters',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finder = find.byKey(const Key('standardTextField'));
-          await tester.enterText(finder, '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
         },
       );
 
@@ -248,13 +238,12 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Secure Textfields Many Letters',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finder = find.byKey(const Key('secureTextField'));
-          await tester.enterText(finder, '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
         },
       );
 
@@ -265,7 +254,8 @@ void runStandardTextFieldsScreen(Device device) {
     );
   });
 
-  testGoldens('multiline_textfield_many_letters_app', (WidgetTester tester) async {
+  testGoldens('multiline_textfield_many_letters_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
@@ -273,13 +263,12 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Multiline Textfields Many Letters',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finder = find.byKey(const Key('multilineTextField'));
-          await tester.enterText(finder, '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
         },
       );
 
@@ -298,13 +287,12 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Tags Textfields Many Letters',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finder = find.byKey(const Key('tagsTextField'));
-          await tester.enterText(finder, '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
         },
       );
 
@@ -324,9 +312,7 @@ void runStandardTextFieldsScreen(Device device) {
         name: 'Secure Text Fields Tap Eye',
         onCreate: (Key scenarioWidgetKey) async {
           await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Standard'
-          );
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
 
           await tester.pump(new Duration(milliseconds: 50));
           final Finder finder = find.descendant(
