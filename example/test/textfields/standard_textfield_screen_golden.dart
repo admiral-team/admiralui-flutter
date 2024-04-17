@@ -330,4 +330,242 @@ void runStandardTextFieldsScreen(Device device) {
       'secure_textfield_tap_eye_${device.name}',
     );
   });
+
+  /// Setting text if state read only
+  testGoldens('standard_textfield_set_text_read_only_app',
+      (WidgetTester tester) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Standard Textfields Read Only Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Read Only');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('standardTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'standard_textfield_set_text_read_only_${device.name}',
+    );
+  });
+
+  testGoldens(
+    'secure_textfield_set_text_read_only_app', (WidgetTester tester
+  ) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Secure Textfields Read Only Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Read Only');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('secureTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'secure_textfield_set_text_read_only_${device.name}',
+    );
+  });
+
+  testGoldens('multiline_textfield_set_text_read_only_app',
+      (WidgetTester tester) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Multiline Textfields Read Only Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Read Only');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('multilineTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'multiline_textfield_set_text_read_only_${device.name}',
+    );
+  });
+
+  testGoldens(
+    'tags_textfield_set_text_read_only_app', (WidgetTester tester
+  ) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Tags Textfields Read Only Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Read Only');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('tagsTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'tags_textfield_set_text_read_only_${device.name}',
+    );
+  });
+
+   /// Setting text if state disabled
+  testGoldens('standard_textfield_set_text_disabled_app',
+      (WidgetTester tester) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Standard Textfields Disabled Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Disabled');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('standardTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'standard_textfield_set_text_disabled_${device.name}',
+    );
+  });
+
+  testGoldens(
+    'secure_textfield_set_text_disabled_app', (WidgetTester tester
+  ) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Secure Textfields Disabled Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Disabled');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('secureTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'secure_textfield_set_text_disabled_${device.name}',
+    );
+  });
+
+  testGoldens('multiline_textfield_set_text_disabled_app',
+      (WidgetTester tester) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Multiline Textfields Disabled Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Disabled');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('multilineTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'multiline_textfield_set_text_disabled_${device.name}',
+    );
+  });
+
+  testGoldens(
+    'tags_textfield_set_text_disabled_app', (WidgetTester tester
+  ) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Tags Textfields Disabled Setting Text',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Standard');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Disabled');
+          await tester.tap(finderType);
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('tagsTextField'));
+          await tester.enterText(finder,
+              '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'tags_textfield_set_text_disabled_${device.name}',
+    );
+  });
 }
