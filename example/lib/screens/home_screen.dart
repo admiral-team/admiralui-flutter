@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ListCellModel(
       title: 'Themes',
       description: 'Цветовая схема и шрифтовые стили',
-      route: TabNavigatorRoutes.buttons,
+      route: TabNavigatorRoutes.themes,
       svgIconName: 'assets/svg/pencil.svg',
     ),
     ListCellModel(
