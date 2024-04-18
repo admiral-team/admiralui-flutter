@@ -16,6 +16,7 @@ import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'textfields/feedback_screen_golden.dart';
 import 'toolbar_screen_golden.dart';
 
 void main() {
@@ -52,5 +53,7 @@ void main() {
     runShimmerScreen(device);
     // Spinner
     runSpinnerScreen(device);
+    // Feedback
+    runFeedbackScreen(device);
   }
 }
