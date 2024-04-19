@@ -95,6 +95,7 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TextFieldWidget(
+                key: const Key('standardTextField'),
                 textController,
                 state: state,
                 focusNode: focusNode,
@@ -115,6 +116,7 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TextFieldWidget(
+                key: const Key('secureTextField'),
                 secureTextController,
                 state: state,
                 focusNode: secureFocusNode,
@@ -135,7 +137,9 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
               SizedBox(
                 height: LayoutGrid.module * 5,
               ),
-              TextFieldWidget(multilineTextController,
+              TextFieldWidget(
+                  key: const Key('multilineTextField'),
+                  multilineTextController,
                   state: state,
                   numberOfLines: null,
                   labelText: 'Optional label',
@@ -154,6 +158,7 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               TextFieldWidget(
+                key: const Key('tagsTextField'),
                 secureTextController,
                 state: state,
                 focusNode: secureFocusNode,
