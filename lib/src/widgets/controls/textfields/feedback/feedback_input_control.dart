@@ -116,6 +116,7 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
               });
             },
             child: Icon(
+              key: Key('feedbackStarIcon$index'),
               AdmiralIcons.admiral_ic_star_solid,
               color: index >= _newRating
                   ? scheme.defaultColor.unsafeParameter(
