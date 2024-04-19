@@ -20,8 +20,6 @@ class StandardTextFieldScreen extends StatefulWidget {
 
 class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
   bool isEnabled = true;
-  FocusNode focusNode = FocusNode();
-  FocusNode secureFocusNode = FocusNode();
   TextInputState state = TextInputState.normal;
   TextEditingController textController = TextEditingController(text: 'Text');
   TextEditingController secureTextController =
@@ -98,7 +96,6 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 key: const Key('standardTextField'),
                 textController,
                 state: state,
-                focusNode: focusNode,
                 labelText: 'Optional label',
                 placeHolderText: 'Placeholder',
                 informerText: 'Additional text',
@@ -119,7 +116,6 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 key: const Key('secureTextField'),
                 secureTextController,
                 state: state,
-                focusNode: secureFocusNode,
                 labelText: 'Optional label',
                 placeHolderText: 'Placeholder',
                 informerText: 'Additional text',
@@ -161,7 +157,6 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
                 key: const Key('tagsTextField'),
                 secureTextController,
                 state: state,
-                focusNode: secureFocusNode,
                 labelText: 'Optional label',
                 placeHolderText: 'Placeholder',
                 trailingIcon: Icon(AdmiralIcons.admiral_ic_info_outline),
