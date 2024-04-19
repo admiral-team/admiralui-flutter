@@ -11,10 +11,12 @@ import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
 import 'shimmer_screen_golden.dart';
+import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'textfields/standard_textfield_screen_golden.dart';
 import 'toolbar_screen_golden.dart';
 
 void main() {
@@ -49,5 +51,9 @@ void main() {
     runToolbarScreen(device);
     // Shimmer
     runShimmerScreen(device);
+    // Spinner
+    runSpinnerScreen(device);
+    // Standard TextFields
+    runStandardTextFieldsScreen(device);
   }
 }
