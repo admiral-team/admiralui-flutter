@@ -81,6 +81,7 @@ class _SMSCodeTextFieldScreenState extends State<SMSCodeTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               OTPTextField(
+                key: const Key('smsTextField'),
                 textController,
                 state: state,
                 focusNode: focusNode,

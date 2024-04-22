@@ -16,6 +16,7 @@ import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'textfields/feedback_screen_golden.dart';
+import 'textfields/sms_textfield_screen_golden.dart';
 import 'textfields/standard_textfield_screen_golden.dart';
 import 'toolbar_screen_golden.dart';
 
@@ -57,5 +58,7 @@ void main() {
     runFeedbackScreen(device);
     // Standard TextFields
     runStandardTextFieldsScreen(device);
+    // SMS TextFields
+    runSmsTextFieldsScreen(device);
   }
 }
