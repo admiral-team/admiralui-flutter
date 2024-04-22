@@ -78,58 +78,60 @@ class _FeedbackInputControlState extends State<FeedbackInputControl> {
 
     return IgnorePointer(
       ignoring: !widget.isEnabled,
-      child: Row(
-        mainAxisAlignment: widget.mainAxisAlignment,
-        children: List<Widget>.generate(
-          widget.starCount,
-          (int index) => GestureDetector(
-            onTap: () {
-              setState(() {
-                widget.onRatingChanged(index + 1.0);
-                _newRating = index + 1.0;
-              });
-            },
-            onHorizontalDragUpdate: (DragUpdateDetails dragDetails) {
-              setState(() {
-                RenderObject? obj;
-                obj = context.findRenderObject();
-                if (obj == null) {
-                  return;
-                }
-                if (obj is RenderBox == false) {
-                  return;
-                }
-                RenderBox box;
-                box = obj as RenderBox;
-                final Offset pos =
-                    box.globalToLocal(dragDetails.globalPosition);
-                final double i = pos.dx / (LayoutGrid.halfModule * 6);
+      child: IntrinsicWidth(
+        child: Row(
+          mainAxisAlignment: widget.mainAxisAlignment,
+          children: List<Widget>.generate(
+            widget.starCount,
+            (int index) => GestureDetector(
+              onTap: () {
+                setState(() {
+                  widget.onRatingChanged(index + 1.0);
+                  _newRating = index + 1.0;
+                });
+              },
+              onHorizontalDragUpdate: (DragUpdateDetails dragDetails) {
+                setState(() {
+                  RenderObject? obj;
+                  obj = context.findRenderObject();
+                  if (obj == null) {
+                    return;
+                  }
+                  if (obj is RenderBox == false) {
+                    return;
+                  }
+                  RenderBox box;
+                  box = obj as RenderBox;
+                  final Offset pos =
+                      box.globalToLocal(dragDetails.globalPosition);
+                  final double i = pos.dx / (LayoutGrid.halfModule * 6);
 
-                _newRating = i;
-                if (_newRating > widget.starCount) {
-                  _newRating = widget.starCount.toDouble();
-                }
-                if (_newRating < 0) {
-                  _newRating = 0.0;
-                }
-                widget.onRatingChanged(_newRating);
-              });
-            },
-            child: Icon(
-              key: Key('feedbackStarIcon$index'),
-              AdmiralIcons.admiral_ic_star_solid,
-              color: index >= _newRating
-                  ? scheme.defaultColor.unsafeParameter(
-                      widget.isEnabled
-                          ? ControlState.normal
-                          : ControlState.disabled,
-                    )
-                  : scheme.selectedColor.unsafeParameter(
-                      widget.isEnabled
-                          ? ControlState.normal
-                          : ControlState.disabled,
-                    ),
-              size: LayoutGrid.halfModule * 6,
+                  _newRating = i;
+                  if (_newRating > widget.starCount) {
+                    _newRating = widget.starCount.toDouble();
+                  }
+                  if (_newRating < 0) {
+                    _newRating = 0.0;
+                  }
+                  widget.onRatingChanged(_newRating);
+                });
+              },
+              child: Icon(
+                key: Key('feedbackStarIcon$index'),
+                AdmiralIcons.admiral_ic_star_solid,
+                color: index >= _newRating
+                    ? scheme.defaultColor.unsafeParameter(
+                        widget.isEnabled
+                            ? ControlState.normal
+                            : ControlState.disabled,
+                      )
+                    : scheme.selectedColor.unsafeParameter(
+                        widget.isEnabled
+                            ? ControlState.normal
+                            : ControlState.disabled,
+                      ),
+                size: LayoutGrid.halfModule * 6,
+              ),
             ),
           ),
         ),
