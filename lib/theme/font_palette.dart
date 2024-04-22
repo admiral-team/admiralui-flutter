@@ -43,6 +43,27 @@ class FontPalette {
     required this.title1,
     required this.caption1,
   });
+
+  Map<String, AFont> allFonts() {
+    return {
+      'largeTitle1': largeTitle1,
+      'caption2': caption2,
+      'body1': body1,
+      'subtitle1': subtitle1,
+      'subhead1': subhead1,
+      'headline': headline,
+      'subtitle2': subtitle2,
+      'subtitle3': subtitle3,
+      'subhead4': subhead4,
+      'title2': title2,
+      'subhead2': subhead2,
+      'subhead3': subhead3,
+      'body2': body2,
+      'largeTitle2': largeTitle2,
+      'title1': title1,
+      'caption1': caption1,
+    };
+  }
 }
 
 const defaultFontPalette = FontPalette(
