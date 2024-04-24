@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    types: [ 'opened', 'synchronize', 'reopened', 'closed']
+    types: [ 'opened', 'synchronize', 'reopened', 'closed' ]
     branches: [ 'main', 'develop', 'feature/**', 'rc/**' ]
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ jobs:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
       APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -38,7 +38,7 @@ jobs:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
       APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -63,8 +63,8 @@ jobs:
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   build-web:
     name: Build Web App
@@ -84,8 +84,8 @@ jobs:
       - name: Check If Build Web Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   deploy-android:
     name: Deploy Android App
@@ -96,7 +96,7 @@ jobs:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
       APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -114,17 +114,10 @@ jobs:
           java-version: '11'
       - run: cd example && flutter pub get
       - run: cd example && flutter build apk && flutter build appbundle
-      - name: Install Fastlane Dependencies
-        run: cd build/ios/fastlane && bundle install && bundle update
-      - name: Deploy Android App to App Center
-        if: ${{ github.event_name == 'pull_request' }}
-        run: cd build/ios/fastlane && bundle exec fastlane deploy_appcenter_andoid_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
-      - name: Check If Deploy Android Failed
-        if: ${{ failure() }}
+      - name: Upload apk to Firebase
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
-
+          cd example/android && ./gradlew updateReleaseNotesTask --releaseNotes='commits_url = ${{ toJSON(github.event.pull_request.commits_url) }} , branch = ${{ github.head_ref || github.ref_name }}'
+          ./gradlew appDistributionUploadRelease
   test:
     name: Test App
     runs-on: [ self-hosted, main, flutter ]
@@ -143,8 +136,8 @@ jobs:
       - name: Check If Test Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
 
   build_demo_remote:
     name: Build remote demo project
@@ -153,7 +146,7 @@ jobs:
     needs: test
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -172,15 +165,15 @@ jobs:
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - name: Install dependencies
         run: cd remote_demo && flutter pub get
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - run: cd remote_demo && flutter build web
       - name: Test build android
         run: cd remote_demo && flutter build apk && flutter build appbundle
@@ -196,7 +189,7 @@ jobs:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
       APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -229,8 +222,8 @@ jobs:
       - name: Check If Deploy iOS Appcenter Failed
         if: ${{ failure() }}
         run: |
-            cd build/ios/fastlane && bundle install && bundle update &&
-             bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
   
   remove-appcenter-build:
     name: Remove Appcenter Builds
@@ -241,7 +234,7 @@ jobs:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
       APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
       PUll_REQUEST_NUMBER: ${{ github.event.number }}
       CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
@@ -255,25 +248,25 @@ jobs:
         run: cd build/ios/fastlane && bundle exec fastlane get_all_github_request_builds_and_remove pull_request_number:${{ github.event.number }}
 
   check-release-issue:
-      name: Check Release Issue
-      needs: deploy-ios-dev
-      runs-on: [ self-hosted, main, flutter ]
-      if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
-      env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
-          APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-          CI_PASSWORD:  ${{ secrets.CI_PASSWORD }}
-          PUll_REQUEST_NUMBER: ${{ github.event.number }}
-          CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
-          TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
-          APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
-          APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
-      steps:
-          - name: Install Fastlane Dependencies
-            run: cd build/ios/fastlane && bundle install && bundle update
-          - name: Check Release Issue
-            run: cd build/ios/fastlane && bundle exec fastlane check_close_release_issue
+    name: Check Release Issue
+    needs: deploy-ios-dev
+    runs-on: [ self-hosted, main, flutter ]
+    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
+    env:
+      API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+      APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
+      APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
+      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
+      PUll_REQUEST_NUMBER: ${{ github.event.number }}
+      CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
+      TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
+      APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
+      APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
+    steps:
+      - name: Install Fastlane Dependencies
+        run: cd build/ios/fastlane && bundle install && bundle update
+      - name: Check Release Issue
+        run: cd build/ios/fastlane && bundle exec fastlane check_close_release_issue
   
 

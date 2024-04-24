@@ -1,8 +1,14 @@
+import 'package:admiralui_flutter/theme/app_theme.dart';
+
 import '../screens/tabs/logo_tabs_screen.dart';
 import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
+import '../screens/themes/themes_screen.dart';
+import '../screens/themes/theme_options_screen.dart';
+import '../screens/themes/theme_colors_screen.dart';
+import '../screens/themes/theme_fonts_screen.dart';
 import '../screens/textfields/number_screen.dart';
 import '../screens/currency_screen.dart';
 import '../screens/radio_button_screen.dart';
@@ -76,6 +82,10 @@ import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 
 enum TabNavigatorRoutes {
   home('/'),
+  themes('/themes'),
+  themeOptions('/themesOption'),
+  themeColors('/themeColors'),
+  themeFonts('/themeFonts'),
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
@@ -162,14 +172,16 @@ class TabNavigatorHome extends StatelessWidget {
 
   final GlobalKey<NavigatorState>? navigatorKey;
 
-  void _push(BuildContext context, TabNavigatorRoutes route) {
+  void _push(BuildContext context, TabNavigatorRoutes route,
+      [Object? arguments]) {
     final Map<String, WidgetBuilder> routeBuilders = _routeBuilders(context);
 
     Navigator.push(
       context,
       MaterialPageRoute<Map<String, WidgetBuilder>>(
-        builder: (BuildContext context) => routeBuilders[route.value]!(context),
-      ),
+          builder: (BuildContext context) =>
+              routeBuilders[route.value]!(context),
+          settings: RouteSettings(arguments: arguments)),
     );
   }
 
@@ -179,6 +191,19 @@ class TabNavigatorHome extends StatelessWidget {
             title: 'Дизайн-система\n«Адмирал»',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
+      TabNavigatorRoutes.themes.value: (BuildContext context) => ThemesScreen(
+            onPush: (TabNavigatorRoutes route, AppTheme theme) =>
+                _push(context, route, theme),
+          ),
+      TabNavigatorRoutes.themeOptions.value: (BuildContext context) =>
+          ThemeOptionsScreen(
+            onPush: (TabNavigatorRoutes route, AppTheme theme) =>
+                _push(context, route, theme),
+          ),
+      TabNavigatorRoutes.themeColors.value: (BuildContext context) =>
+          ThemeColorsScreen(),
+      TabNavigatorRoutes.themeFonts.value: (BuildContext context) =>
+          ThemeFontsScreen(),
       TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),

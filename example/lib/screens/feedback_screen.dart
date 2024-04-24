@@ -61,10 +61,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             SizedBox(
               height: LayoutGrid.module * 5,
             ),
-            FeedbackInputControl(
-              onRatingChanged: _ChangeInputControl,
-              isEnabled: isEnabled,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Center(
+              child: FeedbackInputControl(
+                onRatingChanged: _ChangeInputControl,
+                isEnabled: isEnabled,
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
             ),
           ],
         ),

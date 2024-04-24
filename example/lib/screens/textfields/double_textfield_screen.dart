@@ -92,6 +92,7 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
               ),
               DoubleTextField(
                 TextFieldWidget(
+                  key: const Key('firstDoubleTextField'),
                   leftTextController,
                   state: textFieldState,
                   labelText: 'label',
@@ -99,6 +100,7 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
+                  key: const Key('secondDoubleTextField'),
                   rightTextController,
                   state: textFieldState,
                   labelText: 'label',
@@ -119,6 +121,7 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
               ),
               DoubleTextField(
                 TextFieldWidget(
+                  key: const Key('thirdDoubleTextField'),
                   leftTextUnequalController,
                   state: textFieldState,
                   labelText: 'label',
@@ -126,6 +129,7 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
                   informerText: 'informer text',
                 ),
                 TextFieldWidget(
+                  key: const Key('fourDoubleTextField'),
                   rightTextUnequalController,
                   state: textFieldState,
                   labelText: 'label',
