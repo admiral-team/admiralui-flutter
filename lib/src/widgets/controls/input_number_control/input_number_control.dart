@@ -20,6 +20,8 @@ class InputNumber extends StatefulWidget {
     this.stepValue = 1,
     this.style = InputNumberButtonStyle.normal,
     this.scheme,
+    this.minusButtonKey,
+    this.plusButtonKey,
   });
 
   final String title;
@@ -31,6 +33,8 @@ class InputNumber extends StatefulWidget {
   final InputNumberCallback? onChangedValue;
   final InputNumberButtonStyle style;
   final InputNumberScheme? scheme;
+  final Key? minusButtonKey;
+  final Key? plusButtonKey;
 
   @override
   State<InputNumber> createState() => _InputNumberState();
@@ -76,6 +80,7 @@ class _InputNumberState extends State<InputNumber> {
           ),
         if (widget.title.isNotEmpty) const Spacer(),
         InputNumberButton(
+          key: widget.minusButtonKey,
           isEnable: isMinusButtonEnable(),
           image: AdmiralIcons.admiral_ic_minus_outline,
           style: widget.style,
@@ -95,6 +100,7 @@ class _InputNumberState extends State<InputNumber> {
           ),
         ),
         InputNumberButton(
+          key: widget.plusButtonKey,
           isEnable: isPlusButtonEnable(),
           image: AdmiralIcons.admiral_ic_plus_outline,
           style: widget.style,
