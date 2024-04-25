@@ -87,7 +87,10 @@ class _InputNumberSecondaryScreenState
                   numberValue: 1,
                   onChangedValue: _ChangeInputControl,
                   style: InputNumberButtonStyle.secondary,
-                  isEnable: isEnabled),
+                  isEnable: isEnabled,
+                  minusButtonKey: const Key('minusInputButton'),
+                  plusButtonKey: const Key('plusInputButton')
+               ),
               SizedBox(height: LayoutGrid.module * 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
