@@ -34,6 +34,7 @@ import '../screens/textfields/slider_textfield_screen.dart';
 import '../screens/textfields_screen.dart';
 import '../screens/textfields/sms_code_textfield.dart';
 import '../screens/textfields/standard_textfield_screen.dart';
+import '../screens/textfields/card_number_textfield_screen.dart';
 import '../screens/tabs/tabs_screen.dart';
 import '../screens/tabs/underlineTabs/underline_tabs_screen.dart';
 import '../screens/tabs/underlineTabs/underline_center_tabs_screen.dart';
@@ -96,6 +97,7 @@ enum TabNavigatorRoutes {
   inputNumberSecondary('/textfields/inputNumber/inputNumberSecondary'),
   inputNumberTextfield('/textfields/inputNumber/inputNumberTextField'),
   sliderTextField('/textfields/sliderTextfield'),
+  cardNumberTextField('/textfields/cardNumberTextfield'),
   switcher('/switcher'),
   pageControls('/pageControls'),
   pageControlLinear('/pageControls/linear/linearPageControl'),
@@ -228,6 +230,11 @@ class TabNavigatorHome extends StatelessWidget {
       TabNavigatorRoutes.otpTextField.value: (BuildContext context) =>
           SMSCodeTextFieldScreen(
             title: 'SMS Code',
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
+      TabNavigatorRoutes.cardNumberTextField.value: (BuildContext context) =>
+          CardNumberTextFieldScreen(
+            title: 'Card Number',
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.inputNumberDefault.value: (BuildContext context) =>
