@@ -38,6 +38,11 @@ class TextfieldsScreen extends StatelessWidget {
         onPressed: () => onPush.call(TabNavigatorRoutes.number),
       ),
       ListCellModel(
+        title: 'Card Number',
+        description: '',
+        onPressed: () => onPush.call(TabNavigatorRoutes.cardNumberTextField),
+      ),
+      ListCellModel(
         title: 'SMS Code',
         description: '',
         onPressed: () => onPush.call(TabNavigatorRoutes.otpTextField),
