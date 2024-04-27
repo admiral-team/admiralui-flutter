@@ -2,36 +2,64 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
-/// A view for secure pin code entry.
+/// A widget for displaying a pin code input view.
 ///
-/// This widget extends [PincodeView], allowing dynamic updates to its state.
+/// This widget extends [StatefulWidget] to allow dynamic updates to its state.
 ///
 /// Constructor:
 /// ```
-/// PincodeView(
-///    onTapNumber: {},
-///    onTapIcon: {},
-///    rightButtonIcon: Icon(),
-/// )
+/// PincodeView({
+///   Key? key,
+///   ValueChanged<String>? onTapNumber,
+///   Widget? leadingWidget,
+///   Widget? trailingWidget,
+///   VoidCallback? onTapLeadingWidget,
+///   VoidCallback? onTapTrailingWidget,
+/// })
 /// ```
 ///
 /// Parameters:
-/// - `onTapNumber`: The number tap event.
-/// - `onTapIcon`: The icon tap event.
-/// - `rightButtonIcon`: The right button icon.
-/// - `key`: An optional `Key` that uniquely identifies this widget.
+/// - `onTapNumber`: A callback function that is called
+/// when a number in the pin code view is tapped.
+/// - `leadingWidget`: A widget to be displayed as a leading element
+/// in the pin code view.
+/// - `trailingWidget`: A widget to be displayed as a trailing element
+/// in the pin code view.
+/// - `onTapLeadingWidget`: A callback function that is called when the
+/// leading widget is tapped.
+/// - `onTapTrailingWidget`: A callback function that is called when the
+/// trailing widget is tapped.
+///
+/// Example usage:
+/// ```dart
+/// PincodeView(
+///   onTapNumber: (String number) {
+///     // Handle tapped number
+///   },
+///   leadingWidget: Icon(Icons.arrow_back),
+///   trailingWidget: Icon(Icons.clear),
+///   onTapLeadingWidget: () {
+///     // Handle tap on leading widget
+///   },
+///   onTapTrailingWidget: () {
+///     // Handle tap on trailing widget
+///   },
+/// )
 class PincodeView extends StatefulWidget {
-  /// Creates an UploadingPhotoGridView.
   const PincodeView({
     super.key,
     this.onTapNumber,
-    this.onTapIcon,
-    this.rightButtonIcon,
+    this.leadingidget,
+    this.trailingWidget,
+    this.onTapLeadingWidget,
+    this.onTapTrailingWidget,
   });
 
   final ValueChanged<String>? onTapNumber;
-  final VoidCallback? onTapIcon;
-  final Icon? rightButtonIcon;
+  final Widget? leadingidget;
+  final Widget? trailingWidget;
+  final VoidCallback? onTapTrailingWidget;
+  final VoidCallback? onTapLeadingWidget;
 
   @override
   State<PincodeView> createState() => _PincodeViewState();
@@ -49,10 +77,12 @@ class _PincodeViewState extends State<PincodeView> {
       PincodeItem(number: '7'),
       PincodeItem(number: '8'),
       PincodeItem(number: '9'),
-      null,
+      PincodeItem(
+        leadingWidget: widget.leadingidget,
+      ),
       PincodeItem(number: '0'),
       PincodeItem(
-        icon: widget.rightButtonIcon,
+        trailingWidget: widget.trailingWidget,
       ),
     ],
     3,
@@ -77,9 +107,13 @@ class _PincodeViewState extends State<PincodeView> {
                         <void>{
                           widget.onTapNumber?.call(rowElement!.number!),
                         }
-                      else if (rowElement?.icon != null)
+                      else if (rowElement?.leadingWidget != null)
                         <void>{
-                          widget.onTapIcon?.call(),
+                          widget.onTapLeadingWidget?.call(),
+                        }
+                      else if (rowElement?.trailingWidget != null)
+                        <void>{
+                          widget.onTapTrailingWidget?.call(),
                         },
                     },
                   ),
