@@ -18,6 +18,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
 import 'textfields/numbers_textfield_screen_golden.dart';
+import 'textfields/slider_textfields_screen_golden.dart';
 import 'textfields/sms_textfield_screen_golden.dart';
 import 'textfields/standard_textfield_screen_golden.dart';
 import 'toolbar_screen_golden.dart';
@@ -68,5 +69,7 @@ void main() {
     runDoubleTextFieldsScreen(device);
     // Number Textfields
     runNumbersTextFieldsScreen(device);
+    // Slider TextFields
+    runSliderTextFieldsScreen(device);
   }
 }
