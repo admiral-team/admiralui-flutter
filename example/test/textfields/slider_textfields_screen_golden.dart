@@ -189,4 +189,79 @@ void runSliderTextFieldsScreen(Device device) {
     );
   });
 
+  testGoldens('slider_textfields_enter_numbers', (WidgetTester tester) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Slider Textfields Enter Numbers',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Slider');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('sliderTextField'));
+          await tester.enterText(finder, '50');
+              
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder leadingFinder = find.byKey(
+            const Key('leadingTextField')
+          );
+          await tester.enterText(leadingFinder, '50');
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder trailingFinder = find.byKey(
+            const Key('trailingTextField')
+          );
+          await tester.enterText(trailingFinder, '50');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'slider_textfields_enter_numbers_screen_${device.name}',
+    );
+  });
+
+  testGoldens('slider_textfields_enter_numbers_disabled', (
+    WidgetTester tester
+  ) async {
+    final DeviceBuilder builder = DeviceBuilder()
+      ..overrideDevicesForAllScenarios(devices: <Device>[device])
+      ..addScenario(
+        widget: const MyApp(),
+        name: 'Slider Textfields Enter Numbers Disabled',
+        onCreate: (Key scenarioWidgetKey) async {
+          await searchAndGo(tester, scenarioWidgetKey, 'Text fields');
+          await selectSecondaryMenu(tester, scenarioWidgetKey, 'Slider');
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finderType = find.text('Disabled');
+          await tester.tap(finderType);
+          await tester.pump(new Duration(milliseconds: 50));
+
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder finder = find.byKey(const Key('sliderTextField'));
+          await tester.enterText(finder, '50');
+              
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder leadingFinder = find.byKey(
+            const Key('leadingTextField')
+          );
+          await tester.enterText(leadingFinder, '50');
+          await tester.pump(new Duration(milliseconds: 50));
+          final Finder trailingFinder = find.byKey(
+            const Key('trailingTextField')
+          );
+          await tester.enterText(trailingFinder, '50');
+        },
+      );
+
+    await tester.pumpDeviceBuilder(builder);
+    await screenMatchesGolden(
+      tester,
+      'slider_textfields_enter_numbers_disabled_screen_${device.name}',
+    );
+  });
+
 }
