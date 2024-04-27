@@ -96,6 +96,7 @@ class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               SliderTextField(
+                key: const Key('sliderTextField'),
                 textController,
                 state: state,
                 focusNode: focusNode,
@@ -119,6 +120,8 @@ class _SliderTextFieldScreenState extends State<SliderTextFieldScreen> {
                 height: LayoutGrid.module * 5,
               ),
               DoubleSliderTextField(
+                leadingTextFieldKey: const Key('leadingTextField'),
+                trailingTextFieldKey: const Key('trailingTextField'),
                 textControllerLeading: textControllerLeading,
                 textControllerTrailing: textControllerTrailing,
                 state: state,
