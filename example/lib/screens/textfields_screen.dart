@@ -83,6 +83,7 @@ class TextfieldsScreen extends StatelessWidget {
             ),
           ),
           Expanded(
+            key: const Key('listViewTextfields'),
             child: ListView.separated(
               addAutomaticKeepAlives: false,
               addRepaintBoundaries: false,
@@ -95,6 +96,7 @@ class TextfieldsScreen extends StatelessWidget {
                     index == items.length ? null : items[index];
                 if (item is ListCellModel) {
                   return BaseCellWidget(
+                    key: Key('cell' + item.title),
                     centerCell: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
