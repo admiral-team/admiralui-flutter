@@ -247,7 +247,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
                 color: scheme.textFieldScheme.placeholderColor,
               ),
             ),
-            onSubmitted: (String text) {
+            onChanged: (String text) {
               _updateCurrentRangeValues(text, true);
             },
             enabled: widget.state != TextInputState.disabled,
@@ -321,7 +321,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
                 color: scheme.textFieldScheme.placeholderColor,
               ),
             ),
-            onSubmitted: (String text) {
+            onChanged: (String text) {
               _updateCurrentRangeValues(text, false);
             },
             enabled: widget.state != TextInputState.disabled,
