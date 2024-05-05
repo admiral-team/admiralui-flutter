@@ -15,6 +15,7 @@ import 'radio_buttons_screen_golden.dart';
 import 'switcher_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
 import 'textfields/numbers_textfield_screen_golden.dart';
@@ -71,5 +72,7 @@ void main() {
     runNumbersTextFieldsScreen(device);
     // Slider TextFields
     runSliderTextFieldsScreen(device);
+    // Card TextFields
+    runCardTextFieldsScreen(device);
   }
 }
