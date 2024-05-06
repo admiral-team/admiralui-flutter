@@ -93,6 +93,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
               style: InputNumberButtonStyle.normal,
               isEnable: isEnabled,
               numberValue: _codeInputLength.toDouble(),
+              minusButtonKey: const Key('minusInputButton'),
+              plusButtonKey: const Key('plusInputButton')
             ),
             Spacer(),
             CodeInputWidget(
