@@ -111,18 +111,7 @@ class SliderTextField extends StatefulWidget {
 
 class _SliderTextFieldState extends State<SliderTextField>
     with SingleTickerProviderStateMixin {
-  FocusNode? _focusNode;
-  FocusNode get _effectiveFocusNode =>
-      widget.focusNode ?? (_focusNode ??= FocusNode());
-  bool _hasFocus = false;
-
-  String get _textFieldText => widget.controller.text;
-  String get _placeHolderText =>
-      _isTextFieldActive && widget.placeHolderText.isNotEmpty
-          ? widget.placeHolderText
-          : '';
-  bool get _isTextFieldActive => _hasFocus || _textFieldText.isNotEmpty;
-
+  late FocusNode _focusNode;
   late double _currentSliderValue;
   late InputRangeTextFieldScheme scheme;
 
@@ -132,24 +121,14 @@ class _SliderTextFieldState extends State<SliderTextField>
   void initState() {
     super.initState();
     notifier = ValueNotifier<double>(widget.currentValue);
-    _effectiveFocusNode
-        .addListener(() => _onFocus(hasFocus: _effectiveFocusNode.hasFocus));
+    _focusNode = widget.focusNode ?? FocusNode();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _effectiveFocusNode.removeListener(() {});
-    _focusNode?.dispose();
-  }
-
-  void _onFocus({required bool hasFocus}) {
-    if (!mounted) {
-      return;
-    }
-    setState(() {
-      _hasFocus = hasFocus;
-    });
+    _focusNode.removeListener(() {});
+    _focusNode.dispose();
   }
 
   void _onChanged({required String text}) {
@@ -177,6 +156,8 @@ class _SliderTextFieldState extends State<SliderTextField>
             widget.controller.text = '${widget.minLabelText.toInt()}';
           });
         }
+      } else {
+        setState(() {});
       }
     } catch (e) {
       print('Invalid input string $text');
@@ -209,7 +190,7 @@ class _SliderTextFieldState extends State<SliderTextField>
                       IntrinsicWidth(
                         child: TextField(
                           controller: widget.controller,
-                          focusNode: _effectiveFocusNode,
+                          focusNode: _focusNode,
                           textAlign: TextAlign.left,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.allow(
@@ -231,8 +212,9 @@ class _SliderTextFieldState extends State<SliderTextField>
                             decimal: true,
                           ),
                           decoration: InputDecoration(
-                            hintText:
-                                _textFieldText.isEmpty ? _placeHolderText : '',
+                            hintText: widget.controller.text.isEmpty
+                                ? widget.placeHolderText
+                                : '',
                             border: InputBorder.none,
                             isDense: true,
                             hintStyle: TextStyle(
@@ -251,7 +233,7 @@ class _SliderTextFieldState extends State<SliderTextField>
                           readOnly: widget.state == TextInputState.readOnly,
                         ),
                       ),
-                      if (widget.trailingText.isNotEmpty)
+                      if (widget.controller.text.isNotEmpty)
                         Container(
                           padding: const EdgeInsets.only(
                             top: LayoutGrid.halfModule / 2,
