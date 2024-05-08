@@ -89,6 +89,8 @@ import 'package:flutter/services.dart';
 class DoubleSliderTextField extends StatefulWidget {
   const DoubleSliderTextField({
     super.key,
+    this.leadingTextFieldKey,
+    this.trailingTextFieldKey,
     required this.textControllerLeading,
     required this.textControllerTrailing,
     this.state = TextInputState.normal,
@@ -125,6 +127,8 @@ class DoubleSliderTextField extends StatefulWidget {
   final RangeValues? currentRangeValues;
   final ValueChanged<RangeValues>? onChanged;
   final InputRangeTextFieldScheme? scheme;
+  final Key? leadingTextFieldKey;
+  final Key? trailingTextFieldKey;
 
   @override
   _DoubleSliderTextFieldState createState() => _DoubleSliderTextFieldState();
@@ -210,6 +214,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
         const SizedBox(width: LayoutGrid.halfModule),
         IntrinsicWidth(
           child: TextField(
+            key: widget.leadingTextFieldKey,
             controller: widget.textControllerLeading,
             focusNode: _focusNode,
             textAlign: TextAlign.left,
@@ -242,7 +247,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
                 color: scheme.textFieldScheme.placeholderColor,
               ),
             ),
-            onSubmitted: (String text) {
+            onChanged: (String text) {
               _updateCurrentRangeValues(text, true);
             },
             enabled: widget.state != TextInputState.disabled,
@@ -284,6 +289,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
         const SizedBox(width: LayoutGrid.halfModule),
         IntrinsicWidth(
           child: TextField(
+            key: widget.trailingTextFieldKey,
             controller: widget.textControllerTrailing,
             textAlign: TextAlign.left,
             inputFormatters: <TextInputFormatter>[
@@ -315,7 +321,7 @@ class _DoubleSliderTextFieldState extends State<DoubleSliderTextField>
                 color: scheme.textFieldScheme.placeholderColor,
               ),
             ),
-            onSubmitted: (String text) {
+            onChanged: (String text) {
               _updateCurrentRangeValues(text, false);
             },
             enabled: widget.state != TextInputState.disabled,

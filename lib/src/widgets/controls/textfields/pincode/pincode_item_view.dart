@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 
 class PincodeItem {
   PincodeItem({
-    this.icon,
+    this.leadingWidget,
+    this.trailingWidget,
     this.number,
   });
 
-  final Icon? icon;
+  final Widget? leadingWidget;
+  final Widget? trailingWidget;
   final String? number;
 }
 
@@ -69,7 +71,7 @@ class _PincodeItemState extends State<PincodeItemView> {
           ),
         ),
       );
-    } else if (widget.item?.icon != null) {
+    } else if (widget.item?.leadingWidget != null) {
       return SizedBox(
         width: LayoutGrid.halfModule * 15,
         height: LayoutGrid.halfModule * 15,
@@ -79,7 +81,21 @@ class _PincodeItemState extends State<PincodeItemView> {
           onTapDown: (_) => setHighlighted(highlighted: true),
           onTapCancel: () => setHighlighted(highlighted: false),
           child: Center(
-            child: widget.item!.icon,
+            child: widget.item!.leadingWidget,
+          ),
+        ),
+      );
+    } else if (widget.item?.trailingWidget != null) {
+      return SizedBox(
+        width: LayoutGrid.halfModule * 15,
+        height: LayoutGrid.halfModule * 15,
+        child: GestureDetector(
+          onTap: () => widget.onPressed?.call(),
+          onTapUp: (_) => setHighlighted(highlighted: false),
+          onTapDown: (_) => setHighlighted(highlighted: true),
+          onTapCancel: () => setHighlighted(highlighted: false),
+          child: Center(
+            child: widget.item!.trailingWidget,
           ),
         ),
       );

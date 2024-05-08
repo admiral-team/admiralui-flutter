@@ -93,6 +93,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
               style: InputNumberButtonStyle.normal,
               isEnable: isEnabled,
               numberValue: _codeInputLength.toDouble(),
+              minusButtonKey: const Key('minusInputButton'),
+              plusButtonKey: const Key('plusInputButton')
             ),
             Spacer(),
             CodeInputWidget(
@@ -103,15 +105,33 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             Spacer(),
             PincodeView(
               onTapNumber: (String value) => <void>{
-                _ChangeInputControl(_codeInputLength + 1),
-                setState(() {
-                  _codeInputText = _codeInputText + value;
-                }),
+                if (_codeInputText.length < _codeInputLength)
+                  <void>{
+                    setState(() {
+                      _codeInputText = _codeInputText + value;
+                    }),
+                  },
               },
-              rightButtonIcon: Icon(
-                AdmiralIcons.admiral_ic_faceid_outline,
+              onTapTrailingWidget: () {
+                setState(() {
+                  if (_codeInputText.length > 0) {
+                    _codeInputText =
+                        _codeInputText.substring(0, _codeInputText.length - 1);
+                  }
+                });
+              },
+              leadingidget: Text(
+                'Не могу войти',
+                style: fonts.subhead4.toTextStyle(
+                  colors.textSecondary.color(),
+                ),
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
+              trailingWidget: Icon(
+                Icons.backspace_outlined,
                 color: theme.colors.elementPrimary.color(),
-                size: 40,
+                size: 30,
               ),
             ),
             SizedBox(height: LayoutGrid.doubleModule),
