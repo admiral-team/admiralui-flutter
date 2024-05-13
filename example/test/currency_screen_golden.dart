@@ -127,7 +127,8 @@ void runCurrencyScreen(Device device) {
     );
   });
 
-  testGoldens('currency_icons_and_flags_light_app', (WidgetTester tester) async {
+  testGoldens('currency_icons_and_flags_light_app',
+      (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
