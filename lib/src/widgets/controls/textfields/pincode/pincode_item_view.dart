@@ -23,7 +23,7 @@ class PincodeItemView extends StatefulWidget {
   });
 
   final PincodeItem? item;
-  final PinCodeItemScheme? scheme;
+  final PincodeViewScheme? scheme;
   final VoidCallback? onPressed;
 
   @override
@@ -31,15 +31,12 @@ class PincodeItemView extends StatefulWidget {
 }
 
 class _PincodeItemState extends State<PincodeItemView> {
-  late PinCodeItemScheme scheme;
-  bool _isPressed = false;
+  late PincodeViewScheme scheme;
 
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-    final Color backgroundColor = _isPressed
-        ? theme.colors.backgroundSelected.color()
-        : Colors.transparent;
+    scheme = widget.scheme ?? PincodeViewScheme(theme: theme);
 
     if (widget.item?.number != null) {
       return SizedBox(
@@ -47,27 +44,21 @@ class _PincodeItemState extends State<PincodeItemView> {
         height: LayoutGrid.halfModule * 15,
         child: GestureDetector(
           onTap: () => widget.onPressed?.call(),
-          onTapUp: (_) => setHighlighted(highlighted: false),
-          onTapDown: (_) => setHighlighted(highlighted: true),
-          onTapCancel: () => setHighlighted(highlighted: false),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.circular(30),
+          child: Center(
+            child: TextView(
+              widget.item!.number!,
+              font: scheme.titleFont,
+              textColorNormal: scheme.numberLabelColor,
             ),
-            child: SizedBox(
-              width: LayoutGrid.halfModule * 15,
-              height: LayoutGrid.halfModule * 15,
-              child: Center(
-                child: Text(
-                  widget.item!.number!,
-                  style: const TextStyle(
-                    fontSize: 36,
-                    fontFamily: '.SF Pro Display',
-                  ),
-                ),
-              ),
-            ),
+
+            // Text(
+            //   widget.item!.number!,
+            //   style: TextStyle(
+            //     color: scheme.numberLabelColor,
+            //     fontSize: 36,
+            //     fontFamily: '.SF Pro Display',
+            //   ),
+            // ),
           ),
         ),
       );
@@ -77,9 +68,6 @@ class _PincodeItemState extends State<PincodeItemView> {
         height: LayoutGrid.halfModule * 15,
         child: GestureDetector(
           onTap: () => widget.onPressed?.call(),
-          onTapUp: (_) => setHighlighted(highlighted: false),
-          onTapDown: (_) => setHighlighted(highlighted: true),
-          onTapCancel: () => setHighlighted(highlighted: false),
           child: Center(
             child: widget.item!.leadingWidget,
           ),
@@ -91,9 +79,6 @@ class _PincodeItemState extends State<PincodeItemView> {
         height: LayoutGrid.halfModule * 15,
         child: GestureDetector(
           onTap: () => widget.onPressed?.call(),
-          onTapUp: (_) => setHighlighted(highlighted: false),
-          onTapDown: (_) => setHighlighted(highlighted: true),
-          onTapCancel: () => setHighlighted(highlighted: false),
           child: Center(
             child: widget.item!.trailingWidget,
           ),
@@ -105,11 +90,5 @@ class _PincodeItemState extends State<PincodeItemView> {
       width: LayoutGrid.halfModule * 15,
       height: LayoutGrid.halfModule * 15,
     );
-  }
-
-  void setHighlighted({required bool highlighted}) {
-    setState(() {
-      _isPressed = highlighted;
-    });
   }
 }
