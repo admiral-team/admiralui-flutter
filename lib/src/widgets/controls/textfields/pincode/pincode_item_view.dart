@@ -50,15 +50,6 @@ class _PincodeItemState extends State<PincodeItemView> {
               font: scheme.titleFont,
               textColorNormal: scheme.numberLabelColor,
             ),
-
-            // Text(
-            //   widget.item!.number!,
-            //   style: TextStyle(
-            //     color: scheme.numberLabelColor,
-            //     fontSize: 36,
-            //     fontFamily: '.SF Pro Display',
-            //   ),
-            // ),
           ),
         ),
       );
