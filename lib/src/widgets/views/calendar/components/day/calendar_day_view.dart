@@ -15,6 +15,7 @@ class CalendarDayView extends StatefulWidget {
     this.day, {
     this.onPressed,
     this.scheme,
+    super.key,
   });
 
   final CalendarDayItem day;

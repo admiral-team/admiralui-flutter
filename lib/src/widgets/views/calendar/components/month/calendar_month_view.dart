@@ -55,6 +55,9 @@ class _CalendarMonthViewState extends State<CalendarMonthView> {
             children: List<Widget>.generate(
               daysInWeekCount,
               (int id) => CalendarDayView(
+                key: visibleDays[index + id].formattedDate() != null
+                    ? Key('''calendarDayView${visibleDays[index + id].formattedDate()}''')
+                    : null,
                 visibleDays[index + id],
                 onPressed: () => widget.onTap?.call(visibleDays[index + id]),
                 scheme: scheme.dayScheme,

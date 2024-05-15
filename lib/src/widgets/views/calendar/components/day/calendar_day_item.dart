@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 enum CalendarDayItemState {
   /// The cell in not visible
   notVisible,
@@ -27,4 +29,12 @@ class CalendarDayItem {
   final DateTime? date;
   final CalendarDayItemState state;
   final int? number;
+
+  String? formattedDate() {
+    if (date != null) {
+      return DateFormat('ddMMyyyy').format(date!);
+    } else {
+      return null;
+    }
+  }
 }

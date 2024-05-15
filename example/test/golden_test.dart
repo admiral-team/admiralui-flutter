@@ -5,6 +5,8 @@ import 'buttons/other_buttons_screen_golder.dart';
 import 'buttons/primary_buttons_screen_golden.dart';
 import 'buttons/rules_buttons_screen_golden.dart';
 import 'buttons/secondary_buttons_screen_golden.dart';
+import 'calendar/horizontal_calendar_screen_golden.dart';
+import 'calendar/vertical_calendar_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'device_config.dart';
 import 'links_screen_golden.dart';
@@ -77,5 +79,9 @@ void main() {
     runCardTextFieldsScreen(device);
     // Pincode
     runPincodeScreen(device);
+    // Vertical Calendar
+    runVerticalCalendarScreen(device);
+    // Horizontal
+    runHorizontalCalendarScreen(device);
   }
 }
