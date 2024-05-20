@@ -1,4 +1,7 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'alert/alert_view_screen_golden.dart';
+import 'alert/error_view_screen_golden.dart';
+import 'alert/zero_screen_golden.dart';
 import 'badges_screen_golden.dart';
 import 'buttons/ghost_buttons_screen_golden.dart';
 import 'buttons/other_buttons_screen_golder.dart';
@@ -77,5 +80,11 @@ void main() {
     runCardTextFieldsScreen(device);
     // Pincode
     runPincodeScreen(device);
+    // ErrorView
+    runErrorViewScreen(device);
+    // ZeroScreen
+    runZeroScreen(device);
+    // AlertView
+    runAlertViewScreen(device);
   }
 }
