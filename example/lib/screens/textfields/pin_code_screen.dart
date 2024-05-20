@@ -88,14 +88,14 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             ),
             SizedBox(height: LayoutGrid.tripleModule),
             InputNumber(
-              title: 'Optional value',
-              onChangedValue: _ChangeInputControl,
-              style: InputNumberButtonStyle.normal,
-              isEnable: isEnabled,
-              numberValue: _codeInputLength.toDouble(),
-              minusButtonKey: const Key('minusInputButton'),
-              plusButtonKey: const Key('plusInputButton')
-            ),
+                title: 'Optional value',
+                onChangedValue: _ChangeInputControl,
+                style: InputNumberButtonStyle.normal,
+                isEnable: isEnabled,
+                numberValue: _codeInputLength.toDouble(),
+                maximumValue: 8,
+                minusButtonKey: const Key('minusInputButton'),
+                plusButtonKey: const Key('plusInputButton')),
             Spacer(),
             CodeInputWidget(
               text: _codeInputText,
