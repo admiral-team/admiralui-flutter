@@ -24,6 +24,7 @@ class FontPalette {
   final AFont largeTitle2;
   final AFont title1;
   final AFont caption1;
+  final AFont numberTitle;
 
   const FontPalette({
     required this.largeTitle1,
@@ -42,6 +43,7 @@ class FontPalette {
     required this.largeTitle2,
     required this.title1,
     required this.caption1,
+    required this.numberTitle,
   });
 
   Map<String, AFont> allFonts() {
@@ -62,6 +64,7 @@ class FontPalette {
       'largeTitle2': largeTitle2,
       'title1': title1,
       'caption1': caption1,
+      'numberTitle': numberTitle,
     };
   }
 }
@@ -146,5 +149,10 @@ const defaultFontPalette = FontPalette(
     fontSize: 12,
     fontFamily: FontFamily.sFProText,
     fontWeight: FontWeight.w500,
+  ),
+  numberTitle: AFont(
+    fontSize: 36,
+    fontFamily: FontFamily.sFProDisplay,
+    fontWeight: FontWeight.w400,
   ),
 );
