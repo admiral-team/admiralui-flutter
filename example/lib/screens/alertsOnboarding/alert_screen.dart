@@ -66,6 +66,7 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
                 height: LayoutGrid.quadrupleModule * 2,
               ),
               GhostButton(
+                key: const Key('showAlertButton'),
                 title: 'Показать Alert',
                 onPressed: () {
                   showDialog(
@@ -85,6 +86,9 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
                             additionalButtonAction: () {
                               _closeDialog();
                             },
+                            buttonActionKey: const Key('alertViewButtonAction'),
+                            additionalButtonKey:
+                                const Key('alertViewAdditionalButton'),
                           ));
                 },
               ),
