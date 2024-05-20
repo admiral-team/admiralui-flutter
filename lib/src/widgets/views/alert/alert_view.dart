@@ -64,6 +64,8 @@ class AlertView extends StatefulWidget {
     this.buttonAction,
     this.additionalButtonTitle,
     this.additionalButtonAction,
+    this.buttonActionKey,
+    this.additionalButtonKey,
     this.scheme,
   });
 
@@ -75,6 +77,8 @@ class AlertView extends StatefulWidget {
   final String? additionalButtonTitle;
   final Function()? buttonAction;
   final Function()? additionalButtonAction;
+  final Key? buttonActionKey;
+  final Key? additionalButtonKey;
   final AlertViewScheme? scheme;
 
   @override
@@ -131,6 +135,7 @@ class _AlertViewState extends State<AlertView> {
               const SizedBox(height: LayoutGrid.halfModule * 10),
               if (widget.buttonTitle != null)
                 PrimaryButton(
+                  key: widget.buttonActionKey,
                   title: widget.buttonTitle!,
                   isEnable: widget.isEnabled,
                   onPressed: widget.buttonAction,
@@ -138,6 +143,7 @@ class _AlertViewState extends State<AlertView> {
               if (widget.additionalButtonTitle != null)
                 const SizedBox(height: LayoutGrid.doubleModule),
               GhostButton(
+                key:  widget.additionalButtonKey,
                 title: widget.additionalButtonTitle!,
                 isEnable: widget.isEnabled,
                 onPressed: widget.additionalButtonAction,
