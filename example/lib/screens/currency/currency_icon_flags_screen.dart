@@ -1,10 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class CurrencyDefaultScreen extends StatelessWidget {
-  const CurrencyDefaultScreen({
+class CurrencyIconsFlagsScreen extends StatelessWidget {
+  const CurrencyIconsFlagsScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -62,15 +62,24 @@ class CurrencyDefaultScreen extends StatelessWidget {
             SizedBox(
               height: LayoutGrid.quadrupleModule,
             ),
-            CurrencyHeader('Валюта', 'Купить', 'Продать'),
+            CurrencyHeader(
+              'Валюта',
+              'Купить',
+              'Продать',
+              isTextSpacingEnabled: true,
+            ),
             SizedBox(
               height: LayoutGrid.doubleModule,
             ),
             Currency(
               'USD',
-              '89',
-              '90',
-              null,
+              '68,65',
+              '67,88',
+              Image(
+                image: AssetImage('assets/currency/usa.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
             ),
@@ -78,26 +87,46 @@ class CurrencyDefaultScreen extends StatelessWidget {
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
-              '89',
-              '90',
-              null,
-              CurrencyCellType.empty,
-              CurrencyCellType.empty,
+              'EUR',
+              '68,65',
+              '67,88',
+              Image(
+                image: AssetImage('assets/currency/european.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
+              CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'USD',
-              '89',
-              '90',
-              null,
-              CurrencyCellType.empty,
-              CurrencyCellType.empty,
+              'GBP',
+              '68,65',
+              '67,88',
+              Image(
+                image: AssetImage('assets/currency/britain.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
+              CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
+            ),
+            Currency(
+              'CNY',
+              '68,65',
+              '67,88',
+              Image(
+                image: AssetImage('assets/currency/china.png'),
+                fit: BoxFit.cover,
+                height: LayoutGrid.halfModule * 5,
+              ),
+              CurrencyCellType.arrowUp,
+              CurrencyCellType.arrowDown,
             ),
             Spacer(),
           ],
