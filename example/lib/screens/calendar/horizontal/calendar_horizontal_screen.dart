@@ -45,9 +45,9 @@ class _CalendarHorizontalScreenState extends State<CalendarHorizontalScreen> {
           horizontal: LayoutGrid.doubleModule,
         ),
         child: CalendarHorizontalView(
-          startDate: null,
-          endDate: null,
-          currentDate: null,
+          startDate: DateTime(2022, 1, 1, 0, 0, 0),
+          endDate: DateTime(2022, 4, 1, 0, 0, 0),
+          currentDate: DateTime(2022, 4, 1, 0, 0, 0),
           selectedEndDate: null,
           selectedStartDate: null,
           onPageChanged: () {

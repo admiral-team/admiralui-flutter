@@ -1,10 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class CurrencyIconsFlagsScreen extends StatelessWidget {
-  const CurrencyIconsFlagsScreen({
+class CurrencyIconScreen extends StatelessWidget {
+  const CurrencyIconScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -73,13 +73,9 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
             ),
             Currency(
               'USD',
-              '89',
-              '90',
-              Image(
-                image: AssetImage('assets/currency/usa.png'),
-                fit: BoxFit.cover,
-                height: LayoutGrid.halfModule * 5,
-              ),
+              '68,65',
+              '67,88',
+              null,
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
             ),
@@ -88,13 +84,9 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
             ),
             Currency(
               'EUR',
-              '89',
-              '90',
-              Image(
-                image: AssetImage('assets/currency/european.png'),
-                fit: BoxFit.cover,
-                height: LayoutGrid.halfModule * 5,
-              ),
+              '68,65',
+              '67,88',
+              null,
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
             ),
@@ -103,13 +95,9 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
             ),
             Currency(
               'GBP',
-              '89',
-              '90',
-              Image(
-                image: AssetImage('assets/currency/britain.png'),
-                fit: BoxFit.cover,
-                height: LayoutGrid.halfModule * 5,
-              ),
+              '68,65',
+              '67,88',
+              null,
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
             ),
@@ -118,13 +106,9 @@ class CurrencyIconsFlagsScreen extends StatelessWidget {
             ),
             Currency(
               'CNY',
-              '89',
-              '90',
-              Image(
-                image: AssetImage('assets/currency/china.png'),
-                fit: BoxFit.cover,
-                height: LayoutGrid.halfModule * 5,
-              ),
+              '68,65',
+              '67,88',
+              null,
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
             ),

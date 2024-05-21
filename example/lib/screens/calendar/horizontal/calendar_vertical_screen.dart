@@ -28,8 +28,6 @@ class _CalendarVerticalScreenState extends State<CalendarVerticalScreen> {
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
 
-    final DateTime nowDate = DateTime.now();
-
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
@@ -55,9 +53,9 @@ class _CalendarVerticalScreenState extends State<CalendarVerticalScreen> {
             CalendarVerticalView(
               selectedEndDate: null,
               selectedStartDate: null,
-              startDate: null,
-              currentDate: nowDate,
-              endDate: null,
+              startDate: DateTime(2022, 1, 1, 0, 0, 0),
+              currentDate: DateTime(2022, 4, 1, 0, 0, 0),
+              endDate: DateTime(2022, 4, 1, 0, 0, 0),
               onChangedRangeDates: (List<DateTime?> datesRange) {
                 print('Dates range $datesRange');
               },

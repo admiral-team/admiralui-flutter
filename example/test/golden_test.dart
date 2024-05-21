@@ -1,11 +1,17 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
+import 'alert/alert_view_screen_golden.dart';
+import 'alert/error_view_screen_golden.dart';
+import 'alert/zero_screen_golden.dart';
 import 'badges_screen_golden.dart';
 import 'buttons/ghost_buttons_screen_golden.dart';
 import 'buttons/other_buttons_screen_golder.dart';
 import 'buttons/primary_buttons_screen_golden.dart';
 import 'buttons/rules_buttons_screen_golden.dart';
 import 'buttons/secondary_buttons_screen_golden.dart';
+import 'calendar/horizontal_calendar_screen_golden.dart';
+import 'calendar/vertical_calendar_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
+import 'currency_screen_golden.dart';
 import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
@@ -77,5 +83,17 @@ void main() {
     runCardTextFieldsScreen(device);
     // Pincode
     runPincodeScreen(device);
+    // Vertical Calendar
+    runVerticalCalendarScreen(device);
+    // Horizontal
+    runHorizontalCalendarScreen(device);
+    // Currency
+    runCurrencyScreen(device);
+    // ErrorView
+    runErrorViewScreen(device);
+    // ZeroScreen
+    runZeroScreen(device);
+    // AlertView
+    runAlertViewScreen(device);
   }
 }
