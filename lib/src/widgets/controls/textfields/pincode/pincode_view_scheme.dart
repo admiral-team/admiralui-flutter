@@ -6,8 +6,10 @@ class PincodeViewScheme {
     required this.theme,
   }) {
     numberLabelColor = theme.colors.textPrimary.color();
+    titleFont = theme.fonts.numberTitle;
   }
 
   AppTheme theme;
   late Color numberLabelColor;
+  late AFont titleFont;
 }
