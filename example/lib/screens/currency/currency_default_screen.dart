@@ -1,10 +1,10 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../navigation/tab_navigator_home.dart';
+import '../../navigation/tab_navigator_home.dart';
 
-class CurrencyIconScreen extends StatelessWidget {
-  const CurrencyIconScreen({
+class CurrencyDefaultScreen extends StatelessWidget {
+  const CurrencyDefaultScreen({
     super.key,
     required this.title,
     required this.onPush,
@@ -66,14 +66,15 @@ class CurrencyIconScreen extends StatelessWidget {
               'Валюта',
               'Купить',
               'Продать',
+              isTextSpacingEnabled: true,
             ),
             SizedBox(
               height: LayoutGrid.doubleModule,
             ),
             Currency(
               'USD',
-              '89',
-              '90',
+              '68,65',
+              '67,88',
               null,
               CurrencyCellType.arrowUp,
               CurrencyCellType.arrowDown,
@@ -82,34 +83,26 @@ class CurrencyIconScreen extends StatelessWidget {
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'EUR',
-              '89',
-              '90',
+              'USD',
+              '68,65',
+              '67,88',
               null,
-              CurrencyCellType.arrowUp,
-              CurrencyCellType.arrowDown,
+              CurrencyCellType.empty,
+              CurrencyCellType.empty,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
             ),
             Currency(
-              'GBP',
-              '89',
-              '90',
+              'USD',
+              '68,65',
+              '67,88',
               null,
-              CurrencyCellType.arrowUp,
-              CurrencyCellType.arrowDown,
+              CurrencyCellType.empty,
+              CurrencyCellType.empty,
             ),
             SizedBox(
               height: LayoutGrid.halfModule * 3,
-            ),
-            Currency(
-              'CNY',
-              '89',
-              '90',
-              null,
-              CurrencyCellType.arrowUp,
-              CurrencyCellType.arrowDown,
             ),
             Spacer(),
           ],
