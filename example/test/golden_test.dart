@@ -36,66 +36,66 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   for (final Device device in devices) {
-    // // Main
-    // runMainScreen(device);
-    // // Links
-    // runLinksScreen(device);
-    // // Radio buttons
-    // runRadioButtonsScreen(device);
-    // // Tags and Chips
-    // runTagsAndChipsScreen(device);
-    // // Check box
-    // runCheckBoxScreen(device);
-    // // Switcher
-    // runSwitcherScreen(device);
-    // // Badges
-    // runBadgesScreen(device);
-    // // Primary Buttons
-    // runPrimaryButtonsScreen(device);
-    // // Secondary Buttons
-    // runSecondaryButtonsScreen(device);
-    // // Ghost Buttons
-    // runGhostButtonsScreen(device);
-    // // Rules Buttons
-    // runRulesButtonsScreen(device);
-    // // Other Buttons
-    // runOtherButtonsScreen(device);
-    // // Toolbar
-    // runToolbarScreen(device);
-    // // Shimmer
-    // // Решить проблему анимации в тесте
-    // // runShimmerScreen(device);
-    // // Spinner
-    // // Решить проблему анимации в тесте
-    // // runSpinnerScreen(device);
-    // // Feedback
-    // runFeedbackScreen(device);
-    // // Standard TextFields
-    // runStandardTextFieldsScreen(device);
-    // // SMS TextFields
-    // runSmsTextFieldsScreen(device);
-    // // Double Textfields
-    // runDoubleTextFieldsScreen(device);
-    // // Number Textfields
-    // runNumbersTextFieldsScreen(device);
-    // // Slider TextFields
-    // runSliderTextFieldsScreen(device);
-    // // Card TextFields
-    // runCardTextFieldsScreen(device);
-    // // Pincode
-    // runPincodeScreen(device);
-    // // Vertical Calendar
-    // runVerticalCalendarScreen(device);
-    // // Horizontal
-    // runHorizontalCalendarScreen(device);
-    // // Currency
-    // runCurrencyScreen(device);
-    // // ErrorView
-    // runErrorViewScreen(device);
-    // // ZeroScreen
-    // runZeroScreen(device);
-    // // AlertView
-    // runAlertViewScreen(device);
+    // Main
+    runMainScreen(device);
+    // Links
+    runLinksScreen(device);
+    // Radio buttons
+    runRadioButtonsScreen(device);
+    // Tags and Chips
+    runTagsAndChipsScreen(device);
+    // Check box
+    runCheckBoxScreen(device);
+    // Switcher
+    runSwitcherScreen(device);
+    // Badges
+    runBadgesScreen(device);
+    // Primary Buttons
+    runPrimaryButtonsScreen(device);
+    // Secondary Buttons
+    runSecondaryButtonsScreen(device);
+    // Ghost Buttons
+    runGhostButtonsScreen(device);
+    // Rules Buttons
+    runRulesButtonsScreen(device);
+    // Other Buttons
+    runOtherButtonsScreen(device);
+    // Toolbar
+    runToolbarScreen(device);
+    // Shimmer
+    // Решить проблему анимации в тесте
+    // runShimmerScreen(device);
+    // Spinner
+    // Решить проблему анимации в тесте
+    // runSpinnerScreen(device);
+    // Feedback
+    runFeedbackScreen(device);
+    // Standard TextFields
+    runStandardTextFieldsScreen(device);
+    // SMS TextFields
+    runSmsTextFieldsScreen(device);
+    // Double Textfields
+    runDoubleTextFieldsScreen(device);
+    // Number Textfields
+    runNumbersTextFieldsScreen(device);
+    // Slider TextFields
+    runSliderTextFieldsScreen(device);
+    // Card TextFields
+    runCardTextFieldsScreen(device);
+    // Pincode
+    runPincodeScreen(device);
+    // Vertical Calendar
+    runVerticalCalendarScreen(device);
+    // Horizontal
+    runHorizontalCalendarScreen(device);
+    // Currency
+    runCurrencyScreen(device);
+    // ErrorView
+    runErrorViewScreen(device);
+    // ZeroScreen
+    runZeroScreen(device);
+    // AlertView
+    runAlertViewScreen(device);
     // Onboarding
     runOnboardingViewScreen(device);
   }
