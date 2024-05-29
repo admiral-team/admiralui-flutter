@@ -71,9 +71,9 @@ class _StandardTabsState extends State<StandardTabs>
               child: TabBar(
                 dividerColor: Colors.transparent,
                 splashFactory: NoSplash.splashFactory,
-                overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    return states.contains(MaterialState.focused)
+                overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                  (Set<WidgetState> states) {
+                    return states.contains(WidgetState.focused)
                         ? null
                         : Colors.transparent;
                   },
