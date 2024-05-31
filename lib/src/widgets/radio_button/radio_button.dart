@@ -76,8 +76,8 @@ class _RadioTitle extends StatelessWidget {
           onChanged: (String? value) {
             onChanged?.call(value);
           },
-          fillColor: WidgetStateColor.resolveWith(
-            (Set<WidgetState> states) {
+          fillColor: MaterialStateColor.resolveWith(
+            (Set<MaterialState> states) {
               return scheme.radioColor.unsafeParameter(
                 isEnabled ? ControlState.normal : ControlState.disabled,
                 style,
