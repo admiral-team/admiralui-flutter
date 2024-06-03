@@ -85,6 +85,7 @@ class _OnboardingViewScreenState extends State<OnboardingViewScreen> {
               widget.onPush?.call();
             }
           },
+          circularPageControlKey: Key('circularPageControlKey')
         ),
       ),
     );

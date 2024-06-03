@@ -105,50 +105,57 @@ class _AlertViewState extends State<AlertView> {
       content: IntrinsicHeight(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              if (widget.image != null)
-                SizedBox(
-                  width: LayoutGrid.halfModule * 35,
-                  height: LayoutGrid.halfModule * 35,
-                  child: widget.image,
-                ),
-              const SizedBox(height: LayoutGrid.halfModule * 5),
-              if (widget.title != null)
-                TextView(
-                  widget.title!,
-                  isEnabled: widget.isEnabled,
-                  font: scheme.titleFont,
-                  textColorNormal: scheme.titleColor.color(),
-                  textAlign: TextAlign.center,
-                ),
-              const SizedBox(height: LayoutGrid.doubleModule),
-              if (widget.description != null)
-                TextView(
-                  widget.description!,
-                  isEnabled: widget.isEnabled,
-                  font: scheme.descriptionFont,
-                  textColorNormal: scheme.descriptionColor.color(),
-                  textAlign: TextAlign.center,
-                ),
-              const SizedBox(height: LayoutGrid.halfModule * 10),
-              if (widget.buttonTitle != null)
-                PrimaryButton(
-                  key: widget.buttonActionKey,
-                  title: widget.buttonTitle!,
-                  isEnable: widget.isEnabled,
-                  onPressed: widget.buttonAction,
-                ),
-              if (widget.additionalButtonTitle != null)
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (widget.image != null)
+                  SizedBox(
+                    width: LayoutGrid.halfModule * 35,
+                    height: LayoutGrid.halfModule * 35,
+                    child: widget.image,
+                  ),
+                const SizedBox(height: LayoutGrid.halfModule * 5),
+                if (widget.title != null)
+                  TextView(
+                    widget.title!,
+                    isEnabled: widget.isEnabled,
+                    font: scheme.titleFont,
+                    textColorNormal: scheme.titleColor.color(),
+                    textAlign: TextAlign.center,
+                  ),
                 const SizedBox(height: LayoutGrid.doubleModule),
-              GhostButton(
-                key:  widget.additionalButtonKey,
-                title: widget.additionalButtonTitle!,
-                isEnable: widget.isEnabled,
-                onPressed: widget.additionalButtonAction,
-              ),
-            ],
+                if (widget.description != null)
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: LayoutGrid.quadrupleModule * 16,
+                    ),
+                    child: TextView(
+                      widget.description!,
+                      isEnabled: widget.isEnabled,
+                      font: scheme.descriptionFont,
+                      textColorNormal: scheme.descriptionColor.color(),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                const SizedBox(height: LayoutGrid.halfModule * 10),
+                if (widget.buttonTitle != null)
+                  PrimaryButton(
+                    key: widget.buttonActionKey,
+                    title: widget.buttonTitle!,
+                    isEnable: widget.isEnabled,
+                    onPressed: widget.buttonAction,
+                  ),
+                if (widget.additionalButtonTitle != null)
+                  const SizedBox(height: LayoutGrid.doubleModule),
+                GhostButton(
+                  key: widget.additionalButtonKey,
+                  title: widget.additionalButtonTitle!,
+                  isEnable: widget.isEnabled,
+                  onPressed: widget.additionalButtonAction,
+                ),
+              ],
+            ),
           ),
         ),
       ),
