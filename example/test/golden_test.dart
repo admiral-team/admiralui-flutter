@@ -11,6 +11,8 @@ import 'buttons/rules_buttons_screen_golden.dart';
 import 'buttons/secondary_buttons_screen_golden.dart';
 import 'calendar/horizontal_calendar_screen_golden.dart';
 import 'calendar/vertical_calendar_screen_golden.dart';
+import 'cell/action_bar_cell_screen_golden.dart';
+import 'cell/base_cell_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'currency_screen_golden.dart';
 import 'device_config.dart';
@@ -96,6 +98,10 @@ void main() {
     runZeroScreen(device);
     // AlertView
     runAlertViewScreen(device);
+    // Cells
+    runBaseCellScreen(device);
+    // Action bar
+    runActionBarCellScreen(device);
     // Onboarding
     runOnboardingViewScreen(device);
   }
