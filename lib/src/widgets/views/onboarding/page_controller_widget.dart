@@ -9,6 +9,7 @@ class PageControllerWidget extends StatefulWidget {
     this.pagePosition = 0,
     this.onPageChanged,
     this.scheme,
+    this.circularPageControlKey,
   });
 
   final List<PageViewItem> items;
@@ -16,6 +17,7 @@ class PageControllerWidget extends StatefulWidget {
   final int pagePosition;
   final Function(int)? onPageChanged;
   final PageViewScheme? scheme;
+  final Key? circularPageControlKey;
 
   @override
   State<StatefulWidget> createState() => _PageControllerWidgetState();
@@ -66,6 +68,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
           ),
         ),
         CircularPageControl(
+          key: widget.circularPageControlKey,
           widget.items.length,
           currentPage,
           onPressed: () => setState(

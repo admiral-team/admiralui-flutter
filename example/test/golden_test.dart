@@ -1,6 +1,7 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'alert/alert_view_screen_golden.dart';
 import 'alert/error_view_screen_golden.dart';
+import 'alert/onboarding_view_screen_golden.dart';
 import 'alert/zero_screen_golden.dart';
 import 'badges_screen_golden.dart';
 import 'buttons/ghost_buttons_screen_golden.dart';
@@ -95,5 +96,7 @@ void main() {
     runZeroScreen(device);
     // AlertView
     runAlertViewScreen(device);
+    // Onboarding
+    runOnboardingViewScreen(device);
   }
 }
