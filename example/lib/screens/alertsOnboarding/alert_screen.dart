@@ -34,6 +34,7 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        backgroundColor: colors.backgroundBasic.color(),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -50,50 +51,51 @@ class _AlertViewScreenState extends State<AlertViewScreen> {
           padding: const EdgeInsets.symmetric(
             horizontal: LayoutGrid.doubleModule,
           ),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: LayoutGrid.quadrupleModule,
-              ),
-              TextView(
-                  // ignore: lines_longer_than_80_chars
-                  '''Всплывающие окна поверх контента, часто содержат короткое 
-                  информирующее сообщение, иллюстрацию и кнопки основгого или 
-                  альтернативного действия.''',
-                  font: theme.fonts.body2,
-                  textColorNormal: theme.colors.textPrimary.color()),
-              SizedBox(
-                height: LayoutGrid.quadrupleModule * 2,
-              ),
-              GhostButton(
-                key: const Key('showAlertButton'),
-                title: 'Показать Alert',
-                onPressed: () {
-                  showDialog(
-                      useSafeArea: false,
-                      context: context,
-                      builder: (_) => AlertView(
-                            title: 'Header',
-                            image: Assets.onboarding.two.image(),
-                            description:
-                                '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.''',
-                            buttonTitle: 'Хорошо',
-                            buttonAction: () {
-                              _closeDialog();
-                            },
-                            additionalButtonTitle: 'Отмена',
-                            additionalButtonAction: () {
-                              _closeDialog();
-                            },
-                            buttonActionKey: const Key('alertViewButtonAction'),
-                            additionalButtonKey:
-                                const Key('alertViewAdditionalButton'),
-                          ));
-                },
-              ),
-              Spacer(),
-            ],
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: LayoutGrid.quadrupleModule,
+                ),
+                TextView(
+                    // ignore: lines_longer_than_80_chars
+                    'Всплывающие окна поверх контента, часто содержат короткое информирующее сообщение, иллюстрацию и кнопки основгого или  альтернативного действия.',
+                    font: theme.fonts.body2,
+                    textColorNormal: theme.colors.textPrimary.color()),
+                SizedBox(
+                  height: LayoutGrid.quadrupleModule * 2,
+                ),
+                GhostButton(
+                  key: const Key('showAlertButton'),
+                  title: 'Показать Alert',
+                  onPressed: () async {
+                    await showDialog(
+                        useSafeArea: false,
+                        context: context,
+                        builder: (_) => AlertView(
+                              title: 'Header',
+                              image: Assets.onboarding.two.image(),
+                              description:
+                                  // ignore: lines_longer_than_80_chars
+                                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                              buttonTitle: 'Хорошо',
+                              buttonAction: () {
+                                _closeDialog();
+                              },
+                              additionalButtonTitle: 'Отмена',
+                              additionalButtonAction: () {
+                                _closeDialog();
+                              },
+                              buttonActionKey:
+                                  const Key('alertViewButtonAction'),
+                              additionalButtonKey:
+                                  const Key('alertViewAdditionalButton'),
+                            ));
+                  },
+                ),
+                Spacer(),
+              ],
+            ),
           )),
     );
   }

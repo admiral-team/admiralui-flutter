@@ -8,6 +8,7 @@ import 'screens/onboarding_screen.dart';
 import 'screens/root_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +19,14 @@ void main() async {
       statusBarColor: Colors.transparent,
     ),
   );
-  if (Platform.isAndroid) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } else if (Platform.isIOS) {
-    await Firebase.initializeApp();
+  if (!kIsWeb) {
+    if (Platform.isAndroid) {
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    } else if (Platform.isIOS) {
+      await Firebase.initializeApp();
+    }
   }
   runApp(
     MyApp(
