@@ -1,0 +1,64 @@
+%PDF-1.7
+%����
+
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+  /Type /Pages
+  /MediaBox [ 0 0 1170.00 1900.00 ]
+  /Count 1
+  /Kids [  5 0 R  ]
+>>
+endobj
+
+3 0 obj
+<<
+	/Type /Outlines
+	/Count 0
+>>
+endobj
+
+4 0 obj
+<<
+	/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+	/Font <<
+	>>
+	/XObject <<
+	>>
+	/ExtGState <<
+	>>
+>>
+endobj
+
+5 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /Resources 4 0 R
+  /Contents 
+ /MediaBox [ 0 0 1170.00 655.00 ]
+>>
+endobj
+
+xref
+0 6
+0000000000 65535 f 
+0000000024 00000 n 
+0000000078 00000 n 
+0000000182 00000 n 
+0000000231 00000 n 
+0000000350 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+468
+%%EOF

@@ -2,11 +2,13 @@ module admiralui/flutter/go
 
 go 1.17
 
-require github.com/joho/godotenv v1.4.0
+require (
+	github.com/admiral-team/admiral-tools v0.0.0-20240605163638-f1031266a669
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/Jeffail/gabs v1.4.0 // indirect
-	github.com/admiral-team/admiral-tools v0.0.0-20220817174330-34393f83fef4 // indirect
 	github.com/go-playground/colors v1.3.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-github/v45 v45.2.0 // indirect

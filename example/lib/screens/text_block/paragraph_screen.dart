@@ -88,7 +88,7 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                     'elit, sed do eiusmod tempor incididunt ut labore et dolore'
                     'magna aliqua.',
                 trailingImageWidget: Icon(
-                  AdmiralIcons.admiral_ic_check_clear_outline,
+                  AdmiralIcons.admiral_ic_sent_outline,
                 ),
                 isEnable: isEnabled,
               ),
@@ -135,7 +135,7 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                     'magna aliqua.',
                 paragraphStyle: ParagraphStyle.secondary,
                 trailingImageWidget: Icon(
-                  AdmiralIcons.admiral_ic_check_clear_outline,
+                  AdmiralIcons.admiral_ic_sent_outline,
                 ),
                 isEnable: isEnabled,
               ),
