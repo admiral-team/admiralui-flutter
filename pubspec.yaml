@@ -23,7 +23,7 @@ dev_dependencies:
     sdk: flutter
   lint: ^1.0.0
   recase: ^4.0.0
-  xml: ^5.2.0
+  xml: ^6.2.2
 
 flutter:
   fonts:
