@@ -113,6 +113,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                 ],
               ),
               child: BaseCellWidget(
+                key: Key('baseCellWidgetSliderDefault'),
                 leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',
@@ -169,6 +170,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                 ],
               ),
               child: BaseCellWidget(
+                key: Key('baseCellWidgetSliderSecondary'),
                 leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',

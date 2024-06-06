@@ -1,6 +1,6 @@
 name: admiralui_flutter
 description: The visual component library for Flutter
-version: 1.5.1
+version: 1.5.2
 homepage: https://github.com/admiral-team/admiralui-flutter.git
 
 environment:
@@ -23,7 +23,7 @@ dev_dependencies:
     sdk: flutter
   lint: ^1.0.0
   recase: ^4.0.0
-  xml: ^5.2.0
+  xml: ^6.2.2
 
 flutter:
   fonts:

@@ -68,7 +68,7 @@ class _TitleButtonDropDownWidgetState extends State<ParagrapgWidget> {
           width: LayoutGrid.halfModule * 6,
           height: LayoutGrid.halfModule * 6,
           child: Icon(
-            AdmiralIcons.admiral_ic_check_clear_outline,
+            AdmiralIcons.admiral_ic_sent_outline,
             color: imageColor,
           ),
         );
