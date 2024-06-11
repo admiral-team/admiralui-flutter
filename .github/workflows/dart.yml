@@ -72,7 +72,6 @@ jobs:
     runs-on: [ self-hosted, main, flutter ]
     if: github.event.action != 'closed'
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -104,7 +103,6 @@ jobs:
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
       APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -124,7 +122,6 @@ jobs:
     if: github.event.action != 'closed'
     needs: deploy-android
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -152,7 +149,6 @@ jobs:
       TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
       TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -161,7 +157,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - name: Change Remote Branch Name
-        run: cd build/ios/fastlane && bundle install && bundle update && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+        run: cd build/ios/fastlane && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
@@ -196,7 +192,6 @@ jobs:
       TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
       IOS_GOOGLE_API_KEY: ${{ secrets.IOS_GOOGLE_API_KEY }}
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
