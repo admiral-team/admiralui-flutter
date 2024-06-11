@@ -10,11 +10,6 @@ import 'package:path/path.dart' as path;
 const double _kGoldenTestsThreshold = 0.5 / 100;
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
-  setUpAll(() async {
-    await loadAppFonts();
-    await _load(_loadFontFile());
-  });
-
   if (goldenFileComparator is LocalFileComparator) {
     final Uri testUrl = (goldenFileComparator as LocalFileComparator).basedir;
 
@@ -34,6 +29,11 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
       'but it is of type `${goldenFileComparator.runtimeType}`',
     );
   }
+
+  setUpAll(() async {
+    await loadAppFonts();
+    await _load(_loadFontFile());
+  });
 
   return testMain();
 }
