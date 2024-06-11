@@ -19,6 +19,7 @@ void runStandardTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -42,6 +43,7 @@ void runStandardTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -65,6 +67,7 @@ void runStandardTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -89,6 +92,7 @@ void runStandardTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 

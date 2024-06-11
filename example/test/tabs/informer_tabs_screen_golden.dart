@@ -42,6 +42,7 @@ void runInformerTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -65,6 +66,7 @@ void runInformerTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -89,13 +91,14 @@ void runInformerTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
+          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
     await tester.pumpDeviceBuilder(builder);
     await screenMatchesGolden(
       tester,
-      'informer_tabs_dark_disabled_screen_${device.name}',
+      'informer_tabs_dark_disabled_screen_${device.name}'
     );
   });
 
