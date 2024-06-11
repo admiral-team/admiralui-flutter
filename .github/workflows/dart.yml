@@ -159,7 +159,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - name: Change Remote Branch Name
-        run: cd build/ios/fastlane && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+        run: cd build/ios/fastlane && bundle install && bundle update && bundle exec fastlane build_remote_demo issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
