@@ -165,13 +165,6 @@ jobs:
         run: |
           cd build/ios/fastlane && bundle install && bundle update &&
            bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
-      - name: Install dependencies
-        run: cd remote_demo && flutter pub get
-      - name: Check If Setup Failed
-        if: ${{ failure() }}
-        run: |
-          cd build/ios/fastlane && bundle install && bundle update &&
-           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
       - run: cd remote_demo && flutter build web
       - name: Test build android
         run: cd remote_demo && flutter build apk && flutter build appbundle
