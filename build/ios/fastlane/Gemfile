@@ -5,14 +5,12 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "liquid"
-gem "jira-ruby"
 gem 'telegram-bot-ruby'
 gem "rqrcode", '~> 2.0'
 gem "cocoapods", '~>1.9.3'
 gem "fastlane"
 gem "xcov"
 gem "octokit"
-gem 'fastlane-plugin-appcenter'
 gem 'fastlane-plugin-create_xcframework'
 gem 'fastlane-plugin-firebase_app_distribution'
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
