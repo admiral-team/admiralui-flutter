@@ -18,7 +18,7 @@ void runStandardTabsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -41,7 +41,7 @@ void runStandardTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
           await setDisabledState(tester, scenarioWidgetKey);
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -64,7 +64,7 @@ void runStandardTabsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -88,7 +88,7 @@ void runStandardTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Standard Tabs'
           );
           await setDisabledState(tester, scenarioWidgetKey);
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 

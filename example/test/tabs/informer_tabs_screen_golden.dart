@@ -18,7 +18,7 @@ void runInformerTabsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -41,7 +41,7 @@ void runInformerTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
           await setDisabledState(tester, scenarioWidgetKey);
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -64,7 +64,7 @@ void runInformerTabsScreen(Device device) {
           await selectSecondaryMenu(
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
@@ -88,7 +88,7 @@ void runInformerTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
           await setDisabledState(tester, scenarioWidgetKey);
-          await tester.pump(const Duration(milliseconds: 50));
+          await tester.pump(const Duration(milliseconds: 500));
         },
       );
 
