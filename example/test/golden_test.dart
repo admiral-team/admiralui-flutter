@@ -22,6 +22,9 @@ import 'radio_buttons_screen_golden.dart';
 // import 'shimmer_screen_golden.dart';
 // import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
+import 'tabs/informer_tabs_screen_golden.dart';
+import 'tabs/logo_tabs_screen_golden.dart';
+import 'tabs/standard_tabs_screen_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'textfields/card_textfield_screen_golden.dart';
@@ -104,5 +107,11 @@ void main() {
     runActionBarCellScreen(device);
     // Onboarding
     runOnboardingViewScreen(device);
+    // Standard Tabs
+    runStandardTabsScreen(device);
+    // Logo Tabs
+    runLogoTabsScreen(device);
+    // Informer Tabs
+    runInformerTabsScreen(device);
   }
 }

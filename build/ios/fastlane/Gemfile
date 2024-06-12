@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source "http://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "liquid"
-gem "jira-ruby"
 gem 'telegram-bot-ruby'
 gem "rqrcode", '~> 2.0'
 gem "cocoapods", '~>1.9.3'

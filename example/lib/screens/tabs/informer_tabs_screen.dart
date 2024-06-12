@@ -30,7 +30,6 @@ class _InformerTabsScreenState extends State<InformerTabsScreen> {
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
     screenWidth = MediaQuery.of(context).size.width;
-    print('device width - $screenWidth');
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
