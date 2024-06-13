@@ -22,6 +22,7 @@ import 'radio_buttons_screen_golden.dart';
 // import 'shimmer_screen_golden.dart';
 // import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
+import 'tabs/icon_tabs_screen_golden.dart';
 import 'tabs/informer_tabs_screen_golden.dart';
 import 'tabs/logo_tabs_screen_golden.dart';
 import 'tabs/standard_tabs_screen_golden.dart';
@@ -113,5 +114,7 @@ void main() {
     runLogoTabsScreen(device);
     // Informer Tabs
     runInformerTabsScreen(device);
+    // Icon Tabs
+    runIconTabsScreen(device);
   }
 }
