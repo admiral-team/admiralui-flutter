@@ -79,8 +79,8 @@ class _IconTabsScreenState extends State<IconTabsScreen> {
             SizedBox(height: LayoutGrid.doubleModule),
             IconTabs(
               <IconTabItem>[
-                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-                IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
+                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_solid),
+                IconTabItem('Two', AdmiralIcons.admiral_ic_card_solid),
               ],
               isEnabled: isEnabled,
             ),
@@ -98,10 +98,9 @@ class _IconTabsScreenState extends State<IconTabsScreen> {
             SizedBox(height: LayoutGrid.doubleModule),
             IconTabs(
               <IconTabItem>[
-                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_outline),
-                IconTabItem('Two', AdmiralIcons.admiral_ic_card_outline),
-                IconTabItem(
-                    'Three', AdmiralIcons.admiral_ic_account_detail_outline),
+                IconTabItem('One', AdmiralIcons.admiral_ic_mobile_solid),
+                IconTabItem('Two', AdmiralIcons.admiral_ic_card_solid),
+                IconTabItem('Three', AdmiralIcons.admiral_ic_receipt_solid),
               ],
               isEnabled: isEnabled,
             ),
