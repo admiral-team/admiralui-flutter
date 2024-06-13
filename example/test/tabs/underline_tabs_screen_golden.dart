@@ -197,7 +197,8 @@ void runUnderlineTabsScreen(Device device) {
   });
 
   testGoldens(
-    'underline_slider_center_tabs_dark_disabled_app', (WidgetTester tester) async {
+    'underline_slider_center_tabs_dark_disabled_app', 
+  (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])
       ..addScenario(
