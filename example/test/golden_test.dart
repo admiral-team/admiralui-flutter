@@ -21,10 +21,13 @@ import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
 // import 'shimmer_screen_golden.dart';
 // import 'spinner_screen_golden.dart';
+import 'shimmer_screen_golden.dart';
+import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
 import 'tabs/icon_tabs_screen_golden.dart';
 import 'tabs/informer_tabs_screen_golden.dart';
 import 'tabs/logo_tabs_screen_golden.dart';
+import 'tabs/outline_slider_tabs_screen_golden.dart';
 import 'tabs/standard_tabs_screen_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -69,11 +72,9 @@ void main() {
     // Toolbar
     runToolbarScreen(device);
     // Shimmer
-    // Решить проблему анимации в тесте
-    // runShimmerScreen(device);
+    runShimmerScreen(device);
     // Spinner
-    // Решить проблему анимации в тесте
-    // runSpinnerScreen(device);
+    runSpinnerScreen(device);
     // Feedback
     runFeedbackScreen(device);
     // Standard TextFields
@@ -116,5 +117,7 @@ void main() {
     runInformerTabsScreen(device);
     // Icon Tabs
     runIconTabsScreen(device);
+    // Outline Slider Tabs
+    runOutlineSliderTabsScreen(device);
   }
 }
