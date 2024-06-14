@@ -210,6 +210,8 @@ jobs:
         run: cd build/ios/fastlane && bundle install && bundle update
       - name: Install dependencies
         run: flutter pub get
+      - name: Install Cocoa Pods
+        run: brew install cocoapods
       - name: Set Xcode Command Line Tools Path
         run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
       - name: Unlock Fastlane Secrets Keychain
