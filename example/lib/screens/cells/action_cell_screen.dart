@@ -72,6 +72,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
             ),
             Slidable(
+              enabled: isEnabled,
               endActionPane: ActionPane(
                 motion: ScrollMotion(),
                 children: <SlidableAction>[
@@ -118,12 +119,15 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',
                   detaile: '50 000.00 ₽',
+                  isEnabled: isEnabled,
                 ),
                 trailingCell: SubtitleImageCellWidget(
                   subtitle: 'Swipe',
                   imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
+                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: LayoutGrid.doubleModule,
+                isEnabled: isEnabled,
               ),
             ),
             SizedBox(
@@ -140,6 +144,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
             ),
             Slidable(
+              enabled: isEnabled,
               endActionPane: ActionPane(
                 motion: ScrollMotion(),
                 children: <SlidableAction>[
@@ -172,11 +177,14 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderSecondary'),
                 leadingCell: Assets.card.visa.image(),
+                isEnabled: isEnabled,
                 centerCell: TitleMoreDetailTextMessageWidget(
+                  isEnabled: isEnabled,
                   title: 'Card',
                   detaile: '50 000.00 ₽',
                 ),
                 trailingCell: SubtitleImageCellWidget(
+                  isEnabled: isEnabled,
                   subtitle: 'Swipe',
                   imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
                 ),
