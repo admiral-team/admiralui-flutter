@@ -63,6 +63,7 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
         ),
       ),
       child: InkWell(
+        overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
         highlightColor: scheme.selectedColor,
         splashColor: scheme.selectedColor,
         onTap: () {

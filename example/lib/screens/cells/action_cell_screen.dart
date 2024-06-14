@@ -115,7 +115,11 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderDefault'),
-                leadingCell: Assets.card.visa.image(),
+                leadingCell: Assets.card.visa.image(
+                    color: colors.backgroundBasic
+                        .color()
+                        .withOpacity(isEnabled ? 1 : 0.5),
+                    colorBlendMode: BlendMode.modulate),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',
                   detaile: '50 000.00 ₽',
@@ -176,7 +180,11 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderSecondary'),
-                leadingCell: Assets.card.visa.image(),
+                leadingCell: Assets.card.visa.image(
+                    color: colors.backgroundBasic
+                        .color()
+                        .withOpacity(isEnabled ? 1 : 0.5),
+                    colorBlendMode: BlendMode.modulate),
                 isEnabled: isEnabled,
                 centerCell: TitleMoreDetailTextMessageWidget(
                   isEnabled: isEnabled,
