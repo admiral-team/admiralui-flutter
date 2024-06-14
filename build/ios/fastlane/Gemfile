@@ -7,7 +7,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "liquid"
 gem 'telegram-bot-ruby'
 gem "rqrcode", '~> 2.0'
-gem "cocoapods", '~>1.9.3'
+gem "cocoapods"
 gem "fastlane"
 gem "xcov"
 gem "octokit"
