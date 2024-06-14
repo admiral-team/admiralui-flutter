@@ -115,23 +115,17 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderDefault'),
-                leadingCell: Assets.card.visa.image(
-                    color: colors.backgroundBasic
-                        .color()
-                        .withOpacity(isEnabled ? 1 : 0.5),
-                    colorBlendMode: BlendMode.modulate),
+                isEnabled: isEnabled,
+                leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',
                   detaile: '50 000.00 ₽',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: SubtitleImageCellWidget(
                   subtitle: 'Swipe',
                   imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
-                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: LayoutGrid.doubleModule,
-                isEnabled: isEnabled,
               ),
             ),
             SizedBox(
@@ -180,19 +174,13 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderSecondary'),
-                leadingCell: Assets.card.visa.image(
-                    color: colors.backgroundBasic
-                        .color()
-                        .withOpacity(isEnabled ? 1 : 0.5),
-                    colorBlendMode: BlendMode.modulate),
                 isEnabled: isEnabled,
+                leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
-                  isEnabled: isEnabled,
                   title: 'Card',
                   detaile: '50 000.00 ₽',
                 ),
                 trailingCell: SubtitleImageCellWidget(
-                  isEnabled: isEnabled,
                   subtitle: 'Swipe',
                   imageWidget: AdmiralIcons.admiral_ic_arrow_left_outline,
                 ),
