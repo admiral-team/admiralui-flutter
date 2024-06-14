@@ -208,6 +208,8 @@ jobs:
           java-version: '11'
       - name: Install Fastlane Dependencies
         run: cd build/ios/fastlane && bundle install && bundle update
+      - name: Install dependencies
+        run: flutter pub get
       - name: Set Xcode Command Line Tools Path
         run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
       - name: Unlock Fastlane Secrets Keychain
