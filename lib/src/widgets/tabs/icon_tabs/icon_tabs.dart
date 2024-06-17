@@ -53,6 +53,8 @@ class _IconTabsState extends State<IconTabs>
                 ),
                 child: TabBar(
                   dividerColor: Colors.transparent,
+                  overlayColor:
+                      MaterialStateProperty.all<Color>(Colors.transparent),
                   onTap: (int index) {
                     setState(() {
                       currentPos = index;

@@ -42,7 +42,6 @@ void runInformerTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
-          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -66,7 +65,6 @@ void runInformerTabsScreen(Device device) {
             tester, scenarioWidgetKey, 'Informer Tabs'
           );
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
-          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
@@ -91,7 +89,6 @@ void runInformerTabsScreen(Device device) {
           );
           await setDisabledState(tester, scenarioWidgetKey);
           await tester.pumpAndSettle(const Duration(milliseconds: 300));
-          await tester.pump(const Duration(milliseconds: 200));
         },
       );
 
