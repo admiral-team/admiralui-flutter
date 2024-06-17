@@ -55,50 +55,57 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
 
     final Color color =
         widget.isEnabled ? scheme.defaultColor : scheme.disabledColor;
-    return Ink(
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(
-          widget.borderRadius,
+    return IgnorePointer(
+      ignoring: !widget.isEnabled,
+      child: Ink(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(
+            widget.borderRadius,
+          ),
         ),
-      ),
-      child: InkWell(
-        highlightColor: scheme.selectedColor,
-        splashColor: scheme.selectedColor,
-        onTap: () {
-          widget.onPressed?.call();
-        },
-        child: Container(
-          constraints: const BoxConstraints(
-            minHeight: LayoutGrid.module * 9,
-          ),
-          padding: const EdgeInsets.symmetric(
-            vertical: LayoutGrid.halfModule * 3,
-          ),
-          width: double.infinity,
-          child: Row(
-            children: <Widget>[
-              SizedBox(
-                width: widget.horizontalPadding,
+        child: InkWell(
+          overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+          highlightColor: scheme.selectedColor,
+          splashColor: scheme.selectedColor,
+          onTap: () {
+            widget.onPressed?.call();
+          },
+          child: Container(
+            constraints: const BoxConstraints(
+              minHeight: LayoutGrid.module * 9,
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: LayoutGrid.halfModule * 3,
+            ),
+            width: double.infinity,
+            child: Opacity(
+              opacity: widget.isEnabled ? 1 : 0.6,
+              child: Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: widget.horizontalPadding,
+                  ),
+                  if (widget.leadingCell != null)
+                    SizedBox(
+                      width: LayoutGrid.halfModule * 11,
+                      height: LayoutGrid.halfModule * 11,
+                      child: widget.leadingCell ?? Container(),
+                    ),
+                  if (widget.leadingCell != null)
+                    const SizedBox(
+                      width: LayoutGrid.doubleModule,
+                    ),
+                  Expanded(
+                    child: widget.centerCell ?? Container(),
+                  ),
+                  widget.trailingCell ?? Container(),
+                  SizedBox(
+                    width: widget.horizontalPadding,
+                  ),
+                ],
               ),
-              if (widget.leadingCell != null)
-                SizedBox(
-                  width: LayoutGrid.halfModule * 11,
-                  height: LayoutGrid.halfModule * 11,
-                  child: widget.leadingCell ?? Container(),
-                ),
-              if (widget.leadingCell != null)
-                const SizedBox(
-                  width: LayoutGrid.doubleModule,
-                ),
-              Expanded(
-                child: widget.centerCell ?? Container(),
-              ),
-              widget.trailingCell ?? Container(),
-              SizedBox(
-                width: widget.horizontalPadding,
-              ),
-            ],
+            ),
           ),
         ),
       ),
