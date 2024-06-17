@@ -28,6 +28,7 @@ import 'tabs/informer_tabs_screen_golden.dart';
 import 'tabs/logo_tabs_screen_golden.dart';
 import 'tabs/outline_slider_tabs_screen_golden.dart';
 import 'tabs/standard_tabs_screen_golden.dart';
+import 'tabs/underline_tabs_screen_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'textfields/card_textfield_screen_golden.dart';
@@ -114,6 +115,8 @@ void main() {
     runLogoTabsScreen(device);
     // Informer Tabs
     runInformerTabsScreen(device);
+    // Underline Slider Tabs
+    runUnderlineTabsScreen(device);
     // Outline Slider Tabs
     runOutlineSliderTabsScreen(device);
   }
