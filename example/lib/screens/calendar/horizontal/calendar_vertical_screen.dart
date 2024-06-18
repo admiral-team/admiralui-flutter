@@ -54,7 +54,7 @@ class _CalendarVerticalScreenState extends State<CalendarVerticalScreen> {
               selectedEndDate: null,
               selectedStartDate: null,
               startDate: DateTime(2022, 1, 1, 0, 0, 0),
-              currentDate: DateTime(2022, 4, 1, 0, 0, 0),
+              currentDate: DateTime(2022, 1, 1, 0, 0, 0),
               endDate: DateTime(2022, 4, 1, 0, 0, 0),
               onChangedRangeDates: (List<DateTime?> datesRange) {
                 print('Dates range $datesRange');
