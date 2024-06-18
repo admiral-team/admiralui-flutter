@@ -45,11 +45,10 @@ jobs:
       TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
     steps:
-      - run: flutter clean
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.8'
+          flutter-version: '3.19.0'
           channel: 'stable'
           architecture: x64
           distribution: 'zulu'
