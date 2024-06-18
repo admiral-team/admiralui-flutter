@@ -53,6 +53,8 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
+      - name: Clear Flutter
+        run: flutter clean
       - run: flutter --version
       - name: Analyze Flutter env
         run: flutter doctor -v
