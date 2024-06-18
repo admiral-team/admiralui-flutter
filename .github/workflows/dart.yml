@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Install Fastlane Dependencies
-        run: cd build/ios/fastlane && bundle install && bundle update
+        run: cd build/ios/fastlane && bundler update && bundler install
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
