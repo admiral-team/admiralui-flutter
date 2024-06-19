@@ -72,6 +72,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
             ),
             Slidable(
+              enabled: isEnabled,
               endActionPane: ActionPane(
                 motion: ScrollMotion(),
                 children: <SlidableAction>[
@@ -114,6 +115,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderDefault'),
+                isEnabled: isEnabled,
                 leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',
@@ -140,6 +142,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
             ),
             Slidable(
+              enabled: isEnabled,
               endActionPane: ActionPane(
                 motion: ScrollMotion(),
                 children: <SlidableAction>[
@@ -171,6 +174,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
               ),
               child: BaseCellWidget(
                 key: Key('baseCellWidgetSliderSecondary'),
+                isEnabled: isEnabled,
                 leadingCell: Assets.card.visa.image(),
                 centerCell: TitleMoreDetailTextMessageWidget(
                   title: 'Card',

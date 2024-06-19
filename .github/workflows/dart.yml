@@ -50,9 +50,6 @@ jobs:
         with:
           flutter-version: '3.16.8'
           channel: 'stable'
-          architecture: x64
-          distribution: 'zulu'
-          java-version: '11'
       - run: flutter --version
       - name: Analyze Flutter env
         run: flutter doctor -v
@@ -60,6 +57,8 @@ jobs:
         run: flutter analyze --fatal-infos
       - name: Install dependencies
         run: flutter pub get
+      - name: Install Fastlane Dependencies
+        run: cd build/ios/fastlane && bundler update && bundler install
       - name: Check If Setup Failed
         if: ${{ failure() }}
         run: |
@@ -72,7 +71,6 @@ jobs:
     runs-on: [ self-hosted, main, flutter ]
     if: github.event.action != 'closed'
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -104,7 +102,6 @@ jobs:
       APPCENTER_API_TOKEN_ANDROID_DEV: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_DEV }}
       APPCENTER_API_TOKEN_ANDROID_PROD: ${{ secrets.APPCENTER_API_TOKEN_ANDROID_PROD }}
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -124,7 +121,6 @@ jobs:
     if: github.event.action != 'closed'
     needs: deploy-android
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -143,7 +139,7 @@ jobs:
     name: Build remote demo project
     runs-on: [ self-hosted, main, flutter ]
     if: github.event.action != 'closed'
-    needs: test
+    needs: deploy-ios-dev
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
@@ -196,7 +192,6 @@ jobs:
       TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
       IOS_GOOGLE_API_KEY: ${{ secrets.IOS_GOOGLE_API_KEY }}
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.8'
@@ -204,8 +199,6 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - name: Install Fastlane Dependencies
-        run: cd build/ios/fastlane && bundle install && bundle update
       - name: Set Xcode Command Line Tools Path
         run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
       - name: Unlock Fastlane Secrets Keychain

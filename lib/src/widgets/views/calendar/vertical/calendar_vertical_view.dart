@@ -91,32 +91,12 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
         return Expanded(
           child: CustomScrollView(
             controller: _scrollController,
+            center: _centerKey,
             slivers: <Widget>[
               if (widget.startDate != null && widget.endDate != null)
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      if (dataSource.getMonthInRangeOfStatedEndDate(index) !=
-                          null) {
-                        return CalendarVerticalPageView(
-                          dataSource.getMonthInRangeOfStatedEndDate(index)!,
-                          locale,
-                          onTap: (DateTime? date) => setState(
-                            () {
-                              dataSource.didTapAtDate(date);
-                            },
-                          ),
-                          scheme: scheme.pageViewScheme,
-                        );
-                      }
-                      return null;
-                    },
-                    childCount: dataSource.getDayMonthDifferenceCount(
-                      widget.startDate!,
-                      widget.endDate,
-                    ),
-                  ),
-                ),
+                buildStartToCurrentDateList(),
+              buildCurrenDatetList(),
+              buildCurrentToEndList(),
             ],
           ),
         );
@@ -168,33 +148,13 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
             controller: _scrollController,
             center: _centerKey,
             slivers: <Widget>[
-              if (widget.startDate != null)
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CalendarVerticalPageView(
-                        dataSource.getMonth(index == 0 ? -1 : -(index + 1)),
-                        locale,
-                        onTap: (DateTime? date) => setState(
-                          () {
-                            dataSource.didTapAtDate(date);
-                          },
-                        ),
-                        scheme: scheme.pageViewScheme,
-                      );
-                    },
-                    childCount: dataSource.getDayMonthDifferenceCount(
-                      widget.startDate!,
-                      null,
-                    ),
-                  ),
-                ),
+              if (widget.startDate != null) buildStartToCurrentDateList(),
+              buildCurrenDatetList(),
               SliverList(
-                key: _centerKey,
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
                     return CalendarVerticalPageView(
-                      dataSource.getMonth(index),
+                      dataSource.getMonth(index + 1),
                       locale,
                       onTap: (DateTime? date) => setState(
                         () {
@@ -212,7 +172,6 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
       case CalendarScrollState.fixedEnd:
         return Expanded(
           child: CustomScrollView(
-            reverse: true,
             controller: _scrollController,
             center: _centerKey,
             slivers: <Widget>[
@@ -221,7 +180,7 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       return CalendarVerticalPageView(
-                        dataSource.getMonth(index + 1),
+                        dataSource.getMonth(index == 0 ? -1 : -(index + 1)),
                         locale,
                         onTap: (DateTime? date) => setState(
                           () {
@@ -231,32 +190,80 @@ class _CalendarVerticalViewState extends State<CalendarVerticalView> {
                         scheme: scheme.pageViewScheme,
                       );
                     },
-                    childCount: dataSource.getDayMonthDifferenceCount(
-                      widget.endDate!,
-                      null,
-                    ),
                   ),
                 ),
-              SliverList(
-                key: _centerKey,
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return CalendarVerticalPageView(
-                      dataSource.getMonth(index == 0 ? 0 : -index),
-                      locale,
-                      onTap: (DateTime? date) => setState(
-                        () {
-                          dataSource.didTapAtDate(date);
-                        },
-                      ),
-                      scheme: scheme.pageViewScheme,
-                    );
-                  },
-                ),
-              ),
+              buildCurrenDatetList(),
+              buildCurrentToEndList(),
             ],
           ),
         );
     }
+  }
+
+  Widget buildCurrenDatetList() {
+    return SliverList(
+      key: _centerKey,
+      delegate: SliverChildBuilderDelegate(
+        childCount: 1,
+        (BuildContext context, int index) {
+          return CalendarVerticalPageView(
+            dataSource.getMonth(index),
+            locale,
+            onTap: (DateTime? date) => setState(
+              () {
+                dataSource.didTapAtDate(date);
+              },
+            ),
+            scheme: scheme.pageViewScheme,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildStartToCurrentDateList() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: dataSource.getDayMonthDifferenceCount(
+          widget.startDate!,
+          widget.currentDate ?? DateTime.now(),
+        ),
+        (BuildContext context, int index) {
+          return CalendarVerticalPageView(
+            dataSource.getMonth(index == 0 ? -1 : -(index + 1)),
+            locale,
+            onTap: (DateTime? date) => setState(
+              () {
+                dataSource.didTapAtDate(date);
+              },
+            ),
+            scheme: scheme.pageViewScheme,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildCurrentToEndList() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: dataSource.getDayMonthDifferenceCount(
+          widget.currentDate ?? DateTime.now(),
+          widget.endDate,
+        ),
+        (BuildContext context, int index) {
+          return CalendarVerticalPageView(
+            dataSource.getMonth(index + 1),
+            locale,
+            onTap: (DateTime? date) => setState(
+              () {
+                dataSource.didTapAtDate(date);
+              },
+            ),
+            scheme: scheme.pageViewScheme,
+          );
+        },
+      ),
+    );
   }
 }

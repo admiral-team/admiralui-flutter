@@ -160,6 +160,8 @@ class _UnderlineTabsState extends State<UnderlineTabs>
                 tabAlignment: widget.isCenterTabs ? null : TabAlignment.start,
                 isScrollable: !widget.isCenterTabs,
                 dividerColor: Colors.transparent,
+                overlayColor:
+                    MaterialStateProperty.all<Color>(Colors.transparent),
                 onTap: (int index) {
                   setState(() {
                     currentPos = index;

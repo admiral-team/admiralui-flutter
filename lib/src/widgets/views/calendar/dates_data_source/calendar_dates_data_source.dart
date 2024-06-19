@@ -79,7 +79,7 @@ class CalendarDatesDataSource {
 
   int getDayMonthDifferenceCount(DateTime date, DateTime? secondDate) {
     final int days = date.difference(secondDate ?? DateTime.now()).inDays;
-    final int months = days ~/ 30;
+    final int months = days ~/ 29;
     return months.abs();
   }
 

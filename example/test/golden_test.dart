@@ -21,9 +21,18 @@ import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
 // import 'shimmer_screen_golden.dart';
 // import 'spinner_screen_golden.dart';
+import 'shimmer_screen_golden.dart';
+import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
+import 'tabs/icon_tabs_screen_golden.dart';
+import 'tabs/informer_tabs_screen_golden.dart';
+import 'tabs/logo_tabs_screen_golden.dart';
+import 'tabs/outline_slider_tabs_screen_golden.dart';
+import 'tabs/standard_tabs_screen_golden.dart';
+import 'tabs/underline_tabs_screen_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'textblocks/text_block_header_screen_golden.dart';
 import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
@@ -65,11 +74,9 @@ void main() {
     // Toolbar
     runToolbarScreen(device);
     // Shimmer
-    // Решить проблему анимации в тесте
-    // runShimmerScreen(device);
+    runShimmerScreen(device);
     // Spinner
-    // Решить проблему анимации в тесте
-    // runSpinnerScreen(device);
+    runSpinnerScreen(device);
     // Feedback
     runFeedbackScreen(device);
     // Standard TextFields
@@ -104,5 +111,19 @@ void main() {
     runActionBarCellScreen(device);
     // Onboarding
     runOnboardingViewScreen(device);
+    // Standard Tabs
+    runStandardTabsScreen(device);
+    // Logo Tabs
+    runLogoTabsScreen(device);
+    // Informer Tabs
+    runInformerTabsScreen(device);
+    // Icon Tabs
+    runIconTabsScreen(device);
+    // Underline Slider Tabs
+    runUnderlineTabsScreen(device);
+    // Outline Slider Tabs
+    runOutlineSliderTabsScreen(device);
+    // Text Block Header
+    runTextBlockHeaderScreen(device);
   }
 }
