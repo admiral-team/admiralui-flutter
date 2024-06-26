@@ -34,26 +34,28 @@ class _ErrorViewState extends State<ErrorView> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? ErrorViewScheme(theme: theme);
 
-    return Column(
-      children: <Widget>[
-        TextView(
-          widget.text,
-          isEnabled: widget.isEnabled,
-          font: scheme.titleFont,
-          textColorNormal: scheme.titleColor.color(),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(
-          height: LayoutGrid.module * 8,
-        ),
-        GhostButton(
-          onPressed: widget.onPressed,
-          title: widget.buttonTitle,
-          isEnable: widget.isEnabled,
-          isLoading: widget.isLoading,
-          scheme: scheme.ghostButtonScheme,
-        ),
-      ],
+    return Center(
+      child: Column(
+        children: <Widget>[
+          TextView(
+            widget.text,
+            isEnabled: widget.isEnabled,
+            font: scheme.titleFont,
+            textColorNormal: scheme.titleColor.color(),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: LayoutGrid.module * 8,
+          ),
+          GhostButton(
+            onPressed: widget.onPressed,
+            title: widget.buttonTitle,
+            isEnable: widget.isEnabled,
+            isLoading: widget.isLoading,
+            scheme: scheme.ghostButtonScheme,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import '../../gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import '../../navigation/tab_navigator_home.dart';
+import '../../storage/app_theme_storage.dart';
 
 class ZeroScreen extends StatefulWidget {
   const ZeroScreen({
@@ -19,11 +20,22 @@ class ZeroScreen extends StatefulWidget {
 }
 
 class _ZeroScreenState extends State<ZeroScreen> {
-  bool isEnabled = true;
-  bool isLoading = false;
   FocusNode focusNode = FocusNode();
   TextInputState state = TextInputState.normal;
   TextEditingController textController = TextEditingController();
+  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    appThemeButtonStorage.toggleButton();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    appThemeButtonStorage.toggleButton();
+  }
 
   @override
   Widget build(BuildContext context) {
