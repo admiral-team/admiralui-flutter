@@ -1,6 +1,7 @@
 library admiralui_flutter;
 
 export 'package:admiralui_flutter/src/admiral_icons_flutter.dart';
+export 'package:admiralui_flutter/src/admiral_icons_flutter_list.dart';
 export 'package:admiralui_flutter/src/utils/partion.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_parameters.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_bubble/chat_bubble_scheme.dart';

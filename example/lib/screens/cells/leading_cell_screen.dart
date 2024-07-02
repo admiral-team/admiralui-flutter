@@ -64,52 +64,51 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
                 leadingCell: Assets.card.visa.image(),
                 centerCell: TitleCellWidget(
                   title: 'Card Place',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 leadingCell: Assets.card.rnb.image(),
                 centerCell: TitleCellWidget(
                   title: 'Lable Place',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 leadingCell:
                     ImageNameCellWidget(text: 'IN', isEnabled: isEnabled),
                 centerCell: TitleCellWidget(
                   title: 'Icon Name',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 leadingCell: ImageBackgroundCellWidget(
                   icon: AdmiralIcons.admiral_ic_diamond_outline,
-                  isEnabled: isEnabled,
                 ),
                 centerCell: TitleCellWidget(
                   title: 'Icon Place vs Background',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 leadingCell: ImageCellWidget(
-                    icon: AdmiralIcons.admiral_ic_diamond_outline,
-                    isEnabled: isEnabled),
+                  icon: AdmiralIcons.admiral_ic_diamond_outline,
+                ),
                 centerCell: TitleCellWidget(
                   title: 'Icon Place',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
             ],
           ),
