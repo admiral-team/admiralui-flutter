@@ -63,84 +63,78 @@ class _TrailingCellsScreenState extends State<TrailingCellsScreen> {
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ArrowCellWidget(isEnabled: isEnabled),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: RadioButton(
                   title: '',
                   groupValue: '',
-                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: CheckBoxTitle(
                   title: '',
                   style: CheckboxStyle.normal,
-                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
-                trailingCell: Switcher(
-                  isEnabled: isEnabled,
-                ),
+                trailingCell: Switcher(),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: Assets.card.rnb.image(),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: Assets.card.visa.image(),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: DatePercentCellWidget(
                   dateText: 'Date',
                   percentText: 'Percent',
-                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               BaseCellWidget(
                 centerCell: TitleCellWidget(
                   title: 'Title',
-                  isEnabled: isEnabled,
                 ),
                 trailingCell: ImageSubtitleCellWidget(
                   subtitle: 'Date',
                   imageWidget: Assets.card.mir.image(width: 50, height: 14),
-                  isEnabled: isEnabled,
                 ),
                 horizontalPadding: 0,
+                isEnabled: isEnabled,
               ),
               SizedBox(
                 height: LayoutGrid.doubleModule * 4,
