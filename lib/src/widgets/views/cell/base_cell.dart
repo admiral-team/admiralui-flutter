@@ -55,32 +55,34 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
 
     final Color color =
         widget.isEnabled ? scheme.defaultColor : scheme.disabledColor;
-    return IgnorePointer(
-      ignoring: !widget.isEnabled,
-      child: Ink(
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(
-            widget.borderRadius,
+    return Opacity(
+      opacity: widget.isEnabled ? 1 : 0.6,
+      child: IgnorePointer(
+        ignoring: !widget.isEnabled,
+        child: Ink(
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(
+              widget.borderRadius,
+            ),
           ),
-        ),
-        child: InkWell(
-          overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
-          highlightColor: scheme.selectedColor,
-          splashColor: scheme.selectedColor,
-          onTap: () {
-            widget.onPressed?.call();
-          },
-          child: Container(
-            constraints: const BoxConstraints(
-              minHeight: LayoutGrid.module * 9,
-            ),
-            padding: const EdgeInsets.symmetric(
-              vertical: LayoutGrid.halfModule * 3,
-            ),
-            width: double.infinity,
-            child: Opacity(
-              opacity: widget.isEnabled ? 1 : 0.6,
+          child: InkWell(
+            overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
+            highlightColor: scheme.selectedColor,
+            splashColor: scheme.selectedColor,
+            onTap: () {
+              if (widget.isEnabled) {
+                widget.onPressed?.call();
+              }
+            },
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: LayoutGrid.module * 9,
+              ),
+              padding: const EdgeInsets.symmetric(
+                vertical: LayoutGrid.halfModule * 3,
+              ),
+              width: double.infinity,
               child: Row(
                 children: <Widget>[
                   SizedBox(
