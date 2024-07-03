@@ -54,6 +54,10 @@ fi
 echo "🗑️ Deleting temporary SVG icons..."
 ./delete_svg_icons.sh
 
+# Run the generate_icons_list.sh script
+echo "🔠 Generate list of icons"
+./generate_icons_list.sh
+
 echo "✅ Icon generation script completed successfully!"
 
 exit 0
