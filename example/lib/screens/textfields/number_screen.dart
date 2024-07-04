@@ -38,7 +38,7 @@ class NumberScreen extends StatelessWidget {
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
-        bottomOpacity: 0.0,
+        backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

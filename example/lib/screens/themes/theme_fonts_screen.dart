@@ -19,16 +19,17 @@ class ThemeFontsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-          title: Text(
-            'Typography',
-            style: fonts.subtitle2.toTextStyle(
-              colors.textPrimary.color(),
-            ),
+        title: Text(
+          'Typography',
+          style: fonts.subtitle2.toTextStyle(
+            colors.textPrimary.color(),
           ),
-          leading: BackButton(
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          bottomOpacity: 0.0),
+        ),
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: colors.backgroundBasic.color(),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
