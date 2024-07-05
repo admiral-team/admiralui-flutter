@@ -126,7 +126,7 @@ void main() {
     runOutlineSliderTabsScreen(device);
     // Text Block Header
     runTextBlockHeaderScreen(device);
-    // Text Block Link
+    // Text Block Accordion
     runTextBlockAccordionScreen(device);
   }
 }
