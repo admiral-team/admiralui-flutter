@@ -33,6 +33,7 @@ import 'tabs/underline_tabs_screen_golden.dart';
 import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'textblocks/text_block_header_screen_golden.dart';
+import 'textblocks/text_block_accordion_screen_golden.dart';
 import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
@@ -125,5 +126,7 @@ void main() {
     runOutlineSliderTabsScreen(device);
     // Text Block Header
     runTextBlockHeaderScreen(device);
+    // Text Block Link
+    runTextBlockAccordionScreen(device);
   }
 }
