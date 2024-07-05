@@ -59,10 +59,11 @@ class _ThemesScreenState extends State<ThemesScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-          leading: BackButton(
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          bottomOpacity: 0.0),
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: colors.backgroundBasic.color(),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
