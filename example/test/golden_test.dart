@@ -19,8 +19,6 @@ import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
 import 'radio_buttons_screen_golden.dart';
-// import 'shimmer_screen_golden.dart';
-// import 'spinner_screen_golden.dart';
 import 'shimmer_screen_golden.dart';
 import 'spinner_screen_golden.dart';
 import 'switcher_golden.dart';
@@ -35,6 +33,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'textblocks/text_block_header_screen_golden.dart';
 import 'textblocks/text_block_accordion_screen_golden.dart';
 import 'textblocks/text_block_link_screen_golden.dart';
+import 'textblocks/text_block_paragraph_screen_golden.dart';
 import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
@@ -131,5 +130,7 @@ void main() {
     runTextBlockAccordionScreen(device);
     // Text Block Link
     runTextBlockLinkScreen(device);
+    // Text Block Paragraph
+    runTextBlockParagraphScreen(device);
   }
 }
