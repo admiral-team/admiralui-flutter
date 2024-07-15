@@ -1,3 +1,4 @@
+import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/src/widgets/views/cell/action/slidable.dart';
 import 'package:flutter/material.dart';
 
@@ -195,7 +196,22 @@ class SlidableAction extends StatelessWidget {
     }
 
     if (image != null) {
-      children.add(image!);
+      children.add(
+        Container(
+          width: LayoutGrid.quadrupleModule,
+          height: LayoutGrid.quadrupleModule,
+          decoration: BoxDecoration(
+            color: foregroundColor,
+            shape: BoxShape.circle,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(
+              LayoutGrid.module,
+            ),
+            child: image,
+          ),
+        ),
+      );
     }
 
     if (label != null) {
