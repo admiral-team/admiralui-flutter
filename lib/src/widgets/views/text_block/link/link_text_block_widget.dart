@@ -36,13 +36,11 @@ class _LinkTextBlockWidgetState extends State<LinkTextBlockWidget> {
         vertical: LayoutGrid.halfModule * 3,
       ),
       width: double.infinity,
-      child: Expanded(
-        child: LinkControl(
-          title: widget.title ?? '',
-          isEnable: widget.isEnable,
-          onPressed: widget.onPressed,
-          scheme: scheme.linkScheme,
-        ),
+      child: LinkControl(
+        title: widget.title ?? '',
+        isEnable: widget.isEnable,
+        onPressed: widget.onPressed,
+        scheme: scheme.linkScheme,
       ),
     );
   }

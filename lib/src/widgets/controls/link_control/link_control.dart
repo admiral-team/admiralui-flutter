@@ -75,10 +75,12 @@ class _LinkControlState extends State<LinkControl> {
     }
 
     childrenWidgets.add(
-      TextView(
-        widget.title,
-        font: scheme.linkFont.parameter(widget.style),
-        textColorNormal: linkColor,
+      Expanded(
+        child: TextView(
+          widget.title,
+          font: scheme.linkFont.parameter(widget.style),
+          textColorNormal: linkColor,
+        ),
       ),
     );
 

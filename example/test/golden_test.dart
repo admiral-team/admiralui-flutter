@@ -34,6 +34,7 @@ import 'tags_and_chips_screen_golden.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'textblocks/text_block_header_screen_golden.dart';
 import 'textblocks/text_block_accordion_screen_golden.dart';
+import 'textblocks/text_block_link_screen_golden.dart';
 import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
 import 'textfields/feedback_screen_golden.dart';
@@ -128,5 +129,7 @@ void main() {
     runTextBlockHeaderScreen(device);
     // Text Block Accordion
     runTextBlockAccordionScreen(device);
+    // Text Block Link
+    runTextBlockLinkScreen(device);
   }
 }
