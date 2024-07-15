@@ -40,8 +40,8 @@ class _LinkTextBlockWidgetState extends State<LinkTextBlockWidget> {
         title: widget.title ?? '',
         isEnable: widget.isEnable,
         onPressed: widget.onPressed,
-        scheme: scheme.linkScheme,
         isExpandText: true,
+        scheme: scheme.linkScheme,
       ),
     );
   }
