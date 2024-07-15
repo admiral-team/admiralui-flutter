@@ -41,6 +41,7 @@ class _LinkTextBlockWidgetState extends State<LinkTextBlockWidget> {
         isEnable: widget.isEnable,
         onPressed: widget.onPressed,
         scheme: scheme.linkScheme,
+        isExpandText: true,
       ),
     );
   }
