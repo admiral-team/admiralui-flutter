@@ -55,6 +55,7 @@ import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
+import '../screens/icons_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/alert_screen.dart';
@@ -103,6 +104,7 @@ enum TabNavigatorRoutes {
   pageControlLinear('/pageControls/linear/linearPageControl'),
   pageControlCicle('/pageControls/linear/circlePageControl'),
   tabs('/tabs'),
+  icons('/icons'),
   standardTabs('/tabs/standardTabs'),
   logoTabs('/tabs/logoTabs'),
   outlineTabs('/tabs/outlineTabs'),
@@ -339,6 +341,8 @@ class TabNavigatorHome extends StatelessWidget {
           const SmallInformersScreen(title: 'Small Informers'),
       TabNavigatorRoutes.switcher.value: (BuildContext context) =>
           const SwitcherScreen(),
+      TabNavigatorRoutes.icons.value: (BuildContext context) =>
+          const IconsScreen(),
       TabNavigatorRoutes.tabs.value: (BuildContext context) => TabsScreen(
             title: 'Tabs',
             onPush: (TabNavigatorRoutes route) => _push(context, route),

@@ -20,7 +20,14 @@ for NAME in "${ICON_NAMES[@]}"; do
 done
 ICON_NAMES_LIST+="  ];\n}"
 
-# Write the iconNames list to the new file
-echo -e "$ICON_NAMES_LIST" > "$OUTPUT_FILE"
+# Generate the iconDataMap as a string
+ICON_DATA_MAP="final Map<String, IconData> _iconDataMap = {\n"
+for NAME in "${ICON_NAMES[@]}"; do
+  ICON_DATA_MAP+="  '$NAME': AdmiralIcons.admiral_ic_$NAME,\n"
+done
+ICON_DATA_MAP+="};"
 
-echo "Generated iconNames list successfully in $OUTPUT_FILE."
+# Write the iconNames list and iconDataMap to the new file
+echo -e "$ICON_NAMES_LIST\n\n$ICON_DATA_MAP" > "$OUTPUT_FILE"
+
+echo "Generated iconNames list and iconDataMap successfully in $OUTPUT_FILE."
