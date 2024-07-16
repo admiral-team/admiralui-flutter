@@ -46,12 +46,11 @@ class _IconsScreenState extends State<IconsScreen> {
           ),
         ),
         centerTitle: true,
-        bottomOpacity: 0.0,
-        elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding:
+            const EdgeInsets.symmetric(horizontal: LayoutGrid.doubleModule),
         child: Column(
           children: <Widget>[
             _searchBar(colors, fonts),
@@ -71,8 +70,8 @@ class _IconsScreenState extends State<IconsScreen> {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 5,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
+                  crossAxisSpacing: LayoutGrid.module,
+                  mainAxisSpacing: LayoutGrid.module,
                 ),
                 itemCount: AdmiralIconsFlutterList.iconNames.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -80,7 +79,7 @@ class _IconsScreenState extends State<IconsScreen> {
                       AdmiralIconsFlutterList.iconNames[index];
                   return Icon(
                     AdmiralIconsFlutterList.iconDataMap[iconName],
-                    size: 28,
+                    size: LayoutGrid.halfModule * 7,
                     color: colors.elementAccent.color(),
                   );
                 },
@@ -111,7 +110,7 @@ class _IconsScreenState extends State<IconsScreen> {
                     onPressed: () => <void>{
                       _searchController.clear(),
                       setState(() {
-                        // filterItems = listItems;
+                        // Добавить фильтрацию
                       }),
                     },
                     icon: Icon(
@@ -150,6 +149,7 @@ class _IconsScreenState extends State<IconsScreen> {
           onChanged: (String newText) => setState(
             () {
               if (newText.isEmpty) {
+                // Добавить фильтрацию
               } else {}
             },
           ),
