@@ -33,6 +33,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'textblocks/text_block_header_screen_golden.dart';
 import 'textblocks/text_block_accordion_screen_golden.dart';
 import 'textblocks/text_block_link_screen_golden.dart';
+import 'textblocks/text_block_padding_screen_golden.dart';
 import 'textblocks/text_block_paragraph_screen_golden.dart';
 import 'textfields/card_textfield_screen_golden.dart';
 import 'textfields/double_textfield_screen_golden.dart';
@@ -132,5 +133,7 @@ void main() {
     runTextBlockLinkScreen(device);
     // Text Block Paragraph 
     runTextBlockParagraphScreen(device);
+    // Text Block Padding
+    runTextBlockPaddingHeaderScreen(device);
   }
 }
