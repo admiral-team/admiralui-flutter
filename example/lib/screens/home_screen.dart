@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ListCellModel(
       title: 'Icons',
       description: 'Набор иконок',
-      route: TabNavigatorRoutes.buttons,
+      route: TabNavigatorRoutes.icons,
       svgIconName: 'assets/svg/gem.svg',
     ),
     ListCellModel(
