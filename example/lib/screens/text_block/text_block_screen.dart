@@ -75,7 +75,7 @@ class TextBlockScreen extends StatelessWidget {
             centerCell: TitleCellWidget(title: 'Padding'),
             trailingCell: const ArrowCellWidget(),
             onPressed: () => onPush.call(
-              TabNavigatorRoutes.accordion,
+              TabNavigatorRoutes.padingTextBlock,
             ),
           ),
         ],

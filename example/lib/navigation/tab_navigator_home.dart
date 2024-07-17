@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/theme/app_theme.dart';
+import 'package:example/screens/text_block/padding_text_block_screen.dart';
 
 import '../screens/tabs/logo_tabs_screen.dart';
 import '../screens/tabs/outline_tabs_screen.dart';
@@ -154,6 +155,7 @@ enum TabNavigatorRoutes {
   paragraph('/paragraph'),
   linkTextBlock('/linkTextBlock'),
   titleTextBlock('/titleTextBlock'),
+  padingTextBlock('/padingTextBlock'),
   shimmer('/shimmer'),
   toastInformers('/toastInformers'),
   notification('/notification'),
@@ -427,6 +429,8 @@ class TabNavigatorHome extends StatelessWidget {
           const LinkTextBlockScreen(),
       TabNavigatorRoutes.titleTextBlock.value: (BuildContext context) =>
           const TitleTextBlockScreen(),
+      TabNavigatorRoutes.padingTextBlock.value: (BuildContext context) =>
+          const PaddingScreen(),
       TabNavigatorRoutes.actionCells.value: (BuildContext context) =>
           const ActionCellsScreen(),
       TabNavigatorRoutes.toastInformers.value: (BuildContext context) =>
