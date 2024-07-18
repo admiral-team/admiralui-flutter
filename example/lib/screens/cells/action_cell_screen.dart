@@ -80,6 +80,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                     onPressed: null,
                     backgroundColor:
                         theme.colors.backgroundAdditionalOne.color(),
+                    foregroundColor: theme.colors.backgroundBasic.color(),
                     image: Assets.actionBar.moreOutline.image(),
                     padding: EdgeInsets.zero,
                   ),
@@ -87,6 +88,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                     onPressed: null,
                     backgroundColor:
                         theme.colors.backgroundAdditionalOne.color(),
+                    foregroundColor: theme.colors.backgroundBasic.color(),
                     image: Assets.actionBar.arrowUpOutline.image(),
                     padding: EdgeInsets.zero,
                   ),
@@ -94,6 +96,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                     onPressed: null,
                     backgroundColor:
                         theme.colors.backgroundAdditionalOne.color(),
+                    foregroundColor: theme.colors.backgroundBasic.color(),
                     image: Assets.actionBar.arrowDownOutline.image(),
                     padding: EdgeInsets.zero,
                   ),
@@ -101,6 +104,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                     onPressed: null,
                     backgroundColor:
                         theme.colors.backgroundAdditionalOne.color(),
+                    foregroundColor: theme.colors.backgroundBasic.color(),
                     image: Assets.actionBar.union.image(),
                     padding: EdgeInsets.zero,
                   ),
@@ -108,6 +112,7 @@ class _ActionCellsScreenState extends State<ActionCellsScreen> {
                     onPressed: null,
                     backgroundColor:
                         theme.colors.backgroundAdditionalOne.color(),
+                    foregroundColor: theme.colors.backgroundBasic.color(),
                     image: Assets.actionBar.closeOutline.image(),
                     padding: EdgeInsets.zero,
                   ),

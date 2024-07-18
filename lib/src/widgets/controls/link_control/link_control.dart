@@ -18,6 +18,7 @@ class LinkControl extends StatefulWidget {
     this.title = '',
     this.isEnable = true,
     this.style = LinkStyle.normal,
+    this.isExpandText = false,
     this.leadingImage,
     this.trailingImage,
     this.scheme,
@@ -27,6 +28,7 @@ class LinkControl extends StatefulWidget {
   final String title;
   final bool isEnable;
   final LinkStyle style;
+  final bool isExpandText;
   final IconData? leadingImage;
   final IconData? trailingImage;
   final LinkControlScheme? scheme;
@@ -74,13 +76,25 @@ class _LinkControlState extends State<LinkControl> {
       );
     }
 
-    childrenWidgets.add(
-      TextView(
-        widget.title,
-        font: scheme.linkFont.parameter(widget.style),
-        textColorNormal: linkColor,
-      ),
-    );
+    if (widget.isExpandText) {
+      childrenWidgets.add(
+        Expanded(
+          child: TextView(
+            widget.title,
+            font: scheme.linkFont.parameter(widget.style),
+            textColorNormal: linkColor,
+          ),
+        ),
+      );
+    } else {
+      childrenWidgets.add(
+        TextView(
+          widget.title,
+          font: scheme.linkFont.parameter(widget.style),
+          textColorNormal: linkColor,
+        ),
+      );
+    }
 
     if (widget.trailingImage != null) {
       childrenWidgets.add(
