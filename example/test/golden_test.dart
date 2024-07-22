@@ -49,90 +49,90 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   for (final Device device in devices) {
-    // // Main
-    // runMainScreen(device);
-    // // Links
-    // runLinksScreen(device);
-    // // Radio buttons
-    // runRadioButtonsScreen(device);
-    // // Tags and Chips
-    // runTagsAndChipsScreen(device);
-    // // Check box
-    // runCheckBoxScreen(device);
-    // // Switcher
-    // runSwitcherScreen(device);
-    // // Badges
-    // runBadgesScreen(device);
-    // // Primary Buttons
-    // runPrimaryButtonsScreen(device);
-    // // Secondary Buttons
-    // runSecondaryButtonsScreen(device);
-    // // Ghost Buttons
-    // runGhostButtonsScreen(device);
-    // // Rules Buttons
-    // runRulesButtonsScreen(device);
-    // // Other Buttons
-    // runOtherButtonsScreen(device);
-    // // Toolbar
-    // runToolbarScreen(device);
-    // // Shimmer
-    // runShimmerScreen(device);
-    // // Spinner
-    // runSpinnerScreen(device);
-    // // Feedback
-    // runFeedbackScreen(device);
-    // // Standard TextFields
-    // runStandardTextFieldsScreen(device);
-    // // SMS TextFields
-    // runSmsTextFieldsScreen(device);
-    // // Double Textfields
-    // runDoubleTextFieldsScreen(device);
-    // // Number Textfields
-    // runNumbersTextFieldsScreen(device);
-    // // Slider TextFields
-    // runSliderTextFieldsScreen(device);
-    // // Card TextFields
-    // runCardTextFieldsScreen(device);
-    // // Pincode
-    // runPincodeScreen(device);
-    // // Vertical Calendar
-    // runVerticalCalendarScreen(device);
-    // // Horizontal
-    // runHorizontalCalendarScreen(device);
-    // // Currency
-    // runCurrencyScreen(device);
-    // // ErrorView
-    // runErrorViewScreen(device);
-    // // ZeroScreen
-    // runZeroScreen(device);
-    // // AlertView
-    // runAlertViewScreen(device);
-    // // Cells
-    // runBaseCellScreen(device);
-    // // Action bar
-    // runActionBarCellScreen(device);
-    // // Onboarding
-    // runOnboardingViewScreen(device);
-    // // Standard Tabs
-    // runStandardTabsScreen(device);
-    // // Logo Tabs
-    // runLogoTabsScreen(device);
-    // // Informer Tabs
-    // runInformerTabsScreen(device);
-    // // Icon Tabs
-    // runIconTabsScreen(device);
-    // // Underline Slider Tabs
-    // runUnderlineTabsScreen(device);
-    // // Outline Slider Tabs
-    // runOutlineSliderTabsScreen(device);
-    // // Text Block Header
-    // runTextBlockHeaderScreen(device);
-    // // Text Block Accordion
-    // runTextBlockAccordionScreen(device);
-    // // Text Block Link
-    // runTextBlockLinkScreen(device);
-    // // Text Block Paragraph 
-    // runTextBlockParagraphScreen(device);
+    // Main
+    runMainScreen(device);
+    // Links
+    runLinksScreen(device);
+    // Radio buttons
+    runRadioButtonsScreen(device);
+    // Tags and Chips
+    runTagsAndChipsScreen(device);
+    // Check box
+    runCheckBoxScreen(device);
+    // Switcher
+    runSwitcherScreen(device);
+    // Badges
+    runBadgesScreen(device);
+    // Primary Buttons
+    runPrimaryButtonsScreen(device);
+    // Secondary Buttons
+    runSecondaryButtonsScreen(device);
+    // Ghost Buttons
+    runGhostButtonsScreen(device);
+    // Rules Buttons
+    runRulesButtonsScreen(device);
+    // Other Buttons
+    runOtherButtonsScreen(device);
+    // Toolbar
+    runToolbarScreen(device);
+    // Shimmer
+    runShimmerScreen(device);
+    // Spinner
+    runSpinnerScreen(device);
+    // Feedback
+    runFeedbackScreen(device);
+    // Standard TextFields
+    runStandardTextFieldsScreen(device);
+    // SMS TextFields
+    runSmsTextFieldsScreen(device);
+    // Double Textfields
+    runDoubleTextFieldsScreen(device);
+    // Number Textfields
+    runNumbersTextFieldsScreen(device);
+    // Slider TextFields
+    runSliderTextFieldsScreen(device);
+    // Card TextFields
+    runCardTextFieldsScreen(device);
+    // Pincode
+    runPincodeScreen(device);
+    // Vertical Calendar
+    runVerticalCalendarScreen(device);
+    // Horizontal
+    runHorizontalCalendarScreen(device);
+    // Currency
+    runCurrencyScreen(device);
+    // ErrorView
+    runErrorViewScreen(device);
+    // ZeroScreen
+    runZeroScreen(device);
+    // AlertView
+    runAlertViewScreen(device);
+    // Cells
+    runBaseCellScreen(device);
+    // Action bar
+    runActionBarCellScreen(device);
+    // Onboarding
+    runOnboardingViewScreen(device);
+    // Standard Tabs
+    runStandardTabsScreen(device);
+    // Logo Tabs
+    runLogoTabsScreen(device);
+    // Informer Tabs
+    runInformerTabsScreen(device);
+    // Icon Tabs
+    runIconTabsScreen(device);
+    // Underline Slider Tabs
+    runUnderlineTabsScreen(device);
+    // Outline Slider Tabs
+    runOutlineSliderTabsScreen(device);
+    // Text Block Header
+    runTextBlockHeaderScreen(device);
+    // Text Block Accordion
+    runTextBlockAccordionScreen(device);
+    // Text Block Link
+    runTextBlockLinkScreen(device);
+    // Text Block Paragraph 
+    runTextBlockParagraphScreen(device);
     // Text Block Padding 
     runTextBlockPaddingHeaderScreen(device);
   }
