@@ -17,17 +17,6 @@ class TabNavigatorInfo extends StatelessWidget {
 
   final GlobalKey<NavigatorState>? navigatorKey;
 
-  void _push(BuildContext context, TabNavigatorInfoRoutes route) {
-    final Map<String, WidgetBuilder> routeBuilders = _routeBuilders(context);
-
-    Navigator.push(
-      context,
-      MaterialPageRoute<Map<String, WidgetBuilder>>(
-        builder: (BuildContext context) => routeBuilders[route.value]!(context),
-      ),
-    );
-  }
-
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return <String, WidgetBuilder>{
       TabNavigatorInfoRoutes.home.value: (BuildContext context) => InfoScreen(

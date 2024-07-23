@@ -54,7 +54,7 @@ class _InfoScreenState extends State<InfoScreen> {
 
   Future<void> loadVersion() async {
     final String response = await rootBundle.loadString('assets/version.json');
-    final data = await json.decode(response);
+    final Map<String, dynamic> data = await json.decode(response);
     setState(() {
       version = data['external_version'];
     });
