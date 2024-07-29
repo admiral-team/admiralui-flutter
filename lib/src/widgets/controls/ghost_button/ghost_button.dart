@@ -70,25 +70,28 @@ class _GhostButtonState extends State<GhostButton> {
       child: Container(
         padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
-          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              child: (widget.iconData != null &&
-                      (widget.iconPosition == IconPosition.left ||
-                          widget.iconPosition == null))
-                  ? Icon(
-                      widget.iconData,
-                      color: textColor,
-                    )
-                  : null,
-            ),
+            if (widget.iconData != null &&
+                (widget.iconPosition == IconPosition.left ||
+                    widget.iconPosition == null))
+              Icon(
+                widget.iconData,
+                color: textColor,
+              ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
+              padding: EdgeInsets.fromLTRB(
+                widget.iconPosition == IconPosition.left
+                    ? LayoutGrid.halfModule * 3
+                    : 0,
+                0,
+                widget.iconPosition == IconPosition.right
+                    ? LayoutGrid.halfModule * 3
+                    : 0,
+                0,
               ),
               child: !widget.isLoading
                   ? TextView(
@@ -102,15 +105,12 @@ class _GhostButtonState extends State<GhostButton> {
                       child: Spinner(scheme: scheme.spinnerScheme),
                     ),
             ),
-            SizedBox(
-              child: (widget.iconData != null &&
-                      widget.iconPosition == IconPosition.right)
-                  ? Icon(
-                      widget.iconData,
-                      color: textColor,
-                    )
-                  : null,
-            ),
+            if (widget.iconData != null &&
+                widget.iconPosition == IconPosition.right)
+              Icon(
+                widget.iconData,
+                color: textColor,
+              ),
           ],
         ),
       ),

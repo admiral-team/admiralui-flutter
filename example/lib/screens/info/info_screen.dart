@@ -75,7 +75,9 @@ class _InfoScreenState extends State<InfoScreen> {
           AdmiralIcons.admiral_ic_info_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () {},
+        onPressed: () {
+          widget.onPush.call(TabNavigatorInfoRoutes.description);
+        },
       ),
       ListCellModel(
         title: 'Контакты',
@@ -84,7 +86,9 @@ class _InfoScreenState extends State<InfoScreen> {
           AdmiralIcons.admiral_ic_email_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () {},
+        onPressed: () {
+          widget.onPush.call(TabNavigatorInfoRoutes.contacts);
+        },
       ),
       ListCellModel(
         title: 'FAQ',

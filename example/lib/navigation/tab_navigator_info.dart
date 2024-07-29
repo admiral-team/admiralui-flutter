@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../screens/info/info_contacts_screen.dart';
+import '../screens/info/info_description_screen.dart';
 import '../screens/info/info_screen.dart';
 
 enum TabNavigatorInfoRoutes {
-  home('/');
+  home('/'),
+  description('/description'),
+  contacts('/contacts');
 
   const TabNavigatorInfoRoutes(this.value);
   final String value;
@@ -21,9 +25,30 @@ class TabNavigatorInfo extends StatelessWidget {
     return <String, WidgetBuilder>{
       TabNavigatorInfoRoutes.home.value: (BuildContext context) => InfoScreen(
             title: 'Info',
-            onPush: (TabNavigatorInfoRoutes route) {},
+            onPush: (TabNavigatorInfoRoutes route) => _push(context, route),
+          ),
+      TabNavigatorInfoRoutes.description.value: (BuildContext context) =>
+          InfoDescriptionScreen(
+            title: 'Инфо',
+            onPush: (TabNavigatorInfoRoutes route) => _push(context, route),
+          ),
+      TabNavigatorInfoRoutes.contacts.value: (BuildContext context) =>
+          InfoContactsScreen(
+            title: 'Контакты',
+            onPush: (TabNavigatorInfoRoutes route) => _push(context, route),
           ),
     };
+  }
+
+  void _push(BuildContext context, TabNavigatorInfoRoutes route) {
+    final Map<String, WidgetBuilder> routeBuilders = _routeBuilders(context);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute<Map<String, WidgetBuilder>>(
+        builder: (BuildContext context) => routeBuilders[route.value]!(context),
+      ),
+    );
   }
 
   @override

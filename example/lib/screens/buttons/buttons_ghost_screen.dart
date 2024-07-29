@@ -46,116 +46,121 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              StandardTabs(
-                <String>['Default', 'Disabled'],
-                onTap: (String value) {
-                  setState(() {
-                    isEnabled = value == 'Default';
-                  });
-                },
-              ),
-              SizedBox(
-                height: LayoutGrid.module * 5,
-              ),
-              TwoTitleGhostButton(
-                isEnable: isEnabled,
-                leftTitle: 'Выбрать все карты',
-                rightTitle: 'Готово',
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
-                title: 'Big Button',
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                iconData: AdmiralIcons.admiral_ic_maintenance_outline,
-                iconPosition: IconPosition.right,
-                title: 'Big Button',
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Big Button',
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              Center(
-                child: GhostButton(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: LayoutGrid.doubleModule),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                StandardTabs(
+                  <String>['Default', 'Disabled'],
+                  onTap: (String value) {
+                    setState(() {
+                      isEnabled = value == 'Default';
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: LayoutGrid.module * 5,
+                ),
+                TwoTitleGhostButton(
                   isEnable: isEnabled,
-                  title: 'Medium Button',
-                  sizeType: ButtonSizeType.medium,
+                  leftTitle: 'Выбрать все карты',
+                  rightTitle: 'Готово',
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                GhostButton(
+                  isEnable: isEnabled,
+                  iconData: AdmiralIcons.admiral_ic_heart_outline,
+                  iconPosition: IconPosition.left,
+                  title: 'Big Button',
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                GhostButton(
+                  isEnable: isEnabled,
+                  iconData: AdmiralIcons.admiral_ic_maintenance_outline,
+                  iconPosition: IconPosition.right,
+                  title: 'Big Button',
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Big Button',
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                Center(
+                  child: GhostButton(
+                    isEnable: isEnabled,
+                    title: 'Medium Button',
+                    sizeType: ButtonSizeType.medium,
+                    iconData: AdmiralIcons.admiral_ic_heart_outline,
+                    iconPosition: IconPosition.left,
+                  ),
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                Center(
+                  child: GhostButton(
+                    isEnable: isEnabled,
+                    title: 'Medium Button',
+                    sizeType: ButtonSizeType.medium,
+                    iconData: AdmiralIcons.admiral_ic_maintenance_outline,
+                    iconPosition: IconPosition.left,
+                  ),
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                Center(
+                  child: GhostButton(
+                    isEnable: isEnabled,
+                    title: 'Medium Button',
+                    sizeType: ButtonSizeType.medium,
+                  ),
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Small Button',
+                  sizeType: ButtonSizeType.small,
                   iconData: AdmiralIcons.admiral_ic_heart_outline,
                   iconPosition: IconPosition.left,
                 ),
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              Center(
-                child: GhostButton(
-                  isEnable: isEnabled,
-                  title: 'Medium Button',
-                  sizeType: ButtonSizeType.medium,
-                  iconData: AdmiralIcons.admiral_ic_maintenance_outline,
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
                 ),
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              Center(
-                child: GhostButton(
+                GhostButton(
                   isEnable: isEnabled,
-                  title: 'Medium Button',
-                  sizeType: ButtonSizeType.medium,
+                  title: 'Small Button',
+                  sizeType: ButtonSizeType.small,
+                  iconData: AdmiralIcons.admiral_ic_maintenance_solid,
+                  iconPosition: IconPosition.right,
                 ),
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Small Button',
-                sizeType: ButtonSizeType.small,
-                iconData: AdmiralIcons.admiral_ic_heart_outline,
-                iconPosition: IconPosition.left,
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Small Button',
-                sizeType: ButtonSizeType.small,
-                iconData: AdmiralIcons.admiral_ic_maintenance_solid,
-                iconPosition: IconPosition.right,
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-              GhostButton(
-                isEnable: isEnabled,
-                title: 'Small Button',
-                sizeType: ButtonSizeType.small,
-                iconPosition: IconPosition.left,
-              ),
-              SizedBox(
-                height: LayoutGrid.halfModule * 5,
-              ),
-            ],
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+                GhostButton(
+                  isEnable: isEnabled,
+                  title: 'Small Button',
+                  sizeType: ButtonSizeType.small,
+                ),
+                SizedBox(
+                  height: LayoutGrid.halfModule * 5,
+                ),
+              ],
+            ),
           ),
         ),
       ),
