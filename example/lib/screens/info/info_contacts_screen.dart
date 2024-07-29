@@ -76,6 +76,7 @@ class _InfoContactsScreenState extends State<InfoContactsScreen> {
               ),
               ParagrapgWidget(
                 title:
+                    // ignore: lines_longer_than_80_chars
                     'Наш чат-бот помогает оперативно принимать  и обрабатывать все запросы. Если у вас есть  предложения или замечания, то вы можете написать ему в телеграм:',
               ),
               TextView(
@@ -98,6 +99,7 @@ class _InfoContactsScreenState extends State<InfoContactsScreen> {
               ),
               ParagrapgWidget(
                   title:
+                      // ignore: lines_longer_than_80_chars
                       'Для того, чтобы использовать дизайн-систему  в сврем проекте, стоит написать на рабочую  почту или при желании назначить встречу:'),
               const SizedBox(height: LayoutGrid.doubleModule),
               TextView(
