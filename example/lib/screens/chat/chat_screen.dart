@@ -3,6 +3,7 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
 import '../../navigation/tab_navigator_chat.dart';
+import '../../storage/app_theme_storage.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({
@@ -31,6 +32,21 @@ class ListCellModel {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+
+  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    appThemeButtonStorage.setThemeButtonHidden(false);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    appThemeButtonStorage.setThemeButtonHidden(true);
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<ListCellModel> items = <ListCellModel>[
