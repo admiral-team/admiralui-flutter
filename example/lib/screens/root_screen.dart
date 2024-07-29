@@ -5,7 +5,6 @@ import '../navigation/bottom_navigation.dart';
 import '../navigation/tab_item.dart';
 import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_info.dart';
-import '../navigation/tab_navigator_process.dart';
 import '../navigation/tab_navigator_chat.dart';
 import '../storage/app_theme_storage.dart';
 import '../navigation/tab_navigation_setting.dart';
