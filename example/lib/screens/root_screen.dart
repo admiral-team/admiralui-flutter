@@ -8,6 +8,7 @@ import '../navigation/tab_navigator_info.dart';
 import '../navigation/tab_navigator_process.dart';
 import '../navigation/tab_navigator_chat.dart';
 import '../storage/app_theme_storage.dart';
+import '../navigation/tab_navigation_setting.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -102,7 +103,7 @@ class _RootScreenState extends State<RootScreen> {
       case TabItem.settings:
         return Offstage(
           offstage: _currentTab != tabItem,
-          child: TabNavigatorProcess(navigatorKey: _navigatorKeys[tabItem]),
+          child: TabNavigatorSetting(navigatorKey: _navigatorKeys[tabItem]),
         );
       case TabItem.info:
         return Offstage(
