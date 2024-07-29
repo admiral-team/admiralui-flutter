@@ -29,6 +29,8 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.firebase.appdistribution'
 
+ext.kotlin_version = '2.0.0'
+
 android {
     compileSdkVersion 34
 
