@@ -70,14 +70,17 @@ class _InfoDescriptionScreenState extends State<InfoDescriptionScreen> {
               const SizedBox(height: LayoutGrid.doubleModule),
               ParagrapgWidget(
                 title:
+                    // ignore: lines_longer_than_80_chars
                     'Данное приложение служит удобным интументом для всех участников команд.',
               ),
               ParagrapgWidget(
                 title:
+                    // ignore: lines_longer_than_80_chars
                     'Есть возможность протестировать все компоненты общебанковской мобильной дизайн-системы в живую взаимодействуя с ними.',
               ),
               ParagrapgWidget(
                 title:
+                    // ignore: lines_longer_than_80_chars
                     'Кроме состояний и работы компонентов вы сможете увидеть уже готовые темы, а также создать собственную.',
               ),
             ],
