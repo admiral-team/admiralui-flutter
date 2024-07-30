@@ -15,4 +15,9 @@ class AppThemeStorage extends ChangeNotifier {
     _themeButtonHidden = await _themeButtonHidden ? false : true;
     notifyListeners();
   }
+
+  void setThemeButtonHidden(bool isHidden) async {
+      _themeButtonHidden = await isHidden;
+      notifyListeners();
+  }
 }
