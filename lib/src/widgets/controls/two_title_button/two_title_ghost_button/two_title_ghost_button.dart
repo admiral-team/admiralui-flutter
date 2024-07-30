@@ -80,11 +80,6 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(
-                left: LayoutGrid.halfModule * 3,
-              ),
-            ),
             Expanded(
               child: TextView(
                 widget.leftTitle ?? '',
