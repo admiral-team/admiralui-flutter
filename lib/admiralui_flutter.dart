@@ -215,6 +215,9 @@ export 'package:admiralui_flutter/src/widgets/views/text_block/header/title_subt
 export 'package:admiralui_flutter/src/widgets/views/text_block/header/title_subtitle_header/title_subtitle_header_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/link/link_text_block_widget_scheme.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/padding/padding_style.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/padding/padding_text_block_widget.dart';
+export 'package:admiralui_flutter/src/widgets/views/text_block/padding/padding_text_block_widget_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_leading_image_type.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_style.dart';
 export 'package:admiralui_flutter/src/widgets/views/text_block/paragraph/paragraph_widget.dart';

@@ -37,13 +37,13 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
   @override
   void initState() {
     super.initState();
-    appThemeButtonStorage.toggleButton();
+    appThemeButtonStorage.setThemeButtonHidden(true);
   }
 
   @override
   void dispose() {
     super.dispose();
-    appThemeButtonStorage.toggleButton();
+    appThemeButtonStorage.setThemeButtonHidden(false);
   }
 
   String _getTime() {
@@ -126,6 +126,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               height: LayoutGrid.halfModule * 3,
             ),
             ChatInput(
+              key: const Key('chatInput'),
               state: textInputState,
               content: '',
               placeholder: 'Введите сообщение',
@@ -133,6 +134,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               isShowFileButton: true,
               isTapSendButtonHidden: false,
               textEditingController: textEditingController,
+              chatInputButtonKey: const Key('chatInputButton'),
               onSendButtonPress: () {
                 setState(() {
                   chatMessages.add(ChatMessageItem(

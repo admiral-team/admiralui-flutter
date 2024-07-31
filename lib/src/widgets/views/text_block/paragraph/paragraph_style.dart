@@ -1,5 +1,4 @@
-///  ParagraphStyle - Public enum for paragraph text block style AdmiralSwiftUI 
-/// library
+///  ParagraphStyle - Public enum for paragraph text block style 
 /// ParagraphStyle can be one of the following values:
 /// - primary
 /// - secondary

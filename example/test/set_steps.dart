@@ -1,4 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:example/navigation/tab_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -67,4 +68,13 @@ Future<void> selectSecondaryMenu(
 
   final Finder finderMenu = find.text(menu);
   await tester.tap(finderMenu);
+}
+
+Future<void> selectTab(WidgetTester tester, TabItem tabItem) async {
+  await tester.pump(const Duration(milliseconds: 50));
+  final IconData? icon = tabItem.icon.icon;
+  if (icon != null) {
+    final Finder finderTab = find.byIcon(icon);
+    await tester.tap(finderTab);
+  }
 }

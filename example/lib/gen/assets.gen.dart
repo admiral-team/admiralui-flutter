@@ -116,6 +116,16 @@ class $AssetsCurrencyGen {
   List<AssetGenImage> get values => [britain, china, european, usa];
 }
 
+class $AssetsInfoGen {
+  const $AssetsInfoGen();
+
+  /// File path: assets/info/appLogo.png
+  AssetGenImage get appLogo => const AssetGenImage('assets/info/appLogo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [appLogo];
+}
+
 class $AssetsOnboardingGen {
   const $AssetsOnboardingGen();
 
@@ -264,6 +274,7 @@ class Assets {
   static const $AssetsCardGen card = $AssetsCardGen();
   static const $AssetsChatGen chat = $AssetsChatGen();
   static const $AssetsCurrencyGen currency = $AssetsCurrencyGen();
+  static const $AssetsInfoGen info = $AssetsInfoGen();
   static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTagsChipsGen tagsChips = $AssetsTagsChipsGen();
@@ -271,9 +282,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

@@ -43,6 +43,7 @@ class ChatInput extends StatefulWidget {
     this.hintText = '',
     this.keyboardType,
     this.textInputAction,
+    this.chatInputButtonKey,
     this.onChanged,
     this.onSendButtonPress,
     this.onFileButtonPress,
@@ -61,6 +62,7 @@ class ChatInput extends StatefulWidget {
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final Key? chatInputButtonKey;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onSendButtonPress;
   final VoidCallback? onFileButtonPress;
@@ -185,6 +187,7 @@ class _ChatInputState extends State<ChatInput> {
           width: LayoutGrid.module,
         ),
         ChatInputButton(
+          key: widget.chatInputButtonKey,
           isEnable: _state == TextInputState.normal,
           onPressed: widget.onSendButtonPress,
         ),
