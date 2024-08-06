@@ -1,31 +1,57 @@
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 
-enum ButtonSizeType {
-  small,
-  medium,
-  big,
+abstract class ButtonSizeType {
+  const ButtonSizeType();
+
+  factory ButtonSizeType.custom(double width, double height) = CustomButtonSize;
+
+  double get width;
+  double get height;
+
+  static const ButtonSizeType small = SmallButtonSize();
+  static const ButtonSizeType medium = MediumButtonSize();
+  static const ButtonSizeType big = BigButtonSize();
 }
 
-extension ButtonSizeTypeExtension on ButtonSizeType {
-  double get height {
-    switch (this) {
-      case ButtonSizeType.small:
-        return LayoutGrid.halfModule * 10;
-      case ButtonSizeType.medium:
-        return LayoutGrid.doubleModule * 3;
-      case ButtonSizeType.big:
-        return LayoutGrid.doubleModule * 3;
-    }
-  }
+class SmallButtonSize extends ButtonSizeType {
+  const SmallButtonSize();
 
-  double get width {
-    switch (this) {
-      case ButtonSizeType.small:
-        return LayoutGrid.module * 16;
-      case ButtonSizeType.medium:
-        return LayoutGrid.halfModule * 75;
-      case ButtonSizeType.big:
-        return double.infinity;
-    }
-  }
+  @override
+  double get width => LayoutGrid.module * 16;
+
+  @override
+  double get height => LayoutGrid.halfModule * 10;
+}
+
+class MediumButtonSize extends ButtonSizeType {
+  const MediumButtonSize();
+
+  @override
+  double get width => LayoutGrid.halfModule * 75;
+
+  @override
+  double get height => LayoutGrid.doubleModule * 3;
+}
+
+class BigButtonSize extends ButtonSizeType {
+  const BigButtonSize();
+
+  @override
+  double get width => double.infinity;
+
+  @override
+  double get height => LayoutGrid.doubleModule * 3;
+}
+
+class CustomButtonSize extends ButtonSizeType {
+
+  const CustomButtonSize(this.customWidth, this.customHeight);
+  final double customWidth;
+  final double customHeight;
+
+  @override
+  double get width => customWidth;
+
+  @override
+  double get height => customHeight;
 }

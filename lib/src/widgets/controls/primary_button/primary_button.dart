@@ -22,7 +22,7 @@ class PrimaryButton extends StatefulWidget {
     super.key,
     this.onPressed,
     this.title = '',
-    this.isEnable = true,
+    this.isEnabled = true,
     this.sizeType = ButtonSizeType.big,
     this.iconData,
     this.iconPosition,
@@ -31,7 +31,7 @@ class PrimaryButton extends StatefulWidget {
 
   final VoidCallback? onPressed;
   final String title;
-  final bool isEnable;
+  final bool isEnabled;
   final ButtonSizeType sizeType;
   final IconData? iconData;
   final IconPosition? iconPosition;
@@ -56,7 +56,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         scheme.buttonColor.unsafeParameter(ControlState.highlighted);
     final Color backgroundDisabled =
         scheme.buttonColor.unsafeParameter(ControlState.disabled);
-    final Color background = widget.isEnable
+    final Color background = widget.isEnabled
         ? (_isPressed ? backgroundHighlighted : backgroundNormal)
         : backgroundDisabled;
 
@@ -65,66 +65,69 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     final Color textColorDisabled =
         scheme.textColor.unsafeParameter(ControlState.disabled);
     final Color textColor =
-        widget.isEnable ? textColorNormal : textColorDisabled;
+        widget.isEnabled ? textColorNormal : textColorDisabled;
 
-    return GestureDetector(
-      onTap: () => widget.onPressed?.call(),
-      onTapUp: (_) => setHighlighted(highlighted: false),
-      onTapDown: (_) => setHighlighted(highlighted: true),
-      onTapCancel: () => setHighlighted(highlighted: false),
-      child: Container(
-        constraints: BoxConstraints(
-          minWidth: widget.sizeType.width,
-          minHeight: widget.sizeType.height,
-        ),
-        decoration: BoxDecoration(
-          color: background,
-          borderRadius: BorderRadius.circular(
-            LayoutGrid.module,
+    return AbsorbPointer(
+      absorbing: widget.isEnabled == false,
+      child: GestureDetector(
+        onTap: () => widget.onPressed?.call(),
+        onTapUp: (_) => setHighlighted(highlighted: false),
+        onTapDown: (_) => setHighlighted(highlighted: true),
+        onTapCancel: () => setHighlighted(highlighted: false),
+        child: Container(
+          constraints: BoxConstraints(
+            minWidth: widget.sizeType.width,
+            minHeight: widget.sizeType.height,
           ),
-        ),
-        padding: const EdgeInsets.symmetric(
-          vertical: LayoutGrid.halfModule * 3,
-          horizontal: LayoutGrid.doubleModule,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              child: (widget.iconData != null &&
-                      (widget.iconPosition == IconPosition.left ||
-                          widget.iconPosition == null))
-                  ? Icon(
-                      widget.iconData,
-                      color: textColor,
-                    )
-                  : null,
+          decoration: BoxDecoration(
+            color: background,
+            borderRadius: BorderRadius.circular(
+              LayoutGrid.module,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: LayoutGrid.module,
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: LayoutGrid.halfModule * 3,
+            horizontal: LayoutGrid.doubleModule,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                child: (widget.iconData != null &&
+                        (widget.iconPosition == IconPosition.left ||
+                            widget.iconPosition == null))
+                    ? Icon(
+                        widget.iconData,
+                        color: textColor,
+                      )
+                    : null,
               ),
-              child: Center(
-                widthFactor: 1,
-                child: TextView(
-                  widget.title,
-                  font: scheme.font,
-                  textColorNormal: textColor,
-                  textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: LayoutGrid.module,
+                ),
+                child: Center(
+                  widthFactor: 1,
+                  child: TextView(
+                    widget.title,
+                    font: scheme.font,
+                    textColorNormal: textColor,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              child: (widget.iconData != null &&
-                      widget.iconPosition == IconPosition.right)
-                  ? Icon(
-                      widget.iconData,
-                      color: textColor,
-                    )
-                  : null,
-            ),
-          ],
+              SizedBox(
+                child: (widget.iconData != null &&
+                        widget.iconPosition == IconPosition.right)
+                    ? Icon(
+                        widget.iconData,
+                        color: textColor,
+                      )
+                    : null,
+              ),
+            ],
+          ),
         ),
       ),
     );

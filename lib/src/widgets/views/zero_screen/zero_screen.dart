@@ -64,7 +64,7 @@ class _ZeroScreeViewState extends State<ZeroScreenView> {
             PrimaryButton(
               onPressed: widget.onPressed,
               title: widget.buttonTitle!,
-              isEnable: widget.isEnabled,
+              isEnabled: widget.isEnabled,
               scheme: scheme.primaryButtonScheme,
             ),
           const SizedBox(

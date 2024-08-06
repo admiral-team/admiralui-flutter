@@ -37,6 +37,7 @@ class BottomNavigation extends StatelessWidget {
       items: <BottomNavigationBarItem>[
         _buildItem(TabItem.main),
         _buildItem(TabItem.info),
+        _buildItem(TabItem.ai),
         _buildItem(TabItem.chat),
         _buildItem(TabItem.settings),
       ],

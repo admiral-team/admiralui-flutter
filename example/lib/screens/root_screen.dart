@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../navigation/bottom_navigation.dart';
 import '../navigation/tab_item.dart';
+import '../navigation/tab_navigation_ai.dart';
 import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_info.dart';
 import '../navigation/tab_navigator_chat.dart';
@@ -75,6 +76,7 @@ class _RootScreenState extends State<RootScreen> {
           children: <Widget>[
             _buildOffstageNavigator(TabItem.main),
             _buildOffstageNavigator(TabItem.info),
+            _buildOffstageNavigator(TabItem.ai),
             _buildOffstageNavigator(TabItem.chat),
             _buildOffstageNavigator(TabItem.settings),
           ],
@@ -113,6 +115,11 @@ class _RootScreenState extends State<RootScreen> {
         return Offstage(
           offstage: _currentTab != tabItem,
           child: TabNavigatorChat(navigatorKey: _navigatorKeys[tabItem]),
+        );
+      case TabItem.ai:
+        return Offstage(
+          offstage: _currentTab != tabItem,
+          child: TabNavigatorAI(navigatorKey: _navigatorKeys[tabItem]),
         );
     }
   }

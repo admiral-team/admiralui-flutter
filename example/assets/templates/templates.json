@@ -1,0 +1,7 @@
+{
+    "templates": [
+        "buttons_column_template.json",
+        "buttons_template.json",
+        "one_button_template.json"
+    ]
+}

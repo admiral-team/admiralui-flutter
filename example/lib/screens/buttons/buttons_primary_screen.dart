@@ -70,7 +70,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
                 title: 'Big Button',
               ),
@@ -78,7 +78,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
                 iconPosition: IconPosition.right,
                 title: 'Big Button',
@@ -87,14 +87,14 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Big Button',
               ),
               SizedBox(
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Medium Button',
                 sizeType: ButtonSizeType.medium,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
@@ -104,7 +104,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Medium Button',
                 sizeType: ButtonSizeType.medium,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
@@ -114,7 +114,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Medium Button',
                 sizeType: ButtonSizeType.medium,
               ),
@@ -122,7 +122,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Small Button',
                 sizeType: ButtonSizeType.small,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
@@ -132,7 +132,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Small Button',
                 sizeType: ButtonSizeType.small,
                 iconData: AdmiralIcons.admiral_ic_heart_outline,
@@ -142,7 +142,7 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
                 height: LayoutGrid.halfModule * 5,
               ),
               PrimaryButton(
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
                 title: 'Small Button',
                 sizeType: ButtonSizeType.small,
               ),

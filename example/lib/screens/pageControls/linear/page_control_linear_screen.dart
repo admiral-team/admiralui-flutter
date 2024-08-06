@@ -93,7 +93,7 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
                     });
                   }
                 },
-                isEnable: true,
+                isEnabled: true,
                 title: 'Next',
                 sizeType: ButtonSizeType.small,
                 iconData: AdmiralIcons.admiral_ic_arrow_right_outline,

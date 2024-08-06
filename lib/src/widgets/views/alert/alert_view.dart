@@ -143,7 +143,7 @@ class _AlertViewState extends State<AlertView> {
                   PrimaryButton(
                     key: widget.buttonActionKey,
                     title: widget.buttonTitle!,
-                    isEnable: widget.isEnabled,
+                    isEnabled: widget.isEnabled,
                     onPressed: widget.buttonAction,
                   ),
                 if (widget.additionalButtonTitle != null)

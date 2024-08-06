@@ -1,0 +1,144 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Title Button",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Small Button",
+                                "isEnabled": false,
+                                "sizeType": "custom"
+                            },
+                            "layout": {
+                                "width": 200,
+                                "height": 50
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "4",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "1",
+                                            "isEnabled": true,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 50,
+                                            "height": 50
+                                        }
+                                    },                                    
+                                    {
+                                        "id": "5",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "2",
+                                            "isEnabled": false,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 50,
+                                            "height": 50
+                                        }
+                                    },  
+                                    {
+                                        "id": "6",
+                                        "type": "spacer"
+                                    },                                  
+                                    {
+                                        "id": "7",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "3",
+                                            "isEnabled": true,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 150,
+                                            "height": 50
+                                        }
+                                    }
+                                ]
+                            },
+                            "layout": {
+                                "height": 50
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "type": "scroll_view",
+                            "data": {
+                                "scroll_direction": "horizontal",
+                                "aligment": "leading",
+                                "items": [
+                                    {
+                                        "id": "9",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "1",
+                                            "isEnabled": true,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 50,
+                                            "height": 50
+                                        }
+                                    },  
+                                    {
+                                        "id": "10",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "2",
+                                            "isEnabled": true,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 150,
+                                            "height": 50
+                                        }
+                                    },  
+                                    {
+                                        "id": "11",
+                                        "type": "primary_button",
+                                        "data": {
+                                            "title": "3",
+                                            "isEnabled": true,
+                                            "sizeType": "custom"
+                                        },
+                                        "layout": {
+                                            "width": 250,
+                                            "height": 50
+                                        }
+                                    }
+                                ]
+                            },
+                            "layout": {
+                                "height": 50
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

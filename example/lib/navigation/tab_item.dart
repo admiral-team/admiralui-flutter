@@ -10,6 +10,10 @@ enum TabItem {
     'Инфо',
     Icon(AdmiralIcons.admiral_ic_mobile_solid),
   ),
+  ai(
+    'AI',
+    Icon(AdmiralIcons.admiral_ic_component_solid),
+  ),
   chat(
     'Чат',
     Icon(AdmiralIcons.admiral_ic_chat_solid),

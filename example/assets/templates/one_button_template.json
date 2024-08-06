@@ -1,0 +1,91 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [       
+                        {
+                            "id": "1",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Title",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            },
+                            "actions": [
+                                {
+                                    "actionName": "didTap",
+                                    "type": "updateItems",
+                                    "data": {
+                                        "items": [
+                                            {
+                                                "id": "2",
+                                                "type": "primary_button",
+                                                "data": {
+                                                    "title": "New Title",
+                                                    "isEnabled": false,
+                                                    "sizeType": "big"
+                                                },
+                                                "actions": [
+                                                    {
+                                                        "actionName": "didTap",
+                                                        "type": "deeplink",
+                                                        "data": {
+                                                            "link": "buttons_template.json"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },                        
+                        {
+                            "id": "2",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Title Deeplink",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            },
+                            "actions": [
+                                {
+                                    "actionName": "didTap",
+                                    "type": "deeplink",
+                                    "data": {
+                                        "link": "buttons_template.json"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer"
+                        },
+                        {
+                            "id": "4",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Button Bottom",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            },
+                            "actions": [
+                                {
+                                    "actionName": "didTap",
+                                    "type": "updatePage",
+                                    "data": {
+                                        "link": "buttons_column_template.json"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

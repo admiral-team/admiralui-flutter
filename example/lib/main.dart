@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:example/shared/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -51,7 +52,16 @@ class MyApp extends StatelessWidget {
     return AppThemeProviderWrapper(
       child: MaterialApp(
         title: 'Дизайн-система  «Адмирал»',
-        home: isShowOnboarding ? OnboardingScreen() : RootScreen(),
+        home: FutureBuilder(
+          future: DI.getInstance().init(),
+          builder: (BuildContext context, AsyncSnapshot<Object?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return isShowOnboarding ? OnboardingScreen() : RootScreen();
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
+        ),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
