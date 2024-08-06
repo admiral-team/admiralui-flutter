@@ -57,15 +57,12 @@ class _SMSCodeTextFieldScreenState extends State<SMSCodeTextFieldScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               StandardTabs(
-                <String>['Default', 'Read Only', 'Error', 'Disabled'],
+                <String>['Default', 'Error', 'Disabled'],
                 onTap: (String value) {
                   setState(() {
                     switch (value) {
                       case 'Default':
                         state = TextInputState.normal;
-                        break;
-                      case 'Read Only':
-                        state = TextInputState.readOnly;
                         break;
                       case 'Error':
                         state = TextInputState.error;
