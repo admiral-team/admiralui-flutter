@@ -49,25 +49,25 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
     switch (widget.chatStatus) {
       case ChatStatus.error:
         icon = Icon(
-          AdmiralIcons.admiral_ic_error_outline,
-          color: imageColor,
+          AdmiralIcons.admiral_ic_error_solid,
+          color: theme.colors.elementError.color(),
         );
         break;
       case ChatStatus.read:
         icon = Icon(
-          AdmiralIcons.admiral_ic_email_read_outline,
+          AdmiralIcons.admiral_ic_read_check_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.receive:
         icon = Icon(
-          AdmiralIcons.admiral_ic_ok_send_outline,
+          AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.sent:
         icon = Icon(
-          AdmiralIcons.admiral_ic_ok_send_outline,
+          AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
         );
         break;
