@@ -118,7 +118,6 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                     itemBuilder: (BuildContext ctx, int index) {
                       return ChatBubbleView(
                         text: chatMessages[index].text,
-                        chatStatus: ChatStatus.sent,
                         direction: chatMessages[index].direction,
                         time: chatMessages[index].time,
                       );

@@ -88,12 +88,12 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
           font: scheme.textFont,
           textColorNormal: textColor,
         ),
+        const SizedBox(
+          width: LayoutGrid.tripleModule / 4,
+        ),
         if (widget.chatStatus != ChatStatus.none)
           Row(
             children: <Widget>[
-              const SizedBox(
-                width: LayoutGrid.tripleModule / 4,
-              ),
               icon,
             ],
           ),
