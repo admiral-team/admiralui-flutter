@@ -29,9 +29,9 @@ class ChatBubbleView extends StatefulWidget {
   const ChatBubbleView({
     super.key,
     required this.text,
-    required this.chatStatus,
     required this.direction,
     this.maxWidth,
+    this.chatStatus = ChatStatus.none,
     this.time = '',
     this.onTap,
     this.onDoubleTap,
@@ -60,8 +60,11 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
   bool get _isMultiline => _textSize > LayoutGrid.halfModule * 10;
   double get _textBottomPadding =>
       _isMultiline ? LayoutGrid.tripleModule : LayoutGrid.module;
-  double get _textRightPadding =>
-      _isMultiline ? LayoutGrid.halfModule * 3 : LayoutGrid.module * 9;
+  double get _textRightPadding => _isMultiline
+      ? LayoutGrid.halfModule * 3
+      : widget.chatStatus != ChatStatus.none
+          ? LayoutGrid.module * 9
+          : LayoutGrid.module * 7;
 
   @override
   void initState() {
