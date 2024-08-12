@@ -25,6 +25,17 @@ class TemplatesRepositoryImpl extends TemplatesRepository {
   }
 
   @override
+  Future<http.Response> createRemoteTemplate(String message) async {
+    final Uri url =
+        Uri.parse('https://admiralserver.onrender.com/v1/aiTemplate');
+    final Map<String, String> headers = <String, String>{'Content-Type': 'application/json'};
+    final Map<String, String> body = <String, String>{
+      'message': message
+    };
+    return await http.post(url, headers: headers, body: jsonEncode(body));
+  }
+
+  @override
   Future<http.Response> getRemoteTemplate(String templateName) async {
     final Uri url =
         Uri.parse('https://admiralserver.onrender.com/v1/getTemplate');

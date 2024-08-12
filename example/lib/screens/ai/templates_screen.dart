@@ -78,7 +78,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
                                   widget.isLocal ? 
                                   TabNavigatorAIRoutes.localTemplate : 
                                   TabNavigatorAIRoutes.remoteTemplate, 
-                                  state.templates[index].name
+                                  state.templates[index].name ?? ''
                               )
                             });
                   },

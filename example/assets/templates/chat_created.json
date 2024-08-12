@@ -1,3 +1,40 @@
 {
-    "data": "{\n    \"data\": {\n        \"items\": [\n            {\n                \"id\": \"0\",\n                \"type\": \"column\",\n                \"data\": {\n                    \"items\": [\n                        {\n                            \"id\": \"1\",\n                            \"type\": \"spacer\"\n                        },\n                        {\n                            \"id\": \"2\",\n                            \"type\": \"primary_button\",\n                            \"data\": {\n                                \"title\": \"Title\",\n                                \"isEnabled\": true,\n                                \"sizeType\": \"big\"\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Кошка",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "spacer"
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer"
+                        },
+                        {
+                            "id": "4",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Маленькая Собака",
+                                "isEnabled": false,
+                                "sizeType": "small"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }

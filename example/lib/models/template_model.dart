@@ -7,5 +7,5 @@ class TemplateModel {
   }
 
   TemplateModel({required this.name});
-  final String name;
+  final String? name;
 }

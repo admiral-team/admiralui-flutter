@@ -79,7 +79,8 @@ class _AIScreenState extends State<AIScreen> {
           AdmiralIcons.admiral_ic_email_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () {},
+        onPressed: () => 
+        widget.onPush.call(TabNavigatorAIRoutes.chatTemplate),
       ),
     ];
 
