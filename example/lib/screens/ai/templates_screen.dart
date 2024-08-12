@@ -31,21 +31,6 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
     cubit.getTemplates(widget.isLocal);
   }
 
-  // Future<void> _loadJson() async {
-  //   final String response =
-  //       await rootBundle.loadString('assets/templates/templates.json');
-  //   final Map<String, dynamic> data = await json.decode(response);
-  //   setState(() {
-  //     try {
-  //       items = data['templates'];
-  //     } catch (e) {
-  //       // Handle the error if parsing fails
-  //       print('Error parsing item: $e');
-  //       return null;
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
