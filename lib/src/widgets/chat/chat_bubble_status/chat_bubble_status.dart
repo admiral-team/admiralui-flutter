@@ -29,6 +29,7 @@ class ChatBubbleStatus extends StatefulWidget {
 class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
   late ChatBubbleStatusScheme scheme;
   late Icon icon;
+  late Color imageColor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,32 +43,39 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
       widget.chatStatus,
     );
 
-    final Color imageColor = (widget.style == ChatBubbleStatusStyle.initial)
-        ? scheme.imageColorSecondary.color()
-        : scheme.imageColorDefault.color();
+    switch (widget.chatStatus) {
+      case ChatStatus.error:
+        imageColor = scheme.imageColorError.color();
+        break;
+      default:
+        imageColor = (widget.style == ChatBubbleStatusStyle.initial)
+            ? scheme.imageColorSecondary.color()
+            : scheme.imageColorDefault.color();
+        break;
+    }
 
     switch (widget.chatStatus) {
       case ChatStatus.error:
         icon = Icon(
-          AdmiralIcons.admiral_ic_error_outline,
+          AdmiralIcons.admiral_ic_error_solid,
           color: imageColor,
         );
         break;
       case ChatStatus.read:
         icon = Icon(
-          AdmiralIcons.admiral_ic_email_read_outline,
+          AdmiralIcons.admiral_ic_read_check_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.receive:
         icon = Icon(
-          AdmiralIcons.admiral_ic_ok_send_outline,
+          AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
         );
         break;
       case ChatStatus.sent:
         icon = Icon(
-          AdmiralIcons.admiral_ic_ok_send_outline,
+          AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
         );
         break;
@@ -88,12 +96,12 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
           font: scheme.textFont,
           textColorNormal: textColor,
         ),
+        const SizedBox(
+          width: LayoutGrid.tripleModule / 4,
+        ),
         if (widget.chatStatus != ChatStatus.none)
           Row(
             children: <Widget>[
-              const SizedBox(
-                width: LayoutGrid.tripleModule / 4,
-              ),
               icon,
             ],
           ),
