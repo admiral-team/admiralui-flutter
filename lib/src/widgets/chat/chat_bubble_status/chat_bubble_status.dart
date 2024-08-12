@@ -29,6 +29,7 @@ class ChatBubbleStatus extends StatefulWidget {
 class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
   late ChatBubbleStatusScheme scheme;
   late Icon icon;
+  late Color imageColor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +43,16 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
       widget.chatStatus,
     );
 
-    final Color imageColor = (widget.style == ChatBubbleStatusStyle.initial)
-        ? scheme.imageColorSecondary.color()
-        : scheme.imageColorDefault.color();
+    switch (widget.chatStatus) {
+      case ChatStatus.error:
+        imageColor = scheme.imageColorError.color();
+        break;
+      default:
+        imageColor = (widget.style == ChatBubbleStatusStyle.initial)
+            ? scheme.imageColorSecondary.color()
+            : scheme.imageColorDefault.color();
+        break;
+    }
 
     switch (widget.chatStatus) {
       case ChatStatus.error:
