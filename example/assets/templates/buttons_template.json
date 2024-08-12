@@ -21,13 +21,9 @@
                             "id": "2",
                             "type": "primary_button",
                             "data": {
-                                "title": "Small Button",
+                                "title": "Disabled Button",
                                 "isEnabled": false,
-                                "sizeType": "custom"
-                            },
-                            "layout": {
-                                "width": 200,
-                                "height": 50
+                                "sizeType": "big"
                             }
                         },
                         {
