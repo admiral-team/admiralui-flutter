@@ -3,8 +3,6 @@ import '../../lib/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
-
-// ignore: avoid_relative_lib_imports
 import '../set_steps.dart';
 
 void runChatTextOperationScreen(Device device) {
