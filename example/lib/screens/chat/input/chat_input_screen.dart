@@ -37,6 +37,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
   @override
   void initState() {
     super.initState();
+    textEditingController.addListener(_onTextChanged);
     appThemeButtonStorage.setThemeButtonHidden(true);
   }
 
@@ -44,6 +45,10 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
   void dispose() {
     super.dispose();
     appThemeButtonStorage.setThemeButtonHidden(false);
+  }
+
+  void _onTextChanged() {
+    setState(() {});
   }
 
   String _getTime() {
@@ -113,7 +118,6 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                     itemBuilder: (BuildContext ctx, int index) {
                       return ChatBubbleView(
                         text: chatMessages[index].text,
-                        chatStatus: ChatStatus.sent,
                         direction: chatMessages[index].direction,
                         time: chatMessages[index].time,
                       );
@@ -130,7 +134,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               state: textInputState,
               content: '',
               placeholder: 'Введите сообщение',
-              isSendButtonDisabled: true,
+              isSendButtonDisabled: textEditingController.text.isEmpty,
               isShowFileButton: true,
               isTapSendButtonHidden: false,
               textEditingController: textEditingController,

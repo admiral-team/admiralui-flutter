@@ -55,6 +55,7 @@ class TabsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
+        backgroundColor: colors.backgroundBasic.color(),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),

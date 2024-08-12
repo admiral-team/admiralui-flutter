@@ -40,7 +40,6 @@ class ChatInput extends StatefulWidget {
     this.maxLinesCount = 5,
     this.minLinesCount = 1,
     this.placeholder = '',
-    this.hintText = '',
     this.keyboardType,
     this.textInputAction,
     this.chatInputButtonKey,
@@ -54,7 +53,6 @@ class ChatInput extends StatefulWidget {
   final String content;
   final bool isSendButtonDisabled;
   final String placeholder;
-  final String hintText;
   final int maxLinesCount;
   final int minLinesCount;
   final bool isShowFileButton;
@@ -153,8 +151,7 @@ class _ChatInputState extends State<ChatInput> {
                       textInputAction: widget.textInputAction,
                       style: TextStyle(color: scheme.textColor.color()),
                       decoration: InputDecoration(
-                        labelText: widget.placeholder,
-                        hintText: widget.hintText,
+                        hintText: widget.placeholder,
                         hintStyle: scheme.placeholderFont.toTextStyle(
                           placeHolderColor,
                         ),
@@ -188,7 +185,7 @@ class _ChatInputState extends State<ChatInput> {
         ),
         ChatInputButton(
           key: widget.chatInputButtonKey,
-          isEnable: _state == TextInputState.normal,
+          isEnable: !widget.isSendButtonDisabled,
           onPressed: widget.onSendButtonPress,
         ),
       ],
