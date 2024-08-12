@@ -58,7 +58,7 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
       case ChatStatus.error:
         icon = Icon(
           AdmiralIcons.admiral_ic_error_solid,
-          color: theme.colors.elementError.color(),
+          color: imageColor,
         );
         break;
       case ChatStatus.read:
