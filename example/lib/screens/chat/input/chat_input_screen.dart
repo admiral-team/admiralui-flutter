@@ -27,7 +27,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
     ChatMessageItem(
       text: 'Добрый день !',
       direction: ChatDirection.left,
-      time: _getTime(),
+      time: '10:30',
     ),
   ];
 
@@ -53,8 +53,11 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
 
   String _getTime() {
     DateTime now = DateTime.now();
-    TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
-    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
+    TimeOfDay timeOfDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
+    String formattedHour = timeOfDayDate.hour.toString().padLeft(2, '0');
+    String formattedMinute = timeOfDayDate.minute.toString().padLeft(2, '0');
+
+    String time = '$formattedHour:$formattedMinute';
     return time;
   }
 
