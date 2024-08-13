@@ -89,6 +89,7 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? ChatBubbleScheme(theme: theme);
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         if (widget.direction == ChatDirection.right) const Spacer(),
         Container(
@@ -127,7 +128,8 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
                   return Stack(
                     children: <Widget>[
                       Padding(
-                        padding: widget.chatStatus != null
+                        padding: widget.chatStatus != null &&
+                                widget.chatStatus != ChatStatus.error
                             ? EdgeInsets.fromLTRB(
                                 LayoutGrid.halfModule * 3,
                                 LayoutGrid.module - 2,
@@ -147,7 +149,8 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
                           textAlign: TextAlign.left,
                         ),
                       ),
-                      if (widget.chatStatus != null)
+                      if (widget.chatStatus != null &&
+                          widget.chatStatus != ChatStatus.error)
                         Positioned(
                           bottom: LayoutGrid.halfModule,
                           right: LayoutGrid.module - 2,
@@ -171,6 +174,17 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
           ),
         ),
         if (widget.direction == ChatDirection.left) const Spacer(),
+        if (widget.chatStatus == ChatStatus.error)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 0, 0, 4),
+            child: GestureDetector(
+              onTap: widget.onStatusTap,
+              child: Icon(
+                AdmiralIcons.admiral_ic_error_solid,
+                color: theme.colors.elementError.color(),
+              ),
+            ),
+          ),
       ],
     );
   }
