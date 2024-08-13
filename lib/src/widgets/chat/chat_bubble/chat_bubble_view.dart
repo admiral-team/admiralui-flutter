@@ -36,6 +36,7 @@ class ChatBubbleView extends StatefulWidget {
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
+    this.onStatusTap,
     this.scheme,
   });
 
@@ -47,6 +48,7 @@ class ChatBubbleView extends StatefulWidget {
   final VoidCallback? onTap;
   final VoidCallback? onDoubleTap;
   final VoidCallback? onLongPress;
+  final VoidCallback? onStatusTap;
   final ChatBubbleScheme? scheme;
 
   @override
@@ -149,11 +151,16 @@ class _ChatBubbleViewState extends State<ChatBubbleView> {
                         Positioned(
                           bottom: LayoutGrid.halfModule,
                           right: LayoutGrid.module - 2,
-                          child: ChatBubbleStatus(
-                            chatStatus: widget.chatStatus!,
-                            style: ChatBubbleStatusStyle.initial,
-                            direction: widget.direction,
-                            time: widget.time,
+                          child: GestureDetector(
+                            onTap: widget.onStatusTap,
+                            child: ChatBubbleStatus(
+                              chatStatus: widget.chatStatus!,
+                              style: widget.direction == ChatDirection.left
+                                  ? ChatBubbleStatusStyle.initial
+                                  : ChatBubbleStatusStyle.light,
+                              direction: widget.direction,
+                              time: widget.time,
+                            ),
                           ),
                         ),
                     ],

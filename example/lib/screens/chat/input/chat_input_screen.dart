@@ -119,6 +119,20 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                       return ChatBubbleView(
                         text: chatMessages[index].text,
                         direction: chatMessages[index].direction,
+                        chatStatus: chatMessages[index].chatStatus,
+                        onStatusTap: () {
+                          if (chatMessages[index].chatStatus ==
+                              ChatStatus.error) {
+                            setState(() {
+                              chatMessages[index] = ChatMessageItem(
+                                text: chatMessages[index].text,
+                                direction: chatMessages[index].direction,
+                                time: chatMessages[index].time,
+                                chatStatus: ChatStatus.read,
+                              );
+                            });
+                          }
+                        },
                         time: chatMessages[index].time,
                       );
                     },
@@ -142,10 +156,10 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               onSendButtonPress: () {
                 setState(() {
                   chatMessages.add(ChatMessageItem(
-                    text: textEditingController.text,
-                    direction: ChatDirection.right,
-                    time: _getTime(),
-                  ));
+                      text: textEditingController.text,
+                      direction: ChatDirection.right,
+                      time: _getTime(),
+                      chatStatus: _getChatStatus(chatMessages.length)));
                   textEditingController.text = '';
                   _scrollDown();
                 });
@@ -158,6 +172,19 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
         ),
       ),
     );
+  }
+
+  ChatStatus _getChatStatus(int index) {
+    if (index == 1) {
+      return ChatStatus.read;
+    } else if (index == 2) {
+      return ChatStatus.sent;
+    } else if (index == 3) {
+      return ChatStatus.loading;
+    } else if (index == 4) {
+      return ChatStatus.error;
+    }
+    return ChatStatus.read;
   }
 
   void _scrollDown() {
