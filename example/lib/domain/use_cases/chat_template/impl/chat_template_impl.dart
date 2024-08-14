@@ -10,11 +10,13 @@ class ChatTemplateCaseImpl extends ChatTemplateCase {
 
   @override
   Future<TemplateModel> createTemplate(String message) async {
-      final Response response = await _templatesRepository.createRemoteTemplate(message);
+      final Response response = await _templatesRepository.createRemoteTemplate(
+        message
+      );
       if (response.statusCode == 200) {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
-          return TemplateModel(name: null);
+          return TemplateModel(name: data['fileName']);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateModel(name: null);

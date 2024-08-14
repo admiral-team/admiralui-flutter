@@ -1,6 +1,8 @@
 
 
 import 'package:example/data/repository/impl/templates_repo_impl.dart';
+import 'package:example/domain/use_cases/chat_template/impl/chat_template_impl.dart';
+import 'package:example/domain/use_cases/chat_template/interface/chat_template_case.dart';
 import 'package:example/domain/use_cases/template/impl/template_impl.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/domain/use_cases/templates/impl/templates_impl.dart';
@@ -13,6 +15,7 @@ class DI {
 
   late TemplatesCase templatesCase;
   late TemplateCase templateCase;
+  late ChatTemplateCase chatTemplateCase;
 
   static DI getInstance() {
     return instance ?? (instance = DI._());
@@ -23,6 +26,7 @@ class DI {
     templatesRepository = TemplatesRepositoryImpl();
     templateCase = TemplateCaseImpl(templatesRepository);
     templatesCase = TemplatesCaseImpl(templatesRepository);
+    chatTemplateCase = ChatTemplateCaseImpl(templatesRepository);
   }
 
 }
