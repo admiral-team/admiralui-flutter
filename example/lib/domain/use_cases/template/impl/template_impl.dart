@@ -35,12 +35,13 @@ class TemplateCaseImpl extends TemplateCase {
         return TemplateDetailModel(items: <dynamic>[]);
       }
     } else {
-      final Response response = await _templatesRepository.getRemoteTemplate(templateName);
+      final Response response =
+          await _templatesRepository.getRemoteTemplate(templateName);
       if (response.statusCode == 200) {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
-           List<dynamic> items = _parseItems(data['data']);
-           return TemplateDetailModel(items: items);
+          List<dynamic> items = _parseItems(data['data']);
+          return TemplateDetailModel(items: items);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateDetailModel(items: <dynamic>[]);
@@ -123,13 +124,37 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 sizeType = ButtonSizeType.big;
             }
+
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            IconPosition? iconPosition;
+            if (item['data']['iconPosition'] != null) {
+              switch (item['data']['iconPosition']) {
+                case 'left':
+                  iconPosition = IconPosition.left;
+                  break;
+                case 'right':
+                  iconPosition = IconPosition.right;
+                  break;
+                default:
+                  iconPosition = IconPosition.left;
+              }
+            }
+
             return PrimaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
                 isEnabled: item['data']['isEnabled'],
                 sizeType: sizeType,
+                iconData: iconData,
+                iconPosition: iconPosition,
                 actions: actions);
           case 'spacer':
+            double? width = (item?['width'] as num?)?.toDouble();
+            double? height = (item?['height'] as num?)?.toDouble();
             return SpacerViewModel(id: id, width: width, height: height);
           case 'scroll_view':
             Axis direction = Axis.vertical;
@@ -164,5 +189,11 @@ class TemplateCaseImpl extends TemplateCase {
       }
     }).toList();
     return items;
+  }
+
+  IconData _parseIconData(Map<String, dynamic> iconData) {
+    final int codePoint = int.parse(iconData['codePoint']);
+    final String? fontFamily = iconData['fontFamily'];
+    return IconData(codePoint, fontFamily: fontFamily);
   }
 }
