@@ -115,7 +115,26 @@ jobs:
         run: |
           cd example/android && ./gradlew updateReleaseNotesTask --releaseNotes='commits_url = ${{ toJSON(github.event.pull_request.commits_url) }} , branch = ${{ github.head_ref || github.ref_name }}'
           ./gradlew appDistributionUploadRelease
-  
+  test:
+    name: Test App
+    runs-on: [ self-hosted, main, flutter ]
+    if: github.event.action != 'closed'
+    needs: deploy-android
+    steps:
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.8'
+          channel: 'stable'
+          architecture: x64
+          distribution: 'zulu'
+          java-version: '11'
+      - run: cd example
+      - name: Check If Test Failed
+        if: ${{ failure() }}
+        run: |
+          cd build/ios/fastlane && bundle install && bundle update &&
+           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
+
   build_demo_remote:
     name: Build remote demo project
     runs-on: [ self-hosted, main, flutter ]
