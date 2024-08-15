@@ -208,7 +208,7 @@ jobs:
       - name: Write Env to Config
         run: cd example/ios && touch .env && echo "GOOGLE_API_KEY=$IOS_GOOGLE_API_KEY" > .env
       - name: Build iOS App
-        run: cd example/lib && flutter build ios
+        run: cd example/lib && flutter build ios --no-tree-shake-icons
       - name: Deploy iOS App Firebase
         if: ${{ github.event_name == 'pull_request' }}
         run: cd build/ios/fastlane && bundle exec fastlane deploy_firebase_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
