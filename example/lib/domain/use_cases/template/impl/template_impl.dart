@@ -94,7 +94,7 @@ class TemplateCaseImpl extends TemplateCase {
   }
 
   List<dynamic> _parseItems(Map<String, dynamic> data) {
-    List<dynamic> items = data['data']['items'].map((item) {
+    List<dynamic> items = data['data']['items'].map((dynamic item) {
       try {
         String id = item?['id'];
         double? width = (item?['layout']?['width'] as num?)?.toDouble();
@@ -153,8 +153,6 @@ class TemplateCaseImpl extends TemplateCase {
                 iconPosition: iconPosition,
                 actions: actions);
           case 'spacer':
-            double? width = (item?['width'] as num?)?.toDouble();
-            double? height = (item?['height'] as num?)?.toDouble();
             return SpacerViewModel(id: id, width: width, height: height);
           case 'scroll_view':
             Axis direction = Axis.vertical;
@@ -191,9 +189,12 @@ class TemplateCaseImpl extends TemplateCase {
     return items;
   }
 
-  IconData _parseIconData(Map<String, dynamic> iconData) {
+  IconData? _parseIconData(Map<String, dynamic> iconData) {
     final int codePoint = int.parse(iconData['codePoint']);
     final String? fontFamily = iconData['fontFamily'];
+    if (codePoint < 0 || codePoint > 0x10FFFF) {
+      return null;
+    }
     return IconData(codePoint, fontFamily: fontFamily);
   }
 }

@@ -67,19 +67,17 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
                   itemCount: state.templates.length,
                   itemBuilder: (BuildContext context, int index) {
                     return BaseCellWidget(
-                        centerCell: TitleCellWidget(
-                          title: state.templates[index].name
-                        ),
+                        centerCell:
+                            TitleCellWidget(title: state.templates[index].name),
                         trailingCell: ArrowCellWidget(),
                         horizontalPadding: 0,
                         isEnabled: true,
-                        onPressed: () => {
+                        onPressed: () => <void>{
                               widget.onPush.call(
-                                  widget.isLocal ? 
-                                  TabNavigatorAIRoutes.localTemplate : 
-                                  TabNavigatorAIRoutes.remoteTemplate, 
-                                  state.templates[index].name ?? ''
-                              )
+                                  widget.isLocal
+                                      ? TabNavigatorAIRoutes.localTemplate
+                                      : TabNavigatorAIRoutes.remoteTemplate,
+                                  state.templates[index].name ?? '')
                             });
                   },
                 ),

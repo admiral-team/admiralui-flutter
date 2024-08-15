@@ -113,7 +113,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
               sizeType: item.sizeType,
               iconData: item.iconData,
               iconPosition: item.iconPosition,
-              onPressed: () => {
+              onPressed: () => <Future<void>>{
                     cubit.didAction(widget.isLocal, item.actions, widget.onPush)
                   }),
         );
