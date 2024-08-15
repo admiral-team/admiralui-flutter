@@ -110,7 +110,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: cd example && flutter pub get
-      - run: cd example && flutter build apk && flutter build appbundle
+      - run: cd example && flutter build apk --no-tree-shake-icons && flutter build appbundle --no-tree-shake-icons
       - name: Upload apk to Firebase
         run: |
           cd example/android && ./gradlew updateReleaseNotesTask --releaseNotes='commits_url = ${{ toJSON(github.event.pull_request.commits_url) }} , branch = ${{ github.head_ref || github.ref_name }}'
