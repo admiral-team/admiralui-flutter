@@ -1,3 +1,4 @@
+import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
@@ -9,7 +10,6 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../navigation/tab_navigation_ai.dart';
 
 class TemplateScreen extends StatefulWidget {
   const TemplateScreen({
@@ -19,8 +19,7 @@ class TemplateScreen extends StatefulWidget {
     this.isLocal = true,
   });
 
-  final dynamic Function(TabNavigatorAIRoutes route, String templateName)
-      onPush;
+  final Function(TabNavigatorAIRoutes route, String templateName) onPush;
   final bool appBarHidden;
   final bool isLocal;
 

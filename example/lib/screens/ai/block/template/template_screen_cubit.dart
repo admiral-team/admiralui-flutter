@@ -1,5 +1,6 @@
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
@@ -9,7 +10,6 @@ import 'package:example/screens/ai/view_models/interfaces/container_model_interf
 import 'package:example/screens/ai/view_models/interfaces/id_model_interface.dart';
 import 'package:example/shared/di.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../navigation/tab_navigation_ai.dart';
 
 class TemplateScreenCubit extends Cubit<TemplateScreenState> {
   TemplateScreenCubit() : super(TemplateScreenState(template: null)) {
