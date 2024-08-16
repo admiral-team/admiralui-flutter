@@ -3,8 +3,8 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../storage/app_theme_storage.dart';
 import '../chat/input/chat_message_item.dart';
-import '../../../storage/app_theme_storage.dart';
 
 class ChatTemplateScreen extends StatefulWidget {
   const ChatTemplateScreen({

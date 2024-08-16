@@ -1,9 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
+import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:flutter/material.dart';
-
 import '../navigation/bottom_navigation.dart';
 import '../navigation/tab_item.dart';
-import '../navigation/tab_navigation_ai.dart';
 import '../navigation/tab_navigator_home.dart';
 import '../navigation/tab_navigator_info.dart';
 import '../navigation/tab_navigator_chat.dart';

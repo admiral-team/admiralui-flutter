@@ -1,9 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
-
-import '../../navigation/tab_navigation_ai.dart';
 
 class AIScreen extends StatefulWidget {
   const AIScreen({
@@ -43,7 +42,6 @@ class _AIScreenState extends State<AIScreen> {
     appThemeButtonStorage.setThemeButtonHidden(false);
   }
 
-
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
@@ -58,9 +56,8 @@ class _AIScreenState extends State<AIScreen> {
           AdmiralIcons.admiral_ic_info_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () => widget.onPush.call(
-          TabNavigatorAIRoutes.localTemplates
-        ),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorAIRoutes.localTemplates),
       ),
       ListCellModel(
         title: 'Remote templates',
@@ -69,8 +66,8 @@ class _AIScreenState extends State<AIScreen> {
           AdmiralIcons.admiral_ic_info_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () => 
-        widget.onPush.call(TabNavigatorAIRoutes.remoteTemplates),
+        onPressed: () =>
+            widget.onPush.call(TabNavigatorAIRoutes.remoteTemplates),
       ),
       ListCellModel(
         title: 'AI Generation',
@@ -79,8 +76,7 @@ class _AIScreenState extends State<AIScreen> {
           AdmiralIcons.admiral_ic_email_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () => 
-        widget.onPush.call(TabNavigatorAIRoutes.chatTemplate),
+        onPressed: () => widget.onPush.call(TabNavigatorAIRoutes.chatTemplate),
       ),
     ];
 

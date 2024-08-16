@@ -105,16 +105,24 @@ class _TemplateScreenState extends State<TemplateScreen> {
 
     switch (item.runtimeType) {
       case PrimaryButtonViewModel:
-        return PrimaryButton(
-          title: item.title,
-          isEnabled: item.isEnabled,
-          sizeType: item.sizeType,
-          onPressed: () => {
-            cubit.didAction(widget.isLocal, item.actions, widget.onPush)
-          }
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: PrimaryButton(
+              title: item.title,
+              isEnabled: item.isEnabled,
+              sizeType: item.sizeType,
+              iconData: item.iconData,
+              iconPosition: item.iconPosition,
+              onPressed: () => <Future<void>>{
+                    cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                  }),
         );
       case SpacerViewModel:
-        return Spacer();
+        if (item.width != null || item.height != null) {
+          return SizedBox(width: item.width, height: item.height);
+        } else {
+          return Spacer();
+        }
       case RowViewModel:
         return SizedBox(
             width: item.width,
@@ -152,6 +160,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
           child: ListView.builder(
             scrollDirection: item.scrollDirection,
             itemCount: item.items.length,
+            // shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return _buildView(
                 context,

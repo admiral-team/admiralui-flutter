@@ -52,9 +52,9 @@ class MyApp extends StatelessWidget {
     return AppThemeProviderWrapper(
       child: MaterialApp(
         title: 'Дизайн-система  «Адмирал»',
-        home: FutureBuilder(
+        home: FutureBuilder<void>(
           future: DI.getInstance().init(),
-          builder: (BuildContext context, AsyncSnapshot<Object?> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               return isShowOnboarding ? OnboardingScreen() : RootScreen();
             } else {

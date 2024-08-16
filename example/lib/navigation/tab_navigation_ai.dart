@@ -1,8 +1,8 @@
-import 'package:example/screens/ai/chat_template_screen.dart';
-import 'package:example/screens/ai/template_screen.dart';
-import 'package:example/screens/ai/templates_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/ai/ai_screen.dart';
+import '../screens/ai/chat_template_screen.dart';
+import '../screens/ai/template_screen.dart';
+import '../screens/ai/templates_screen.dart';
 
 enum TabNavigatorAIRoutes {
   home('/'),

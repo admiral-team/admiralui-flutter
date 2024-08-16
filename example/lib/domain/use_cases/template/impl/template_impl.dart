@@ -35,12 +35,13 @@ class TemplateCaseImpl extends TemplateCase {
         return TemplateDetailModel(items: <dynamic>[]);
       }
     } else {
-      final Response response = await _templatesRepository.getRemoteTemplate(templateName);
+      final Response response =
+          await _templatesRepository.getRemoteTemplate(templateName);
       if (response.statusCode == 200) {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
-           List<dynamic> items = _parseItems(data['data']);
-           return TemplateDetailModel(items: items);
+          List<dynamic> items = _parseItems(data['data']);
+          return TemplateDetailModel(items: items);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateDetailModel(items: <dynamic>[]);
@@ -93,7 +94,7 @@ class TemplateCaseImpl extends TemplateCase {
   }
 
   List<dynamic> _parseItems(Map<String, dynamic> data) {
-    List<dynamic> items = data['data']['items'].map((item) {
+    List<dynamic> items = data['data']['items'].map((dynamic item) {
       try {
         String id = item?['id'];
         double? width = (item?['layout']?['width'] as num?)?.toDouble();
@@ -123,11 +124,33 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 sizeType = ButtonSizeType.big;
             }
+
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            IconPosition? iconPosition;
+            if (item['data']['iconPosition'] != null) {
+              switch (item['data']['iconPosition']) {
+                case 'left':
+                  iconPosition = IconPosition.left;
+                  break;
+                case 'right':
+                  iconPosition = IconPosition.right;
+                  break;
+                default:
+                  iconPosition = IconPosition.left;
+              }
+            }
+
             return PrimaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
                 isEnabled: item['data']['isEnabled'],
                 sizeType: sizeType,
+                iconData: iconData,
+                iconPosition: iconPosition,
                 actions: actions);
           case 'spacer':
             return SpacerViewModel(id: id, width: width, height: height);
@@ -164,5 +187,14 @@ class TemplateCaseImpl extends TemplateCase {
       }
     }).toList();
     return items;
+  }
+
+  IconData? _parseIconData(Map<String, dynamic> iconData) {
+    final int codePoint = int.parse(iconData['codePoint']);
+    final String? fontFamily = iconData['fontFamily'];
+    if (codePoint < 0 || codePoint > 0x10FFFF) {
+      return null;
+    }
+    return IconData(codePoint, fontFamily: fontFamily);
   }
 }

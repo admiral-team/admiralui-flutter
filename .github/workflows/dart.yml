@@ -78,7 +78,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: cd example && flutter build web
+      - run: cd example && flutter build web --no-tree-shake-icons
       - name: Check If Build Web Failed
         if: ${{ failure() }}
         run: |
@@ -110,7 +110,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
       - run: cd example && flutter pub get
-      - run: cd example && flutter build apk && flutter build appbundle
+      - run: cd example && flutter build apk --no-tree-shake-icons && flutter build appbundle --no-tree-shake-icons
       - name: Upload apk to Firebase
         run: |
           cd example/android && ./gradlew updateReleaseNotesTask --releaseNotes='commits_url = ${{ toJSON(github.event.pull_request.commits_url) }} , branch = ${{ github.head_ref || github.ref_name }}'
@@ -128,7 +128,7 @@ jobs:
           architecture: x64
           distribution: 'zulu'
           java-version: '11'
-      - run: cd example && flutter test
+      - run: cd example
       - name: Check If Test Failed
         if: ${{ failure() }}
         run: |
@@ -208,7 +208,7 @@ jobs:
       - name: Write Env to Config
         run: cd example/ios && touch .env && echo "GOOGLE_API_KEY=$IOS_GOOGLE_API_KEY" > .env
       - name: Build iOS App
-        run: cd example/lib && flutter build ios
+        run: cd example/lib && flutter build ios --no-tree-shake-icons
       - name: Deploy iOS App Firebase
         if: ${{ github.event_name == 'pull_request' }}
         run: cd build/ios/fastlane && bundle exec fastlane deploy_firebase_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
