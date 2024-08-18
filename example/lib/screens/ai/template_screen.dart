@@ -8,6 +8,7 @@ import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -171,6 +172,16 @@ class _TemplateScreenState extends State<TemplateScreen> {
               );
             },
           ),
+        );
+      case StandardTextFieldViewModel:
+        return TextFieldWidget(
+          item.controller,
+          state: item.state,
+          labelText: item.labelText,
+          placeHolderText: item.placeHolderText,
+          informerText: item.informerText,
+          hasSecure: item.isSecure,
+          numberOfLines: item.numberOfLines,
         );
       default:
         return Container();

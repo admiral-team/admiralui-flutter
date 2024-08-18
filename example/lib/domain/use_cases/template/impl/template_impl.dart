@@ -11,6 +11,7 @@ import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
@@ -172,6 +173,45 @@ class TemplateCaseImpl extends TemplateCase {
                 scrollDirection: direction,
                 width: width,
                 height: height);
+          case 'standard_text_field':
+              TextEditingController textController = TextEditingController(
+                text: item['data']['text']
+              );
+              TextInputState state = TextInputState.normal;
+              switch (item['data']['state']) {
+                case 'normal':
+                  state = TextInputState.normal;
+                  break;
+                case 'error':
+                  state = TextInputState.error;
+                  break;
+                case 'disabled':
+                  state = TextInputState.disabled;
+                  break;
+                case 'readOnly':
+                  state = TextInputState.readOnly;
+                  break;
+                default:
+                  state = TextInputState.normal;
+              }
+              int? numberOfLines = 1;
+              if (item['data']['number_of_lines'] == 0) {
+                numberOfLines = null;
+              } else if (item['data']['number_of_lines'] != null) {
+                numberOfLines = item['data']['number_of_lines'] ?? 1;
+              }
+              return StandardTextFieldViewModel(
+                id: id,
+                controller: textController,
+                labelText: item['data']['label_text'] ?? '',
+                placeHolderText: item['data']['placeholder_text'] ?? '',
+                informerText: item['data']['informer_text'],
+                isSecure: item['data']['is_secure'] ?? false,
+                numberOfLines: numberOfLines,
+                state: state,
+                width: width,
+                height: height
+              );
           case 'row':
             return RowViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);

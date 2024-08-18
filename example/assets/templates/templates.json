@@ -4,6 +4,9 @@
         "buttons_column_template.json",
         "buttons_template.json",
         "one_button_template.json",
-        "chat_created.json"
+        "chat_created.json",
+        "standard_textfield_template.json",
+        "secure_textfield_template.json",
+        "multiline_textfield_template.json"
     ]
 }
