@@ -68,7 +68,8 @@ class TabNavigatorAI extends StatelessWidget {
       TabNavigatorAIRoutes.chatTemplate.value: (BuildContext context) =>
           ChatTemplateScreen(
             title: 'Chat Template',
-            onPush: (TabNavigatorAIRoutes route) => _push(context, route),
+            onPush: (TabNavigatorAIRoutes route, String templateName) =>
+                _push(context, route, templateName),
           ),
     };
   }

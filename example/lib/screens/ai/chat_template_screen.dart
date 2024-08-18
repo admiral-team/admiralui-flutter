@@ -1,10 +1,13 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
+import 'package:example/screens/ai/block/chat_template/chat_template_screen_cubit.dart';
+import 'package:example/screens/ai/block/chat_template/chat_template_screen_state.dart';
+import 'package:example/screens/chat/input/chat_message_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../storage/app_theme_storage.dart';
-import '../chat/input/chat_message_item.dart';
 
 class ChatTemplateScreen extends StatefulWidget {
   const ChatTemplateScreen({
@@ -14,22 +17,16 @@ class ChatTemplateScreen extends StatefulWidget {
   });
 
   final String title;
-  final Function(TabNavigatorAIRoutes route) onPush;
+  final Function(TabNavigatorAIRoutes route, String templateName) onPush;
 
   @override
   State<ChatTemplateScreen> createState() => _ChatTemplateScreenState();
 }
 
 class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
+  final ChatTemplateScreenCubit cubit = ChatTemplateScreenCubit();
   TextInputState textInputState = TextInputState.normal;
   final ScrollController _controller = ScrollController();
-  late List<ChatMessageItem> chatMessages = <ChatMessageItem>[
-    ChatMessageItem(
-      text: 'Добрый день! Напишите какой интерфейс вы хотите',
-      direction: ChatDirection.left,
-      time: _getTime(),
-    ),
-  ];
 
   final TextEditingController textEditingController = TextEditingController();
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
@@ -49,13 +46,6 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
 
   void _onTextChanged() {
     setState(() {});
-  }
-
-  String _getTime() {
-    DateTime now = DateTime.now();
-    TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
-    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
-    return time;
   }
 
   Widget build(BuildContext context) {
@@ -88,61 +78,84 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
         padding: const EdgeInsets.symmetric(
           horizontal: LayoutGrid.doubleModule,
         ),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                color: colors.backgroundBasic.color(),
-                child: Material(
-                  color: colors.backgroundBasic.color(),
-                  child: ListView.builder(
-                    controller: _controller,
-                    addAutomaticKeepAlives: false,
-                    physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics(),
+        child: BlocBuilder<ChatTemplateScreenCubit, ChatTemplateScreenState>(
+            bloc: cubit,
+            builder: (BuildContext context, ChatTemplateScreenState state) {
+              return Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      color: colors.backgroundBasic.color(),
+                      child: Material(
+                        color: colors.backgroundBasic.color(),
+                        child: ListView.builder(
+                          controller: _controller,
+                          addAutomaticKeepAlives: false,
+                          physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics(),
+                          ),
+                          itemCount: state.chatMessages.length,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            switch (state.chatMessages[index].type) {
+                              case ChatType.message:
+                                return ChatBubbleView(
+                                  text: state.chatMessages[index].text,
+                                  direction:
+                                      state.chatMessages[index].direction,
+                                  time: state.chatMessages[index].time,
+                                );
+                              case ChatType.textOperation:
+                                return GestureDetector(
+                                    onTap: () {
+                                          widget.onPush.call(
+                                              TabNavigatorAIRoutes.
+                                              remoteTemplate,
+                                              state.chatMessages[index].text);
+                                        },
+                                    child: TextOperation(
+                                      TextOperationStyle.success,
+                                      ChatStatus.none,
+                                      ChatDirection.left,
+                                      chatBubbleStatusStyle:
+                                          ChatBubbleStatusStyle.initial,
+                                      title:
+                                          'Создан template по вашему запросу',
+                                      description:
+                                          state.chatMessages[index].text,
+                                      chatBubbleTime:
+                                          state.chatMessages[index].time,
+                                    ));
+                            }
+                          },
+                        ),
+                      ),
                     ),
-                    itemCount: chatMessages.length,
-                    itemBuilder: (BuildContext ctx, int index) {
-                      return ChatBubbleView(
-                        text: chatMessages[index].text,
-                        direction: chatMessages[index].direction,
-                        time: chatMessages[index].time,
-                      );
+                  ),
+                  SizedBox(
+                    height: LayoutGrid.halfModule * 3,
+                  ),
+                  ChatInput(
+                    key: const Key('chatInput'),
+                    state: textInputState,
+                    content: '',
+                    placeholder: 'Введите сообщение',
+                    isSendButtonDisabled: textEditingController.text.isEmpty,
+                    isShowFileButton: true,
+                    isTapSendButtonHidden: false,
+                    textEditingController: textEditingController,
+                    chatInputButtonKey: const Key('chatInputButton'),
+                    onSendButtonPress: () {
+                      cubit.createTemplate(textEditingController.text);
+                      textEditingController.text = '';
+                      _scrollDown();
                     },
                   ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: LayoutGrid.halfModule * 3,
-            ),
-            ChatInput(
-              key: const Key('chatInput'),
-              state: textInputState,
-              content: '',
-              placeholder: 'Введите сообщение',
-              isSendButtonDisabled: textEditingController.text.isEmpty,
-              isShowFileButton: true,
-              isTapSendButtonHidden: false,
-              textEditingController: textEditingController,
-              chatInputButtonKey: const Key('chatInputButton'),
-              onSendButtonPress: () {
-                setState(() {
-                  chatMessages.add(ChatMessageItem(
-                    text: textEditingController.text,
-                    direction: ChatDirection.right,
-                    time: _getTime(),
-                  ));
-                  textEditingController.text = '';
-                  _scrollDown();
-                });
-              },
-            ),
-            SizedBox(
-              height: LayoutGrid.doubleModule,
-            ),
-          ],
-        ),
+                  SizedBox(
+                    height: LayoutGrid.doubleModule,
+                  ),
+                ],
+              );
+            }),
       ),
     );
   }
