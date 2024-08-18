@@ -8,6 +8,7 @@ import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -123,6 +124,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
         } else {
           return Spacer();
         }
+      case StandardTabsViewModel:
+        return SizedBox(
+            width: item.width,
+            height: item.height,
+            child: StandardTabs(
+                item.items,
+                onTap: (String _) {
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                },
+            )
+        );
       case RowViewModel:
         return SizedBox(
             width: item.width,
