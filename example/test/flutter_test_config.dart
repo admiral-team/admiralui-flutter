@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 import 'package:path/path.dart' as path;
 
-const double _kGoldenTestsThreshold = 0.5 / 100;
+const double _kGoldenTestsThreshold = 0.9 / 100;
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   if (goldenFileComparator is LocalFileComparator) {

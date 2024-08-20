@@ -14,6 +14,7 @@ import 'calendar/vertical_calendar_screen_golden.dart';
 import 'cell/action_bar_cell_screen_golden.dart';
 import 'cell/base_cell_screen_golden.dart';
 import 'chat/chat_input_screen_golden.dart';
+import 'chat/chat_photo_upload_screen_golden.dart';
 import 'chat/chat_text_operation_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'currency_screen_golden.dart';
@@ -139,6 +140,8 @@ void main() {
     runTextBlockPaddingHeaderScreen(device);
     // Chat input
     runChatInputScreen(device);
+    // Chat Uploading Photo
+    runChatPhotoUploadScreen(device);
     // Chat Text Operation
     runChatTextOperationScreen(device);
   }
