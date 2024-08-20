@@ -13,6 +13,7 @@ import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
@@ -174,6 +175,47 @@ class TemplateCaseImpl extends TemplateCase {
                 scrollDirection: direction,
                 width: width,
                 height: height);
+          case 'title_header_widget':
+              TitleHeaderStyle style = TitleHeaderStyle.title;
+              switch (item['data']['style']) {
+                case 'title':
+                  style = TitleHeaderStyle.title;
+                  break;
+                case 'subtitle':
+                  style = TitleHeaderStyle.subtitle;
+                  break;
+                case 'headline':
+                  style = TitleHeaderStyle.headline;
+                  break;
+                case 'headlineSecondary':
+                  style = TitleHeaderStyle.headlineSecondary;
+                  break;
+                default:
+                  style = TitleHeaderStyle.title;
+              }
+            TextAlign textAlign = TextAlign.left;
+            // ВЫНЕСТИ ПОТОМ В ОТДЕЛЬНЫЙ МЕТОД
+            switch (item['data']['textAlign']) {
+                case 'left':
+                  textAlign = TextAlign.left;
+                  break;
+                case 'center':
+                  textAlign = TextAlign.center;
+                  break;
+                case 'right':
+                  textAlign = TextAlign.right;
+                  break;
+                default:
+                  textAlign = TextAlign.left;
+            }
+            return TitleHeaderWidgetViewModel(
+              id: id,
+              text: item['data']['text'],
+              style: style,
+              textAlign: textAlign,
+              width: width,
+                height: height
+            );
           case 'standard_text_field':
               TextEditingController textController = TextEditingController(
                 text: item['data']['text']
