@@ -12,6 +12,7 @@ import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
@@ -218,6 +219,14 @@ class TemplateCaseImpl extends TemplateCase {
           case 'column':
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
+          case 'standard_tabs':
+            List<dynamic> standardTabsItems = 
+            item['items'];
+            final List<String> titleItems = standardTabsItems.map(
+              (dynamic e) => e['title'].toString()).toList();
+            return StandardTabsViewModel(
+              items: titleItems, id: id, actions: actions
+            );
           default:
             return null;
         }
