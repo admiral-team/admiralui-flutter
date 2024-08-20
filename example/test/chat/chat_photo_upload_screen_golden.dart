@@ -16,40 +16,14 @@ void runChatPhotoUploadScreen(Device device) {
           await selectTab(tester, TabItem.chat);
           await selectSecondaryMenu(
               tester, scenarioWidgetKey, 'Uploading Photo');
-          await tester.pump(new Duration(milliseconds: 50));
+          await tester.pump(new Duration(milliseconds: 250));
         },
       );
 
     await tester.pumpDeviceBuilder(builder);
     await screenMatchesGolden(
       tester,
-      'chat_photo_uploading_light_screen_${device.name}',
-      customPump: (WidgetTester tester) async => await tester.pump(
-        const Duration(milliseconds: 250),
-      ),
-    );
-  });
-
-  testGoldens('chat_photo_uploading_light_loading_app',
-      (WidgetTester tester) async {
-    final DeviceBuilder builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: <Device>[device])
-      ..addScenario(
-        widget: const MyApp(),
-        name: 'Chat Photo Uploading Light Loading screen',
-        onCreate: (Key scenarioWidgetKey) async {
-          await selectTab(tester, TabItem.chat);
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Uploading Photo');
-          await setLoadingState(tester, scenarioWidgetKey);
-          await tester.pump(new Duration(milliseconds: 50));
-        },
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-    await screenMatchesGolden(
-      tester,
-      'chat_input_light_loading_screen_${device.name}',
+      'chat_photo_uploading_light_${device.name}',
       customPump: (WidgetTester tester) async => await tester.pump(
         const Duration(milliseconds: 250),
       ),
@@ -75,32 +49,7 @@ void runChatPhotoUploadScreen(Device device) {
     await screenMatchesGolden(
         tester, 'chat_photo_uploading_dark_screen_${device.name}',
         customPump: (WidgetTester tester) async => await tester.pump(
-              const Duration(milliseconds: 250),
-            ));
-  });
-
-  testGoldens('chat_photo_uploading_dark_loading_app',
-      (WidgetTester tester) async {
-    final DeviceBuilder builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: <Device>[device])
-      ..addScenario(
-        widget: const MyApp(),
-        name: 'Chat Photo Uploading Loading screen',
-        onCreate: (Key scenarioWidgetKey) async {
-          await selectTab(tester, TabItem.chat);
-          await changeTheme(tester, scenarioWidgetKey);
-          await selectSecondaryMenu(
-              tester, scenarioWidgetKey, 'Uploading Photo');
-          await setLoadingState(tester, scenarioWidgetKey);
-          await tester.pump(new Duration(milliseconds: 50));
-        },
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-    await screenMatchesGolden(
-        tester, 'chat_photo_uploading_dark_loading_screen_${device.name}',
-        customPump: (WidgetTester tester) async => await tester.pump(
-              const Duration(milliseconds: 250),
+              const Duration(milliseconds: 150),
             ));
   });
 }
