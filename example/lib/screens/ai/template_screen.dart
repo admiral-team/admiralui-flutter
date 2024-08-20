@@ -76,21 +76,6 @@ class _TemplateScreenState extends State<TemplateScreen> {
                     state.template?.items ?? <dynamic>[],
                   ));
             }),
-        // child: SingleChildScrollView(
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: <Widget>[
-        //       for (var index = 0; index < items.length; index++)
-        //         _buildView(
-        //           context,
-        //           index,
-        //           colors,
-        //           fonts,
-        //           items,
-        //         ),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }
@@ -172,7 +157,6 @@ class _TemplateScreenState extends State<TemplateScreen> {
           child: ListView.builder(
             scrollDirection: item.scrollDirection,
             itemCount: item.items.length,
-            // shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return _buildView(
                 context,

@@ -16,7 +16,7 @@ class ChatTemplateCaseImpl extends ChatTemplateCase {
       if (response.statusCode == 200) {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
-          return TemplateModel(name: data['fileName']);
+          return TemplateModel(name: data['data']['fileName']);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateModel(name: null);

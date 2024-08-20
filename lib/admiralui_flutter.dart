@@ -16,6 +16,7 @@ export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_file_bu
 export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_file_button_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_input/chat_input_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/chat_status.dart';
+export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_scheme.dart';
 export 'package:admiralui_flutter/src/widgets/chat/text_operation/text_operation_style.dart';
 export 'package:admiralui_flutter/src/widgets/chat/uploading_photo/cell/uploading_photo_cell_item.dart';
