@@ -681,12 +681,14 @@ class ChatBubbleStatusScheme {
 
     imageColorDefault = theme.colors.elementStaticWhite;
     imageColorSecondary = theme.colors.textSecondary;
+    imageColorError = theme.colors.elementError;
   }
 
   AppTheme theme;
   late AFont textFont;
   late AColor imageColorDefault;
   late AColor imageColorSecondary;
+  late AColor imageColorError;
   ChatBubbleStatusParameters<Color> textColor =
       ChatBubbleStatusParameters<Color>();
 }
