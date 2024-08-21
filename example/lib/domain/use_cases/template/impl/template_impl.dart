@@ -3,6 +3,7 @@ import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
+import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
@@ -10,6 +11,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/update_page_ac
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
+import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
@@ -147,6 +149,108 @@ class TemplateCaseImpl extends TemplateCase {
             }
 
             return PrimaryButtonViewModel(
+                id: id,
+                title: item['data']['title'],
+                isEnabled: item['data']['isEnabled'],
+                sizeType: sizeType,
+                iconData: iconData,
+                iconPosition: iconPosition,
+                actions: actions);
+          case 'secondary_button':
+            final dynamic sizeTypeJSON = item['data']['sizeType'];
+            ButtonSizeType sizeType;
+            switch (sizeTypeJSON) {
+              case 'small':
+                sizeType = ButtonSizeType.small;
+                break;
+              case 'medium':
+                sizeType = ButtonSizeType.medium;
+                break;
+              case 'big':
+                sizeType = ButtonSizeType.big;
+                break;
+              case 'custom':
+                if (width != null && height != null) {
+                  sizeType = ButtonSizeType.custom(width, height);
+                } else {
+                  sizeType = ButtonSizeType.big;
+                }
+                break;
+              default:
+                sizeType = ButtonSizeType.big;
+            }
+
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            IconPosition? iconPosition;
+            if (item['data']['iconPosition'] != null) {
+              switch (item['data']['iconPosition']) {
+                case 'left':
+                  iconPosition = IconPosition.left;
+                  break;
+                case 'right':
+                  iconPosition = IconPosition.right;
+                  break;
+                default:
+                  iconPosition = IconPosition.left;
+              }
+            }
+
+            return SecondaryButtonViewModel(
+                id: id,
+                title: item['data']['title'],
+                isEnabled: item['data']['isEnabled'],
+                sizeType: sizeType,
+                iconData: iconData,
+                iconPosition: iconPosition,
+                actions: actions);
+          case 'ghost_button':
+            final dynamic sizeTypeJSON = item['data']['sizeType'];
+            ButtonSizeType sizeType;
+            switch (sizeTypeJSON) {
+              case 'small':
+                sizeType = ButtonSizeType.small;
+                break;
+              case 'medium':
+                sizeType = ButtonSizeType.medium;
+                break;
+              case 'big':
+                sizeType = ButtonSizeType.big;
+                break;
+              case 'custom':
+                if (width != null && height != null) {
+                  sizeType = ButtonSizeType.custom(width, height);
+                } else {
+                  sizeType = ButtonSizeType.big;
+                }
+                break;
+              default:
+                sizeType = ButtonSizeType.big;
+            }
+
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            IconPosition? iconPosition;
+            if (item['data']['iconPosition'] != null) {
+              switch (item['data']['iconPosition']) {
+                case 'left':
+                  iconPosition = IconPosition.left;
+                  break;
+                case 'right':
+                  iconPosition = IconPosition.right;
+                  break;
+                default:
+                  iconPosition = IconPosition.left;
+              }
+            }
+
+            return GhostButtonViewModel(
                 id: id,
                 title: item['data']['title'],
                 isEnabled: item['data']['isEnabled'],
