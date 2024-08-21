@@ -1,6 +1,8 @@
 {
     "templates": [
         "primary_buttons_template.json",
+        "secondary_buttons_template.json",
+        "ghost_buttons_template.json",
         "buttons_column_template.json",
         "buttons_template.json",
         "one_button_template.json",
@@ -9,6 +11,7 @@
         "secure_textfield_template.json",
         "multiline_textfield_template.json",
         "standard_tabs_template.json",
-        "title_header_widget_template.json"
+        "title_header_widget_template.json",
+        "buttons_rules_template.json"
     ]
 }
