@@ -2,17 +2,21 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
+import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
+import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:flutter/widgets.dart';
@@ -249,7 +253,6 @@ class TemplateCaseImpl extends TemplateCase {
                   iconPosition = IconPosition.left;
               }
             }
-
             return GhostButtonViewModel(
                 id: id,
                 title: item['data']['title'],
@@ -257,6 +260,63 @@ class TemplateCaseImpl extends TemplateCase {
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
+                actions: actions);
+          case 'link_control':
+            final dynamic linkControllStyleJSON = item['data']['style'];
+            LinkStyle linkControllStyle;
+            switch (linkControllStyleJSON) {
+              case 'normal':
+                linkControllStyle = LinkStyle.normal;
+                break;
+              case 'medium':
+                linkControllStyle = LinkStyle.medium;
+                break;
+              default:
+                linkControllStyle = LinkStyle.normal;
+            }
+
+            IconData? leadingIconData;
+            if (item['data']['leadingIconData'] != null) {
+              leadingIconData = _parseIconData(item['data']['leadingIconData']);
+            }
+
+            IconData? trailingIconData;
+            if (item['data']['trailingIconData'] != null) {
+              trailingIconData =
+                  _parseIconData(item['data']['trailingIconData']);
+            }
+
+            return LinkControlViewModel(
+                id: id,
+                title: item['data']['title'],
+                isEnabled: item['data']['isEnabled'],
+                style: linkControllStyle,
+                leadingIcon: leadingIconData,
+                trailingIcon: trailingIconData,
+                actions: actions);
+          case 'check_box':
+            final dynamic checkBoxStyleJSON = item['data']['style'];
+            CheckboxStyle checkBoxStyle;
+            switch (checkBoxStyleJSON) {
+              case 'normal':
+                checkBoxStyle = CheckboxStyle.normal;
+                break;
+              case 'error':
+                checkBoxStyle = CheckboxStyle.error;
+                break;
+              default:
+                checkBoxStyle = CheckboxStyle.normal;
+            }
+            List<String> checkBoxItems =
+                List<String>.from(item['data']['items'] ?? <dynamic>[]);
+            if (checkBoxItems.isEmpty) {
+              checkBoxItems = <String>[''];
+            }
+            return CheckBoxViewModel(
+                id: id,
+                items: checkBoxItems,
+                isEnabled: item['data']['isEnabled'],
+                style: checkBoxStyle,
                 actions: actions);
           case 'spacer':
             return SpacerViewModel(id: id, width: width, height: height);
@@ -272,6 +332,7 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 direction = Axis.vertical;
             }
+
             return ScrollViewModel(
                 id: id,
                 items: _parseItems(item),
@@ -279,33 +340,32 @@ class TemplateCaseImpl extends TemplateCase {
                 width: width,
                 height: height);
           case 'standard_text_field':
-              TextEditingController textController = TextEditingController(
-                text: item['data']['text']
-              );
-              TextInputState state = TextInputState.normal;
-              switch (item['data']['state']) {
-                case 'normal':
-                  state = TextInputState.normal;
-                  break;
-                case 'error':
-                  state = TextInputState.error;
-                  break;
-                case 'disabled':
-                  state = TextInputState.disabled;
-                  break;
-                case 'readOnly':
-                  state = TextInputState.readOnly;
-                  break;
-                default:
-                  state = TextInputState.normal;
-              }
-              int? numberOfLines = 1;
-              if (item['data']['number_of_lines'] == 0) {
-                numberOfLines = null;
-              } else if (item['data']['number_of_lines'] != null) {
-                numberOfLines = item['data']['number_of_lines'] ?? 1;
-              }
-              return StandardTextFieldViewModel(
+            TextEditingController textController =
+                TextEditingController(text: item['data']['text']);
+            TextInputState state = TextInputState.normal;
+            switch (item['data']['state']) {
+              case 'normal':
+                state = TextInputState.normal;
+                break;
+              case 'error':
+                state = TextInputState.error;
+                break;
+              case 'disabled':
+                state = TextInputState.disabled;
+                break;
+              case 'readOnly':
+                state = TextInputState.readOnly;
+                break;
+              default:
+                state = TextInputState.normal;
+            }
+            int? numberOfLines = 1;
+            if (item['data']['number_of_lines'] == 0) {
+              numberOfLines = null;
+            } else if (item['data']['number_of_lines'] != null) {
+              numberOfLines = item['data']['number_of_lines'] ?? 1;
+            }
+            return StandardTextFieldViewModel(
                 id: id,
                 controller: textController,
                 labelText: item['data']['label_text'] ?? '',
@@ -315,22 +375,34 @@ class TemplateCaseImpl extends TemplateCase {
                 numberOfLines: numberOfLines,
                 state: state,
                 width: width,
-                height: height
-              );
+                height: height);
           case 'row':
             return RowViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
           case 'column':
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
+          case 'expanded':
+            final dynamic child = _parseItems(<String, dynamic>{
+              'data': <String, dynamic>{
+                'items': <dynamic>[item['data']['child']]
+              }
+            });
+            return ExpandedViewModel(
+                id: id, child: child.isNotEmpty ? child.first : null);
+          case 'text':
+            return TextViewModel(
+                id: id,
+                text: item['data']['text'],
+                width: width,
+                height: height);
           case 'standard_tabs':
-            List<dynamic> standardTabsItems = 
-            item['items'];
-            final List<String> titleItems = standardTabsItems.map(
-              (dynamic e) => e['title'].toString()).toList();
+            List<dynamic> standardTabsItems = item['items'];
+            final List<String> titleItems = standardTabsItems
+                .map((dynamic e) => e['title'].toString())
+                .toList();
             return StandardTabsViewModel(
-              items: titleItems, id: id, actions: actions
-            );
+                items: titleItems, id: id, actions: actions);
           default:
             return null;
         }
