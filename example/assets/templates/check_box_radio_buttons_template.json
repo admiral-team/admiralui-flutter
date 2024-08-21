@@ -1,0 +1,108 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "text",
+                            "data": {
+                                "text": "Check Boxes"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "check_box",
+                            "data": {
+                                "items": [""],
+                                "style": "normal",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "check_box",
+                            "data": {
+                                "items": ["Text to the right of checkbox"],
+                                "style": "normal",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "type": "check_box",
+                            "data": {
+                                "items": [""],
+                                "style": "error",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 16
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "type": "text",
+                            "data": {
+                                "text": "Radio Buttons"
+                            }
+                        },
+                        {
+                            "id": "9",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "10",
+                            "type": "radio_button",
+                            "data": {
+                                "items": ["", "Text"],
+                                "style": "normal",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "11",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "12",
+                            "type": "radio_button",
+                            "data": {
+                                "items": [""],
+                                "style": "error",
+                                "isEnabled": true
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

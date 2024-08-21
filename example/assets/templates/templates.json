@@ -11,6 +11,7 @@
         "secure_textfield_template.json",
         "multiline_textfield_template.json",
         "standard_tabs_template.json",
-        "buttons_rules_template.json"
+        "buttons_rules_template.json",
+        "check_box_radio_buttons_template.json"
     ]
 }

@@ -12,6 +12,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/update_items_a
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
@@ -318,6 +319,30 @@ class TemplateCaseImpl extends TemplateCase {
                 isEnabled: item['data']['isEnabled'],
                 style: checkBoxStyle,
                 actions: actions);
+          case 'radio_button':
+            final dynamic radioButtonStyleJSON = item['data']['style'];
+            RadioButtonStyle radioButtonStyle;
+            switch (radioButtonStyleJSON) {
+              case 'normal':
+                radioButtonStyle = RadioButtonStyle.normal;
+                break;
+              case 'error':
+                radioButtonStyle = RadioButtonStyle.error;
+                break;
+              default:
+                radioButtonStyle = RadioButtonStyle.normal;
+            }
+            List<String> checkBoxItems =
+                List<String>.from(item['data']['items'] ?? <dynamic>[]);
+            if (checkBoxItems.isEmpty) {
+              checkBoxItems = <String>[''];
+            }
+            return RadioButtonViewModel(
+                id: id,
+                items: checkBoxItems,
+                isEnabled: item['data']['isEnabled'],
+                style: radioButtonStyle,
+                actions: actions);
           case 'spacer':
             return SpacerViewModel(id: id, width: width, height: height);
           case 'scroll_view':
@@ -332,7 +357,6 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 direction = Axis.vertical;
             }
-
             return ScrollViewModel(
                 id: id,
                 items: _parseItems(item),
