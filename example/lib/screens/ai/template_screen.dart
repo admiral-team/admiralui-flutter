@@ -1,8 +1,11 @@
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
+import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
+import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
@@ -10,6 +13,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:flutter/material.dart';
@@ -132,6 +136,28 @@ class _TemplateScreenState extends State<TemplateScreen> {
                     cubit.didAction(widget.isLocal, item.actions, widget.onPush)
                   }),
         );
+      case LinkControlViewModel:
+        return LinkControl(
+            title: item.title,
+            isEnable: item.isEnabled,
+            style: item.style,
+            leadingImage: item.leadingIcon,
+            trailingImage: item.trailingIcon,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+      case CheckBoxViewModel:
+        return CheckBoxGroup(
+          items: item.items,
+          isEnabled: item.isEnabled,
+          selectedValues: item.selectedValues,
+          style: item.style ?? CheckboxStyle.normal,
+          onChanged: ((Map<String, bool> _) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          }),
+        );
+      case TextViewModel:
+        return Text(item.text);
       case SpacerViewModel:
         if (item.width != null || item.height != null) {
           return SizedBox(width: item.width, height: item.height);
@@ -143,12 +169,11 @@ class _TemplateScreenState extends State<TemplateScreen> {
             width: item.width,
             height: item.height,
             child: StandardTabs(
-                item.items,
-                onTap: (String _) {
-                  cubit.didAction(widget.isLocal, item.actions, widget.onPush);
-                },
-            )
-        );
+              item.items,
+              onTap: (String _) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            ));
       case RowViewModel:
         return SizedBox(
             width: item.width,
@@ -195,6 +220,16 @@ class _TemplateScreenState extends State<TemplateScreen> {
                 item.items,
               );
             },
+          ),
+        );
+      case ExpandedViewModel:
+        return Expanded(
+          child: _buildView(
+            ctx,
+            0,
+            colors,
+            fonts,
+            <dynamic>[item.child],
           ),
         );
       case StandardTextFieldViewModel:

@@ -1,0 +1,56 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "row",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "check_box",
+                            "data": {
+                                "items": [""],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "expanded",
+                            "data": {
+                                "child": {
+                                    
+                                        "id": "4",
+                                        "type": "column",
+                                        "data": {
+                                            "items": [
+                                                {
+                                                    
+                                                        "id": "5",
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "Я согласен с условиями договора и подтверждаю свое согласие на обработку персональных данных Банком"
+                                                        }
+                                                    
+                                                },
+                                                {
+                                                    "id": "7",
+                                                    "type": "link_control",
+                                                    "data": {
+                                                        "title": "Открыть список документов",
+                                                        "isEnabled": true
+                                                    }
+                                                }
+                                            ]
+                                            }
+                                        
+                                }
+                            }
+                        }
+
+                    ]
+                }
+            }
+        ]
+    }
+}
