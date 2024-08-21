@@ -10,6 +10,8 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -77,21 +79,6 @@ class _TemplateScreenState extends State<TemplateScreen> {
                     state.template?.items ?? <dynamic>[],
                   ));
             }),
-        // child: SingleChildScrollView(
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: <Widget>[
-        //       for (var index = 0; index < items.length; index++)
-        //         _buildView(
-        //           context,
-        //           index,
-        //           colors,
-        //           fonts,
-        //           items,
-        //         ),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }
@@ -151,6 +138,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
         } else {
           return Spacer();
         }
+      case StandardTabsViewModel:
+        return SizedBox(
+            width: item.width,
+            height: item.height,
+            child: StandardTabs(
+                item.items,
+                onTap: (String _) {
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                },
+            )
+        );
       case RowViewModel:
         return SizedBox(
             width: item.width,
@@ -198,6 +196,16 @@ class _TemplateScreenState extends State<TemplateScreen> {
               );
             },
           ),
+        );
+      case StandardTextFieldViewModel:
+        return TextFieldWidget(
+          item.controller,
+          state: item.state,
+          labelText: item.labelText,
+          placeHolderText: item.placeHolderText,
+          informerText: item.informerText,
+          hasSecure: item.isSecure,
+          numberOfLines: item.numberOfLines,
         );
       default:
         return Container();

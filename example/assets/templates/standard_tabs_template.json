@@ -1,0 +1,110 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "standard_tabs",
+                            "items": [
+                                {
+                                    "title": "One"
+                                },
+                                {
+                                    "title": "Two"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "spacer_1",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "standard_tabs",
+                            "items": [
+                                {
+                                    "title": "One"
+                                },
+                                {
+                                    "title": "Two"
+                                },
+                                {
+                                    "title": "Three"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "spacer_2",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "standard_tabs",
+                            "items": [
+                                {
+                                    "title": "One"
+                                },
+                                {
+                                    "title": "Two"
+                                },
+                                {
+                                    "title": "Three"
+                                },
+                                {
+                                    "title": "Four"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "spacer_3",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "standard_tabs",
+                            "items": [
+                                {
+                                    "title": "One"
+                                },
+                                {
+                                    "title": "Two"
+                                },
+                                {
+                                    "title": "Three"
+                                },
+                                {
+                                    "title": "Four"
+                                },
+                                {
+                                    "title": "Five"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "spacer_4",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
