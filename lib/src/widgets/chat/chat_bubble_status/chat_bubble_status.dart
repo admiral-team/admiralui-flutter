@@ -28,7 +28,7 @@ class ChatBubbleStatus extends StatefulWidget {
 
 class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
   late ChatBubbleStatusScheme scheme;
-  late Icon icon;
+  Icon? icon;
   late Color imageColor;
 
   @override
@@ -43,46 +43,37 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
       widget.chatStatus,
     );
 
-    switch (widget.chatStatus) {
-      case ChatStatus.error:
-        imageColor = scheme.imageColorError.color();
-        break;
-      default:
-        imageColor = (widget.style == ChatBubbleStatusStyle.initial)
-            ? scheme.imageColorSecondary.color()
-            : scheme.imageColorDefault.color();
-        break;
-    }
+    imageColor = (widget.style == ChatBubbleStatusStyle.initial)
+        ? scheme.imageColorSecondary.color()
+        : scheme.imageColorDefault.color();
 
     switch (widget.chatStatus) {
-      case ChatStatus.error:
-        icon = Icon(
-          AdmiralIcons.admiral_ic_error_solid,
-          color: imageColor,
-        );
-        break;
       case ChatStatus.read:
         icon = Icon(
           AdmiralIcons.admiral_ic_read_check_outline,
           color: imageColor,
+          size: LayoutGrid.doubleModule,
         );
         break;
       case ChatStatus.receive:
         icon = Icon(
           AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
+          size: LayoutGrid.doubleModule,
         );
         break;
       case ChatStatus.sent:
         icon = Icon(
           AdmiralIcons.admiral_ic_sent_outline,
           color: imageColor,
+          size: LayoutGrid.doubleModule,
         );
         break;
       case ChatStatus.loading:
         icon = Icon(
           AdmiralIcons.admiral_ic_time_outline,
           color: imageColor,
+          size: LayoutGrid.halfModule * 3,
         );
         break;
       default:
@@ -97,12 +88,12 @@ class _ChatBubbleStatusState extends State<ChatBubbleStatus> {
           textColorNormal: textColor,
         ),
         const SizedBox(
-          width: LayoutGrid.tripleModule / 4,
+          width: LayoutGrid.halfModule,
         ),
         if (widget.chatStatus != ChatStatus.none)
           Row(
             children: <Widget>[
-              icon,
+              icon ?? Container(),
             ],
           ),
       ],
