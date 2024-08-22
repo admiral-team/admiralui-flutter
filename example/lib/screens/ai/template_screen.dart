@@ -159,13 +159,12 @@ class _TemplateScreenState extends State<TemplateScreen> {
         );
       case RadioButtonViewModel:
         return RadioGroup(
-          items: item.items,
-          isEnabled: item.isEnabled,
-          style: item.style ?? CheckboxStyle.normal,
-          // onChanged: ((Map<String, bool> _) {
-          //   cubit.didAction(widget.isLocal, item.actions, widget.onPush);
-          // }),
-        );
+            items: item.items,
+            isEnabled: item.isEnabled,
+            style: item.style ?? CheckboxStyle.normal,
+            onChanged: (_) => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       case TextViewModel:
         return Text(item.text);
       case SpacerViewModel:
