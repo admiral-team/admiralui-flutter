@@ -1,0 +1,144 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title",
+                                "style": "title",
+                                "textAlign": "center"
+                            }
+                        },
+                        {
+                            "id": "spacer_1",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title subtitle",
+                                "style": "subtitle",
+                                "textAlign": "center"
+                            }
+                        },
+                        {
+                            "id": "spacer_2",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title headline",
+                                "style": "headline",
+                                "textAlign": "center"
+                            }
+                        },
+                        {
+                            "id": "spacer_3",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title headline secondary",
+                                "style": "headlineSecondary",
+                                "textAlign": "center"
+                            }
+                        },
+                        {
+                            "id": "spacer_4",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "1_left",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title",
+                                "style": "title",
+                                "textAlign": "left"
+                            }
+                        },
+                        {
+                            "id": "spacer_1_left",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "2_left",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title subtitle",
+                                "style": "subtitle",
+                                "textAlign": "left"
+                            }
+                        },
+                        {
+                            "id": "spacer_2_left",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "3_left",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title headline",
+                                "style": "headline",
+                                "textAlign": "left"
+                            }
+                        },
+                        {
+                            "id": "spacer_3_left",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "4_left",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Title headline secondary",
+                                "style": "headlineSecondary",
+                                "textAlign": "left"
+                            }
+                        },
+                        {
+                            "id": "spacer_4_left",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

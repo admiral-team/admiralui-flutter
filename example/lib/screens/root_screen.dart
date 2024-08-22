@@ -31,7 +31,7 @@ class _RootScreenState extends State<RootScreen> {
   };
 
   void _selectTab(TabItem tabItem) {
-    if (tabItem == _currentTab) {
+    if (tabItem == _currentTab && _navigatorKeys[tabItem] != null) {
       _navigatorKeys[tabItem]!
           .currentState!
           .popUntil((Route<dynamic> route) => route.isFirst);
