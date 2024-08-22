@@ -6,8 +6,10 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
+import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
@@ -170,12 +172,11 @@ class _TemplateScreenState extends State<TemplateScreen> {
             width: item.width,
             height: item.height,
             child: StandardTabs(
-                item.items,
-                onTap: (String _) {
-                  cubit.didAction(widget.isLocal, item.actions, widget.onPush);
-                },
-            )
-        );
+              item.items,
+              onTap: (String _) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            ));
       case TitleHeaderWidgetViewModel:
         return TitleHeaderWidget(
           title: item.text,
@@ -239,6 +240,35 @@ class _TemplateScreenState extends State<TemplateScreen> {
             fonts,
             <dynamic>[item.child],
           ),
+        );
+
+      case SliderTextFieldViewModel:
+        return SliderTextField(
+          item.controller,
+          state: item.state,
+          labelText: item.labelText,
+          placeHolderText: item.placeHolderText,
+          informerText: item.informerText,
+          trailingText: item.trailingText,
+          minLabelText: item.minLabelText,
+          maxLabelText: item.maxLabelText,
+          divisions: item.divisions,
+          currentValue: item.currentSliderValue,
+        );
+      case DoubleSliderTextFieldViewModel:
+        return DoubleSliderTextField(
+          textControllerLeading: item.leadingController,
+          textControllerTrailing: item.trailingController,
+          state: item.state,
+          labelText: item.labelText,
+          placeholderFrom: item.placeholderFrom,
+          placeholderTo: item.placeholderTo,
+          informerText: item.informerText,
+          trailingText: item.trailingText,
+          minValue: item.minValue,
+          maxValue: item.maxValue,
+          divisions: item.divisions,
+          currentRangeValues: item.currentRangeValues,
         );
       case StandardTextFieldViewModel:
         return TextFieldWidget(

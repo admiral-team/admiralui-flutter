@@ -1,0 +1,78 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "slider_text_field",
+                            "data": {
+                                "text": "50000000",
+                                "state": "normal",
+                                "label_text": "Optional label",
+                                "placeHolder_text": "",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minLabelText": 0.0,
+                                "maxLabelText": 100000000.0,
+                                "divisions": 100000000,
+                                "currentSliderValue": 50000000.0
+                            }
+                        },
+                        {
+                            "id": "spacer_1",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "slider_text_field",
+                            "data": {
+                                "text": "50000000",
+                                "state": "error",
+                                "label_text": "Optional label",
+                                "placeHolder_text": "",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minLabelText": 0.0,
+                                "maxLabelText": 100000000.0,
+                                "divisions": 100000000,
+                                "currentSliderValue": 50000000.0
+                            }
+                        },
+                        {
+                            "id": "spacer_3",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "slider_text_field",
+                            "data": {
+                                "text": "50000000",
+                                "state": "disabled",
+                                "label_text": "Optional label",
+                                "placeHolder_text": "",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minLabelText": 0.0,
+                                "maxLabelText": 100000000.0,
+                                "divisions": 100000000,
+                                "currentSliderValue": 50000000.0
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

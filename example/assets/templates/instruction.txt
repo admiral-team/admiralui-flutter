@@ -392,6 +392,164 @@
 }
 ```
 
+### 9. **`slider_text_field` - Поле с ползунком**
+
+**Описание:**  
+`slider_text_field` представляет собой комбинацию текстового поля и ползунка, которая позволяет пользователю вводить значение либо вручную, либо с помощью ползунка. Это удобно для выбора числовых значений в определенном диапазоне.
+
+**Поля:**
+- `id` - уникальный идентификатор элемента.
+- `type` - тип элемента, в данном случае `"slider_text_field"`.
+- `data` - содержит данные для настройки элемента:
+  - `text` - текущее значение, отображаемое в текстовом поле.
+  - `state` - состояние текстового поля (`"normal"`, `"error"`, `"readOnly"`, `"disabled"`).
+  - `label_text` - (необязательно) текст метки для текстового поля.
+  - `placeHolder_text` - (необязательно) текст заполнителя для текстового поля.
+  - `trailingText` - (необязательно) текст, отображаемый рядом с полем (например, единицы измерения).
+  - `informer_text` - (необязательно) дополнительный текст или подсказка под полем.
+  - `minLabelText` - минимальное значение для ползунка.
+  - `maxLabelText` - максимальное значение для ползунка.
+  - `divisions` - количество шагов на ползунке, определяющее дискретизацию выбора.
+  - `currentSliderValue` - текущее значение ползунка.
+
+**Пример кода:**
+
+```json
+{
+    "id": "1",
+    "type": "slider_text_field",
+    "data": {
+        "text": "50000000",
+        "state": "normal",
+        "label_text": "Optional label",
+        "placeHolder_text": "",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minLabelText": 0.0,
+        "maxLabelText": 100000000.0,
+        "divisions": 100000000,
+        "currentSliderValue": 50000000.0
+    }
+},
+{
+    "id": "2",
+    "type": "slider_text_field",
+    "data": {
+        "text": "50000000",
+        "state": "error",
+        "label_text": "Optional label",
+        "placeHolder_text": "",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minLabelText": 0.0,
+        "maxLabelText": 100000000.0,
+        "divisions": 100000000,
+        "currentSliderValue": 50000000.0
+    }
+},
+{
+    "id": "4",
+    "type": "slider_text_field",
+    "data": {
+        "text": "50000000",
+        "state": "disabled",
+        "label_text": "Optional label",
+        "placeHolder_text": "",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minLabelText": 0.0,
+        "maxLabelText": 100000000.0,
+        "divisions": 100000000,
+        "currentSliderValue": 50000000.0
+    }
+}
+```
+
+### 10. **`double_slider_text_field` - Поле с двумя ползунками**
+
+**Описание:**  
+`double_slider_text_field` представляет собой текстовое поле с двумя ползунками, которые позволяют задавать минимальное и максимальное значения в пределах заданного диапазона. Это полезно для выбора диапазонов, например, при выборе ценового интервала.
+
+**Поля:**
+- `id` - уникальный идентификатор элемента.
+- `type` - тип элемента, в данном случае `"double_slider_text_field"`.
+- `data` - содержит данные для настройки элемента:
+  - `left_text` - текущее значение для левого ползунка (минимальное значение).
+  - `right_text` - текущее значение для правого ползунка (максимальное значение).
+  - `state` - состояние поля (`"normal"`, `"error"`, `"readOnly"`, `"disabled"`).
+  - `label_text` - (необязательно) текст метки для текстового поля.
+  - `placeholderFrom` - (необязательно) текст заполнителя для минимального значения.
+  - `placeholderTo` - (необязательно) текст заполнителя для максимального значения.
+  - `trailingText` - (необязательно) текст, отображаемый рядом с полем (например, единицы измерения).
+  - `informer_text` - (необязательно) дополнительный текст или подсказка под полем.
+  - `minValue` - минимальное значение для обоих ползунков.
+  - `maxValue` - максимальное значение для обоих ползунков.
+  - `divisions` - количество шагов на ползунках, определяющее дискретизацию выбора.
+  - `minCurrentSliderValue` - текущее значение левого ползунка.
+  - `maxCurrentSliderValue` - текущее значение правого ползунка.
+
+**Пример кода:**
+
+```json
+{
+    "id": "1",
+    "type": "double_slider_text_field",
+    "data": {
+        "left_text": "10000000",
+        "right_text": "50000000",
+        "state": "normal",
+        "label_text": "Optional label",
+        "placeholderFrom": "0.0",
+        "placeholderTo": "100000000.0",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minValue": 0.0,
+        "maxValue": 100000000.0,
+        "divisions": 100000000,
+        "minCurrentSliderValue": 10000000.0,
+        "maxCurrentSliderValue": 50000000.0
+    }
+},
+{
+    "id": "2",
+    "type": "double_slider_text_field",
+    "data": {
+        "left_text": "10000000",
+        "right_text": "50000000",
+        "state": "error",
+        "label_text": "Optional label",
+        "placeholderFrom": "0.0",
+        "placeholderTo": "100000000.0",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minValue": 0.0,
+        "maxValue": 100000000.0,
+        "divisions": 100000000,
+        "minCurrentSliderValue": 10000000.0,
+        "maxCurrentSliderValue": 50000000.0
+    }
+},
+{
+    "id": "3",
+    "type": "double_slider_text_field",
+    "data": {
+        "left_text": "10000000",
+        "right_text": "50000000",
+        "state": "disabled",
+        "label_text": "Optional label",
+        "placeholderFrom": "0.0",
+        "placeholderTo": "100000000.0",
+        "trailingText": "₽",
+        "informer_text": "Additional text",
+        "minValue": 0.0,
+        "maxValue": 100000000.0,
+        "divisions": 100000000,
+        "minCurrentSliderValue": 10000000.0,
+        "maxCurrentSliderValue": 50000000.0
+    }
+}
+```
+
 ### Общий пример:
 
 Создадим пример интерфейса, который включает колонку с двумя кнопками, разделенными разделителем:

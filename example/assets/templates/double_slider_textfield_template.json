@@ -1,0 +1,97 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "double_slider_text_field",
+                            "data": {
+                                "left_text": "10000000",
+                                "right_text": "50000000",
+                                "state": "normal",
+                                "label_text": "Optional label",
+                                "placeholderFrom": "0.0",
+                                "placeholderTo": "100000000.0",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minValue": 0.0,
+                                "maxValue": 100000000.0,
+                                "divisions": 100000000,
+                                "minCurrentSliderValue": 10000000.0,
+                                "maxCurrentSliderValue": 50000000.0
+                                
+                            }
+                        },
+                        {
+                            "id": "spacer_1",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "double_slider_text_field",
+                            "data": {
+                                "left_text": "10000000",
+                                "right_text": "50000000",
+                                "state": "error",
+                                "label_text": "Optional label",
+                                "placeholderFrom": "0.0",
+                                "placeholderTo": "100000000.0",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minValue": 0.0,
+                                "maxValue": 100000000.0,
+                                "divisions": 100000000,
+                                "minCurrentSliderValue": 10000000.0,
+                                "maxCurrentSliderValue": 50000000.0
+                                
+                            }
+                        },
+                        {
+                            "id": "spacer_2",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "double_slider_text_field",
+                            "data": {
+                                "left_text": "10000000",
+                                "right_text": "50000000",
+                                "state": "disabled",
+                                "label_text": "Optional label",
+                                "placeholderFrom": "0.0",
+                                "placeholderTo": "100000000.0",
+                                "trailingText": "₽",
+                                "informer_text": "Additional text",
+                                "minValue": 0.0,
+                                "maxValue": 100000000.0,
+                                "divisions": 100000000,
+                                "minCurrentSliderValue": 10000000.0,
+                                "maxCurrentSliderValue": 50000000.0
+                                
+                            }
+                        },
+                        {
+                            "id": "spacer_3",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 32
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
