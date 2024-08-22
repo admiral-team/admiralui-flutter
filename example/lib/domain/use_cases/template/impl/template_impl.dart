@@ -6,6 +6,7 @@ import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
+import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
@@ -15,12 +16,13 @@ import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -341,66 +343,94 @@ class TemplateCaseImpl extends TemplateCase {
                 width: width,
                 height: height);
           case 'title_header_widget':
-              TitleHeaderStyle style = TitleHeaderStyle.title;
-              switch (item['data']['style']) {
-                case 'title':
-                  style = TitleHeaderStyle.title;
-                  break;
-                case 'subtitle':
-                  style = TitleHeaderStyle.subtitle;
-                  break;
-                case 'headline':
-                  style = TitleHeaderStyle.headline;
-                  break;
-                case 'headlineSecondary':
-                  style = TitleHeaderStyle.headlineSecondary;
-                  break;
-                default:
-                  style = TitleHeaderStyle.title;
-              }
+            TitleHeaderStyle style = TitleHeaderStyle.title;
+            switch (item['data']['style']) {
+              case 'title':
+                style = TitleHeaderStyle.title;
+                break;
+              case 'subtitle':
+                style = TitleHeaderStyle.subtitle;
+                break;
+              case 'headline':
+                style = TitleHeaderStyle.headline;
+                break;
+              case 'headlineSecondary':
+                style = TitleHeaderStyle.headlineSecondary;
+                break;
+              default:
+                style = TitleHeaderStyle.title;
+            }
             TextAlign textAlign = TextAlign.left;
             // ВЫНЕСТИ ПОТОМ В ОТДЕЛЬНЫЙ МЕТОД
             switch (item['data']['textAlign']) {
-                case 'left':
-                  textAlign = TextAlign.left;
-                  break;
-                case 'center':
-                  textAlign = TextAlign.center;
-                  break;
-                case 'right':
-                  textAlign = TextAlign.right;
-                  break;
-                default:
-                  textAlign = TextAlign.left;
+              case 'left':
+                textAlign = TextAlign.left;
+                break;
+              case 'center':
+                textAlign = TextAlign.center;
+                break;
+              case 'right':
+                textAlign = TextAlign.right;
+                break;
+              default:
+                textAlign = TextAlign.left;
             }
             return TitleHeaderWidgetViewModel(
-              id: id,
-              text: item['data']['text'],
-              style: style,
-              textAlign: textAlign,
-              width: width,
-                height: height
-            );
+                id: id,
+                text: item['data']['text'],
+                style: style,
+                textAlign: textAlign,
+                width: width,
+                height: height);
+          case 'slider_text_field':
+            TextEditingController textController =
+                TextEditingController(text: item['data']['text']);
+            TextInputState state = _getTextInputState(item);
+            return SliderTextFieldViewModel(
+                id: id,
+                controller: textController,
+                labelText: item['data']['label_text'] ?? '',
+                placeHolderText: item['data']['placeholder_text'] ?? '',
+                informerText: item['data']['informer_text'],
+                minLabelText: item['data']['minLabelText'],
+                maxLabelText: item['data']['maxLabelText'],
+                divisions: (item['data']['divisions'] 
+                ?? item['data']['maxLabelText']) ?? 1,
+                trailingText: item['data']['trailingText'],
+                currentSliderValue: item['data']['currentSliderValue'],
+                state: state,
+                width: width,
+                height: height);
+        case 'double_slider_text_field':
+            TextEditingController leftTextController =
+                TextEditingController(text: item['data']['left_text']);
+            TextEditingController rightTextController =
+                TextEditingController(text: item['data']['right_text']);
+            TextInputState state = _getTextInputState(item);
+            return DoubleSliderTextFieldViewModel(
+                id: id,
+                leadingController: leftTextController,
+                trailingController: rightTextController,
+                labelText: item['data']['label_text'] ?? '',
+                informerText: item['data']['informer_text'],
+                minValue: item['data']['minValue'],
+                maxValue: item['data']['maxValue'],
+                divisions: (item['data']['divisions'] 
+                ?? item['data']['maxLabelText']) ?? 1,
+                trailingText: item['data']['trailingText'],
+                currentRangeValues: RangeValues(
+                  item['data']['minCurrentSliderValue'] ?? 0.0,
+                   item['data']['maxCurrentSliderValue'] ?? 0.0
+                ),
+                placeholderFrom: item['data']['placeholderFrom'] ?? '',
+                placeholderTo: item['data']['placeholderTo'] ?? '',
+                state: state,
+                width: width,
+                height: height);
           case 'standard_text_field':
             TextEditingController textController =
                 TextEditingController(text: item['data']['text']);
-            TextInputState state = TextInputState.normal;
-            switch (item['data']['state']) {
-              case 'normal':
-                state = TextInputState.normal;
-                break;
-              case 'error':
-                state = TextInputState.error;
-                break;
-              case 'disabled':
-                state = TextInputState.disabled;
-                break;
-              case 'readOnly':
-                state = TextInputState.readOnly;
-                break;
-              default:
-                state = TextInputState.normal;
-            }
+            TextInputState state = _getTextInputState(item);
             int? numberOfLines = 1;
             if (item['data']['number_of_lines'] == 0) {
               numberOfLines = null;
@@ -454,6 +484,27 @@ class TemplateCaseImpl extends TemplateCase {
       }
     }).toList();
     return items;
+  }
+
+  TextInputState _getTextInputState(Map<String, dynamic> item) {
+    TextInputState state = TextInputState.normal;
+    switch (item['data']['state']) {
+      case 'normal':
+        state = TextInputState.normal;
+        break;
+      case 'error':
+        state = TextInputState.error;
+        break;
+      case 'disabled':
+        state = TextInputState.disabled;
+        break;
+      case 'readOnly':
+        state = TextInputState.readOnly;
+        break;
+      default:
+        state = TextInputState.normal;
+    }
+    return state;
   }
 
   IconData? _parseIconData(Map<String, dynamic> iconData) {
