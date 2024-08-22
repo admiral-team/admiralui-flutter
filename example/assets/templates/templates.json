@@ -11,6 +11,7 @@
         "secure_textfield_template.json",
         "multiline_textfield_template.json",
         "standard_tabs_template.json",
+        "title_header_widget_template.json",
         "buttons_rules_template.json"
     ]
 }
