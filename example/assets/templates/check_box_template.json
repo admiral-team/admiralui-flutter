@@ -60,45 +60,6 @@
                             "layout": {
                                 "height": 16
                             }
-                        },
-                        {
-                            "id": "8",
-                            "type": "text",
-                            "data": {
-                                "text": "Radio Buttons"
-                            }
-                        },
-                        {
-                            "id": "9",
-                            "type": "spacer",
-                            "layout": {
-                                "height": 8
-                            }
-                        },
-                        {
-                            "id": "10",
-                            "type": "radio_button",
-                            "data": {
-                                "items": ["", "Text"],
-                                "style": "normal",
-                                "isEnabled": true
-                            }
-                        },
-                        {
-                            "id": "11",
-                            "type": "spacer",
-                            "layout": {
-                                "height": 8
-                            }
-                        },
-                        {
-                            "id": "12",
-                            "type": "radio_button",
-                            "data": {
-                                "items": [""],
-                                "style": "error",
-                                "isEnabled": true
-                            }
                         }
                     ]
                 }
