@@ -1,0 +1,53 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "text",
+                            "data": {
+                                "text": "Radio Buttons"
+                            }
+                        },
+                        {
+                            "id": "9",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "radio_button",
+                            "data": {
+                                "items": ["", "Text"],
+                                "style": "normal",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "radio_button",
+                            "data": {
+                                "items": [""],
+                                "style": "error",
+                                "isEnabled": true
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

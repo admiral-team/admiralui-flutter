@@ -6,6 +6,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
@@ -159,6 +160,14 @@ class _TemplateScreenState extends State<TemplateScreen> {
             cubit.didAction(widget.isLocal, item.actions, widget.onPush);
           }),
         );
+      case RadioButtonViewModel:
+        return RadioGroup(
+            items: item.items,
+            isEnabled: item.isEnabled,
+            style: item.style ?? CheckboxStyle.normal,
+            onChanged: (_) => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       case TextViewModel:
         return Text(item.text);
       case SpacerViewModel:
