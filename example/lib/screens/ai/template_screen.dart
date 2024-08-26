@@ -1,6 +1,7 @@
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -289,6 +290,33 @@ class _TemplateScreenState extends State<TemplateScreen> {
           hasSecure: item.isSecure,
           numberOfLines: item.numberOfLines,
         );
+      case CalendarViewModel:
+        if (item.style == CalendarStyle.vertical) {
+          return CalendarVerticalView(
+            selectedEndDate: item.selectedEndDate,
+            selectedStartDate: item.selectedStartDate,
+            startDate: item.startDate,
+            currentDate: item.currentDate,
+            endDate: item.endDate,
+            onChangedRangeDates: (List<DateTime?> datesRange) {
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+            },
+          );
+        } else if (item.style == CalendarStyle.horizontal) {
+          return CalendarHorizontalView(
+            startDate: item.startDate,
+            endDate: item.endDate,
+            currentDate: item.currentDate,
+            selectedEndDate: item.selectedEndDate,
+            selectedStartDate: item.selectedStartDate,
+            onChangedRangeDates: (List<DateTime?> datesRange) {
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+            },
+          );
+        } else {
+          return Container();
+        }
+
       default:
         return Container();
     }

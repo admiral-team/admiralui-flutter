@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -418,14 +419,15 @@ class TemplateCaseImpl extends TemplateCase {
                 informerText: item['data']['informer_text'],
                 minLabelText: item['data']['minLabelText'],
                 maxLabelText: item['data']['maxLabelText'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
                 trailingText: item['data']['trailingText'],
                 currentSliderValue: item['data']['currentSliderValue'],
                 state: state,
                 width: width,
                 height: height);
-        case 'double_slider_text_field':
+          case 'double_slider_text_field':
             TextEditingController leftTextController =
                 TextEditingController(text: item['data']['left_text']);
             TextEditingController rightTextController =
@@ -439,13 +441,13 @@ class TemplateCaseImpl extends TemplateCase {
                 informerText: item['data']['informer_text'],
                 minValue: item['data']['minValue'],
                 maxValue: item['data']['maxValue'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
                 trailingText: item['data']['trailingText'],
                 currentRangeValues: RangeValues(
-                  item['data']['minCurrentSliderValue'] ?? 0.0,
-                   item['data']['maxCurrentSliderValue'] ?? 0.0
-                ),
+                    item['data']['minCurrentSliderValue'] ?? 0.0,
+                    item['data']['maxCurrentSliderValue'] ?? 0.0),
                 placeholderFrom: item['data']['placeholderFrom'] ?? '',
                 placeholderTo: item['data']['placeholderTo'] ?? '',
                 state: state,
@@ -499,6 +501,8 @@ class TemplateCaseImpl extends TemplateCase {
                 .toList();
             return StandardTabsViewModel(
                 items: titleItems, id: id, actions: actions);
+          case 'calendar':
+            return _parseCalendar(item, id, actions);
           default:
             return null;
         }
@@ -538,5 +542,38 @@ class TemplateCaseImpl extends TemplateCase {
       return null;
     }
     return IconData(codePoint, fontFamily: fontFamily);
+  }
+
+  // Parsing helper functions here (e.g., _parsePrimaryButton, _parseSecondaryButton, etc.)
+  CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
+      List<ActionItemModelInterface>? actions) {
+    CalendarStyle style;
+    switch (item['data']['style']) {
+      case 'horizontal':
+        style = CalendarStyle.horizontal;
+        break;
+      case 'vertical':
+      default:
+        style = CalendarStyle.vertical;
+    }
+    DateTime? parseDate(List<dynamic> dateList) {
+      if (dateList.length == 3) {
+        int year = int.parse(dateList[0]);
+        int month = int.parse(dateList[1]);
+        int day = int.parse(dateList[2]);
+        return DateTime(year, month, day);
+      }
+      return null;
+    }
+
+    return CalendarViewModel(
+      id: id,
+      style: style,
+      startDate: parseDate(item['data']['startDate']),
+      currentDate: parseDate(item['data']['currentDate']),
+      endDate: parseDate(item['data']['endDate']),
+      selectedStartDate: parseDate(item['data']['selectedStartDate']),
+      selectedEndDate: parseDate(item['data']['selectedEndDate']),
+    );
   }
 }

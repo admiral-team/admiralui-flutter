@@ -1,0 +1,18 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "1",
+                "type": "calendar",
+                "data": {
+                    "style": "horizontal",
+                    "startDate": ["2022", "1", "1"],
+                    "currentDate": ["2022", "1", "1"],
+                    "endDate": ["2024", "1", "1"],
+                    "selectedStartDate": ["2022", "2", "10"],
+                    "selectedEndDate": ["2022", "2", "20"]
+                    }
+            }                             
+        ]
+    }
+}
