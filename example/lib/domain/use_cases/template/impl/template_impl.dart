@@ -544,7 +544,6 @@ class TemplateCaseImpl extends TemplateCase {
     return IconData(codePoint, fontFamily: fontFamily);
   }
 
-  // Parsing helper functions here (e.g., _parsePrimaryButton, _parseSecondaryButton, etc.)
   CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
       List<ActionItemModelInterface>? actions) {
     CalendarStyle style;
