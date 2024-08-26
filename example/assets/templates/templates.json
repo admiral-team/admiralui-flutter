@@ -17,6 +17,7 @@
         "title_header_widget_template.json",
         "buttons_rules_template.json",
         "slider_textfield_template.json",
-        "double_slider_textfield_template.json"
+        "double_slider_textfield_template.json",
+        "tags_template.json"
     ]
 }
