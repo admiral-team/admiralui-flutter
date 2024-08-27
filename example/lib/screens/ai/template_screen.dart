@@ -1,3 +1,4 @@
+import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
@@ -20,6 +21,8 @@ import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
+import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +44,13 @@ class TemplateScreen extends StatefulWidget {
 
 class _TemplateScreenState extends State<TemplateScreen> {
   final TemplateScreenCubit cubit = TemplateScreenCubit();
+  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    appThemeButtonStorage.setThemeButtonHidden(true);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +257,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
             0,
             colors,
             fonts,
-            <dynamic>[item.child],
+            item.items,
           ),
         );
 
@@ -288,6 +298,15 @@ class _TemplateScreenState extends State<TemplateScreen> {
           informerText: item.informerText,
           hasSecure: item.isSecure,
           numberOfLines: item.numberOfLines,
+        );
+      case ZeroScreenViewModel:
+        return ZeroScreenView(
+          // Добавить, чтобы иконка бралась из модели
+          image: Assets.zeroScreen.success.image(), 
+          title: item.title,
+          subTitle: item.subtitle,
+          buttonTitle: item.buttonTitle,
+          isEnabled: item.isEnabled,
         );
       default:
         return Container();

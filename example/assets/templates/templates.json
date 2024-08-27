@@ -17,6 +17,10 @@
         "title_header_widget_template.json",
         "buttons_rules_template.json",
         "slider_textfield_template.json",
-        "double_slider_textfield_template.json"
+        "double_slider_textfield_template.json",
+        "chat_calculator_example.json",
+        "anketa_form_template.json",
+        "zero_screen_template.json",
+        "user_checkbox.json"
     ]
 }

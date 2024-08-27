@@ -15,7 +15,7 @@
                                 "text": "Text",
                                 "state": "normal",
                                 "label_text": "Optional label",
-                                "placeHolder_text": "Placeholder",
+                                "placeholder_text": "Placeholder",
                                 "informer_text": "Additional text",
                                 "is_secure": true
                             }

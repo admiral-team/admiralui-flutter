@@ -23,6 +23,7 @@ import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
@@ -159,7 +160,7 @@ class TemplateCaseImpl extends TemplateCase {
             return PrimaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -210,7 +211,7 @@ class TemplateCaseImpl extends TemplateCase {
             return SecondaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -260,7 +261,7 @@ class TemplateCaseImpl extends TemplateCase {
             return GhostButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -293,7 +294,7 @@ class TemplateCaseImpl extends TemplateCase {
             return LinkControlViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 style: linkControllStyle,
                 leadingIcon: leadingIconData,
                 trailingIcon: trailingIconData,
@@ -319,7 +320,7 @@ class TemplateCaseImpl extends TemplateCase {
             return CheckBoxViewModel(
                 id: id,
                 items: checkBoxItems,
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 style: checkBoxStyle,
                 actions: actions);
           case 'radio_button':
@@ -343,7 +344,7 @@ class TemplateCaseImpl extends TemplateCase {
             return RadioButtonViewModel(
                 id: id,
                 items: checkBoxItems,
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 style: radioButtonStyle,
                 actions: actions);
           case 'spacer':
@@ -406,6 +407,13 @@ class TemplateCaseImpl extends TemplateCase {
                 textAlign: textAlign,
                 width: width,
                 height: height);
+          case 'zero_screen_view':
+            return ZeroScreenViewModel(
+                id: id,
+                title: item['data']['title'] ?? '',
+                subtitle: item['data']['subtitle'] ?? '',
+                buttonTitle: item['data']['buttonTitle'] ?? '',
+                isEnabled: item['data']['isEnabled'] ?? true);
           case 'slider_text_field':
             TextEditingController textController =
                 TextEditingController(text: item['data']['text']);
@@ -418,34 +426,44 @@ class TemplateCaseImpl extends TemplateCase {
                 informerText: item['data']['informer_text'],
                 minLabelText: item['data']['minLabelText'],
                 maxLabelText: item['data']['maxLabelText'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
-                trailingText: item['data']['trailingText'],
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
+                trailingText: item['data']['trailingText'] ?? '',
                 currentSliderValue: item['data']['currentSliderValue'],
                 state: state,
                 width: width,
                 height: height);
-        case 'double_slider_text_field':
+          case 'double_slider_text_field':
             TextEditingController leftTextController =
                 TextEditingController(text: item['data']['left_text']);
             TextEditingController rightTextController =
                 TextEditingController(text: item['data']['right_text']);
             TextInputState state = _getTextInputState(item);
+            dynamic minValue = item['data']['minValue'] ?? 0.0;
+            dynamic maxValue = item['data']['maxValue'] ?? 0.0;
+            dynamic minCurrentSliderValue =
+                item['data']['minCurrentSliderValue'] ?? 0.0;
+            dynamic maxCurrentSliderValue =
+                item['data']['maxCurrentSliderValue'] ?? 0.0;
+            dynamic currentRangeValues = RangeValues(
+                minCurrentSliderValue.toDouble(),
+                maxCurrentSliderValue.toDouble());
+            print(currentRangeValues);
+            print(state);
             return DoubleSliderTextFieldViewModel(
                 id: id,
                 leadingController: leftTextController,
                 trailingController: rightTextController,
                 labelText: item['data']['label_text'] ?? '',
-                informerText: item['data']['informer_text'],
-                minValue: item['data']['minValue'],
-                maxValue: item['data']['maxValue'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
-                trailingText: item['data']['trailingText'],
-                currentRangeValues: RangeValues(
-                  item['data']['minCurrentSliderValue'] ?? 0.0,
-                   item['data']['maxCurrentSliderValue'] ?? 0.0
-                ),
+                informerText: item['data']['informer_text'] ?? '',
+                minValue: minValue.toDouble(),
+                maxValue: maxValue.toDouble(),
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
+                trailingText: item['data']['trailingText'] ?? '',
+                currentRangeValues: currentRangeValues,
                 placeholderFrom: item['data']['placeholderFrom'] ?? '',
                 placeholderTo: item['data']['placeholderTo'] ?? '',
                 state: state,
@@ -453,7 +471,7 @@ class TemplateCaseImpl extends TemplateCase {
                 height: height);
           case 'standard_text_field':
             TextEditingController textController =
-                TextEditingController(text: item['data']['text']);
+                TextEditingController(text: item['data']['text'].toString());
             TextInputState state = _getTextInputState(item);
             int? numberOfLines = 1;
             if (item['data']['number_of_lines'] == 0) {
@@ -461,13 +479,17 @@ class TemplateCaseImpl extends TemplateCase {
             } else if (item['data']['number_of_lines'] != null) {
               numberOfLines = item['data']['number_of_lines'] ?? 1;
             }
+            String labelText = item['data']['label_text'] ?? '';
+            String placeHolderText = item['data']['placeholder_text'] ?? '';
+            String informerText = item['data']['informer_text'] ?? '';
+            bool isSecure = item['data']['is_secure'] ?? false;
             return StandardTextFieldViewModel(
                 id: id,
                 controller: textController,
-                labelText: item['data']['label_text'] ?? '',
-                placeHolderText: item['data']['placeholder_text'] ?? '',
-                informerText: item['data']['informer_text'],
-                isSecure: item['data']['is_secure'] ?? false,
+                labelText: labelText.toString(),
+                placeHolderText: placeHolderText.toString(),
+                informerText: informerText,
+                isSecure: isSecure,
                 numberOfLines: numberOfLines,
                 state: state,
                 width: width,
@@ -479,13 +501,10 @@ class TemplateCaseImpl extends TemplateCase {
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
           case 'expanded':
-            final dynamic child = _parseItems(<String, dynamic>{
-              'data': <String, dynamic>{
-                'items': <dynamic>[item['data']['child']]
-              }
-            });
             return ExpandedViewModel(
-                id: id, child: child.isNotEmpty ? child.first : null);
+                id: id, 
+                items: _parseItems(item)
+            );
           case 'text':
             return TextViewModel(
                 id: id,
