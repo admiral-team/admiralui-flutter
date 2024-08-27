@@ -555,12 +555,16 @@ class TemplateCaseImpl extends TemplateCase {
       default:
         style = CalendarStyle.vertical;
     }
-    DateTime? parseDate(List<dynamic> dateList) {
-      if (dateList.length == 3) {
-        int year = int.parse(dateList[0]);
-        int month = int.parse(dateList[1]);
-        int day = int.parse(dateList[2]);
-        return DateTime(year, month, day);
+
+    DateTime? parseDate(String? dateString) {
+      if (dateString != null && dateString.isNotEmpty) {
+        List<String> parts = dateString.split('.');
+        if (parts.length == 3) {
+          int day = int.parse(parts[0]);
+          int month = int.parse(parts[1]);
+          int year = int.parse(parts[2]);
+          return DateTime(year, month, day);
+        }
       }
       return null;
     }

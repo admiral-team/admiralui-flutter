@@ -11,13 +11,13 @@
                             "type": "calendar",
                             "data": {
                                 "style": "vertical",
-                                "startDate": ["2022", "1", "1"],
-                                "currentDate": ["2022", "1", "1"],
-                                "endDate": ["2024", "1", "1"],
-                                "selectedStartDate": ["2022", "1", "10"],
-                                "selectedEndDate": ["2022", "1", "20"]
+                                "startDate": "1.1.2022",
+                                "currentDate": "1.1.2022",
+                                "endDate": "1.1.2024",
+                                "selectedStartDate": "10.1.2022",
+                                "selectedEndDate": "20.1.2022"
                             }
-                        }                             
+                        }
                     ]
                 }
             }
