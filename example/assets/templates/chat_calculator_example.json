@@ -1,0 +1,49 @@
+{
+  "id": "anketa_form",
+  "type": "scroll_view",
+  "data": {
+    "scroll_direction": "vertical",
+    "alignment": "leading",
+    "items": [
+      {
+        "id": "1",
+        "type": "title_header_widget",
+        "data": {
+          "text": "Ипотечная анкета",
+          "style": "title",
+          "textAlign": "center"
+        }
+      },
+      {
+        "id": "1",
+        "type": "title_header_widget",
+        "data": {
+          "text": "Ипотечная анкета",
+          "style": "title",
+          "textAlign": "center"
+        }
+      },
+      {
+        "id": "3",
+        "type": "standard_text_field",
+        "data": {
+            "text": "Text",
+            "state": "normal",
+            "label_text": "Optional label",
+            "placeholder_text": "Placeholder",
+            "informer_text": "Additional text"
+        }
+    },
+      {
+        "id": "2",
+        "type": "standard_text_field",
+        "data": {
+          "text": "",
+          "state": "normal",
+          "label_text": "Фамилия Имя Отчество",
+          "placeholder_text": "Введите ФИО"
+        }
+      }
+    ]
+  }
+}

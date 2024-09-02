@@ -9,6 +9,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/update_page_ac
 import 'package:example/screens/ai/view_models/interfaces/container_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/id_model_interface.dart';
 import 'package:example/shared/di.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TemplateScreenCubit extends Cubit<TemplateScreenState> {
@@ -21,6 +22,11 @@ class TemplateScreenCubit extends Cubit<TemplateScreenState> {
     final TemplateDetailModel template =
         await templateCase.getTemplate(isLocal, templateName);
     emit(TemplateScreenState(template: template));
+  }
+
+  Future<void> copyJSON() async {
+    String? json = state.template?.json;
+    await Clipboard.setData(ClipboardData(text: json ?? ''));
   }
 
   Future<void> didAction(bool isLocal, List<ActionItemModelInterface>? actions,
