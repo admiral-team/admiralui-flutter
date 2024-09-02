@@ -15,7 +15,7 @@
                                 "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                                 "state": "normal",
                                 "label_text": "Optional label",
-                                "placeHolder_text": "Placeholder",
+                                "placeholder_text": "Placeholder",
                                 "informer_text": "Additional text",
                                 "number_of_lines": 0
                             }

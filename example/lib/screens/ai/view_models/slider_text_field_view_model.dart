@@ -10,9 +10,10 @@ class SliderTextFieldViewModel
     required String id,
     required this.controller,
     required this.divisions,
+    required this.trailingText,
     this.labelText = '',
     this.placeHolderText = '',
-    this.trailingText,
+
     this.minLabelText,
     this.maxLabelText,
 
@@ -32,7 +33,7 @@ class SliderTextFieldViewModel
   final String labelText;
   final String placeHolderText;
   final String? informerText;
-  final String? trailingText;
+  final String trailingText;
   final double? minLabelText;
   final double? maxLabelText;
   final int divisions;
