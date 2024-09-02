@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -22,6 +23,7 @@ import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -501,10 +503,7 @@ class TemplateCaseImpl extends TemplateCase {
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
           case 'expanded':
-            return ExpandedViewModel(
-                id: id, 
-                items: _parseItems(item)
-            );
+            return ExpandedViewModel(id: id, items: _parseItems(item));
           case 'text':
             return TextViewModel(
                 id: id,
@@ -518,6 +517,19 @@ class TemplateCaseImpl extends TemplateCase {
                 .toList();
             return StandardTabsViewModel(
                 items: titleItems, id: id, actions: actions);
+          case 'title_button_drop_down':
+            return TitleButtonDropDownViewModel(
+                id: id,
+                title: item['data']['title'],
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
+          case 'button_drop_down':
+            return ButtonDropDownViewModel(
+                id: id,
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
           default:
             return null;
         }

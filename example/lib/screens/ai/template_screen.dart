@@ -2,6 +2,7 @@ import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -20,6 +21,7 @@ import 'package:example/screens/ai/view_models/secondary_button_view_model.dart'
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:example/storage/app_theme_storage.dart';
@@ -311,12 +313,27 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case ZeroScreenViewModel:
         return ZeroScreenView(
           // Добавить, чтобы иконка бралась из модели
-          image: Assets.zeroScreen.success.image(), 
+          image: Assets.zeroScreen.success.image(),
           title: item.title,
           subTitle: item.subtitle,
           buttonTitle: item.buttonTitle,
           isEnabled: item.isEnabled,
         );
+      case TitleButtonDropDownViewModel:
+        return TitleButtonDropDownWidget(
+            title: item.title,
+            buttonTitle: item.buttonTitle,
+            isEnable: item.isEnabled,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+      case ButtonDropDownViewModel:
+        return ButtonDropDownWidget(
+            buttonTitle: item.buttonTitle,
+            isEnable: item.isEnabled,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       default:
         return Container();
     }
