@@ -42,7 +42,7 @@ class TemplateCaseImpl extends TemplateCase {
             await rootBundle.loadString('assets/templates/$templateName');
         final Map<String, dynamic> data = await json.decode(response);
         List<dynamic> items = _parseItems(data);
-        return TemplateDetailModel(items: items);
+        return TemplateDetailModel(items: items, json: response);
       } catch (e) {
         print('Error parsing item: $e');
         return TemplateDetailModel(items: <dynamic>[]);
@@ -54,7 +54,7 @@ class TemplateCaseImpl extends TemplateCase {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
           List<dynamic> items = _parseItems(data['data']);
-          return TemplateDetailModel(items: items);
+          return TemplateDetailModel(items: items, json: response.body);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateDetailModel(items: <dynamic>[]);

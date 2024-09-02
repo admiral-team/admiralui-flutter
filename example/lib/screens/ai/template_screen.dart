@@ -79,6 +79,15 @@ class _TemplateScreenState extends State<TemplateScreen> {
         bottomOpacity: 0.0,
         elevation: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.copy),
+            tooltip: 'Copy json',
+            onPressed: () {
+              cubit.copyJSON();
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
