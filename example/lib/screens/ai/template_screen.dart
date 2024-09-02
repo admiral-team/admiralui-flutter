@@ -2,6 +2,7 @@ import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -241,6 +242,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
                       item.items,
                     ),
                 ]));
+      case BigInformerViewModel:
+        return Container(
+          child: BigInformerWidget(
+            title: item.title,
+            subtitle: item.subtitle,
+            linkText: item.linkText,
+            style: item.style,
+            isEnable: item.isEnabled,
+            onLinkPressed: () {},// Добавить обработку action
+          ),
+        );
       case ScrollViewModel:
         return SizedBox(
           width: item.width,
@@ -311,7 +323,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case ZeroScreenViewModel:
         return ZeroScreenView(
           // Добавить, чтобы иконка бралась из модели
-          image: Assets.zeroScreen.success.image(), 
+          image: Assets.zeroScreen.success.image(),
           title: item.title,
           subTitle: item.subtitle,
           buttonTitle: item.buttonTitle,
