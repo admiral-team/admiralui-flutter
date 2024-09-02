@@ -292,13 +292,15 @@ class _TemplateScreenState extends State<TemplateScreen> {
         );
       case TagViewModel:
         return TagControlWidget(
-          leadingText: item.leadingText,
-          leadingImage: item.leadingIcon,
-          title: item.title,
-          trailingText: item.trailingText,
-          trailingImage: item.trailingIcon,
-          style: item.style,
-        );
+            leadingText: item.leadingText,
+            leadingImage: item.leadingIcon,
+            title: item.title,
+            trailingText: item.trailingText,
+            trailingImage: item.trailingIcon,
+            style: item.style,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       default:
         return Container();
     }
