@@ -8,7 +8,7 @@ enum CalendarStyle {
 class CalendarViewModel with IDModelMixin {
   CalendarViewModel(
       {required String id,
-      this.style,
+      required this.style,
       this.startDate,
       this.currentDate,
       this.endDate,
@@ -17,7 +17,7 @@ class CalendarViewModel with IDModelMixin {
     this.id = id;
   }
 
-  final CalendarStyle? style;
+  final CalendarStyle style;
   final DateTime? startDate;
   final DateTime? currentDate;
   final DateTime? endDate;

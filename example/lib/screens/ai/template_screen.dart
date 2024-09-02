@@ -291,30 +291,31 @@ class _TemplateScreenState extends State<TemplateScreen> {
           numberOfLines: item.numberOfLines,
         );
       case CalendarViewModel:
-        if (item.style == CalendarStyle.vertical) {
-          return CalendarVerticalView(
-            selectedEndDate: item.selectedEndDate,
-            selectedStartDate: item.selectedStartDate,
-            startDate: item.startDate,
-            currentDate: item.currentDate,
-            endDate: item.endDate,
-            onChangedRangeDates: (List<DateTime?> datesRange) {
-              cubit.didAction(widget.isLocal, item.actions, widget.onPush);
-            },
-          );
-        } else if (item.style == CalendarStyle.horizontal) {
-          return CalendarHorizontalView(
-            startDate: item.startDate,
-            endDate: item.endDate,
-            currentDate: item.currentDate,
-            selectedEndDate: item.selectedEndDate,
-            selectedStartDate: item.selectedStartDate,
-            onChangedRangeDates: (List<DateTime?> datesRange) {
-              cubit.didAction(widget.isLocal, item.actions, widget.onPush);
-            },
-          );
-        } else {
-          return Container();
+        switch (item.style) {
+          case CalendarStyle.vertical:
+            return CalendarVerticalView(
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              startDate: item.startDate,
+              currentDate: item.currentDate,
+              endDate: item.endDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          case CalendarStyle.horizontal:
+            return CalendarHorizontalView(
+              startDate: item.startDate,
+              endDate: item.endDate,
+              currentDate: item.currentDate,
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          default:
+            return Container();
         }
 
       default:
