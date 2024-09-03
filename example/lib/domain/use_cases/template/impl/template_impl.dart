@@ -20,6 +20,7 @@ import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
@@ -521,6 +522,51 @@ class TemplateCaseImpl extends TemplateCase {
                 items: titleItems, id: id, actions: actions);
           case 'calendar':
             return _parseCalendar(item, id, actions);
+          case 'tag_control':
+            final dynamic tagStyleJSON = item['data']['style'];
+            TagStyle tagStyle;
+            switch (tagStyleJSON) {
+              case 'normal':
+                tagStyle = TagStyle.normal;
+                break;
+              case 'success':
+                tagStyle = TagStyle.success;
+                break;
+              case 'additional':
+                tagStyle = TagStyle.additional;
+                break;
+              case 'error':
+                tagStyle = TagStyle.error;
+                break;
+              case 'attention':
+                tagStyle = TagStyle.attention;
+                break;
+              default:
+                tagStyle = TagStyle.normal;
+            }
+
+            IconData? leadingIcon;
+            if (item['data']['leadingIcon'] != null) {
+              leadingIcon = _parseIconData(item['data']['leadingIcon']);
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return TagViewModel(
+              id: id,
+              isEnabled: item['data']['isEnabled'],
+              style: tagStyle,
+              leadingText: item['data']['leadingText'],
+              leadingIcon: leadingIcon,
+              title: item['data']['title'],
+              trailingText: item['data']['trailingText'],
+              trailingIcon: trailingIcon,
+              actions: actions,
+            );
+
           default:
             return null;
         }

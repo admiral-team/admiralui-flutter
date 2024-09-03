@@ -18,6 +18,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
@@ -346,6 +347,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
           buttonTitle: item.buttonTitle,
           isEnabled: item.isEnabled,
         );
+      case TagViewModel:
+        return TagControlWidget(
+            leadingText: item.leadingText,
+            leadingImage: item.leadingIcon,
+            title: item.title,
+            trailingText: item.trailingText,
+            trailingImage: item.trailingIcon,
+            style: item.style,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       default:
         return Container();
     }
