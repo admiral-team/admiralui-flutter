@@ -1,0 +1,142 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                  "scroll_direction": "vertical",
+                  "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet",
+                                "paragraphImageType": "point", 
+                                "textAligment": "left",
+                                "paragraphStyle": "primary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet",
+                                "paragraphImageType": "check", 
+                                "textAligment": "left",
+                                "paragraphStyle": "primary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "textAligment": "left",
+                                "paragraphStyle": "primary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "trailingIcon": {
+                                    "codePoint": "0xe5c8",
+                                    "fontFamily": "MaterialIcons"
+                                },
+                                "textAligment": "left",
+                                "paragraphStyle": "primary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "textAligment": "center",
+                                "paragraphStyle": "primary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet",
+                                "paragraphImageType": "point", 
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet",
+                                "paragraphImageType": "check", 
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "9",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "10",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "trailingIcon": {
+                                    "codePoint": "0xe5c8",
+                                    "fontFamily": "MaterialIcons"
+                                },
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "11",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                                "textAligment": "center",
+                                "paragraphStyle": "secondary",
+                                "isEnable": true
+                            }
+                        },
+                        {
+                            "id": "12",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -12,6 +12,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
@@ -501,10 +502,7 @@ class TemplateCaseImpl extends TemplateCase {
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
           case 'expanded':
-            return ExpandedViewModel(
-                id: id, 
-                items: _parseItems(item)
-            );
+            return ExpandedViewModel(id: id, items: _parseItems(item));
           case 'text':
             return TextViewModel(
                 id: id,
@@ -518,6 +516,62 @@ class TemplateCaseImpl extends TemplateCase {
                 .toList();
             return StandardTabsViewModel(
                 items: titleItems, id: id, actions: actions);
+          case 'paragraph_view':
+            ParagraphLeadingImageType? paragraphImageType;
+            if (item['data']['paragraphImageType'] != null) {
+              switch (item['data']['paragraphImageType']) {
+                case 'point':
+                  paragraphImageType = ParagraphLeadingImageType.point;
+                  break;
+                case 'check':
+                  paragraphImageType = ParagraphLeadingImageType.check;
+                  break;
+                default:
+                  paragraphImageType = null;
+              }
+            }
+
+            TextAlign textAlign;
+            switch (item['data']['textAligment']) {
+              case 'center':
+                textAlign = TextAlign.center;
+                break;
+              case 'right':
+                textAlign = TextAlign.right;
+                break;
+              case 'justify':
+                textAlign = TextAlign.justify;
+                break;
+              case 'left':
+              default:
+                textAlign = TextAlign.left;
+            }
+
+            ParagraphStyle paragraphStyle;
+            switch (item['data']['paragraphStyle']) {
+              case 'secondary':
+                paragraphStyle = ParagraphStyle.secondary;
+                break;
+              case 'primary':
+              default:
+                paragraphStyle = ParagraphStyle.primary;
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return ParagraphViewModel(
+              id: id,
+              title: item['data']['title'],
+              paragraphImageType: paragraphImageType,
+              trailingIcon: trailingIcon,
+              textAligment: textAlign,
+              paragraphStyle: paragraphStyle,
+              isEnable: item['data']['isEnable'] ?? true,
+            );
+
           default:
             return null;
         }

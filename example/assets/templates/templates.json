@@ -21,6 +21,7 @@
         "chat_calculator_example.json",
         "anketa_form_template.json",
         "zero_screen_template.json",
-        "user_checkbox.json"
+        "user_checkbox.json",
+        "paragraph_template.json"
     ]
 }

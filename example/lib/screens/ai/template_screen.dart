@@ -7,6 +7,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
@@ -311,12 +312,22 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case ZeroScreenViewModel:
         return ZeroScreenView(
           // Добавить, чтобы иконка бралась из модели
-          image: Assets.zeroScreen.success.image(), 
+          image: Assets.zeroScreen.success.image(),
           title: item.title,
           subTitle: item.subtitle,
           buttonTitle: item.buttonTitle,
           isEnabled: item.isEnabled,
         );
+      case ParagraphViewModel:
+        return ParagrapgWidget(
+          title: item.title,
+          paragraphImageType: item.paragraphImageType,
+          trailingImageWidget: Icon(item.trailingIcon),
+          textAligment: item.textAligment,
+          paragraphStyle: item.paragraphStyle,
+          isEnable: item.isEnable,
+        );
+
       default:
         return Container();
     }
