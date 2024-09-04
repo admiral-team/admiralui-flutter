@@ -386,26 +386,11 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 style = TitleHeaderStyle.title;
             }
-            TextAlign textAlign = TextAlign.left;
-            // ВЫНЕСТИ ПОТОМ В ОТДЕЛЬНЫЙ МЕТОД
-            switch (item['data']['textAlign']) {
-              case 'left':
-                textAlign = TextAlign.left;
-                break;
-              case 'center':
-                textAlign = TextAlign.center;
-                break;
-              case 'right':
-                textAlign = TextAlign.right;
-                break;
-              default:
-                textAlign = TextAlign.left;
-            }
             return TitleHeaderWidgetViewModel(
                 id: id,
                 text: item['data']['text'],
                 style: style,
-                textAlign: textAlign,
+                textAlign: _textAlign(item),
                 width: width,
                 height: height);
           case 'zero_screen_view':
@@ -531,22 +516,6 @@ class TemplateCaseImpl extends TemplateCase {
               }
             }
 
-            TextAlign textAlign;
-            switch (item['data']['textAligment']) {
-              case 'center':
-                textAlign = TextAlign.center;
-                break;
-              case 'right':
-                textAlign = TextAlign.right;
-                break;
-              case 'justify':
-                textAlign = TextAlign.justify;
-                break;
-              case 'left':
-              default:
-                textAlign = TextAlign.left;
-            }
-
             ParagraphStyle paragraphStyle;
             switch (item['data']['paragraphStyle']) {
               case 'secondary':
@@ -567,9 +536,9 @@ class TemplateCaseImpl extends TemplateCase {
               title: item['data']['title'],
               paragraphImageType: paragraphImageType,
               trailingIcon: trailingIcon,
-              textAligment: textAlign,
+              textAligment: _textAlign(item),
               paragraphStyle: paragraphStyle,
-              isEnable: item['data']['isEnable'] ?? true,
+              isEnabled: item['data']['isEnabled'] ?? true,
             );
 
           default:
@@ -611,5 +580,24 @@ class TemplateCaseImpl extends TemplateCase {
       return null;
     }
     return IconData(codePoint, fontFamily: fontFamily);
+  }
+
+  TextAlign _textAlign(Map<String, dynamic> item) {
+    TextAlign textAlign = TextAlign.left;
+    switch (item['data']['textAligment']) {
+      case 'center':
+        textAlign = TextAlign.center;
+        break;
+      case 'right':
+        textAlign = TextAlign.right;
+        break;
+      case 'justify':
+        textAlign = TextAlign.justify;
+        break;
+      case 'left':
+      default:
+        textAlign = TextAlign.left;
+    }
+    return textAlign;
   }
 }

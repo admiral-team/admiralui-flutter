@@ -608,7 +608,7 @@
     - `"check"` - значок галочки.
   - `textAligment` - выравнивание текста (`"left"`, `"center"`, и др.).
   - `paragraphStyle` - стиль параграфа (`"primary"`, `"secondary"` и др.).
-  - `isEnable` - флаг, указывающий, активен ли параграф (`true` - активен, `false` - неактивен).
+  - `isEnabled` - флаг, указывающий, активен ли параграф (`true` - активен, `false` - неактивен).
   - `trailingIcon` - (необязательно) иконка, отображаемая справа от параграфа. Содержит:
         - codePoint - код иконки в формате Unicode.
         - fontFamily - имя шрифта, используемого для отображения иконки..
@@ -627,7 +627,7 @@
         },
         "textAligment": "left",
         "paragraphStyle": "primary",
-        "isEnable": true
+        "isEnabled": true
     }
 }
 ```

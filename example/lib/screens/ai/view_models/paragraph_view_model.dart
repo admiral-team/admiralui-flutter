@@ -4,19 +4,22 @@ import 'package:example/screens/ai/view_models/interfaces/id_model_interface.dar
 import 'package:flutter/widgets.dart';
 
 class ParagraphViewModel with IDModelMixin, ActionModelMixin {
-  ParagraphViewModel(
-      {required String id,
-      this.title,
-      this.paragraphImageType,
-      this.trailingIcon,
-      this.textAligment = TextAlign.left,
-      this.paragraphStyle = ParagraphStyle.primary,
-      this.isEnable = true});
+  ParagraphViewModel({
+    required String id,
+    required this.paragraphStyle,
+    required this.isEnabled,
+    this.title,
+    this.paragraphImageType,
+    this.trailingIcon,
+    this.textAligment,
+  }) {
+    this.id = id;
+  }
 
   final String? title;
-  final ParagraphLeadingImageType? paragraphImageType;
-  final IconData? trailingIcon;
-  final TextAlign textAligment;
-  final ParagraphStyle paragraphStyle;
-  final bool isEnable;
+  ParagraphLeadingImageType? paragraphImageType;
+  IconData? trailingIcon;
+  TextAlign? textAligment;
+  ParagraphStyle paragraphStyle;
+  bool isEnabled;
 }

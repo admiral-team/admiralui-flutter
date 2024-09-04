@@ -16,7 +16,7 @@
                                 "paragraphImageType": "point", 
                                 "textAligment": "left",
                                 "paragraphStyle": "primary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -27,7 +27,7 @@
                                 "paragraphImageType": "check", 
                                 "textAligment": "left",
                                 "paragraphStyle": "primary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -37,7 +37,7 @@
                                 "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                                 "textAligment": "left",
                                 "paragraphStyle": "primary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -51,7 +51,7 @@
                                 },
                                 "textAligment": "left",
                                 "paragraphStyle": "primary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -61,7 +61,7 @@
                                 "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                                 "textAligment": "center",
                                 "paragraphStyle": "primary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -79,7 +79,7 @@
                                 "paragraphImageType": "point", 
                                 "textAligment": "left",
                                 "paragraphStyle": "secondary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -90,7 +90,7 @@
                                 "paragraphImageType": "check", 
                                 "textAligment": "left",
                                 "paragraphStyle": "secondary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -100,7 +100,7 @@
                                 "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                                 "textAligment": "left",
                                 "paragraphStyle": "secondary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -114,7 +114,7 @@
                                 },
                                 "textAligment": "left",
                                 "paragraphStyle": "secondary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {
@@ -124,7 +124,7 @@
                                 "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                                 "textAligment": "center",
                                 "paragraphStyle": "secondary",
-                                "isEnable": true
+                                "isEnabled": true
                             }
                         },
                         {

@@ -325,7 +325,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
           trailingImageWidget: Icon(item.trailingIcon),
           textAligment: item.textAligment,
           paragraphStyle: item.paragraphStyle,
-          isEnable: item.isEnable,
+          isEnable: item.isEnabled,
         );
 
       default:
