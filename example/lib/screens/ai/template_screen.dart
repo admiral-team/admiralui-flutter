@@ -2,6 +2,7 @@ import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
@@ -18,6 +19,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
@@ -310,6 +312,34 @@ class _TemplateScreenState extends State<TemplateScreen> {
           hasSecure: item.isSecure,
           numberOfLines: item.numberOfLines,
         );
+      case CalendarViewModel:
+        switch (item.style) {
+          case CalendarStyle.vertical:
+            return CalendarVerticalView(
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              startDate: item.startDate,
+              currentDate: item.currentDate,
+              endDate: item.endDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          case CalendarStyle.horizontal:
+            return CalendarHorizontalView(
+              startDate: item.startDate,
+              endDate: item.endDate,
+              currentDate: item.currentDate,
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          default:
+            return Container();
+        }
+
       case ZeroScreenViewModel:
         return ZeroScreenView(
           // Добавить, чтобы иконка бралась из модели
@@ -319,6 +349,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
           buttonTitle: item.buttonTitle,
           isEnabled: item.isEnabled,
         );
+      case TagViewModel:
+        return TagControlWidget(
+            leadingText: item.leadingText,
+            leadingImage: item.leadingIcon,
+            title: item.title,
+            trailingText: item.trailingText,
+            trailingImage: item.trailingIcon,
+            style: item.style,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
       case TitleButtonDropDownViewModel:
         return TitleButtonDropDownWidget(
             title: item.title,

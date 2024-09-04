@@ -1,0 +1,26 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "calendar",
+                            "data": {
+                                "style": "vertical",
+                                "startDate": "1.1.2022",
+                                "currentDate": "1.1.2022",
+                                "endDate": "1.1.2024",
+                                "selectedStartDate": "10.1.2022",
+                                "selectedEndDate": "20.1.2022"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
