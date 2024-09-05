@@ -18,10 +18,15 @@
         "buttons_rules_template.json",
         "slider_textfield_template.json",
         "double_slider_textfield_template.json",
+        "tags_template.json",
+        "calendar_vertical_template.json",
+        "calendar_horizontal_template.json",
+        "double_slider_textfield_template.json",
         "chat_calculator_example.json",
         "anketa_form_template.json",
         "zero_screen_template.json",
         "user_checkbox.json",
+        "accordion_template.json",
         "paragraph_template.json"
     ]
 }

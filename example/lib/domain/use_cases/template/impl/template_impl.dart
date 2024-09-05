@@ -2,6 +2,8 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
+import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -20,9 +22,11 @@ import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -501,6 +505,66 @@ class TemplateCaseImpl extends TemplateCase {
                 .toList();
             return StandardTabsViewModel(
                 items: titleItems, id: id, actions: actions);
+          case 'calendar':
+            return _parseCalendar(item, id, actions);
+          case 'tag_control':
+            final dynamic tagStyleJSON = item['data']['style'];
+            TagStyle tagStyle;
+            switch (tagStyleJSON) {
+              case 'normal':
+                tagStyle = TagStyle.normal;
+                break;
+              case 'success':
+                tagStyle = TagStyle.success;
+                break;
+              case 'additional':
+                tagStyle = TagStyle.additional;
+                break;
+              case 'error':
+                tagStyle = TagStyle.error;
+                break;
+              case 'attention':
+                tagStyle = TagStyle.attention;
+                break;
+              default:
+                tagStyle = TagStyle.normal;
+            }
+
+            IconData? leadingIcon;
+            if (item['data']['leadingIcon'] != null) {
+              leadingIcon = _parseIconData(item['data']['leadingIcon']);
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return TagViewModel(
+              id: id,
+              isEnabled: item['data']['isEnabled'],
+              style: tagStyle,
+              leadingText: item['data']['leadingText'],
+              leadingIcon: leadingIcon,
+              title: item['data']['title'],
+              trailingText: item['data']['trailingText'],
+              trailingIcon: trailingIcon,
+              actions: actions,
+            );
+
+          case 'title_button_drop_down':
+            return TitleButtonDropDownViewModel(
+                id: id,
+                title: item['data']['title'],
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
+          case 'button_drop_down':
+            return ButtonDropDownViewModel(
+                id: id,
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
           case 'paragraph_view':
             ParagraphLeadingImageType? paragraphImageType;
             if (item['data']['paragraphImageType'] != null) {
@@ -580,6 +644,42 @@ class TemplateCaseImpl extends TemplateCase {
       return null;
     }
     return IconData(codePoint, fontFamily: fontFamily);
+  }
+
+  CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
+      List<ActionItemModelInterface>? actions) {
+    CalendarStyle style;
+    switch (item['data']['style']) {
+      case 'horizontal':
+        style = CalendarStyle.horizontal;
+        break;
+      case 'vertical':
+      default:
+        style = CalendarStyle.vertical;
+    }
+
+    DateTime? parseDate(String? dateString) {
+      if (dateString != null && dateString.isNotEmpty) {
+        List<String> parts = dateString.split('.');
+        if (parts.length == 3) {
+          int day = int.parse(parts[0]);
+          int month = int.parse(parts[1]);
+          int year = int.parse(parts[2]);
+          return DateTime(year, month, day);
+        }
+      }
+      return null;
+    }
+
+    return CalendarViewModel(
+      id: id,
+      style: style,
+      startDate: parseDate(item['data']['startDate']),
+      currentDate: parseDate(item['data']['currentDate']),
+      endDate: parseDate(item['data']['endDate']),
+      selectedStartDate: parseDate(item['data']['selectedStartDate']),
+      selectedEndDate: parseDate(item['data']['selectedEndDate']),
+    );
   }
 
   TextAlign _textAlign(Map<String, dynamic> item) {
