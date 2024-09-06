@@ -9,6 +9,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/padding_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
@@ -376,6 +377,10 @@ class _TemplateScreenState extends State<TemplateScreen> {
             onPressed: () => <Future<void>>{
                   cubit.didAction(widget.isLocal, item.actions, widget.onPush)
                 });
+      case PaddingWidgetViewModel:
+        return PaddingWidget(
+          style: item.style,
+        );
       case ParagraphViewModel:
         return ParagrapgWidget(
           title: item.title,

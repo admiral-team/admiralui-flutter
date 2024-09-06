@@ -14,6 +14,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/padding_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
@@ -604,7 +605,17 @@ class TemplateCaseImpl extends TemplateCase {
               paragraphStyle: paragraphStyle,
               isEnabled: item['data']['isEnabled'] ?? true,
             );
-
+          case 'padding_widget':
+            PaddingStyle paddingStyle;
+            switch (item['data']['style']) {
+              case 'long':
+                paddingStyle = PaddingStyle.long;
+                break;
+              case 'short':
+              default:
+                paddingStyle = PaddingStyle.short;
+            }
+            return PaddingWidgetViewModel(id: id, style: paddingStyle);
           default:
             return null;
         }
