@@ -14,6 +14,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
@@ -389,26 +390,11 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 style = TitleHeaderStyle.title;
             }
-            TextAlign textAlign = TextAlign.left;
-            // ВЫНЕСТИ ПОТОМ В ОТДЕЛЬНЫЙ МЕТОД
-            switch (item['data']['textAlign']) {
-              case 'left':
-                textAlign = TextAlign.left;
-                break;
-              case 'center':
-                textAlign = TextAlign.center;
-                break;
-              case 'right':
-                textAlign = TextAlign.right;
-                break;
-              default:
-                textAlign = TextAlign.left;
-            }
             return TitleHeaderWidgetViewModel(
                 id: id,
                 text: item['data']['text'],
                 style: style,
-                textAlign: textAlign,
+                textAlign: _textAlign(item),
                 width: width,
                 height: height);
           case 'zero_screen_view':
@@ -579,6 +565,46 @@ class TemplateCaseImpl extends TemplateCase {
                 buttonTitle: item['data']['buttonTitle'],
                 isEnabled: item['data']['isEnabled'] ?? true,
                 actions: actions);
+          case 'paragraph_view':
+            ParagraphLeadingImageType? paragraphImageType;
+            if (item['data']['paragraphImageType'] != null) {
+              switch (item['data']['paragraphImageType']) {
+                case 'point':
+                  paragraphImageType = ParagraphLeadingImageType.point;
+                  break;
+                case 'check':
+                  paragraphImageType = ParagraphLeadingImageType.check;
+                  break;
+                default:
+                  paragraphImageType = null;
+              }
+            }
+
+            ParagraphStyle paragraphStyle;
+            switch (item['data']['paragraphStyle']) {
+              case 'secondary':
+                paragraphStyle = ParagraphStyle.secondary;
+                break;
+              case 'primary':
+              default:
+                paragraphStyle = ParagraphStyle.primary;
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return ParagraphViewModel(
+              id: id,
+              title: item['data']['title'],
+              paragraphImageType: paragraphImageType,
+              trailingIcon: trailingIcon,
+              textAligment: _textAlign(item),
+              paragraphStyle: paragraphStyle,
+              isEnabled: item['data']['isEnabled'] ?? true,
+            );
+
           default:
             return null;
         }
@@ -654,5 +680,24 @@ class TemplateCaseImpl extends TemplateCase {
       selectedStartDate: parseDate(item['data']['selectedStartDate']),
       selectedEndDate: parseDate(item['data']['selectedEndDate']),
     );
+  }
+
+  TextAlign _textAlign(Map<String, dynamic> item) {
+    TextAlign textAlign = TextAlign.left;
+    switch (item['data']['textAligment']) {
+      case 'center':
+        textAlign = TextAlign.center;
+        break;
+      case 'right':
+        textAlign = TextAlign.right;
+        break;
+      case 'justify':
+        textAlign = TextAlign.justify;
+        break;
+      case 'left':
+      default:
+        textAlign = TextAlign.left;
+    }
+    return textAlign;
   }
 }

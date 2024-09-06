@@ -70,18 +70,18 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet',
                 paragraphImageType: ParagraphLeadingImageType.point,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet',
                 paragraphImageType: ParagraphLeadingImageType.check,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
                     'elit, sed do eiusmod tempor incididunt ut labore et dolore'
                     'magna aliqua.',
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
@@ -90,14 +90,14 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                 trailingImageWidget: Icon(
                   AdmiralIcons.admiral_ic_sent_outline,
                 ),
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
                     'elit, sed do eiusmod tempor incididunt ut labore et dolore'
                     'magna aliqua.',
                 textAligment: TextAlign.center,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -114,20 +114,20 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                 title: 'Lorem ipsum dolor sit amet',
                 paragraphImageType: ParagraphLeadingImageType.point,
                 paragraphStyle: ParagraphStyle.secondary,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet',
                 paragraphImageType: ParagraphLeadingImageType.check,
                 paragraphStyle: ParagraphStyle.secondary,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
                     'elit, sed do eiusmod tempor incididunt ut labore et dolore'
                     'magna aliqua.',
                 paragraphStyle: ParagraphStyle.secondary,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
@@ -137,7 +137,7 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                 trailingImageWidget: Icon(
                   AdmiralIcons.admiral_ic_sent_outline,
                 ),
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               ),
               ParagrapgWidget(
                 title: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
@@ -145,7 +145,7 @@ class _ParagraphScreenState extends State<ParagraphScreen> {
                     'magna aliqua.',
                 paragraphStyle: ParagraphStyle.secondary,
                 textAligment: TextAlign.center,
-                isEnable: isEnabled,
+                isEnabled: isEnabled,
               )
             ],
           ),

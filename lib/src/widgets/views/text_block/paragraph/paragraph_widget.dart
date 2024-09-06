@@ -10,7 +10,7 @@ class ParagrapgWidget extends StatefulWidget {
     this.trailingImageWidget,
     this.textAligment = TextAlign.left,
     this.paragraphStyle = ParagraphStyle.primary,
-    this.isEnable = true,
+    this.isEnabled = true,
     this.scheme,
   });
 
@@ -19,7 +19,7 @@ class ParagrapgWidget extends StatefulWidget {
   final Icon? trailingImageWidget;
   final TextAlign textAligment;
   final ParagraphStyle paragraphStyle;
-  final bool isEnable;
+  final bool isEnabled;
   final ParagraphWidgetScheme? scheme;
 
   @override
@@ -34,13 +34,13 @@ class _TitleButtonDropDownWidgetState extends State<ParagrapgWidget> {
     final AppTheme theme = AppThemeProvider.of(context);
     scheme = widget.scheme ?? ParagraphWidgetScheme(theme: theme);
     Color textColor =
-        widget.isEnable ? scheme.textColor : scheme.disabledTextColor;
+        widget.isEnabled ? scheme.textColor : scheme.disabledTextColor;
     if (widget.paragraphStyle == ParagraphStyle.secondary) {
-      textColor = widget.isEnable
+      textColor = widget.isEnabled
           ? scheme.secondaryTextColor
           : scheme.disabledSecondaryTextColor;
     }
-    final Color imageColor = widget.isEnable
+    final Color imageColor = widget.isEnabled
         ? scheme.leadingImageColor
         : scheme.disabledLeadingImageColor;
 
