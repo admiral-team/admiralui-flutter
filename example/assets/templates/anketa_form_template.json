@@ -1,0 +1,87 @@
+{
+    "data": {
+      "items": [
+        {
+          "id": "0",
+          "type": "column",
+          "data": {
+            "items": [
+              {
+                "id": "1",
+                "type": "title_header_widget",
+                "data": {
+                  "text": "Регистрация",
+                  "style": "title",
+                  "textAlign": "center"
+                }
+              },
+              {
+                "id": "2",
+                "type": "spacer"
+              },
+              {
+                "id": "3",
+                "type": "standard_text_field",
+                "data": {
+                  "text": "",
+                  "state": "normal",
+                  "label_text": "Имя",
+                  "placeholder_text": "Введите Ваше имя"
+                }
+              },
+              {
+                "id": "4",
+                "type": "standard_text_field",
+                "data": {
+                  "text": "",
+                  "state": "normal",
+                  "label_text": "Email",
+                  "placeholder_text": "Введите Ваш email"
+                }
+              },
+              {
+                "id": "5",
+                "type": "standard_text_field",
+                "data": {
+                  "text": "",
+                  "state": "normal",
+                  "label_text": "Пароль",
+                  "placeholder_text": "Введите пароль",
+                  "is_secure": true
+                }
+              },
+              {
+                "id": "6",
+                "type": "spacer"
+              },
+              {
+                "id": "7",
+                "type": "primary_button",
+                "data": {
+                  "title": "Зарегистрироваться",
+                  "isEnabled": true,
+                  "sizeType": "big"
+                },
+                "actions": [
+                    {
+                        "actionName": "didTap",
+                        "type": "deeplink",
+                        "data": {
+                            "link": "success_registration.json"
+                        }
+                    }
+                ]
+              },
+              {
+                "id": "8",
+                "type": "spacer",
+                "layout": {
+                    "height": 12
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

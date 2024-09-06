@@ -1,0 +1,121 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "text",
+                            "data": {
+                              "text": "Tags"
+                            }
+                          },
+                          {
+                            "id": "2",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 8
+                            }
+                          },
+                        {
+                            "id": "3",
+                            "type": "tag_control",
+                            "data": {
+                                "leadingText": "Leading Text",
+                                "leadingIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "title": "Tag Title",
+                                "trailingText": "Trailing Text",
+                                "trailingIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "trailingButtonIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "style": "normal",
+
+                                "actions": [
+                                    {
+                                        "actionName": "didTap",
+                                        "type": "deeplink",
+                                        "data": {
+                                            "link": "buttons_template.json"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 8
+                            }
+                          },
+                        {
+                            "id": "4",
+                            "type": "tag_control",
+                            "data": {
+                                "leadingIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "title": "Tag Title",
+                                "style": "success",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 8
+                            }
+                          },
+                        {
+                            "id": "6",
+                            "type": "tag_control",
+                            "data": {
+                                "leadingIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "title": "Tag Title",
+                                "style": "additional",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "type": "spacer",
+                            "layout": {
+                              "height": 8
+                            }
+                          },
+                        {
+                            "id": "8",
+                            "type": "tag_control",
+                            "data": {
+                                "leadingIcon": {
+                                    "codePoint": "0x1F431",
+                                    "fontFamily": "MaterialIcons"
+                                  },
+                                "title": "Tag Title",
+                                "style": "error",
+                                "isEnabled": true
+                            }
+                        }
+                        
+                    ]
+                }
+            }
+        ]
+    }
+}

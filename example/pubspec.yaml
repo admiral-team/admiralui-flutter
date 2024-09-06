@@ -64,24 +64,24 @@ flutter:
   fonts:
     - family: AdmiralIcons
       fonts:
-        - asset: ../lib/fonts/AdmiralIcons.ttf
+        - asset: assets/fonts/AdmiralIcons.ttf
     - family: MaterialIcons
       fonts:
-        - asset: ../lib/fonts/MaterialIcons-Regular.otf
+        - asset: assets/fonts/MaterialIcons-Regular.otf
     - family: CupertinoIcons
       fonts:
-        - asset: ../lib/fonts/CupertinoIcons.ttf
+        - asset: assets/fonts/CupertinoIcons.ttf
     - family: SFProDisplay
       fonts:
-        - asset: ../lib/fonts/SFProDisplay-Regular.ttf
-        - asset: ../lib/fonts/SFProDisplay-Medium.ttf
-        - asset: ../lib/fonts/SFProDisplay-Bold.ttf
-        - asset: ../lib/fonts/SFProDisplay-Semibold.ttf
+        - asset: assets/fonts/SFProDisplay-Regular.ttf
+        - asset: assets/fonts/SFProDisplay-Medium.ttf
+        - asset: assets/fonts/SFProDisplay-Bold.ttf
+        - asset: assets/fonts/SFProDisplay-Semibold.ttf
     - family: SFProText
       fonts:
-        - asset: ../lib/fonts/SF-Pro-Text-Semibold.otf
-        - asset: ../lib/fonts/SF-Pro-Text-Regular.otf
-        - asset: ../lib/fonts/SF-Pro-Text-Bold.ttf
+        - asset: assets/fonts/SF-Pro-Text-Semibold.otf
+        - asset: assets/fonts/SF-Pro-Text-Regular.otf
+        - asset: assets/fonts/SF-Pro-Text-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   assets:

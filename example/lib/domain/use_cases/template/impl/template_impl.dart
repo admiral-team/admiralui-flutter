@@ -2,6 +2,8 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
+import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
@@ -12,16 +14,21 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/src/response.dart';
@@ -40,7 +47,7 @@ class TemplateCaseImpl extends TemplateCase {
             await rootBundle.loadString('assets/templates/$templateName');
         final Map<String, dynamic> data = await json.decode(response);
         List<dynamic> items = _parseItems(data);
-        return TemplateDetailModel(items: items);
+        return TemplateDetailModel(items: items, json: response);
       } catch (e) {
         print('Error parsing item: $e');
         return TemplateDetailModel(items: <dynamic>[]);
@@ -52,7 +59,7 @@ class TemplateCaseImpl extends TemplateCase {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
           List<dynamic> items = _parseItems(data['data']);
-          return TemplateDetailModel(items: items);
+          return TemplateDetailModel(items: items, json: response.body);
         } catch (e) {
           print('Error parsing item: $e');
           return TemplateDetailModel(items: <dynamic>[]);
@@ -158,7 +165,7 @@ class TemplateCaseImpl extends TemplateCase {
             return PrimaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -209,7 +216,7 @@ class TemplateCaseImpl extends TemplateCase {
             return SecondaryButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -259,7 +266,7 @@ class TemplateCaseImpl extends TemplateCase {
             return GhostButtonViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 sizeType: sizeType,
                 iconData: iconData,
                 iconPosition: iconPosition,
@@ -292,7 +299,7 @@ class TemplateCaseImpl extends TemplateCase {
             return LinkControlViewModel(
                 id: id,
                 title: item['data']['title'],
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 style: linkControllStyle,
                 leadingIcon: leadingIconData,
                 trailingIcon: trailingIconData,
@@ -318,8 +325,32 @@ class TemplateCaseImpl extends TemplateCase {
             return CheckBoxViewModel(
                 id: id,
                 items: checkBoxItems,
-                isEnabled: item['data']['isEnabled'],
+                isEnabled: item['data']['isEnabled'] ?? true,
                 style: checkBoxStyle,
+                actions: actions);
+          case 'radio_button':
+            final dynamic radioButtonStyleJSON = item['data']['style'];
+            RadioButtonStyle radioButtonStyle;
+            switch (radioButtonStyleJSON) {
+              case 'normal':
+                radioButtonStyle = RadioButtonStyle.normal;
+                break;
+              case 'error':
+                radioButtonStyle = RadioButtonStyle.error;
+                break;
+              default:
+                radioButtonStyle = RadioButtonStyle.normal;
+            }
+            List<String> checkBoxItems =
+                List<String>.from(item['data']['items'] ?? <dynamic>[]);
+            if (checkBoxItems.isEmpty) {
+              checkBoxItems = <String>[''];
+            }
+            return RadioButtonViewModel(
+                id: id,
+                items: checkBoxItems,
+                isEnabled: item['data']['isEnabled'] ?? true,
+                style: radioButtonStyle,
                 actions: actions);
           case 'spacer':
             return SpacerViewModel(id: id, width: width, height: height);
@@ -335,7 +366,6 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 direction = Axis.vertical;
             }
-
             return ScrollViewModel(
                 id: id,
                 items: _parseItems(item),
@@ -360,28 +390,20 @@ class TemplateCaseImpl extends TemplateCase {
               default:
                 style = TitleHeaderStyle.title;
             }
-            TextAlign textAlign = TextAlign.left;
-            // ВЫНЕСТИ ПОТОМ В ОТДЕЛЬНЫЙ МЕТОД
-            switch (item['data']['textAlign']) {
-              case 'left':
-                textAlign = TextAlign.left;
-                break;
-              case 'center':
-                textAlign = TextAlign.center;
-                break;
-              case 'right':
-                textAlign = TextAlign.right;
-                break;
-              default:
-                textAlign = TextAlign.left;
-            }
             return TitleHeaderWidgetViewModel(
                 id: id,
                 text: item['data']['text'],
                 style: style,
-                textAlign: textAlign,
+                textAlign: _textAlign(item),
                 width: width,
                 height: height);
+          case 'zero_screen_view':
+            return ZeroScreenViewModel(
+                id: id,
+                title: item['data']['title'] ?? '',
+                subtitle: item['data']['subtitle'] ?? '',
+                buttonTitle: item['data']['buttonTitle'] ?? '',
+                isEnabled: item['data']['isEnabled'] ?? true);
           case 'slider_text_field':
             TextEditingController textController =
                 TextEditingController(text: item['data']['text']);
@@ -394,34 +416,44 @@ class TemplateCaseImpl extends TemplateCase {
                 informerText: item['data']['informer_text'],
                 minLabelText: item['data']['minLabelText'],
                 maxLabelText: item['data']['maxLabelText'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
-                trailingText: item['data']['trailingText'],
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
+                trailingText: item['data']['trailingText'] ?? '',
                 currentSliderValue: item['data']['currentSliderValue'],
                 state: state,
                 width: width,
                 height: height);
-        case 'double_slider_text_field':
+          case 'double_slider_text_field':
             TextEditingController leftTextController =
                 TextEditingController(text: item['data']['left_text']);
             TextEditingController rightTextController =
                 TextEditingController(text: item['data']['right_text']);
             TextInputState state = _getTextInputState(item);
+            dynamic minValue = item['data']['minValue'] ?? 0.0;
+            dynamic maxValue = item['data']['maxValue'] ?? 0.0;
+            dynamic minCurrentSliderValue =
+                item['data']['minCurrentSliderValue'] ?? 0.0;
+            dynamic maxCurrentSliderValue =
+                item['data']['maxCurrentSliderValue'] ?? 0.0;
+            dynamic currentRangeValues = RangeValues(
+                minCurrentSliderValue.toDouble(),
+                maxCurrentSliderValue.toDouble());
+            print(currentRangeValues);
+            print(state);
             return DoubleSliderTextFieldViewModel(
                 id: id,
                 leadingController: leftTextController,
                 trailingController: rightTextController,
                 labelText: item['data']['label_text'] ?? '',
-                informerText: item['data']['informer_text'],
-                minValue: item['data']['minValue'],
-                maxValue: item['data']['maxValue'],
-                divisions: (item['data']['divisions'] 
-                ?? item['data']['maxLabelText']) ?? 1,
-                trailingText: item['data']['trailingText'],
-                currentRangeValues: RangeValues(
-                  item['data']['minCurrentSliderValue'] ?? 0.0,
-                   item['data']['maxCurrentSliderValue'] ?? 0.0
-                ),
+                informerText: item['data']['informer_text'] ?? '',
+                minValue: minValue.toDouble(),
+                maxValue: maxValue.toDouble(),
+                divisions: (item['data']['divisions'] ??
+                        item['data']['maxLabelText']) ??
+                    1,
+                trailingText: item['data']['trailingText'] ?? '',
+                currentRangeValues: currentRangeValues,
                 placeholderFrom: item['data']['placeholderFrom'] ?? '',
                 placeholderTo: item['data']['placeholderTo'] ?? '',
                 state: state,
@@ -429,7 +461,7 @@ class TemplateCaseImpl extends TemplateCase {
                 height: height);
           case 'standard_text_field':
             TextEditingController textController =
-                TextEditingController(text: item['data']['text']);
+                TextEditingController(text: item['data']['text'].toString());
             TextInputState state = _getTextInputState(item);
             int? numberOfLines = 1;
             if (item['data']['number_of_lines'] == 0) {
@@ -437,13 +469,17 @@ class TemplateCaseImpl extends TemplateCase {
             } else if (item['data']['number_of_lines'] != null) {
               numberOfLines = item['data']['number_of_lines'] ?? 1;
             }
+            String labelText = item['data']['label_text'] ?? '';
+            String placeHolderText = item['data']['placeholder_text'] ?? '';
+            String informerText = item['data']['informer_text'] ?? '';
+            bool isSecure = item['data']['is_secure'] ?? false;
             return StandardTextFieldViewModel(
                 id: id,
                 controller: textController,
-                labelText: item['data']['label_text'] ?? '',
-                placeHolderText: item['data']['placeholder_text'] ?? '',
-                informerText: item['data']['informer_text'],
-                isSecure: item['data']['is_secure'] ?? false,
+                labelText: labelText.toString(),
+                placeHolderText: placeHolderText.toString(),
+                informerText: informerText,
+                isSecure: isSecure,
                 numberOfLines: numberOfLines,
                 state: state,
                 width: width,
@@ -455,13 +491,7 @@ class TemplateCaseImpl extends TemplateCase {
             return ColumnViewModel(
                 id: id, items: _parseItems(item), width: width, height: height);
           case 'expanded':
-            final dynamic child = _parseItems(<String, dynamic>{
-              'data': <String, dynamic>{
-                'items': <dynamic>[item['data']['child']]
-              }
-            });
-            return ExpandedViewModel(
-                id: id, child: child.isNotEmpty ? child.first : null);
+            return ExpandedViewModel(id: id, items: _parseItems(item));
           case 'text':
             return TextViewModel(
                 id: id,
@@ -475,6 +505,106 @@ class TemplateCaseImpl extends TemplateCase {
                 .toList();
             return StandardTabsViewModel(
                 items: titleItems, id: id, actions: actions);
+          case 'calendar':
+            return _parseCalendar(item, id, actions);
+          case 'tag_control':
+            final dynamic tagStyleJSON = item['data']['style'];
+            TagStyle tagStyle;
+            switch (tagStyleJSON) {
+              case 'normal':
+                tagStyle = TagStyle.normal;
+                break;
+              case 'success':
+                tagStyle = TagStyle.success;
+                break;
+              case 'additional':
+                tagStyle = TagStyle.additional;
+                break;
+              case 'error':
+                tagStyle = TagStyle.error;
+                break;
+              case 'attention':
+                tagStyle = TagStyle.attention;
+                break;
+              default:
+                tagStyle = TagStyle.normal;
+            }
+
+            IconData? leadingIcon;
+            if (item['data']['leadingIcon'] != null) {
+              leadingIcon = _parseIconData(item['data']['leadingIcon']);
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return TagViewModel(
+              id: id,
+              isEnabled: item['data']['isEnabled'],
+              style: tagStyle,
+              leadingText: item['data']['leadingText'],
+              leadingIcon: leadingIcon,
+              title: item['data']['title'],
+              trailingText: item['data']['trailingText'],
+              trailingIcon: trailingIcon,
+              actions: actions,
+            );
+
+          case 'title_button_drop_down':
+            return TitleButtonDropDownViewModel(
+                id: id,
+                title: item['data']['title'],
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
+          case 'button_drop_down':
+            return ButtonDropDownViewModel(
+                id: id,
+                buttonTitle: item['data']['buttonTitle'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                actions: actions);
+          case 'paragraph_view':
+            ParagraphLeadingImageType? paragraphImageType;
+            if (item['data']['paragraphImageType'] != null) {
+              switch (item['data']['paragraphImageType']) {
+                case 'point':
+                  paragraphImageType = ParagraphLeadingImageType.point;
+                  break;
+                case 'check':
+                  paragraphImageType = ParagraphLeadingImageType.check;
+                  break;
+                default:
+                  paragraphImageType = null;
+              }
+            }
+
+            ParagraphStyle paragraphStyle;
+            switch (item['data']['paragraphStyle']) {
+              case 'secondary':
+                paragraphStyle = ParagraphStyle.secondary;
+                break;
+              case 'primary':
+              default:
+                paragraphStyle = ParagraphStyle.primary;
+            }
+
+            IconData? trailingIcon;
+            if (item['data']['trailingIcon'] != null) {
+              trailingIcon = _parseIconData(item['data']['trailingIcon']);
+            }
+
+            return ParagraphViewModel(
+              id: id,
+              title: item['data']['title'],
+              paragraphImageType: paragraphImageType,
+              trailingIcon: trailingIcon,
+              textAligment: _textAlign(item),
+              paragraphStyle: paragraphStyle,
+              isEnabled: item['data']['isEnabled'] ?? true,
+            );
+
           default:
             return null;
         }
@@ -514,5 +644,60 @@ class TemplateCaseImpl extends TemplateCase {
       return null;
     }
     return IconData(codePoint, fontFamily: fontFamily);
+  }
+
+  CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
+      List<ActionItemModelInterface>? actions) {
+    CalendarStyle style;
+    switch (item['data']['style']) {
+      case 'horizontal':
+        style = CalendarStyle.horizontal;
+        break;
+      case 'vertical':
+      default:
+        style = CalendarStyle.vertical;
+    }
+
+    DateTime? parseDate(String? dateString) {
+      if (dateString != null && dateString.isNotEmpty) {
+        List<String> parts = dateString.split('.');
+        if (parts.length == 3) {
+          int day = int.parse(parts[0]);
+          int month = int.parse(parts[1]);
+          int year = int.parse(parts[2]);
+          return DateTime(year, month, day);
+        }
+      }
+      return null;
+    }
+
+    return CalendarViewModel(
+      id: id,
+      style: style,
+      startDate: parseDate(item['data']['startDate']),
+      currentDate: parseDate(item['data']['currentDate']),
+      endDate: parseDate(item['data']['endDate']),
+      selectedStartDate: parseDate(item['data']['selectedStartDate']),
+      selectedEndDate: parseDate(item['data']['selectedEndDate']),
+    );
+  }
+
+  TextAlign _textAlign(Map<String, dynamic> item) {
+    TextAlign textAlign = TextAlign.left;
+    switch (item['data']['textAligment']) {
+      case 'center':
+        textAlign = TextAlign.center;
+        break;
+      case 'right':
+        textAlign = TextAlign.right;
+        break;
+      case 'justify':
+        textAlign = TextAlign.justify;
+        break;
+      case 'left':
+      default:
+        textAlign = TextAlign.left;
+    }
+    return textAlign;
   }
 }

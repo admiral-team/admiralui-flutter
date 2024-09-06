@@ -1,0 +1,16 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "zero_screen_view",
+                "data": {
+                    "title": "Title",
+                    "subtitle": "Subtitle",
+                    "buttonTitle": "Button Title",
+                    "isEnabled": true
+                }
+            }
+        ]
+    }
+}
