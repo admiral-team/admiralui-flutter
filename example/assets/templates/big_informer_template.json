@@ -1,0 +1,88 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "0",
+        "type": "column",
+        "data": {
+          "items": [
+            {
+              "id": "1",
+              "type": "big_informer",
+              "data": {
+                "title": "Important Update",
+                "subtitle": "Please read the following information carefully.",
+                "linkText": "Learn more",
+                "isEnabled": true,
+                "style": "success"
+              },
+              "actions": [
+                {
+                  "actionName": "didTap",
+                  "type": "deeplink",
+                  "data": {
+                    "link": "buttons_template.json"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "3",
+              "type": "big_informer",
+              "data": {
+                "title": "Important Update",
+                "subtitle": "Please read the following information carefully.",
+                "linkText": "Learn more",
+                "isEnabled": true,
+                "style": "error"
+              }
+            },
+            {
+              "id": "4",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "5",
+              "type": "big_informer",
+              "data": {
+                "title": "Important Update",
+                "subtitle": "Please read the following information carefully.",
+                "linkText": "Learn more",
+                "isEnabled": true,
+                "style": "attention"
+              }
+            },
+            {
+              "id": "6",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "7",
+              "type": "big_informer",
+              "data": {
+                "title": "Important Update",
+                "subtitle": "Please read the following information carefully.",
+                "linkText": "Learn more",
+                "isEnabled": true,
+                "style": "normal"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
