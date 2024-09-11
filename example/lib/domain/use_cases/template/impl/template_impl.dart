@@ -748,7 +748,7 @@ class TemplateCaseImpl extends TemplateCase {
       case 'bottomRight':
         return InformerDirectionStyle.bottomRight;
       default:
-        return InformerDirectionStyle.topLeft; // Default value
+        return InformerDirectionStyle.topLeft;
     }
   }
 }
