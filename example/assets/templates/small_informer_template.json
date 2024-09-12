@@ -1,0 +1,84 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "0",
+        "type": "column",
+        "data": {
+          "items": [
+            {
+              "id": "1",
+              "type": "small_informer",
+              "data": {
+                "title": "Important Update",
+                "style": "normal",
+                "arrowDirectionStyle": "topLeft",
+                "isEnabled": true
+              },
+              "actions": [
+                {
+                  "actionName": "didTap",
+                  "type": "deeplink",
+                  "data": {
+                    "link": "buttons_template.json"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "3",
+              "type": "small_informer",
+              "data": {
+                "title": "Success!",
+                "style": "success",
+                "arrowDirectionStyle": "topRight",
+                "isEnabled": true
+              }
+            },
+            {
+              "id": "4",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "5",
+              "type": "small_informer",
+              "data": {
+                "title": "Error Occurred",
+                "style": "error",
+                "arrowDirectionStyle": "bottomLeft",
+                "isEnabled": false
+              }
+            },
+            {
+              "id": "6",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
+              "id": "7",
+              "type": "small_informer",
+              "data": {
+                "title": "Attention Needed",
+                "style": "attention",
+                "arrowDirectionStyle": "bottomRight",
+                "isEnabled": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

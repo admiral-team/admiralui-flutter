@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
@@ -21,6 +22,7 @@ import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
@@ -604,6 +606,26 @@ class TemplateCaseImpl extends TemplateCase {
               paragraphStyle: paragraphStyle,
               isEnabled: item['data']['isEnabled'] ?? true,
             );
+          case 'big_informer':
+            return BigInformerViewModel(
+              id: id,
+              title: item['data']['title'],
+              subtitle: item['data']['subtitle'],
+              linkText: item['data']['linkText'],
+              isEnabled: item['data']['isEnabled'] ?? true,
+              style: _parseInformerStyle(item['data']['style']),
+              actions: actions,
+            );
+          case 'small_informer':
+            return SmallInformerViewModel(
+              id: id,
+              title: item['data']['title'],
+              style: _parseInformerStyle(item['data']['style']),
+              arrowDirectionStyle: _parseInformerDirectionStyle(
+                  item['data']['arrowDirectionStyle']),
+              isEnabled: item['data']['isEnabled'] ?? true,
+              actions: actions,
+            );
 
           default:
             return null;
@@ -699,5 +721,34 @@ class TemplateCaseImpl extends TemplateCase {
         textAlign = TextAlign.left;
     }
     return textAlign;
+  }
+
+  InformerStyle _parseInformerStyle(String? style) {
+    switch (style) {
+      case 'success':
+        return InformerStyle.success;
+      case 'error':
+        return InformerStyle.error;
+      case 'attention':
+        return InformerStyle.attention;
+      case 'normal':
+      default:
+        return InformerStyle.normal;
+    }
+  }
+
+  InformerDirectionStyle _parseInformerDirectionStyle(String directionStyle) {
+    switch (directionStyle) {
+      case 'topLeft':
+        return InformerDirectionStyle.topLeft;
+      case 'topRight':
+        return InformerDirectionStyle.topRight;
+      case 'bottomLeft':
+        return InformerDirectionStyle.bottomLeft;
+      case 'bottomRight':
+        return InformerDirectionStyle.bottomRight;
+      default:
+        return InformerDirectionStyle.topLeft;
+    }
   }
 }
