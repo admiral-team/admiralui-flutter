@@ -29,6 +29,7 @@
         "accordion_template.json",
         "paragraph_template.json",
         "big_informer_template.json",
-        "small_informer_template.json"
+        "small_informer_template.json",
+        "logo_tabs_template.json"
     ]
 }
