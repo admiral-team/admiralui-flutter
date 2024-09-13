@@ -1,0 +1,154 @@
+{
+    "data": {
+      "items": [
+        {
+          "id": "0",
+          "type": "scroll_view",
+          "data": {
+            "scroll_direction": "vertical",
+            "aligment": "leading",
+            "items": [
+              {
+                "id": "1",
+                "type": "column",
+                "data": {
+                  "items": [
+                    {
+                      "id": "2",
+                      "type": "outline_tabs",
+                      "data": {
+                        "tabs": [
+                          {
+                            "text": "Tab 1"
+                          },
+                          {
+                            "text": "Tab 2"
+                          },
+                          {
+                            "text": "Tab 3"
+                          }
+                        ],
+                        "selectedIndex": 0,
+                        "isEnabled": true,
+                        "horizontalPadding": 26.0
+                      }
+                    },
+                    {
+                      "id": "3",
+                      "type": "spacer",
+                      "layout": {
+                        "height": 8
+                      }
+                    },
+                    {
+                      "id": "4",
+                      "type": "outline_tabs",
+                      "data": {
+                        "tabs": [
+                          {
+                            "text": "Tab 1",
+                            "badgeStyle": "success"
+                          },
+                          {
+                            "text": "Tab 2",
+                            "badgeStyle": "attention"
+                          },
+                          {
+                            "text": "Tab 3",
+                            "badgeStyle": "additional"
+                          },
+                          {
+                            "text": "Tab 4",
+                            "badgeStyle": "clear"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "5",
+                      "type": "spacer",
+                      "layout": {
+                        "height": 8
+                      }
+                    },
+                    {
+                      "id": "6",
+                      "type": "outline_tabs",
+                      "data": {
+                        "tabs": [
+                          {
+                            "text": "Tab 1",
+                            "badgeStyle": "natural"
+                          },
+                          {
+                            "text": "Tab 2",
+                            "badgeStyle": "normal"
+                          },
+                          {
+                            "text": "Tab 3",
+                            "badgeStyle": "error"
+                          },
+                          {
+                            "text": "Tab 4",
+                            "badgeStyle": "success"
+                          },
+                          {
+                            "text": "Tab 5",
+                            "badgeStyle": "attention"
+                          }
+                        ],
+                        "selectedIndex": 2,
+                        "isEnabled": true
+                      }
+                    },
+                    {
+                      "id": "7",
+                      "type": "spacer",
+                      "layout": {
+                        "height": 8
+                      }
+                    },
+                    {
+                      "id": "8",
+                      "type": "outline_tabs",
+                      "data": {
+                        "tabs": [
+                          {
+                            "text": "Tab 1",
+                            "badgeStyle": "clear"
+                          },
+                          {
+                            "text": "Tab 2",
+                            "badgeStyle": "success"
+                          },
+                          {
+                            "text": "Tab 3",
+                            "badgeStyle": "attention"
+                          },
+                          {
+                            "text": "Tab 4",
+                            "badgeStyle": "additional"
+                          },
+                          {
+                            "text": "Tab 5",
+                            "badgeStyle": "normal"
+                          },
+                          {
+                            "text": "Tab 6",
+                            "badgeStyle": "natural"
+                          }
+                        ],
+                        "selectedIndex": 3,
+                        "isEnabled": true
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+  
