@@ -32,6 +32,8 @@
         "small_informer_template.json",
         "logo_tabs_template.json",
         "small_informer_template.json",
-        "outline_tabs_template.json"
+        "outline_tabs_template.json",
+        "padding_template.json",
+        "accordion_template.json"
     ]
 }

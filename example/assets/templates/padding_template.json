@@ -1,0 +1,56 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "text",
+                            "data": {
+                                "text": "Short Padding"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "padding_widget",
+                            "data": {
+                                "style": "short"
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "text",
+                            "data": {
+                                "text": "Long Padding"
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 8
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "type": "padding_widget",
+                            "data": {
+                                "style": "long"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
