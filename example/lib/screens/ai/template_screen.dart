@@ -409,13 +409,9 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case LogoTabsViewModel:
         final List<Widget> images =
             item.iconsData.map<Widget>((dynamic iconData) {
-          try {
-            if (iconData is IconData) {
-              return Icon(iconData);
-            } else {
-              return SizedBox();
-            }
-          } catch (e) {
+          if (iconData is IconData) {
+            return Icon(iconData);
+          } else {
             return SizedBox();
           }
         }).toList();
