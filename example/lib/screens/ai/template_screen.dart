@@ -3,24 +3,30 @@ import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
+import 'package:example/screens/ai/view_models/calendar_view_model.dart';
+import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:example/storage/app_theme_storage.dart';
@@ -320,6 +326,34 @@ class _TemplateScreenState extends State<TemplateScreen> {
           hasSecure: item.isSecure,
           numberOfLines: item.numberOfLines,
         );
+      case CalendarViewModel:
+        switch (item.style) {
+          case CalendarStyle.vertical:
+            return CalendarVerticalView(
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              startDate: item.startDate,
+              currentDate: item.currentDate,
+              endDate: item.endDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          case CalendarStyle.horizontal:
+            return CalendarHorizontalView(
+              startDate: item.startDate,
+              endDate: item.endDate,
+              currentDate: item.currentDate,
+              selectedEndDate: item.selectedEndDate,
+              selectedStartDate: item.selectedStartDate,
+              onChangedRangeDates: (List<DateTime?> datesRange) {
+                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+              },
+            );
+          default:
+            return Container();
+        }
+
       case ZeroScreenViewModel:
         return ZeroScreenView(
           // Добавить, чтобы иконка бралась из модели
@@ -329,6 +363,59 @@ class _TemplateScreenState extends State<TemplateScreen> {
           buttonTitle: item.buttonTitle,
           isEnabled: item.isEnabled,
         );
+      case TagViewModel:
+        return TagControlWidget(
+            leadingText: item.leadingText,
+            leadingImage: item.leadingIcon,
+            title: item.title,
+            trailingText: item.trailingText,
+            trailingImage: item.trailingIcon,
+            style: item.style,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+      case TitleButtonDropDownViewModel:
+        return TitleButtonDropDownWidget(
+            title: item.title,
+            buttonTitle: item.buttonTitle,
+            isEnable: item.isEnabled,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+      case ButtonDropDownViewModel:
+        return ButtonDropDownWidget(
+            buttonTitle: item.buttonTitle,
+            isEnable: item.isEnabled,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+      case ParagraphViewModel:
+        return ParagrapgWidget(
+          title: item.title,
+          paragraphImageType: item.paragraphImageType,
+          trailingImageWidget: Icon(item.trailingIcon),
+          textAligment: item.textAligment,
+          paragraphStyle: item.paragraphStyle,
+          isEnabled: item.isEnabled,
+        );
+      case BigInformerViewModel:
+        return BigInformerWidget(
+          title: item.title,
+          subtitle: item.subtitle,
+          linkText: item.linkText,
+          onLinkPressed: () =>
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush),
+          style: item.style,
+          isEnable: item.isEnabled,
+        );
+      case SmallInformerViewModel:
+        return SmallInformerWidget(
+          title: item.title,
+          style: item.style,
+          arrowDirectionStyle: item.arrowDirectionStyle,
+          isEnable: item.isEnabled,
+        );
+
       default:
         return Container();
     }
