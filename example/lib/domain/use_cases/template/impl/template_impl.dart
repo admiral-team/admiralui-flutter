@@ -15,6 +15,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
@@ -630,7 +631,6 @@ class TemplateCaseImpl extends TemplateCase {
           case 'outline_tabs':
             List<dynamic> tabs = item['data']['tabs'];
             final List<OutlineTabItem> outlineTabItems = <OutlineTabItem>[];
-
             tabs.forEach((dynamic tab) {
               final String text = tab['text'].toString();
 
@@ -671,6 +671,19 @@ class TemplateCaseImpl extends TemplateCase {
               isEnabled: isEnabled,
               horizontalPadding: horizontalPadding,
               id: id,
+              actions: actions,
+            );
+          case 'logo_tabs':
+            List<IconData> iconsData =
+                (item['data']['iconsData'] as List<dynamic>)
+                    .map<IconData?>((dynamic icon) =>
+                        _parseIconData(icon as Map<String, dynamic>))
+                    .whereType<IconData>()
+                    .toList();
+            return LogoTabsViewModel(
+              id: id,
+              iconsData: iconsData,
+              isEnabled: item['data']['isEnabled'] ?? true,
               actions: actions,
             );
           default:

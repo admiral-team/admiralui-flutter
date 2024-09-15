@@ -10,6 +10,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
@@ -414,6 +415,23 @@ class _TemplateScreenState extends State<TemplateScreen> {
           onSelected: (_) {
             cubit.didAction(widget.isLocal, item.actions, widget.onPush);
           },
+        );
+
+      case LogoTabsViewModel:
+        final List<Widget> images =
+            item.iconsData.map<Widget>((dynamic iconData) {
+          if (iconData is IconData) {
+            return Icon(iconData);
+          } else {
+            return SizedBox();
+          }
+        }).toList();
+
+        return LogoTabs(
+          images,
+          isEnabled: item.isEnabled,
+          onSelected: (int index) =>
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush),
         );
 
       default:
