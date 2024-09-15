@@ -2,6 +2,7 @@ import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
@@ -9,6 +10,8 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/padding_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
@@ -16,6 +19,7 @@ import 'package:example/screens/ai/view_models/double_slider_text_field_view_mod
 import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
@@ -389,6 +393,50 @@ class _TemplateScreenState extends State<TemplateScreen> {
           textAligment: item.textAligment,
           paragraphStyle: item.paragraphStyle,
           isEnabled: item.isEnabled,
+        );
+      case BigInformerViewModel:
+        return BigInformerWidget(
+          title: item.title,
+          subtitle: item.subtitle,
+          linkText: item.linkText,
+          onLinkPressed: () =>
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush),
+          style: item.style,
+          isEnable: item.isEnabled,
+        );
+      case SmallInformerViewModel:
+        return SmallInformerWidget(
+          title: item.title,
+          style: item.style,
+          arrowDirectionStyle: item.arrowDirectionStyle,
+          isEnable: item.isEnabled,
+        );
+      case OutlineTabsViewModel:
+        return OutlineTabs(
+          item.tabs,
+          selectedIndex: item.selectedIndex,
+          isEnabled: item.isEnabled,
+          horizontalPadding: item.horizontalPadding,
+          onSelected: (_) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
+        );
+
+      case LogoTabsViewModel:
+        final List<Widget> images =
+            item.iconsData.map<Widget>((dynamic iconData) {
+          if (iconData is IconData) {
+            return Icon(iconData);
+          } else {
+            return SizedBox();
+          }
+        }).toList();
+
+        return LogoTabs(
+          images,
+          isEnabled: item.isEnabled,
+          onSelected: (int index) =>
+              cubit.didAction(widget.isLocal, item.actions, widget.onPush),
         );
 
       default:

@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
 import 'package:example/screens/ai/view_models/check_box_view_model.dart';
@@ -14,6 +15,8 @@ import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_actio
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
+import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/padding_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
@@ -22,6 +25,7 @@ import 'package:example/screens/ai/view_models/row_view_model.dart';
 import 'package:example/screens/ai/view_models/scroll_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
@@ -605,6 +609,84 @@ class TemplateCaseImpl extends TemplateCase {
               paragraphStyle: paragraphStyle,
               isEnabled: item['data']['isEnabled'] ?? true,
             );
+          case 'big_informer':
+            return BigInformerViewModel(
+              id: id,
+              title: item['data']['title'],
+              subtitle: item['data']['subtitle'],
+              linkText: item['data']['linkText'],
+              isEnabled: item['data']['isEnabled'] ?? true,
+              style: _parseInformerStyle(item['data']['style']),
+              actions: actions,
+            );
+          case 'small_informer':
+            return SmallInformerViewModel(
+              id: id,
+              title: item['data']['title'],
+              style: _parseInformerStyle(item['data']['style']),
+              arrowDirectionStyle: _parseInformerDirectionStyle(
+                  item['data']['arrowDirectionStyle']),
+              isEnabled: item['data']['isEnabled'] ?? true,
+              actions: actions,
+            );
+          case 'outline_tabs':
+            List<dynamic> tabs = item['data']['tabs'];
+            final List<OutlineTabItem> outlineTabItems = <OutlineTabItem>[];
+            tabs.forEach((dynamic tab) {
+              final String text = tab['text'].toString();
+
+              BadgeStyle badgeStyle = BadgeStyle.clear;
+              switch (tab['badgeStyle']) {
+                case 'natural':
+                  badgeStyle = BadgeStyle.natural;
+                  break;
+                case 'normal':
+                  badgeStyle = BadgeStyle.normal;
+                  break;
+                case 'additional':
+                  badgeStyle = BadgeStyle.additional;
+                  break;
+                case 'success':
+                  badgeStyle = BadgeStyle.success;
+                  break;
+                case 'error':
+                  badgeStyle = BadgeStyle.error;
+                  break;
+                case 'attention':
+                  badgeStyle = BadgeStyle.attention;
+                  break;
+                default:
+                  badgeStyle = BadgeStyle.clear;
+              }
+              outlineTabItems.add(OutlineTabItem(text, badgeStyle: badgeStyle));
+            });
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final double horizontalPadding =
+                item['data']['horizontalPadding']?.toDouble() ?? 0.0;
+
+            return OutlineTabsViewModel(
+              tabs: outlineTabItems,
+              selectedIndex: selectedIndex,
+              isEnabled: isEnabled,
+              horizontalPadding: horizontalPadding,
+              id: id,
+              actions: actions,
+            );
+          case 'logo_tabs':
+            List<IconData> iconsData =
+                (item['data']['iconsData'] as List<dynamic>)
+                    .map<IconData?>((dynamic icon) =>
+                        _parseIconData(icon as Map<String, dynamic>))
+                    .whereType<IconData>()
+                    .toList();
+            return LogoTabsViewModel(
+              id: id,
+              iconsData: iconsData,
+              isEnabled: item['data']['isEnabled'] ?? true,
+              actions: actions,
+            );
           case 'padding_widget':
             PaddingStyle paddingStyle;
             switch (item['data']['style']) {
@@ -710,5 +792,34 @@ class TemplateCaseImpl extends TemplateCase {
         textAlign = TextAlign.left;
     }
     return textAlign;
+  }
+
+  InformerStyle _parseInformerStyle(String? style) {
+    switch (style) {
+      case 'success':
+        return InformerStyle.success;
+      case 'error':
+        return InformerStyle.error;
+      case 'attention':
+        return InformerStyle.attention;
+      case 'normal':
+      default:
+        return InformerStyle.normal;
+    }
+  }
+
+  InformerDirectionStyle _parseInformerDirectionStyle(String directionStyle) {
+    switch (directionStyle) {
+      case 'topLeft':
+        return InformerDirectionStyle.topLeft;
+      case 'topRight':
+        return InformerDirectionStyle.topRight;
+      case 'bottomLeft':
+        return InformerDirectionStyle.bottomLeft;
+      case 'bottomRight':
+        return InformerDirectionStyle.bottomRight;
+      default:
+        return InformerDirectionStyle.topLeft;
+    }
   }
 }
