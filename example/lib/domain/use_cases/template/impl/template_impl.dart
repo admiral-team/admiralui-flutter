@@ -16,6 +16,7 @@ import 'package:example/screens/ai/view_models/interfaces/actions/update_items_a
 import 'package:example/screens/ai/view_models/interfaces/actions/update_page_action_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/paragraph_view_model.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/radio_button_view_model.dart';
@@ -627,7 +628,51 @@ class TemplateCaseImpl extends TemplateCase {
               isEnabled: item['data']['isEnabled'] ?? true,
               actions: actions,
             );
+          case 'outline_tabs':
+            List<dynamic> tabs = item['data']['tabs'];
+            final List<OutlineTabItem> outlineTabItems = <OutlineTabItem>[];
+            tabs.forEach((dynamic tab) {
+              final String text = tab['text'].toString();
 
+              BadgeStyle badgeStyle = BadgeStyle.clear;
+              switch (tab['badgeStyle']) {
+                case 'natural':
+                  badgeStyle = BadgeStyle.natural;
+                  break;
+                case 'normal':
+                  badgeStyle = BadgeStyle.normal;
+                  break;
+                case 'additional':
+                  badgeStyle = BadgeStyle.additional;
+                  break;
+                case 'success':
+                  badgeStyle = BadgeStyle.success;
+                  break;
+                case 'error':
+                  badgeStyle = BadgeStyle.error;
+                  break;
+                case 'attention':
+                  badgeStyle = BadgeStyle.attention;
+                  break;
+                default:
+                  badgeStyle = BadgeStyle.clear;
+              }
+              outlineTabItems.add(OutlineTabItem(text, badgeStyle: badgeStyle));
+            });
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final double horizontalPadding =
+                item['data']['horizontalPadding']?.toDouble() ?? 0.0;
+
+            return OutlineTabsViewModel(
+              tabs: outlineTabItems,
+              selectedIndex: selectedIndex,
+              isEnabled: isEnabled,
+              horizontalPadding: horizontalPadding,
+              id: id,
+              actions: actions,
+            );
           case 'logo_tabs':
             List<IconData> iconsData =
                 (item['data']['iconsData'] as List<dynamic>)
@@ -635,7 +680,6 @@ class TemplateCaseImpl extends TemplateCase {
                         _parseIconData(icon as Map<String, dynamic>))
                     .whereType<IconData>()
                     .toList();
-
             return LogoTabsViewModel(
               id: id,
               iconsData: iconsData,

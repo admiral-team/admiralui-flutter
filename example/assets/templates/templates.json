@@ -30,6 +30,8 @@
         "paragraph_template.json",
         "big_informer_template.json",
         "small_informer_template.json",
-        "logo_tabs_template.json"
+        "logo_tabs_template.json",
+        "small_informer_template.json",
+        "outline_tabs_template.json"
     ]
 }
