@@ -251,6 +251,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
                       item.items,
                     ),
                 ]));
+      case BigInformerViewModel:
+        return Container(
+          child: BigInformerWidget(
+            title: item.title,
+            subtitle: item.subtitle,
+            linkText: item.linkText,
+            style: item.style,
+            isEnable: item.isEnabled,
+            onLinkPressed: () {},// Добавить обработку action
+          ),
+        );
       case ScrollViewModel:
         return SizedBox(
           width: item.width,

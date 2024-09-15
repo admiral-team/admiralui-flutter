@@ -1,5 +1,6 @@
 {
     "templates": [
+        "mortage_template.json",
         "primary_buttons_template.json",
         "secondary_buttons_template.json",
         "ghost_buttons_template.json",

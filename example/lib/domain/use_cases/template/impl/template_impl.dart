@@ -63,6 +63,19 @@ class TemplateCaseImpl extends TemplateCase {
       if (response.statusCode == 200) {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
+          // Костыль(ии иногда не добавляет блок data items)
+          if (data['data']['data']['id'] != null 
+          || data['data']['id'] != null) {
+            data = <String, dynamic>{
+              'data': <String, dynamic>{
+              'data': <String, dynamic>{
+                'items': <dynamic>[
+                  data['data']
+                ]
+              }
+              }
+             };
+          }
           List<dynamic> items = _parseItems(data['data']);
           return TemplateDetailModel(items: items, json: response.body);
         } catch (e) {
@@ -276,6 +289,32 @@ class TemplateCaseImpl extends TemplateCase {
                 iconData: iconData,
                 iconPosition: iconPosition,
                 actions: actions);
+          case 'big_informer':
+            InformerStyle style;
+            switch (item['data']['style']) {
+              case 'normal':
+                style = InformerStyle.normal;
+                break;
+              case 'success':
+                style = InformerStyle.success;
+                break;
+              case 'error':
+                style = InformerStyle.error;
+                break;
+              case 'attention':
+                style = InformerStyle.attention;
+                break;
+              default:
+                style = InformerStyle.normal;
+            }
+            return BigInformerViewModel(
+              title: item['data']['title'] ?? '', 
+              subtitle: item['data']['subtitle'] ?? '', 
+              style: style, 
+              linkText: item['data']['linkText'],
+              isEnabled: item['data']['isEnabled'] ?? true, 
+              id: id
+            );
           case 'link_control':
             final dynamic linkControllStyleJSON = item['data']['style'];
             LinkStyle linkControllStyle;
@@ -419,8 +458,8 @@ class TemplateCaseImpl extends TemplateCase {
                 labelText: item['data']['label_text'] ?? '',
                 placeHolderText: item['data']['placeholder_text'] ?? '',
                 informerText: item['data']['informer_text'],
-                minLabelText: item['data']['minLabelText'],
-                maxLabelText: item['data']['maxLabelText'],
+                minLabelText: item['data']['minLabelText'] ?? 0.0,
+                maxLabelText: item['data']['maxLabelText'] ?? 0.0,
                 divisions: (item['data']['divisions'] ??
                         item['data']['maxLabelText']) ??
                     1,

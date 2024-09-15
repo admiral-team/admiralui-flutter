@@ -1,0 +1,221 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "alignment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "title_header_widget",
+                            "data": {
+                                "text": "Ипотека",
+                                "style": "title",
+                                "textAlign": "center"
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "1_text",
+                            "type": "text",
+                            "data": {
+                                "text": "Выберите цель кредита"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "radio_button",
+                            "data": {
+                                "items": [
+                                    "Квартира на вторичном рынке",
+                                    "Квартира в новостройке",
+                                    "Готовый дом",
+                                    "Кладовая",
+                                    "Машино-место",
+                                    "Земельный участок"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 12
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "type": "standard_tabs",
+                            "items": [
+                                {
+                                    "title": "Базовая"
+                                },
+                                {
+                                    "title": "Семейная"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "55_spacer",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 12
+                            }
+                        },
+                        {
+                            "id": "1_informer",
+                            "type": "big_informer",
+                            "data": {
+                                "title": "Для семей",
+                                "subtitle": "Для семей с ребенком до 7 лет или если есть ребенок до 18 лет с инвалидностью  можно приобрести квартиру, таунхаус от юр. лица - первого собственника в любом регионе РФ.",
+                                "linkText" : "Подробнее",
+                                "isEnabled": true,
+                                "style": "normal"
+                            }
+                        },
+                        {
+                            "id": "9",
+                            "type": "standard_text_field",
+                            "data": {
+                                "label_text": "Регион приобретения",
+                                "state": "normal",
+                                "placeholder_text": "Укажите регион",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "type": "check_box",
+                            "data": {
+                                "items": [
+                                    "Могу подтвердить доход"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "10",
+                            "type": "slider_text_field",
+                            "data": {
+                                "label_text": "Стоимость недвижимости",
+                                "state": "normal",
+                                "placeholder_text": "Сумма",
+                                "minLabelText": 1000000,
+                                "maxLabelText": 50000000,
+                                "divisions": 49000000,
+                                "currentSliderValue": 25000000
+                            }
+                        },
+                        {
+                            "id": "33_spacer",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 36
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "type": "check_box",
+                            "data": {
+                                "items": [
+                                    "Есть зарплатная карта"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "type": "check_box",
+                            "data": {
+                                "items": [
+                                    "Стать зарплатным клиентом"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "12",
+                            "type": "check_box",
+                            "data": {
+                                "items": [
+                                    "Есть материнский капитал"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "13",
+                            "type": "double_slider_text_field",
+                            "data": {
+                                "left_text": "1000000",
+                                "right_text": "50000000",
+                                "state": "normal",
+                                "label_text": "Первоначальный взнос",
+                                "placeholderFrom": "Мин",
+                                "placeholderTo": "Макс",
+                                "minValue": 1000000,
+                                "maxValue": 50000000,
+                                "divisions": 49000000,
+                                "minCurrentSliderValue": 5000000,
+                                "maxCurrentSliderValue": 30000000
+                            }
+                        },
+                        {
+                            "id": "14",
+                            "type": "double_slider_text_field",
+                            "data": {
+                                "left_text": "1",
+                                "right_text": "30",
+                                "state": "normal",
+                                "label_text": "Срок кредита",
+                                "placeholderFrom": "Год",
+                                "placeholderTo": "Год",
+                                "minValue": 1,
+                                "maxValue": 30,
+                                "divisions": 29,
+                                "minCurrentSliderValue": 3,
+                                "maxCurrentSliderValue": 22
+                            }
+                        },
+                        {
+                            "id": "15",
+                            "type": "check_box",
+                            "data": {
+                                "items": [
+                                    "Страхование"
+                                ],
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "16",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Оформить ипотеку",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            }
+                        },
+                        {
+                            "id": "end_spacer",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 36
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
