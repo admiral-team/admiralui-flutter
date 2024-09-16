@@ -33,6 +33,7 @@ import 'package:example/screens/ai/view_models/standard_text_field_view_model.da
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -64,17 +65,15 @@ class TemplateCaseImpl extends TemplateCase {
         try {
           Map<String, dynamic> data = jsonDecode(response.body);
           // Костыль(ии иногда не добавляет блок data items)
-          if (data['data']['data']['id'] != null 
-          || data['data']['id'] != null) {
+          if (data['data']['data']['id'] != null ||
+              data['data']['id'] != null) {
             data = <String, dynamic>{
               'data': <String, dynamic>{
-              'data': <String, dynamic>{
-                'items': <dynamic>[
-                  data['data']
-                ]
+                'data': <String, dynamic>{
+                  'items': <dynamic>[data['data']]
+                }
               }
-              }
-             };
+            };
           }
           List<dynamic> items = _parseItems(data['data']);
           return TemplateDetailModel(items: items, json: response.body);
@@ -308,13 +307,12 @@ class TemplateCaseImpl extends TemplateCase {
                 style = InformerStyle.normal;
             }
             return BigInformerViewModel(
-              title: item['data']['title'] ?? '', 
-              subtitle: item['data']['subtitle'] ?? '', 
-              style: style, 
-              linkText: item['data']['linkText'],
-              isEnabled: item['data']['isEnabled'] ?? true, 
-              id: id
-            );
+                title: item['data']['title'] ?? '',
+                subtitle: item['data']['subtitle'] ?? '',
+                style: style,
+                linkText: item['data']['linkText'],
+                isEnabled: item['data']['isEnabled'] ?? true,
+                id: id);
           case 'link_control':
             final dynamic linkControllStyleJSON = item['data']['style'];
             LinkStyle linkControllStyle;
@@ -674,29 +672,7 @@ class TemplateCaseImpl extends TemplateCase {
             tabs.forEach((dynamic tab) {
               final String text = tab['text'].toString();
 
-              BadgeStyle badgeStyle = BadgeStyle.clear;
-              switch (tab['badgeStyle']) {
-                case 'natural':
-                  badgeStyle = BadgeStyle.natural;
-                  break;
-                case 'normal':
-                  badgeStyle = BadgeStyle.normal;
-                  break;
-                case 'additional':
-                  badgeStyle = BadgeStyle.additional;
-                  break;
-                case 'success':
-                  badgeStyle = BadgeStyle.success;
-                  break;
-                case 'error':
-                  badgeStyle = BadgeStyle.error;
-                  break;
-                case 'attention':
-                  badgeStyle = BadgeStyle.attention;
-                  break;
-                default:
-                  badgeStyle = BadgeStyle.clear;
-              }
+              BadgeStyle badgeStyle = _getTabBadgeStyle(tab['badgeStyle']);
               outlineTabItems.add(OutlineTabItem(text, badgeStyle: badgeStyle));
             });
 
@@ -737,6 +713,35 @@ class TemplateCaseImpl extends TemplateCase {
                 paddingStyle = PaddingStyle.short;
             }
             return PaddingWidgetViewModel(id: id, style: paddingStyle);
+          case 'underline_tabs':
+            List<dynamic> tabs = item['data']['items'];
+            final List<UnderlineTabItem> underlineTabItems =
+                <UnderlineTabItem>[];
+
+            tabs.forEach((dynamic tab) {
+              final String text = tab['text'].toString();
+              final BadgeStyle badgeStyle =
+                  _getTabBadgeStyle(tab['badgeStyle']);
+
+              underlineTabItems
+                  .add(UnderlineTabItem(text, badgeStyle: badgeStyle));
+            });
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final bool isCenterTabs = item['data']['isCenterTabs'] ?? true;
+            final double horizontalPadding =
+                item['data']['horizontalPadding']?.toDouble() ?? 0.0;
+
+            return UnderlineTabsViewModel(
+              tabs: underlineTabItems,
+              selectedIndex: selectedIndex,
+              isEnabled: isEnabled,
+              isCenterTabs: isCenterTabs,
+              horizontalPadding: horizontalPadding,
+              id: id,
+              actions: actions,
+            );
           default:
             return null;
         }
@@ -859,6 +864,25 @@ class TemplateCaseImpl extends TemplateCase {
         return InformerDirectionStyle.bottomRight;
       default:
         return InformerDirectionStyle.topLeft;
+    }
+  }
+
+  BadgeStyle _getTabBadgeStyle(String? style) {
+    switch (style) {
+      case 'natural':
+        return BadgeStyle.natural;
+      case 'normal':
+        return BadgeStyle.normal;
+      case 'additional':
+        return BadgeStyle.additional;
+      case 'success':
+        return BadgeStyle.success;
+      case 'error':
+        return BadgeStyle.error;
+      case 'attention':
+        return BadgeStyle.attention;
+      default:
+        return BadgeStyle.clear;
     }
   }
 }
