@@ -31,6 +31,7 @@ import 'package:example/screens/ai/view_models/standard_text_field_view_model.da
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
@@ -259,7 +260,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
             linkText: item.linkText,
             style: item.style,
             isEnable: item.isEnabled,
-            onLinkPressed: () {},// Добавить обработку action
+            onLinkPressed: () {}, // Добавить обработку action
           ),
         );
       case ScrollViewModel:
@@ -448,6 +449,17 @@ class _TemplateScreenState extends State<TemplateScreen> {
           isEnabled: item.isEnabled,
           onSelected: (int index) =>
               cubit.didAction(widget.isLocal, item.actions, widget.onPush),
+        );
+      case UnderlineTabsViewModel:
+        return UnderlineTabs(
+          item.tabs,
+          selectedIndex: item.selectedIndex,
+          isEnable: item.isEnabled,
+          horizontalPadding: item.horizontalPadding,
+          isCenterTabs: item.isCenterTabs,
+          onTap: (_) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
         );
 
       default:

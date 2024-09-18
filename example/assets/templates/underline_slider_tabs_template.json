@@ -1,0 +1,77 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "0",
+        "type": "scroll_view",
+        "data": {
+          "scroll_direction": "vertical",
+          "aligment": "leading",
+          "items": [
+            {
+                "id": "1",
+                "type": "underline_tabs",
+                "data": {
+                  "items": [
+                    {
+                      "text": "Tab 1",
+                      "badgeStyle": "natural"
+                    },
+                    {
+                      "text": "Tab 2",
+                      "badgeStyle": "normal"
+                    },
+                    {
+                      "text": "Tab 3",
+                      "badgeStyle": "success"
+                    },
+                    {
+                      "text": "Tab 4",
+                      "badgeStyle": "error"
+                    },
+                    {
+                      "text": "Tab 5"
+                    },
+                    {
+                      "text": "Tab 6"
+                    }
+                  ],
+                  "isEnabled": true,
+                  "isCenterTabs": false,
+                  "horizontalPadding": 16.0
+                }
+              },
+              {
+                "id": "2",
+                "type": "spacer",
+                "layout": {
+                  "height": 16
+                }
+              },
+              {
+                "id": "3",
+                "type": "underline_tabs",
+                "data": {
+                  "items": [
+                    {
+                      "text": "Tab 1"
+                    },
+                    {
+                      "text": "Tab 2"
+                    },
+                    {
+                      "text": "Tab 3"
+                    }
+                  ],
+                  "isEnabled": true,
+                  "isCenterTabs": false,
+                  "horizontalPadding": 16.0
+                }
+              }
+          ]
+        }
+      }
+    ]
+  }
+}
+  
