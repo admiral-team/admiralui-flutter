@@ -104,6 +104,20 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
                                       state.chatMessages[index].direction,
                                   time: state.chatMessages[index].time,
                                 );
+                              case ChatType.errorOperation:
+                                return TextOperation(
+                                      TextOperationStyle.error,
+                                      ChatStatus.none,
+                                      ChatDirection.left,
+                                      chatBubbleStatusStyle:
+                                          ChatBubbleStatusStyle.initial,
+                                      title:
+                                          '''Мы не смогли создать template по вашему запросу''',
+                                      description:
+                                          'Попробуйте другой запрос',
+                                      chatBubbleTime:
+                                          state.chatMessages[index].time,
+                                  );
                               case ChatType.textOperation:
                                 return GestureDetector(
                                     onTap: () {
