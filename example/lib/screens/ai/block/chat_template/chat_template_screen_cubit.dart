@@ -29,12 +29,21 @@ class ChatTemplateScreenCubit extends Cubit<ChatTemplateScreenState> {
     ));
     emit(ChatTemplateScreenState(messages));
     final TemplateModel model = await chatTemplateCase.createTemplate(message);
-    messages.add(ChatMessageItem(
-      text: model.name ?? '',
-      direction: ChatDirection.left,
-      time: _getTime(),
-      type: ChatType.textOperation
-    ));
+    if (model.name != null) {
+      messages.add(ChatMessageItem(
+        text: model.name ?? '',
+        direction: ChatDirection.left,
+        time: _getTime(),
+        type: ChatType.textOperation
+      ));
+    } else {
+      messages.add(ChatMessageItem(
+        text: model.name ?? '',
+        direction: ChatDirection.left,
+        time: _getTime(),
+        type: ChatType.errorOperation
+      ));
+    }
     emit(ChatTemplateScreenState(messages));
   }
 
