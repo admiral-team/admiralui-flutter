@@ -2,6 +2,50 @@
 
 **JSON** используется для определения структуры интерфейса с кнопками, контейнерами и другими элементами. Ниже приведены инструкции по созданию JSON для различных типов элементов.
 
+**Правила**  
+1. Верхний уровень JSON структуры **обязательно** должен быть контейнером типа `column`, `row` или `scroll_view`, который будет оборачивать все элементы интерфейса. Это необходимо для правильного отображения всех элементов и управления их расположением.
+
+**Пример:**  
+Неправильный JSON, где верхний уровень начинается с `items`:
+```json
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "title_header_widget",
+                "data": {
+                    "text": "Заголовок",
+                    "style": "title",
+                    "textAlign": "center"
+                }
+            }
+        ]
+    }
+}
+```
+
+**Правильный JSON**, где верхний уровень обёрнут в контейнер типа `column`:
+```json
+{
+    "id": "0",
+    "type": "column",
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "title_header_widget",
+                "data": {
+                    "text": "Заголовок",
+                    "style": "title",
+                    "textAlign": "center"
+                }
+            }
+        ]
+    }
+}
+```
+
 ### 1. **`column` - Контейнер для вертикальной коллекции элементов**
 
 **Описание:**  
@@ -119,50 +163,6 @@
         }
     ]
 }
-
-### Общий пример:
-
-Создадим пример интерфейса, который включает колонку с двумя кнопками, разделенными разделителем:
-
-{
-    "data": {
-        "items": [
-            {
-                "id": "0",
-                "type": "column",
-                "data": {
-                    "items": [
-                        {
-                            "id": "1",
-                            "type": "primary_button",
-                            "data": {
-                                "title": "Top Button",
-                                "isEnabled": true,
-                                "sizeType": "big"
-                            }
-                        },
-                        {
-                            "id": "2",
-                            "type": "spacer"
-                        },
-                        {
-                            "id": "3",
-                            "type": "primary_button",
-                            "data": {
-                                "title": "Bottom Button",
-                                "isEnabled": true,
-                                "sizeType": "big"
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    }
-}
-
-Эта структура создаст интерфейс с вертикальной колонкой, содержащей две кнопки, разделенные пустым пространством.
-
 
 ### 4. **`spacer` - Разделитель**
 
@@ -823,29 +823,15 @@
 
 ```json
 {
+    "id": "1",
+    "type": "calendar",
     "data": {
-        "items": [
-            {
-                "id": "0",
-                "type": "column",
-                "data": {
-                    "items": [
-                        {
-                            "id": "1",
-                            "type": "calendar",
-                            "data": {
-                                "style": "vertical",
-                                "startDate": "1.1.2022",
-                                "currentDate": "1.1.2022",
-                                "endDate": "1.1.2024",
-                                "selectedStartDate": "10.1.2022",
-                                "selectedEndDate": "20.1.2022"
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
+        "style": "vertical",
+        "startDate": "1.1.2022",
+        "currentDate": "1.1.2022",
+        "endDate": "1.1.2024",
+        "selectedStartDate": "10.1.2022",
+        "selectedEndDate": "20.1.2022"
     }
 }
 ```
@@ -854,23 +840,17 @@
 
 ```json
 {
+    "id": "1",
+    "type": "calendar",
     "data": {
-        "items": [
-            {
-                "id": "1",
-                "type": "calendar",
-                "data": {
-                    "style": "horizontal",
-                    "startDate": "1.1.2022",
-                    "currentDate": "1.1.2022",
-                    "endDate": "1.1.2024",
-                    "selectedStartDate": "10.2.2022",
-                    "selectedEndDate": "20.2.2022"
-                }
-            }                             
-        ]
+        "style": "horizontal",
+        "startDate": "1.1.2022",
+        "currentDate": "1.1.2022",
+        "endDate": "1.1.2024",
+        "selectedStartDate": "10.2.2022",
+        "selectedEndDate": "20.2.2022"
     }
-}
+}                             
 ```
 
 ### 17. **`tag_control` - Тег-контрол**
@@ -1307,4 +1287,48 @@
     "horizontalPadding": 16.0
   }
 }
+
+### Общий пример:
+
+Создадим пример интерфейса, который включает колонку с двумя кнопками, разделенными разделителем:
+
+```json
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Top Button",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "spacer"
+                        },
+                        {
+                            "id": "3",
+                            "type": "primary_button",
+                            "data": {
+                                "title": "Bottom Button",
+                                "isEnabled": true,
+                                "sizeType": "big"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
 ```
+
+Эта структура создаст интерфейс с вертикальной колонкой, содержащей две кнопки, разделенные пустым пространством.
