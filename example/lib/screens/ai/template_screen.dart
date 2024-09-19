@@ -340,7 +340,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
               currentDate: item.currentDate,
               endDate: item.endDate,
               onChangedRangeDates: (List<DateTime?> datesRange) {
-                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                print(datesRange);
               },
             );
           case CalendarStyle.horizontal:
@@ -351,7 +351,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
               selectedEndDate: item.selectedEndDate,
               selectedStartDate: item.selectedStartDate,
               onChangedRangeDates: (List<DateTime?> datesRange) {
-                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                print(datesRange);
               },
             );
           default:
