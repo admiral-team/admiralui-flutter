@@ -17,7 +17,7 @@
                       "id": "2",
                       "type": "outline_tabs",
                       "data": {
-                        "tabs": [
+                        "items": [
                           {
                             "text": "Tab 1"
                           },
@@ -44,7 +44,7 @@
                       "id": "4",
                       "type": "outline_tabs",
                       "data": {
-                        "tabs": [
+                        "items": [
                           {
                             "text": "Tab 1",
                             "badgeStyle": "success"
@@ -75,7 +75,7 @@
                       "id": "6",
                       "type": "outline_tabs",
                       "data": {
-                        "tabs": [
+                        "items": [
                           {
                             "text": "Tab 1",
                             "badgeStyle": "natural"
@@ -112,7 +112,7 @@
                       "id": "8",
                       "type": "outline_tabs",
                       "data": {
-                        "tabs": [
+                        "items": [
                           {
                             "text": "Tab 1",
                             "badgeStyle": "clear"
