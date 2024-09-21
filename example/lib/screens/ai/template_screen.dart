@@ -162,7 +162,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
           return Align(alignment: Alignment.centerLeft, child: secondaryButton);
         }
       case GhostButtonViewModel:
-        Widget secondaryButton = GhostButton(
+        Widget ghostButton = GhostButton(
             title: item.title,
             isEnable: item.isEnabled,
             sizeType: item.sizeType,
@@ -172,9 +172,9 @@ class _TemplateScreenState extends State<TemplateScreen> {
                   cubit.didAction(widget.isLocal, item.actions, widget.onPush)
                 });
         if (item.sizeType == ButtonSizeType.big) {
-          return Expanded(child: secondaryButton);
+          return Expanded(child: ghostButton);
         } else {
-          return Align(alignment: Alignment.centerLeft, child: secondaryButton);
+          return Align(alignment: Alignment.centerLeft, child: ghostButton);
         }
       case LinkControlViewModel:
         return LinkControl(
