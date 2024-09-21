@@ -9,6 +9,48 @@
           "aligment": "leading",
           "items": [
             {
+              "id": "00",
+              "type": "row",
+              "data": {
+                "items": [
+                
+                        {
+                          "id": "01",
+                          "type": "primary_button",
+                          "data": {
+                            "title": "Submit",
+                            "isEnabled": true,
+                            "sizeType": "big"
+                          }
+                        },
+                        {
+                          "id": "02",
+                          "type": "spacer",
+                          "layout": {
+                            "width": 8
+                          }
+                        },
+                        {
+                          "id": "03",
+                          "type": "primary_button",
+                          "data": {
+                            "title": "Cancel",
+                            "isEnabled": true,
+                            "sizeType": "small"
+                          }
+                        }
+                     
+                ]
+              }
+            },
+            {
+              "id": "04",
+              "type": "spacer",
+              "layout": {
+                "height": 8
+              }
+            },
+            {
               "id": "1",
               "type": "primary_button",
               "data": {
@@ -244,130 +286,8 @@
               "layout": {
                 "height": 8
               }
-            },
-            {
-              "id": "25",
-              "type": "row",
-              "data": {
-                "items": [
-                  {
-                    "id": "26",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "1",
-                      "isEnabled": true,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 50,
-                      "height": 50
-                    }
-                  },
-                  {
-                    "id": "27",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "2",
-                      "isEnabled": false,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 50,
-                      "height": 50
-                    }
-                  },
-                  {
-                    "id": "28",
-                    "type": "spacer",
-                    "layout": {
-                      "height": 8
-                    }
-                  },
-                  {
-                    "id": "29",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "3",
-                      "isEnabled": true,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 150,
-                      "height": 50
-                    }
-                  }
-                ]
-              },
-              "layout": {
-                "height": 50
-              }
-            },
-            {
-              "id": "30",
-              "type": "spacer",
-              "layout": {
-                "height": 8
-              }
-            },
-            {
-              "id": "31",
-              "type": "scroll_view",
-              "data": {
-                "scroll_direction": "horizontal",
-                "aligment": "leading",
-                "items": [
-                  {
-                    "id": "32",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "1",
-                      "isEnabled": true,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 50,
-                      "height": 50
-                    }
-                  },
-                  {
-                    "id": "33",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "2",
-                      "isEnabled": true,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 150,
-                      "height": 50
-                    }
-                  },
-                  {
-                    "id": "34",
-                    "type": "primary_button",
-                    "data": {
-                      "title": "3",
-                      "isEnabled": true,
-                      "sizeType": "custom"
-                    },
-                    "layout": {
-                      "width": 250,
-                      "height": 50
-                    }
-                  }
-                ]
-              },
-              "layout": {
-                "height": 50
-              }
-            },
-            {
-              "id": "35",
-              "type": "spacer",
-              "layout": {
-                "height": 84
-              }
             }
+            
           ]
         }
       }
