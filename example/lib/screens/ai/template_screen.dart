@@ -2,6 +2,7 @@ import 'package:example/gen/assets.gen.dart';
 import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
+import 'package:example/screens/ai/view_models/badge_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -468,6 +469,9 @@ class _TemplateScreenState extends State<TemplateScreen> {
             cubit.didAction(widget.isLocal, item.actions, widget.onPush);
           },
         );
+      case BadgeViewModel:
+        return BadgeWidget(
+            title: item.title, style: item.style, isEnable: item.isEnabled);
 
       default:
         return Container();
