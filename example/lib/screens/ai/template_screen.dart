@@ -133,44 +133,50 @@ class _TemplateScreenState extends State<TemplateScreen> {
 
     switch (item.runtimeType) {
       case PrimaryButtonViewModel:
-        return Align(
-          alignment: Alignment.centerLeft,
-          child: PrimaryButton(
-              title: item.title,
-              isEnabled: item.isEnabled,
-              sizeType: item.sizeType,
-              iconData: item.iconData,
-              iconPosition: item.iconPosition,
-              onPressed: () => <Future<void>>{
-                    cubit.didAction(widget.isLocal, item.actions, widget.onPush)
-                  }),
-        );
+        Widget primaryButton = PrimaryButton(
+            title: item.title,
+            isEnabled: item.isEnabled,
+            sizeType: item.sizeType,
+            iconData: item.iconData,
+            iconPosition: item.iconPosition,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+        if (item.sizeType == ButtonSizeType.big) {
+          return Expanded(child: primaryButton);
+        } else {
+          return Align(alignment: Alignment.centerLeft, child: primaryButton);
+        }
       case SecondaryButtonViewModel:
-        return Align(
-          alignment: Alignment.centerLeft,
-          child: SecondaryButton(
-              title: item.title,
-              isEnable: item.isEnabled,
-              sizeType: item.sizeType,
-              iconData: item.iconData,
-              iconPosition: item.iconPosition,
-              onPressed: () => <Future<void>>{
-                    cubit.didAction(widget.isLocal, item.actions, widget.onPush)
-                  }),
-        );
+        Widget secondaryButton = SecondaryButton(
+            title: item.title,
+            isEnable: item.isEnabled,
+            sizeType: item.sizeType,
+            iconData: item.iconData,
+            iconPosition: item.iconPosition,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+        if (item.sizeType == ButtonSizeType.big) {
+          return Expanded(child: secondaryButton);
+        } else {
+          return Align(alignment: Alignment.centerLeft, child: secondaryButton);
+        }
       case GhostButtonViewModel:
-        return Align(
-          alignment: Alignment.centerLeft,
-          child: GhostButton(
-              title: item.title,
-              isEnable: item.isEnabled,
-              sizeType: item.sizeType,
-              iconData: item.iconData,
-              iconPosition: item.iconPosition,
-              onPressed: () => <Future<void>>{
-                    cubit.didAction(widget.isLocal, item.actions, widget.onPush)
-                  }),
-        );
+        Widget ghostButton = GhostButton(
+            title: item.title,
+            isEnable: item.isEnabled,
+            sizeType: item.sizeType,
+            iconData: item.iconData,
+            iconPosition: item.iconPosition,
+            onPressed: () => <Future<void>>{
+                  cubit.didAction(widget.isLocal, item.actions, widget.onPush)
+                });
+        if (item.sizeType == ButtonSizeType.big) {
+          return Expanded(child: ghostButton);
+        } else {
+          return Align(alignment: Alignment.centerLeft, child: ghostButton);
+        }
       case LinkControlViewModel:
         return LinkControl(
             title: item.title,
@@ -242,6 +248,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
             width: item.width,
             height: item.height,
             child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   for (int index = 0; index < item.items.length; index++)
@@ -341,7 +348,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
               currentDate: item.currentDate,
               endDate: item.endDate,
               onChangedRangeDates: (List<DateTime?> datesRange) {
-                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                print(datesRange);
               },
             );
           case CalendarStyle.horizontal:
@@ -352,7 +359,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
               selectedEndDate: item.selectedEndDate,
               selectedStartDate: item.selectedStartDate,
               onChangedRangeDates: (List<DateTime?> datesRange) {
-                cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+                print(datesRange);
               },
             );
           default:

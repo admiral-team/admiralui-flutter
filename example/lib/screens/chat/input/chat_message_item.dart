@@ -16,5 +16,6 @@ class ChatMessageItem {
 
 enum ChatType {
   message,
-  textOperation
+  textOperation,
+  errorOperation
 }

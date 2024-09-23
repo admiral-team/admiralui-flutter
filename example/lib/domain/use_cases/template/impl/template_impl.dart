@@ -668,7 +668,7 @@ class TemplateCaseImpl extends TemplateCase {
               actions: actions,
             );
           case 'outline_tabs':
-            List<dynamic> tabs = item['data']['tabs'];
+            List<dynamic> tabs = item['data']['items'];
             final List<OutlineTabItem> outlineTabItems = <OutlineTabItem>[];
             tabs.forEach((dynamic tab) {
               final String text = tab['text'].toString();
