@@ -10,6 +10,7 @@ import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
+import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
@@ -465,6 +466,16 @@ class _TemplateScreenState extends State<TemplateScreen> {
           isEnable: item.isEnabled,
           horizontalPadding: item.horizontalPadding,
           isCenterTabs: item.isCenterTabs,
+          onTap: (_) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
+        );
+      case InformerTabsViewModel:
+        return InformerTabs(
+          item.tabs,
+          selectedIndex: item.selectedIndex,
+          isEnabled: item.isEnabled,
+          paddingHorizontal: item.paddingHorizontal,
           onTap: (_) {
             cubit.didAction(widget.isLocal, item.actions, widget.onPush);
           },

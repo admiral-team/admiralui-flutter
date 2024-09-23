@@ -1,0 +1,40 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "0",
+        "type": "scroll_view",
+        "data": {
+          "scroll_direction": "vertical",
+          "aligment": "leading",
+          "items": [
+            {
+              "id": "1",
+              "type": "informer_tabs",
+              "data": {
+                "items": [
+                  {
+                    "title": "Tab 1",
+                    "subtitle": "Subtitle 1"
+                  },
+                  {
+                    "title": "Tab 2",
+                    "subtitle": "Subtitle 2"
+                  },
+                  {
+                    "title": "Tab 3",
+                    "subtitle": "Subtitle 3"
+                  }
+                ],
+                "selectedIndex": 0,
+                "isEnabled": true,
+                "paddingHorizontal": 16.0
+              }
+            }            
+          ]
+        }
+      }
+    ]
+  }
+}
+  

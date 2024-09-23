@@ -11,6 +11,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
@@ -743,6 +744,31 @@ class TemplateCaseImpl extends TemplateCase {
               id: id,
               actions: actions,
             );
+          case 'informer_tabs':
+            List<dynamic> items = item['data']['items'];
+            final List<InformerTabItem> informerTabItems = <InformerTabItem>[];
+
+            items.forEach((dynamic tab) {
+              final String title = tab['title'].toString();
+              final String subtitle = tab['subtitle'].toString();
+
+              informerTabItems.add(InformerTabItem(title, subtitle));
+            });
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final double paddingHorizontal =
+                item['data']['paddingHorizontal']?.toDouble() ?? 0.0;
+
+            return InformerTabsViewModel(
+              tabs: informerTabItems,
+              selectedIndex: selectedIndex,
+              isEnabled: isEnabled,
+              paddingHorizontal: paddingHorizontal,
+              id: id,
+              actions: actions,
+            );
+
           case 'badge':
             BadgeStyle badgeStyle;
             switch (item['data']['style']) {
