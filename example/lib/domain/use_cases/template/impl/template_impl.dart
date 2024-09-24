@@ -2,6 +2,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
+import 'package:example/screens/ai/view_models/badge_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -768,6 +769,41 @@ class TemplateCaseImpl extends TemplateCase {
               actions: actions,
             );
 
+          case 'badge':
+            BadgeStyle badgeStyle;
+            switch (item['data']['style']) {
+              case 'natural':
+                badgeStyle = BadgeStyle.natural;
+                break;
+              case 'additional':
+                badgeStyle = BadgeStyle.additional;
+                break;
+              case 'success':
+                badgeStyle = BadgeStyle.success;
+                break;
+              case 'error':
+                badgeStyle = BadgeStyle.error;
+                break;
+              case 'attention':
+                badgeStyle = BadgeStyle.attention;
+                break;
+              case 'clear':
+                badgeStyle = BadgeStyle.clear;
+                break;
+              case 'normal':
+              default:
+                badgeStyle = BadgeStyle.normal;
+            }
+
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final String? title = item['data']['title'];
+
+            return BadgeViewModel(
+              id: id,
+              style: badgeStyle,
+              isEnabled: isEnabled,
+              title: title == '' ? null : title,
+            );
           default:
             return null;
         }

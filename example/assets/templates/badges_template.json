@@ -1,0 +1,67 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                      {
+                        "id": "1",
+                        "type": "row",
+                        "data": {
+                          "items": [
+                            {
+                              "id": "2",
+                              "type": "badge",
+                              "data": {
+                                "title": "1",
+                                "style": "attention",
+                                "isEnabled": true
+                              }
+                            },
+                            {
+                              "id": "3",
+                              "type": "badge",
+                              "data": {
+                                "title": "2",
+                                "style": "success",
+                                "isEnabled": true
+                              }
+                            },
+                            {
+                              "id": "4",
+                              "type": "badge",
+                              "data": {
+                                "title": "3",
+                                "style": "error",
+                                "isEnabled": false
+                              }
+                            },
+                            {
+                              "id": "6",
+                              "type": "badge",
+                              "data": {
+                                "title": "4",
+                                "style": "natural",
+                                "isEnabled": true
+                              }
+                            },
+                            {
+                              "id": "7",
+                              "type": "badge",
+                              "data": {
+                                "title": "",
+                                "style": "error",
+                                "isEnabled": true
+                              }
+                            }
+                          ]
+                        }
+                      }          
+                    ]
+                }
+            }
+        ]
+    }
+}
