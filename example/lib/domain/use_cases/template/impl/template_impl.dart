@@ -3,6 +3,7 @@ import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
 import 'package:example/screens/ai/view_models/badge_view_model.dart';
+import 'package:example/screens/ai/view_models/base_cell_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -11,6 +12,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/icon_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
@@ -131,9 +133,10 @@ class TemplateCaseImpl extends TemplateCase {
   }
 
   List<dynamic> _parseItems(Map<String, dynamic> data) {
+    // print(data);
     List<dynamic> items = data['data']['items'].map((dynamic item) {
       try {
-        String id = item?['id'];
+        String id = item?['id'] ?? '0';
         double? width = (item?['layout']?['width'] as num?)?.toDouble();
         double? height = (item?['layout']?['height'] as num?)?.toDouble();
         List<ActionItemModelInterface>? actions = _parseActions(item);
@@ -804,6 +807,38 @@ class TemplateCaseImpl extends TemplateCase {
               isEnabled: isEnabled,
               title: title == '' ? null : title,
             );
+          case 'base_cell':
+            return BaseCellViewModel(
+              leadingCell: _parseItems(item['data']['leadingCell']),
+              centerCell: _parseItems(item['data']['centerCell']),
+              trailingCell: _parseItems(item['data']['trailingCell']),
+              borderRadius: item['data']['borderRadius'] ?? 0.0,
+              isEnabled: item['data']['isEnabled'] ?? true,
+              id: id,
+              horizontalPadding: item['data']['horizontalPadding'] ?? 0.0,
+              actions: actions,
+            );
+
+          case 'icon':
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            final double? size = item['data']['size'];
+            final String? colorHex = item['data']['color'];
+            Color? color;
+            if (colorHex != null) {
+              color = _parseColor(colorHex);
+            }
+
+            return IconViewModel(
+              id: id,
+              iconData: iconData,
+              size: size,
+              color: color,
+            );
+
           default:
             return null;
         }
@@ -812,6 +847,7 @@ class TemplateCaseImpl extends TemplateCase {
         return null;
       }
     }).toList();
+    print(items);
     return items;
   }
 
@@ -842,7 +878,7 @@ class TemplateCaseImpl extends TemplateCase {
     if (codePoint < 0 || codePoint > 0x10FFFF) {
       return null;
     }
-    return IconData(codePoint, fontFamily: fontFamily);
+    return IconData(0xef4e, fontFamily: fontFamily);
   }
 
   CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
@@ -946,5 +982,18 @@ class TemplateCaseImpl extends TemplateCase {
       default:
         return BadgeStyle.clear;
     }
+  }
+
+  Color _parseColor(String colorHex) {
+    // Удаляем возможный символ "#" в начале строки
+    colorHex = colorHex.replaceAll('#', '');
+
+    // Если длина строки 6 символов, добавляем "FF" для полной непрозрачности
+    if (colorHex.length == 6) {
+      colorHex = 'FF' + colorHex;
+    }
+
+    // Преобразуем строку в целое число и создаем объект Color
+    return Color(int.parse(colorHex, radix: 16));
   }
 }
