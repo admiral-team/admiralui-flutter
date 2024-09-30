@@ -1,37 +1,14 @@
-import 'dart:io';
-
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:example/shared/di.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/root_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  final bool showOnboarding = prefs.getBool('showOnboarding') ?? true;
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ),
-  );
-  if (!kIsWeb) {
-    if (Platform.isAndroid) {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-    } else if (Platform.isIOS) {
-      await Firebase.initializeApp();
-    }
-  }
   runApp(
     MyApp(
-      isShowOnboarding: showOnboarding,
+      isShowOnboarding: false,
     ),
   );
 }

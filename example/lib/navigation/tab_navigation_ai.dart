@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/ai/ai_screen.dart';
 import '../screens/ai/chat_template_screen.dart';
 import '../screens/ai/template_screen.dart';
 import '../screens/ai/templates_screen.dart';
@@ -39,9 +38,11 @@ class TabNavigatorAI extends StatelessWidget {
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return <String, WidgetBuilder>{
-      TabNavigatorAIRoutes.home.value: (BuildContext context) => AIScreen(
-            title: 'AI',
-            onPush: (TabNavigatorAIRoutes route) => _push(context, route),
+      TabNavigatorAIRoutes.home.value: (BuildContext context) => 
+      ChatTemplateScreen(
+            title: 'Chat Template',
+            onPush: (TabNavigatorAIRoutes route, String templateName) =>
+                _push(context, route, templateName),
           ),
       TabNavigatorAIRoutes.localTemplate.value: (BuildContext context) =>
           TemplateScreen(

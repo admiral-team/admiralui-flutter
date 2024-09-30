@@ -4,7 +4,6 @@ import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/chat_template/chat_template_screen_cubit.dart';
 import 'package:example/screens/ai/block/chat_template/chat_template_screen_state.dart';
 import 'package:example/screens/chat/input/chat_message_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../storage/app_theme_storage.dart';
@@ -40,8 +39,9 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
 
   @override
   void dispose() {
-    super.dispose();
+    textEditingController.dispose();
     appThemeButtonStorage.setThemeButtonHidden(false);
+    super.dispose();
   }
 
   void _onTextChanged() {
@@ -56,13 +56,6 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
-        leading: CupertinoButton(
-          child: Icon(
-            Icons.arrow_back_ios,
-            color: colors.elementSecondary.color(),
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
         title: Text(
           widget.title,
           style: fonts.subtitle2.toTextStyle(
@@ -154,7 +147,7 @@ class _ChatTemplateScreenState extends State<ChatTemplateScreen> {
                     content: '',
                     placeholder: 'Введите сообщение',
                     isSendButtonDisabled: textEditingController.text.isEmpty,
-                    isShowFileButton: true,
+                    isShowFileButton: false,
                     isTapSendButtonHidden: false,
                     textEditingController: textEditingController,
                     chatInputButtonKey: const Key('chatInputButton'),

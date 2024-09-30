@@ -43,6 +43,7 @@ class ChatInput extends StatefulWidget {
     this.keyboardType,
     this.textInputAction,
     this.chatInputButtonKey,
+    this.focusNode,
     this.onChanged,
     this.onSendButtonPress,
     this.onFileButtonPress,
@@ -60,6 +61,7 @@ class ChatInput extends StatefulWidget {
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
+  final FocusNode? focusNode;
   final Key? chatInputButtonKey;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onSendButtonPress;
@@ -143,6 +145,7 @@ class _ChatInputState extends State<ChatInput> {
                   ),
                   Flexible(
                     child: TextFormField(
+                      focusNode: widget.focusNode,
                       controller: widget.textEditingController,
                       textAlign: TextAlign.left,
                       maxLines: widget.maxLinesCount,

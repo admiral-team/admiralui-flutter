@@ -28,7 +28,13 @@ class TemplatesRepositoryImpl extends TemplatesRepository {
   Future<http.Response> createRemoteTemplate(String message) async {
     final Uri url =
         Uri.parse('https://admiralserver.onrender.com/v1/aiTemplate');
-    final Map<String, String> headers = <String, String>{'Content-Type': 'application/json'};
+    final Map<String, String> headers = <String, String>{
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,PATCH,POST,DELETE',
+      'Access-Control-Allow-Headers': 
+      'Origin, X-Requested-With, Content-Type, Accept' 
+    };
     final Map<String, String> body = <String, String>{
       'message': message
     };

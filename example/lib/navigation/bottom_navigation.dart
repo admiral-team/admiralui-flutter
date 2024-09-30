@@ -35,11 +35,11 @@ class BottomNavigation extends StatelessWidget {
       elevation: 0,
       type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
-        _buildItem(TabItem.main),
-        _buildItem(TabItem.info),
+        // _buildItem(TabItem.main),
+        // _buildItem(TabItem.info),
         _buildItem(TabItem.ai),
-        _buildItem(TabItem.chat),
-        _buildItem(TabItem.settings),
+        // _buildItem(TabItem.chat),
+        // _buildItem(TabItem.settings),
       ],
       onTap: (int index) => onSelectTab(
         TabItem.values[index],

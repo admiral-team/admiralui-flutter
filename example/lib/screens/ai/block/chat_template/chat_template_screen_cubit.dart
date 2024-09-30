@@ -12,7 +12,13 @@ class ChatTemplateScreenCubit extends Cubit<ChatTemplateScreenState> {
       : super(const ChatTemplateScreenState(<ChatMessageItem>[])) {
     emit(ChatTemplateScreenState(<ChatMessageItem>[
       ChatMessageItem(
-        text: 'Добрый день! Напишите какой интерфейс вы хотите',
+        text: '''Добрый день! Я готов помочь вам с созданием интерфейсов. Вот несколько примеров того, как вы можете формулировать свои запросы:
+
+- Создай анкету для поиска домашних животных с полями: порода, цвет и кличка.
+- Придумай интерфейс для оформления кредита.
+- Экран регистрации.
+
+Вы можете запросить создание интерфейса для любой задачи или формы. Просто опишите, что вам нужно, а я помогу его создать!''',
         direction: ChatDirection.left,
         time: _getTime(),
       ),
@@ -31,18 +37,16 @@ class ChatTemplateScreenCubit extends Cubit<ChatTemplateScreenState> {
     final TemplateModel model = await chatTemplateCase.createTemplate(message);
     if (model.name != null) {
       messages.add(ChatMessageItem(
-        text: model.name ?? '',
-        direction: ChatDirection.left,
-        time: _getTime(),
-        type: ChatType.textOperation
-      ));
+          text: model.name ?? '',
+          direction: ChatDirection.left,
+          time: _getTime(),
+          type: ChatType.textOperation));
     } else {
       messages.add(ChatMessageItem(
-        text: model.name ?? '',
-        direction: ChatDirection.left,
-        time: _getTime(),
-        type: ChatType.errorOperation
-      ));
+          text: model.name ?? '',
+          direction: ChatDirection.left,
+          time: _getTime(),
+          type: ChatType.errorOperation));
     }
     emit(ChatTemplateScreenState(messages));
   }
@@ -50,7 +54,10 @@ class ChatTemplateScreenCubit extends Cubit<ChatTemplateScreenState> {
   String _getTime() {
     DateTime now = DateTime.now();
     TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
-    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
+    String time =
+        '${timeofDayDate.hour}:${timeofDayDate.minute
+        .toString()
+        .padLeft(2, '0')}';
     return time;
   }
 }
