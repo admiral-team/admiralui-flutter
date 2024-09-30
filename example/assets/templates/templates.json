@@ -39,6 +39,8 @@
         "underline_center_tabs_template.json",
         "underline_slider_tabs_template.json",
         "informer_tabs_template.json",
-        "badges_template.json"
+        "badges_template.json",
+        "input_number_default.json",
+        "input_number_secondary.json"
     ]
 }

@@ -12,6 +12,7 @@ import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/input_number_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/deeplink_action_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/update_items_action_model.dart';
@@ -768,6 +769,30 @@ class TemplateCaseImpl extends TemplateCase {
               id: id,
               actions: actions,
             );
+
+          case 'input_number':
+            final bool isEnabled = item['data']['isEnabled'] ?? true;
+            final String title = item['data']['title'] ?? '';
+            InputNumberButtonStyle style = InputNumberButtonStyle.normal;
+            switch (item['data']['style']) {
+              case 'normal':
+                style = InputNumberButtonStyle.normal;
+                break;
+              case 'secondary':
+                style = InputNumberButtonStyle.secondary;
+                break;
+              default:
+                style = InputNumberButtonStyle.normal;
+            }
+            return InputNumberViewModel(
+                id: id,
+                title: title,
+                isEnabled: isEnabled,
+                minimumValue: item['data']['minimum_value'] ?? 0.0,
+                maximumValue: item['data']['maximum_value'] ?? 100.0,
+                numberValue: item['data']['number_value'] ?? 0.0,
+                stepValue: item['data']['step_value'] ?? 1.0,
+                style: style);
 
           case 'badge':
             BadgeStyle badgeStyle;
