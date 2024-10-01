@@ -3,6 +3,7 @@ import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
 import 'package:example/screens/ai/view_models/badge_view_model.dart';
+import 'package:example/screens/ai/view_models/base_cell_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -10,6 +11,7 @@ import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
+import 'package:example/screens/ai/view_models/icon_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
@@ -483,6 +485,42 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case BadgeViewModel:
         return BadgeWidget(
             title: item.title, style: item.style, isEnable: item.isEnabled);
+      case BaseCellViewModel:
+        return BaseCellWidget(
+          onPressed: () {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
+          leadingCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.leadingCell,
+          ),
+          centerCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.centerCell,
+          ),
+          trailingCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.trailingCell,
+          ),
+          borderRadius: item.borderRadius,
+          isEnabled: item.isEnabled,
+          horizontalPadding: item.horizontalPadding,
+        );
+      case IconViewModel:
+        return Icon(
+          item.iconData,
+          size: item.size,
+          color: item.color,
+        );
 
       default:
         return Container();

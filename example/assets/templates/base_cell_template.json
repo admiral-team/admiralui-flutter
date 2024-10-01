@@ -1,0 +1,71 @@
+{
+  "data": {
+      "items": [
+          {
+              "id": "0",
+              "type": "column",
+              "data": {
+                  "items": [
+                      {
+                          "id": "1",
+                          "type": "base_cell",
+                          "data": {
+                              "leadingCell": {
+                                  "data": {
+                                      "items": [
+                                          {
+                                            
+                                                "id": "6",
+                                                "type": "check_box",
+                                                "data": {
+                                                    "items": [""],
+                                                    "style": "error",
+                                                    "isEnabled": true
+                                                }
+                                            
+                                          }
+                                      ]
+                                  }
+                              },
+                              "centerCell": {
+                                  "data": {
+                                      "items": [
+                                          {
+                                              "id": "6",
+                                              "type": "text",
+                                              "data": {
+                                                  "text": "Center text Cell"
+                                              }
+                                          }
+                                      ]
+                                  }
+                              },
+                              "trailingCell": {
+                                  "data": {
+                                      "items": [
+                                        {
+                                            "id": "7",
+                                            "type": "icon",
+                                            "data": {
+                                              "iconData": {
+                                                    "codePoint": "0xe876",
+                                                    "fontFamily": "MaterialIcons"
+                                              },
+                                              "size": 24.0,
+                                              "color": "#9E9E9E"
+                                            }
+                                          }                                          
+                                      ]
+                                  }
+                              },
+                              "borderRadius": 8.0,
+                              "isEnabled": true,
+                              "horizontalPadding": 16.0
+                          }
+                      }
+                  ]
+              }
+          }
+      ]
+  }
+}
