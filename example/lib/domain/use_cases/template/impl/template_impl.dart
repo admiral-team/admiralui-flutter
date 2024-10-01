@@ -133,7 +133,6 @@ class TemplateCaseImpl extends TemplateCase {
   }
 
   List<dynamic> _parseItems(Map<String, dynamic> data) {
-    // print(data);
     List<dynamic> items = data['data']['items'].map((dynamic item) {
       try {
         String id = item?['id'] ?? '0';
@@ -847,7 +846,6 @@ class TemplateCaseImpl extends TemplateCase {
         return null;
       }
     }).toList();
-    print(items);
     return items;
   }
 
@@ -985,15 +983,10 @@ class TemplateCaseImpl extends TemplateCase {
   }
 
   Color _parseColor(String colorHex) {
-    // Удаляем возможный символ "#" в начале строки
     colorHex = colorHex.replaceAll('#', '');
-
-    // Если длина строки 6 символов, добавляем "FF" для полной непрозрачности
     if (colorHex.length == 6) {
       colorHex = 'FF' + colorHex;
     }
-
-    // Преобразуем строку в целое число и создаем объект Color
     return Color(int.parse(colorHex, radix: 16));
   }
 }
