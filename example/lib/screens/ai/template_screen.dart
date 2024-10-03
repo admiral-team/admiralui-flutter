@@ -35,6 +35,7 @@ import 'package:example/screens/ai/view_models/standard_text_field_view_model.da
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/toolbar_view_model.dart';
 import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:example/storage/app_theme_storage.dart';
@@ -520,6 +521,14 @@ class _TemplateScreenState extends State<TemplateScreen> {
           item.iconData,
           size: item.size,
           color: item.color,
+        );
+      case ToolbarViewModel:
+        return ToolbarWidget(
+          items: item.items,
+          selectedIndex: item.selectedIndex,
+          onTap: (_) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
         );
 
       default:

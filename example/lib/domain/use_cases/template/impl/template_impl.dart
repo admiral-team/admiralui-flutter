@@ -37,6 +37,7 @@ import 'package:example/screens/ai/view_models/standard_text_field_view_model.da
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/toolbar_view_model.dart';
 import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -837,6 +838,26 @@ class TemplateCaseImpl extends TemplateCase {
               size: size,
               color: color,
             );
+          case 'toolbar':
+            final List<ToolbarItem> items1 =
+                (item['data']['items'] as List<dynamic>)
+                    .map((dynamic toolbarItem) {
+              IconData iconData =
+                  _parseIconData(toolbarItem['iconData']) ?? IconData(0xe88e);
+              return ToolbarItem(
+                title: toolbarItem['title'] as String,
+                image: iconData,
+              );
+            }).toList();
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+
+            return ToolbarViewModel(
+              id: id,
+              items: items1,
+              selectedIndex: selectedIndex,
+              actions: actions,
+            );
 
           default:
             return null;
@@ -876,7 +897,7 @@ class TemplateCaseImpl extends TemplateCase {
     if (codePoint < 0 || codePoint > 0x10FFFF) {
       return null;
     }
-    return IconData(0xef4e, fontFamily: fontFamily);
+    return IconData(codePoint, fontFamily: fontFamily);
   }
 
   CalendarViewModel _parseCalendar(Map<String, dynamic> item, String id,
