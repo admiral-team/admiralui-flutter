@@ -1,0 +1,45 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 64
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "11",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "3",
+                                        "type": "spinner",
+                                        "data": {
+                                            "size": "large",
+                                            "style": "initial"
+                                        }
+                                    },
+                                    {
+                                        "id": "22",
+                                        "type": "spacer"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
