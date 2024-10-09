@@ -31,6 +31,7 @@ import 'package:example/screens/ai/view_models/secondary_button_view_model.dart'
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/spinner_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
@@ -605,6 +606,44 @@ class TemplateCaseImpl extends TemplateCase {
                 buttonTitle: item['data']['buttonTitle'],
                 isEnabled: item['data']['isEnabled'] ?? true,
                 actions: actions);
+          case 'spinner':
+            SpinnerSize size = SpinnerSize.large;
+            SpinnerStyle style = SpinnerStyle.initial;
+
+            if (item['data']['size'] != null) {
+              switch (item['data']['size']) {
+                case 'small':
+                  size = SpinnerSize.small;
+                  break;
+                case 'medium':
+                  size = SpinnerSize.medium;
+                  break;
+                case 'large':
+                  size = SpinnerSize.large;
+                  break;
+                default:
+                  break;
+              }
+            }
+
+            if (item['data']['style'] != null) {
+              switch (item['data']['style']) {
+                case 'initial':
+                  style = SpinnerStyle.initial;
+                  break;
+                case 'contrast':
+                  style = SpinnerStyle.contrast;
+                  break;
+                default:
+                  break;
+              }
+            }
+
+            return SpinnerViewModel(
+              id: id,
+              size: size,
+              style: style
+            );
           case 'button_drop_down':
             return ButtonDropDownViewModel(
                 id: id,

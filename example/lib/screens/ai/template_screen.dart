@@ -29,6 +29,7 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/spinner_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
@@ -485,6 +486,11 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case BadgeViewModel:
         return BadgeWidget(
             title: item.title, style: item.style, isEnable: item.isEnabled);
+      case SpinnerViewModel:
+        return Spinner(
+          style: item.style,
+          size: item.size,
+        );
       case BaseCellViewModel:
         return BaseCellWidget(
           onPressed: () {
