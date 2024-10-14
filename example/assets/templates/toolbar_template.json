@@ -1,0 +1,47 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "column",
+                "data": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "toolbar",
+                            "data": {
+                              "items": [
+                                {
+                                  "title": "Home",
+                                  "iconData": {
+                                    "codePoint": "0xe88a",
+                                    "fontFamily": "MaterialIcons"
+                                  }
+                                },
+                                {
+                                  "title": "Settings",
+                                  "iconData": {
+                                    "codePoint": "0xe8b8",
+                                    "fontFamily": "MaterialIcons"
+                                  }
+                                }
+                              ],
+                              "selectedIndex": 0
+                            },
+                            "actions": [
+                                {
+                                    "actionName": "didTap",
+                                    "type": "deeplink",
+                                    "data": {
+                                        "link": "buttons_template.json"
+                                    }
+                                }
+                            ]
+                          }
+                          
+                    ]
+                }
+            }
+        ]
+    }
+}

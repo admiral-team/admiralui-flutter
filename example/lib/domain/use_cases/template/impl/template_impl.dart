@@ -3,6 +3,7 @@ import 'package:example/data/repository/interface/templates_repo.dart';
 import 'package:example/domain/use_cases/template/interface/template_case.dart';
 import 'package:example/models/template_details_model.dart';
 import 'package:example/screens/ai/view_models/badge_view_model.dart';
+import 'package:example/screens/ai/view_models/base_cell_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -11,6 +12,7 @@ import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/double_slider_text_field_view_model.dart';
+import 'package:example/screens/ai/view_models/icon_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/input_number_view_model.dart';
 import 'package:example/screens/ai/view_models/interfaces/actions/action_item_model_interface.dart';
@@ -30,12 +32,14 @@ import 'package:example/screens/ai/view_models/secondary_button_view_model.dart'
 import 'package:example/screens/ai/view_models/slider_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/small_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/spacer_view_model.dart';
+import 'package:example/screens/ai/view_models/spinner_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/toolbar_view_model.dart';
 import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +138,7 @@ class TemplateCaseImpl extends TemplateCase {
   List<dynamic> _parseItems(Map<String, dynamic> data) {
     List<dynamic> items = data['data']['items'].map((dynamic item) {
       try {
-        String id = item?['id'];
+        String id = item?['id'] ?? '0';
         double? width = (item?['layout']?['width'] as num?)?.toDouble();
         double? height = (item?['layout']?['height'] as num?)?.toDouble();
         List<ActionItemModelInterface>? actions = _parseActions(item);
@@ -604,6 +608,44 @@ class TemplateCaseImpl extends TemplateCase {
                 buttonTitle: item['data']['buttonTitle'],
                 isEnabled: item['data']['isEnabled'] ?? true,
                 actions: actions);
+          case 'spinner':
+            SpinnerSize size = SpinnerSize.large;
+            SpinnerStyle style = SpinnerStyle.initial;
+
+            if (item['data']['size'] != null) {
+              switch (item['data']['size']) {
+                case 'small':
+                  size = SpinnerSize.small;
+                  break;
+                case 'medium':
+                  size = SpinnerSize.medium;
+                  break;
+                case 'large':
+                  size = SpinnerSize.large;
+                  break;
+                default:
+                  break;
+              }
+            }
+
+            if (item['data']['style'] != null) {
+              switch (item['data']['style']) {
+                case 'initial':
+                  style = SpinnerStyle.initial;
+                  break;
+                case 'contrast':
+                  style = SpinnerStyle.contrast;
+                  break;
+                default:
+                  break;
+              }
+            }
+
+            return SpinnerViewModel(
+              id: id,
+              size: size,
+              style: style
+            );
           case 'button_drop_down':
             return ButtonDropDownViewModel(
                 id: id,
@@ -829,6 +871,58 @@ class TemplateCaseImpl extends TemplateCase {
               isEnabled: isEnabled,
               title: title == '' ? null : title,
             );
+          case 'base_cell':
+            return BaseCellViewModel(
+              leadingCell: _parseItems(item['data']['leadingCell']),
+              centerCell: _parseItems(item['data']['centerCell']),
+              trailingCell: _parseItems(item['data']['trailingCell']),
+              borderRadius: item['data']['borderRadius'] ?? 0.0,
+              isEnabled: item['data']['isEnabled'] ?? true,
+              id: id,
+              horizontalPadding: item['data']['horizontalPadding'] ?? 0.0,
+              actions: actions,
+            );
+
+          case 'icon':
+            IconData? iconData;
+            if (item['data']['iconData'] != null) {
+              iconData = _parseIconData(item['data']['iconData']);
+            }
+
+            final double? size = item['data']['size'];
+            final String? colorHex = item['data']['color'];
+            Color? color;
+            if (colorHex != null) {
+              color = _parseColor(colorHex);
+            }
+
+            return IconViewModel(
+              id: id,
+              iconData: iconData,
+              size: size,
+              color: color,
+            );
+          case 'toolbar':
+            final List<ToolbarItem> items1 =
+                (item['data']['items'] as List<dynamic>)
+                    .map((dynamic toolbarItem) {
+              IconData iconData =
+                  _parseIconData(toolbarItem['iconData']) ?? IconData(0xe88e);
+              return ToolbarItem(
+                title: toolbarItem['title'] as String,
+                image: iconData,
+              );
+            }).toList();
+
+            final int selectedIndex = item['data']['selectedIndex'] ?? 0;
+
+            return ToolbarViewModel(
+              id: id,
+              items: items1,
+              selectedIndex: selectedIndex,
+              actions: actions,
+            );
+
           default:
             return null;
         }
@@ -971,5 +1065,13 @@ class TemplateCaseImpl extends TemplateCase {
       default:
         return BadgeStyle.clear;
     }
+  }
+
+  Color _parseColor(String colorHex) {
+    colorHex = colorHex.replaceAll('#', '');
+    if (colorHex.length == 6) {
+      colorHex = 'FF' + colorHex;
+    }
+    return Color(int.parse(colorHex, radix: 16));
   }
 }

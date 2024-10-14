@@ -1,5 +1,7 @@
 {
     "templates": [
+        "toolbar_template.json",
+        "base_cell_template.json",
         "mortage_template.json",
         "primary_buttons_template.json",
         "secondary_buttons_template.json",
@@ -41,6 +43,7 @@
         "informer_tabs_template.json",
         "badges_template.json",
         "input_number_default.json",
-        "input_number_secondary.json"
+        "input_number_secondary.json",
+        "spinner_template.json"
     ]
 }

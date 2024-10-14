@@ -3,6 +3,7 @@ import 'package:example/navigation/tab_navigation_ai.dart';
 import 'package:example/screens/ai/block/template/template_screen_cubit.dart';
 import 'package:example/screens/ai/block/template/template_screen_state.dart';
 import 'package:example/screens/ai/view_models/badge_view_model.dart';
+import 'package:example/screens/ai/view_models/base_cell_view_model.dart';
 import 'package:example/screens/ai/view_models/big_informer_view_model.dart';
 import 'package:example/screens/ai/view_models/calendar_view_model.dart';
 import 'package:example/screens/ai/view_models/button_drop_down_view_model.dart';
@@ -10,6 +11,7 @@ import 'package:example/screens/ai/view_models/check_box_view_model.dart';
 import 'package:example/screens/ai/view_models/column_view_model.dart';
 import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
+import 'package:example/screens/ai/view_models/icon_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/input_number_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
@@ -28,12 +30,14 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:example/screens/ai/view_models/primary_button_view_model.dart';
 import 'package:example/screens/ai/view_models/secondary_button_view_model.dart';
+import 'package:example/screens/ai/view_models/spinner_view_model.dart';
 import 'package:example/screens/ai/view_models/tag_view_model.dart';
 import 'package:example/screens/ai/view_models/text_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_text_field_view_model.dart';
 import 'package:example/screens/ai/view_models/standard_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/title_button_drop_down.dart';
 import 'package:example/screens/ai/view_models/title_header_widget_view_model.dart';
+import 'package:example/screens/ai/view_models/toolbar_view_model.dart';
 import 'package:example/screens/ai/view_models/underline_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/zero_screen_view_model.dart';
 import 'package:example/storage/app_theme_storage.dart';
@@ -484,7 +488,7 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case BadgeViewModel:
         return BadgeWidget(
             title: item.title, style: item.style, isEnable: item.isEnabled);
-      
+
       case InputNumberViewModel:
         return InputNumber(
           title: item.title,
@@ -495,7 +499,56 @@ class _TemplateScreenState extends State<TemplateScreen> {
           stepValue: item.stepValue,
           style: item.style,
           onChangedValue: (_) { // Добавить обработку action
-          }
+          });
+
+      case SpinnerViewModel:
+        return Spinner(
+          style: item.style,
+          size: item.size,
+        );
+      case BaseCellViewModel:
+        return BaseCellWidget(
+          onPressed: () {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
+          leadingCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.leadingCell,
+          ),
+          centerCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.centerCell,
+          ),
+          trailingCell: _buildView(
+            context,
+            index,
+            colors,
+            fonts,
+            item.trailingCell,
+          ),
+          borderRadius: item.borderRadius,
+          isEnabled: item.isEnabled,
+          horizontalPadding: item.horizontalPadding,
+        );
+      case IconViewModel:
+        return Icon(
+          item.iconData,
+          size: item.size,
+          color: item.color,
+        );
+      case ToolbarViewModel:
+        return ToolbarWidget(
+          items: item.items,
+          selectedIndex: item.selectedIndex,
+          onTap: (_) {
+            cubit.didAction(widget.isLocal, item.actions, widget.onPush);
+          },
         );
 
       default:
