@@ -13,6 +13,7 @@ import 'package:example/screens/ai/view_models/expanded_view_model.dart';
 import 'package:example/screens/ai/view_models/ghost_button_view_model.dart';
 import 'package:example/screens/ai/view_models/icon_view_model.dart';
 import 'package:example/screens/ai/view_models/informer_tabs_view_model.dart';
+import 'package:example/screens/ai/view_models/input_number_view_model.dart';
 import 'package:example/screens/ai/view_models/link_control_view_model.dart';
 import 'package:example/screens/ai/view_models/logo_tabs_view_model.dart';
 import 'package:example/screens/ai/view_models/outline_tabs_view_model.dart';
@@ -487,6 +488,19 @@ class _TemplateScreenState extends State<TemplateScreen> {
       case BadgeViewModel:
         return BadgeWidget(
             title: item.title, style: item.style, isEnable: item.isEnabled);
+
+      case InputNumberViewModel:
+        return InputNumber(
+          title: item.title,
+          isEnable: item.isEnabled,
+          minimumValue: item.minimumValue,
+          maximumValue: item.maximumValue,
+          numberValue: item.numberValue,
+          stepValue: item.stepValue,
+          style: item.style,
+          onChangedValue: (_) { // Добавить обработку action
+          });
+
       case SpinnerViewModel:
         return Spinner(
           style: item.style,

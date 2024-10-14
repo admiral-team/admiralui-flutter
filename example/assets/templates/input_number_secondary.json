@@ -1,0 +1,249 @@
+{
+    "data": {
+        "items": [
+            {
+                "id": "0",
+                "type": "scroll_view",
+                "data": {
+                    "scroll_direction": "vertical",
+                    "aligment": "leading",
+                    "items": [
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "5 Symbols",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "data": {
+                                            "text": "Optional label"
+                                        }
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "input_number",
+                                        "data": {
+                                            "isEnabled": true,
+                                            "minimum_value": 0.0,
+                                            "maximum_value": 99999.0,
+                                            "number_value": 1.0,
+                                            "step_value": 1.0,
+                                            "style": "secondary"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "spacerID",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "6 Symbols",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "data": {
+                                            "text": "Optional label"
+                                        }
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "input_number",
+                                        "data": {
+                                            "isEnabled": true,
+                                            "minimum_value": 0.0,
+                                            "maximum_value": 999999.0,
+                                            "number_value": 100000.0,
+                                            "step_value": 1.0,
+                                            "style": "secondary"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "spacerID",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "8 Symbols",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "data": {
+                                            "text": "Optional label"
+                                        }
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "input_number",
+                                        "data": {
+                                            "isEnabled": true,
+                                            "minimum_value": 0.0,
+                                            "maximum_value": 99999999.0,
+                                            "number_value": 10000000.0,
+                                            "step_value": 1.0,
+                                            "style": "secondary"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "spacerID",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "10 Symbols",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "data": {
+                                            "text": "Optional label"
+                                        }
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "input_number",
+                                        "data": {
+                                            "isEnabled": true,
+                                            "minimum_value": 0.0,
+                                            "maximum_value": 99999999999.0,
+                                            "number_value": 100000000.0,
+                                            "step_value": 1.0,
+                                            "style": "secondary"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": "spacerID",
+                            "type": "spacer",
+                            "layout": {
+                                "height": 24
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "type": "paragraph_view",
+                            "data": {
+                                "title": "Unlimited",
+                                "textAligment": "left",
+                                "paragraphStyle": "secondary",
+                                "isEnabled": true
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "type": "row",
+                            "data": {
+                                "items": [
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "data": {
+                                            "text": "Optional label"
+                                        }
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "spacer"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "input_number",
+                                        "data": {
+                                            "isEnabled": true,
+                                            "minimum_value": 0.0,
+                                            "maximum_value": 999999999999.0,
+                                            "number_value": 1.0,
+                                            "step_value": 1.0,
+                                            "style": "secondary"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
