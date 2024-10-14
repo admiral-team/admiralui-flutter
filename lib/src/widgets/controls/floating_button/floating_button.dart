@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 /// AdmiralFloatingButton({
 ///   Key? key,
 ///   required List<String> items,
+///   int selectedIndex,
+///   ValueChanged<int>? onPressed
 /// })
 /// ```
 ///
@@ -23,14 +25,19 @@ import 'package:flutter/material.dart';
 /// AdmiralFloatingButton(
 ///   items: ['Item 1', 'Item 2', 'Item 3'],
 /// )
+/// ```
 ///
 class AdmiralFloatingButton extends StatefulWidget {
   const AdmiralFloatingButton({
     super.key,
     required this.items,
+    this.selectedIndex = 0,
+    this.onPressed,
   });
 
   final List<String> items;
+  final int selectedIndex;
+  final ValueChanged<int>? onPressed;
 
   @override
   State<AdmiralFloatingButton> createState() => _AdmiralFloatingButtonState();
@@ -41,6 +48,12 @@ class _AdmiralFloatingButtonState extends State<AdmiralFloatingButton> {
   int _selectedIndex = 0;
 
   late AdmiralFloatingButtonScheme scheme;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +115,7 @@ class _AdmiralFloatingButtonState extends State<AdmiralFloatingButton> {
       onTap: () {
         setState(() {
           _selectedIndex = index;
-          changeTheme();
+          widget.onPressed?.call(index);
         });
       },
       child: Container(
@@ -133,13 +146,5 @@ class _AdmiralFloatingButtonState extends State<AdmiralFloatingButton> {
         ),
       ),
     );
-  }
-
-  void changeTheme() {
-    setState(() {
-      final AppThemeProviderWrapperState wrapper =
-          AppThemeProviderWrapper.of(context);
-      wrapper.updateTheme();
-    });
   }
 }
