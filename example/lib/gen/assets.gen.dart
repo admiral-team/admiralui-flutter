@@ -122,17 +122,8 @@ class $AssetsInfoGen {
   /// File path: assets/info/appLogo.png
   AssetGenImage get appLogo => const AssetGenImage('assets/info/appLogo.png');
 
-  /// File path: assets/info/chevron_down_outline.png
-  AssetGenImage get chevronDownOutline =>
-      const AssetGenImage('assets/info/chevron_down_outline.png');
-
-  /// File path: assets/info/chevron_up_outline.png
-  AssetGenImage get chevronUpOutline =>
-      const AssetGenImage('assets/info/chevron_up_outline.png');
-
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [appLogo, chevronDownOutline, chevronUpOutline];
+  List<AssetGenImage> get values => [appLogo];
 }
 
 class $AssetsOnboardingGen {
@@ -287,11 +278,7 @@ class Assets {
   static const $AssetsOnboardingGen onboarding = $AssetsOnboardingGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsTagsChipsGen tagsChips = $AssetsTagsChipsGen();
-  static const String version = 'assets/version.json';
   static const $AssetsZeroScreenGen zeroScreen = $AssetsZeroScreenGen();
-
-  /// List of all assets
-  static List<String> get values => [version];
 }
 
 class AssetGenImage {
