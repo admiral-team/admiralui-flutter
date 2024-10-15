@@ -25,6 +25,7 @@ class BaseCellWidget extends StatefulWidget {
     this.isEnabled = true,
     this.scheme,
     this.horizontalPadding = LayoutGrid.doubleModule,
+    this.minHeight,
   });
 
   final VoidCallback? onPressed;
@@ -35,6 +36,7 @@ class BaseCellWidget extends StatefulWidget {
   final bool isEnabled;
   final BaseCellScheme? scheme;
   final double horizontalPadding;
+  final double? minHeight;
 
   @override
   State<BaseCellWidget> createState() => _BaseCellWidgetState();
@@ -76,8 +78,8 @@ class _BaseCellWidgetState extends State<BaseCellWidget> {
               }
             },
             child: Container(
-              constraints: const BoxConstraints(
-                minHeight: LayoutGrid.module * 9,
+              constraints: BoxConstraints(
+                minHeight: widget.minHeight ?? LayoutGrid.module * 9,
               ),
               padding: const EdgeInsets.symmetric(
                 vertical: LayoutGrid.halfModule * 3,
