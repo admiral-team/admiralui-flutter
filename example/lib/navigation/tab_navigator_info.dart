@@ -1,6 +1,6 @@
-import 'package:example/screens/info/faq/faq_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/info/faq/faq_screen.dart';
 import '../screens/info/info_contacts_screen.dart';
 import '../screens/info/info_description_screen.dart';
 import '../screens/info/info_screen.dart';
