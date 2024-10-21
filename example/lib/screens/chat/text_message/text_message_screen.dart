@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../storage/app_theme_storage.dart';
 
-// ignore_for_file: lines_longer_than_80_chars
 class TextMessageScreen extends StatefulWidget {
   const TextMessageScreen({
     super.key,
@@ -32,8 +31,8 @@ class _TextMessageScreenState extends State<TextMessageScreen> {
       chatStatus: ChatStatus.read,
     ),
     ChatMessageItem(
-      text:
-          'At breakpoint boundaries, miniunits divide the screen into a fixed master grid, and multiples of mini units map to fluid grid column widths and row heights.',
+      text: '''At breakpoint boundaries, miniunits divide the screen into a 
+          fixed master grid, and multiples of mini units map to fluid grid column widths and row heights.''',
       direction: ChatDirection.right,
       time: '10:30',
       chatStatus: ChatStatus.loading,
@@ -50,7 +49,8 @@ class _TextMessageScreenState extends State<TextMessageScreen> {
     ),
     ChatMessageItem(
       text:
-          'At breakpoint boundaries, miniunits divide the screen into a fixed master grid, and multiples of mini units map to fluid grid column widths and row heights.',
+          '''At breakpoint boundaries, miniunits divide the screen into a fixed 
+          master grid, and multiples of mini units map to fluid grid column widths and row heights.''',
       direction: ChatDirection.right,
       time: '10:30',
     ),
