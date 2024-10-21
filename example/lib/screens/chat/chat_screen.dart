@@ -32,7 +32,6 @@ class ListCellModel {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
 
   @override
@@ -58,8 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ListCellModel(
         title: 'Text Message',
         description: '',
-        onPressed: () =>
-            widget.onPush.call(TabNavigatorChatRoutes.textOperations),
+        onPressed: () => widget.onPush.call(TabNavigatorChatRoutes.textMessage),
       ),
       ListCellModel(
         title: 'Text Operation',
