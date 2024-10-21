@@ -1,10 +1,9 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/navigation/tab_navigator_info.dart';
 import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../navigation/tab_navigator_info.dart';
 
 class InfoContactsScreen extends StatefulWidget {
   const InfoContactsScreen({

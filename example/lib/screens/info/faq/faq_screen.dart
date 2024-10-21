@@ -1,12 +1,11 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/navigation/tab_navigator_info.dart';
 import 'package:example/screens/info/faq/faq_cell.dart';
 import 'package:example/screens/info/faq/faq_item.dart';
 import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
-
-import '../../../navigation/tab_navigator_info.dart';
 
 class FAQPage extends StatefulWidget {
   const FAQPage({
