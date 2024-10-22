@@ -19,6 +19,7 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen> {
   TabItem _currentTab = TabItem.main;
   bool _appThemeButtonHidden = false;
+  int _currentThemeSelectIndex = 0;
 
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
 
@@ -86,6 +87,12 @@ class _RootScreenState extends State<RootScreen> {
         floatingActionButton: !_appThemeButtonHidden
             ? AdmiralFloatingButton(
                 items: <String>['Light', 'Dark'],
+                onPressed: (int index) { 
+                  if (_currentThemeSelectIndex != index) {
+                    _currentThemeSelectIndex = index;
+                    changeTheme();
+                  }
+                },
               )
             : null,
       ),
@@ -115,5 +122,13 @@ class _RootScreenState extends State<RootScreen> {
           child: TabNavigatorChat(navigatorKey: _navigatorKeys[tabItem]),
         );
     }
+  }
+
+  void changeTheme() {
+    setState(() {
+      final AppThemeProviderWrapperState wrapper =
+          AppThemeProviderWrapper.of(context);
+      wrapper.updateTheme();
+    });
   }
 }
