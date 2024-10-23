@@ -10,6 +10,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
+bool isTesting = false;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -19,15 +21,7 @@ void main() async {
       statusBarColor: Colors.transparent,
     ),
   );
-  if (!kIsWeb) {
-    if (Platform.isAndroid) {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-    } else if (Platform.isIOS) {
-      await Firebase.initializeApp();
-    }
-  }
+
   runApp(
     MyApp(
       isShowOnboarding: showOnboarding,
@@ -35,7 +29,7 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({
     Key? key,
     this.isShowOnboarding = false,
@@ -44,14 +38,59 @@ class MyApp extends StatelessWidget {
   final bool isShowOnboarding;
 
   @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    if (!isTesting && !kIsWeb) {
+      if (Platform.isAndroid) {
+        await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
+      } else if (Platform.isIOS) {
+        await Firebase.initializeApp();
+      }
+    }
+    if (!isTesting) {
+      await Future<void>.delayed(Duration(seconds: 3));
+    }
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
     final ColorPalette colors = theme.colors;
 
+    if (isLoading && kIsWeb) {
+      return MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: Spinner(
+              style: SpinnerStyle.initial,
+              size: SpinnerSize.large,
+            ),
+          ),
+        ),
+      );
+    }
+
     return AppThemeProviderWrapper(
       child: MaterialApp(
-        title: 'Дизайн-система  «Адмирал»',
-        home: isShowOnboarding ? OnboardingScreen() : RootScreen(),
+        title: 'Дизайн-система «Адмирал»',
+        home: widget.isShowOnboarding ? OnboardingScreen() : RootScreen(),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
