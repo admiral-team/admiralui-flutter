@@ -10,6 +10,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
+bool isTesting = false;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,7 +51,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _initializeApp() async {
-    if (!kIsWeb) {
+    if (!isTesting && !kIsWeb) {
       if (Platform.isAndroid) {
         await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform,
@@ -58,7 +60,9 @@ class _MyAppState extends State<MyApp> {
         await Firebase.initializeApp();
       }
     }
-    await Future<void>.delayed(Duration(seconds: 3));
+    if (!isTesting) {
+      await Future<void>.delayed(Duration(seconds: 3));
+    }
 
     setState(() {
       isLoading = false;
