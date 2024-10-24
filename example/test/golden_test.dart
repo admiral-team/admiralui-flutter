@@ -15,12 +15,15 @@ import 'cell/action_bar_cell_screen_golden.dart';
 import 'cell/base_cell_screen_golden.dart';
 import 'chat/chat_input_screen_golden.dart';
 import 'chat/chat_photo_upload_screen_golden.dart';
+import 'chat/chat_text_message_screen_golden.dart';
 import 'chat/chat_text_operation_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'currency_screen_golden.dart';
 import 'device_config.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
+import 'page_control/page_control_circle_golden.dart';
+import 'page_control/page_control_liner_golden.dart';
 import 'radio_buttons_screen_golden.dart';
 import 'shimmer_screen_golden.dart';
 import 'spinner_screen_golden.dart';
@@ -144,5 +147,11 @@ void main() {
     runChatPhotoUploadScreen(device);
     // Chat Text Operation
     runChatTextOperationScreen(device);
+    // Text Message Screen
+    runTextMessageScreen(device);
+    // Page Control Liner 
+    runPageControlLinerScreen(device);
+    // Page Control Circular
+    runPageControlCircleScreen(device);
   }
 }

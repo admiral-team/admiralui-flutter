@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/chat/chat_screen.dart';
+import '../screens/chat/text_message/text_message_screen.dart';
 import '../screens/chat/text_operation/text_operation_screen.dart';
 import '../screens/chat/input/chat_input_screen.dart';
 import '../screens/chat/uploading_photo/uploading_photo_screen.dart';
@@ -8,6 +9,7 @@ enum TabNavigatorChatRoutes {
   home('/'),
   textOperations('/textOperations'),
   input('/input'),
+  textMessage('/textMessage'),
   uploadingPhoto('/uploadingPhoto');
 
   const TabNavigatorChatRoutes(this.value);
@@ -47,6 +49,11 @@ class TabNavigatorChat extends StatelessWidget {
       TabNavigatorChatRoutes.input.value: (BuildContext context) =>
           ChatInputScreen(
             title: 'Chat Input',
+            onPush: (TabNavigatorChatRoutes route) => _push(context, route),
+          ),
+      TabNavigatorChatRoutes.textMessage.value: (BuildContext context) =>
+          TextMessageScreen(
+            title: 'TextMessage',
             onPush: (TabNavigatorChatRoutes route) => _push(context, route),
           ),
       TabNavigatorChatRoutes.uploadingPhoto.value: (BuildContext context) =>

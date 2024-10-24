@@ -60,8 +60,8 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               OutlineTabs.withStringItems(
                 tabItems,
@@ -75,10 +75,13 @@ class _PageControlCircleScreenState extends State<PageControlCircleScreen> {
               SizedBox(
                 height: LayoutGrid.quadrupleModule * 4,
               ),
-              CircularPageControl(
-                _countNotifier.value,
-                0,
-                countNotifier: _countNotifier,
+              Center(
+                child: CircularPageControl(
+                  key: const Key('circularPageControl'),
+                  _countNotifier.value,
+                  0,
+                  countNotifier: _countNotifier,
+                ),
               )
             ],
           ),

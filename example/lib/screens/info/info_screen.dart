@@ -97,7 +97,9 @@ class _InfoScreenState extends State<InfoScreen> {
           AdmiralIcons.admiral_ic_help_solid,
           color: colors.elementAccent.color(),
         ),
-        onPressed: () {},
+        onPressed: () {
+          widget.onPush.call(TabNavigatorInfoRoutes.faq);
+        },
       ),
       ListCellModel(
         title: 'Документация',

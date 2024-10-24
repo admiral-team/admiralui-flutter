@@ -27,7 +27,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
     ChatMessageItem(
       text: 'Добрый день !',
       direction: ChatDirection.left,
-      time: _getTime(),
+      time: '10:30',
     ),
   ];
 
@@ -53,8 +53,11 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
 
   String _getTime() {
     DateTime now = DateTime.now();
-    TimeOfDay timeofDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
-    String time = '${timeofDayDate.hour}:${timeofDayDate.minute}';
+    TimeOfDay timeOfDayDate = TimeOfDay(hour: now.hour, minute: now.minute);
+    String formattedHour = timeOfDayDate.hour.toString().padLeft(2, '0');
+    String formattedMinute = timeOfDayDate.minute.toString().padLeft(2, '0');
+
+    String time = '$formattedHour:$formattedMinute';
     return time;
   }
 
@@ -119,6 +122,20 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                       return ChatBubbleView(
                         text: chatMessages[index].text,
                         direction: chatMessages[index].direction,
+                        chatStatus: chatMessages[index].chatStatus,
+                        onStatusTap: () {
+                          if (chatMessages[index].chatStatus ==
+                              ChatStatus.error) {
+                            setState(() {
+                              chatMessages[index] = ChatMessageItem(
+                                text: chatMessages[index].text,
+                                direction: chatMessages[index].direction,
+                                time: chatMessages[index].time,
+                                chatStatus: ChatStatus.read,
+                              );
+                            });
+                          }
+                        },
                         time: chatMessages[index].time,
                       );
                     },
@@ -142,10 +159,10 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
               onSendButtonPress: () {
                 setState(() {
                   chatMessages.add(ChatMessageItem(
-                    text: textEditingController.text,
-                    direction: ChatDirection.right,
-                    time: _getTime(),
-                  ));
+                      text: textEditingController.text,
+                      direction: ChatDirection.right,
+                      time: _getTime(),
+                      chatStatus: _getChatStatus(chatMessages.length)));
                   textEditingController.text = '';
                   _scrollDown();
                 });
@@ -158,6 +175,19 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
         ),
       ),
     );
+  }
+
+  ChatStatus _getChatStatus(int index) {
+    if (index == 1) {
+      return ChatStatus.read;
+    } else if (index == 2) {
+      return ChatStatus.sent;
+    } else if (index == 3) {
+      return ChatStatus.loading;
+    } else if (index == 4) {
+      return ChatStatus.error;
+    }
+    return ChatStatus.read;
   }
 
   void _scrollDown() {

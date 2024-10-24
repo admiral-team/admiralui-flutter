@@ -64,8 +64,8 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               OutlineTabs(
                 tabItems,
@@ -80,25 +80,29 @@ class _PageControlLinearScreenState extends State<PageControlLinearScreen> {
               SizedBox(
                 height: LayoutGrid.quadrupleModule * 4,
               ),
-              LinearPageControl(_countStep, _stepNotifier.value, 5,
-                  stepNotifier: _stepNotifier),
+              Center(
+                child: LinearPageControl(_countStep, _stepNotifier.value, 5,
+                    stepNotifier: _stepNotifier),
+              ),
               SizedBox(
                 height: LayoutGrid.tripleModule * 3,
               ),
-              PrimaryButton(
-                onPressed: () {
-                  if (_stepNotifier.value < _countStep - 1) {
-                    setState(() {
-                      _stepNotifier.value += 1;
-                    });
-                  }
-                },
-                isEnable: true,
-                title: 'Next',
-                sizeType: ButtonSizeType.small,
-                iconData: AdmiralIcons.admiral_ic_arrow_right_outline,
-                iconPosition: IconPosition.right,
-              )
+              Center(
+                child: PrimaryButton(
+                  onPressed: () {
+                    if (_stepNotifier.value < _countStep - 1) {
+                      setState(() {
+                        _stepNotifier.value += 1;
+                      });
+                    }
+                  },
+                  isEnable: true,
+                  title: 'Next',
+                  sizeType: ButtonSizeType.small,
+                  iconData: AdmiralIcons.admiral_ic_arrow_right_outline,
+                  iconPosition: IconPosition.right,
+                ),
+              ),
             ],
           ),
         ),

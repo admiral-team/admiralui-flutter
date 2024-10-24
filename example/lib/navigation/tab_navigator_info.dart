@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/info/faq/faq_screen.dart';
 import '../screens/info/info_contacts_screen.dart';
 import '../screens/info/info_description_screen.dart';
 import '../screens/info/info_screen.dart';
@@ -7,7 +8,8 @@ import '../screens/info/info_screen.dart';
 enum TabNavigatorInfoRoutes {
   home('/'),
   description('/description'),
-  contacts('/contacts');
+  contacts('/contacts'),
+  faq('/faq');
 
   const TabNavigatorInfoRoutes(this.value);
   final String value;
@@ -35,6 +37,10 @@ class TabNavigatorInfo extends StatelessWidget {
       TabNavigatorInfoRoutes.contacts.value: (BuildContext context) =>
           InfoContactsScreen(
             title: 'Контакты',
+            onPush: (TabNavigatorInfoRoutes route) => _push(context, route),
+          ),
+      TabNavigatorInfoRoutes.faq.value: (BuildContext context) => FAQPage(
+            title: 'FAQ',
             onPush: (TabNavigatorInfoRoutes route) => _push(context, route),
           ),
     };
