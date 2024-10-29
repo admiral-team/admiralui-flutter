@@ -2,13 +2,13 @@ import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
 
-/// An GhostButton-style button.
+/// A GhostButton-style button.
 ///
 /// Takes in a text or an icon that fades out and in on touch. May optionally
 /// have a background.
 ///
 /// You can create buttons in three sizes: (small, medium, big) by specifying
-/// size Type in init PrimaryButtonStyle:
+/// size Type in init GhostButtonStyle:
 /// Big - the main button, the width of which depends on the width of the
 /// screen;
 /// Medium - an additional button of a smaller size, the button does not change
@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 /// with the keyboard.
 ///
 class GhostButton extends StatefulWidget {
-  /// Creates an GhostButton.
+  /// Creates a GhostButton.
   const GhostButton({
     super.key,
     this.onPressed,
@@ -68,6 +68,15 @@ class _GhostButtonState extends State<GhostButton> {
       onTapDown: (_) => setHighlighted(highlighted: true),
       onTapCancel: () => setHighlighted(highlighted: false),
       child: Container(
+        constraints: BoxConstraints(
+          minWidth: widget.sizeType.width,
+          minHeight: widget.sizeType.height,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            LayoutGrid.module,
+          ),
+        ),
         padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
         ),
@@ -93,16 +102,17 @@ class _GhostButtonState extends State<GhostButton> {
                     : 0,
                 0,
               ),
-              child: !widget.isLoading
-                  ? TextView(
-                      widget.title,
-                      font: scheme.font,
-                      textColorNormal: textColor,
-                    )
-                  : SizedBox(
+              child: widget.isLoading
+                  ? SizedBox(
                       width: LayoutGrid.doubleModule,
                       height: LayoutGrid.doubleModule,
                       child: Spinner(scheme: scheme.spinnerScheme),
+                    )
+                  : TextView(
+                      widget.title,
+                      font: scheme.font,
+                      textColorNormal: textColor,
+                      textAlign: TextAlign.center,
                     ),
             ),
             if (widget.iconData != null &&

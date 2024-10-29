@@ -75,7 +75,6 @@ class _TwoTitleGhostButtonState extends State<TwoTitleGhostButton> {
         ),
         padding: const EdgeInsets.symmetric(
           vertical: LayoutGrid.halfModule * 3,
-          horizontal: LayoutGrid.doubleModule,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
