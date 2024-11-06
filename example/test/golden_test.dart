@@ -20,6 +20,7 @@ import 'chat/chat_text_operation_screen_golden.dart';
 import 'check_box_sreen_golden.dart';
 import 'currency_screen_golden.dart';
 import 'device_config.dart';
+import 'informers/big_informer_golden.dart';
 import 'informers/small_informer_golden.dart';
 import 'links_screen_golden.dart';
 import 'main_screen_golden.dart';
@@ -156,5 +157,7 @@ void main() {
     runPageControlCircleScreen(device);
     // Small Informer
     runSmallInformerScreen(device);
+    // Big Informer
+    runBigInformerScreen(device);
   }
 }
