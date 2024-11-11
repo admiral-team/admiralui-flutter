@@ -1,3 +1,4 @@
+import 'package:admiralui_flutter/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeStorage extends ChangeNotifier {
@@ -18,6 +19,10 @@ class AppThemeStorage extends ChangeNotifier {
 
   void setThemeButtonHidden(bool isHidden) async {
       _themeButtonHidden = await isHidden;
+      notifyListeners();
+  }
+
+  void createTheme(String name, AppTheme theme) async {
       notifyListeners();
   }
 }

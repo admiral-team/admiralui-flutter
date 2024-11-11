@@ -10,7 +10,7 @@ class ThemesScreen extends StatefulWidget {
     required this.onPush,
   });
 
-  final Function(TabNavigatorRoutes route, AppTheme theme) onPush;
+  final Function(TabNavigatorRoutes route, AppTheme? theme) onPush;
 
   @override
   State<ThemesScreen> createState() => _ThemesScreenState();
@@ -22,13 +22,13 @@ class _ThemesScreenState extends State<ThemesScreen> {
   @override
   void initState() {
     super.initState();
-    appThemeButtonStorage.toggleButton();
+    appThemeButtonStorage.setThemeButtonHidden(true);
   }
 
   @override
   void dispose() {
     super.dispose();
-    appThemeButtonStorage.toggleButton();
+    appThemeButtonStorage.setThemeButtonHidden(false);
   }
 
   @override
@@ -102,6 +102,10 @@ class _ThemesScreenState extends State<ThemesScreen> {
             child: PrimaryButton(
               title: 'Создать новую тему',
               sizeType: ButtonSizeType.big,
+            onPressed: () => widget.onPush.call(
+                TabNavigatorRoutes.themeNew,
+                null
+              ),
             ),
           ),
         ],
