@@ -20,11 +20,19 @@ class _ThemeTemplateScreenState extends State<ThemeTemplateScreen> {
   final AppThemeStorage appThemeStorage = AppThemeStorage();
   TextEditingController textController = TextEditingController(text: '');
   int selectedIndex = 0;
+  late Future<List<AppTheme>> _themesFuture;
 
   @override
   void initState() {
     super.initState();
     appThemeStorage.setThemeButtonHidden(true);
+    _themesFuture = appThemeStorage.getAllThemes();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    appThemeStorage.setThemeButtonHidden(false);
   }
 
   @override
@@ -36,11 +44,11 @@ class _ThemeTemplateScreenState extends State<ThemeTemplateScreen> {
     final String themeName =
         ModalRoute.of(context)!.settings.arguments as String;
 
-    Widget trailingCell(AppTheme choseTheme) {
+    Widget trailingCell(AppTheme choseTheme, bool isSelected) {
       return Row(
         children: <Widget>[
           TextView(
-            theme == choseTheme ? 'Выбрано' : '',
+            isSelected ? 'Выбрано' : '',
             font: theme.fonts.subhead4,
             textColorNormal: theme.colors.elementAccent.color(),
           ),
@@ -89,26 +97,67 @@ class _ThemeTemplateScreenState extends State<ThemeTemplateScreen> {
             SizedBox(
               height: LayoutGrid.tripleModule,
             ),
-            BaseCellWidget(
-              centerCell: TextView('Light'),
-              trailingCell: trailingCell(lightTheme),
-              horizontalPadding: 0,
-              onPressed: () {},
+            Expanded(
+              child: FutureBuilder<List<AppTheme>>(
+                future: _themesFuture,
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<AppTheme>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+
+                  final List<AppTheme> themes = snapshot.data ?? <AppTheme>[];
+                  final List<AppTheme> allThemes = <AppTheme>[
+                    lightTheme,
+                    darkTheme,
+                    ...themes
+                  ];
+
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: allThemes.map((AppTheme themeItem) {
+                        return BaseCellWidget(
+                          centerCell: TextView(themeItem.name),
+                          trailingCell: trailingCell(themeItem,
+                              selectedIndex == allThemes.indexOf(themeItem)),
+                          horizontalPadding: 0,
+                          onPressed: () {
+                            setState(() {
+                              selectedIndex = allThemes.indexOf(themeItem);
+                            });
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  );
+                },
+              ),
             ),
-            BaseCellWidget(
-              centerCell: TextView('Dark'),
-              trailingCell: trailingCell(darkTheme),
-              horizontalPadding: 0,
-              onPressed: () {},
-            ),
-            Spacer(),
             PrimaryButton(
-                title: 'Создать',
-                sizeType: ButtonSizeType.big,
-                onPressed: () {
-                  appThemeStorage.createTheme(themeName, lightTheme);
+              title: 'Создать',
+              sizeType: ButtonSizeType.big,
+              onPressed: () async {
+                final List<AppTheme> themes = await _themesFuture;
+                final List<AppTheme> allThemes = <AppTheme>[
+                  lightTheme,
+                  darkTheme,
+                  ...themes
+                ];
+                if (selectedIndex >= 0 && selectedIndex < allThemes.length) {
+                  final AppTheme selectedTheme = allThemes[selectedIndex];
+                  AppTheme newTheme = AppTheme(
+                    name: themeName,
+                    colors: selectedTheme.colors,
+                    fonts: selectedTheme.fonts,
+                  );
+                  appThemeStorage.saveTheme(newTheme);
                   widget.onPush.call(TabNavigatorRoutes.themes);
-                }),
+                }
+              },
+            ),
             SizedBox(
               height: LayoutGrid.doubleModule,
             ),
