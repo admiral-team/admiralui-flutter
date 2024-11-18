@@ -55,6 +55,12 @@ class AppThemeProviderWrapperState extends State<AppThemeProviderWrapper> {
     });
   }
 
+  void setTheme(AppTheme theme) {
+    setState(() {
+      _theme = theme;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppThemeProvider(
