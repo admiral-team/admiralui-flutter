@@ -88,11 +88,11 @@ import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 enum TabNavigatorRoutes {
   home('/'),
   themes('/themes'),
-  themeOptions('/themesOption'),
-  themeColors('/themeColors'),
-  themeFonts('/themeFonts'),
-  themeNew('/themeNew'),
-  themeTemplate('/themeTemplate'),
+  themeOptions('/themes/option'),
+  themeColors('/themes/colors'),
+  themeFonts('/themes/gonts'),
+  themeNew('/theme/new'),
+  themeTemplate('/themes/template'),
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
@@ -191,7 +191,7 @@ class TabNavigatorHome extends StatelessWidget {
       MaterialPageRoute<Map<String, WidgetBuilder>>(
           builder: (BuildContext context) =>
               routeBuilders[route.value]!(context),
-          settings: RouteSettings(arguments: arguments)),
+          settings: RouteSettings(name: route.value, arguments: arguments)),
     );
   }
 
