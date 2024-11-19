@@ -154,7 +154,8 @@ class _ThemeTemplateScreenState extends State<ThemeTemplateScreen> {
                     fonts: selectedTheme.fonts,
                   );
                   appThemeStorage.saveTheme(newTheme);
-                  widget.onPush.call(TabNavigatorRoutes.themes);
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
                 }
               },
             ),
