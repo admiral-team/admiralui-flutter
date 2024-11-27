@@ -1,6 +1,7 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/theme/admiral_color.dart';
+import 'package:example/extentions/colors_extentions.dart';
 import 'package:flutter/material.dart';
 
 class ThemeColorsScreen extends StatelessWidget {
@@ -65,7 +66,7 @@ class ThemeColorsScreen extends StatelessWidget {
                   ),
                   centerCell: TitleSubtitleCellWidget(
                     title: colorName,
-                    subtitle: colorToHexString(color.color()),
+                    subtitle: color.color().toHexString(),
                   ),
                   trailingCell: Icon(
                     AdmiralIcons.admiral_ic_chevron_right_outline,
@@ -78,10 +79,6 @@ class ThemeColorsScreen extends StatelessWidget {
         },
       ),
     );
-  }
-
-  colorToHexString(Color color) {
-    return '#${color.value.toRadixString(16).substring(2, 8)}';
   }
 }
 
