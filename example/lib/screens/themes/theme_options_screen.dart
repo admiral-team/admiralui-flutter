@@ -35,97 +35,116 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
       _choseTheme = choseTheme!;
     }
     return Scaffold(
-      backgroundColor: colors.backgroundBasic.color(),
-      appBar: AppBar(
-        leading: BackButton(
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          _choseTheme.name,
-          style: fonts.subtitle2.toTextStyle(
-            colors.textPrimary.color(),
-          ),
-        ),
-        bottomOpacity: 0.0,
         backgroundColor: colors.backgroundBasic.color(),
-        actions: (_choseTheme != darkTheme && _choseTheme != lightTheme)
-            ? <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.delete_outline,
-                    color: colors.elementSecondary.color(),
-                  ),
-                  onPressed: () {
+        appBar: AppBar(
+          leading: BackButton(
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            _choseTheme.name,
+            style: fonts.subtitle2.toTextStyle(
+              colors.textPrimary.color(),
+            ),
+          ),
+          bottomOpacity: 0.0,
+          backgroundColor: colors.backgroundBasic.color(),
+          actions: (_choseTheme != darkTheme && _choseTheme != lightTheme)
+              ? <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.delete_outline,
+                      color: colors.elementSecondary.color(),
+                    ),
+                    onPressed: () {
                       appThemeStorage.deleteTheme(_choseTheme.name);
                       Navigator.of(context).pop();
-                  },
-                ),
-              ]
-            : <Widget>[],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          if (_choseTheme != darkTheme && _choseTheme != lightTheme)
-            Padding(
-              padding: const EdgeInsets.all(
-                LayoutGrid.doubleModule,
-              ),
-              child: TextFieldWidget(
-                  key: const Key('standardTextField'),
-                  textController,
-                  labelText: 'Название темы',
-                  placeHolderText: 'Theme'),
-            ),
-          BaseCellWidget(
-            centerCell: TextView('Colors'),
-            trailingCell: Icon(
-              AdmiralIcons.admiral_ic_chevron_right_outline,
-              color: colors.elementSecondary.color(),
-            ),
-            onPressed: () => widget.onPush.call(
-              TabNavigatorRoutes.themeColors,
-              _choseTheme,
-            ),
-          ),
-          BaseCellWidget(
-            centerCell: TextView('Typography'),
-            trailingCell: Icon(
-              AdmiralIcons.admiral_ic_chevron_right_outline,
-              color: colors.elementSecondary.color(),
-            ),
-            onPressed: () => widget.onPush.call(
-              TabNavigatorRoutes.themeFonts,
-              _choseTheme,
-            ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(
-              LayoutGrid.doubleModule,
-            ),
-            child: PrimaryButton(
-                title: 'Применить',
-                sizeType: ButtonSizeType.big,
-                onPressed: () {
-                  if (_choseTheme != darkTheme && _choseTheme != lightTheme) { 
-                    AppTheme newTheme = AppTheme(
-                      name: textController.text,
-                      colors: _choseTheme.colors,
-                      fonts: _choseTheme.fonts,
-                    );
-                    appThemeStorage.deleteTheme(_choseTheme.name);
-                    appThemeStorage.saveTheme(newTheme);
-                    setTheme(newTheme);
-                  } else {
-                    setTheme(_choseTheme);
-                  }
-                }),
-          ),
-        ],
-      ),
-    );
+                    },
+                  ),
+                ]
+              : <Widget>[],
+        ),
+        body: AnimatedBuilder(
+            animation: appThemeStorage,
+            builder: (BuildContext context, Widget? child) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  if (theme != darkTheme && theme != lightTheme)
+                    Padding(
+                      padding: const EdgeInsets.all(
+                        LayoutGrid.doubleModule,
+                      ),
+                      child: TextFieldWidget(
+                          key: const Key('standardTextField'),
+                          textController,
+                          labelText: 'Название темы',
+                          placeHolderText: 'Theme'),
+                    ),
+                  BaseCellWidget(
+                      centerCell: TextView('Colors'),
+                      trailingCell: Icon(
+                        AdmiralIcons.admiral_ic_chevron_right_outline,
+                        color: colors.elementSecondary.color(),
+                      ),
+                      onPressed: () async {
+                        final AppTheme? fetchedTheme =
+                            await appThemeStorage.getTheme(_choseTheme.name) 
+                            ?? _choseTheme;
+                        if (fetchedTheme != null) {
+                          widget.onPush.call(
+                            TabNavigatorRoutes.themeColors,
+                            fetchedTheme,
+                          );
+                        }
+                      }),
+                  BaseCellWidget(
+                      centerCell: TextView('Typography'),
+                      trailingCell: Icon(
+                        AdmiralIcons.admiral_ic_chevron_right_outline,
+                        color: colors.elementSecondary.color(),
+                      ),
+                      onPressed: () async {
+                        final AppTheme? fetchedTheme =
+                            await appThemeStorage.getTheme(_choseTheme.name) 
+                            ?? _choseTheme;
+                        if (fetchedTheme != null) {
+                          widget.onPush.call(
+                            TabNavigatorRoutes.themeColors,
+                            fetchedTheme,
+                          );
+                        }
+                      }),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(
+                      LayoutGrid.doubleModule,
+                    ),
+                    child: PrimaryButton(
+                        title: 'Применить',
+                        sizeType: ButtonSizeType.big,
+                        onPressed: () async {
+                          final AppTheme? fetchedTheme =
+                            await appThemeStorage.getTheme(_choseTheme.name);
+                          if (fetchedTheme != darkTheme &&
+                              fetchedTheme != lightTheme && 
+                              fetchedTheme != null) {
+                            AppTheme newTheme = AppTheme(
+                              name: textController.text,
+                              colors: fetchedTheme.colors,
+                              fonts: fetchedTheme.fonts,
+                            );
+                            appThemeStorage.deleteTheme(_choseTheme.name);
+                            appThemeStorage.saveTheme(newTheme);
+                            setTheme(newTheme);
+                          } else {
+                            setTheme(_choseTheme);
+                          }
+                        }),
+                  ),
+                ],
+              );
+            }));
   }
 
   void setTheme(AppTheme theme) {
