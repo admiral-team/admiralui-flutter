@@ -20,6 +20,7 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
   final AppThemeStorage appThemeStorage = AppThemeStorage();
   TextEditingController textController = TextEditingController(text: '');
   AppTheme? choseTheme;
+  bool isButtonEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,16 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
     final AppTheme _choseTheme;
+
     if (choseTheme == null) {
       choseTheme = (ModalRoute.of(context)!.settings.arguments as AppTheme);
       _choseTheme = choseTheme!;
       textController.text = _choseTheme.name;
+      isButtonEnabled = _choseTheme.name.isNotEmpty;
     } else {
       _choseTheme = choseTheme!;
     }
+
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
       appBar: AppBar(
@@ -56,8 +60,8 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                     color: colors.elementSecondary.color(),
                   ),
                   onPressed: () {
-                      appThemeStorage.deleteTheme(_choseTheme.name);
-                      Navigator.of(context).pop();
+                    appThemeStorage.deleteTheme(_choseTheme.name);
+                    Navigator.of(context).pop();
                   },
                 ),
               ]
@@ -73,10 +77,17 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                 LayoutGrid.doubleModule,
               ),
               child: TextFieldWidget(
-                  key: const Key('standardTextField'),
-                  textController,
-                  labelText: 'Название темы',
-                  placeHolderText: 'Theme'),
+                key: const Key('standardTextField'),
+                textController,
+                labelText: 'Название темы',
+                placeHolderText: 'Theme',
+                trailingIcon: Icon(AdmiralIcons.admiral_ic_edit_outline),
+                onChanged: (String value) {
+                  setState(() {
+                    isButtonEnabled = value.isNotEmpty;
+                  });
+                },
+              ),
             ),
           BaseCellWidget(
             centerCell: TextView('Colors'),
@@ -106,22 +117,29 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
               LayoutGrid.doubleModule,
             ),
             child: PrimaryButton(
-                title: 'Применить',
-                sizeType: ButtonSizeType.big,
-                onPressed: () {
-                  if (_choseTheme != darkTheme && _choseTheme != lightTheme) { 
-                    AppTheme newTheme = AppTheme(
-                      name: textController.text,
-                      colors: _choseTheme.colors,
-                      fonts: _choseTheme.fonts,
-                    );
-                    appThemeStorage.deleteTheme(_choseTheme.name);
-                    appThemeStorage.saveTheme(newTheme);
-                    setTheme(newTheme);
-                  } else {
-                    setTheme(_choseTheme);
-                  }
-                }),
+              title: 'Применить',
+              sizeType: ButtonSizeType.big,
+              onPressed: isButtonEnabled
+                  ? () {
+                      if (_choseTheme != darkTheme &&
+                          _choseTheme != lightTheme) {
+                        AppTheme newTheme = AppTheme(
+                          name: textController.text,
+                          colors: _choseTheme.colors,
+                          fonts: _choseTheme.fonts,
+                        );
+                        appThemeStorage.deleteTheme(_choseTheme.name);
+                        appThemeStorage.saveTheme(newTheme);
+                        setTheme(newTheme);
+                        Navigator.of(context).pop();
+                      } else {
+                        setTheme(_choseTheme);
+                        Navigator.of(context).pop();
+                      }
+                    }
+                  : null,
+              isEnable: isButtonEnabled,
+            ),
           ),
         ],
       ),
