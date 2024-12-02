@@ -139,7 +139,6 @@ jobs:
     name: Build remote demo project
     runs-on: [ self-hosted, main, flutter ]
     if: github.event.action != 'closed'
-    needs: deploy-ios-dev
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
@@ -175,7 +174,7 @@ jobs:
         run: cd remote_demo && flutter build apk && flutter build appbundle
       - name: Test build iOS
         run: cd remote_demo/lib && flutter build ios
-  
+
   remove-appcenter-build:
     name: Remove Appcenter Builds
     needs: setup
@@ -200,7 +199,6 @@ jobs:
 
   check-release-issue:
     name: Check Release Issue
-    needs: deploy-ios-dev
     runs-on: [ self-hosted, main, flutter ]
     if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
     env:
