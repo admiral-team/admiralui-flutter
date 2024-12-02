@@ -139,7 +139,6 @@ jobs:
     name: Build remote demo project
     runs-on: [ self-hosted, main, flutter ]
     if: github.event.action != 'closed'
-    needs: deploy-ios-dev
     env:
       API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
@@ -173,51 +172,7 @@ jobs:
       - run: cd remote_demo && flutter build web
       - name: Test build android
         run: cd remote_demo && flutter build apk && flutter build appbundle
-      - name: Test build iOS
-        run: cd remote_demo/lib && flutter build ios
 
-  deploy-ios-dev:
-    name: Deploy iOS Appcenter Development
-    needs: test
-    runs-on: [ self-hosted, main, flutter ]
-    if: github.event.action != 'closed'
-    env:
-      API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-      APPCENTER_API_TOKEN_IOS_DEV: ${{ secrets.APPCENTER_API_TOKEN_IOS_DEV }}
-      APPCENTER_API_TOKEN_IOS_PROD: ${{ secrets.APPCENTER_API_TOKEN_IOS_PROD }}
-      CI_PASSWORD: ${{ secrets.CI_PASSWORD }}
-      PUll_REQUEST_NUMBER: ${{ github.event.number }}
-      CI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      TELEGRAM_DEV_CHAT_ID: ${{ secrets.TELEGRAM_DEV_CHAT_ID }}
-      TELEGRAM_API_TOKEN: ${{ secrets.TELEGRAM_API_TOKEN }}
-      IOS_GOOGLE_API_KEY: ${{ secrets.IOS_GOOGLE_API_KEY }}
-    steps:
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.16.8'
-          channel: 'stable'
-          architecture: x64
-          distribution: 'zulu'
-          java-version: '11'
-      - name: Set Xcode Command Line Tools Path
-        run: sudo -S <<< "$CI_PASSWORD" xcode-select --switch /Applications/Xcode.app
-      - name: Unlock Fastlane Secrets Keychain
-        run: cd build/ios/fastlane && bundle exec fastlane unlock_secrets_keychain password:"$CI_PASSWORD"
-      - name: Add FireBase Lane App Distribution
-        run: cd build/ios/fastlane && fastlane add_plugin firebase_app_distribution
-      - name: Write Env to Config
-        run: cd example/ios && touch .env && echo "GOOGLE_API_KEY=$IOS_GOOGLE_API_KEY" > .env
-      - name: Build iOS App
-        run: cd example/lib && flutter build ios
-      - name: Deploy iOS App Firebase
-        if: ${{ github.event_name == 'pull_request' }}
-        run: cd build/ios/fastlane && bundle exec fastlane deploy_firebase_dev issue_name:${{ github.head_ref }} pull_request_number:${{ github.event.number }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID"
-      - name: Check If Deploy iOS Appcenter Failed
-        if: ${{ failure() }}
-        run: |
-          cd build/ios/fastlane && bundle install && bundle update &&
-           bundle exec fastlane send_build_failed_info issue_name:${{ github.head_ref }} telegram_token:"$TELEGRAM_API_TOKEN" telegram_chat_id:"$TELEGRAM_DEV_CHAT_ID" build_url:"${{ github.event.number }}"
-  
   remove-appcenter-build:
     name: Remove Appcenter Builds
     needs: setup
@@ -242,7 +197,6 @@ jobs:
 
   check-release-issue:
     name: Check Release Issue
-    needs: deploy-ios-dev
     runs-on: [ self-hosted, main, flutter ]
     if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
     env:
