@@ -9,9 +9,6 @@ import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
-import '../screens/text_block/padding_text_block_screen.dart';
-import '../screens/themes/theme_new_screen.dart';
-import '../screens/themes/theme_template_screen.dart';
 import '../screens/themes/themes_screen.dart';
 import '../screens/themes/theme_options_screen.dart';
 import '../screens/themes/theme_colors_screen.dart';
