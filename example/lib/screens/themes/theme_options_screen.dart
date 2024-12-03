@@ -20,6 +20,7 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
   final AppThemeStorage appThemeStorage = AppThemeStorage();
   TextEditingController textController = TextEditingController(text: '');
   AppTheme? choseTheme;
+  bool isButtonEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,16 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
     final AppTheme _choseTheme;
+
     if (choseTheme == null) {
       choseTheme = (ModalRoute.of(context)!.settings.arguments as AppTheme);
       _choseTheme = choseTheme!;
       textController.text = _choseTheme.name;
+      isButtonEnabled = _choseTheme.name.isNotEmpty;
     } else {
       _choseTheme = choseTheme!;
     }
+
     return Scaffold(
         backgroundColor: colors.backgroundBasic.color(),
         appBar: AppBar(
@@ -89,8 +93,8 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                       ),
                       onPressed: () async {
                         final AppTheme? fetchedTheme =
-                            await appThemeStorage.getTheme(_choseTheme.name) 
-                            ?? _choseTheme;
+                            await appThemeStorage.getTheme(_choseTheme.name) ??
+                                _choseTheme;
                         if (fetchedTheme != null) {
                           widget.onPush.call(
                             TabNavigatorRoutes.themeColors,
@@ -106,8 +110,8 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                       ),
                       onPressed: () async {
                         final AppTheme? fetchedTheme =
-                            await appThemeStorage.getTheme(_choseTheme.name) 
-                            ?? _choseTheme;
+                            await appThemeStorage.getTheme(_choseTheme.name) ??
+                                _choseTheme;
                         if (fetchedTheme != null) {
                           widget.onPush.call(
                             TabNavigatorRoutes.themeColors,
@@ -121,26 +125,29 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                       LayoutGrid.doubleModule,
                     ),
                     child: PrimaryButton(
-                        title: 'Применить',
-                        sizeType: ButtonSizeType.big,
-                        onPressed: () async {
-                          final AppTheme? fetchedTheme =
-                            await appThemeStorage.getTheme(_choseTheme.name);
-                          if (fetchedTheme != darkTheme &&
-                              fetchedTheme != lightTheme && 
-                              fetchedTheme != null) {
-                            AppTheme newTheme = AppTheme(
-                              name: textController.text,
-                              colors: fetchedTheme.colors,
-                              fonts: fetchedTheme.fonts,
-                            );
-                            appThemeStorage.deleteTheme(_choseTheme.name);
-                            appThemeStorage.saveTheme(newTheme);
-                            setTheme(newTheme);
-                          } else {
-                            setTheme(_choseTheme);
-                          }
-                        }),
+                      title: 'Применить',
+                      sizeType: ButtonSizeType.big,
+                      onPressed: isButtonEnabled
+                          ? () {
+                              if (_choseTheme != darkTheme &&
+                                  _choseTheme != lightTheme) {
+                                AppTheme newTheme = AppTheme(
+                                  name: textController.text,
+                                  colors: _choseTheme.colors,
+                                  fonts: _choseTheme.fonts,
+                                );
+                                appThemeStorage.deleteTheme(_choseTheme.name);
+                                appThemeStorage.saveTheme(newTheme);
+                                setTheme(newTheme);
+                                Navigator.of(context).pop();
+                              } else {
+                                setTheme(_choseTheme);
+                                Navigator.of(context).pop();
+                              }
+                            }
+                          : null,
+                      isEnable: isButtonEnabled,
+                    ),
                   ),
                 ],
               );

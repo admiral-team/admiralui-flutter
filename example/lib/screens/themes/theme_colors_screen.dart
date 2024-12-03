@@ -4,6 +4,7 @@ import 'package:admiralui_flutter/theme/admiral_color.dart';
 import 'package:example/screens/themes/theme_color_screen.dart';
 import 'package:example/storage/app_theme_storage.dart';
 import '../../navigation/tab_navigator_home.dart';
+import 'package:example/extentions/colors_extentions.dart';
 import 'package:flutter/material.dart';
 
 class ThemeColorsScreen extends StatefulWidget {
@@ -40,6 +41,7 @@ class _ThemeColorsScreenState extends State<ThemeColorsScreen> {
     final FontPalette fonts = theme.fonts;
     final AppTheme choseTheme =
         ModalRoute.of(context)!.settings.arguments as AppTheme;
+
     return Scaffold(
         backgroundColor: colors.backgroundBasic.color(),
         appBar: AppBar(
@@ -87,39 +89,57 @@ class _ThemeColorsScreenState extends State<ThemeColorsScreen> {
                                   element.name == choseTheme.name);
                           final Map<String, AColor> colorsPalete =
                               theme.colors.allColors();
-                          print(theme.name);
+                          final Map<String, Map<String, AColor>> groupedColors =
+                              groupColorsBySection(colorsPalete);
                           return ListView.builder(
-                            addAutomaticKeepAlives: false,
-                            addRepaintBoundaries: false,
-                            physics: const BouncingScrollPhysics(
-                              parent: AlwaysScrollableScrollPhysics(),
-                            ),
-                            itemCount: theme.colors.allColors().length,
-                            itemBuilder: (BuildContext ctx, int index) {
-                              String? key = colorsPalete.keys.elementAt(index);
-                              return BaseCellWidget(
-                                  leadingCell: Container(
-                                    width: 44,
-                                    height: 44,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: colorsPalete[key]?.color()),
+                            itemCount: groupedColors.keys.length,
+                            itemBuilder:
+                                (BuildContext context, int sectionIndex) {
+                              String sectionKey =
+                                  groupedColors.keys.elementAt(sectionIndex);
+                              Map<String, AColor> sectionColors =
+                                  groupedColors[sectionKey]!;
+
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(
+                                        LayoutGrid.doubleModule),
+                                    child: TextView(
+                                      sectionKey.capitalize(),
+                                      font: fonts.subhead3,
+                                      textColorNormal:
+                                          colors.elementSecondary.color(),
+                                    ),
                                   ),
-                                  centerCell: TitleSubtitleCellWidget(
-                                    title: key,
-                                    subtitle:
-                                        colorsPalete[key]!.value.toString(),
-                                  ),
-                                  trailingCell: Icon(
-                                    AdmiralIcons
-                                        .admiral_ic_chevron_right_outline,
-                                    color: colors.elementSecondary.color(),
-                                  ),
-                                  onPressed: () => widget.onPush(
-                                        TabNavigatorRoutes.themeColor,
-                                        ThemeColorInitModel(
-                                            colorsPalete[key]!, theme, key),
-                                      ));
+                                  ...sectionColors.entries
+                                      .map((MapEntry<String, AColor> entry) {
+                                    String colorName = entry.key;
+                                    AColor color = entry.value;
+
+                                    return BaseCellWidget(
+                                      leadingCell: Container(
+                                        width: 44,
+                                        height: 44,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: color.color(),
+                                        ),
+                                      ),
+                                      centerCell: TitleSubtitleCellWidget(
+                                        title: colorName,
+                                        subtitle: color.color().toHexString(),
+                                      ),
+                                      trailingCell: Icon(
+                                        AdmiralIcons
+                                            .admiral_ic_chevron_right_outline,
+                                        color: colors.elementSecondary.color(),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ],
+                              );
                             },
                           );
                         }),
@@ -128,4 +148,29 @@ class _ThemeColorsScreenState extends State<ThemeColorsScreen> {
               );
             }));
   }
+}
+
+Map<String, Map<String, AColor>> groupColorsBySection(
+    Map<String, AColor> colorsPalete) {
+  final Map<String, Map<String, AColor>> groupedColors =
+      <String, Map<String, AColor>>{
+    'background': <String, AColor>{},
+    'element': <String, AColor>{},
+    'special': <String, AColor>{},
+    'text': <String, AColor>{},
+  };
+
+  colorsPalete.forEach((String key, AColor value) {
+    if (key.startsWith('background')) {
+      groupedColors['background']![key] = value;
+    } else if (key.startsWith('element')) {
+      groupedColors['element']![key] = value;
+    } else if (key.startsWith('special')) {
+      groupedColors['special']![key] = value;
+    } else if (key.startsWith('text')) {
+      groupedColors['text']![key] = value;
+    }
+  });
+
+  return groupedColors;
 }

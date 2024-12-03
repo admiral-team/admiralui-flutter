@@ -19,11 +19,27 @@ class ThemeNewScreen extends StatefulWidget {
 class _ThemeNewScreenState extends State<ThemeNewScreen> {
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
   TextEditingController textController = TextEditingController(text: '');
+  bool isButtonEnabled = false;
+  TextInputState inputState = TextInputState.normal;
 
   @override
   void initState() {
     super.initState();
     appThemeButtonStorage.setThemeButtonHidden(true);
+  }
+
+  Future<void> validateThemeName(String value) async {
+    final AppTheme? existingTheme = await appThemeButtonStorage.getTheme(value);
+
+    setState(() {
+      if (existingTheme != null) {
+        inputState = TextInputState.error;
+        isButtonEnabled = false;
+      } else {
+        inputState = TextInputState.normal;
+        isButtonEnabled = value.isNotEmpty;
+      }
+    });
   }
 
   @override
@@ -67,18 +83,25 @@ class _ThemeNewScreenState extends State<ThemeNewScreen> {
               height: LayoutGrid.tripleModule,
             ),
             TextFieldWidget(
-                key: const Key('standardTextField'),
-                textController,
-                labelText: 'Название темы',
-                placeHolderText: 'Theme'),
+              key: const Key('standardTextField'),
+              textController,
+              state: inputState,
+              labelText: 'Название темы',
+              placeHolderText: 'Theme',
+              trailingIcon: Icon(AdmiralIcons.admiral_ic_edit_outline),
+              onChanged: (String value) => validateThemeName(value),
+            ),
             Spacer(),
             PrimaryButton(
               title: 'Далее',
               sizeType: ButtonSizeType.big,
-              onPressed: () => widget.onPush.call(
-                TabNavigatorRoutes.themeTemplate,
-                textController.text,
-              ),
+              onPressed: isButtonEnabled
+                  ? () => widget.onPush.call(
+                        TabNavigatorRoutes.themeTemplate,
+                        textController.text,
+                      )
+                  : null,
+              isEnable: isButtonEnabled,
             ),
             SizedBox(
               height: LayoutGrid.doubleModule,

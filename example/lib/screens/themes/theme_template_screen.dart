@@ -156,8 +156,8 @@ class _ThemeTemplateScreenState extends State<ThemeTemplateScreen> {
                   appThemeStorage.saveTheme(newTheme);
                   // ignore: always_specify_types
                   Navigator.of(context).popUntil((route) {
-                    return route.settings.name == 
-                    TabNavigatorRoutes.themes.value;
+                    return route.settings.name ==
+                        TabNavigatorRoutes.themes.value;
                   });
                 }
               },
