@@ -114,7 +114,7 @@ class _ThemeOptionsScreenState extends State<ThemeOptionsScreen> {
                                 _choseTheme;
                         if (fetchedTheme != null) {
                           widget.onPush.call(
-                            TabNavigatorRoutes.themeColors,
+                            TabNavigatorRoutes.themeFonts,
                             fetchedTheme,
                           );
                         }

@@ -59,92 +59,81 @@ class _ThemeColorsScreenState extends State<ThemeColorsScreen> {
         body: AnimatedBuilder(
             animation: appThemeStorage,
             builder: (BuildContext context, Widget? child) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(LayoutGrid.doubleModule),
-                    child: TextView(
-                      'Text',
-                      font: fonts.subhead3,
-                      textColorNormal: colors.elementSecondary.color(),
-                    ),
-                  ),
-                  Expanded(
-                    child: FutureBuilder<List<AppTheme>>(
-                        future: appThemeStorage.getAllThemes(),
-                        builder: (BuildContext context,
-                            AsyncSnapshot<List<AppTheme>> snapshot) {
-                          final List<AppTheme> themes =
-                              snapshot.data ?? <AppTheme>[];
-                          final List<AppTheme> allThemes = <AppTheme>[
-                            lightTheme,
-                            darkTheme,
-                            ...themes
-                          ];
-                          AppTheme theme = themes.isEmpty
-                              ? choseTheme
-                              : allThemes.firstWhere((AppTheme element) =>
-                                  element.name == choseTheme.name);
-                          final Map<String, AColor> colorsPalete =
-                              theme.colors.allColors();
-                          final Map<String, Map<String, AColor>> groupedColors =
-                              groupColorsBySection(colorsPalete);
-                          return ListView.builder(
-                            itemCount: groupedColors.keys.length,
-                            itemBuilder:
-                                (BuildContext context, int sectionIndex) {
-                              String sectionKey =
-                                  groupedColors.keys.elementAt(sectionIndex);
-                              Map<String, AColor> sectionColors =
-                                  groupedColors[sectionKey]!;
+              return Expanded(
+                child: FutureBuilder<List<AppTheme>>(
+                    future: appThemeStorage.getAllThemes(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<AppTheme>> snapshot) {
+                      final List<AppTheme> themes =
+                          snapshot.data ?? <AppTheme>[];
+                      final List<AppTheme> allThemes = <AppTheme>[
+                        lightTheme,
+                        darkTheme,
+                        ...themes
+                      ];
+                      AppTheme theme = themes.isEmpty
+                          ? choseTheme
+                          : allThemes.firstWhere((AppTheme element) =>
+                              element.name == choseTheme.name);
+                      final Map<String, AColor> colorsPalete =
+                          theme.colors.allColors();
+                      final Map<String, Map<String, AColor>> groupedColors =
+                          groupColorsBySection(colorsPalete);
+                      return ListView.builder(
+                        itemCount: groupedColors.keys.length,
+                        itemBuilder: (BuildContext context, int sectionIndex) {
+                          String sectionKey =
+                              groupedColors.keys.elementAt(sectionIndex);
+                          Map<String, AColor> sectionColors =
+                              groupedColors[sectionKey]!;
 
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(
-                                        LayoutGrid.doubleModule),
-                                    child: TextView(
-                                      sectionKey.capitalize(),
-                                      font: fonts.subhead3,
-                                      textColorNormal:
-                                          colors.elementSecondary.color(),
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(
+                                    LayoutGrid.doubleModule),
+                                child: TextView(
+                                  sectionKey.capitalize(),
+                                  font: fonts.subhead3,
+                                  textColorNormal:
+                                      colors.elementSecondary.color(),
+                                ),
+                              ),
+                              ...sectionColors.entries
+                                  .map((MapEntry<String, AColor> entry) {
+                                String colorName = entry.key;
+                                AColor color = entry.value;
+
+                                return BaseCellWidget(
+                                    leadingCell: Container(
+                                      width: 44,
+                                      height: 44,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: color.color(),
+                                      ),
                                     ),
-                                  ),
-                                  ...sectionColors.entries
-                                      .map((MapEntry<String, AColor> entry) {
-                                    String colorName = entry.key;
-                                    AColor color = entry.value;
-
-                                    return BaseCellWidget(
-                                      leadingCell: Container(
-                                        width: 44,
-                                        height: 44,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: color.color(),
-                                        ),
-                                      ),
-                                      centerCell: TitleSubtitleCellWidget(
-                                        title: colorName,
-                                        subtitle: color.color().toHexString(),
-                                      ),
-                                      trailingCell: Icon(
-                                        AdmiralIcons
-                                            .admiral_ic_chevron_right_outline,
-                                        color: colors.elementSecondary.color(),
-                                      ),
-                                    );
-                                  }).toList(),
-                                ],
-                              );
-                            },
+                                    centerCell: TitleSubtitleCellWidget(
+                                      title: colorName,
+                                      subtitle: color.color().toHexString(),
+                                    ),
+                                    trailingCell: Icon(
+                                      AdmiralIcons
+                                          .admiral_ic_chevron_right_outline,
+                                      color: colors.elementSecondary.color(),
+                                    ),
+                                    onPressed: () => widget.onPush(
+                                          TabNavigatorRoutes.themeColor,
+                                          ThemeColorInitModel(
+                                              color, theme, colorName),
+                                        ));
+                              }).toList(),
+                            ],
                           );
-                        }),
-                  ),
-                ],
+                        },
+                      );
+                    }),
               );
             }));
   }
