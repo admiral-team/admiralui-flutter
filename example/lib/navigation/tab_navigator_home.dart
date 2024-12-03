@@ -1,13 +1,14 @@
 import 'package:admiralui_flutter/theme/app_theme.dart';
+import 'package:example/screens/text_block/padding_text_block_screen.dart';
+import 'package:example/screens/themes/theme_color_screen.dart';
+import 'package:example/screens/themes/theme_new_screen.dart';
+import 'package:example/screens/themes/theme_template_screen.dart';
 
 import '../screens/tabs/logo_tabs_screen.dart';
 import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/informers/notifications_screen.dart';
-import '../screens/text_block/padding_text_block_screen.dart';
-import '../screens/themes/theme_new_screen.dart';
-import '../screens/themes/theme_template_screen.dart';
 import '../screens/themes/themes_screen.dart';
 import '../screens/themes/theme_options_screen.dart';
 import '../screens/themes/theme_colors_screen.dart';
@@ -90,7 +91,8 @@ enum TabNavigatorRoutes {
   themes('/themes'),
   themeOptions('/themes/option'),
   themeColors('/themes/colors'),
-  themeFonts('/themes/gonts'),
+  themeFonts('/themes/fonts'),
+  themeColor('/themes/color'),
   themeNew('/theme/new'),
   themeTemplate('/themes/template'),
   checkbox('/checkbox'),
@@ -210,8 +212,12 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route, AppTheme theme) =>
                 _push(context, route, theme),
           ),
+      TabNavigatorRoutes.themeColor.value: (BuildContext context) =>
+          ThemeColorScreen(),
       TabNavigatorRoutes.themeColors.value: (BuildContext context) =>
-          ThemeColorsScreen(),
+          ThemeColorsScreen(
+              onPush: (TabNavigatorRoutes route, ThemeColorInitModel model) =>
+                  _push(context, route, model)),
       TabNavigatorRoutes.themeFonts.value: (BuildContext context) =>
           ThemeFontsScreen(),
       TabNavigatorRoutes.themeNew.value: (BuildContext context) =>
