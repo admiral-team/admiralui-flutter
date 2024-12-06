@@ -1,11 +1,11 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:admiralui_flutter/theme/admiral_color.dart';
-import 'package:example/screens/themes/theme_color_screen.dart';
-import 'package:example/storage/app_theme_storage.dart';
-import '../../navigation/tab_navigator_home.dart';
 import 'package:example/extentions/colors_extentions.dart';
+import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
+import '../../navigation/tab_navigator_home.dart';
+import 'theme_color_screen.dart';
 
 class ThemeColorsScreen extends StatefulWidget {
   const ThemeColorsScreen({
