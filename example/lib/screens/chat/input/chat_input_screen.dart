@@ -167,7 +167,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                         );
                       } else if (message is UploadingPhotoItem) {
                         return UploadingPhotoGridView(
-                            items: <UploadingPhotoItem>[message, message],
+                            items: <UploadingPhotoItem>[message],
                             chatDirection: ChatDirection.right
                         );
                       }
