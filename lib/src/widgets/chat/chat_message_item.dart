@@ -1,6 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 
-class ChatMessageItem {
+class ChatMessageItem extends ChatMessageBase {
   ChatMessageItem({
     required this.direction,
     required this.text,
