@@ -10,25 +10,25 @@ class ThemesScreen extends StatefulWidget {
     required this.onPush,
   });
 
-  final Function(TabNavigatorRoutes route, AppTheme theme) onPush;
+  final Function(TabNavigatorRoutes route, AppTheme? theme) onPush;
 
   @override
   State<ThemesScreen> createState() => _ThemesScreenState();
 }
 
 class _ThemesScreenState extends State<ThemesScreen> {
-  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+  final AppThemeStorage appThemeStorage = AppThemeStorage();
 
   @override
   void initState() {
     super.initState();
-    appThemeButtonStorage.toggleButton();
+    appThemeStorage.setThemeButtonHidden(true);
   }
 
   @override
   void dispose() {
+    appThemeStorage.setThemeButtonHidden(false);
     super.dispose();
-    appThemeButtonStorage.toggleButton();
   }
 
   @override
@@ -64,47 +64,72 @@ class _ThemesScreenState extends State<ThemesScreen> {
         ),
         backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(
-              LayoutGrid.doubleModule,
-            ),
-            child: TextView(
-              'Themes',
-              font: fonts.title1,
-              textColorNormal: colors.textPrimary.color(),
-            ),
-          ),
-          BaseCellWidget(
-            centerCell: TextView('Light'),
-            trailingCell: trailingCell(lightTheme),
-            onPressed: () => widget.onPush.call(
-              TabNavigatorRoutes.themeOptions,
-              lightTheme,
-            ),
-          ),
-          BaseCellWidget(
-            centerCell: TextView('Dark'),
-            trailingCell: trailingCell(darkTheme),
-            onPressed: () => widget.onPush.call(
-              TabNavigatorRoutes.themeOptions,
-              darkTheme,
-            ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(
-              LayoutGrid.doubleModule,
-            ),
-            child: PrimaryButton(
-              title: 'Создать новую тему',
-              sizeType: ButtonSizeType.big,
-            ),
-          ),
-        ],
+      body: AnimatedBuilder(
+        animation: appThemeStorage,
+        builder: (BuildContext context, Widget? child) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(
+                  LayoutGrid.doubleModule,
+                ),
+                child: TextView(
+                  'Themes',
+                  font: fonts.title1,
+                  textColorNormal: colors.textPrimary.color(),
+                ),
+              ),
+              Expanded(
+                child: FutureBuilder<List<AppTheme>>(
+                  future: appThemeStorage.getAllThemes(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<AppTheme>> snapshot) {
+
+                    final List<AppTheme> themes = snapshot.data ?? <AppTheme>[];
+                    final List<AppTheme> allThemes = <AppTheme>[
+                      lightTheme,
+                      darkTheme,
+                      ...themes
+                    ];
+
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: allThemes.map((AppTheme theme) {
+                          return BaseCellWidget(
+                            centerCell: TextView(theme.name),
+                            trailingCell: trailingCell(theme),
+                            onPressed: () => widget.onPush.call(
+                              TabNavigatorRoutes.themeOptions,
+                              theme,
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(
+                  LayoutGrid.doubleModule,
+                ),
+                child: PrimaryButton(
+                  title: 'Создать новую тему',
+                  sizeType: ButtonSizeType.big,
+                  onPressed: () => widget.onPush.call(
+                    TabNavigatorRoutes.themeNew,
+                    null,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

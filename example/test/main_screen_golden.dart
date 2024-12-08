@@ -8,7 +8,6 @@ import '../lib/main.dart';
 import 'set_steps.dart';
 
 void runMainScreen(Device device) {
-  isTesting = true;
   testGoldens('light_app', (WidgetTester tester) async {
     final DeviceBuilder builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: <Device>[device])

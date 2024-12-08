@@ -33,10 +33,11 @@ class ToastWidget extends StatelessWidget {
       isEnable,
       style,
     );
-    final Color textColor = isEnable ? 
-    toastScheme.textColor : toastScheme.disabledTextColor;
-    final Color closeImageColor = isEnable ? 
-    toastScheme.closeImageColor : toastScheme.disabledCloseImageColor;
+    final Color textColor =
+        isEnable ? toastScheme.textColor : toastScheme.disabledTextColor;
+    final Color closeImageColor = isEnable
+        ? toastScheme.closeImageColor
+        : toastScheme.disabledCloseImageColor;
 
     final List<Widget> children = <Widget>[];
     if (title != null) {
@@ -80,7 +81,7 @@ class ToastWidget extends StatelessWidget {
           constraints: const BoxConstraints(
             minHeight: LayoutGrid.halfModule * 10,
             minWidth: LayoutGrid.halfModule * 10,
-            maxHeight: LayoutGrid.module * 17,
+            maxHeight: LayoutGrid.module * 19,
           ),
           padding: const EdgeInsets.symmetric(
             vertical: LayoutGrid.halfModule * 5,
@@ -109,13 +110,9 @@ class ToastWidget extends StatelessWidget {
                 ),
               ),
               if (onClosePressed != null)
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onPressed: onClosePressed,
-                  icon: Icon(
+                GestureDetector(
+                  onTap: onClosePressed,
+                  child: Icon(
                     AdmiralIcons.admiral_ic_close_outline,
                     color: closeImageColor,
                     size: LayoutGrid.halfModule * 5,

@@ -1,5 +1,6 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
+import 'package:example/storage/app_theme_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../navigation/tab_navigator_home.dart';
@@ -33,6 +34,7 @@ class ListCellModel {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   final List<ListCellModel> listItems = <ListCellModel>[
     ListCellModel(
       title: 'Themes',
@@ -188,6 +190,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late List<ListCellModel> filterItems = listItems;
   final TextEditingController _searchController = TextEditingController();
+  final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    appThemeButtonStorage.setThemeButtonHidden(false);
+  }
 
   @override
   Widget build(BuildContext context) {

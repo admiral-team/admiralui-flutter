@@ -1,10 +1,12 @@
 import 'package:admiralui_flutter/theme/app_theme.dart';
-import 'package:example/screens/text_block/padding_text_block_screen.dart';
-
-import '../screens/tabs/logo_tabs_screen.dart';
-import '../screens/tabs/outline_tabs_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/text_block/padding_text_block_screen.dart';
+import '../screens/themes/theme_color_screen.dart';
+import '../screens/themes/theme_new_screen.dart';
+import '../screens/themes/theme_template_screen.dart';
+import '../screens/tabs/logo_tabs_screen.dart';
+import '../screens/tabs/outline_tabs_screen.dart';
 import '../screens/informers/notifications_screen.dart';
 import '../screens/themes/themes_screen.dart';
 import '../screens/themes/theme_options_screen.dart';
@@ -86,9 +88,12 @@ import '../screens/textfields/input_number/input_number_secondary_screen.dart';
 enum TabNavigatorRoutes {
   home('/'),
   themes('/themes'),
-  themeOptions('/themesOption'),
-  themeColors('/themeColors'),
-  themeFonts('/themeFonts'),
+  themeOptions('/themes/option'),
+  themeColors('/themes/colors'),
+  themeFonts('/themes/fonts'),
+  themeColor('/themes/color'),
+  themeNew('/theme/new'),
+  themeTemplate('/themes/template'),
   checkbox('/checkbox'),
   textfields('/textfields'),
   feedback('/textfields/feedback'),
@@ -187,7 +192,7 @@ class TabNavigatorHome extends StatelessWidget {
       MaterialPageRoute<Map<String, WidgetBuilder>>(
           builder: (BuildContext context) =>
               routeBuilders[route.value]!(context),
-          settings: RouteSettings(arguments: arguments)),
+          settings: RouteSettings(name: route.value, arguments: arguments)),
     );
   }
 
@@ -198,7 +203,7 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),
       TabNavigatorRoutes.themes.value: (BuildContext context) => ThemesScreen(
-            onPush: (TabNavigatorRoutes route, AppTheme theme) =>
+            onPush: (TabNavigatorRoutes route, AppTheme? theme) =>
                 _push(context, route, theme),
           ),
       TabNavigatorRoutes.themeOptions.value: (BuildContext context) =>
@@ -206,10 +211,23 @@ class TabNavigatorHome extends StatelessWidget {
             onPush: (TabNavigatorRoutes route, AppTheme theme) =>
                 _push(context, route, theme),
           ),
+      TabNavigatorRoutes.themeColor.value: (BuildContext context) =>
+          ThemeColorScreen(),
       TabNavigatorRoutes.themeColors.value: (BuildContext context) =>
-          ThemeColorsScreen(),
+          ThemeColorsScreen(
+              onPush: (TabNavigatorRoutes route, ThemeColorInitModel model) =>
+                  _push(context, route, model)),
       TabNavigatorRoutes.themeFonts.value: (BuildContext context) =>
           ThemeFontsScreen(),
+      TabNavigatorRoutes.themeNew.value: (BuildContext context) =>
+          ThemeNewScreen(
+            onPush: (TabNavigatorRoutes route, String theme) =>
+                _push(context, route, theme),
+          ),
+      TabNavigatorRoutes.themeTemplate.value: (BuildContext context) =>
+          ThemeTemplateScreen(
+            onPush: (TabNavigatorRoutes route) => _push(context, route),
+          ),
       TabNavigatorRoutes.buttons.value: (BuildContext context) => ButtonsScreen(
             onPush: (TabNavigatorRoutes route) => _push(context, route),
           ),

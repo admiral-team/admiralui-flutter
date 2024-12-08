@@ -42,7 +42,7 @@ class _ButtonsGhostScreenState extends State<ButtonsGhostScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: LayoutGrid.doubleModule,
+          horizontal: 0,
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
