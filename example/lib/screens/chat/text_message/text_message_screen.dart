@@ -1,6 +1,5 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
-import 'package:example/screens/chat/input/chat_message_item.dart';
 import '../../../navigation/tab_navigator_chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
