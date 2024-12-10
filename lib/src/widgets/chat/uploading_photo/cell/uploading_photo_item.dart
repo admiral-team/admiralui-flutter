@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 /// backgroundImage - The background image of UploadingPhotoView.
 /// chatBubbleStatusStyle - The visual style of ChatBubbleStatusView.
 /// chatStatus - The status of ChatBubbleStatusView.
-class UploadingPhotoItem {
+class UploadingPhotoItem extends ChatMessageBase {
   UploadingPhotoItem({
     required this.isLoading,
     required this.time,
