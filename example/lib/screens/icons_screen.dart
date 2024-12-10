@@ -14,6 +14,8 @@ class _IconsScreenState extends State<IconsScreen> {
   final TextEditingController _searchController = TextEditingController();
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
 
+  String _selectedTab = 'Outline';
+
   @override
   void initState() {
     super.initState();
@@ -29,9 +31,10 @@ class _IconsScreenState extends State<IconsScreen> {
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
+
+    final List<String> filteredIcons = _filterIcons(_selectedTab);
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
@@ -60,7 +63,9 @@ class _IconsScreenState extends State<IconsScreen> {
             StandardTabs(
               <String>['Outline', 'Solid'],
               onTap: (String value) {
-                setState(() {});
+                setState(() {
+                  _selectedTab = value;
+                });
               },
             ),
             SizedBox(
@@ -73,10 +78,9 @@ class _IconsScreenState extends State<IconsScreen> {
                   crossAxisSpacing: LayoutGrid.module,
                   mainAxisSpacing: LayoutGrid.module,
                 ),
-                itemCount: AdmiralIconsFlutterList.iconNames.length,
+                itemCount: filteredIcons.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final String iconName =
-                      AdmiralIconsFlutterList.iconNames[index];
+                  final String iconName = filteredIcons[index];
                   return Icon(
                     AdmiralIconsFlutterList.iconDataMap[iconName],
                     size: LayoutGrid.halfModule * 7,
@@ -156,5 +160,11 @@ class _IconsScreenState extends State<IconsScreen> {
         ),
       ),
     );
+  }
+
+  List<String> _filterIcons(String tab) {
+    return AdmiralIconsFlutterList.iconNames
+        .where((String iconName) => iconName.endsWith('_${tab.toLowerCase()}'))
+        .toList();
   }
 }
