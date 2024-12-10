@@ -36,30 +36,6 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
   final TextEditingController textEditingController = TextEditingController();
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
 
-  Future<void> _pickImage() async {
-    try {
-      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-
-      if (image != null) {
-        setState(() {
-          chatMessages.add(UploadingPhotoItem(
-            isLoading: false,
-            backgroundImage: Image(image: FileImage(File(image.path))),
-            time: _getTime(),
-            chatBubbleStatusStyle: ChatBubbleStatusStyle.light,
-            chatStatus: ChatStatus.none,
-            fileName: 'Название файла длиннее чем в...',
-            fileSize: '17.5 MB',
-          ));
-          textEditingController.text = '';
-          _scrollDown();
-        });
-      }
-    } catch (e) {
-      print('$e');
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -168,8 +144,7 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                       } else if (message is UploadingPhotoItem) {
                         return UploadingPhotoGridView(
                             items: <UploadingPhotoItem>[message],
-                            chatDirection: ChatDirection.right
-                        );
+                            chatDirection: ChatDirection.right);
                       }
                       return null;
                     },
@@ -233,5 +208,29 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
       duration: Duration(milliseconds: 500),
       curve: Curves.linear,
     );
+  }
+
+  Future<void> _pickImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+      if (image != null) {
+        setState(() {
+          chatMessages.add(UploadingPhotoItem(
+            isLoading: false,
+            backgroundImage: Image(image: FileImage(File(image.path))),
+            time: _getTime(),
+            chatBubbleStatusStyle: ChatBubbleStatusStyle.light,
+            chatStatus: ChatStatus.none,
+            fileName: 'Название файла длиннее чем в...',
+            fileSize: '17.5 MB',
+          ));
+          textEditingController.text = '';
+          _scrollDown();
+        });
+      }
+    } catch (e) {
+      print('$e');
+    }
   }
 }
