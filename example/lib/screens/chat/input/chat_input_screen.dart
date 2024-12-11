@@ -3,8 +3,9 @@ import 'package:admiralui_flutter/layout/layout_grid.dart';
 import '../../../navigation/tab_navigator_chat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'chat_message_item.dart';
 import '../../../storage/app_theme_storage.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class ChatInputScreen extends StatefulWidget {
   const ChatInputScreen({
@@ -21,9 +22,10 @@ class ChatInputScreen extends StatefulWidget {
 }
 
 class _ChatInputScreenState extends State<ChatInputScreen> {
+  final ImagePicker _picker = ImagePicker();
   TextInputState textInputState = TextInputState.normal;
   final ScrollController _controller = ScrollController();
-  late List<ChatMessageItem> chatMessages = <ChatMessageItem>[
+  late List<ChatMessageBase> chatMessages = <ChatMessageBase>[
     ChatMessageItem(
       text: 'Добрый день !',
       direction: ChatDirection.left,
@@ -119,25 +121,32 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                     ),
                     itemCount: chatMessages.length,
                     itemBuilder: (BuildContext ctx, int index) {
-                      return ChatBubbleView(
-                        text: chatMessages[index].text,
-                        direction: chatMessages[index].direction,
-                        chatStatus: chatMessages[index].chatStatus,
-                        onStatusTap: () {
-                          if (chatMessages[index].chatStatus ==
-                              ChatStatus.error) {
-                            setState(() {
-                              chatMessages[index] = ChatMessageItem(
-                                text: chatMessages[index].text,
-                                direction: chatMessages[index].direction,
-                                time: chatMessages[index].time,
-                                chatStatus: ChatStatus.read,
-                              );
-                            });
-                          }
-                        },
-                        time: chatMessages[index].time,
-                      );
+                      final ChatMessageBase message = chatMessages[index];
+                      if (message is ChatMessageItem) {
+                        return ChatBubbleView(
+                          text: message.text,
+                          direction: message.direction,
+                          chatStatus: message.chatStatus,
+                          onStatusTap: () {
+                            if (message.chatStatus == ChatStatus.error) {
+                              setState(() {
+                                chatMessages[index] = ChatMessageItem(
+                                  text: message.text,
+                                  direction: message.direction,
+                                  time: message.time,
+                                  chatStatus: ChatStatus.read,
+                                );
+                              });
+                            }
+                          },
+                          time: message.time,
+                        );
+                      } else if (message is UploadingPhotoItem) {
+                        return UploadingPhotoGridView(
+                            items: <UploadingPhotoItem>[message],
+                            chatDirection: ChatDirection.right);
+                      }
+                      return null;
                     },
                   ),
                 ),
@@ -166,6 +175,9 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                   textEditingController.text = '';
                   _scrollDown();
                 });
+              },
+              onFileButtonPress: () {
+                _pickImage();
               },
             ),
             SizedBox(
@@ -196,5 +208,29 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
       duration: Duration(milliseconds: 500),
       curve: Curves.linear,
     );
+  }
+
+  Future<void> _pickImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+      if (image != null) {
+        setState(() {
+          chatMessages.add(UploadingPhotoItem(
+            isLoading: false,
+            backgroundImage: Image(image: FileImage(File(image.path))),
+            time: _getTime(),
+            chatBubbleStatusStyle: ChatBubbleStatusStyle.light,
+            chatStatus: ChatStatus.none,
+            fileName: 'Название файла длиннее чем в...',
+            fileSize: '17.5 MB',
+          ));
+          textEditingController.text = '';
+          _scrollDown();
+        });
+      }
+    } catch (e) {
+      print('$e');
+    }
   }
 }
