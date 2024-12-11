@@ -1,7 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../storage/app_theme_storage.dart';
+import '../../storage/app_theme_storage.dart';
+import 'icon_tab_state.dart';
 
 class IconsScreen extends StatefulWidget {
   const IconsScreen({super.key});
@@ -14,7 +15,7 @@ class _IconsScreenState extends State<IconsScreen> {
   final TextEditingController _searchController = TextEditingController();
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
 
-  String _selectedTab = 'Outline';
+  IconTabState _selectedTab = IconTabState.outline;
 
   @override
   void initState() {
@@ -64,7 +65,10 @@ class _IconsScreenState extends State<IconsScreen> {
               <String>['Outline', 'Solid'],
               onTap: (String value) {
                 setState(() {
-                  _selectedTab = value;
+                  _selectedTab =
+                      value.toLowerCase() == IconTabState.outline.value
+                          ? IconTabState.outline
+                          : IconTabState.solid;
                 });
               },
             ),
@@ -162,9 +166,9 @@ class _IconsScreenState extends State<IconsScreen> {
     );
   }
 
-  List<String> _filterIcons(String tab) {
+  List<String> _filterIcons(IconTabState tab) {
     return AdmiralIconsFlutterList.iconNames
-        .where((String iconName) => iconName.endsWith('_${tab.toLowerCase()}'))
+        .where((String iconName) => iconName.endsWith('_${tab.value}'))
         .toList();
   }
 }

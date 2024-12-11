@@ -58,7 +58,7 @@ import '../screens/cells/cells_screen.dart';
 import '../screens/cells/center_cell_screen.dart';
 import '../screens/cells/leading_cell_screen.dart';
 import '../screens/spinner_screen.dart';
-import '../screens/icons_screen.dart';
+import '../screens/icons/icons_screen.dart';
 import '../screens/cells/trailing_cell_screen.dart';
 import '../screens/alerts_screen.dart';
 import '../screens/alertsOnboarding/alert_screen.dart';
