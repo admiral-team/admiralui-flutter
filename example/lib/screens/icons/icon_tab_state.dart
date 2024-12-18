@@ -10,4 +10,22 @@ enum IconTabState {
         return 'solid';
     }
   }
+
+  String get title {
+    switch (this) {
+      case IconTabState.outline:
+        return 'Outline';
+      case IconTabState.solid:
+        return 'Solid';
+    }
+  }
+
+  String get filterValue {
+    switch (this) {
+      case IconTabState.outline:
+        return 'Outline';
+      case IconTabState.solid:
+        return 'Solid';
+    }
+  }
 }
