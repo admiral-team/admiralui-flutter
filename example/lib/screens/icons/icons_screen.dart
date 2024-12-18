@@ -1,7 +1,8 @@
 import 'package:admiralui_flutter/admiralui_flutter.dart';
 import 'package:admiralui_flutter/layout/layout_grid.dart';
 import 'package:flutter/material.dart';
-import '../storage/app_theme_storage.dart';
+import '../../storage/app_theme_storage.dart';
+import 'icon_tab_state.dart';
 
 class IconsScreen extends StatefulWidget {
   const IconsScreen({super.key});
@@ -16,6 +17,8 @@ class _IconsScreenState extends State<IconsScreen> {
   String? _informerText;
   Offset? _informerPosition;
   final ScrollController _scrollController = ScrollController();
+
+  IconTabState _selectedTab = IconTabState.outline;
 
   @override
   void initState() {
@@ -42,9 +45,10 @@ class _IconsScreenState extends State<IconsScreen> {
   @override
   Widget build(BuildContext context) {
     final AppTheme theme = AppThemeProvider.of(context);
-
     final ColorPalette colors = theme.colors;
     final FontPalette fonts = theme.fonts;
+
+    final List<String> filteredIcons = _filterIcons(_selectedTab);
 
     return Scaffold(
       backgroundColor: colors.backgroundBasic.color(),
@@ -73,9 +77,17 @@ class _IconsScreenState extends State<IconsScreen> {
                   height: LayoutGrid.tripleModule,
                 ),
                 StandardTabs(
-                  <String>['Outline', 'Solid'],
+                  <String>[
+                    IconTabState.outline.title,
+                    IconTabState.solid.title
+                  ],
                   onTap: (String value) {
-                    setState(() {});
+                    setState(() {
+                      _selectedTab =
+                          value.toLowerCase() == IconTabState.outline.value
+                              ? IconTabState.outline
+                              : IconTabState.solid;
+                    });
                   },
                 ),
                 SizedBox(
@@ -83,20 +95,19 @@ class _IconsScreenState extends State<IconsScreen> {
                 ),
                 Expanded(
                   child: GridView.builder(
-                    controller: _scrollController,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       crossAxisSpacing: LayoutGrid.module,
                       mainAxisSpacing: LayoutGrid.module,
                     ),
-                    itemCount: AdmiralIconsFlutterList.iconNames.length,
+                    controller: _scrollController,
+                    itemCount: filteredIcons.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final String rawIconName =
-                          AdmiralIconsFlutterList.iconNames[index];
+                      final String rawIconName = filteredIcons[index];
                       final String formattedIconName = rawIconName
-                          .replaceAll('_outline', '')
-                          .replaceAll('_solid', '')
+                          .replaceAll(IconTabState.outline.filterValue, '')
+                          .replaceAll(IconTabState.solid.filterValue, '')
                           .split('_')
                           .map((String part) => part.isNotEmpty
                               ? part[0].toUpperCase() + part.substring(1)
@@ -243,5 +254,11 @@ class _IconsScreenState extends State<IconsScreen> {
         ),
       ),
     );
+  }
+
+  List<String> _filterIcons(IconTabState tab) {
+    return AdmiralIconsFlutterList.iconNames
+        .where((String iconName) => iconName.endsWith('_${tab.value}'))
+        .toList();
   }
 }
