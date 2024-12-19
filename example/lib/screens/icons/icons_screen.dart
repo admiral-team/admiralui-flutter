@@ -14,6 +14,9 @@ class IconsScreen extends StatefulWidget {
 class _IconsScreenState extends State<IconsScreen> {
   final TextEditingController _searchController = TextEditingController();
   final AppThemeStorage appThemeButtonStorage = AppThemeStorage();
+  String? _informerText;
+  Offset? _informerPosition;
+  final ScrollController _scrollController = ScrollController();
 
   IconTabState _selectedTab = IconTabState.outline;
 
@@ -21,11 +24,21 @@ class _IconsScreenState extends State<IconsScreen> {
   void initState() {
     super.initState();
     appThemeButtonStorage.toggleButton();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.isScrollingNotifier.value) {
+        setState(() {
+          _informerText = null;
+          _informerPosition = null;
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
+    _scrollController.dispose();
     appThemeButtonStorage.toggleButton();
   }
 
@@ -52,49 +65,126 @@ class _IconsScreenState extends State<IconsScreen> {
         centerTitle: true,
         backgroundColor: colors.backgroundBasic.color(),
       ),
-      body: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: LayoutGrid.doubleModule),
-        child: Column(
-          children: <Widget>[
-            _searchBar(colors, fonts),
-            SizedBox(
-              height: LayoutGrid.tripleModule,
-            ),
-            StandardTabs(
-              <String>['Outline', 'Solid'],
-              onTap: (String value) {
-                setState(() {
-                  _selectedTab =
-                      value.toLowerCase() == IconTabState.outline.value
-                          ? IconTabState.outline
-                          : IconTabState.solid;
-                });
-              },
-            ),
-            SizedBox(
-              height: LayoutGrid.tripleModule,
-            ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
-                  crossAxisSpacing: LayoutGrid.module,
-                  mainAxisSpacing: LayoutGrid.module,
+      body: Stack(
+        children: <Widget>[
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: LayoutGrid.doubleModule),
+            child: Column(
+              children: <Widget>[
+                _searchBar(colors, fonts),
+                SizedBox(
+                  height: LayoutGrid.tripleModule,
                 ),
-                itemCount: filteredIcons.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final String iconName = filteredIcons[index];
-                  return Icon(
-                    AdmiralIconsFlutterList.iconDataMap[iconName],
-                    size: LayoutGrid.halfModule * 7,
-                    color: colors.elementAccent.color(),
-                  );
-                },
-              ),
+                StandardTabs(
+                  <String>[
+                    IconTabState.outline.title,
+                    IconTabState.solid.title
+                  ],
+                  onTap: (String value) {
+                    setState(() {
+                      _selectedTab =
+                          value.toLowerCase() == IconTabState.outline.value
+                              ? IconTabState.outline
+                              : IconTabState.solid;
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: LayoutGrid.tripleModule,
+                ),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      crossAxisSpacing: LayoutGrid.module,
+                      mainAxisSpacing: LayoutGrid.module,
+                    ),
+                    controller: _scrollController,
+                    itemCount: filteredIcons.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final String rawIconName = filteredIcons[index];
+                      final String formattedIconName = rawIconName
+                          .replaceAll(IconTabState.outline.filterValue, '')
+                          .replaceAll(IconTabState.solid.filterValue, '')
+                          .split('_')
+                          .map((String part) => part.isNotEmpty
+                              ? part[0].toUpperCase() + part.substring(1)
+                              : '')
+                          .join('_');
+
+                      return GestureDetector(
+                        onTapDown: (TapDownDetails details) {
+                          setState(() {
+                            _informerText = formattedIconName;
+                            _informerPosition = details.globalPosition;
+                          });
+                        },
+                        child: Column(
+                          children: <Widget>[
+                            Icon(
+                              AdmiralIconsFlutterList.iconDataMap[rawIconName],
+                              size: LayoutGrid.halfModule * 7,
+                              color: colors.elementAccent.color(),
+                            ),
+                            TextView(
+                              formattedIconName,
+                              font: fonts.caption1,
+                              textColorNormal: colors.textSecondary.color(),
+                              maxLines: 1,
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          if (_informerText != null && _informerPosition != null)
+            Builder(
+              builder: (BuildContext context) {
+                final SmallInformerScheme smallInformerScheme =
+                    SmallInformerScheme(theme: theme);
+                final TextPainter textPainter = TextPainter(
+                  text: TextSpan(
+                    text: _informerText,
+                    style: TextStyle(
+                      fontSize: smallInformerScheme.font.fontSize,
+                      fontWeight: smallInformerScheme.font.fontWeight,
+                      color: smallInformerScheme.enabledTextColor,
+                    ),
+                  ),
+                  textDirection: TextDirection.ltr,
+                )..layout(maxWidth: LayoutGrid.doubleModule * 18);
+
+                final double textWidth = textPainter.size.width;
+
+                final double screenWidth = MediaQuery.of(context).size.width;
+                final double xPosition = _informerPosition!.dx;
+                final double yPosition = _informerPosition!.dy;
+
+                final bool isNearRightEdge =
+                    xPosition + LayoutGrid.doubleModule * 18 / 2 > screenWidth;
+
+                return Positioned(
+                  left: _informerPosition!.dx -
+                      (isNearRightEdge ? textWidth : LayoutGrid.halfModule * 5),
+                  top: yPosition - LayoutGrid.doubleModule * 6,
+                  child: SmallInformerWidget(
+                    title: _informerText,
+                    arrowDirectionStyle: isNearRightEdge
+                        ? InformerDirectionStyle.topRight
+                        : InformerDirectionStyle.topLeft,
+                    style: InformerStyle.normal,
+                    isEnable: true,
+                  ),
+                );
+              },
+            )
+        ],
       ),
     );
   }
