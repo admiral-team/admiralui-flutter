@@ -142,9 +142,16 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
                           time: message.time,
                         );
                       } else if (message is UploadingPhotoItem) {
-                        return UploadingPhotoGridView(
-                            items: <UploadingPhotoItem>[message],
-                            chatDirection: ChatDirection.right);
+                        return Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              UploadingPhotoGridView(
+                                  items: <UploadingPhotoItem>[message],
+                                  chatDirection: ChatDirection.right),
+                              SizedBox(
+                                height: LayoutGrid.module,
+                              )
+                            ]);
                       }
                       return null;
                     },
