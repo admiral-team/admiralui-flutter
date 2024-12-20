@@ -56,7 +56,7 @@ class _UploadingPhotoViewState extends State<UploadingPhotoView> {
               borderRadius: widget.borderRadius,
               image: DecorationImage(
                 image: widget.item.backgroundImage.image,
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.cover,
               ),
             ),
           ),
