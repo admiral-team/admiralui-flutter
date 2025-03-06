@@ -135,3 +135,6 @@ example/ios/.env
 test/failures/*
 *.dill
 /build/test_cache/build
+
+# ENV
+example/.env

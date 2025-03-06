@@ -6,7 +6,7 @@ repository: https://github.com/admiral-team/admiralui-flutter
 issue_tracker: https://github.com/admiral-team/admiralui-flutter/issues
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.17.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -48,3 +48,8 @@ flutter:
         - asset: lib/fonts/SF-Pro-Text-Semibold.otf
         - asset: lib/fonts/SF-Pro-Text-Regular.otf
         - asset: lib/fonts/SF-Pro-Text-Bold.ttf
+
+false_secrets:
+  - example/lib/firebase_options.dart
+  - example/android/app/google-services.json
+  - example/android/google-services.json
