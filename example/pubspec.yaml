@@ -33,6 +33,7 @@ dependencies:
     path: "../"
   shared_preferences: ^2.2.3
   url_launcher: ^6.0.20
+  flutter_dotenv: ^5.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -141,3 +142,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+false_secrets:
+  - /lib/firebase_options.dart
+  - ../android/app/google-services.json
+  - ../android/google-services.json
