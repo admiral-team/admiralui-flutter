@@ -14,14 +14,14 @@ class IconTabs extends StatefulWidget {
     this.items, {
     this.isEnabled = true,
     this.selectedIndex,
-    this.onTap,
+    this.onSelected,
     super.key,
   });
 
   final List<IconTabItem> items;
   final bool isEnabled;
   final int? selectedIndex;
-  final ValueChanged<int>? onTap;
+  final ValueChanged<int>? onSelected;
 
   @override
   State<StatefulWidget> createState() => _IconTabsState();
@@ -58,8 +58,8 @@ class _IconTabsState extends State<IconTabs>
                   onTap: (int index) {
                     setState(() {
                       currentPos = index;
-                      widget.onTap?.call(index);
                     });
+                    widget.onSelected?.call(index);
                   },
                   indicatorColor: Colors.transparent,
                   padding: EdgeInsets.zero,

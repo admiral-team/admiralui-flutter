@@ -58,16 +58,16 @@ class _SMSCodeTextFieldScreenState extends State<SMSCodeTextFieldScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Error', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
                     switch (value) {
-                      case 'Default':
+                      case 0:
                         state = TextInputState.normal;
                         break;
-                      case 'Error':
+                      case 1:
                         state = TextInputState.error;
                         break;
-                      case 'Disabled':
+                      case 2:
                         state = TextInputState.disabled;
                         break;
                     }

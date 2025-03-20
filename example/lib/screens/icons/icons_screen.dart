@@ -81,12 +81,11 @@ class _IconsScreenState extends State<IconsScreen> {
                     IconTabState.outline.title,
                     IconTabState.solid.title
                   ],
-                  onTap: (String value) {
+                  onSelected: (int value) {
                     setState(() {
-                      _selectedTab =
-                          value.toLowerCase() == IconTabState.outline.value
-                              ? IconTabState.outline
-                              : IconTabState.solid;
+                      _selectedTab = value == 0
+                          ? IconTabState.outline
+                          : IconTabState.solid;
                     });
                   },
                 ),

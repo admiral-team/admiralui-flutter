@@ -49,9 +49,9 @@ class _LogoTabsScreenState extends State<LogoTabsScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
-                    isEnabled = value == 'Default';
+                    isEnabled = value == 0;
                   });
                 },
               ),

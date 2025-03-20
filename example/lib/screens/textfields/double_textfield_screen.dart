@@ -61,19 +61,19 @@ class _DoubleTextFieldScreenState extends State<DoubleTextFieldScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Read Only', 'Error', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
                     switch (value) {
-                      case 'Default':
+                      case 0:
                         textFieldState = TextInputState.normal;
                         break;
-                      case 'Read Only':
+                      case 1:
                         textFieldState = TextInputState.readOnly;
                         break;
-                      case 'Error':
+                      case 2:
                         textFieldState = TextInputState.error;
                         break;
-                      case 'Disabled':
+                      case 3:
                         textFieldState = TextInputState.disabled;
                         break;
                     }

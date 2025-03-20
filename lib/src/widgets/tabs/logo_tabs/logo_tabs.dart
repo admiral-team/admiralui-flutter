@@ -90,12 +90,8 @@ class _LogoTabsState extends State<LogoTabs>
             onTap: (int index) {
               setState(() {
                 currentPos = index;
-                if (widget.onSelected != null) {
-                  setState(() {
-                    widget.onSelected!(currentPos);
-                  });
-                }
               });
+              widget.onSelected?.call(index);
             },
             indicator: BoxDecoration(
               border: Border.all(

@@ -8,7 +8,7 @@ class StandardTabs extends StatefulWidget {
     this.tabs, {
     this.isEnabled = true,
     this.tabBarViews,
-    this.onTap,
+    this.onSelected,
     this.scheme,
     super.key,
   });
@@ -27,7 +27,7 @@ class StandardTabs extends StatefulWidget {
   /// even if the tap doesn't change the TabController's index. TabBar [onTap]
   /// callbacks should not make changes to the TabController since that would
   /// interfere with the default tap handler.
-  final ValueChanged<String>? onTap;
+  final ValueChanged<int>? onSelected;
 
   @override
   State<StatefulWidget> createState() => _StandardTabsState();
@@ -82,7 +82,7 @@ class _StandardTabsState extends State<StandardTabs>
                   setState(() {
                     currentPos = index;
                   });
-                  widget.onTap?.call(widget.tabs[index]);
+                  widget.onSelected?.call(index);
                 },
                 indicator: BoxDecoration(
                   border: Border.all(

@@ -46,9 +46,9 @@ class _LinksScreenState extends State<LinksScreen> {
             ),
             StandardTabs(
               <String>['Default', 'Disabled'],
-              onTap: (String value) {
+              onSelected: (int value) {
                 setState(() {
-                  isEnabled = value == 'Default';
+                  isEnabled = value == 0;
                 });
               },
             ),

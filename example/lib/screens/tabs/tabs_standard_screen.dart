@@ -53,9 +53,9 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
-                    isEnabled = value == 'Default';
+                    isEnabled = value == 0;
                   });
                 },
               ),
@@ -74,7 +74,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               StandardTabs(
                 <String>['One', 'Two'],
                 isEnabled: isEnabled,
-                onTap: (String _) {},
+                onSelected: (int _) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -91,7 +91,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               StandardTabs(
                 <String>['One', 'Two', 'Three'],
                 isEnabled: isEnabled,
-                onTap: (String _) {},
+                onSelected: (int _) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -108,7 +108,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               StandardTabs(
                 <String>['One', 'Two', 'Three', 'Four'],
                 isEnabled: isEnabled,
-                onTap: (String _) {},
+                onSelected: (int _) {},
               ),
               SizedBox(
                 height: LayoutGrid.module * 5,
@@ -125,7 +125,7 @@ class _TabStandardScreenState extends State<TabStandardScreen> {
               StandardTabs(
                 <String>['One', 'Two', 'Three', 'Four', 'Five'],
                 isEnabled: isEnabled,
-                onTap: (String _) {},
+                onSelected: (int _) {},
               ),
             ],
           ),

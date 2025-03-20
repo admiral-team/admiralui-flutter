@@ -76,7 +76,7 @@ class UnderlineTabs extends StatefulWidget {
     this.items, {
     this.isEnable = true,
     this.selectedIndex,
-    this.onTap,
+    this.onSelected,
     this.isCenterTabs = false,
     this.horizontalPadding = 0.0,
     this.scheme,
@@ -87,7 +87,7 @@ class UnderlineTabs extends StatefulWidget {
     List<String> items, {
     bool isEnable = true,
     int? selectedIndex,
-    ValueChanged<int>? onTap,
+    ValueChanged<int>? onSelected,
     bool isCenterTabs = false,
     double horizontalPadding = 0.0,
     UnderlineTabsScheme? scheme,
@@ -99,7 +99,7 @@ class UnderlineTabs extends StatefulWidget {
       tabItems,
       isEnable: isEnable,
       selectedIndex: selectedIndex,
-      onTap: onTap,
+      onSelected: onSelected,
       isCenterTabs: isCenterTabs,
       horizontalPadding: horizontalPadding,
       scheme: scheme,
@@ -110,7 +110,7 @@ class UnderlineTabs extends StatefulWidget {
   final List<UnderlineTabItem> items;
   final bool isEnable;
   final int? selectedIndex;
-  final ValueChanged<int>? onTap;
+  final ValueChanged<int>? onSelected;
   final bool isCenterTabs;
   final double horizontalPadding;
   final UnderlineTabsScheme? scheme;
@@ -165,8 +165,8 @@ class _UnderlineTabsState extends State<UnderlineTabs>
                 onTap: (int index) {
                   setState(() {
                     currentPos = index;
-                    widget.onTap?.call(index);
                   });
+                  widget.onSelected?.call(index);
                 },
                 labelPadding: const EdgeInsets.only(bottom: LayoutGrid.module),
                 indicator: UnderlineTabIndicator(

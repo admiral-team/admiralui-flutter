@@ -97,9 +97,9 @@ class _ChatInputScreenState extends State<ChatInputScreen> {
           children: <Widget>[
             StandardTabs(
               <String>['Default', 'Disabled'],
-              onTap: (String value) {
+              onSelected: (int value) {
                 setState(() {
-                  textInputState = value == 'Default'
+                  textInputState = value == 0
                       ? TextInputState.normal
                       : TextInputState.disabled;
                 });

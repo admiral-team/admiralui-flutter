@@ -7,7 +7,7 @@ class InformerTabs extends StatefulWidget {
     this.items, {
     this.isEnabled = true,
     this.selectedIndex,
-    this.onTap,
+    this.onSelected,
     this.customView,
     this.paddingHorizontal,
     this.scheme,
@@ -17,7 +17,7 @@ class InformerTabs extends StatefulWidget {
   final List<InformerTabItem> items;
   final bool isEnabled;
   final int? selectedIndex;
-  final ValueChanged<int>? onTap;
+  final ValueChanged<int>? onSelected;
   final Widget? customView;
   final double? paddingHorizontal;
   final InformerTabsScheme? scheme;
@@ -53,7 +53,9 @@ class _InformerTabsState extends State<InformerTabs>
           Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: _padding,),
+                padding: EdgeInsets.symmetric(
+                  horizontal: _padding,
+                ),
                 child: Row(
                   children: <Widget>[
                     for (int i = 0; i < widget.items.length; i++) ...<Widget>{
@@ -64,10 +66,11 @@ class _InformerTabsState extends State<InformerTabs>
                           isEnabled: widget.isEnabled,
                           isSelected: _currentPos == i,
                           index: i,
-                          onTap: (int value) {
+                          onTap: (int index) {
                             setState(() {
-                              _currentPos = value;
+                              _currentPos = index;
                             });
+                            widget.onSelected?.call(index);
                           },
                           scheme: scheme.informerTabItemScheme,
                         ),

@@ -55,16 +55,16 @@ class _SpinnerScreenState extends State<SpinnerScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Small', 'Medium', 'Big'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
                     switch (value) {
-                      case 'Small':
+                      case 0:
                         spinnerSize = SpinnerSize.small;
                         break;
-                      case 'Medium':
+                      case 1:
                         spinnerSize = SpinnerSize.medium;
                         break;
-                      case 'Big':
+                      case 2:
                         spinnerSize = SpinnerSize.large;
                         break;
                     }
