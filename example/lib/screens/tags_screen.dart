@@ -35,7 +35,7 @@ class _TagsScreenState extends State<TagsScreen> {
         ),
       ),
       body: Container(
-        width: double.infinity, 
+        width: double.infinity,
         color: colors.backgroundBasic.color(),
         padding: EdgeInsets.all(
           LayoutGrid.doubleModule,
@@ -48,9 +48,9 @@ class _TagsScreenState extends State<TagsScreen> {
             ),
             StandardTabs(
               <String>['Default', 'Disabled'],
-              onTap: (String value) {
+              onSelected: (int value) {
                 setState(() {
-                  isEnabled = value == 'Default';
+                  isEnabled = value == 0;
                 });
               },
             ),

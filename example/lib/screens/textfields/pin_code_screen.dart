@@ -68,16 +68,16 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
           children: <Widget>[
             StandardTabs(
               <String>['Default', 'Success', 'Error'],
-              onTap: (String value) {
+              onSelected: (int value) {
                 setState(() {
                   switch (value) {
-                    case 'Default':
+                    case 0:
                       _status = CodeInputStatus.normal;
                       break;
-                    case 'Success':
+                    case 1:
                       _status = CodeInputStatus.success;
                       break;
-                    case 'Error':
+                    case 2:
                       _status = CodeInputStatus.error;
                       break;
                     default:

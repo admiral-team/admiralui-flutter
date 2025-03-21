@@ -64,13 +64,14 @@ class CardNumberTextField extends StatefulWidget {
     this.informerText,
     this.placeHolderText = '',
     this.trailingIcon,
+    this.formatter,
     this.onChanged,
     this.onEditingComplete,
     this.scheme,
     super.key,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputState state;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
@@ -78,6 +79,7 @@ class CardNumberTextField extends StatefulWidget {
   final String? informerText;
   final String placeHolderText;
   final IconData? trailingIcon;
+  final TextInputFormatter? formatter;
 
   final ValueChanged<String>? onChanged;
   final VoidCallback? onEditingComplete;
@@ -120,7 +122,7 @@ class _CardNumberTextFieldState extends State<CardNumberTextField>
     setState(() {
       _hasFocus = hasFocus;
 
-      widget.controller.selection = TextSelection.fromPosition(
+      widget.controller?.selection = TextSelection.fromPosition(
         const TextPosition(offset: 0),
       );
     });
@@ -128,7 +130,7 @@ class _CardNumberTextFieldState extends State<CardNumberTextField>
 
   void _onChanged({required String text}) {
     setState(() {});
-    widget.onChanged?.call(text);
+    widget.onChanged?.call(text.replaceAll(RegExp(r'\D+'), ''));
   }
 
   @override
@@ -154,7 +156,7 @@ class _CardNumberTextFieldState extends State<CardNumberTextField>
                         inputFormatters: <TextInputFormatter>[
                           LengthLimitingTextInputFormatter(19),
                           FilteringTextInputFormatter.digitsOnly,
-                          CardNumberFormatter(),
+                          widget.formatter ?? CardNumberFormatter(),
                         ],
                         controller: widget.controller,
                         focusNode: _effectiveFocusNode,

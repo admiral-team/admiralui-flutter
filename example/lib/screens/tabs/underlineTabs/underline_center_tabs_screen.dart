@@ -49,9 +49,9 @@ class _UnderlineCenterTabsScreenState extends State<UnderlineCenterTabsScreen> {
               ),
               child: StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
-                    isEnabled = value == 'Default';
+                    isEnabled = value == 0;
                   });
                 },
               ),

@@ -145,14 +145,8 @@ class _OutlineTabsState extends State<OutlineTabs>
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
                     onTap: () {
-                      setState(() {
-                        currentStep = i;
-                        if (widget.onSelected != null) {
-                          setState(() {
-                            widget.onSelected!(currentStep);
-                          });
-                        }
-                      });
+                      currentStep = i;
+                      widget.onSelected?.call(currentStep);
                     },
                     child: Container(
                       height: LayoutGrid.quadrupleModule,

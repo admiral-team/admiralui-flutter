@@ -51,9 +51,9 @@ class _LeadingCellsScreenState extends State<LeadingCellsScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
-                    isEnabled = value == 'Default';
+                    isEnabled = value == 0;
                   });
                 },
               ),

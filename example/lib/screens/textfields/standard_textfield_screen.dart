@@ -61,19 +61,19 @@ class _StandardTextFieldScreenState extends State<StandardTextFieldScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Read Only', 'Error', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
                     switch (value) {
-                      case 'Default':
+                      case 0:
                         state = TextInputState.normal;
                         break;
-                      case 'Read Only':
+                      case 1:
                         state = TextInputState.readOnly;
                         break;
-                      case 'Error':
+                      case 2:
                         state = TextInputState.error;
                         break;
-                      case 'Disabled':
+                      case 3:
                         state = TextInputState.disabled;
                         break;
                     }

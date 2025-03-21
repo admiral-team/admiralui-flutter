@@ -141,15 +141,15 @@ class _UploadingPhotoScreenState extends State<UploadingPhotoScreen> {
           children: <Widget>[
             StandardTabs(
               <String>['Default', 'Loading'],
-              onTap: (String value) {
+              onSelected: (int value) {
                 setState(() {
                   for (int i = 0; i < sections.length; i += 1) {
                     for (int j = 0; j < sections[i].items.length; j += 1) {
                       sections[i].items[j].isLoading =
-                          isLoadingState = value == 'Loading';
+                          isLoadingState = value == 1;
                     }
                   }
-                  isLoadingState = value == 'Loading';
+                  isLoadingState = value == 1;
                 });
               },
             ),

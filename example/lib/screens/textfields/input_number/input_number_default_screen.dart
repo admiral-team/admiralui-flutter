@@ -54,13 +54,13 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
                     switch (value) {
-                      case 'Default':
+                      case 0:
                         isEnabled = true;
                         break;
-                      case 'Disabled':
+                      case 1:
                         isEnabled = false;
                         break;
                     }
@@ -87,8 +87,7 @@ class _InputNumberDefaultScreenState extends State<InputNumberDefaultScreen> {
                   style: InputNumberButtonStyle.normal,
                   isEnable: isEnabled,
                   minusButtonKey: const Key('minusInputButton'),
-                  plusButtonKey: const Key('plusInputButton')
-              ),
+                  plusButtonKey: const Key('plusInputButton')),
               SizedBox(height: LayoutGrid.module * 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

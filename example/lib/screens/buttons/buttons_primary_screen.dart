@@ -52,9 +52,9 @@ class _ButtonsPrimaryScreenState extends State<ButtonsPrimaryScreen> {
             children: <Widget>[
               StandardTabs(
                 <String>['Default', 'Disabled'],
-                onTap: (String value) {
+                onSelected: (int value) {
                   setState(() {
-                    isEnabled = value == 'Default';
+                    isEnabled = value == 0;
                   });
                 },
               ),
