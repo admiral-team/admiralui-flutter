@@ -70,7 +70,7 @@ class CardNumberTextField extends StatefulWidget {
     super.key,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputState state;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
@@ -120,7 +120,7 @@ class _CardNumberTextFieldState extends State<CardNumberTextField>
     setState(() {
       _hasFocus = hasFocus;
 
-      widget.controller.selection = TextSelection.fromPosition(
+      widget.controller?.selection = TextSelection.fromPosition(
         const TextPosition(offset: 0),
       );
     });
@@ -128,7 +128,7 @@ class _CardNumberTextFieldState extends State<CardNumberTextField>
 
   void _onChanged({required String text}) {
     setState(() {});
-    widget.onChanged?.call(text);
+    widget.onChanged?.call(text.replaceAll(' ', ''));
   }
 
   @override
