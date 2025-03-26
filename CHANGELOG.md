@@ -1,3 +1,3 @@
-## [1.5.10] - 2025-03-06
+## [1.5.12] - 2025-03-26
 ### Changed
 - Fixed minor bugs and improvements

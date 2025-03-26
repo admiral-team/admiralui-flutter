@@ -82,8 +82,8 @@ class _CardNumberTextFieldScreenState extends State<CardNumberTextFieldScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: LayoutGrid.module * 5),
                 child: CardNumberTextField(
+                  controller: textController,
                   key: const Key('cardNumberTextField'),
-                  textController,
                   state: state,
                   focusNode: focusNode,
                   placeHolderText: '1111 2222 3333 4444',
