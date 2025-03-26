@@ -55,8 +55,8 @@ import 'package:flutter/services.dart';
 ///   },
 /// )
 class CardNumberTextField extends StatefulWidget {
-  const CardNumberTextField(
-    this.controller, {
+  const CardNumberTextField({
+    this.controller,
     this.state = TextInputState.normal,
     this.focusNode,
     this.keyboardType = TextInputType.number,
